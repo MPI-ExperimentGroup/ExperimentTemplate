@@ -88,7 +88,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             for (String blockType : blockTypeLists) {
                 writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
                         //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
-                        + "    return '" + blockType + "(\\'block_id_' + block.id + '\\');\\n';\n"
+                        + "    var childData = '\n'"
+                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
+                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}\n"
+                        + "    return '" + blockType + "(\\'block_id_' + block.id + '\\', childData);\\n';\n"
                         + "  };\n");
             }
         }
