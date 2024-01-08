@@ -44,10 +44,9 @@ public class SchemaBlocksGeneratorTest {
 
         SchemaBlocksGenerator instance = new SchemaBlocksGenerator();
         instance.createJsFile(blocksOutputFile);
-        final String name = "/static/" + "frinexblocks.js";
-        URI testXmlUri = this.getClass().getResource(name).toURI();
-        System.out.println(new File(testXmlUri));
-        String expectedResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
+        URI testBlocksUri = instance.getClass().getResource("/static/frinexblocks.js").toURI();
+        System.out.println(new File(testBlocksUri));
+        String expectedResult = new String(Files.readAllBytes(Paths.get(testBlocksUri)), StandardCharsets.UTF_8);
         String actualResult = new String(Files.readAllBytes(Paths.get(blocksOutputFile.toURI())), StandardCharsets.UTF_8);
         assertEquals("frinexblocks.js", expectedResult, actualResult);
     }
