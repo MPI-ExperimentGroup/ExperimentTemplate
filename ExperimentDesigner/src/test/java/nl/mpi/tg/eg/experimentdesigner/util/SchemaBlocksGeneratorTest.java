@@ -44,7 +44,7 @@ public class SchemaBlocksGeneratorTest {
 
         SchemaBlocksGenerator instance = new SchemaBlocksGenerator();
         instance.createJsFile(blocksOutputFile);
-        final String name = "/frinex-rest-output/" + "frinexblocks.js";
+        final String name = "/static/" + "frinexblocks.js";
         URI testXmlUri = this.getClass().getResource(name).toURI();
         System.out.println(new File(testXmlUri));
         String expectedResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
