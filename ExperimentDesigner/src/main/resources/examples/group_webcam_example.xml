@@ -6,7 +6,7 @@
         state="debug"   
         stagingServer="https://ems15.mpi.nl" 
         stunServer="coturn.mpi.nl"  
-    />  
+    />   
     <administration />    
     <metadata /> 
     <presenter type="stimulus">  
