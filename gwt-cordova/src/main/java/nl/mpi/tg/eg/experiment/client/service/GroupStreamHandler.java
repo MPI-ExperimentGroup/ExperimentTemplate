@@ -303,11 +303,13 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onicegatheringstatechange== " + selfMemberCode);
             };
 
-            // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
-            localTracks = $wnd.localStream.getTracks();
-            for (trackCount = 0; trackCount < localTracks.length; trackCount++) {
-                console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream);
+            if (!$wnd.localStream) {
+                // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
+                localTracks = $wnd.localStream.getTracks();
+                for (trackCount = 0; trackCount < localTracks.length; trackCount++) {
+                    console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
+                    $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream);
+                }
             }
         }
     }-*/;
