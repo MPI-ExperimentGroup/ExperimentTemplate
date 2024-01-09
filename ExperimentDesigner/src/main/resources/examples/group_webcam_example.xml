@@ -81,6 +81,16 @@
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
+                            <actionButton featureText="Canvas A,B,C" groupId="streamButtonGroup">
+                                <streamGroupCanvas streamChannels="A,B,C">
+                                    <onSuccess>
+                                        <plainText featureText="streamGroupCanvas onSuccess A,B,C"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamGroupCanvas onError A,B,C"/>
+                                    </onError>
+                                </streamGroupCanvas>
+                            </actionButton>
                             <!-- <actionButton featureText="Canvas B,A|C,B" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="B,A|C,B">
                                     <onSuccess>
