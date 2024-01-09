@@ -5,7 +5,7 @@
             state="staging"                                               
             stagingServer="https://ems15.mpi.nl"               
             stunServer="coturn.mpi.nl"   
-        />                
+        />                 
     <administration />    
     <scss>  
         .streamRegion {  
