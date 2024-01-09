@@ -472,7 +472,7 @@ public abstract class GroupStreamHandler {
                         // set up the elements and connection based on communication channels
                         if (!member.equals(memberCode)) {
                             addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
-                            offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                            offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, screenId);
                         }
                     }
                 } else {
