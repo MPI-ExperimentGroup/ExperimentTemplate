@@ -303,7 +303,7 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onicegatheringstatechange== " + selfMemberCode);
             };
 
-            if (!$wnd.localStream) {
+            if ($wnd.localStream) {
                 // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
                 localTracks = $wnd.localStream.getTracks();
                 for (trackCount = 0; trackCount < localTracks.length; trackCount++) {
