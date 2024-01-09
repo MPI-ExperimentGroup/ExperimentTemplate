@@ -8,7 +8,7 @@
         stunServer="coturn.mpi.nl"  
     />  
     <administration />   
-    <metadata />
+    <metadata /> 
     <presenter type="stimulus">  
         <regionAppend regionId="groupStatus" /> 
         <addPadding />

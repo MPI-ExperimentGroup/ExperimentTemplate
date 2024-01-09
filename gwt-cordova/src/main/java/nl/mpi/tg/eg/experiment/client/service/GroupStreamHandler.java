@@ -184,9 +184,9 @@ public abstract class GroupStreamHandler {
                             }
                         }
                     } else if (contentData.streamState === "refresh") {
-                        if (localContext) {
+                        if ($wnd.localCanvasContext) {
                             // paint to the canvas so that some data is sent over the stream causing it to be visible to the receiving participant
-                            localContext.fillText("T", 0, 0);
+                            $wnd.localCanvasContext.fillText("T", 0, 0);
                         }
                     } else if (contentData.userId !== userId && contentData.streamState === "disconnect") {
                         if ($wnd.groupConnections[contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode]) {
@@ -344,33 +344,33 @@ public abstract class GroupStreamHandler {
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Canvas", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
         localCanvas = $wnd.$("#groupLocalCanvas")[0];
-        localContext = localCanvas.getContext("2d");
+        $wnd.localCanvasContext = localCanvas.getContext("2d");
 
-        // localContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
-        localContext.fillStyle = "lightgrey";
-        localContext.fillRect(0, 0, localCanvas.width, localCanvas.height);
+        // $wnd.localCanvasContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
+        $wnd.localCanvasContext.fillStyle = "lightgrey";
+        $wnd.localCanvasContext.fillRect(0, 0, localCanvas.width, localCanvas.height);
 
-        localContext.fillStyle = "black";
-        localContext.font = "20px Arial";
-//        localContext.fillText(userId, 10, 50);
-//        localContext.fillText(groupId, 10, 100);
-//        localContext.fillText(memberCode, 10, 150);
+        $wnd.localCanvasContext.fillStyle = "black";
+        $wnd.localCanvasContext.font = "20px Arial";
+//        $wnd.localCanvasContext.fillText(userId, 10, 50);
+//        $wnd.localCanvasContext.fillText(groupId, 10, 100);
+//        $wnd.localCanvasContext.fillText(memberCode, 10, 150);
         localCanvas.addEventListener("mousemove", function (event) {
             if (event.buttons > 0) {
                 // console.log(event);
                 // console.log(event.clientX);
                 // console.log(localCanvas.offsetLeft);
                 // console.log(window.pageXOffset);
-                localContext.beginPath();
+                $wnd.localCanvasContext.beginPath();
                 var bounds = localCanvas.getBoundingClientRect();
                 var positionX = event.clientX - bounds.x;
                 var positionY = event.clientY - bounds.y;
-                localContext.moveTo((positionX - event.movementX) / bounds.width * localCanvas.width, (positionY - event.movementY) / bounds.height * localCanvas.height);
-                localContext.lineTo(positionX / bounds.width * localCanvas.width, positionY / bounds.height * localCanvas.height);
-                localContext.strokeStyle = "blue";
-                localContext.lineWidth = 1;
-                localContext.stroke();
-                localContext.closePath();
+                $wnd.localCanvasContext.moveTo((positionX - event.movementX) / bounds.width * localCanvas.width, (positionY - event.movementY) / bounds.height * localCanvas.height);
+                $wnd.localCanvasContext.lineTo(positionX / bounds.width * localCanvas.width, positionY / bounds.height * localCanvas.height);
+                $wnd.localCanvasContext.strokeStyle = "blue";
+                $wnd.localCanvasContext.lineWidth = 1;
+                $wnd.localCanvasContext.stroke();
+                $wnd.localCanvasContext.closePath();
             }
         }, false);
     }-*/;
