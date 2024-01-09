@@ -312,10 +312,10 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
-    private native void sendReady(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void sendReady(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
-        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Receive", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
+        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", streamType, "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
     }-*/;
 
     private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
@@ -480,7 +480,7 @@ public abstract class GroupStreamHandler {
                         addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
                         connectionListeners.put(connectionKey, onSuccess);
                         errorListeners.put(connectionKey, onError);
-                        sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                        sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, "Canvas", screenId);
                     }
                 }
             }
@@ -515,7 +515,7 @@ public abstract class GroupStreamHandler {
                                 addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
                                 connectionListeners.put(connectionKey, onSuccess);
                                 errorListeners.put(connectionKey, onError);
-                                sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                                sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, "Camera", screenId);
                             }
                         }
                     }
