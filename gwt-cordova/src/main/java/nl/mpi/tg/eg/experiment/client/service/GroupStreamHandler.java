@@ -290,7 +290,7 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onremovetrack== " + selfMemberCode);
             };
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovestream = function () {
-                console.log(remoteMemberCode + " <,>==onremovestream== " + selfMemberCode);
+                console.log(remoteMemberCode + " <==onremovestream== " + selfMemberCode);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = function () {
