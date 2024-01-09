@@ -460,36 +460,30 @@ public abstract class GroupStreamHandler {
     public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
-            // boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
-            boolean isFirst = true;
-            // if (isRelevant) {
-                for (String member : channel.split(",")) {
-                    // set up the elements and connection based on communication channels
-                    if (member.equals(memberCode)) {
-                        if (isFirst) {
+            final boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
+            final boolean isFirst = channel.matches(memberCode + "(,.*)?");
+            if (isRelevant) {
+                if (isFirst) {
+                    for (final String member : channel.split(",")) {
+                        // set up the elements and connection based on communication channels
+                        if (!member.equals(memberCode)) {
                             addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
                             offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                            // } else {
-                            // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode,
-                            // null, screenId);
-                            // }
-                        }
-                    } else {
-                        if (!isFirst) {
-                            final String connectionName = "groupRemoteCanvas_" + member;
-                            final String connectionKey = memberCode + "-Canvas>" + member;
-                            if (!expectedConnections.containsKey(connectionKey)) {
-                                expectedConnections.put(connectionKey, false);
-                                addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
-                                connectionListeners.put(connectionKey, onSuccess);
-                                errorListeners.put(connectionKey, onError);
-                                sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
-                            }
                         }
                     }
-                    isFirst = false;
+                } else {
+                    final String member = channel.split(",")[0];
+                    final String connectionName = "groupRemoteCanvas_" + member;
+                    final String connectionKey = memberCode + "-Canvas>" + member;
+                    if (!expectedConnections.containsKey(connectionKey)) {
+                        expectedConnections.put(connectionKey, false);
+                        addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
+                        connectionListeners.put(connectionKey, onSuccess);
+                        errorListeners.put(connectionKey, onError);
+                        sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                    }
                 }
-            // }
+            }
         }
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
