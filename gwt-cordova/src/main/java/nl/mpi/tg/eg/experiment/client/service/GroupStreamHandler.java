@@ -484,7 +484,7 @@ public abstract class GroupStreamHandler {
                         addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
                         connectionListeners.put(connectionKey, onSuccess);
                         errorListeners.put(connectionKey, onError);
-                        sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, "Canvas", screenId);
+                        sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Canvas", screenId);
                     }
                 }
             }
