@@ -424,10 +424,14 @@ function connect() {
         stompClient.subscribe('/shared/stream', function (streamMessage) {
             var contentData = JSON.parse(streamMessage.body);
             if (!isCompact) {
-                var streamTableRow = $("#streamUserId" + contentData.userId);
+                var messageRowId = "messageRow_" + contentData.userId + 
+                    "_" + contentData.targetMemberCode +
+                    "_" + contentData.originMemberCode +
+                    "_" + contentData.streamState;
+                var streamTableRow = $("#" + messageRowId);
                 if (!streamTableRow.length) {
-                    $("#streamTarget").append("<tr id=\"streamUserId" + contentData.userId + "\"></tr>");
-                    streamTableRow = $("#streamUserId" + contentData.userId);
+                    $("#streamTarget").append("<tr id=\"" + messageRowId + "\"></tr>");
+                    streamTableRow = $("#" + messageRowId);
                 }
                 streamTableRow.html("<td>" + contentData.userId +
                     "</td><td>" + contentData.groupId +
