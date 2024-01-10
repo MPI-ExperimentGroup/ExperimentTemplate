@@ -433,7 +433,7 @@ function connect() {
                     $("#streamTarget").append("<tr id=\"" + messageRowId + "\"></tr>");
                     streamTableRow = $("#" + messageRowId);
                 }
-                streamTableRow.html("<td>" + contentData.userId +
+                streamTableRow.html("<td><input value=\"" + contentData.userId + "\">" +
                     "</td><td>" + contentData.groupId +
                     "</td><td>" + contentData.groupUUID +
                     "</td><td>" + contentData.screenId +
