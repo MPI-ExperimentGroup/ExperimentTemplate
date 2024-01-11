@@ -167,8 +167,8 @@ public abstract class GroupStreamHandler {
                     } else if (contentData.streamState === "candidate") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                     } else if (contentData.streamState === "ready") {
-                        // if the canvas exists in the page then the request is expected and we reply
-                        if ($wnd.$("#groupRemote" + contentData.streamType + "_" + contentData.originMemberCode).length > 0) {
+                        // if the localStream is defined then we have something to send and we reply with an offer
+                        if ($wnd.localStream) {
                             if ($wnd.groupConnections[memberCode + "-" + contentData.streamType + '>' + contentData.originMemberCode]) {
                                 console.log(memberCode + ": already connected == ignoring");
                             } else {
@@ -184,6 +184,7 @@ public abstract class GroupStreamHandler {
                             }
                         } else {
                             // if there is nothing to stream resend a ready here to trigger the other member to resend
+                            // TODO: perhaps add a delay before resending this ready
                             groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", contentData.streamType, "", originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                         }
                     } else if (contentData.streamState === "refresh") {
