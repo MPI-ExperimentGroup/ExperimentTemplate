@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/snapshot.xsd"
     appNameDisplay="group_webcam_example">
     <deployment 
-        state="debug"   
+        state="debug"    
         stagingServer="https://ems15.mpi.nl"  
         stunServer="coturn.mpi.nl"    
     />     
