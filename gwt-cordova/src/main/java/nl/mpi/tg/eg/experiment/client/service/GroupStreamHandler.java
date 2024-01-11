@@ -327,7 +327,7 @@ public abstract class GroupStreamHandler {
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", streamType, "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
     }-*/;
 
-    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId, onError) /*-{
         var groupStreamHandler = this;
         $wnd.requestPermissions(true, true, null,
             function(captureStream) {
@@ -338,6 +338,7 @@ public abstract class GroupStreamHandler {
             }, function(error) {
                 console.log(error.message);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::disconnectStreams(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, "Camera", screenId);
+                onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
             }
         );
     }-*/;
@@ -509,7 +510,7 @@ public abstract class GroupStreamHandler {
                     if (member.equals(memberCode)) {
                         if (isFirst) {
                             addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId);
+                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId, onError);
                             // } else {
                             // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode,
                             // null, screenId);
