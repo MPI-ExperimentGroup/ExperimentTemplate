@@ -133,6 +133,7 @@ public abstract class GroupStreamHandler {
         if (!$wnd.groupConnections){
             $wnd.groupConnections = [];
             $wnd.readyConnections = [];
+            $wnd.localStream = [];
         }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
@@ -168,7 +169,7 @@ public abstract class GroupStreamHandler {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleCandidate(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, contentData.streamType, screenId);
                     } else if (contentData.streamState === "ready") {
                         // if the localStream is defined then we have something to send and we reply with an offer
-                        if ($wnd.localStream) {
+                        if ($wnd.localStream[contentData.streamType + '_' + contentData.originMemberCode]) {
                             if ($wnd.groupConnections[memberCode + "-" + contentData.streamType + '>' + contentData.originMemberCode]) {
                                 console.log(memberCode + ": already connected == ignoring");
                             } else {
@@ -309,12 +310,12 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onicegatheringstatechange== " + selfMemberCode);
             };
 
-            if ($wnd.localStream) {
+            if ($wnd.localStream[contentData.streamType + '_' + contentData.originMemberCode]) {
                 // localStream.getTracks().forEach(track => $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(track, localStream));
-                localTracks = $wnd.localStream.getTracks();
+                localTracks = $wnd.localStream[contentData.streamType + '_' + contentData.originMemberCode].getTracks();
                 for (trackCount = 0; trackCount < localTracks.length; trackCount++) {
                     console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
-                    $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream);
+                    $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream[contentData.streamType + '_' + contentData.originMemberCode]);
                 }
             }
         }
@@ -330,8 +331,8 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         $wnd.requestPermissions(true, true, null,
             function(captureStream) {
-                $wnd.localStream = captureStream;
-                $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream;
+                $wnd.localStream['Camera_' + contentData.originMemberCode] = captureStream;
+                $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream['Camera_' + contentData.originMemberCode];
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Camera", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             }, function(error) {
@@ -343,9 +344,9 @@ public abstract class GroupStreamHandler {
 
     private native void offerCanvas(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
-        if (!$wnd.localStream) {
+        if (!$wnd.localStream["Canvas_" + remoteMemberCode]) {
             // TODO: handle both video and canvas streams
-            $wnd.localStream = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
+            $wnd.localStream["Canvas_" + remoteMemberCode] = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
         }
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Canvas", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
@@ -433,7 +434,7 @@ public abstract class GroupStreamHandler {
         // remove local elements
         $wnd.$("#groupLocalCamera").remove();
         $wnd.$("#groupLocalCanvas").remove();
-        $wnd.localStream = null;
+        $wnd.localStream[streamType + '_' + remoteMemberCode] = null;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
 
