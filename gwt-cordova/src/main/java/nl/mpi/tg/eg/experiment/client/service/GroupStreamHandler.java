@@ -226,6 +226,7 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = new RTCPeerConnection(configuration);
             $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].icecandidateerror = function (event) {
+                console.log("icecandidateerror: " + event);
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
             };
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = function (event) {
