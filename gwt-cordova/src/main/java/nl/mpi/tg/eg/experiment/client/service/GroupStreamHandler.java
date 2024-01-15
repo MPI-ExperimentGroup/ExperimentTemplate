@@ -302,8 +302,9 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onremovestream== " + selfMemberCode);
             };
 
-            $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = function () {
+            $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = function (event) {
                 console.log(remoteMemberCode + " <==oniceconnectionstatechange== " + selfMemberCode);
+                console.log(event);
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onsignalingstatechange = function () {
