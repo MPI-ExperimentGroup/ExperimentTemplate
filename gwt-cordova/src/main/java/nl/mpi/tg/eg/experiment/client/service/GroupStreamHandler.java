@@ -331,8 +331,8 @@ public abstract class GroupStreamHandler {
         var groupStreamHandler = this;
         $wnd.requestPermissions(true, true, null,
             function(captureStream) {
-                $wnd.localStream['Camera_' + contentData.originMemberCode] = captureStream;
-                $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream['Camera_' + contentData.originMemberCode];
+                $wnd.localStream['Camera_' + remoteMemberCode] = captureStream;
+                $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream['Camera_' + remoteMemberCode];
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Camera", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
             }, function(error) {
