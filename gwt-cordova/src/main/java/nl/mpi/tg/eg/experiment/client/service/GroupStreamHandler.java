@@ -502,42 +502,31 @@ public abstract class GroupStreamHandler {
     public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
-            // boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
-            boolean isFirst = true;
-            // if (isRelevant) {
-                for (String member : channel.split(",")) {
-                    // set up the elements and connection based on communication channels
-                    if (member.equals(memberCode)) {
-                        if (isFirst) {
+            final boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
+            final boolean isFirst = channel.matches(memberCode + "(,.*)?");
+            if (isRelevant) {
+                if (isFirst) {
+                    for (final String member : channel.split(",")) {
+                        // set up the elements and connection based on communication channels
+                        if (!member.equals(memberCode)) {
                             addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, screenId, onError);
-                            // } else {
-                            // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode,
-                            // null, screenId);
-                            // }
-// TODO: also update the canvas version of this }
-                    } else {
-// TODO: also update the canvas version of this if (!isFirst) {
-                            final String connectionName = "groupRemoteCamera_" + member;
-                            final String connectionKey = memberCode + "-Camera>" + member;
-                            if (!expectedConnections.containsKey(connectionKey)) {
-                                expectedConnections.put(connectionKey, false);
-                                addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
-                                connectionListeners.put(connectionKey, onSuccess);
-                                errorListeners.put(connectionKey, onError);
-                                sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, null, "Camera", screenId);
-                            }
+                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, screenId, onError);
                         }
                     }
-                    isFirst = false;
+                } else {
+                    final String member = channel.split(",")[0];
+                    final String connectionName = "groupRemoteCamera_" + member;
+                    final String connectionKey = memberCode + "-Camera>" + member;
+                    if (!expectedConnections.containsKey(connectionKey)) {
+                        expectedConnections.put(connectionKey, false);
+                        addVideoElement(connectionName, groupId, groupUUID, memberCode, member);
+                        connectionListeners.put(connectionKey, onSuccess);
+                        errorListeners.put(connectionKey, onError);
+                    }
+                    sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Camera", screenId);
                 }
-            // }
+            }
         }
-        // TODO: set up the communication channels
-        // addVideoElement("groupLocalVideo", groupId, groupUUID, memberCode);
-        // todo: we need to originating member code to create the elemet id correctly and this should be based on streamChannels eg negotiateCanvas
-        // addVideoElement("groupRemoteStream_" + member, groupId, groupUUID, memberCode);
-        // offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, screenId);
         // TODO: on canvas and video removed from parent disconnectStreams
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
