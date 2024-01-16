@@ -12,14 +12,7 @@
     <presenter type="stimulus">  
         <regionAppend regionId="groupStatus" /> 
         <addPadding />
-        <regionReplace regionId="groupOutput"> 
-            <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
-            <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
-            <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
-            <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
-            <htmlTokenText featureText="Group: ::groupId::" />
-            <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
-        </regionReplace>
+        <regionAppend regionId="groupOutput" />
         <addPadding />
         <groupStimuli adjacencyThreshold="0" eventTag="GroupStreamingTester" randomise="false"
             repeatRandomWindow="0" maxStimuli="100" repeatCount="1">
@@ -28,10 +21,28 @@
                     <regionReplace regionId="groupStatus">
                         <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
                     </regionReplace>
+                    <regionReplace regionId="groupOutput"> 
+        <regionReplace regionId="groupOutput"> 
+                    <regionReplace regionId="groupOutput"> 
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
+                        <htmlTokenText featureText="Group: ::groupId::" />
+                        <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
+                    </regionReplace>
                 </groupInitialisationError>
                 <groupNetworkConnecting>
                     <regionReplace regionId="groupStatus">
                         <htmlText featureText="GroupStreamingTester groupNetworkConnecting" />
+                    </regionReplace>
+                    <regionReplace regionId="groupOutput"> 
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
+                        <htmlTokenText featureText="Group: ::groupId::" />
+                        <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
                     </regionReplace>
                 </groupNetworkConnecting>
                 <groupFindingMembers>
