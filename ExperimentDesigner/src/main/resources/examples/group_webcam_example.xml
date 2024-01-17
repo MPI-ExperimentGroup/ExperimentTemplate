@@ -4,7 +4,7 @@
     appNameDisplay="group_webcam_example">
     <deployment  
         state="debug"      
-        stagingServer="https://ems15.mpi.nl"   
+        stagingServer="https://ems15.mpi.nl"    
         stunServer="coturn.mpi.nl"        
     />       
     <administration />     

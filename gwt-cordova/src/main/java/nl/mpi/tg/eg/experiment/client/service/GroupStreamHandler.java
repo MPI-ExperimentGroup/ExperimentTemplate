@@ -255,6 +255,7 @@ public abstract class GroupStreamHandler {
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovetrack = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onremovestream = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = null;
+                    $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onconnectionstatechange = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onsignalingstatechange = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicegatheringstatechange = null;
@@ -305,6 +306,13 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = function (event) {
                 console.log(remoteMemberCode + " <==oniceconnectionstatechange== " + selfMemberCode);
                 console.log(event);
+                if (event.iceGatheringState == "complete") 
+                    if (event.iceConnectionState == "connected") {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                    } else {
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                    }
+                }
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onsignalingstatechange = function () {
@@ -322,7 +330,6 @@ public abstract class GroupStreamHandler {
                     console.log(remoteMemberCode + " ==addTrack " + trackCount + " ==> " + selfMemberCode);
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream[streamType + '_' + remoteMemberCode]);
                 }
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
             }
         }
     }-*/;
@@ -398,6 +405,7 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onremovetrack = null;
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onremovestream = null;
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = null;
+            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onconnectionstatechange = null;
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = null;
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onsignalingstatechange = null;
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].onicegatheringstatechange = null;
