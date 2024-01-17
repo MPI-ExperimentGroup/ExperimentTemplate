@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/snapshot.xsd"
     appNameDisplay="group_webcam_example"> 
-    <deployment  
+    <deployment   
         state="debug"        
         stagingServer="https://ems15.mpi.nl"    
         stunServer="coturn.mpi.nl"         

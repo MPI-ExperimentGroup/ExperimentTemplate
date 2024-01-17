@@ -28,7 +28,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserId;
 public class StreamMessage {
 
     public enum StreamMessageState {
-        offer, answer, candidate, ready, refresh, disconnect
+        offer, answer, candidate, ready, refresh, permissions, failed, disconnect
     };
 
     public enum StreamMessageType {
