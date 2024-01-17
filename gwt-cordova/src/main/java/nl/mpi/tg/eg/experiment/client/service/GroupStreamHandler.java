@@ -306,8 +306,8 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].oniceconnectionstatechange = function (event) {
                 console.log(remoteMemberCode + " <==oniceconnectionstatechange== " + selfMemberCode);
                 console.log(event);
-                if (event.iceGatheringState == "complete") {
-                    if (event.iceConnectionState == "connected") {
+                if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].iceGatheringState == "complete") {
+                    if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].iceConnectionState == "connected") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
                     } else {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
