@@ -75,9 +75,9 @@
                             <htmlTokenText featureText="ActiveChannel: ::groupActiveChannel::" />
                             <htmlTokenText featureText="Group: ::groupId::" />
                             <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
-                            <actionButton featureText="sendGroupStoredMessage">
+                            <!-- <actionButton featureText="sendGroupStoredMessage">
                                 <sendGroupStoredMessage incrementPhase="1" groupId="MessageType1" />
-                            </actionButton>
+                            </actionButton> -->
                             <actionButton featureText="Canvas A,B|B,C" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="A,B|B,C">
                                     <onSuccess>
@@ -88,6 +88,7 @@
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
+                            <addPadding/>
                             <actionButton featureText="Canvas A,B,C" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="A,B,C">
                                     <onSuccess>
@@ -98,6 +99,7 @@
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
+                            <addPadding/>
                             <!-- <actionButton featureText="Canvas B,A|C,B" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="B,A|C,B">
                                     <onSuccess>
