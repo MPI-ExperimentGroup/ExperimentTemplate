@@ -309,8 +309,10 @@ public abstract class GroupStreamHandler {
                 if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].iceGatheringState == "complete") {
                     if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].iceConnectionState == "connected") {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("connected", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
                     } else {
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
                     }
                 }
             };
