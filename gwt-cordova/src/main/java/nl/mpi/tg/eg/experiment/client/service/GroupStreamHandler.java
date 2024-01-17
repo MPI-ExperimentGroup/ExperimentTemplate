@@ -117,11 +117,27 @@ public abstract class GroupStreamHandler {
             if (candidate === "null" || !candidate.candidate) {
                 console.log(selfMemberCode + ": " + remoteMemberCode + " <==doneCandidate== " + selfMemberCode);
                 // the terminal null is sent inside the candidate object
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(null);; //.catch(reportError);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(null,
+                    function (event) {
+                        console.log("addIceCandidateSuccess: " + event);
+                    },
+                    function (event) {
+                        console.log("addIceCandidateFail: " + event);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+                    });
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
             } else {
                 console.log(selfMemberCode + ": " + remoteMemberCode + " <==handleCandidate== " + selfMemberCode);
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(candidate); //.catch(reportError);
+                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(candidate,
+                    function (event) {
+                        console.log("addIceCandidateSuccess: " + event);
+                    },
+                    function (event) {
+                        console.log("addIceCandidateFail: " + event);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+                    });
             }
         } else {
             console.log(remoteMemberCode + " <==no peer connection== " + selfMemberCode);
