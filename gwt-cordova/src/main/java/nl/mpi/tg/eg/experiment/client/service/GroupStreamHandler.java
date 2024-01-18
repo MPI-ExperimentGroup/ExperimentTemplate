@@ -194,7 +194,7 @@ public abstract class GroupStreamHandler {
                         } else {
                             // if there is nothing to stream resend a ready here to trigger the other member to resend
                             // TODO: perhaps add a delay before resending this ready
-                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", contentData.streamType, "", originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                            // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", contentData.streamType, "", originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                         }
                     } else if (contentData.streamState === "refresh") {
                         if ($wnd.localCanvasContext) {
