@@ -194,6 +194,7 @@ public abstract class GroupStreamHandler {
                         } else {
                             // if there is nothing to stream resend a ready here to trigger the other member to resend
                             // TODO: perhaps add a delay before resending this ready
+                            // TODO: investigate adding this 'ready' echo back in so that connections always start up
                             // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", contentData.streamType, "", originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
                         }
                     } else if (contentData.streamState === "refresh") {
@@ -277,6 +278,7 @@ public abstract class GroupStreamHandler {
             };
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onconnectionstatechange = function (event) {
+            // TODO: update the onSuccess and onError events here
                 console.log(remoteMemberCode + " <==onconnectionstatechange== " + selfMemberCode);
             };
 
@@ -352,6 +354,7 @@ public abstract class GroupStreamHandler {
 
     private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId, TimedStimulusListener onError) /*-{
         var groupStreamHandler = this;
+        // TODO: add device filtering so a specified camera can be used
         $wnd.requestPermissions(true, true, null,
             function(captureStream) {
                 $wnd.localStream['Camera_' + remoteMemberCode] = captureStream;
