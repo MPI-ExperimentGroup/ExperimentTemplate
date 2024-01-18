@@ -276,7 +276,7 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onmessage== " + selfMemberCode + ": " + event.data);
             };
 
-            dataChannel.onconnectionstatechange = function (event) {
+            $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onconnectionstatechange = function (event) {
                 console.log(remoteMemberCode + " <==onconnectionstatechange== " + selfMemberCode);
             };
 
