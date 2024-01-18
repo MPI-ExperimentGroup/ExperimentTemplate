@@ -475,9 +475,6 @@ public abstract class GroupStreamHandler {
     public abstract void addVideoElement(String elementId, String groupId, String groupUUID, String memberCode, String remoteMemberCode);
 
     public void notifyDetatchedElement(String elementId, Integer originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String streamType, String screenId) {
-        // TODO: handle disconnect here
-//        messageGroup("disconnect", elementId, originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
-        // TODO: narrow down the disconnects to the specified channels and medium
         disconnectStreams(originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, streamType, screenId);
     }
 
