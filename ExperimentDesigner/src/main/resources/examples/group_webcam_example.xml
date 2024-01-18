@@ -10,7 +10,7 @@
     <administration />     
     <metadata />  
     <presenter type="stimulus">  
-        <regionAppend regionId="groupStatus" /> 
+        <regionAppend regionId="groupStatus" />  
         <addPadding />
         <regionAppend regionId="groupOutput" />
         <addPadding />
