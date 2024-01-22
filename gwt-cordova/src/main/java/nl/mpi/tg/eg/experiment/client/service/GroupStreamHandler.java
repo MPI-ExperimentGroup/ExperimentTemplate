@@ -154,6 +154,12 @@ public abstract class GroupStreamHandler {
             // console.log(contentData.streamType);
             // console.log(contentData.originPhase);
             // console.log(contentData.messageData);
+            if (contentData.streamState === "connected") {
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode);
+            } else if (contentData.streamState === "permissions" || contentData.streamState === "failed") {
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(contentData.originMemberCode + "-" + contentData.streamType + '>' + contentData.targetMemberCode);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(contentData.targetMemberCode + "-" + contentData.streamType + '>' + contentData.originMemberCode);
+            }
             if (contentData.targetMemberCode !== null && memberCode === contentData.originMemberCode && contentData.streamState === "offer") {
                 // this self message is needed in the offer stage to set up the stream in the correct timing by setting the local description
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::handleOffer(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(contentData.userId, contentData.messageData, stunServer, originPhase, userId, groupId, groupUUID, memberCode, contentData.targetMemberCode, contentData.streamType, screenId);
@@ -264,12 +270,14 @@ public abstract class GroupStreamHandler {
                 console.log(remoteMemberCode + " <==onconnectionstatechange== " + selfMemberCode);
                 if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].iceGatheringState == "complete") {
                     if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].connectionState == "connected") {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(remoteMemberCode + "-" + streamType + '>' + selfMemberCode);
+                        // the onnError and onSuccess triggering is handled via STOMP so that it can respond to the croups collective connection events
+                        // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                        // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerSuccessHandler(Ljava/lang/String;)(remoteMemberCode + "-" + streamType + '>' + selfMemberCode);
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("connected", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
                     } else {
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
-                        groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(remoteMemberCode + "-" + streamType + '>' + selfMemberCode);
+                        // the onnError and onSuccess triggering is handled via STOMP so that it can respond to the croups collective connection events
+                        // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                        // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(remoteMemberCode + "-" + streamType + '>' + selfMemberCode);
                         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
                     }
                 }
