@@ -43,6 +43,10 @@ public abstract class GroupStreamHandler {
     private Map<String, TimedStimulusListener> connectionListeners = new HashMap<>();
     private Map<String, TimedStimulusListener> errorListeners = new HashMap<>();
 
+    private boolean connectionIsExpected(final String connectionName) {
+        return expectedConnections.containsKey(connectionName);
+    }
+
     private void triggerErrorHanlder(final String connectionName) {
         expectedConnections.put(connectionName, false);
         if (errorListeners.containsKey(connectionName)) {
@@ -201,7 +205,9 @@ public abstract class GroupStreamHandler {
                             // if there is nothing to stream resend a ready here to trigger the other member to resend
                             // TODO: perhaps add a delay before resending this ready
                             // TODO: investigate adding this 'ready' echo back in so that connections always start up
-                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", contentData.streamType, "", originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                            if (groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::connectionIsExpected(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode)) {
+                                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", contentData.streamType, "", originPhase, userId, groupId, groupUUID, memberCode, contentData.originMemberCode, screenId);
+                            }
                         }
                     } else if (contentData.streamState === "refresh") {
                         if ($wnd.localCanvasContext) {
