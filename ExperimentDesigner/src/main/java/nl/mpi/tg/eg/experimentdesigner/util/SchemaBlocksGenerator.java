@@ -25,7 +25,9 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 
 /**
@@ -37,6 +39,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     List<String> adminTypeLists = new ArrayList<>();
     List<String> featureTypeLists = new ArrayList<>();
     List<String> templateTypeLists = new ArrayList<>();
+    Map<String, List<String>> typeSubTypes = new HashMap<>();
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
@@ -87,12 +90,18 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addJavaScriptGenerator(Writer writer) throws IOException {
         for (List<String> blockTypeLists : new List[]{adminTypeLists, featureTypeLists}) {
             for (String blockType : blockTypeLists) {
-                writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block) {\n"
+                writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block, generator) {\n"
+                        // block.getFieldValue("appNameDisplay")
+                        // + "  const statement = generator.statementToCode(block, 'MY_STATEMENT_INPUT');\n"
+                        // + "  const value = generator.valueToCode(block, 'MY_VALUE_INPUT', javascript.Order.ATOMIC);\n"
                         //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
                         + "    var childData = '';\n"
-//                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
-                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}\n"
-                        + "    return '" + blockType + "(\\'block_id_' + block.id + '\\', childData);\\n';\n"
+                        //                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
+                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){"
+                        //+ "     childData += generator.statementToCode(block.getChildren()[childIndex]);"
+                        + "     childData += generator.statementToCode(block, block.getChildren()[childIndex]);\n"
+                        + "    }\n"
+                        + "    return '" + blockType + "(\\'block_id_' + block.id + '\\', '  + childData + '\\);\\n';\n"
                         + "  };\n");
             }
         }
@@ -228,6 +237,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 writer.append("      \"args" + argsCount + "\": [\n"
                         + "            {\n");
 //                if (childElement.maxBounds != 1) {
+    // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
+//                typeSubTypes
                 writer.append("              \"type\": \"input_statement\",\n              \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {

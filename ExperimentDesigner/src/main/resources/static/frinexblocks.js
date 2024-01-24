@@ -2387,1260 +2387,1511 @@ function getFeatureBlocks() {
         }
       ]},
   ]);
-    javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_experimentType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_experimentType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_deploymentType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_deploymentType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_deploymentType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_deploymentType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_validationServiceType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_validationServiceType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_validationServiceType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_validationServiceType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_validationType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_validationType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_validationType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_validationType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_administrationType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_administrationType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_administrationType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_administrationType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_adminChartType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_adminChartType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_adminChartType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_adminChartType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_dataTableType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_dataTableType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_dataTableType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_dataTableType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_fieldType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_fieldType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_presenterType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_presenterType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_randomGroupingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_randomGroupingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimuliSelectType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimuliSelectType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimuliSelectType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimuliSelectType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_htmlTextType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_htmlTextType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_htmlTextType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_htmlTextType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_htmlTokenTextType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_htmlTokenTextType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_htmlTokenTextType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_htmlTokenTextType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_evaluateTokenTextType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_evaluateTokenTextType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_evaluateTokenTextType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_evaluateTokenTextType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_logTokenTextType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_logTokenTextType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_logTokenTextType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_logTokenTextType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_plainTextType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_plainTextType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_plainTextType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_plainTextType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_imageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_imageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_imageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_imageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_menuItemType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_menuItemType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_menuItemType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_menuItemType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_withStimuliType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_withStimuliType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_withStimuliType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_withStimuliType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupStimuliType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupStimuliType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupStimuliType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupStimuliType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_loadStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_loadStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_loadStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_loadStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_withMatchingStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_withMatchingStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_withMatchingStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_withMatchingStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_loadSdCardStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_loadSdCardStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_loadSdCardStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_loadSdCardStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_currentStimulusHasTagType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_currentStimulusHasTagType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_currentStimulusHasTagType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_currentStimulusHasTagType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_clearStimulusResponsesType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_clearStimulusResponsesType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_clearStimulusResponsesType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_clearStimulusResponsesType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_validateStimuliResponsesType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_validateStimuliResponsesType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_validateStimuliResponsesType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_validateStimuliResponsesType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusExistsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusExistsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusExistsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusExistsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showStimuliReportType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showStimuliReportType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showStimuliReportType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showStimuliReportType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendStimuliReportType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendStimuliReportType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendStimuliReportType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendStimuliReportType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_targetButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_targetButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_targetButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_targetButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_hotKeyInputType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_hotKeyInputType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_hotKeyInputType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_hotKeyInputType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_actionButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_actionButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_actionButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_actionButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_actionTokenButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_actionTokenButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_actionTokenButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_actionTokenButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_disableButtonGroupType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_disableButtonGroupType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_disableButtonGroupType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_disableButtonGroupType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_enableButtonGroupType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_enableButtonGroupType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_enableButtonGroupType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_enableButtonGroupType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_hideButtonGroupType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_hideButtonGroupType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_hideButtonGroupType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_hideButtonGroupType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_styleButtonGroupType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_styleButtonGroupType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_styleButtonGroupType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_styleButtonGroupType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showButtonGroupType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showButtonGroupType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showButtonGroupType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showButtonGroupType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_requestFocusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_requestFocusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_requestFocusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_requestFocusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_svgLoadGroupsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_svgLoadGroupsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_svgLoadGroupsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_svgLoadGroupsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_svgGroupAddType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_svgGroupAddType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_svgGroupAddType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_svgGroupAddType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_svgSetLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_svgSetLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_svgSetLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_svgSetLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_svgGroupShowType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_svgGroupShowType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_svgGroupShowType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_svgGroupShowType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_svgGroupActionType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_svgGroupActionType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_svgGroupActionType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_svgGroupActionType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_svgGroupMatchingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_svgGroupMatchingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_svgGroupMatchingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_svgGroupMatchingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusSliderType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusSliderType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusSliderType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusSliderType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_touchInputLabelButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_touchInputLabelButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_touchInputLabelButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_touchInputLabelButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_touchInputImageButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_touchInputImageButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_touchInputImageButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_touchInputImageButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_touchInputVideoButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_touchInputVideoButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_touchInputVideoButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_touchInputVideoButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_touchInputCaptureType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_touchInputCaptureType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_touchInputCaptureType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_touchInputCaptureType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_captureStartType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_captureStartType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_captureStartType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_captureStartType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_touchEndType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_touchEndType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_touchEndType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_touchEndType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_touchInputStopType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_touchInputStopType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_touchInputStopType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_touchInputStopType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ratingButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ratingButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ratingButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ratingButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ratingRadioButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ratingRadioButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ratingRadioButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ratingRadioButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ratingCheckboxType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ratingCheckboxType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ratingCheckboxType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ratingCheckboxType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusFreeTextType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusFreeTextType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusFreeTextType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusFreeTextType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusRatingButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusRatingButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusRatingButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusRatingButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusRatingRadioType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusRatingRadioType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusRatingRadioType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusRatingRadioType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusRatingCheckboxType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusRatingCheckboxType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusRatingCheckboxType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusRatingCheckboxType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusHasRatingOptionsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusHasRatingOptionsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusHasRatingOptionsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusHasRatingOptionsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_clearStimulusResponseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_clearStimulusResponseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_clearStimulusResponseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_clearStimulusResponseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusHasResponseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusHasResponseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusHasResponseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusHasResponseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_setStimulusCodeResponseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_setStimulusCodeResponseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_setStimulusCodeResponseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_setStimulusCodeResponseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addStimulusCodeResponseValidationType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addStimulusCodeResponseValidationType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addStimulusCodeResponseValidationType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addStimulusCodeResponseValidationType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ratingFooterButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ratingFooterButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ratingFooterButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ratingFooterButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_targetFooterButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_targetFooterButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_targetFooterButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_targetFooterButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_actionFooterButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_actionFooterButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_actionFooterButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_actionFooterButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addPaddingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addPaddingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addPaddingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addPaddingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_localStorageDataType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_localStorageDataType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_localStorageDataType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_localStorageDataType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimuliValidationType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimuliValidationType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimuliValidationType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimuliValidationType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addKeyboardDebugType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addKeyboardDebugType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addKeyboardDebugType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addKeyboardDebugType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addDebugWidgetsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addDebugWidgetsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addDebugWidgetsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addDebugWidgetsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_allMetadataFieldsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_allMetadataFieldsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_allMetadataFieldsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_allMetadataFieldsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_metadataFieldType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_metadataFieldType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_metadataFieldType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_metadataFieldType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusMetadataFieldType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusMetadataFieldType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusMetadataFieldType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusMetadataFieldType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_metadataFieldConnectionType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_metadataFieldConnectionType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_metadataFieldConnectionType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_metadataFieldConnectionType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_metadataFieldVisibilityDependantType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_metadataFieldVisibilityDependantType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_metadataFieldVisibilityDependantType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_metadataFieldVisibilityDependantType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_metadataFieldDateTriggeredType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_metadataFieldDateTriggeredType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_metadataFieldDateTriggeredType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_metadataFieldDateTriggeredType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_saveMetadataButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_saveMetadataButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_saveMetadataButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_saveMetadataButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_createUserButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_createUserButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_createUserButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_createUserButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_switchUserIdButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_switchUserIdButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_switchUserIdButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_switchUserIdButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_selectUserMenuType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_selectUserMenuType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_selectUserMenuType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_selectUserMenuType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_selectLocaleMenuType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_selectLocaleMenuType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_selectLocaleMenuType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_selectLocaleMenuType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_eraseLocalStorageButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_eraseLocalStorageButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_eraseLocalStorageButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_eraseLocalStorageButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_eraseUsersDataButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_eraseUsersDataButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_eraseUsersDataButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_eraseUsersDataButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showCurrentMsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showCurrentMsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showCurrentMsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showCurrentMsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_cancelPauseTimersType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_cancelPauseTimersType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_cancelPauseTimersType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_cancelPauseTimersType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_cancelPauseAllType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_cancelPauseAllType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_cancelPauseAllType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_cancelPauseAllType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showStimulusProgressType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showStimulusProgressType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showStimulusProgressType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showStimulusProgressType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_displayCompletionCodeType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_displayCompletionCodeType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_displayCompletionCodeType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_displayCompletionCodeType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_generateCompletionCodeType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_generateCompletionCodeType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_generateCompletionCodeType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_generateCompletionCodeType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendAllDataType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendAllDataType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendAllDataType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendAllDataType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendMetadataType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendMetadataType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendMetadataType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendMetadataType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_redirectToUrlType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_redirectToUrlType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_redirectToUrlType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_redirectToUrlType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_eraseLocalStorageOnWindowClosingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_eraseLocalStorageOnWindowClosingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_eraseLocalStorageOnWindowClosingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_eraseLocalStorageOnWindowClosingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_keepStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_keepStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_keepStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_keepStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_removeMatchingStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_removeMatchingStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_removeMatchingStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_removeMatchingStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_centrePageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_centrePageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_centrePageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_centrePageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_clearPageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_clearPageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_clearPageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_clearPageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_backgroundImageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_backgroundImageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_backgroundImageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_backgroundImageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_allMenuItemsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_allMenuItemsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_allMenuItemsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_allMenuItemsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_prevStimulusButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_prevStimulusButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_prevStimulusButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_prevStimulusButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_nextStimulusButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_nextStimulusButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_nextStimulusButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_nextStimulusButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_nextStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_nextStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_nextStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_nextStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_prevStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_prevStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_prevStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_prevStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_nextMatchingStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_nextMatchingStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_nextMatchingStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_nextMatchingStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addKinTypeGuiType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addKinTypeGuiType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addKinTypeGuiType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addKinTypeGuiType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_hasGetParameterType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_hasGetParameterType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_hasGetParameterType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_hasGetParameterType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_hasMetadataValueType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_hasMetadataValueType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_hasMetadataValueType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_hasMetadataValueType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_setMetadataValueType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_setMetadataValueType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_setMetadataValueType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_setMetadataValueType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_matchOnEvalTokensType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_matchOnEvalTokensType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_matchOnEvalTokensType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_matchOnEvalTokensType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_progressIndicatorType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_progressIndicatorType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_progressIndicatorType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_progressIndicatorType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_setMetadataEvalTokensType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_setMetadataEvalTokensType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_setMetadataEvalTokensType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_setMetadataEvalTokensType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_activateRandomItemType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_activateRandomItemType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_activateRandomItemType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_activateRandomItemType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_gotoPresenterType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_gotoPresenterType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_gotoPresenterType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_gotoPresenterType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_gotoNextPresenterType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_gotoNextPresenterType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_gotoNextPresenterType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_gotoNextPresenterType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_logTimeStampType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_logTimeStampType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_logTimeStampType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_logTimeStampType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_zeroStimulusStopwatchType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_zeroStimulusStopwatchType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_zeroStimulusStopwatchType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_zeroStimulusStopwatchType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stopStimulusStopwatchType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stopStimulusStopwatchType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stopStimulusStopwatchType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stopStimulusStopwatchType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_hardwareTimeStampType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_hardwareTimeStampType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_hardwareTimeStampType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_hardwareTimeStampType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_recorderToneInjectionType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_recorderToneInjectionType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_recorderToneInjectionType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_recorderToneInjectionType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_dtmfToneType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_dtmfToneType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_dtmfToneType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_dtmfToneType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_audioButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_audioButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_audioButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_audioButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_preloadAllStimuliType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_preloadAllStimuliType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_preloadAllStimuliType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_preloadAllStimuliType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showStimulusGridType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showStimulusGridType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showStimulusGridType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showStimulusGridType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_matchingStimulusGridType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_matchingStimulusGridType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_matchingStimulusGridType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_matchingStimulusGridType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_pauseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_pauseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_pauseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_pauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_doLaterType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_doLaterType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_doLaterType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_doLaterType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_requestNotificationType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_requestNotificationType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_requestNotificationType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_requestNotificationType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_startTimerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_startTimerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_startTimerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_startTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_compareTimerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_compareTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_clearTimerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_clearTimerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_clearTimerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_clearTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_logTimerValueType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_logTimerValueType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_logTimerValueType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_logTimerValueType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_timerLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_timerLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_timerLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_timerLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_randomMsPauseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_randomMsPauseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_randomMsPauseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_randomMsPauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_evaluatePauseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_evaluatePauseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_evaluatePauseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_evaluatePauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addTimerTriggerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addTimerTriggerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addTimerTriggerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addTimerTriggerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_startFrameRateTimerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_startFrameRateTimerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_startFrameRateTimerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_startFrameRateTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addFrameTimeTriggerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addFrameTimeTriggerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addMediaTriggerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addMediaTriggerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addMediaTriggerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addMediaTriggerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addRecorderDtmfTriggerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addRecorderDtmfTriggerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addRecorderDtmfTriggerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addRecorderDtmfTriggerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_addRecorderLevelTriggerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_addRecorderLevelTriggerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_addRecorderLevelTriggerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_addRecorderLevelTriggerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_triggerDefinitionType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_triggerDefinitionType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_triggerDefinitionType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_triggerDefinitionType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_habituationParadigmListenerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_habituationParadigmListenerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_habituationParadigmListenerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_habituationParadigmListenerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_triggerMatchingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_triggerMatchingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_triggerMatchingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_triggerMatchingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_triggerRandomType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_triggerRandomType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_triggerRandomType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_triggerRandomType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_resetTriggerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_resetTriggerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_resetTriggerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_resetTriggerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_countdownLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_countdownLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_countdownLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_countdownLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusPauseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusPauseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusPauseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusPauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onTimeType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onTimeType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onTimeType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onTimeType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onTimerType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_conditionTrueType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_conditionTrueType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_conditionTrueType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_conditionTrueType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_conditionFalseType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_conditionFalseType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_conditionFalseType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_conditionFalseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onSuccessType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onSuccessType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onSuccessType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onSuccessType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onActivateType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onActivateType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onActivateType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onActivateType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_kinTypeStringDiagramType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_kinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_kinTypeStringDiagramType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_kinTypeStringDiagramType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_loadKinTypeStringDiagramType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_loadKinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_loadKinTypeStringDiagramType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_loadKinTypeStringDiagramType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_editableKinEntitesDiagramType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_editableKinEntitesDiagramType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_editableKinEntitesDiagramType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_editableKinEntitesDiagramType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onKeyUpType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onKeyUpType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onKeyUpType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onKeyUpType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onKeyDownType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onKeyDownType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onKeyDownType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onKeyDownType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_responseCorrectType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_responseCorrectType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_responseCorrectType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_responseCorrectType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_responseIncorrectType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_responseIncorrectType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_responseIncorrectType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_responseIncorrectType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupNetworkType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupNetworkType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_hasMoreStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_hasMoreStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_hasMoreStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_hasMoreStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_beforeStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_beforeStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_eachStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_eachStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_eachStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_eachStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_afterStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_afterStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_afterStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_afterStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_endOfStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_endOfStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_endOfStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_endOfStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_existingUserCheckType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_existingUserCheckType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_multipleUsersType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_multipleUsersType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_singleUserType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_singleUserType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_aboveThresholdType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_aboveThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_withinThresholdType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_withinThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_mediaLoadedType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_mediaLoadedType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_mediaLoadedType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_mediaLoadedType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_mediaLoadFailedType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_mediaLoadFailedType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_mediaLoadFailedType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_mediaLoadFailedType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_mediaPlaybackStartedType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_mediaPlaybackStartedType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackCompleteType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackCompleteType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_mediaPlaybackCompleteType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_mediaPlaybackCompleteType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_tableType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_tableType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_tableType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_tableType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_rowType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_rowType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_rowType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_rowType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_columnType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_columnType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_columnType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_columnType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_regionAppendType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_regionAppendType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_regionAppendType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_regionAppendType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_regionStyleType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_regionStyleType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_regionStyleType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_regionStyleType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_regionCodeStyleType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_regionCodeStyleType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_regionCodeStyleType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_regionCodeStyleType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_regionReplaceType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_regionReplaceType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_regionReplaceType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_regionReplaceType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_regionClearType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_regionClearType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_regionClearType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_regionClearType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_regionDragDropType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_regionDragDropType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_regionDragDropType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_regionDragDropType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ondragstartType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ondragstartType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ondragstartType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ondragstartType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ondragoverType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ondragoverType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ondragoverType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ondragoverType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_ondropType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_ondropType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_ondropType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_ondropType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusPresentType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusPresentType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusPresentType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusPresentType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusImageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusImageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusImageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusImageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusCodeImageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusCodeImageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusCodeImageButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusCodeImageButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeVideoType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeVideoType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusCodeVideoType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusCodeVideoType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusVideoType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusVideoType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusVideoType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusVideoType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeAudioType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusCodeAudioType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusCodeAudioType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusCodeAudioType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusAudioType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusAudioType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusAudioType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusAudioType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_playMediaType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_playMediaType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_playMediaType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_playMediaType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_rewindMediaType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_rewindMediaType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_rewindMediaType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_rewindMediaType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_pauseMediaType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_pauseMediaType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_pauseMediaType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_pauseMediaType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_logMediaTimeStampType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_logMediaTimeStampType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_logMediaTimeStampType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_logMediaTimeStampType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stimulusImageCaptureType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stimulusImageCaptureType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stimulusImageCaptureType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stimulusImageCaptureType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_VideoPanelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_VideoPanelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_VideoPanelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_VideoPanelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_AnnotationTimelinePanelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_AnnotationTimelinePanelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_AnnotationTimelinePanelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_AnnotationTimelinePanelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_audioInputSelectWebType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_audioInputSelectWebType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_audioInputSelectWebType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_audioInputSelectWebType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderWebType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderWebType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_startAudioRecorderWebType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_startAudioRecorderWebType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderAppType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderAppType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_startAudioRecorderAppType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_startAudioRecorderAppType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_stopAudioRecorderType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_stopAudioRecorderType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_stopAudioRecorderType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_stopAudioRecorderType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderTagType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderTagType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_startAudioRecorderTagType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_startAudioRecorderTagType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_endAudioRecorderTagType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_endAudioRecorderTagType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_endAudioRecorderTagType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_endAudioRecorderTagType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showHtmlPopupType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showHtmlPopupType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showHtmlPopupType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showHtmlPopupType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_helpDialogueType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_helpDialogueType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_helpDialogueType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_helpDialogueType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_userInfoType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_userInfoType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_userInfoType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_userInfoType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_versionDataType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_versionDataType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_versionDataType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_versionDataType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_showColourReportType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_showColourReportType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_showColourReportType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_showColourReportType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupInitialisationErrorType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupInitialisationErrorType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupNetworkConnectingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupNetworkConnectingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupFindingMembersType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupFindingMembersType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupNetworkSynchronisingType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupNetworkSynchronisingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupPhaseListenersType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupPhaseListenersType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupMemberActivityType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupMemberActivityType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupMemberCodeLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberCodeLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupMemberCodeLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupMemberCodeLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupMemberLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupMemberLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupMemberLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupMessageLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupMessageLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupMessageLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupMessageLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupResponseStimulusImageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupResponseStimulusImageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupResponseStimulusImageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupResponseStimulusImageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupResponseFeedbackType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupResponseFeedbackType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupResponseFeedbackType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupResponseFeedbackType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupScoreLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupScoreLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupScoreLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupScoreLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_groupChannelScoreLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_groupChannelScoreLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_groupChannelScoreLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_groupChannelScoreLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_scoreLabelType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_scoreLabelType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_scoreLabelType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_scoreLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_submitGroupEventType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_submitGroupEventType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_submitGroupEventType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_submitGroupEventType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageButtonType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageButtonType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendGroupMessageButtonType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendGroupMessageButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendGroupMessageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendGroupMessageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendGroupStoredMessageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupStoredMessageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendGroupStoredMessageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendGroupStoredMessageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_streamGroupCanvasType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_streamGroupCanvasType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_streamGroupCanvasType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_streamGroupCanvasType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_streamGroupCameraType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_streamGroupCameraType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_streamGroupCameraType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_streamGroupCameraType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_sendGroupTokenMessageType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_sendGroupTokenMessageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_clearCurrentScoreType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_clearCurrentScoreType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_clearCurrentScoreType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_clearCurrentScoreType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_scoreIncrementType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_scoreIncrementType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_scoreIncrementType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_scoreIncrementType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_bestScoreAboveThresholdType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_bestScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_bestScoreAboveThresholdType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_bestScoreAboveThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_totalScoreAboveThresholdType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_totalScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_totalScoreAboveThresholdType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_totalScoreAboveThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_scoreAboveThresholdType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_scoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_scoreAboveThresholdType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_scoreAboveThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_resetStimulusType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_resetStimulusType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_resetStimulusType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_resetStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_submitTestResultsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_submitTestResultsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_submitTestResultsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_submitTestResultsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_validateMetadataType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_validateMetadataType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_validateMetadataType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_validateMetadataType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_transmitResultsType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_transmitResultsType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_transmitResultsType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_transmitResultsType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
-    javascript.javascriptGenerator.forBlock['frinex_onErrorType'] = function(block) {
+    javascript.javascriptGenerator.forBlock['frinex_onErrorType'] = function(block, generator) {
     var childData = '';
-    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){childData += block.getChildren()[childIndex].type;}
-    return 'frinex_onErrorType(\'block_id_' + block.id + '\', childData);\n';
+    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){     childData += generator.statementToCode(block, block.getChildren()[childIndex]);
+    }
+    return 'frinex_onErrorType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
   return {
     "kind": "categoryToolbox",
