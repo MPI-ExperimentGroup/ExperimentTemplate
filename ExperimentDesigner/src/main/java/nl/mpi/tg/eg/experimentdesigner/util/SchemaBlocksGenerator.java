@@ -36,6 +36,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     List<String> adminTypeLists = new ArrayList<>();
     List<String> featureTypeLists = new ArrayList<>();
+    List<String> templateTypeLists = new ArrayList<>();
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
@@ -123,6 +124,17 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     + "        \"type\": \"" + blockType + "\"\n"
                     + "      },\n");
         }
+        writer.append("            ]}, {\n"
+                + "                \"kind\":\"category\",\n"
+                + "            \"name\":\"Template\",\n"
+                + "            \"categorystyle\":\"logic_category\","
+                + "            \"contents\":[");
+        for (String blockType : templateTypeLists) {
+            writer.append("      {\n"
+                    + "        \"kind\": \"block\",\n"
+                    + "        \"type\": \"" + blockType + "\"\n"
+                    + "      },\n");
+        }
         writer.append("    ]}]\n"
                 + "  };\n");
 //        }
@@ -155,6 +167,18 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        }\n"
                 + "      ]},\n");
         featureTypeLists.add("frinex_" + featureType.name() + "Type");
+    }
+
+    private void addTemplate(Writer writer, final String templateType) throws IOException {
+        writer.append("    {\n"
+                + "      \"type\": \"frinex_" + templateType + "Type\",\n"
+                + "      \"message0\": '" + templateType + " %1',\n"
+                + "      \"args0\": [\n"
+                + "        {\n"
+                + "          \"type\": \"input_dummy\",\n"
+                + "        }\n"
+                + "      ]},\n");
+        templateTypeLists.add("frinex_" + templateType + "Type");
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
@@ -422,6 +446,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         }
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0], null);
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], null);
+        addTemplate(writer, "TemplateA");
+        addTemplate(writer, "TemplateB");
+        addTemplate(writer, "TemplateC");
         writer.append("  ]);\n");
 //        defineBlocks(writer);
         addJavaScriptGenerator(writer);

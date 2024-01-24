@@ -2362,6 +2362,30 @@ function getFeatureBlocks() {
       "output": "frinex_stimuliSelectType",
       "colour": 160
     },
+    {
+      "type": "frinex_TemplateAType",
+      "message0": 'TemplateA %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ]},
+    {
+      "type": "frinex_TemplateBType",
+      "message0": 'TemplateB %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ]},
+    {
+      "type": "frinex_TemplateCType",
+      "message0": 'TemplateC %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ]},
   ]);
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block) {
     var childData = '';
@@ -4630,6 +4654,21 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_onErrorType"
+      },
+            ]}, {
+                "kind":"category",
+            "name":"Template",
+            "categorystyle":"logic_category",            "contents":[      {
+        "kind": "block",
+        "type": "frinex_TemplateAType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_TemplateBType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_TemplateCType"
       },
     ]}]
   };
