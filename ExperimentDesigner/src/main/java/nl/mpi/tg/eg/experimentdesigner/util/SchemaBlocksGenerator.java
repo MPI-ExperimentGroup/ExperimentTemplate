@@ -193,7 +193,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
         int argsCount = 0;
         // TODO: pass the types list eg "presenterType" as a parameter to this menthod and separate them distinct input_values
-        final List<String> separatedObjects = Arrays.asList(new String[]{"metadataType", "fieldType", "presenterType", "stimulusType"});
+//        final List<String>  = Arrays.asList(new String[]{"validationType", "fieldType", "presenterType", "stimulusType"});
+        final HashMap<String, String> separatedGroups = new HashMap<>();
+        separatedGroups.put("validationType", "Administration");
+        separatedGroups.put("scssType", "CSS");
+        separatedGroups.put("fieldType", "Metadata");
+        separatedGroups.put("presenterType", "Presenters");
+        separatedGroups.put("stimulusType", "Stimuli");
         adminTypeLists.add("frinex_" + currentElement.typeName);
         writer.append("    {\n"
                 + "      \"type\": \"frinex_" + currentElement.typeName + "\",\n");
@@ -259,7 +265,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 List<List<String>> inputStatementList = new ArrayList<>();
                 List<String> inputStatementItem = null;
                 for (DocumentationElement childElement : currentElement.childElements) {
-                    if (inputStatementItem == null || separatedObjects.contains(childElement.typeName)) {
+                    if (inputStatementItem == null || separatedGroups.containsKey(childElement.typeName)) {
                         inputStatementItem = new ArrayList<>();
                         inputStatementList.add(inputStatementItem);
                     }
@@ -272,7 +278,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     } else {
                         inputFields.add(childElement.typeName);
                     }
-                    if (separatedObjects.contains(childElement.typeName)) {
+                    if (separatedGroups.containsKey(childElement.typeName)) {
                         inputStatementItem = null;
                     }
                 }
@@ -300,13 +306,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 for (List<String> inputStatements : inputStatementList) {
                     if (!inputStatements.isEmpty()) {
                         writer.append("      \"message" + argsCount + "\": \""
-                                + ((separatedObjects.contains(inputStatements.get(0))) ? inputStatements.get(0).replaceAll("Type$", "") : "")
+                                + ((separatedGroups.containsKey(inputStatements.get(0))) ? separatedGroups.get(inputStatements.get(0)) : inputStatements.get(0))
                                 + " %1\",\n");
                         writer.append("      \"args" + argsCount + "\": [\n"
                                 + "        {\n");
 //                if (childElement.maxBounds != 1) {
 
-                        writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
+                        writer.append("          \"type\": \"input_statement\",\n          \"name\": \"");
+                        writer.append((separatedGroups.containsKey(inputStatements.get(0))) ? separatedGroups.get(inputStatements.get(0)) : inputStatements.get(0));
+                        writer.append("\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
 //                    writer.append("\"type\": \"input_field\", ");
