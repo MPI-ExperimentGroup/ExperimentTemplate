@@ -97,7 +97,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
                         + "    var childData = '';\n"
                         //                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
-                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++){"
+                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++) {\n"
                         //+ "     childData += generator.statementToCode(block.getChildren()[childIndex]);"
                         + "     childData += generator.statementToCode(block, block.getChildren()[childIndex]);\n"
                         + "    }\n"
