@@ -28,11 +28,11 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message3": " %1",
+      "message3": "Administration %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "Administration",
           "check": [
             "frinex_validationType",
             "frinex_adminUserType",
@@ -43,31 +43,31 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message4": "field %1",
+      "message4": "Metadata %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "Metadata",
           "check": [
             "frinex_fieldType",
           ]
         }
       ],
-      "message5": "presenter %1",
+      "message5": "Presenters %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "Presenters",
           "check": [
             "frinex_presenterType",
           ]
         }
       ],
-      "message6": "stimulus %1",
+      "message6": "Stimuli %1",
       "args6": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "Stimuli",
           "check": [
             "frinex_stimulusType",
           ]
@@ -137,11 +137,11 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": " %1",
+      "message4": "recordMatchType %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "recordMatchType",
           "check": [
             "frinex_recordMatchType",
             "frinex_fieldMatchType",
@@ -174,11 +174,11 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message2": " %1",
+      "message2": "adminUserType %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "adminUserType",
           "check": [
             "frinex_adminUserType",
             "frinex_dataChannelType",
@@ -214,22 +214,13 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "metadata %1",
+      "message3": "metadataType %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "metadataType",
           "check": [
             "frinex_metadataType",
-          ]
-        }
-      ],
-      "message4": " %1",
-      "args4": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
             "frinex_stimulusResponseType",
           ]
         }
