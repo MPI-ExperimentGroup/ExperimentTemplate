@@ -99,7 +99,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         //                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
                         + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++) {\n"
                         //+ "     childData += generator.statementToCode(block.getChildren()[childIndex]);"
-                        + "     childData += generator.statementToCode(block, block.getChildren()[childIndex]);\n"
+                        + "     childData += generator.statementToCode(block, block.getChildren()[childIndex].type);\n"
                         + "    }\n"
                         + "    return '" + blockType + "(\\'block_id_' + block.id + '\\', '  + childData + '\\);\\n';\n"
                         + "  };\n");
