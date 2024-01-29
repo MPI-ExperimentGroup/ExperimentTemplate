@@ -96,12 +96,18 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         // + "  const value = generator.valueToCode(block, 'MY_VALUE_INPUT', javascript.Order.ATOMIC);\n"
                         //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
                         + "    var childData = '';\n"
-                        //                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
-                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++) {\n"
-                        //+ "     childData += generator.statementToCode(block.getChildren()[childIndex]);"
-                        + "     childData += generator.statementToCode(block, block.getChildren()[childIndex].type);\n"
-                        + "    }\n"
-                        + "    return '" + blockType + "(\\'block_id_' + block.id + '\\', '  + childData + '\\);\\n';\n"
+                //                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
+                //                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++) {\n"
+                //+ "     childData += generator.statementToCode(block.getChildren()[childIndex]);"
+                //                        + "     childData += generator.statementToCode(block, block.getChildren()[childIndex].type);\n"
+                //                        + "    }\n"
+                );
+                if (typeSubTypes.containsKey(blockType)) {
+                    for (String currentSubType : typeSubTypes.get(blockType)) {
+                        writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
+                    }
+                }
+                writer.append("    return '" + blockType + "(\\'block_id_' + block.id + '\\', '  + childData + '\\);\\n';\n"
                         + "  };\n");
             }
         }
@@ -200,7 +206,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         separatedGroups.put("fieldType", "Metadata");
         separatedGroups.put("presenterType", "Presenters");
         separatedGroups.put("stimulusType", "Stimuli");
-        adminTypeLists.add("frinex_" + currentElement.typeName);
+        final String currentType = "frinex_" + currentElement.typeName;
+        adminTypeLists.add(currentType);
+        List<String> currentSubTypes;
+        if (typeSubTypes.containsKey(currentType)) {
+            currentSubTypes = typeSubTypes.get(currentType);
+        } else {
+            currentSubTypes = new ArrayList<>();
+            typeSubTypes.put(currentType, currentSubTypes);
+        }
         writer.append("    {\n"
                 + "      \"type\": \"frinex_" + currentElement.typeName + "\",\n");
         // + " \"message" + argsCount + "\": '" + currentElement.typeName + "',\n"
@@ -313,7 +327,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                if (childElement.maxBounds != 1) {
 
                         writer.append("          \"type\": \"input_statement\",\n          \"name\": \"");
-                        writer.append((separatedGroups.containsKey(inputStatements.get(0))) ? separatedGroups.get(inputStatements.get(0)) : inputStatements.get(0));
+                        final String subTypeGroup = (separatedGroups.containsKey(inputStatements.get(0))) ? separatedGroups.get(inputStatements.get(0)) : inputStatements.get(0);
+                        // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
+                        currentSubTypes.add(subTypeGroup);
+                        writer.append(subTypeGroup);
                         writer.append("\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
