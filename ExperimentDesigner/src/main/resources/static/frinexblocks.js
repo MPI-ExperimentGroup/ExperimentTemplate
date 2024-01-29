@@ -415,7 +415,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_htmlTokenTextType",
       "message0": 'htmlTokenText %1',
@@ -423,7 +424,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_evaluateTokenTextType",
       "message0": 'evaluateTokenText %1',
@@ -431,7 +433,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_logTokenTextType",
       "message0": 'logTokenText %1',
@@ -439,7 +442,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_plainTextType",
       "message0": 'plainText %1',
@@ -447,7 +451,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_imageType",
       "message0": 'image %1',
@@ -455,7 +460,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_menuItemType",
       "message0": 'menuItem %1',
@@ -463,7 +469,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_withStimuliType",
       "message0": 'withStimuli %1',
@@ -471,7 +478,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupStimuliType",
       "message0": 'groupStimuli %1',
@@ -479,7 +487,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_loadStimulusType",
       "message0": 'loadStimulus %1',
@@ -487,7 +496,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_withMatchingStimulusType",
       "message0": 'withMatchingStimulus %1',
@@ -495,7 +505,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_loadSdCardStimulusType",
       "message0": 'loadSdCardStimulus %1',
@@ -503,7 +514,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_currentStimulusHasTagType",
       "message0": 'currentStimulusHasTag %1',
@@ -511,7 +523,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_clearStimulusResponsesType",
       "message0": 'clearStimulusResponses %1',
@@ -519,7 +532,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_validateStimuliResponsesType",
       "message0": 'validateStimuliResponses %1',
@@ -527,7 +541,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusExistsType",
       "message0": 'stimulusExists %1',
@@ -535,7 +550,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showStimuliReportType",
       "message0": 'showStimuliReport %1',
@@ -543,7 +559,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendStimuliReportType",
       "message0": 'sendStimuliReport %1',
@@ -551,7 +568,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_targetButtonType",
       "message0": 'targetButton %1',
@@ -559,7 +577,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_hotKeyInputType",
       "message0": 'hotKeyInput %1',
@@ -567,7 +586,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_actionButtonType",
       "message0": 'actionButton %1',
@@ -575,7 +595,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_actionTokenButtonType",
       "message0": 'actionTokenButton %1',
@@ -583,7 +612,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_disableButtonGroupType",
       "message0": 'disableButtonGroup %1',
@@ -591,7 +629,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_enableButtonGroupType",
       "message0": 'enableButtonGroup %1',
@@ -599,7 +638,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_hideButtonGroupType",
       "message0": 'hideButtonGroup %1',
@@ -607,7 +647,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_styleButtonGroupType",
       "message0": 'styleButtonGroup %1',
@@ -615,7 +656,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showButtonGroupType",
       "message0": 'showButtonGroup %1',
@@ -623,7 +665,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_requestFocusType",
       "message0": 'requestFocus %1',
@@ -631,7 +674,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_svgLoadGroupsType",
       "message0": 'svgLoadGroups %1',
@@ -639,7 +683,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_svgGroupAddType",
       "message0": 'svgGroupAdd %1',
@@ -647,7 +692,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_svgSetLabelType",
       "message0": 'svgSetLabel %1',
@@ -655,7 +701,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_svgGroupShowType",
       "message0": 'svgGroupShow %1',
@@ -663,7 +710,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_svgGroupActionType",
       "message0": 'svgGroupAction %1',
@@ -671,7 +719,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_svgGroupMatchingType",
       "message0": 'svgGroupMatching %1',
@@ -679,7 +736,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusButtonType",
       "message0": 'stimulusButton %1',
@@ -687,7 +745,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusSliderType",
       "message0": 'stimulusSlider %1',
@@ -695,7 +762,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_touchInputLabelButtonType",
       "message0": 'touchInputLabelButton %1',
@@ -703,7 +779,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_touchInputImageButtonType",
       "message0": 'touchInputImageButton %1',
@@ -711,7 +796,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_touchInputVideoButtonType",
       "message0": 'touchInputVideoButton %1',
@@ -719,7 +805,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_touchInputCaptureType",
       "message0": 'touchInputCapture %1',
@@ -727,7 +814,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_captureStartType",
       "message0": 'captureStart %1',
@@ -735,7 +823,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_touchEndType",
       "message0": 'touchEnd %1',
@@ -743,7 +832,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_touchInputStopType",
       "message0": 'touchInputStop %1',
@@ -751,7 +849,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_ratingButtonType",
       "message0": 'ratingButton %1',
@@ -759,7 +858,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_ratingRadioButtonType",
       "message0": 'ratingRadioButton %1',
@@ -767,7 +875,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_ratingCheckboxType",
       "message0": 'ratingCheckbox %1',
@@ -775,7 +892,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusFreeTextType",
       "message0": 'stimulusFreeText %1',
@@ -783,7 +909,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusRatingButtonType",
       "message0": 'stimulusRatingButton %1',
@@ -791,7 +918,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusRatingRadioType",
       "message0": 'stimulusRatingRadio %1',
@@ -799,7 +935,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusRatingCheckboxType",
       "message0": 'stimulusRatingCheckbox %1',
@@ -807,7 +952,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusHasRatingOptionsType",
       "message0": 'stimulusHasRatingOptions %1',
@@ -815,7 +969,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_clearStimulusResponseType",
       "message0": 'clearStimulusResponse %1',
@@ -823,7 +978,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusHasResponseType",
       "message0": 'stimulusHasResponse %1',
@@ -831,7 +987,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_setStimulusCodeResponseType",
       "message0": 'setStimulusCodeResponse %1',
@@ -839,7 +996,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addStimulusCodeResponseValidationType",
       "message0": 'addStimulusCodeResponseValidation %1',
@@ -847,7 +1005,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_ratingFooterButtonType",
       "message0": 'ratingFooterButton %1',
@@ -855,7 +1014,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_targetFooterButtonType",
       "message0": 'targetFooterButton %1',
@@ -863,7 +1031,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_actionFooterButtonType",
       "message0": 'actionFooterButton %1',
@@ -871,7 +1040,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_addPaddingType",
       "message0": 'addPadding %1',
@@ -879,7 +1057,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_localStorageDataType",
       "message0": 'localStorageData %1',
@@ -887,7 +1066,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimuliValidationType",
       "message0": 'stimuliValidation %1',
@@ -895,7 +1075,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addKeyboardDebugType",
       "message0": 'addKeyboardDebug %1',
@@ -903,7 +1084,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addDebugWidgetsType",
       "message0": 'addDebugWidgets %1',
@@ -911,7 +1093,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_allMetadataFieldsType",
       "message0": 'allMetadataFields %1',
@@ -919,7 +1102,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_metadataFieldType",
       "message0": 'metadataField %1',
@@ -927,7 +1111,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusMetadataFieldType",
       "message0": 'stimulusMetadataField %1',
@@ -935,7 +1120,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_metadataFieldConnectionType",
       "message0": 'metadataFieldConnection %1',
@@ -943,7 +1129,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_metadataFieldVisibilityDependantType",
       "message0": 'metadataFieldVisibilityDependant %1',
@@ -951,7 +1138,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_metadataFieldDateTriggeredType",
       "message0": 'metadataFieldDateTriggered %1',
@@ -959,7 +1147,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_saveMetadataButtonType",
       "message0": 'saveMetadataButton %1',
@@ -967,7 +1156,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_createUserButtonType",
       "message0": 'createUserButton %1',
@@ -975,7 +1165,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_switchUserIdButtonType",
       "message0": 'switchUserIdButton %1',
@@ -983,7 +1174,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_selectUserMenuType",
       "message0": 'selectUserMenu %1',
@@ -991,7 +1183,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_selectLocaleMenuType",
       "message0": 'selectLocaleMenu %1',
@@ -999,7 +1192,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_eraseLocalStorageButtonType",
       "message0": 'eraseLocalStorageButton %1',
@@ -1007,7 +1201,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_eraseUsersDataButtonType",
       "message0": 'eraseUsersDataButton %1',
@@ -1015,7 +1210,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showCurrentMsType",
       "message0": 'showCurrentMs %1',
@@ -1023,7 +1219,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_cancelPauseTimersType",
       "message0": 'cancelPauseTimers %1',
@@ -1031,7 +1228,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_cancelPauseAllType",
       "message0": 'cancelPauseAll %1',
@@ -1039,7 +1237,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showStimulusProgressType",
       "message0": 'showStimulusProgress %1',
@@ -1047,7 +1246,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_displayCompletionCodeType",
       "message0": 'displayCompletionCode %1',
@@ -1055,7 +1255,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_generateCompletionCodeType",
       "message0": 'generateCompletionCode %1',
@@ -1063,7 +1264,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendAllDataType",
       "message0": 'sendAllData %1',
@@ -1071,7 +1273,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendMetadataType",
       "message0": 'sendMetadata %1',
@@ -1079,7 +1282,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_redirectToUrlType",
       "message0": 'redirectToUrl %1',
@@ -1087,7 +1291,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_eraseLocalStorageOnWindowClosingType",
       "message0": 'eraseLocalStorageOnWindowClosing %1',
@@ -1095,7 +1300,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_keepStimulusType",
       "message0": 'keepStimulus %1',
@@ -1103,7 +1309,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_removeMatchingStimulusType",
       "message0": 'removeMatchingStimulus %1',
@@ -1111,7 +1318,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_centrePageType",
       "message0": 'centrePage %1',
@@ -1119,7 +1327,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_clearPageType",
       "message0": 'clearPage %1',
@@ -1127,7 +1336,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_backgroundImageType",
       "message0": 'backgroundImage %1',
@@ -1135,7 +1345,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_allMenuItemsType",
       "message0": 'allMenuItems %1',
@@ -1143,7 +1362,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_prevStimulusButtonType",
       "message0": 'prevStimulusButton %1',
@@ -1151,7 +1371,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_nextStimulusButtonType",
       "message0": 'nextStimulusButton %1',
@@ -1159,7 +1380,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_nextStimulusType",
       "message0": 'nextStimulus %1',
@@ -1167,7 +1389,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_prevStimulusType",
       "message0": 'prevStimulus %1',
@@ -1175,7 +1398,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_nextMatchingStimulusType",
       "message0": 'nextMatchingStimulus %1',
@@ -1183,7 +1407,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addKinTypeGuiType",
       "message0": 'addKinTypeGui %1',
@@ -1191,7 +1416,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_hasGetParameterType",
       "message0": 'hasGetParameter %1',
@@ -1199,7 +1425,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_hasMetadataValueType",
       "message0": 'hasMetadataValue %1',
@@ -1207,7 +1434,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_setMetadataValueType",
       "message0": 'setMetadataValue %1',
@@ -1215,7 +1443,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_matchOnEvalTokensType",
       "message0": 'matchOnEvalTokens %1',
@@ -1223,7 +1452,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_progressIndicatorType",
       "message0": 'progressIndicator %1',
@@ -1231,7 +1461,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_setMetadataEvalTokensType",
       "message0": 'setMetadataEvalTokens %1',
@@ -1239,7 +1470,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_activateRandomItemType",
       "message0": 'activateRandomItem %1',
@@ -1247,7 +1479,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_gotoPresenterType",
       "message0": 'gotoPresenter %1',
@@ -1255,7 +1488,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_gotoNextPresenterType",
       "message0": 'gotoNextPresenter %1',
@@ -1263,7 +1497,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_logTimeStampType",
       "message0": 'logTimeStamp %1',
@@ -1271,7 +1506,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_zeroStimulusStopwatchType",
       "message0": 'zeroStimulusStopwatch %1',
@@ -1279,7 +1515,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stopStimulusStopwatchType",
       "message0": 'stopStimulusStopwatch %1',
@@ -1287,7 +1524,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_hardwareTimeStampType",
       "message0": 'hardwareTimeStamp %1',
@@ -1295,7 +1533,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_recorderToneInjectionType",
       "message0": 'recorderToneInjection %1',
@@ -1303,7 +1542,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_dtmfToneType",
       "message0": 'dtmfTone %1',
@@ -1311,7 +1551,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_audioButtonType",
       "message0": 'audioButton %1',
@@ -1319,7 +1560,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_preloadAllStimuliType",
       "message0": 'preloadAllStimuli %1',
@@ -1327,7 +1569,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showStimulusType",
       "message0": 'showStimulus %1',
@@ -1335,7 +1578,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_showStimulusGridType",
       "message0": 'showStimulusGrid %1',
@@ -1343,7 +1595,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_matchingStimulusGridType",
       "message0": 'matchingStimulusGrid %1',
@@ -1351,7 +1604,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_pauseType",
       "message0": 'pause %1',
@@ -1359,7 +1613,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_doLaterType",
       "message0": 'doLater %1',
@@ -1367,7 +1630,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_requestNotificationType",
       "message0": 'requestNotification %1',
@@ -1375,7 +1647,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_startTimerType",
       "message0": 'startTimer %1',
@@ -1383,7 +1656,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_compareTimerType",
       "message0": 'compareTimer %1',
@@ -1391,7 +1673,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_clearTimerType",
       "message0": 'clearTimer %1',
@@ -1399,7 +1682,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_logTimerValueType",
       "message0": 'logTimerValue %1',
@@ -1407,7 +1691,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_timerLabelType",
       "message0": 'timerLabel %1',
@@ -1415,7 +1700,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_randomMsPauseType",
       "message0": 'randomMsPause %1',
@@ -1423,7 +1709,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_evaluatePauseType",
       "message0": 'evaluatePause %1',
@@ -1431,7 +1726,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addTimerTriggerType",
       "message0": 'addTimerTrigger %1',
@@ -1439,7 +1735,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_startFrameRateTimerType",
       "message0": 'startFrameRateTimer %1',
@@ -1447,7 +1744,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addFrameTimeTriggerType",
       "message0": 'addFrameTimeTrigger %1',
@@ -1455,7 +1753,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addMediaTriggerType",
       "message0": 'addMediaTrigger %1',
@@ -1463,7 +1762,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addRecorderDtmfTriggerType",
       "message0": 'addRecorderDtmfTrigger %1',
@@ -1471,7 +1771,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_addRecorderLevelTriggerType",
       "message0": 'addRecorderLevelTrigger %1',
@@ -1479,7 +1780,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_triggerDefinitionType",
       "message0": 'triggerDefinition %1',
@@ -1487,7 +1789,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_habituationParadigmListenerType",
       "message0": 'habituationParadigmListener %1',
@@ -1495,7 +1806,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_triggerMatchingType",
       "message0": 'triggerMatching %1',
@@ -1503,7 +1823,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_triggerRandomType",
       "message0": 'triggerRandom %1',
@@ -1511,7 +1832,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_resetTriggerType",
       "message0": 'resetTrigger %1',
@@ -1519,7 +1849,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_countdownLabelType",
       "message0": 'countdownLabel %1',
@@ -1527,7 +1858,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusPauseType",
       "message0": 'stimulusPause %1',
@@ -1535,7 +1875,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusLabelType",
       "message0": 'stimulusLabel %1',
@@ -1543,7 +1892,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_onTimeType",
       "message0": 'onTime %1',
@@ -1551,7 +1901,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_onTimerType",
       "message0": 'onTimer %1',
@@ -1559,7 +1910,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_conditionTrueType",
       "message0": 'conditionTrue %1',
@@ -1567,7 +1927,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_conditionFalseType",
       "message0": 'conditionFalse %1',
@@ -1575,7 +1944,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_onSuccessType",
       "message0": 'onSuccess %1',
@@ -1583,7 +1961,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_onActivateType",
       "message0": 'onActivate %1',
@@ -1591,7 +1978,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_kinTypeStringDiagramType",
       "message0": 'kinTypeStringDiagram %1',
@@ -1599,7 +1995,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_loadKinTypeStringDiagramType",
       "message0": 'loadKinTypeStringDiagram %1',
@@ -1607,7 +2012,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_editableKinEntitesDiagramType",
       "message0": 'editableKinEntitesDiagram %1',
@@ -1615,7 +2029,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_onKeyUpType",
       "message0": 'onKeyUp %1',
@@ -1623,7 +2046,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_onKeyDownType",
       "message0": 'onKeyDown %1',
@@ -1631,7 +2063,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_responseCorrectType",
       "message0": 'responseCorrect %1',
@@ -1639,7 +2080,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_responseIncorrectType",
       "message0": 'responseIncorrect %1',
@@ -1647,7 +2097,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_groupNetworkType",
       "message0": 'groupNetwork %1',
@@ -1655,7 +2114,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_hasMoreStimulusType",
       "message0": 'hasMoreStimulus %1',
@@ -1663,7 +2123,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_beforeStimulusType",
       "message0": 'beforeStimulus %1',
@@ -1671,7 +2132,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_eachStimulusType",
       "message0": 'eachStimulus %1',
@@ -1679,7 +2149,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_afterStimulusType",
       "message0": 'afterStimulus %1',
@@ -1687,7 +2158,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_endOfStimulusType",
       "message0": 'endOfStimulus %1',
@@ -1695,7 +2175,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_existingUserCheckType",
       "message0": 'existingUserCheck %1',
@@ -1703,7 +2192,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_multipleUsersType",
       "message0": 'multipleUsers %1',
@@ -1711,7 +2201,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_singleUserType",
       "message0": 'singleUser %1',
@@ -1719,7 +2218,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_aboveThresholdType",
       "message0": 'aboveThreshold %1',
@@ -1727,7 +2235,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_withinThresholdType",
       "message0": 'withinThreshold %1',
@@ -1735,7 +2252,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_mediaLoadedType",
       "message0": 'mediaLoaded %1',
@@ -1743,7 +2269,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_mediaLoadFailedType",
       "message0": 'mediaLoadFailed %1',
@@ -1751,7 +2286,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_mediaPlaybackStartedType",
       "message0": 'mediaPlaybackStarted %1',
@@ -1759,7 +2303,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_mediaPlaybackCompleteType",
       "message0": 'mediaPlaybackComplete %1',
@@ -1767,7 +2320,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_tableType",
       "message0": 'table %1',
@@ -1775,7 +2337,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_rowType",
       "message0": 'row %1',
@@ -1783,7 +2354,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_columnType",
       "message0": 'column %1',
@@ -1791,7 +2371,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_regionAppendType",
       "message0": 'regionAppend %1',
@@ -1799,7 +2388,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_regionStyleType",
       "message0": 'regionStyle %1',
@@ -1807,7 +2405,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_regionCodeStyleType",
       "message0": 'regionCodeStyle %1',
@@ -1815,7 +2414,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_regionReplaceType",
       "message0": 'regionReplace %1',
@@ -1823,7 +2423,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_regionClearType",
       "message0": 'regionClear %1',
@@ -1831,7 +2440,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_regionDragDropType",
       "message0": 'regionDragDrop %1',
@@ -1839,7 +2449,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_ondragstartType",
       "message0": 'ondragstart %1',
@@ -1847,7 +2458,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_ondragoverType",
       "message0": 'ondragover %1',
@@ -1855,7 +2475,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_ondropType",
       "message0": 'ondrop %1',
@@ -1863,7 +2492,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_stimulusPresentType",
       "message0": 'stimulusPresent %1',
@@ -1871,7 +2509,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusImageType",
       "message0": 'stimulusImage %1',
@@ -1879,7 +2518,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusCodeImageType",
       "message0": 'stimulusCodeImage %1',
@@ -1887,7 +2527,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusCodeImageButtonType",
       "message0": 'stimulusCodeImageButton %1',
@@ -1895,7 +2536,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusCodeVideoType",
       "message0": 'stimulusCodeVideo %1',
@@ -1903,7 +2545,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusVideoType",
       "message0": 'stimulusVideo %1',
@@ -1911,7 +2554,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusCodeAudioType",
       "message0": 'stimulusCodeAudio %1',
@@ -1919,7 +2563,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusAudioType",
       "message0": 'stimulusAudio %1',
@@ -1927,7 +2572,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_playMediaType",
       "message0": 'playMedia %1',
@@ -1935,7 +2581,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_rewindMediaType",
       "message0": 'rewindMedia %1',
@@ -1943,7 +2590,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_pauseMediaType",
       "message0": 'pauseMedia %1',
@@ -1951,7 +2599,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_logMediaTimeStampType",
       "message0": 'logMediaTimeStamp %1',
@@ -1959,7 +2608,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stimulusImageCaptureType",
       "message0": 'stimulusImageCapture %1',
@@ -1967,7 +2617,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_VideoPanelType",
       "message0": 'VideoPanel %1',
@@ -1975,7 +2634,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_AnnotationTimelinePanelType",
       "message0": 'AnnotationTimelinePanel %1',
@@ -1983,7 +2643,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_audioInputSelectWebType",
       "message0": 'audioInputSelectWeb %1',
@@ -1991,7 +2660,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_startAudioRecorderWebType",
       "message0": 'startAudioRecorderWeb %1',
@@ -1999,7 +2669,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_startAudioRecorderAppType",
       "message0": 'startAudioRecorderApp %1',
@@ -2007,7 +2678,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_stopAudioRecorderType",
       "message0": 'stopAudioRecorder %1',
@@ -2015,7 +2687,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_startAudioRecorderTagType",
       "message0": 'startAudioRecorderTag %1',
@@ -2023,7 +2696,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_endAudioRecorderTagType",
       "message0": 'endAudioRecorderTag %1',
@@ -2031,7 +2705,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showHtmlPopupType",
       "message0": 'showHtmlPopup %1',
@@ -2039,7 +2714,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_helpDialogueType",
       "message0": 'helpDialogue %1',
@@ -2047,7 +2723,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_userInfoType",
       "message0": 'userInfo %1',
@@ -2055,7 +2732,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_versionDataType",
       "message0": 'versionData %1',
@@ -2063,7 +2741,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_showColourReportType",
       "message0": 'showColourReport %1',
@@ -2071,7 +2750,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupInitialisationErrorType",
       "message0": 'groupInitialisationError %1',
@@ -2079,7 +2759,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_groupNetworkConnectingType",
       "message0": 'groupNetworkConnecting %1',
@@ -2087,7 +2776,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_groupFindingMembersType",
       "message0": 'groupFindingMembers %1',
@@ -2095,7 +2793,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_groupNetworkSynchronisingType",
       "message0": 'groupNetworkSynchronising %1',
@@ -2103,7 +2810,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_groupPhaseListenersType",
       "message0": 'groupPhaseListeners %1',
@@ -2111,7 +2827,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupMemberActivityType",
       "message0": 'groupMemberActivity %1',
@@ -2119,7 +2836,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupMemberCodeLabelType",
       "message0": 'groupMemberCodeLabel %1',
@@ -2127,7 +2845,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupMemberLabelType",
       "message0": 'groupMemberLabel %1',
@@ -2135,7 +2854,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupMessageLabelType",
       "message0": 'groupMessageLabel %1',
@@ -2143,7 +2863,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupResponseStimulusImageType",
       "message0": 'groupResponseStimulusImage %1',
@@ -2151,7 +2872,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupResponseFeedbackType",
       "message0": 'groupResponseFeedback %1',
@@ -2159,7 +2881,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupScoreLabelType",
       "message0": 'groupScoreLabel %1',
@@ -2167,7 +2890,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_groupChannelScoreLabelType",
       "message0": 'groupChannelScoreLabel %1',
@@ -2175,7 +2899,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_scoreLabelType",
       "message0": 'scoreLabel %1',
@@ -2183,7 +2908,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_submitGroupEventType",
       "message0": 'submitGroupEvent %1',
@@ -2191,7 +2917,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendGroupMessageButtonType",
       "message0": 'sendGroupMessageButton %1',
@@ -2199,7 +2926,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendGroupMessageType",
       "message0": 'sendGroupMessage %1',
@@ -2207,7 +2935,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendGroupStoredMessageType",
       "message0": 'sendGroupStoredMessage %1',
@@ -2215,7 +2944,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_streamGroupCanvasType",
       "message0": 'streamGroupCanvas %1',
@@ -2223,7 +2953,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_streamGroupCameraType",
       "message0": 'streamGroupCamera %1',
@@ -2231,7 +2962,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_sendGroupTokenMessageType",
       "message0": 'sendGroupTokenMessage %1',
@@ -2239,7 +2971,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_clearCurrentScoreType",
       "message0": 'clearCurrentScore %1',
@@ -2247,7 +2980,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_scoreIncrementType",
       "message0": 'scoreIncrement %1',
@@ -2255,7 +2989,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_bestScoreAboveThresholdType",
       "message0": 'bestScoreAboveThreshold %1',
@@ -2263,7 +2998,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_totalScoreAboveThresholdType",
       "message0": 'totalScoreAboveThreshold %1',
@@ -2271,7 +3007,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_scoreAboveThresholdType",
       "message0": 'scoreAboveThreshold %1',
@@ -2279,7 +3016,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_resetStimulusType",
       "message0": 'resetStimulus %1',
@@ -2287,7 +3025,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_submitTestResultsType",
       "message0": 'submitTestResults %1',
@@ -2295,7 +3034,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_validateMetadataType",
       "message0": 'validateMetadata %1',
@@ -2303,7 +3043,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_transmitResultsType",
       "message0": 'transmitResults %1',
@@ -2311,7 +3052,8 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      },
     {
       "type": "frinex_onErrorType",
       "message0": 'onError %1',
@@ -2319,7 +3061,16 @@ function getFeatureBlocks() {
         {
           "type": "input_dummy",
         }
-      ]},
+      ],
+      "message0": 'Features %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "FeatureTypes",
+          "check": "frinex_featureType"
+        }
+      ],
+      },
     {
       "type": "frinex_randomGroupingType",
       "message0": 'randomGrouping %1',
@@ -2515,10 +3266,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_actionButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_actionButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_actionTokenButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_actionTokenButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_disableButtonGroupType'] = function(block, generator) {
@@ -2563,6 +3316,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupActionType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_svgGroupActionType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupMatchingType'] = function(block, generator) {
@@ -2571,14 +3325,17 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusSliderType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusSliderType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputLabelButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_touchInputLabelButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputImageButtonType'] = function(block, generator) {
@@ -2599,6 +3356,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_touchEndType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_touchEndType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputStopType'] = function(block, generator) {
@@ -2607,14 +3365,17 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ratingButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingRadioButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ratingRadioButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingCheckboxType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ratingCheckboxType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusFreeTextType'] = function(block, generator) {
@@ -2623,14 +3384,17 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusRatingButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingRadioType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusRatingRadioType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingCheckboxType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusRatingCheckboxType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusHasRatingOptionsType'] = function(block, generator) {
@@ -2655,6 +3419,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingFooterButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ratingFooterButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_targetFooterButtonType'] = function(block, generator) {
@@ -2663,6 +3428,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_actionFooterButtonType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_actionFooterButtonType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_addPaddingType'] = function(block, generator) {
@@ -2795,6 +3561,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_backgroundImageType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_backgroundImageType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_allMenuItemsType'] = function(block, generator) {
@@ -2895,6 +3662,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_showStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusGridType'] = function(block, generator) {
@@ -2907,10 +3675,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_pauseType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_pauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_doLaterType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_doLaterType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_requestNotificationType'] = function(block, generator) {
@@ -2919,6 +3689,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_startTimerType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_startTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block, generator) {
@@ -2939,6 +3710,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_randomMsPauseType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_randomMsPauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_evaluatePauseType'] = function(block, generator) {
@@ -2971,10 +3743,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerDefinitionType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_triggerDefinitionType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_habituationParadigmListenerType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_habituationParadigmListenerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerMatchingType'] = function(block, generator) {
@@ -2983,6 +3757,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerRandomType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_triggerRandomType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_resetTriggerType'] = function(block, generator) {
@@ -2991,10 +3766,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_countdownLabelType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_countdownLabelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusPauseType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusPauseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusLabelType'] = function(block, generator) {
@@ -3007,50 +3784,62 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_onTimerType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_conditionTrueType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_conditionTrueType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_conditionFalseType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_conditionFalseType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onSuccessType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_onSuccessType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onActivateType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_onActivateType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_kinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_kinTypeStringDiagramType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_loadKinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_loadKinTypeStringDiagramType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_editableKinEntitesDiagramType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_editableKinEntitesDiagramType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onKeyUpType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_onKeyUpType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onKeyDownType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_onKeyDownType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_responseCorrectType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_responseCorrectType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_responseIncorrectType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_responseIncorrectType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
@@ -3063,6 +3852,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_beforeStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_eachStimulusType'] = function(block, generator) {
@@ -3071,10 +3861,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_afterStimulusType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_afterStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_endOfStimulusType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_endOfStimulusType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
@@ -3083,50 +3875,62 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_multipleUsersType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_singleUserType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_aboveThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_withinThresholdType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaLoadedType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_mediaLoadedType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaLoadFailedType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_mediaLoadFailedType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_mediaPlaybackStartedType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackCompleteType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_mediaPlaybackCompleteType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_tableType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_tableType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_rowType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_rowType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_columnType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_columnType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionAppendType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_regionAppendType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionStyleType'] = function(block, generator) {
@@ -3139,6 +3943,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_regionReplaceType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_regionReplaceType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionClearType'] = function(block, generator) {
@@ -3151,14 +3956,17 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_ondragstartType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ondragstartType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondragoverType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ondragoverType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondropType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_ondropType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusPresentType'] = function(block, generator) {
@@ -3211,6 +4019,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusImageCaptureType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_stimulusImageCaptureType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_VideoPanelType'] = function(block, generator) {
@@ -3219,6 +4028,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_AnnotationTimelinePanelType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_AnnotationTimelinePanelType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_audioInputSelectWebType'] = function(block, generator) {
@@ -3267,18 +4077,22 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_groupInitialisationErrorType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_groupNetworkConnectingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_groupFindingMembersType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_groupNetworkSynchronisingType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block, generator) {
@@ -3387,6 +4201,7 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_onErrorType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'FeatureTypes');
     return 'frinex_onErrorType(\'block_id_' + block.id + '\', '  + childData + '\);\n';
   };
   return {

@@ -173,14 +173,38 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void addElement(Writer writer, final FeatureType featureType) throws IOException {
+        final String currentType = "frinex_" + featureType.name() + "Type";
         writer.append("    {\n"
-                + "      \"type\": \"frinex_" + featureType.name() + "Type\",\n"
+                + "      \"type\": \"" + currentType + "\",\n"
                 + "      \"message0\": '" + featureType.name() + " %1',\n"
                 + "      \"args0\": [\n"
                 + "        {\n"
                 + "          \"type\": \"input_dummy\",\n"
                 + "        }\n"
-                + "      ]},\n");
+                + "      ],\n");
+        List<String> currentSubTypes;
+        if (typeSubTypes.containsKey(currentType)) {
+            currentSubTypes = typeSubTypes.get(currentType);
+        } else {
+            currentSubTypes = new ArrayList<>();
+            typeSubTypes.put(currentType, currentSubTypes);
+        }
+        int argsCount = 0;
+        switch (featureType.getRequiresChildType()) {
+            case any:
+                writer.append("      \"message" + argsCount + "\": 'Features %1',\n"
+                        + "      \"args" + argsCount + "\": [\n"
+                        + "        {\n"
+                        + "          \"type\": \"field_input\",\n"
+                        + "          \"name\": \"FeatureTypes\",\n"
+                        + "          \"check\": \"frinex_featureType\"\n"
+                        + "        }\n"
+                        + "      ],\n");
+                currentSubTypes.add("FeatureTypes");
+                argsCount++;
+                break;
+        }
+        writer.append("      },\n");
         featureTypeLists.add("frinex_" + featureType.name() + "Type");
     }
 
