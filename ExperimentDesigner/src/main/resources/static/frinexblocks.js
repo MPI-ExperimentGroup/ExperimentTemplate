@@ -416,8 +416,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_htmlTokenTextType",
@@ -427,8 +427,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_evaluateTokenTextType",
@@ -438,8 +438,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_logTokenTextType",
@@ -449,8 +449,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_plainTextType",
@@ -460,8 +460,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_imageType",
@@ -471,8 +471,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_menuItemType",
@@ -482,8 +482,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_withStimuliType",
@@ -493,8 +493,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupStimuliType",
@@ -504,8 +504,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_loadStimulusType",
@@ -515,8 +515,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_withMatchingStimulusType",
@@ -526,8 +526,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_loadSdCardStimulusType",
@@ -537,8 +537,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_currentStimulusHasTagType",
@@ -548,8 +548,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_clearStimulusResponsesType",
@@ -559,8 +559,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_validateStimuliResponsesType",
@@ -570,8 +570,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusExistsType",
@@ -581,8 +581,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showStimuliReportType",
@@ -592,8 +592,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendStimuliReportType",
@@ -603,8 +603,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_targetButtonType",
@@ -614,8 +614,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_hotKeyInputType",
@@ -625,8 +625,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_actionButtonType",
@@ -636,14 +636,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -655,14 +655,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -674,8 +674,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_enableButtonGroupType",
@@ -685,8 +685,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_hideButtonGroupType",
@@ -696,8 +696,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_styleButtonGroupType",
@@ -707,8 +707,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showButtonGroupType",
@@ -718,8 +718,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_requestFocusType",
@@ -729,8 +729,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_svgLoadGroupsType",
@@ -740,8 +740,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_svgGroupAddType",
@@ -751,8 +751,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_svgSetLabelType",
@@ -762,8 +762,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_svgGroupShowType",
@@ -773,8 +773,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_svgGroupActionType",
@@ -784,14 +784,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -803,8 +803,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusButtonType",
@@ -814,14 +814,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -833,14 +833,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -852,14 +852,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -871,8 +871,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_touchInputVideoButtonType",
@@ -882,8 +882,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_touchInputCaptureType",
@@ -893,8 +893,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_captureStartType",
@@ -904,8 +904,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_touchEndType",
@@ -915,14 +915,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -934,8 +934,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_ratingButtonType",
@@ -945,14 +945,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -964,14 +964,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -983,14 +983,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1002,8 +1002,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusRatingButtonType",
@@ -1013,14 +1013,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1032,14 +1032,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1051,14 +1051,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1070,8 +1070,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_clearStimulusResponseType",
@@ -1081,8 +1081,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusHasResponseType",
@@ -1092,8 +1092,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_setStimulusCodeResponseType",
@@ -1103,8 +1103,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addStimulusCodeResponseValidationType",
@@ -1114,8 +1114,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_ratingFooterButtonType",
@@ -1125,14 +1125,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1144,8 +1144,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_actionFooterButtonType",
@@ -1155,14 +1155,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1174,8 +1174,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_localStorageDataType",
@@ -1185,8 +1185,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimuliValidationType",
@@ -1196,8 +1196,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addKeyboardDebugType",
@@ -1207,8 +1207,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addDebugWidgetsType",
@@ -1218,8 +1218,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_allMetadataFieldsType",
@@ -1229,8 +1229,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_metadataFieldType",
@@ -1240,8 +1240,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusMetadataFieldType",
@@ -1251,8 +1251,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_metadataFieldConnectionType",
@@ -1262,8 +1262,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_metadataFieldVisibilityDependantType",
@@ -1273,8 +1273,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_metadataFieldDateTriggeredType",
@@ -1284,8 +1284,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_saveMetadataButtonType",
@@ -1295,8 +1295,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_createUserButtonType",
@@ -1306,8 +1306,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_switchUserIdButtonType",
@@ -1317,8 +1317,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_selectUserMenuType",
@@ -1328,8 +1328,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_selectLocaleMenuType",
@@ -1339,8 +1339,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_eraseLocalStorageButtonType",
@@ -1350,8 +1350,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_eraseUsersDataButtonType",
@@ -1361,8 +1361,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showCurrentMsType",
@@ -1372,8 +1372,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_cancelPauseTimersType",
@@ -1383,8 +1383,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_cancelPauseAllType",
@@ -1394,8 +1394,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showStimulusProgressType",
@@ -1405,8 +1405,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_displayCompletionCodeType",
@@ -1416,8 +1416,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_generateCompletionCodeType",
@@ -1427,8 +1427,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendAllDataType",
@@ -1438,8 +1438,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendMetadataType",
@@ -1449,8 +1449,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_redirectToUrlType",
@@ -1460,8 +1460,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_eraseLocalStorageOnWindowClosingType",
@@ -1471,8 +1471,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_keepStimulusType",
@@ -1482,8 +1482,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_removeMatchingStimulusType",
@@ -1493,8 +1493,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_centrePageType",
@@ -1504,8 +1504,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_clearPageType",
@@ -1515,8 +1515,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_backgroundImageType",
@@ -1526,14 +1526,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1545,8 +1545,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_prevStimulusButtonType",
@@ -1556,8 +1556,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_nextStimulusButtonType",
@@ -1567,8 +1567,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_nextStimulusType",
@@ -1578,8 +1578,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_prevStimulusType",
@@ -1589,8 +1589,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_nextMatchingStimulusType",
@@ -1600,8 +1600,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addKinTypeGuiType",
@@ -1611,8 +1611,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_hasGetParameterType",
@@ -1622,8 +1622,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_hasMetadataValueType",
@@ -1633,8 +1633,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_setMetadataValueType",
@@ -1644,8 +1644,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_matchOnEvalTokensType",
@@ -1655,8 +1655,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_progressIndicatorType",
@@ -1666,8 +1666,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_setMetadataEvalTokensType",
@@ -1677,8 +1677,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_activateRandomItemType",
@@ -1688,8 +1688,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_gotoPresenterType",
@@ -1699,8 +1699,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_gotoNextPresenterType",
@@ -1710,8 +1710,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_logTimeStampType",
@@ -1721,8 +1721,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_zeroStimulusStopwatchType",
@@ -1732,8 +1732,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stopStimulusStopwatchType",
@@ -1743,8 +1743,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_hardwareTimeStampType",
@@ -1754,8 +1754,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_recorderToneInjectionType",
@@ -1765,8 +1765,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_dtmfToneType",
@@ -1776,8 +1776,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_audioButtonType",
@@ -1787,8 +1787,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_preloadAllStimuliType",
@@ -1798,8 +1798,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showStimulusType",
@@ -1809,14 +1809,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1828,8 +1828,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_matchingStimulusGridType",
@@ -1839,8 +1839,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_pauseType",
@@ -1850,14 +1850,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1869,14 +1869,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1888,8 +1888,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_startTimerType",
@@ -1899,14 +1899,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1918,8 +1918,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_clearTimerType",
@@ -1929,8 +1929,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_logTimerValueType",
@@ -1940,8 +1940,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_timerLabelType",
@@ -1951,8 +1951,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_randomMsPauseType",
@@ -1962,14 +1962,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -1981,8 +1981,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addTimerTriggerType",
@@ -1992,8 +1992,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_startFrameRateTimerType",
@@ -2003,8 +2003,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addFrameTimeTriggerType",
@@ -2014,8 +2014,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addMediaTriggerType",
@@ -2025,8 +2025,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addRecorderDtmfTriggerType",
@@ -2036,8 +2036,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_addRecorderLevelTriggerType",
@@ -2047,8 +2047,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_triggerDefinitionType",
@@ -2058,14 +2058,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2077,14 +2077,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2096,8 +2096,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_triggerRandomType",
@@ -2107,14 +2107,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2126,8 +2126,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_countdownLabelType",
@@ -2137,14 +2137,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2156,14 +2156,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2175,8 +2175,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_onTimeType",
@@ -2186,8 +2186,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_onTimerType",
@@ -2197,14 +2197,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2216,14 +2216,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2235,14 +2235,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2254,14 +2254,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2273,14 +2273,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2292,14 +2292,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2311,14 +2311,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2330,14 +2330,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2349,14 +2349,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2368,14 +2368,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2387,14 +2387,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2406,14 +2406,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2425,8 +2425,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_hasMoreStimulusType",
@@ -2436,8 +2436,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_beforeStimulusType",
@@ -2447,14 +2447,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2466,8 +2466,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_afterStimulusType",
@@ -2477,14 +2477,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2496,14 +2496,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2515,8 +2515,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_multipleUsersType",
@@ -2526,14 +2526,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2545,14 +2545,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2564,14 +2564,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2583,14 +2583,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2602,14 +2602,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2621,14 +2621,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2640,14 +2640,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2659,14 +2659,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2678,14 +2678,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2697,14 +2697,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2716,14 +2716,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2735,14 +2735,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2754,8 +2754,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_regionCodeStyleType",
@@ -2765,8 +2765,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_regionReplaceType",
@@ -2776,14 +2776,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2795,8 +2795,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_regionDragDropType",
@@ -2806,8 +2806,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_ondragstartType",
@@ -2817,14 +2817,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2836,14 +2836,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2855,14 +2855,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -2874,8 +2874,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusImageType",
@@ -2885,8 +2885,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusCodeImageType",
@@ -2896,8 +2896,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusCodeImageButtonType",
@@ -2907,8 +2907,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusCodeVideoType",
@@ -2918,8 +2918,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusVideoType",
@@ -2929,8 +2929,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusCodeAudioType",
@@ -2940,8 +2940,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusAudioType",
@@ -2951,8 +2951,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_playMediaType",
@@ -2962,8 +2962,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_rewindMediaType",
@@ -2973,8 +2973,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_pauseMediaType",
@@ -2984,8 +2984,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_logMediaTimeStampType",
@@ -2995,8 +2995,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stimulusImageCaptureType",
@@ -3006,14 +3006,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -3025,8 +3025,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_AnnotationTimelinePanelType",
@@ -3036,14 +3036,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -3055,8 +3055,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_startAudioRecorderWebType",
@@ -3066,8 +3066,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_startAudioRecorderAppType",
@@ -3077,8 +3077,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_stopAudioRecorderType",
@@ -3088,8 +3088,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_startAudioRecorderTagType",
@@ -3099,8 +3099,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_endAudioRecorderTagType",
@@ -3110,8 +3110,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showHtmlPopupType",
@@ -3121,8 +3121,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_helpDialogueType",
@@ -3132,8 +3132,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_userInfoType",
@@ -3143,8 +3143,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_versionDataType",
@@ -3154,8 +3154,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_showColourReportType",
@@ -3165,8 +3165,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupInitialisationErrorType",
@@ -3176,14 +3176,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -3195,14 +3195,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -3214,14 +3214,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -3233,14 +3233,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },
@@ -3252,8 +3252,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupMemberActivityType",
@@ -3263,8 +3263,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupMemberCodeLabelType",
@@ -3274,8 +3274,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupMemberLabelType",
@@ -3285,8 +3285,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupMessageLabelType",
@@ -3296,8 +3296,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupResponseStimulusImageType",
@@ -3307,8 +3307,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupResponseFeedbackType",
@@ -3318,8 +3318,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupScoreLabelType",
@@ -3329,8 +3329,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_groupChannelScoreLabelType",
@@ -3340,8 +3340,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_scoreLabelType",
@@ -3351,8 +3351,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_submitGroupEventType",
@@ -3362,8 +3362,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendGroupMessageButtonType",
@@ -3373,8 +3373,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendGroupMessageType",
@@ -3384,8 +3384,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendGroupStoredMessageType",
@@ -3395,8 +3395,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_streamGroupCanvasType",
@@ -3406,8 +3406,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_streamGroupCameraType",
@@ -3417,8 +3417,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_sendGroupTokenMessageType",
@@ -3428,8 +3428,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_clearCurrentScoreType",
@@ -3439,8 +3439,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_scoreIncrementType",
@@ -3450,8 +3450,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_bestScoreAboveThresholdType",
@@ -3461,8 +3461,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_totalScoreAboveThresholdType",
@@ -3472,8 +3472,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_scoreAboveThresholdType",
@@ -3483,8 +3483,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_resetStimulusType",
@@ -3494,8 +3494,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_submitTestResultsType",
@@ -3505,8 +3505,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_validateMetadataType",
@@ -3516,8 +3516,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_transmitResultsType",
@@ -3527,8 +3527,8 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       },
     {
       "type": "frinex_onErrorType",
@@ -3538,14 +3538,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType"
-      "colour": 140
+      "output": "frinex_featureType",
+      "colour": 140,
       "message0": 'Features %1',
       "args0": [
         {
           "type": "field_input",
           "name": "FeatureTypes",
-          "check": "frinex_featureType"
+          "check": "frinex_featureType",
         }
       ],
       },

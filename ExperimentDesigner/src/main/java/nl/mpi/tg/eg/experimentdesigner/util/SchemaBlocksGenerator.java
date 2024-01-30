@@ -182,8 +182,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "          \"type\": \"input_dummy\",\n"
                 + "        }\n"
                 + "      ],\n"
-                + "      \"output\": \"frinex_featureType\"\n"
-                + "      \"colour\": 140\n");
+                + "      \"output\": \"frinex_featureType\",\n"
+                + "      \"colour\": 140,\n");
         List<String> currentSubTypes;
         if (typeSubTypes.containsKey(currentType)) {
             currentSubTypes = typeSubTypes.get(currentType);
