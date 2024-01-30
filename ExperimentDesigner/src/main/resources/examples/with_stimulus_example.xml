@@ -4921,7 +4921,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Input Unchangeable Example" type="stimulus" self="input_unchangeable_example" title="Input Unchangeable Example">
         <triggerDefinition listenerId="registerInput" threshold="0" maximum="0">
-            <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{,6}">
+            <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{6,6}">
                 <conditionTrue>
                     <nextStimulus repeatIncorrect="false"/>
                 </conditionTrue>
