@@ -364,6 +364,7 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
+                "frinex_featureType",
               ]
           }
         ],

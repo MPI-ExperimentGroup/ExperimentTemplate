@@ -182,7 +182,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "          \"type\": \"input_dummy\",\n"
                 + "        }\n"
                 + "      ],\n"
-//                + "      \"output\": \"frinex_featureType\",\n"
+                //                + "      \"output\": \"frinex_featureType\",\n"
                 + "      \"previousStatement\": [\n"
                 + "        \"frinex_featureType\",\n"
                 + "      ],\n"
@@ -289,7 +289,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 writer.append("      \"args" + argsCount + "\": [\n"
                         + "            {\n");
 //                if (childElement.maxBounds != 1) {
-    // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
+                // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
 //                typeSubTypes
                 writer.append("              \"type\": \"input_statement\",\n              \"name\": \"DO\",\n");
 //                } else if (childElement.minBounds > 0) {
@@ -302,6 +302,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         + "              \"check\": [\n");
                 for (DocumentationElement childElement : currentElement.childElements[0].childElements) {
                     writer.append("                \"frinex_" + childElement.typeName + "\",\n");
+                }
+                if ("presenterType".equals(currentElement.typeName)) {
+                    writer.append("                \"frinex_featureType\",\n");
                 }
                 writer.append("              ]\n"
                         + "          }\n        ],\n");
