@@ -4931,14 +4931,13 @@
                     </regionReplace>
                     <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{6,6}">
                         <conditionTrue>
+                            <disableButtonGroup matchingRegex="ratingButtonResponse"/>
                             <regionReplace regionId="inputRegion">
                                 <nextStimulusButton featureText="Next Stimulus" repeatIncorrect="false"/>
                             </regionReplace>
                         </conditionTrue>
                         <conditionFalse />
-                        <onError>
-                                <htmlText featureText="Error evaluating matchOnEvalTokens" />
-                        </onError>
+                        <onError />
                     </matchOnEvalTokens>
                 </triggerDefinition>
                 <plainText featureText="This example shows a stimulus where a given number of inputs can be made and not changed after each is keypress."/>
@@ -4948,18 +4947,19 @@
                 <clearStimulusResponse	groupId="accumulatedResponse"/>
                 <regionReplace regionId="inputRegion">
                     <htmlText featureText="Type the numbers on the keyboard:"/>
-                    <regionReplace regionId="accumulatedResponseRegion">
-                        <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
-                    </regionReplace>
                     <regionReplace regionId="hiddenRegion" styleName="hiddenRegion">
                         <ratingButton ratingLabels="0,1,2,3,4,5,6,7,8,9" dataChannel="1" orientation="horizontal" groupId="ratingButtonResponse">
                             <triggerMatching listenerId="registerInput"/>
                         </ratingButton>
                     </regionReplace>
+                    <actionButton featureText="Delete Last">
+                        <setStimulusCodeResponse groupId="accumulatedResponse" applyScore="false" codeFormat="replaceAll('::stimulusResponse__accumulatedResponse::','[0-9]$',''"/>
+                        <regionReplace regionId="accumulatedResponseRegion">
+                            <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                        </regionReplace>
+                    </actionButton>
                 </regionReplace>
-                <regionReplace regionId="accumulatedResponseRegion">
-                    <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
-                </regionReplace>
+                <regionReplace regionId="accumulatedResponseRegion" />
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
