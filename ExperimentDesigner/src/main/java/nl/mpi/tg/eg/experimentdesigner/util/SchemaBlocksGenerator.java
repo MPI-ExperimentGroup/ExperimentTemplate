@@ -183,6 +183,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        }\n"
                 + "      ],\n"
                 + "      \"output\": \"frinex_featureType\",\n"
+                + "      \"previousStatement\": [\n"
+                + "        \"frinex_featureType\",\n"
+                + "      ],\n"
+                + "      \"nextStatement\": [\n"
+                + "        \"frinex_featureType\",\n"
+                + "      ],\n"
                 + "      \"colour\": 140,\n");
         List<String> currentSubTypes;
         if (typeSubTypes.containsKey(currentType)) {
