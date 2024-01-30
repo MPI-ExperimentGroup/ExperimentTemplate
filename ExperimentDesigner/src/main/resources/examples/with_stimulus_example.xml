@@ -4924,17 +4924,18 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <triggerDefinition listenerId="registerInput" threshold="0" maximum="0">
+                    <setStimulusCodeResponse groupId="accumulatedResponse" applyScore="false" codeFormat="::stimulusResponse__accumulatedResponse::::stimulusResponse__ratingButtonResponse::"/>
+                    <clearStimulusResponse	groupId="ratingButtonResponse"/>
+                    <regionReplace regionId="accumulatedResponseRegion">
+                        <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                    </regionReplace>
                     <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{6,6}">
                         <conditionTrue>
-                            <nextStimulus repeatIncorrect="false"/>
-                        </conditionTrue>
-                        <conditionFalse>
-                            <setStimulusCodeResponse groupId="accumulatedResponse" applyScore="false" codeFormat="::stimulusResponse__accumulatedResponse::::stimulusResponse__ratingButtonResponse::"/>
-                            <clearStimulusResponse	groupId="ratingButtonResponse"/>
-                            <regionReplace regionId="accumulatedResponseRegion">
-                                <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                            <regionReplace regionId="inputRegion">
+                                <nextStimulusButton featureText="Next Stimulus" repeatIncorrect="false"/>
                             </regionReplace>
-                        </conditionFalse>
+                        </conditionTrue>
+                        <conditionFalse />
                         <onError>
                                 <htmlText featureText="Error evaluating matchOnEvalTokens" />
                         </onError>
@@ -4945,10 +4946,16 @@
                 <addPadding/>
                 <addPadding/>
                 <clearStimulusResponse	groupId="accumulatedResponse"/>
-                <htmlText featureText="Type or click the numbers that you hear:"/>
-                <ratingButton ratingLabels="0,1,2,3,4,5,6,7,8,9" dataChannel="1" orientation="flow" groupId="ratingButtonResponse">
-                    <triggerMatching listenerId="registerInput"/>
-                </ratingButton>
+                <regionReplace regionId="inputRegion">
+                    <htmlText featureText="Type the numbers that you hear:"/>
+                    <regionReplace regionId="accumulatedResponseRegion">
+                        <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                    </regionReplace>
+                    <ratingButton ratingLabels="0,1,2,3,4,5,6,7,8,9" dataChannel="1" orientation="horizontal" groupId="ratingButtonResponse">
+                        <triggerMatching listenerId="registerInput"/>
+                    </ratingButton>
+                    <hideButtonGroup matchingRegex="ratingButtonResponse" />
+                </regionReplace>
                 <regionReplace regionId="accumulatedResponseRegion">
                     <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
                 </regionReplace>
