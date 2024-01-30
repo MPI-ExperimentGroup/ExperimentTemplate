@@ -4919,6 +4919,53 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Input Unchangeable Example" type="stimulus" self="input_unchangeable_example" title="Input Unchangeable Example">
+        <triggerDefinition listenerId="registerInput" threshold="0" maximum="0">
+            <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{,6}">
+                <conditionTrue>
+                    <nextStimulus repeatIncorrect="false"/>
+                </conditionTrue>
+                <conditionFalse>
+                    <setStimulusCodeResponse groupId="accumulatedResponse" applyScore="false" codeFormat="::stimulusResponse__accumulatedResponse::::stimulusResponse__ratingButtonResponse::"/>
+                    <clearStimulusResponse	groupId="ratingButtonResponse"/>
+                    <regionReplace regionId="accumulatedResponseRegion">
+                        <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                    </regionReplace>
+                </conditionFalse>
+                <onError>
+                        <htmlText featureText="Error evaluating matchOnEvalTokens" />
+                </onError>
+            </matchOnEvalTokens>
+        </triggerDefinition>
+        <loadStimulus eventTag="input_unchangeable_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="This example shows a stimulus where a given number of inputs can be made and not changed after each is keypress."/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <clearStimulusResponse	groupId="accumulatedResponse"/>
+                <htmlText featureText="Type or click the numbers that you hear:"/>
+                <ratingButton ratingLabels="0,1,2,3,4,5,6,7,8,9" dataChannel="1" orientation="flow" groupId="ratingButtonResponse">
+                    <triggerMatching listenerId="registerInput"/>
+                </ratingButton>
+                <regionReplace regionId="accumulatedResponseRegion">
+                    <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="input_unchangeable_example"/>
+                    <gotoPresenter target="input_unchangeable_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>rating_button_examples</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Rating Button orientationType Example" type="stimulus" self="rating_button_orientationType_example" title="Rating Button orientationType Example">
         <loadStimulus eventTag="rating_button_orientationType_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
