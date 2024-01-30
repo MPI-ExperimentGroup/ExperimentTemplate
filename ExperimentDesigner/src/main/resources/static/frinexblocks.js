@@ -416,7 +416,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -433,7 +432,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -450,7 +448,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -467,7 +464,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -484,7 +480,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -501,7 +496,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -518,7 +512,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -535,7 +528,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -552,7 +544,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -569,7 +560,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -586,7 +576,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -603,7 +592,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -620,7 +608,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -637,7 +624,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -654,7 +640,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -671,7 +656,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -688,7 +672,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -705,7 +688,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -722,7 +704,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -739,7 +720,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -756,7 +736,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -781,7 +760,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -806,7 +784,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -823,7 +800,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -840,7 +816,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -857,7 +832,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -874,7 +848,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -891,7 +864,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -908,7 +880,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -925,7 +896,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -942,7 +912,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -959,7 +928,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -976,7 +944,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1001,7 +968,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1018,7 +984,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1043,7 +1008,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1068,7 +1032,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1093,7 +1056,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1110,7 +1072,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1127,7 +1088,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1144,7 +1104,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1161,7 +1120,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1186,7 +1144,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1203,7 +1160,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1228,7 +1184,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1253,7 +1208,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1278,7 +1232,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1295,7 +1248,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1320,7 +1272,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1345,7 +1296,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1370,7 +1320,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1387,7 +1336,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1404,7 +1352,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1421,7 +1368,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1438,7 +1384,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1455,7 +1400,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1480,7 +1424,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1497,7 +1440,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1522,7 +1464,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1539,7 +1480,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1556,7 +1496,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1573,7 +1512,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1590,7 +1528,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1607,7 +1544,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1624,7 +1560,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1641,7 +1576,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1658,7 +1592,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1675,7 +1608,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1692,7 +1624,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1709,7 +1640,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1726,7 +1656,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1743,7 +1672,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1760,7 +1688,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1777,7 +1704,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1794,7 +1720,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1811,7 +1736,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1828,7 +1752,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1845,7 +1768,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1862,7 +1784,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1879,7 +1800,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1896,7 +1816,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1913,7 +1832,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1930,7 +1848,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1947,7 +1864,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1964,7 +1880,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1981,7 +1896,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1998,7 +1912,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2015,7 +1928,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2032,7 +1944,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2049,7 +1960,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2066,7 +1976,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2091,7 +2000,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2108,7 +2016,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2125,7 +2032,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2142,7 +2048,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2159,7 +2064,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2176,7 +2080,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2193,7 +2096,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2210,7 +2112,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2227,7 +2128,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2244,7 +2144,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2261,7 +2160,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2278,7 +2176,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2295,7 +2192,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2312,7 +2208,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2329,7 +2224,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2346,7 +2240,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2363,7 +2256,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2380,7 +2272,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2397,7 +2288,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2414,7 +2304,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2431,7 +2320,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2448,7 +2336,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2465,7 +2352,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2482,7 +2368,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2499,7 +2384,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2524,7 +2408,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2541,7 +2424,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2558,7 +2440,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2583,7 +2464,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2608,7 +2488,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2625,7 +2504,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2650,7 +2528,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2667,7 +2544,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2684,7 +2560,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2701,7 +2576,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2718,7 +2592,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2743,7 +2616,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2760,7 +2632,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2777,7 +2648,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2794,7 +2664,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2811,7 +2680,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2828,7 +2696,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2845,7 +2712,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2862,7 +2728,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2887,7 +2752,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2912,7 +2776,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2929,7 +2792,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2954,7 +2816,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2971,7 +2832,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2996,7 +2856,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3021,7 +2880,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3038,7 +2896,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3055,7 +2912,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3080,7 +2936,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3105,7 +2960,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3130,7 +2984,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3155,7 +3008,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3180,7 +3032,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3205,7 +3056,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3230,7 +3080,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3255,7 +3104,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3280,7 +3128,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3305,7 +3152,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3330,7 +3176,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3355,7 +3200,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3372,7 +3216,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3389,7 +3232,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3414,7 +3256,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3431,7 +3272,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3456,7 +3296,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3481,7 +3320,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3498,7 +3336,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3523,7 +3360,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3548,7 +3384,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3573,7 +3408,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3598,7 +3432,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3623,7 +3456,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3648,7 +3480,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3673,7 +3504,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3698,7 +3528,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3723,7 +3552,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3748,7 +3576,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3773,7 +3600,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3798,7 +3624,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3815,7 +3640,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3832,7 +3656,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3857,7 +3680,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3874,7 +3696,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3891,7 +3712,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3916,7 +3736,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3941,7 +3760,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3966,7 +3784,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3983,7 +3800,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4000,7 +3816,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4017,7 +3832,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4034,7 +3848,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4051,7 +3864,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4068,7 +3880,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4085,7 +3896,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4102,7 +3912,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4119,7 +3928,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4136,7 +3944,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4153,7 +3960,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4170,7 +3976,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4195,7 +4000,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4212,7 +4016,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4237,7 +4040,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4254,7 +4056,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4271,7 +4072,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4288,7 +4088,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4305,7 +4104,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4322,7 +4120,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4339,7 +4136,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4356,7 +4152,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4373,7 +4168,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4390,7 +4184,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4407,7 +4200,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4424,7 +4216,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4449,7 +4240,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4474,7 +4264,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4499,7 +4288,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4524,7 +4312,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4541,7 +4328,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4558,7 +4344,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4575,7 +4360,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4592,7 +4376,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4609,7 +4392,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4626,7 +4408,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4643,7 +4424,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4660,7 +4440,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4677,7 +4456,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4694,7 +4472,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4711,7 +4488,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4728,7 +4504,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4745,7 +4520,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4762,7 +4536,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4779,7 +4552,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4796,7 +4568,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4813,7 +4584,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4830,7 +4600,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4847,7 +4616,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4864,7 +4632,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4881,7 +4648,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4898,7 +4664,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4915,7 +4680,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4932,7 +4696,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4949,7 +4712,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4966,7 +4728,6 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "output": "frinex_featureType",
       "previousStatement": [
         "frinex_featureType",
       ],

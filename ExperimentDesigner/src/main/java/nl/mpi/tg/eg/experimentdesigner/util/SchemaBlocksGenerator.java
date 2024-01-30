@@ -182,7 +182,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "          \"type\": \"input_dummy\",\n"
                 + "        }\n"
                 + "      ],\n"
-                + "      \"output\": \"frinex_featureType\",\n"
+//                + "      \"output\": \"frinex_featureType\",\n"
                 + "      \"previousStatement\": [\n"
                 + "        \"frinex_featureType\",\n"
                 + "      ],\n"
