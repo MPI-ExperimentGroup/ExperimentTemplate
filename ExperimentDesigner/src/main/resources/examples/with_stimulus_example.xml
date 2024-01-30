@@ -4947,14 +4947,13 @@
                 <addPadding/>
                 <clearStimulusResponse	groupId="accumulatedResponse"/>
                 <regionReplace regionId="inputRegion">
-                    <htmlText featureText="Type the numbers that you hear:"/>
+                    <htmlText featureText="Type the numbers on the keyboard:"/>
                     <regionReplace regionId="accumulatedResponseRegion">
                         <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
                     </regionReplace>
-                    <ratingButton ratingLabels="0,1,2,3,4,5,6,7,8,9" dataChannel="1" orientation="horizontal" groupId="ratingButtonResponse">
+                    <ratingButton ratingLabels="0,1,2,3,4,5,6,7,8,9" dataChannel="1" orientation="horizontal" groupId="ratingButtonResponse" styleName="hiddenRegionAbsolute">
                         <triggerMatching listenerId="registerInput"/>
                     </ratingButton>
-                    <hideButtonGroup matchingRegex="ratingButtonResponse" />
                 </regionReplace>
                 <regionReplace regionId="accumulatedResponseRegion">
                     <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
