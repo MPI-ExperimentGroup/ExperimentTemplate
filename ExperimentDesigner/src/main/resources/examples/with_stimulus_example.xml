@@ -4920,26 +4920,26 @@
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Input Unchangeable Example" type="stimulus" self="input_unchangeable_example" title="Input Unchangeable Example">
-        <triggerDefinition listenerId="registerInput" threshold="0" maximum="0">
-            <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{6,6}">
-                <conditionTrue>
-                    <nextStimulus repeatIncorrect="false"/>
-                </conditionTrue>
-                <conditionFalse>
-                    <setStimulusCodeResponse groupId="accumulatedResponse" applyScore="false" codeFormat="::stimulusResponse__accumulatedResponse::::stimulusResponse__ratingButtonResponse::"/>
-                    <clearStimulusResponse	groupId="ratingButtonResponse"/>
-                    <regionReplace regionId="accumulatedResponseRegion">
-                        <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
-                    </regionReplace>
-                </conditionFalse>
-                <onError>
-                        <htmlText featureText="Error evaluating matchOnEvalTokens" />
-                </onError>
-            </matchOnEvalTokens>
-        </triggerDefinition>
         <loadStimulus eventTag="input_unchangeable_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
+                <triggerDefinition listenerId="registerInput" threshold="0" maximum="0">
+                    <matchOnEvalTokens evaluateTokens="::stimulusResponse__accumulatedResponse::" matchingRegex="[0-9]{6,6}">
+                        <conditionTrue>
+                            <nextStimulus repeatIncorrect="false"/>
+                        </conditionTrue>
+                        <conditionFalse>
+                            <setStimulusCodeResponse groupId="accumulatedResponse" applyScore="false" codeFormat="::stimulusResponse__accumulatedResponse::::stimulusResponse__ratingButtonResponse::"/>
+                            <clearStimulusResponse	groupId="ratingButtonResponse"/>
+                            <regionReplace regionId="accumulatedResponseRegion">
+                                <htmlTokenText featureText="::stimulusResponse__accumulatedResponse::" />
+                            </regionReplace>
+                        </conditionFalse>
+                        <onError>
+                                <htmlText featureText="Error evaluating matchOnEvalTokens" />
+                        </onError>
+                    </matchOnEvalTokens>
+                </triggerDefinition>
                 <plainText featureText="This example shows a stimulus where a given number of inputs can be made and not changed after each is keypress."/>
                 <addPadding/>
                 <addPadding/>
