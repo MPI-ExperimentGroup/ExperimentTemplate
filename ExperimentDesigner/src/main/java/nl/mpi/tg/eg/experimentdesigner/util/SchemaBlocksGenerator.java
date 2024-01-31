@@ -107,7 +107,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
                     }
                 }
-                writer.append("    return '" + blockType + ": {\\n  \\'block_id\\': \\'\' + block.id + \'\\';\\n'  + childData + '}\\n';\n"
+                writer.append("    return '" + blockType + ": {\\n  \\'block_id\\': \\'' + block.id + '\\';\\n'  + childData + '}\\n';\n"
                         + "  };\n");
             }
         }
