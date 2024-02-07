@@ -71,6 +71,7 @@ Menu --> clear_stimulus_responses_example
 Menu --> clear_stimulus_response_example
 Menu --> visible_enable_stimulus_free_text_example
 Menu --> stimulus_free_text_validation_example
+Menu --> input_unchangeable_example
 Menu --> rating_button_orientationType_example
 Menu --> holding_button_down_example
 Menu --> hotkey_enable_example
@@ -259,6 +260,7 @@ sticky_menu_example --> clear_stimulus_responses_example
 sticky_menu_example --> clear_stimulus_response_example
 sticky_menu_example --> visible_enable_stimulus_free_text_example
 sticky_menu_example --> stimulus_free_text_validation_example
+sticky_menu_example --> input_unchangeable_example
 sticky_menu_example --> rating_button_orientationType_example
 sticky_menu_example --> holding_button_down_example
 sticky_menu_example --> hotkey_enable_example
@@ -531,6 +533,10 @@ state stimulus_free_text_validation_example
 stimulus_free_text_validation_example --> Menu : back
 stimulus_free_text_validation_example --> stimulus_free_text_validation_example
 stimulus_free_text_validation_example --> stimulus_free_text_validation_example
+state input_unchangeable_example
+input_unchangeable_example --> Menu : back
+input_unchangeable_example --> input_unchangeable_example
+input_unchangeable_example --> input_unchangeable_example
 state rating_button_orientationType_example
 rating_button_orientationType_example --> Menu : back
 rating_button_orientationType_example --> rating_button_orientationType_example
@@ -804,6 +810,7 @@ allMenuItemsStyle --> clear_stimulus_responses_example
 allMenuItemsStyle --> clear_stimulus_response_example
 allMenuItemsStyle --> visible_enable_stimulus_free_text_example
 allMenuItemsStyle --> stimulus_free_text_validation_example
+allMenuItemsStyle --> input_unchangeable_example
 allMenuItemsStyle --> rating_button_orientationType_example
 allMenuItemsStyle --> holding_button_down_example
 allMenuItemsStyle --> hotkey_enable_example

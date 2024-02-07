@@ -283,6 +283,10 @@ endif
 if (navigation) then (back)
 :Menu;
 endif
+:input_unchangeable_example;
+if (navigation) then (back)
+:Menu;
+endif
 :rating_button_orientationType_example;
 if (navigation) then (back)
 :Menu;
