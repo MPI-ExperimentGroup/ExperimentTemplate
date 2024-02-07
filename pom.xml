@@ -182,7 +182,7 @@
                     <vcsType>git</vcsType>
                     <allowSnapshots>${versionCheck.allowSnapshots}</allowSnapshots>
                     <majorVersion>1</majorVersion>
-                    <minorVersion>6</minorVersion>
+                    <minorVersion>7</minorVersion>
                     <buildType>${versionCheck.buildType}</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule/>
