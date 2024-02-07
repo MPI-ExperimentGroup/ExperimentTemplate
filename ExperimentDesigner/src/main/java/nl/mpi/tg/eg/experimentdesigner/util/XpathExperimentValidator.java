@@ -397,11 +397,11 @@ public class XpathExperimentValidator {
         String state = (String) validationXPath.compile("/experiment/deployment/@state").evaluate(xmlDocument, XPathConstants.STRING);
         if ("production".equals(state) && frinexVersion != null) {
             if (frinexVersion.contains("snapshot")) {
-                returnMessage = "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n";
+                returnMessage = "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
             } else if (frinexVersion.contains("alpha")) {
-                returnMessage = "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n";
+                returnMessage = "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
             } else if (frinexVersion.contains("beta")) {
-                returnMessage = "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n";
+                returnMessage = "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
             }
         }
         return returnMessage;

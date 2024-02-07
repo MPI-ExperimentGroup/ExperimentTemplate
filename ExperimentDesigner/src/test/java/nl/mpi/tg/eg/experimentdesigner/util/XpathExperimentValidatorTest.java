@@ -655,26 +655,26 @@ public class XpathExperimentValidatorTest {
             {"<experiment><deployment state=\"staging\" frinexVersion=\"snapshot\"/></experiment>",
                 ""
             },
-            {"<experiment><deployment state=\"staging\" frinexVersion=\"1.6.3481-snapshot\"/></experiment>",
+            {"<experiment><deployment state=\"staging\" frinexVersion=\"1.7.3481-snapshot\"/></experiment>",
                 ""
             },
             {"<experiment><deployment state=\"production\" frinexVersion=\"stable\"/></experiment>",
                 ""
             },
-            {"<experiment><deployment state=\"production\" frinexVersion=\"1.6.3481-stable\"/></experiment>",
+            {"<experiment><deployment state=\"production\" frinexVersion=\"1.7.3481-stable\"/></experiment>",
                 ""
             },
-            {"<experiment><deployment state=\"production\" frinexVersion=\"1.6.3481-snapshot\"/></experiment>",
-                "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n"
+            {"<experiment><deployment state=\"production\" frinexVersion=\"1.7.3481-snapshot\"/></experiment>",
+                "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
             },
             {"<experiment><deployment state=\"production\" frinexVersion=\"snapshot\"/></experiment>",
-                "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n"
+                "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
             },
             {"<experiment><deployment state=\"production\" frinexVersion=\"alpha\"/></experiment>",
-                "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n"
+                "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
             },
             {"<experiment><deployment state=\"production\" frinexVersion=\"beta\"/></experiment>",
-                "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.6.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.6.XXXX-stable.\n"
+                "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
             }
         };
         for (String currentFault[] : commonFaultTests) {

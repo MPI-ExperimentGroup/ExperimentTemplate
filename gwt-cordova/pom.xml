@@ -9,12 +9,12 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>1.6-testing-SNAPSHOT</version>
+    <version>1.7-testing-SNAPSHOT</version>
     <name>FRINEX GWT-Cordova Template</name>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
         <artifactId>frinex-parent</artifactId>
-        <version>1.6-testing-SNAPSHOT</version>
+        <version>1.7-testing-SNAPSHOT</version>
     </parent>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -77,14 +77,14 @@
             <groupId>nl.mpi.tg.eg.frinex</groupId>
             <!-- the frinex experiment designer is used by the unit tests which validate the token text and token function documentation and their examples -->
             <artifactId>frinex-experiment-designer</artifactId>
-            <version>1.6-testing-SNAPSHOT</version>
+            <version>1.7-testing-SNAPSHOT</version>
             <classifier>classes</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>nl.mpi.tg.eg.frinex</groupId>
             <artifactId>common</artifactId>
-            <version>1.6-testing-SNAPSHOT</version>
+            <version>1.7-testing-SNAPSHOT</version>
         </dependency>        
         <dependency>
             <groupId>nl.mpi</groupId>
@@ -665,7 +665,7 @@
                     <dependency>
                         <groupId>nl.mpi.tg.eg.frinex</groupId>
                         <artifactId>common</artifactId>
-                        <version>1.6-testing-SNAPSHOT</version>
+                        <version>1.7-testing-SNAPSHOT</version>
                     </dependency>     
                 </dependencies>
             </plugin>
