@@ -449,6 +449,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -497,6 +507,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaLoading %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -529,6 +549,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "eachStimulus %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -545,6 +575,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "groupStimulus %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -561,6 +601,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMoreStimulus %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -577,6 +627,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMoreStimulus %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -593,6 +653,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMoreStimulus %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -609,6 +679,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -641,6 +721,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -657,6 +747,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -721,6 +821,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasKeyInputsCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -737,6 +847,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -744,14 +864,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_actionTokenButtonType",
@@ -761,6 +873,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -768,14 +890,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_disableButtonGroupType",
@@ -881,6 +995,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "svgGroupsLoaded %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -945,6 +1069,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -952,14 +1086,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_svgGroupMatchingType",
@@ -985,6 +1111,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -992,14 +1128,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusSliderType",
@@ -1009,6 +1137,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1016,14 +1154,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_touchInputLabelButtonType",
@@ -1033,6 +1163,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1040,14 +1180,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_touchInputImageButtonType",
@@ -1057,6 +1189,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaLoadingButton %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1073,6 +1215,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaLoadingButton %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1089,6 +1241,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "touchInputCaptureType %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1105,6 +1267,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "touchInputStartType %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1121,6 +1293,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1128,14 +1310,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_touchInputStopType",
@@ -1161,6 +1335,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1168,14 +1352,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_ratingRadioButtonType",
@@ -1185,6 +1361,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1192,14 +1378,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_ratingCheckboxType",
@@ -1209,6 +1387,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1216,14 +1404,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusFreeTextType",
@@ -1249,6 +1429,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1256,14 +1446,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusRatingRadioType",
@@ -1273,6 +1455,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1280,14 +1472,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusRatingCheckboxType",
@@ -1297,6 +1481,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1304,14 +1498,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusHasRatingOptionsType",
@@ -1321,6 +1507,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1353,6 +1549,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1401,6 +1607,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1408,14 +1624,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_targetFooterButtonType",
@@ -1441,6 +1649,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1448,14 +1666,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_addPaddingType",
@@ -1641,6 +1851,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1673,6 +1893,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1833,6 +2063,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1849,6 +2089,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1865,6 +2115,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1977,6 +2237,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -1984,14 +2254,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_allMenuItemsType",
@@ -2113,6 +2375,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2129,6 +2401,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2161,6 +2443,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasTrueFalseErrorCondition %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2177,6 +2469,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2193,6 +2495,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2353,6 +2665,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2369,6 +2691,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2385,6 +2717,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2392,14 +2734,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_showStimulusGridType",
@@ -2409,6 +2743,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasCorrectIncorrect %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2425,6 +2769,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasCorrectIncorrect %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2441,6 +2795,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2448,14 +2812,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_doLaterType",
@@ -2465,6 +2821,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2472,14 +2838,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_requestNotificationType",
@@ -2489,6 +2847,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2505,6 +2873,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2512,14 +2890,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_compareTimerType",
@@ -2529,6 +2899,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasThreshold %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2593,6 +2973,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2600,14 +2990,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_evaluatePauseType",
@@ -2617,6 +2999,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2633,6 +3025,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorTimer %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2649,6 +3051,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasFrameRateTriggers %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2665,6 +3077,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorTimeCritical %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2681,6 +3103,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorTimeCritical %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2697,6 +3129,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "isTimeCritical %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2713,6 +3155,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "isTimeCritical %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2729,6 +3181,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2736,14 +3198,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_habituationParadigmListenerType",
@@ -2753,6 +3207,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2760,14 +3224,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_triggerMatchingType",
@@ -2793,6 +3249,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2800,14 +3266,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_resetTriggerType",
@@ -2833,6 +3291,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2840,14 +3308,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusPauseType",
@@ -2857,6 +3317,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2864,14 +3334,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusLabelType",
@@ -2897,6 +3359,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "isTimeCritical %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2913,6 +3385,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2920,14 +3402,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_conditionTrueType",
@@ -2937,6 +3411,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2944,14 +3428,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_conditionFalseType",
@@ -2961,6 +3437,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2968,14 +3454,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_onSuccessType",
@@ -2985,6 +3463,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -2992,14 +3480,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_onActivateType",
@@ -3009,6 +3489,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3016,14 +3506,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_kinTypeStringDiagramType",
@@ -3033,6 +3515,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3040,14 +3532,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_loadKinTypeStringDiagramType",
@@ -3057,6 +3541,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3064,14 +3558,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_editableKinEntitesDiagramType",
@@ -3081,6 +3567,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3088,14 +3584,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_onKeyUpType",
@@ -3105,6 +3593,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3112,14 +3610,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_onKeyDownType",
@@ -3129,6 +3619,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3136,14 +3636,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_responseCorrectType",
@@ -3153,6 +3645,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3160,14 +3662,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_responseIncorrectType",
@@ -3177,6 +3671,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3184,14 +3688,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_groupNetworkType",
@@ -3201,6 +3697,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "groupNetwork %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3217,6 +3723,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "stimulusAction %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3233,6 +3749,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3240,14 +3766,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_eachStimulusType",
@@ -3257,6 +3775,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "stimulusAction %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3273,6 +3801,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3280,14 +3818,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_endOfStimulusType",
@@ -3297,6 +3827,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3304,14 +3844,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_existingUserCheckType",
@@ -3321,6 +3853,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasUserCount %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3337,6 +3879,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3344,14 +3896,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_singleUserType",
@@ -3361,6 +3905,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3368,14 +3922,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_aboveThresholdType",
@@ -3385,6 +3931,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3392,14 +3948,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_withinThresholdType",
@@ -3409,6 +3957,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3416,14 +3974,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_mediaLoadedType",
@@ -3433,6 +3983,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3440,14 +4000,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_mediaLoadFailedType",
@@ -3457,6 +4009,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3464,14 +4026,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_mediaPlaybackStartedType",
@@ -3481,6 +4035,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3488,14 +4052,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_mediaPlaybackCompleteType",
@@ -3505,6 +4061,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3512,14 +4078,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_tableType",
@@ -3529,6 +4087,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3536,14 +4104,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_rowType",
@@ -3553,6 +4113,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3560,14 +4130,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_columnType",
@@ -3577,6 +4139,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3584,14 +4156,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_regionAppendType",
@@ -3601,6 +4165,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3608,14 +4182,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_regionStyleType",
@@ -3657,6 +4223,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3664,14 +4240,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_regionClearType",
@@ -3697,6 +4265,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "dragDropType %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3713,6 +4291,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3720,14 +4308,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_ondragoverType",
@@ -3737,6 +4317,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3744,14 +4334,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_ondropType",
@@ -3761,6 +4343,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3768,14 +4360,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_stimulusPresentType",
@@ -3785,6 +4369,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3801,6 +4395,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaLoading %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3817,6 +4421,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaLoading %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3833,6 +4447,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaLoadingButton %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3849,6 +4473,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3865,6 +4499,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3881,6 +4525,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3897,6 +4551,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3977,6 +4641,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -3984,14 +4658,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_VideoPanelType",
@@ -4017,6 +4683,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4024,14 +4700,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_audioInputSelectWebType",
@@ -4041,6 +4709,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4057,6 +4735,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaRecorderPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4073,6 +4761,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4137,6 +4835,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasActionButtons %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4201,6 +4909,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasThreshold %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4217,6 +4935,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4224,14 +4952,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_groupNetworkConnectingType",
@@ -4241,6 +4961,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4248,14 +4978,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_groupFindingMembersType",
@@ -4265,6 +4987,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4272,14 +5004,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_groupNetworkSynchronisingType",
@@ -4289,6 +5013,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4296,14 +5030,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_groupPhaseListenersType",
@@ -4313,6 +5039,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "groupMemberActivity %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4329,6 +5065,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "groupNetworkAction %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4393,6 +5139,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasMediaPlayback %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4409,6 +5165,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasCorrectIncorrect %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4537,6 +5303,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4553,6 +5329,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4617,6 +5403,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasThreshold %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4633,6 +5429,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasThreshold %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4649,6 +5455,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasThreshold %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4681,6 +5497,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4697,6 +5523,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4713,6 +5549,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "hasErrorSuccess %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_featureType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4729,6 +5575,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": "any %1",
+      "args1": [
+            {
+              "type": "input_statement",
+              "name": "DO",
+              "check": [
+                "frinex_anyType",
+              ]
+          }
+        ],
       "previousStatement": [
         "frinex_featureType",
       ],
@@ -4736,14 +5592,6 @@ function getFeatureBlocks() {
         "frinex_featureType",
       ],
       "colour": 140,
-      "message0": 'Features %1',
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "FeatureTypes",
-          "check": "frinex_featureType"
-        }
-      ],
       },
     {
       "type": "frinex_randomGroupingType",
@@ -4940,12 +5788,10 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_actionButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_actionButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_actionTokenButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_actionTokenButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_disableButtonGroupType'] = function(block, generator) {
@@ -4990,7 +5836,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupActionType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_svgGroupActionType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupMatchingType'] = function(block, generator) {
@@ -4999,17 +5844,14 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusSliderType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusSliderType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputLabelButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_touchInputLabelButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputImageButtonType'] = function(block, generator) {
@@ -5030,7 +5872,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_touchEndType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_touchEndType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputStopType'] = function(block, generator) {
@@ -5039,17 +5880,14 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ratingButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingRadioButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ratingRadioButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingCheckboxType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ratingCheckboxType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusFreeTextType'] = function(block, generator) {
@@ -5058,17 +5896,14 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusRatingButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingRadioType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusRatingRadioType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingCheckboxType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusRatingCheckboxType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusHasRatingOptionsType'] = function(block, generator) {
@@ -5093,7 +5928,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingFooterButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ratingFooterButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_targetFooterButtonType'] = function(block, generator) {
@@ -5102,7 +5936,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_actionFooterButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_actionFooterButtonType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_addPaddingType'] = function(block, generator) {
@@ -5235,7 +6068,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_backgroundImageType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_backgroundImageType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_allMenuItemsType'] = function(block, generator) {
@@ -5336,7 +6168,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_showStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusGridType'] = function(block, generator) {
@@ -5349,12 +6180,10 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_pauseType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_pauseType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_doLaterType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_doLaterType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_requestNotificationType'] = function(block, generator) {
@@ -5363,7 +6192,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_startTimerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_startTimerType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block, generator) {
@@ -5384,7 +6212,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_randomMsPauseType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_randomMsPauseType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_evaluatePauseType'] = function(block, generator) {
@@ -5417,12 +6244,10 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerDefinitionType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_triggerDefinitionType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_habituationParadigmListenerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_habituationParadigmListenerType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerMatchingType'] = function(block, generator) {
@@ -5431,7 +6256,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerRandomType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_triggerRandomType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_resetTriggerType'] = function(block, generator) {
@@ -5440,12 +6264,10 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_countdownLabelType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_countdownLabelType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusPauseType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusPauseType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusLabelType'] = function(block, generator) {
@@ -5458,62 +6280,50 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_onTimerType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_conditionTrueType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_conditionTrueType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_conditionFalseType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_conditionFalseType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onSuccessType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_onSuccessType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onActivateType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_onActivateType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_kinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_kinTypeStringDiagramType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_loadKinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_loadKinTypeStringDiagramType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_editableKinEntitesDiagramType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_editableKinEntitesDiagramType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onKeyUpType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_onKeyUpType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_onKeyDownType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_onKeyDownType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_responseCorrectType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_responseCorrectType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_responseIncorrectType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_responseIncorrectType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
@@ -5526,7 +6336,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_beforeStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_eachStimulusType'] = function(block, generator) {
@@ -5535,12 +6344,10 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_afterStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_afterStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_endOfStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_endOfStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
@@ -5549,62 +6356,50 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_multipleUsersType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_singleUserType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_aboveThresholdType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_withinThresholdType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaLoadedType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_mediaLoadedType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaLoadFailedType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_mediaLoadFailedType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_mediaPlaybackStartedType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackCompleteType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_mediaPlaybackCompleteType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_tableType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_tableType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_rowType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_rowType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_columnType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_columnType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionAppendType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_regionAppendType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionStyleType'] = function(block, generator) {
@@ -5617,7 +6412,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_regionReplaceType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_regionReplaceType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionClearType'] = function(block, generator) {
@@ -5630,17 +6424,14 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_ondragstartType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ondragstartType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondragoverType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ondragoverType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondropType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_ondropType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusPresentType'] = function(block, generator) {
@@ -5693,7 +6484,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusImageCaptureType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_stimulusImageCaptureType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_VideoPanelType'] = function(block, generator) {
@@ -5702,7 +6492,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_AnnotationTimelinePanelType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_AnnotationTimelinePanelType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_audioInputSelectWebType'] = function(block, generator) {
@@ -5751,22 +6540,18 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_groupInitialisationErrorType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_groupNetworkConnectingType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_groupFindingMembersType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_groupNetworkSynchronisingType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block, generator) {
@@ -5875,7 +6660,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_onErrorType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'FeatureTypes');
     return '"frinex_onErrorType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
   return {
