@@ -194,6 +194,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
 
             if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
+                    || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
                     || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
                     || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
                     || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseErrorCondition) {
