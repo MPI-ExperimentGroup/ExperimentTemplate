@@ -181,9 +181,26 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        {\n"
                 + "          \"type\": \"input_dummy\",\n"
                 + "        }\n"
-                + "      ],\n"
+                + "      ],\n");
                 //                + "      \"output\": \"frinex_featureType\",\n"
-                + "      \"previousStatement\": [\n"
+        int argsCount = 1;
+        if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+            writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
+            writer.append("      \"args" + argsCount + "\": [\n"
+                    + "            {\n");
+            writer.append("              \"type\": \"input_statement\",\n              \"name\": \"DO\",\n");
+            writer.append(""
+                    + "              \"check\": [\n");
+            if (featureType.getRequiresChildType() != FeatureType.Contitionals.any) {
+                writer.append("                \"frinex_featureType\",\n");
+            } else {
+                writer.append("                \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
+            }
+            writer.append("              ]\n"
+                    + "          }\n        ],\n");
+            argsCount++;
+        }
+        writer.append("      \"previousStatement\": [\n"
                 + "        \"frinex_featureType\",\n"
                 + "      ],\n"
                 + "      \"nextStatement\": [\n"
@@ -197,21 +214,21 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             currentSubTypes = new ArrayList<>();
             typeSubTypes.put(currentType, currentSubTypes);
         }
-        int argsCount = 0;
-        switch (featureType.getRequiresChildType()) {
-            case any:
-                writer.append("      \"message" + argsCount + "\": 'Features %1',\n"
-                        + "      \"args" + argsCount + "\": [\n"
-                        + "        {\n"
-                        + "          \"type\": \"field_input\",\n"
-                        + "          \"name\": \"FeatureTypes\",\n"
-                        + "          \"check\": \"frinex_featureType\"\n"
-                        + "        }\n"
-                        + "      ],\n");
-                currentSubTypes.add("FeatureTypes");
-                argsCount++;
-                break;
-        }
+//        int argsCount = 0;
+//        switch (featureType.getRequiresChildType()) {
+//            case any:
+//                writer.append("      \"message" + argsCount + "\": 'Features %1',\n"
+//                        + "      \"args" + argsCount + "\": [\n"
+//                        + "        {\n"
+//                        + "          \"type\": \"field_input\",\n"
+//                        + "          \"name\": \"FeatureTypes\",\n"
+//                        + "          \"check\": \"frinex_featureType\"\n"
+//                        + "        }\n"
+//                        + "      ],\n");
+//                currentSubTypes.add("FeatureTypes");
+//                argsCount++;
+//                break;
+//        }
         writer.append("      },\n");
         featureTypeLists.add("frinex_" + featureType.name() + "Type");
     }
