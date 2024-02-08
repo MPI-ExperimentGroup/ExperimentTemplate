@@ -364,7 +364,7 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_anyType",
               ]
           }
         ],
@@ -418,10 +418,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -434,10 +436,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -455,15 +459,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -476,10 +482,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -492,10 +500,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -513,15 +523,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaLoadingType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -534,10 +546,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -555,15 +569,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_eachStimulusType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -581,15 +597,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_groupStimulusType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -607,15 +625,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMoreStimulusType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -633,15 +653,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMoreStimulusType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -659,15 +679,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMoreStimulusType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -685,15 +707,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -706,10 +728,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -727,15 +751,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -753,15 +777,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -774,10 +798,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -790,10 +814,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -806,10 +830,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -827,15 +853,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasKeyInputsConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -858,10 +886,14 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasActionButtonsType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasActionButtonsType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -884,10 +916,14 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasActionButtonsType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasActionButtonsType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -900,10 +936,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -916,10 +956,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -932,10 +976,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -948,10 +996,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -964,10 +1016,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -980,10 +1036,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -1001,15 +1061,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_svgGroupsLoadedType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1022,10 +1084,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "colour": 140,
       },
@@ -1038,10 +1100,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "colour": 140,
       },
@@ -1054,10 +1116,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "colour": 140,
       },
@@ -1080,10 +1142,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "colour": 140,
       },
@@ -1096,10 +1158,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_svgGroupsLoadedType",
       ],
       "colour": 140,
       },
@@ -1122,10 +1184,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1148,10 +1210,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1174,10 +1236,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "colour": 140,
       },
@@ -1195,15 +1257,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaLoadingButtonType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "colour": 140,
       },
@@ -1221,15 +1283,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaLoadingButtonType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "colour": 140,
       },
@@ -1247,15 +1309,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_touchInputCaptureTypeType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1273,15 +1335,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_touchInputStartTypeType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_touchInputCaptureTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_touchInputCaptureTypeType",
       ],
       "colour": 140,
       },
@@ -1304,10 +1366,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_touchInputCaptureTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_touchInputCaptureTypeType",
       ],
       "colour": 140,
       },
@@ -1320,10 +1382,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_touchInputStartTypeType",
       ],
       "colour": 140,
       },
@@ -1346,10 +1408,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1372,10 +1434,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1398,10 +1460,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1414,10 +1476,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1440,10 +1502,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1466,10 +1528,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1492,10 +1554,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1513,15 +1575,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1534,10 +1596,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1555,15 +1617,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1576,10 +1638,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1592,10 +1654,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1618,10 +1680,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1634,10 +1696,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1660,10 +1724,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1676,10 +1742,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1692,10 +1760,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1708,10 +1778,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1724,10 +1796,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1740,10 +1814,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1756,10 +1832,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1772,10 +1850,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1788,10 +1868,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -1804,10 +1884,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1820,10 +1902,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1836,10 +1920,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1857,15 +1943,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1878,10 +1966,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1899,15 +1989,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1920,10 +2012,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1936,10 +2030,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1952,10 +2048,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1968,10 +2066,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1984,10 +2084,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2000,10 +2102,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2016,10 +2120,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2032,10 +2138,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2048,10 +2154,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2069,15 +2177,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2095,15 +2205,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2121,15 +2233,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2142,10 +2256,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2158,10 +2274,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2174,10 +2292,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2190,10 +2308,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2206,10 +2324,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2222,10 +2342,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2248,10 +2370,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2264,10 +2388,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2280,10 +2406,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2296,10 +2422,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2312,10 +2438,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2328,10 +2454,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2344,10 +2470,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2360,10 +2486,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2381,15 +2509,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2407,15 +2537,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2428,10 +2560,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2449,15 +2583,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasTrueFalseErrorConditionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2475,15 +2611,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2501,15 +2639,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2522,10 +2662,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2538,10 +2680,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2554,10 +2698,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2570,10 +2716,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2586,10 +2736,16 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2602,10 +2758,16 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2618,10 +2780,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2634,10 +2800,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2650,10 +2820,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2671,15 +2845,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2697,15 +2873,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2728,10 +2906,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2749,15 +2927,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasCorrectIncorrectType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2775,15 +2953,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasCorrectIncorrectType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -2806,10 +2984,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2832,10 +3012,14 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2853,15 +3037,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2884,10 +3070,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2905,15 +3093,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasThresholdType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2926,10 +3116,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -2942,10 +3136,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2958,10 +3154,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2984,10 +3182,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3005,15 +3205,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3031,15 +3233,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorTimerType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3057,15 +3261,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasFrameRateTriggersType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3083,15 +3289,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorTimeCriticalType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasFrameRateTriggersType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasFrameRateTriggersType",
       ],
       "colour": 140,
       },
@@ -3109,15 +3315,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorTimeCriticalType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3135,15 +3343,19 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_isTimeCriticalType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_isRecursiveTypeType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_isRecursiveTypeType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3161,15 +3373,19 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_isTimeCriticalType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_isRecursiveTypeType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_isRecursiveTypeType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3192,10 +3408,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3218,10 +3436,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3234,10 +3454,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3260,10 +3482,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3276,10 +3500,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3302,10 +3528,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3328,10 +3556,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -3344,10 +3572,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -3365,15 +3593,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_isTimeCriticalType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -3396,10 +3624,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorTimerType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorTimerType",
       ],
       "colour": 140,
       },
@@ -3422,10 +3650,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasTrueFalseConditionType",
+        "frinex_hasTrueFalseErrorConditionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasTrueFalseConditionType",
+        "frinex_hasTrueFalseErrorConditionType",
       ],
       "colour": 140,
       },
@@ -3448,10 +3678,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasTrueFalseConditionType",
+        "frinex_hasTrueFalseErrorConditionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasTrueFalseConditionType",
+        "frinex_hasTrueFalseErrorConditionType",
       ],
       "colour": 140,
       },
@@ -3474,10 +3706,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorSuccessType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorSuccessType",
       ],
       "colour": 140,
       },
@@ -3500,10 +3732,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaLoadingButtonType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaLoadingButtonType",
       ],
       "colour": 140,
       },
@@ -3526,10 +3758,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3552,10 +3786,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3578,10 +3814,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3604,10 +3842,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasKeyInputsConditionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasKeyInputsConditionType",
       ],
       "colour": 140,
       },
@@ -3630,10 +3868,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasKeyInputsConditionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasKeyInputsConditionType",
       ],
       "colour": 140,
       },
@@ -3656,10 +3894,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasCorrectIncorrectType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasCorrectIncorrectType",
       ],
       "colour": 140,
       },
@@ -3682,10 +3920,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasCorrectIncorrectType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasCorrectIncorrectType",
       ],
       "colour": 140,
       },
@@ -3703,15 +3941,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_groupNetworkType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupStimulusType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupStimulusType",
       ],
       "colour": 140,
       },
@@ -3729,15 +3967,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_stimulusActionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMoreStimulusType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMoreStimulusType",
       ],
       "colour": 140,
       },
@@ -3760,10 +3998,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_eachStimulusType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_eachStimulusType",
       ],
       "colour": 140,
       },
@@ -3781,15 +4019,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_stimulusActionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_eachStimulusType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_eachStimulusType",
       ],
       "colour": 140,
       },
@@ -3812,10 +4050,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_eachStimulusType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_eachStimulusType",
       ],
       "colour": 140,
       },
@@ -3838,10 +4076,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMoreStimulusType",
+        "frinex_groupStimulusType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMoreStimulusType",
+        "frinex_groupStimulusType",
       ],
       "colour": 140,
       },
@@ -3859,15 +4099,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasUserCountType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3890,10 +4132,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasUserCountType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasUserCountType",
       ],
       "colour": 140,
       },
@@ -3916,10 +4158,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasUserCountType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasUserCountType",
       ],
       "colour": 140,
       },
@@ -3942,10 +4184,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasThresholdType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasThresholdType",
       ],
       "colour": 140,
       },
@@ -3968,10 +4210,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasThresholdType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasThresholdType",
       ],
       "colour": 140,
       },
@@ -3994,10 +4236,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaLoadingType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaLoadingType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "colour": 140,
       },
@@ -4020,10 +4264,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaLoadingType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaLoadingType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "colour": 140,
       },
@@ -4046,10 +4292,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaPlaybackType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaPlaybackType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "colour": 140,
       },
@@ -4072,10 +4320,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaPlaybackType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasMediaPlaybackType",
+        "frinex_hasMediaRecorderPlaybackType",
       ],
       "colour": 140,
       },
@@ -4098,10 +4348,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4124,10 +4376,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4150,10 +4404,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4176,10 +4432,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4192,10 +4450,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4208,10 +4470,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4234,10 +4496,12 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4250,10 +4514,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4271,15 +4537,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_dragDropTypeType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4302,10 +4568,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_dragDropTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_dragDropTypeType",
       ],
       "colour": 140,
       },
@@ -4328,10 +4594,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_dragDropTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_dragDropTypeType",
       ],
       "colour": 140,
       },
@@ -4354,10 +4620,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_dragDropTypeType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_dragDropTypeType",
       ],
       "colour": 140,
       },
@@ -4375,15 +4641,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4401,15 +4667,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaLoadingType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4427,15 +4693,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaLoadingType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4453,15 +4719,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaLoadingButtonType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4479,15 +4745,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4505,15 +4771,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4531,15 +4797,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4557,15 +4823,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4578,10 +4844,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4594,10 +4864,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4610,10 +4884,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4626,10 +4904,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4652,10 +4934,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4668,10 +4950,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4694,10 +4976,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4715,15 +4997,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4741,15 +5025,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaRecorderPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4767,15 +5051,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -4788,10 +5072,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4804,10 +5090,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4820,10 +5108,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_stimulusActionType",
+        "frinex_isTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -4841,15 +5131,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasActionButtonsType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4862,10 +5154,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4878,10 +5172,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4894,10 +5190,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4915,15 +5213,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasThresholdType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4946,10 +5246,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -4972,10 +5272,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -4998,10 +5298,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -5024,10 +5324,10 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -5045,15 +5345,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_groupMemberActivityType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -5071,15 +5371,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_groupNetworkActionType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupMemberActivityType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupMemberActivityType",
       ],
       "colour": 140,
       },
@@ -5092,10 +5392,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5108,10 +5408,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5124,10 +5424,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5145,15 +5445,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasMediaPlaybackType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5171,15 +5471,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasCorrectIncorrectType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5192,10 +5492,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5208,10 +5508,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5224,10 +5524,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5240,10 +5542,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5256,10 +5558,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5272,10 +5574,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5288,10 +5590,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5309,15 +5611,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5335,15 +5637,15 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5356,10 +5658,10 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_groupNetworkActionType",
       ],
       "colour": 140,
       },
@@ -5372,10 +5674,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -5388,10 +5694,14 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
+        "frinex_stimulusActionType",
       ],
       "colour": 140,
       },
@@ -5409,15 +5719,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasThresholdType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5435,15 +5747,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasThresholdType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5461,15 +5775,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasThresholdType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5482,10 +5798,12 @@ function getFeatureBlocks() {
         }
       ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5503,15 +5821,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5529,15 +5849,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5555,15 +5877,17 @@ function getFeatureBlocks() {
               "type": "input_statement",
               "name": "DO",
               "check": [
-                "frinex_featureType",
+                "frinex_hasErrorSuccessType",
               ]
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5586,10 +5910,16 @@ function getFeatureBlocks() {
           }
         ],
       "previousStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorSuccessType",
+        "frinex_hasTrueFalseErrorConditionType",
+        "frinex_hasErrorTimerType",
+        "frinex_hasErrorTimeCriticalType",
       ],
       "nextStatement": [
-        "frinex_featureType",
+        "frinex_hasErrorSuccessType",
+        "frinex_hasTrueFalseErrorConditionType",
+        "frinex_hasErrorTimerType",
+        "frinex_hasErrorTimeCriticalType",
       ],
       "colour": 140,
       },
