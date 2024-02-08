@@ -182,7 +182,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "          \"type\": \"input_dummy\",\n"
                 + "        }\n"
                 + "      ],\n");
-                //                + "      \"output\": \"frinex_featureType\",\n"
+        //                + "      \"output\": \"frinex_featureType\",\n"
         int argsCount = 1;
         if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
             writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
@@ -191,21 +191,32 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             writer.append("              \"type\": \"input_statement\",\n              \"name\": \"DO\",\n");
             writer.append(""
                     + "              \"check\": [\n");
-            if (featureType.getRequiresChildType() != FeatureType.Contitionals.any) {
-                writer.append("                \"frinex_featureType\",\n");
-            } else {
-                writer.append("                \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
-            }
+//            if (featureType.getRequiresChildType() == FeatureType.Contitionals.any) {
+//                writer.append("                \"frinex_featureType\",\n");
+//            } else {
+            writer.append("                \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
+//            }
             writer.append("              ]\n"
                     + "          }\n        ],\n");
             argsCount++;
         }
-        writer.append("      \"previousStatement\": [\n"
-                + "        \"frinex_featureType\",\n"
-                + "      ],\n"
-                + "      \"nextStatement\": [\n"
-                + "        \"frinex_featureType\",\n"
-                + "      ],\n"
+        // final String statementType = (featureType.getRequiresChildType() == FeatureType.Contitionals.any) ? "frinex_featureType" : "frinex_" + featureType.getChildTypeString() + "Type";
+        writer.append("      \"previousStatement\": [\n");
+        for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
+            writer.append("        \"frinex_" + statementType + "Type\",\n");
+            if (statementType == FeatureType.Contitionals.none) {
+                writer.append("        \"frinex_anyType\",\n");
+            }
+        }
+        writer.append("      ],\n"
+                + "      \"nextStatement\": [\n");
+        for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
+            writer.append("        \"frinex_" + statementType + "Type\",\n");
+            if (statementType == FeatureType.Contitionals.none) {
+                writer.append("        \"frinex_anyType\",\n");
+            }
+        }
+        writer.append("      ],\n"
                 + "      \"colour\": 140,\n");
         List<String> currentSubTypes;
         if (typeSubTypes.containsKey(currentType)) {
@@ -321,7 +332,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     writer.append("                \"frinex_" + childElement.typeName + "\",\n");
                 }
                 if ("presenterType".equals(currentElement.typeName)) {
-                    writer.append("                \"frinex_featureType\",\n");
+                    writer.append("                \"frinex_anyType\",\n");
                 }
                 writer.append("              ]\n"
                         + "          }\n        ],\n");
