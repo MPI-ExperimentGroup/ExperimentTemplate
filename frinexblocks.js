@@ -633,9 +633,19 @@ function getFeatureBlocks() {
       "args1": [
             {
               "type": "input_statement",
-              "name": "DO",
+              "name": "hasMoreStimulus",
               "check": [
-                "frinex_hasMoreStimulusType",
+                "frinex_stimulusActionType",
+              ]
+          }
+        ],
+      "message2": "endOfStimulus %1",
+      "args2": [
+            {
+              "type": "input_statement",
+              "name": "endOfStimulus",
+              "check": [
+                "frinex_anyType",
               ]
           }
         ],
@@ -661,9 +671,19 @@ function getFeatureBlocks() {
       "args1": [
             {
               "type": "input_statement",
-              "name": "DO",
+              "name": "hasMoreStimulus",
               "check": [
-                "frinex_hasMoreStimulusType",
+                "frinex_stimulusActionType",
+              ]
+          }
+        ],
+      "message2": "endOfStimulus %1",
+      "args2": [
+            {
+              "type": "input_statement",
+              "name": "endOfStimulus",
+              "check": [
+                "frinex_anyType",
               ]
           }
         ],
@@ -687,9 +707,19 @@ function getFeatureBlocks() {
       "args1": [
             {
               "type": "input_statement",
-              "name": "DO",
+              "name": "hasMoreStimulus",
               "check": [
-                "frinex_hasMoreStimulusType",
+                "frinex_stimulusActionType",
+              ]
+          }
+        ],
+      "message2": "endOfStimulus %1",
+      "args2": [
+            {
+              "type": "input_statement",
+              "name": "endOfStimulus",
+              "check": [
+                "frinex_anyType",
               ]
           }
         ],
@@ -6379,17 +6409,20 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_loadStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += generator.statementToCode(block, 'hasMoreStimulus');
+     childData += generator.statementToCode(block, 'endOfStimulus');
     return '"frinex_loadStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_withMatchingStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += generator.statementToCode(block, 'hasMoreStimulus');
+     childData += generator.statementToCode(block, 'endOfStimulus');
     return '"frinex_withMatchingStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_loadSdCardStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += generator.statementToCode(block, 'hasMoreStimulus');
+     childData += generator.statementToCode(block, 'endOfStimulus');
     return '"frinex_loadSdCardStimulusType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
     javascript.javascriptGenerator.forBlock['frinex_currentStimulusHasTagType'] = function(block, generator) {
