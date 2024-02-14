@@ -34,6 +34,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -304,7 +305,12 @@ public class DataSubmissionService extends AbstractSubmissionService {
                     if (errorCounter > 0) {
                         dataSubmissionListener.scoreSubmissionFailed(null);
                     } else {
-                        dataSubmissionListener.scoreSubmissionComplete(null);
+                        try {
+                            localStorage.checkStorageException();
+                            dataSubmissionListener.scoreSubmissionComplete(null);
+                        } catch (LocalStorageException localStorageException) {
+                            dataSubmissionListener.scoreSubmissionFailed(null);
+                        }
                     }
                 }
             }
@@ -437,7 +443,12 @@ public class DataSubmissionService extends AbstractSubmissionService {
                         final String text = response.getText();
                         logger.info(text);
 //                    localStorage.stowSentData(userId, jsonData);
-                        dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
+                        try {
+                            localStorage.checkStorageException();
+                            dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
+                        } catch (LocalStorageException localStorageException) {
+                            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.localStorageError, endpoint.name()));
+                        }
                     } else {
                         logger.warning(builder.getUrl());
                         logger.warning(response.getStatusText());

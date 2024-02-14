@@ -20,6 +20,7 @@
             import com.google.gwt.user.client.ui.RootLayoutPanel;
             import nl.mpi.tg.eg.experiment.client.exception.AudioException;
             import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
+            import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
             import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
             import nl.mpi.tg.eg.experiment.client.presenter.*;
             import nl.mpi.tg.eg.experiment.client.util.AudioPlayer;
@@ -82,6 +83,7 @@
             matchlanguage(null),
             autotyp_regions(null),
             startscreen(null),*/
+            localStorageFull("LocalStorageFull", "LocalStorageFull"),
             version("Version", "Version");
         
             final public String label;
@@ -137,6 +139,7 @@
             
             @Override
             public void requestApplicationState(ApplicationState applicationState) {
+            try {
             localStorage.saveAppState(userResults.getUserData().getUserId(), applicationState);
             if (presenter != null) {
             presenter.savePresenterState();
@@ -227,6 +230,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 }</xsl:text>
         </xsl:if>
         <xsl:text>
+                localStorage.checkStorageException();
+            } catch (LocalStorageException localStorageException) {
+                this.presenter = new StorageFullPresenter(widgetTag, localStorageException.getMessage());
+                presenter.setState(this, ApplicationState.start, applicationState);
+            }
             }
         </xsl:text>
         <xsl:if test="descendant::templateFeature">
@@ -272,6 +280,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.Version;
                 import nl.mpi.tg.eg.experiment.client.ApplicationController;
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
+                import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
                 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
                 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;

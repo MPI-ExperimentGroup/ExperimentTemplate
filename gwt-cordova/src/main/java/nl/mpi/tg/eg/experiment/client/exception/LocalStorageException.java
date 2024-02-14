@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Language In Interaction
+ * Copyright (C) 2024 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,34 +18,12 @@
 package nl.mpi.tg.eg.experiment.client.exception;
 
 /**
- * @since Oct 29, 2014 11:23:33 AM (creation date)
- * @author Peter Withers <p.withers@psych.ru.nl>
+ * @since 14 February 2024 09:54 AM (creation date)
+ * @author @author Peter Withers <peter.withers@mpi.nl>
  */
-public class DataSubmissionException extends Exception {
+public class LocalStorageException extends Exception {
 
-    private final ErrorType errorType;
-
-    public enum ErrorType {
-
-        non202response,
-        buildererror,
-        connectionerror,
-        dataRejected,
-        localStorageError
-    }
-
-    public DataSubmissionException(ErrorType errorType, Throwable cause) {
-        super(cause);
-        this.errorType = errorType;
-    }
-
-    public DataSubmissionException(ErrorType errorType, String message) {
+    public LocalStorageException(String message) {
         super(message);
-        this.errorType = errorType;
     }
-
-    public ErrorType getErrorType() {
-        return errorType;
-    }
-
 }

@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.exception.EvaluateTokensException;
+import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -93,8 +94,9 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
             final String resultValue = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).evaluateTokensString(evaluateTokens);
             userResults.getUserData().setMetadataValue(metadataField, resultValue);
             localStorage.storeData(userResults, metadataFieldProvider);
+            localStorage.checkStorageException();
             onSuccess.postLoadTimerFired();
-        } catch (EvaluateTokensException exception) {
+        } catch (EvaluateTokensException | LocalStorageException exception) {
             onError.postLoadTimerFired();
         }
     }
@@ -139,8 +141,9 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
                         localStorage.storeData(userResults, metadataFieldProvider);
                         // todo: note that previous implementations that change the user id, all have changed the application state directly after the user change, so care should be made in testing that no residual data is left behind
 //                        appEventListener.requestApplicationState(nextState);
+                        localStorage.checkStorageException();
                         onSuccess.postLoadTimerFired();
-                    } catch (UserIdException exception) {
+                    } catch (UserIdException | LocalStorageException exception) {
                         onError.postLoadTimerFired();
                     }
                 } else {

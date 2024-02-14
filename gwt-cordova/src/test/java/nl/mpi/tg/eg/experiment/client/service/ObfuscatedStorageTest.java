@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -105,7 +106,7 @@ public class ObfuscatedStorageTest {
      * @throws nl.mpi.tg.eg.experiment.client.exception.UserIdException
      */
     @Test
-    public void testClearUserData() throws UserIdException {
+    public void testClearUserData() throws UserIdException, LocalStorageException {
         System.out.println("clearUserData");
         UserId userId = new UserId("userId");
         Stimulus stimulus = GeneratedStimulus.values[0];

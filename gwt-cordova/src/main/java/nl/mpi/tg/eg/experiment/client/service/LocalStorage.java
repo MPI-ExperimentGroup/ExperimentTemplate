@@ -25,6 +25,7 @@ import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
+import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
@@ -54,6 +55,7 @@ public class LocalStorage implements LocalStorageInterface {
     protected final String MAX_POTENTIAL = "maxPotential";
     protected final String MAX_CORRECT_STREAK = "maxCorrectStreak";
     protected final String MAX_ERROR_STREAK = "maxErrorStreak";
+    private LocalStorageException localStorageException = null;
 
     public LocalStorage(final String appNameInternal/*, final boolean enableObfuscation*/) {
         this.appNameInternal = appNameInternal;
@@ -94,20 +96,20 @@ public class LocalStorage implements LocalStorageInterface {
 //    }
     public void addStoredGameData(UserId userId, String serialisedGameData) {
         loadStorage();
-        dataStore.setItem(dataStore.getGAME_DATA(userId), getCleanStoredData(dataStore.getGAME_DATA(userId)) + serialisedGameData);
+        dataStoreSetItem(dataStore.getGAME_DATA(userId), getCleanStoredData(dataStore.getGAME_DATA(userId)) + serialisedGameData);
     }
 
 //    public void addFailedData(String serialisedGameData) {
 //        loadStorage();
-//        dataStore.setItem(FAILED_DATA, getCleanStoredData(FAILED_DATA) + serialisedGameData);
+//        dataStoreSetItem(FAILED_DATA, getCleanStoredData(FAILED_DATA) + serialisedGameData);
 //    }
 //    private void stowSentData(UserId userId, String sendData) {
 //        loadStorage();
 //        final String sentStoredData = getCleanStoredData(STOWED_DATA + userId.toString());
 //        if (sentStoredData.isEmpty()) {
-//            dataStore.setItem(STOWED_DATA + userId.toString(), sendData);
+//            dataStoreSetItem(STOWED_DATA + userId.toString(), sendData);
 //        } else {
-//            dataStore.setItem(STOWED_DATA + userId.toString(), sentStoredData + "," + sendData);
+//            dataStoreSetItem(STOWED_DATA + userId.toString(), sentStoredData + "," + sendData);
 //        }
 //    }
     public String getStoredScreenData(UserId userId, String endpoint) {
@@ -119,7 +121,7 @@ public class LocalStorage implements LocalStorageInterface {
         loadStorage();
         final String storedData = getCleanStoredData(dataStore.getSCREEN_DATA(endpoint, userId));
         String remainingStoredData = removeSubmittedPortion(segmentToDelete, storedData);
-        dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), remainingStoredData);
+        dataStoreSetItem(dataStore.getSCREEN_DATA(endpoint, userId), remainingStoredData);
 //        stowSentData(userId, segmentToDelete);
     }
 
@@ -198,7 +200,7 @@ public class LocalStorage implements LocalStorageInterface {
 
     public void setStoredJSONObject(UserId userId, Stimulus stimulus, JSONObject jSONObject) {
         loadStorage();
-        dataStore.setItem(dataStore.getSTIMULI_DATA(userId, stimulus), jSONObject.toString());
+        dataStoreSetItem(dataStore.getSTIMULI_DATA(userId, stimulus), jSONObject.toString());
         // with android versions this JSON data is saved to the SDcard via the StimulusPresenter
     }
 
@@ -229,12 +231,12 @@ public class LocalStorage implements LocalStorageInterface {
     public void appendStoredDataValue(UserId userId, String label, String value) {
         loadStorage();
         final String cleanStoredData = getCleanStoredData(dataStore.getGAME_DATA(label, userId));
-        dataStore.setItem(dataStore.getGAME_DATA(label, userId), cleanStoredData + value);
+        dataStoreSetItem(dataStore.getGAME_DATA(label, userId), cleanStoredData + value);
     }
 
     public void setStoredDataValue(UserId userId, String label, String value) {
         loadStorage();
-        dataStore.setItem(dataStore.getGAME_DATA(label, userId), value);
+        dataStoreSetItem(dataStore.getGAME_DATA(label, userId), value);
     }
 
     public void addStoredScreenData(UserId userId, String endpoint, String serialisedScreenData) {
@@ -242,9 +244,9 @@ public class LocalStorage implements LocalStorageInterface {
             loadStorage();
             final String cleanStoredData = getCleanStoredData(dataStore.getSCREEN_DATA(endpoint, userId));
             if (cleanStoredData.isEmpty()) {
-                dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + serialisedScreenData);
+                dataStoreSetItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + serialisedScreenData);
             } else {
-                dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + "," + serialisedScreenData);
+                dataStoreSetItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + "," + serialisedScreenData);
             }
         }
     }
@@ -313,18 +315,18 @@ public class LocalStorage implements LocalStorageInterface {
 
     public void storeUserScore(UserResults userResults) {
         loadStorage();
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_SCORE), Double.toString(userResults.getUserData().getMaxScore()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_ERRORS), Integer.toString(userResults.getUserData().getMaxErrors()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_POTENTIAL), Integer.toString(userResults.getUserData().getMaxPotentialScore()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_CORRECT_STREAK), Integer.toString(userResults.getUserData().getMaxCorrectStreak()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_ERROR_STREAK), Integer.toString(userResults.getUserData().getMaxErrorStreak()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), GAMES_PLAYED), Integer.toString(userResults.getUserData().getGamesPlayed()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_SCORE), Integer.toString(userResults.getUserData().getCurrentScore()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_CORRECT_STREAK), Integer.toString(userResults.getUserData().getCorrectStreak()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_ERROR_STREAK), Integer.toString(userResults.getUserData().getErrorStreak()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_SCORE), Integer.toString(userResults.getUserData().getTotalScore()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_POTENTIAL), Integer.toString(userResults.getUserData().getPotentialScore()));
-        dataStore.setItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_POTENTIAL), Integer.toString(userResults.getUserData().getTotalPotentialScore()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_SCORE), Double.toString(userResults.getUserData().getMaxScore()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_ERRORS), Integer.toString(userResults.getUserData().getMaxErrors()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_POTENTIAL), Integer.toString(userResults.getUserData().getMaxPotentialScore()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_CORRECT_STREAK), Integer.toString(userResults.getUserData().getMaxCorrectStreak()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_ERROR_STREAK), Integer.toString(userResults.getUserData().getMaxErrorStreak()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), GAMES_PLAYED), Integer.toString(userResults.getUserData().getGamesPlayed()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_SCORE), Integer.toString(userResults.getUserData().getCurrentScore()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_CORRECT_STREAK), Integer.toString(userResults.getUserData().getCorrectStreak()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_ERROR_STREAK), Integer.toString(userResults.getUserData().getErrorStreak()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_SCORE), Integer.toString(userResults.getUserData().getTotalScore()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_POTENTIAL), Integer.toString(userResults.getUserData().getPotentialScore()));
+        dataStoreSetItem(dataStore.getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_POTENTIAL), Integer.toString(userResults.getUserData().getTotalPotentialScore()));
     }
 
     public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider) {
@@ -336,7 +338,7 @@ public class LocalStorage implements LocalStorageInterface {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
-                dataStore.setItem(dataStore.getUSER_METADATA(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
+                dataStoreSetItem(dataStore.getUSER_METADATA(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
                 final List<UserId> metadataConnections = userResults.getUserData().getMetadataConnection(metadataField);
                 if (metadataConnections != null && !metadataConnections.isEmpty()) {
                     String metadataConnectionString = "";
@@ -346,7 +348,7 @@ public class LocalStorage implements LocalStorageInterface {
                         }
                         metadataConnectionString += userId.toString();
                     }
-                    dataStore.setItem(dataStore.getUSER_METADATA_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnectionString);
+                    dataStoreSetItem(dataStore.getUSER_METADATA_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnectionString);
                 } else {
                     dataStore.removeItem(dataStore.getUSER_METADATA_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()));
                 }
@@ -355,7 +357,7 @@ public class LocalStorage implements LocalStorageInterface {
         storeUserScore(userResults);
         if (notMockUser) {
             // only store the last user id if the id is not a URL defined mock user
-            dataStore.setItem(dataStore.getLAST_USER_ID(), userResults.getUserData().getUserId().toString());
+            dataStoreSetItem(dataStore.getLAST_USER_ID(), userResults.getUserData().getUserId().toString());
         }
     }
 
@@ -363,9 +365,9 @@ public class LocalStorage implements LocalStorageInterface {
         loadStorage();
         if ((Window.Location.getParameter("mockuser") == null)) {
             // only store the last user id if the id is not a URL defined mock user
-            dataStore.setItem(dataStore.getLAST_USER_ID(), userId.toString());
+            dataStoreSetItem(dataStore.getLAST_USER_ID(), userId.toString());
         }
-        dataStore.setItem(dataStore.getAPP_STATE(userId), appState.selfName);
+        dataStoreSetItem(dataStore.getAPP_STATE(userId), appState.selfName);
     }
 
     public String getAppState(UserId userId) {
@@ -381,7 +383,7 @@ public class LocalStorage implements LocalStorageInterface {
 
     public void saveCompletionCode(UserId userId, String completionCode) {
         loadStorage();
-        dataStore.setItem(dataStore.getCOMPLETION_CODE(userId), completionCode);
+        dataStoreSetItem(dataStore.getCOMPLETION_CODE(userId), completionCode);
     }
 
     @Override
@@ -402,7 +404,7 @@ public class LocalStorage implements LocalStorageInterface {
         if (Window.Location.getParameter("mockuser") != null) {
             if (dataStore.getLAST_USER_ID() == null) {
                 // while unlikely if there is no last user id then we must set one here
-                dataStore.setItem(dataStore.getLAST_USER_ID(), new UserId().toString());
+                dataStoreSetItem(dataStore.getLAST_USER_ID(), new UserId().toString());
             }
             return new UserId("mockuser-" + getCleanStoredData(dataStore.getLAST_USER_ID()) + "-" + Window.Location.getParameter("mockuser")); // 
         } else if (Window.Location.getParameter("prolific_pid") != null) {
@@ -439,5 +441,26 @@ public class LocalStorage implements LocalStorageInterface {
             }
         }
         return userIdList;
+    }
+
+    protected void dataStoreSetItem(String key, String data) {
+        try {
+            dataStore.setItem(key, data);
+        } catch (LocalStorageException exception) {
+            localStorageException = exception;
+        } catch (Exception domException) {
+            // Because the storage of data is done in so many autogenerated sections of code it is impractical to catch and nicely handle them all, 
+            // such a change would also be application wide and be very difficult to verify that it does not change existing behaviour
+            // however it is important that in the case of an error participant data collection should be terminated because the data cannot be recorded
+            // as a result the application will check for for the error state before showing stimuli or changing presenters etc.
+            localStorageException = new LocalStorageException(domException.getMessage());
+        }
+    }
+
+    public void checkStorageException() throws LocalStorageException {
+        if (localStorageException != null) {
+            // any recorded localStorageException should not be cleared, only a page reload should reset the error state
+            throw localStorageException;
+        }
     }
 }

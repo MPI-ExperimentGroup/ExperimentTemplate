@@ -35,6 +35,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.ErrorPresenter;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
@@ -261,6 +262,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.appCodeName", Window.Navigator.getAppCodeName(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "storageLength", Integer.toString(localStorage.getStorageLength()), 0);
+            localStorage.checkStorageException();
             if (hasCordova()) {
                 // cordova specific information
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "cordovaVersion", getCordovaVersion(), 0);
@@ -333,6 +335,9 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             }
             addKeyboardEvents();
             checkNotificationCallbacks();
+        } catch (LocalStorageException localStorageException) {
+            this.presenter = new StorageFullPresenter(widgetTag, localStorageException.getMessage());
+            presenter.setState(this, ApplicationState.start, null);
         } catch (Exception exception) {
             this.presenter = new StorageFullPresenter(widgetTag, exception.getMessage());
             presenter.setState(this, ApplicationState.start, null);

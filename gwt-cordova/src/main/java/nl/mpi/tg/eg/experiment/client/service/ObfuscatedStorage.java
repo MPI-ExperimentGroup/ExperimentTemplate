@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.http.client.URL;
 import com.google.gwt.storage.client.Storage;
+import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -155,8 +156,12 @@ public class ObfuscatedStorage {
         return (item != null) ? revealString(key, item) : null;
     }
 
-    public void setItem(String key, String data) {
-        dataStore.setItem(key, obfuscateString(key, data));
+    public void setItem(String key, String data) throws LocalStorageException {
+        try {
+            dataStore.setItem(key, obfuscateString(key, data));
+        } catch (Exception domException) {
+            throw new LocalStorageException(domException.getMessage());
+        }
     }
 
     public void removeItem(String key) {
