@@ -86,41 +86,45 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
     protected void uploadUsersDataMenu() {
         List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]);
         for (final UserLabelData labelData : userList) {
-            final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListener() {
+            if (!localStorage.getDataAgreementValue(labelData.getUserId(), metadataFieldProvider)) {
+                ((ComplexView) simpleView).addText("User data agreement not complete:" + labelData.getUserName());
+            } else {
+                final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListener() {
 
-                @Override
-                public String getLabel() {
-                    return labelData.getUserName();
+                    @Override
+                    public String getLabel() {
+                        return labelData.getUserName();
+                    }
+
+                    @Override
+                    public int getHotKey() {
+                        return -1;
+                    }
+
+                    @Override
+                    public String getStyleName() {
+                        return null;
+                    }
+
+                    @Override
+                    public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                        submissionService.submitAllData(labelData.getUserId(), new DataSubmissionListener() {
+
+                            @Override
+                            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                                ((ComplexView) simpleView).addText("Failed:" + labelData.getUserName());
+                            }
+
+                            @Override
+                            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                                ((ComplexView) simpleView).addText("Complete:" + labelData.getUserName());
+                            }
+                        });
+                    }
+                });
+                if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
+                    optionButton.addStyleName("optionButtonHighlight");
                 }
-
-                @Override
-                public int getHotKey() {
-                    return -1;
-                }
-
-                @Override
-                public String getStyleName() {
-                    return null;
-                }
-
-                @Override
-                public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-                    submissionService.submitAllData(labelData.getUserId(), new DataSubmissionListener() {
-
-                        @Override
-                        public void scoreSubmissionFailed(DataSubmissionException exception) {
-                            ((ComplexView) simpleView).addText("Failed:" + labelData.getUserName());
-                        }
-
-                        @Override
-                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                            ((ComplexView) simpleView).addText("Complete:" + labelData.getUserName());
-                        }
-                    });
-                }
-            });
-            if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
-                optionButton.addStyleName("optionButtonHighlight");
             }
         }
     }
