@@ -94,19 +94,19 @@
                     <nextStimulus repeatIncorrect="false" />
             </hasMoreStimulus>
             <endOfStimulus>
-                <sendAllData>
-                    <onSuccess>
-                        <htmlText featureText="Sent the data, therefore local storage is NOT accumulating. Try disconnecting WiFi." />
-                    </onSuccess>
-                    <onError>
-                        <htmlText featureText="Failed to send the data, data is accumulating." />
-                    </onError>
-                </sendAllData>
                 <gotoPresenter target="createParticipant" />
             </endOfStimulus>
         </loadStimulus>
     </presenter>
     <presenter type="metadata" self="createParticipant">
+        <sendAllData>
+            <onSuccess>
+                <htmlText featureText="Sent the data, therefore local storage is NOT accumulating. Try disconnecting WiFi." />
+            </onSuccess>
+            <onError>
+                <htmlText featureText="Failed to send the data, data is accumulating." />
+            </onError>
+        </sendAllData>
         <createUserButton featureText="Create a new participant to keep filling the local storage" target="induce_storage_error" />
     </presenter>
     <stimuli>
