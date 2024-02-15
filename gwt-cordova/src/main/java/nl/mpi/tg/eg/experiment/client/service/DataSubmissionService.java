@@ -294,7 +294,10 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     public void submitAllData(final UserResults userResults, final DataSubmissionListener dataSubmissionListener) {
-        final UserId userId = userResults.getUserData().getUserId();
+        submitAllData(userResults.getUserData().getUserId(), dataSubmissionListener);
+    }
+
+    public void submitAllData(UserId userId, final DataSubmissionListener dataSubmissionListener) {
         class ResultCounts {
 
             int successCounter = 0;

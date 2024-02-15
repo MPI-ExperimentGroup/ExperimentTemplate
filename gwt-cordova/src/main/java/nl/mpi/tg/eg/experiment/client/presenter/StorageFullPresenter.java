@@ -18,10 +18,21 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Version;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
+import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.MetadataView;
 
 /**
  * @since Dec 8, 2016 2:36:10 PM (creation date)
@@ -53,8 +64,8 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n"
-        + "https://hdl.handle.net/21.11116/0000-000C-2B81-2" + "\n"
-        + "FRINEX Version: " + version.majorVersion() + "."
+                + "https://hdl.handle.net/21.11116/0000-000C-2B81-2" + "\n"
+                + "FRINEX Version: " + version.majorVersion() + "."
                 + version.minorVersion() + "."
                 + version.buildVersion() + "\n"
                 + "Project Version: "
@@ -62,8 +73,55 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                 + "Compile Date: " + version.compileDate() + "\n"
                 + "Commit Date: " + version.lastCommitDate());
         ((ComplexView) simpleView).addPadding();
+        ((ComplexView) simpleView).addPadding();
+        uploadUsersDataMenu();
+        ((ComplexView) simpleView).addPadding();
+        ((ComplexView) simpleView).addPadding();
+        ((ComplexView) simpleView).addPadding();
         eraseLocalStorageButton(null, "eraseLocalStorageButton");
         ((ComplexView) simpleView).addPadding();
         localStorageData();
+    }
+
+    protected void uploadUsersDataMenu() {
+        List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]);
+        for (final UserLabelData labelData : userList) {
+            final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListener() {
+
+                @Override
+                public String getLabel() {
+                    return labelData.getUserName();
+                }
+
+                @Override
+                public int getHotKey() {
+                    return -1;
+                }
+
+                @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
+                public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                    submissionService.submitAllData(labelData.getUserId(), new DataSubmissionListener() {
+
+                        @Override
+                        public void scoreSubmissionFailed(DataSubmissionException exception) {
+                            ((ComplexView) simpleView).addText("Failed:" + labelData.getUserName());
+                        }
+
+                        @Override
+                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                            ((ComplexView) simpleView).addText("Complete:" + labelData.getUserName());
+                        }
+                    });
+                }
+            });
+            if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
+                optionButton.addStyleName("optionButtonHighlight");
+            }
+        }
     }
 }
