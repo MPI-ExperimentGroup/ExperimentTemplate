@@ -98,7 +98,7 @@
             </endOfStimulus>
         </loadStimulus>
     </presenter>
-    <presenter type="metadata" self="createParticipant">
+    <presenter type="transmission" self="createParticipant">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Sent the data, therefore local storage is NOT accumulating. Try disconnecting WiFi." />
