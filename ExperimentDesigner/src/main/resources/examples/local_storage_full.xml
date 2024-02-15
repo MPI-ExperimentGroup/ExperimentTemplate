@@ -102,9 +102,12 @@
                         <htmlText featureText="Failed to send the data, data is accumulating." />
                     </onError>
                 </sendAllData>
-                <createUserButton featureText="Create a new participant to keep filling the local storage" target="induce_storage_error" />
+                <gotoPresenter target="createParticipant" />
             </endOfStimulus>
         </loadStimulus>
+    </presenter>
+    <presenter type="metadata" self="createParticipant">
+        <createUserButton featureText="Create a new participant to keep filling the local storage" target="induce_storage_error" />
     </presenter>
     <stimuli>
         <stimulus identifier="0" label="0" />
@@ -137,5 +140,15 @@
         <stimulus identifier="37" label="37" />
         <stimulus identifier="38" label="38" />
         <stimulus identifier="39" label="39" />
+        <stimulus identifier="40" label="40" />
+        <stimulus identifier="41" label="41" />
+        <stimulus identifier="42" label="42" />
+        <stimulus identifier="43" label="43" />
+        <stimulus identifier="44" label="44" />
+        <stimulus identifier="45" label="45" />
+        <stimulus identifier="46" label="46" />
+        <stimulus identifier="47" label="47" />
+        <stimulus identifier="48" label="48" />
+        <stimulus identifier="49" label="49" />
     </stimuli>
 </experiment>
