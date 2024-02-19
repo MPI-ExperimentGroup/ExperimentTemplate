@@ -33,7 +33,7 @@ import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-import nl.mpi.tg.eg.experiment.client.view.MetadataView;
+import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
  * @since Dec 8, 2016 2:36:10 PM (creation date)
@@ -90,7 +90,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
             if (!localStorage.getDataAgreementValue(labelData.getUserId(), metadataFieldProvider)) {
                 ((ComplexView) simpleView).addText("User data agreement not complete:" + labelData.getUserName());
             } else {
-                final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListener() {
+                final StimulusButton optionButton = ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
 
                     @Override
                     public String getLabel() {
