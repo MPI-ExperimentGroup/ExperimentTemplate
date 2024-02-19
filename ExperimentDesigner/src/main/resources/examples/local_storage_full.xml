@@ -10,6 +10,7 @@
     <presenter type="stimulus" self="induce_storage_error">
         <htmlText
             featureText="The function of this presenter is to induce an out of storage error. This is done by automatically stuffing data into the local storage and creating new participants."></htmlText>
+            <setMetadataValue fieldName="name" replacementRegex="" dataLogFormat="::formatDateTime_yyyy.MM.dd HH:mm:ss::"/>
         <loadStimulus>
             <hasMoreStimulus>
                 <setStimulusCodeResponse

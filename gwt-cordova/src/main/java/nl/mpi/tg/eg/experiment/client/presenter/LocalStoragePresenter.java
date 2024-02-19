@@ -43,6 +43,7 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.SimuliValidationRunner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -58,8 +59,8 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
         super(widgetTag, new TimedStimulusView(), null, null, null, null);
     }
 
-    public LocalStoragePresenter(RootLayoutPanel widgetTag, LocalStorage localStorage) {
-        super(widgetTag, new TimedStimulusView(), null, null, localStorage, null);
+    public LocalStoragePresenter(RootLayoutPanel widgetTag, LocalStorage localStorage, final DataSubmissionService submissionService) {
+        super(widgetTag, new TimedStimulusView(), submissionService, null, localStorage, null);
     }
 
     @Override
