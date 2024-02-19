@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Local Storage Full" 
     obfuscateBrowserStorage="false">     
-    <deployment state="debug" isAndroid="true"/> 
+    <deployment state="debug" isAndroid="true"/>  
     <metadata>
         <field controlledMessage="." controlledRegex="." postName="name" registrationField="name"></field>
     </metadata> 

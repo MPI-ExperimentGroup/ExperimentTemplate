@@ -82,7 +82,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addPadding();
         eraseLocalStorageButton(null, "eraseLocalStorageButton");
         ((ComplexView) simpleView).addPadding();
-        localStorageData();
+//        localStorageData();
     }
     
     protected void uploadUsersDataMenu() {
@@ -91,7 +91,8 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
             if (!localStorage.getDataAgreementValue(labelData.getUserId(), metadataFieldProvider)) {
                 ((ComplexView) simpleView).addText("User data agreement not complete:" + labelData.getUserName());
             } else {
-                final StimulusButton optionButton = ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
+                ((ComplexView) simpleView).addPadding();
+                ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
                     
                     @Override
                     public String getLabel() {
@@ -114,12 +115,12 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                             
                             @Override
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
-                                ((ComplexView) simpleView).addText("Failed:" + labelData.getUserName());
+                                ((ComplexView) simpleView).addText("Failed: " + labelData.getUserName());
                             }
                             
                             @Override
                             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                                ((ComplexView) simpleView).addText("Complete:" + labelData.getUserName());
+                                ((ComplexView) simpleView).addText("Complete: " + labelData.getUserName());
                                 ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
                                     
                                     @Override
