@@ -336,10 +336,10 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             addKeyboardEvents();
             checkNotificationCallbacks();
         } catch (LocalStorageException localStorageException) {
-            this.presenter = new StorageFullPresenter(widgetTag, localStorageException.getMessage());
+            this.presenter = new StorageFullPresenter(widgetTag, localStorage, localStorageException.getMessage());
             presenter.setState(this, ApplicationState.start, null);
         } catch (Exception exception) {
-            this.presenter = new StorageFullPresenter(widgetTag, exception.getMessage());
+            this.presenter = new StorageFullPresenter(widgetTag, localStorage, exception.getMessage());
             presenter.setState(this, ApplicationState.start, null);
         }
     }

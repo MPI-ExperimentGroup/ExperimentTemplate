@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MetadataView;
 
@@ -43,8 +44,8 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
     private final Version version = GWT.create(Version.class);
     private final String errorMessage;
 
-    public StorageFullPresenter(RootLayoutPanel widgetTag, String errorMessage) {
-        super(widgetTag);
+    public StorageFullPresenter(RootLayoutPanel widgetTag, LocalStorage localStorage, String errorMessage) {
+        super(widgetTag, localStorage);
         this.errorMessage = errorMessage;
     }
 
