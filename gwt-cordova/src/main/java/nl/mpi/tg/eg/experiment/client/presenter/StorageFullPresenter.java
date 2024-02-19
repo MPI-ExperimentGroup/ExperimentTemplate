@@ -40,25 +40,25 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class StorageFullPresenter extends LocalStoragePresenter implements Presenter {
-
+    
     private final Version version = GWT.create(Version.class);
     private final String errorMessage;
-
+    
     public StorageFullPresenter(RootLayoutPanel widgetTag, LocalStorage localStorage, String errorMessage) {
         super(widgetTag, localStorage);
         this.errorMessage = errorMessage;
     }
-
+    
     @Override
     protected String getTitle() {
         return "StorageFullPresenter";
     }
-
+    
     @Override
     protected String getSelfTag() {
         return "StorageFullPresenter";
     }
-
+    
     @Override
     protected void setContent(final AppEventListener appEventListener) {
         ((ComplexView) simpleView).addHtmlText(messages.errorScreenText(errorMessage), "highlightedText");
@@ -83,7 +83,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addPadding();
         localStorageData();
     }
-
+    
     protected void uploadUsersDataMenu() {
         List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]);
         for (final UserLabelData labelData : userList) {
@@ -91,41 +91,63 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                 ((ComplexView) simpleView).addText("User data agreement not complete:" + labelData.getUserName());
             } else {
                 final StimulusButton optionButton = ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
-
+                    
                     @Override
                     public String getLabel() {
-                        return labelData.getUserName();
+                        return "Send data: " + labelData.getUserName();
                     }
-
+                    
                     @Override
                     public int getHotKey() {
                         return -1;
                     }
-
+                    
                     @Override
                     public String getStyleName() {
                         return null;
                     }
-
+                    
                     @Override
                     public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
                         submissionService.submitAllData(labelData.getUserId(), new DataSubmissionListener() {
-
+                            
                             @Override
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
                                 ((ComplexView) simpleView).addText("Failed:" + labelData.getUserName());
                             }
-
+                            
                             @Override
                             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
                                 ((ComplexView) simpleView).addText("Complete:" + labelData.getUserName());
+                                ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
+                                    
+                                    @Override
+                                    public String getLabel() {
+                                        return "Delete: " + labelData.getUserName();
+                                    }
+                                    
+                                    @Override
+                                    public int getHotKey() {
+                                        return -1;
+                                    }
+                                    
+                                    @Override
+                                    public String getStyleName() {
+                                        return null;
+                                    }
+                                    
+                                    @Override
+                                    public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                                        localStorage.clearUserData(labelData.getUserId());
+                                    }
+                                });
                             }
                         });
                     }
                 });
-                if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
-                    optionButton.addStyleName("optionButtonHighlight");
-                }
+//                if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
+//                    optionButton.addStyleName("optionButtonHighlight");
+//                }
             }
         }
     }
