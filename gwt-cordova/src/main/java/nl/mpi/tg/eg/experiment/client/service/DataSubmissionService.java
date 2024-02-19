@@ -447,6 +447,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                         logger.info(text);
 //                    localStorage.stowSentData(userId, jsonData);
                         try {
+                            // TODO: this currently blocks StorageFullPresenter from uploading data and needs to be made more felxible
                             localStorage.checkStorageException();
                             dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                         } catch (LocalStorageException localStorageException) {
