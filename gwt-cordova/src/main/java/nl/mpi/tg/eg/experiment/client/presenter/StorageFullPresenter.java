@@ -78,7 +78,6 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
         uploadUsersDataMenu();
-        ((ComplexView) simpleView).addPadding();
 //        ((ComplexView) simpleView).addPadding();
 //        ((ComplexView) simpleView).addPadding();
 //        eraseLocalStorageButton(null, "eraseLocalStorageButton");
@@ -96,7 +95,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                 ((TimedStimulusView) simpleView).endRegion(userRegion);
             } else {
                 localStorage.clearStorageException();
-                submissionService.submitAllData(labelData.getUserId(), new DataSubmissionListener() {
+                final DataSubmissionListener dataSubmissionListener = new DataSubmissionListener() {
 
                     @Override
                     public void scoreSubmissionFailed(DataSubmissionException exception) {
@@ -140,7 +139,8 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                         });
                         ((TimedStimulusView) simpleView).endRegion(userRegion);
                     }
-                });
+                };
+                submissionService.submitAllData(labelData.getUserId(), dataSubmissionListener);
             }
         }
     }
