@@ -457,6 +457,10 @@ public class LocalStorage implements LocalStorageInterface {
         }
     }
 
+    public void clearStorageException() {
+        localStorageException = null;
+    }
+
     public void checkStorageException() throws LocalStorageException {
         if (localStorageException != null) {
             // any recorded localStorageException should not be cleared, only a page reload should reset the error state

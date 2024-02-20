@@ -111,6 +111,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                     
                     @Override
                     public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                        localStorage.clearStorageException();
                         submissionService.submitAllData(labelData.getUserId(), new DataSubmissionListener() {
                             
                             @Override

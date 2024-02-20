@@ -320,7 +320,6 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
         final ResultCounts resultCounts = new ResultCounts();
         for (final ServiceEndpoint endpoint : ServiceEndpoint.values()) {
-            // todo: the ServiceEndpoint.metadata never seems to get its data stored so this data might not get sent on retries
             final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
             if (storedScreenData.isEmpty()) {
                 resultCounts.successCounter++;
@@ -447,7 +446,6 @@ public class DataSubmissionService extends AbstractSubmissionService {
                         logger.info(text);
 //                    localStorage.stowSentData(userId, jsonData);
                         try {
-                            // TODO: this currently blocks StorageFullPresenter from uploading data and needs to be made more felxible
                             localStorage.checkStorageException();
                             dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                         } catch (LocalStorageException localStorageException) {
