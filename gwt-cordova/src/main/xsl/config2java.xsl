@@ -233,7 +233,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 localStorage.checkStorageException();
             } catch (LocalStorageException localStorageException) {
                 this.presenter = new StorageFullPresenter(widgetTag, localStorage, submissionService, localStorageException.getMessage());
-                presenter.setState(this, ApplicationState.start, applicationState);
+                presenter.setState(this, null, null);
             }
             }
         </xsl:text>
