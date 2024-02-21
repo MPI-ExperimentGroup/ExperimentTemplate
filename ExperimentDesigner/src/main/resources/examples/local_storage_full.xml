@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
-    appNameDisplay="Local Storage Full"    
-    obfuscateBrowserStorage="false">       
-    <deployment state="debug" isAndroid="true"/>  
+    appNameDisplay="Local Storage Full"
+    obfuscateBrowserStorage="false">
+    <deployment state="debug" isAndroid="true" />
     <metadata>
         <field controlledMessage="." controlledRegex="." postName="name" registrationField="name"></field>
-    </metadata> 
+    </metadata>
     <presenter type="stimulus" self="induce_storage_error">
         <htmlText
             featureText="The function of this presenter is to induce an out of storage error. This is done by automatically stuffing data into the local storage and creating new participants until it breaks."></htmlText>
-            <setMetadataValue fieldName="name" replacementRegex="" dataLogFormat="::formatDateTime_yyyy.MM.dd HH:mm:ss::"/>
+        <setMetadataValue fieldName="name" replacementRegex=""
+            dataLogFormat="::formatDateTime_yyyy.MM.dd HH:mm:ss::" />
         <loadStimulus>
             <hasMoreStimulus>
                 <setStimulusCodeResponse
@@ -23,8 +24,8 @@
                 0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
                 0123456789012345678901234"
                     applyScore="true" />
-                    <htmlText featureText="Stored some data" />
-                    <nextStimulus repeatIncorrect="false" />
+                <htmlText featureText="Stored some data" />
+                <nextStimulus repeatIncorrect="false" />
             </hasMoreStimulus>
             <endOfStimulus>
                 <gotoPresenter target="createParticipant" />
@@ -34,13 +35,18 @@
     <presenter type="transmission" self="createParticipant">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="Sent the data, therefore local storage is NOT accumulating. Try disconnecting WiFi." />
+                <htmlText
+                    featureText="Sent the data, therefore local storage is NOT accumulating. Try disconnecting WiFi." />
             </onSuccess>
             <onError>
                 <htmlText featureText="Failed to send the data, data is accumulating." />
             </onError>
         </sendAllData>
-        <createUserButton featureText="Create a new participant to keep filling the local storage" target="induce_storage_error" />
+        <createUserButton featureText="Create a new participant to keep filling the local storage"
+            target="induce_storage_error" />
+    </presenter>
+    <presenter type="debug">
+        <uploadUsersDataMenu fieldName="name" />
     </presenter>
     <stimuli>
         <stimulus identifier="0" label="0" />

@@ -2817,6 +2817,17 @@
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
+<xs:complexType name="uploadUsersDataMenuType">
+<xs:annotation>
+<xs:documentation>For use in the debug type presenters to show a data upload menu for all participants that have data on the local device. The participant label on each button is determined by the fieldName attribute. Data for each participant will be automatically uploaded unless the dataAgreementField is set in the XML, in which case the data will be uploaded only if the agreement field matches the required value. If the participant data has been successfully sent to the server then a deletion button will be shown to remove the participant from the device. If there is an error writing to the local storage an error page will be shown that includes this menu.</xs:documentation>
+</xs:annotation>
+<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:attribute name="fieldName" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
 <xs:complexType name="addDebugWidgetsType">
 <xs:annotation>
 <xs:documentation>For use in the debug type presenters to enable debugging tools.</xs:documentation>
@@ -5564,6 +5575,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="uploadUsersDataMenu" type="uploadUsersDataMenuType"/>
 <xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
@@ -5866,6 +5878,7 @@
 <xs:element name="triggerDefinition" type="triggerDefinitionType"/>
 <xs:element name="triggerMatching" type="triggerMatchingType"/>
 <xs:element name="triggerRandom" type="triggerRandomType"/>
+<xs:element name="uploadUsersDataMenu" type="uploadUsersDataMenuType"/>
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="versionData" type="versionDataType"/>
@@ -5935,6 +5948,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="uploadUsersDataMenu" type="uploadUsersDataMenuType"/>
 <xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
@@ -6093,6 +6107,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="uploadUsersDataMenu" type="uploadUsersDataMenuType"/>
 <xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
@@ -6319,6 +6334,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="uploadUsersDataMenu" type="uploadUsersDataMenuType"/>
 <xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>
@@ -6559,6 +6575,7 @@
 <xs:element name="localStorageData" type="localStorageDataType"/>
 <xs:element name="stimuliValidation" type="stimuliValidationType"/>
 <xs:element name="addKeyboardDebug" type="addKeyboardDebugType"/>
+<xs:element name="uploadUsersDataMenu" type="uploadUsersDataMenuType"/>
 <xs:element name="addDebugWidgets" type="addDebugWidgetsType"/>
 <xs:element name="allMetadataFields" type="allMetadataFieldsType"/>
 <xs:element name="metadataField" type="metadataFieldType"/>

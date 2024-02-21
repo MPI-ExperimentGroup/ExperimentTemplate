@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
@@ -32,17 +33,22 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.InsertPanel.ForIsWidget;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import java.util.List;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.SimuliValidationRunner;
@@ -116,7 +122,6 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
 //            }
 //        });
 //    }
-
     protected void eraseLocalStorageButton(final String styleName, final String buttonGroup) {
         optionButton(new PresenterEventListener() {
 
@@ -384,6 +389,66 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             final String key = localStorage.key(itemIndex);
             ((ComplexView) simpleView).addHtmlText(key, "highlightedText");
             ((ComplexView) simpleView).addText(localStorage.getItem(key));
+        }
+    }
+
+    protected void uploadUsersDataMenu(MetadataField metadataField) {
+        List<UserLabelData> userList = localStorage.getUserIdList(metadataField);
+        for (final UserLabelData labelData : userList) {
+            if (!localStorage.getDataAgreementValue(labelData.getUserId(), metadataFieldProvider)) {
+                final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
+                ((ComplexView) simpleView).addPadding();
+                ((ComplexView) simpleView).addText("User data agreement is not complete so cannot submit data: " + labelData.getUserName());
+                ((TimedStimulusView) simpleView).endRegion(userRegion);
+            } else {
+                localStorage.clearStorageException();
+                final DataSubmissionListener dataSubmissionListener = new DataSubmissionListener() {
+
+                    @Override
+                    public void scoreSubmissionFailed(DataSubmissionException exception) {
+                        final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
+                        ((ComplexView) simpleView).addPadding();
+                        ((ComplexView) simpleView).addText("Data submision failed: " + labelData.getUserName());
+                        ((TimedStimulusView) simpleView).endRegion(userRegion);
+                    }
+
+                    @Override
+                    public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                        final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
+                        ((ComplexView) simpleView).addPadding();
+                        ((ComplexView) simpleView).addText("Data submission complete: " + labelData.getUserName());
+                        ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
+
+                            @Override
+                            public String getLabel() {
+                                return "Delete local data: " + labelData.getUserName();
+                            }
+
+                            @Override
+                            public int getHotKey() {
+                                return -1;
+                            }
+
+                            @Override
+                            public String getStyleName() {
+                                return null;
+                            }
+
+                            @Override
+                            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
+                                localStorage.clearUserData(labelData.getUserId());
+                                final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
+                                ((ComplexView) simpleView).addPadding();
+                                ((TimedStimulusView) simpleView).clearRegion(labelData.getUserId().toString());
+                                ((ComplexView) simpleView).addText("Local data deleted: " + labelData.getUserName());
+                                ((TimedStimulusView) simpleView).endRegion(userRegion);
+                            }
+                        });
+                        ((TimedStimulusView) simpleView).endRegion(userRegion);
+                    }
+                };
+                submissionService.submitAllData(labelData.getUserId(), dataSubmissionListener);
+            }
         }
     }
 }

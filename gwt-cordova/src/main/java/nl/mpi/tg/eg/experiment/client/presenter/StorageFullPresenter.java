@@ -77,71 +77,11 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                 + "Commit Date: " + version.lastCommitDate());
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
-        uploadUsersDataMenu();
+        uploadUsersDataMenu(metadataFieldProvider.getMetadataFieldArray()[0]);
 //        ((ComplexView) simpleView).addPadding();
 //        ((ComplexView) simpleView).addPadding();
 //        eraseLocalStorageButton(null, "eraseLocalStorageButton");
 //        ((ComplexView) simpleView).addPadding();
 //        localStorageData();
-    }
-
-    protected void uploadUsersDataMenu() {
-        List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.getMetadataFieldArray()[0]);
-        for (final UserLabelData labelData : userList) {
-            if (!localStorage.getDataAgreementValue(labelData.getUserId(), metadataFieldProvider)) {
-                final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
-                ((ComplexView) simpleView).addPadding();
-                ((ComplexView) simpleView).addText("User data agreement is not complete so cannot submit data: " + labelData.getUserName());
-                ((TimedStimulusView) simpleView).endRegion(userRegion);
-            } else {
-                localStorage.clearStorageException();
-                final DataSubmissionListener dataSubmissionListener = new DataSubmissionListener() {
-
-                    @Override
-                    public void scoreSubmissionFailed(DataSubmissionException exception) {
-                        final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
-                        ((ComplexView) simpleView).addPadding();
-                        ((ComplexView) simpleView).addText("Data submision failed: " + labelData.getUserName());
-                        ((TimedStimulusView) simpleView).endRegion(userRegion);
-                    }
-
-                    @Override
-                    public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                        final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
-                        ((ComplexView) simpleView).addPadding();
-                        ((ComplexView) simpleView).addText("Data submission complete: " + labelData.getUserName());
-                        ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListener() {
-
-                            @Override
-                            public String getLabel() {
-                                return "Delete local data: " + labelData.getUserName();
-                            }
-
-                            @Override
-                            public int getHotKey() {
-                                return -1;
-                            }
-
-                            @Override
-                            public String getStyleName() {
-                                return null;
-                            }
-
-                            @Override
-                            public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-                                localStorage.clearUserData(labelData.getUserId());
-                                final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
-                                ((ComplexView) simpleView).addPadding();
-                                ((TimedStimulusView) simpleView).clearRegion(labelData.getUserId().toString());
-                                ((ComplexView) simpleView).addText("Local data deleted: " + labelData.getUserName());
-                                ((TimedStimulusView) simpleView).endRegion(userRegion);
-                            }
-                        });
-                        ((TimedStimulusView) simpleView).endRegion(userRegion);
-                    }
-                };
-                submissionService.submitAllData(labelData.getUserId(), dataSubmissionListener);
-            }
-        }
     }
 }

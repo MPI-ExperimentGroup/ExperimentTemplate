@@ -67,6 +67,7 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <createUserButton featureText="createUserButton" groupId="groupId" styleName="styleName" target="target"/>
         <switchUserIdButton featureText="switchUserIdButton" fieldName="workerId" groupId="groupId" styleName="styleName" validationRegex="validationRegex">
             <onSuccess>
@@ -243,6 +244,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
@@ -461,6 +463,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <showCurrentMs/>
         <cancelPauseTimers/>
         <centrePage/>
@@ -2161,6 +2164,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <showCurrentMs/>
         <cancelPauseTimers/>
         <cancelPauseAll/>
@@ -2535,6 +2539,7 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -2589,6 +2594,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -2695,6 +2701,7 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -2791,6 +2798,7 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
@@ -2949,6 +2957,7 @@
         <localStorageData/>
         <stimuliValidation/>
         <addKeyboardDebug/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <addDebugWidgets/>
         <eraseLocalStorageButton groupId="groupId" styleName="styleName"/>
         <centrePage/>
@@ -3034,6 +3043,7 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -3146,6 +3156,7 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -3232,6 +3243,7 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <createUserButton featureText="" target="target"/>
         <switchUserIdButton featureText="" fieldName="workerId" validationRegex="">
             <onSuccess>
@@ -3408,6 +3420,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
@@ -3626,6 +3639,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <showCurrentMs/>
         <cancelPauseTimers/>
         <centrePage/>
@@ -5296,6 +5310,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <showCurrentMs/>
         <cancelPauseTimers/>
         <cancelPauseAll/>
@@ -5618,6 +5633,7 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <htmlTokenText featureText=""/>
         <actionButton featureText=""/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <helpDialogue featureText="" closeButtonLabel=""/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -5672,6 +5688,7 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <hasGetParameter parameterName="">
             <conditionTrue>
@@ -5778,6 +5795,7 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
@@ -5874,6 +5892,7 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
@@ -6032,6 +6051,7 @@
         <localStorageData/>
         <stimuliValidation/>
         <addKeyboardDebug/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <addDebugWidgets/>
         <eraseLocalStorageButton/>
         <centrePage/>
@@ -6117,6 +6137,7 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
@@ -6229,6 +6250,7 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
+        <uploadUsersDataMenu fieldName="workerId"/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>

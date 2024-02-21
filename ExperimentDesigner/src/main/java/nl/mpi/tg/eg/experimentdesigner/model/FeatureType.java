@@ -98,6 +98,7 @@ public enum FeatureType {
     localStorageData(false, false, null, "For use in the debug type presenters to show the data stored in the local storage. Use with caution because there can be a lot of data."),
     stimuliValidation(false, false, null, "For use in the debug type presenters to show the results of stimuli randomisation for each selection in the configuration file."),
     addKeyboardDebug(false, false, null, "For use in the debug type presenters to show the keycodes entered by devices attached to the device. Such as bluetooth remotes or pointers."),
+    uploadUsersDataMenu(false, false, new FeatureAttribute[]{fieldName}, "For use in the debug type presenters to show a data upload menu for all participants that have data on the local device. The participant label on each button is determined by the fieldName attribute. Data for each participant will be automatically uploaded unless the dataAgreementField is set in the XML, in which case the data will be uploaded only if the agreement field matches the required value. If the participant data has been successfully sent to the server then a deletion button will be shown to remove the participant from the device. If there is an error writing to the local storage an error page will be shown that includes this menu."),
     addDebugWidgets(false, false, null, "For use in the debug type presenters to enable debugging tools."),
     // metadataField fields:
     //    displays all or one metadata field for data entry

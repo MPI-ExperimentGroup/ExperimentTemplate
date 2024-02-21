@@ -1896,6 +1896,24 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
+      "type": "frinex_uploadUsersDataMenuType",
+      "message0": 'uploadUsersDataMenu %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "previousStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
       "type": "frinex_addDebugWidgetsType",
       "message0": 'addDebugWidgets %1',
       "args0": [
@@ -6656,6 +6674,10 @@ function getFeatureBlocks() {
     var childData = '';
     return '"frinex_addKeyboardDebugType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
   };
+    javascript.javascriptGenerator.forBlock['frinex_uploadUsersDataMenuType'] = function(block, generator) {
+    var childData = '';
+    return '"frinex_uploadUsersDataMenuType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
+  };
     javascript.javascriptGenerator.forBlock['frinex_addDebugWidgetsType'] = function(block, generator) {
     var childData = '';
     return '"frinex_addDebugWidgetsType": {\n  "block_id": "' + block.id + '",\n'  + childData + '},\n';
@@ -7795,6 +7817,10 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_addKeyboardDebugType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_uploadUsersDataMenuType"
       },
       {
         "kind": "block",
