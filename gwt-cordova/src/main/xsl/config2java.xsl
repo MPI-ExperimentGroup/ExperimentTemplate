@@ -343,7 +343,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or not(@type) or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
 if(@type = 'preload') then ', DataSubmissionService submissionService' else 
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timeline' or @type = 'colourPicker' or @type = 'debug') then ', DataSubmissionService submissionService' else ''" />
             <xsl:text>, UserResults userResults, LocalStorage localStorage, final TimerService timerService</xsl:text>
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
