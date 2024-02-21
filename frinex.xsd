@@ -3514,7 +3514,7 @@
 </xs:complexType>
 <xs:complexType name="zeroStimulusStopwatchType">
 <xs:annotation>
-<xs:documentation>Each stimulus response can have a number of stimulus time periods recorded. At the point when the time period should start the named period should be zeroed.</xs:documentation>
+<xs:documentation>Each stimulus response can have a number of stimulus time periods recorded. At the point when the time period should start the named period should be zeroed. The stopwatch values are recorded in the stimulus response events for each stimulus based on the eventId attribute.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventId" type="postName">
@@ -3525,7 +3525,7 @@
 </xs:complexType>
 <xs:complexType name="stopStimulusStopwatchType">
 <xs:annotation>
-<xs:documentation>Each stimulus response can have a number of stimulus time periods recorded. At the point when the time period should end the named period should be stopped.</xs:documentation>
+<xs:documentation>Each stimulus response can have a number of stimulus time periods recorded. At the point when the time period should end the named period should be stopped.  The stopwatch values are recorded in the stimulus response events for each stimulus based on the eventId attribute.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventId" type="postName">
