@@ -45,7 +45,7 @@
         <createUserButton featureText="Create a new participant to keep filling the local storage"
             target="induce_storage_error" />
     </presenter>
-    <presenter type="debug">
+    <presenter type="debug" self="UsersDataMenu">
         <uploadUsersDataMenu fieldName="name" />
     </presenter>
     <stimuli>
