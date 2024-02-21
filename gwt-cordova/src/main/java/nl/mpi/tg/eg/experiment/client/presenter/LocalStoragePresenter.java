@@ -388,9 +388,9 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
         }
     }
 
-    protected void uploadUsersDataMenu(MetadataField metadataField) {
-        List<UserLabelData> userList = localStorage.getUserIdList(metadataField);
-        for (final UserLabelData labelData : userList) {
+    private void uploadNextUsersData(List<UserLabelData> userList) {
+        if (!userList.isEmpty()) {
+            final UserLabelData labelData = userList.remove(0);
             if (!localStorage.getDataAgreementValue(labelData.getUserId(), metadataFieldProvider)) {
                 final InsertPanel.ForIsWidget userRegion = ((TimedStimulusView) simpleView).startRegion(labelData.getUserId().toString(), null);
                 ((ComplexView) simpleView).addPadding();
@@ -406,6 +406,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
                         ((ComplexView) simpleView).addPadding();
                         ((ComplexView) simpleView).addText("Data submision failed: " + labelData.getUserName());
                         ((TimedStimulusView) simpleView).endRegion(userRegion);
+                        uploadNextUsersData(userList);
                     }
 
                     @Override
@@ -441,10 +442,16 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
                             }
                         });
                         ((TimedStimulusView) simpleView).endRegion(userRegion);
+                        uploadNextUsersData(userList);
                     }
                 };
                 submissionService.submitAllData(labelData.getUserId(), dataSubmissionListener);
             }
         }
+    }
+
+    protected void uploadUsersDataMenu(MetadataField metadataField) {
+        List<UserLabelData> userList = localStorage.getUserIdList(metadataField);
+        uploadNextUsersData(userList);
     }
 }
