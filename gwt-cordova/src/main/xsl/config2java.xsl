@@ -200,7 +200,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:for-each>
         <xsl:text>
             case version:
-            this.presenter = new VersionPresenter(widgetTag, userResults, localStorage, timerService);
+            this.presenter = new VersionPresenter(widgetTag, submissionService, userResults, localStorage, timerService);
             presenter.setState(this, ApplicationState.start, null);
             break;
         </xsl:text>
