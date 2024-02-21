@@ -369,7 +369,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
                 </xsl:when>
                 <xsl:when test="@type = 'debug'">
                     <xsl:text>
-                        super(widgetTag);
+                        super(widgetTag, localStorage, submissionService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'preload'">

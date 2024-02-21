@@ -44,6 +44,11 @@
         </sendAllData>
         <createUserButton featureText="Create a new participant to keep filling the local storage"
             target="induce_storage_error" />
+        <addPadding />
+        <addPadding />
+        <actionButton featureText="UsersDataMenu">
+            <gotoPresenter target="UsersDataMenu" />
+        </actionButton>
     </presenter>
     <presenter type="debug" self="UsersDataMenu">
         <uploadUsersDataMenu fieldName="name" />

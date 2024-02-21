@@ -37,7 +37,7 @@ public class TemplateVersionPresenter extends LocalStoragePresenter implements P
     final ApplicationController.ApplicationState startTesingState;
 
     public TemplateVersionPresenter(RootLayoutPanel widgetTag, final ApplicationController.ApplicationState nextState) {
-        super(widgetTag);
+        super(widgetTag, null, null);
         this.startTesingState = nextState;
     }
 

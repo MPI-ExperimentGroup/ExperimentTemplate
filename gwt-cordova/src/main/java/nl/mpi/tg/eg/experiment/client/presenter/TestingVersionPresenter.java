@@ -37,7 +37,7 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
     final ApplicationController.ApplicationState startTesingState;
 
     public TestingVersionPresenter(RootLayoutPanel widgetTag, final ApplicationController.ApplicationState nextState) {
-        super(widgetTag);
+        super(widgetTag, null, null);
         this.startTesingState = nextState;
     }
 
