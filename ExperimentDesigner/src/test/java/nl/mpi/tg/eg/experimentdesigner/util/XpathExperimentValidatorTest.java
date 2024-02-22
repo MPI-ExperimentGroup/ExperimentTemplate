@@ -376,9 +376,21 @@ public class XpathExperimentValidatorTest {
                 + "<field postName=\"daga5_cut\" />"
                 + "</metadata>"
                 + "</experiment>");
+        Document xmlFailReservedDocument = getDocument("<experiment>"
+                + "<metadata>"
+                + "<field postName=\"id\" />"
+                + "<field postName=\"submitDate\" />"
+                + "<field postName=\"userId\" />"
+                + "<field postName=\"remoteAddr\" />"
+                + "<field postName=\"acceptLang\" />"
+                + "<field postName=\"userAgent\" />"
+                + "<field postName=\"staleCopy\" />"
+                + "</metadata>"
+                + "</experiment>");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateMetadataFieldPostNames(xmlOkIdentifierDocument));
         assertEquals("The metadata field postName 'daga3_cut' has been used more than once. Each postName must be unique.", instance.validateMetadataFieldPostNames(xmlFailIdentifierDocument));
+        assertEquals("The metadata field postName 'id' uses a reserved name and cannot be used here.The metadata field postName 'submitDate' uses a reserved name and cannot be used here.The metadata field postName 'userId' uses a reserved name and cannot be used here.The metadata field postName 'remoteAddr' uses a reserved name and cannot be used here.The metadata field postName 'acceptLang' uses a reserved name and cannot be used here.The metadata field postName 'userAgent' uses a reserved name and cannot be used here.The metadata field postName 'staleCopy' uses a reserved name and cannot be used here.", instance.validateMetadataFieldPostNames(xmlFailReservedDocument));
     }
 
     /**

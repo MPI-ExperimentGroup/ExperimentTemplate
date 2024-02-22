@@ -22,6 +22,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -221,6 +223,7 @@ public class XpathExperimentValidator {
     protected String validateMetadataFieldPostNames(Document xmlDocument) throws XPathExpressionException {
         String returnMessage = "";
         final ArrayList<String> fieldNames = new ArrayList<>();
+        final List<String> forbiddenNames = Arrays.asList(new String[]{"id", "submitDate", "userId", "remoteAddr", "acceptLang", "userAgent", "staleCopy"});
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/metadata/field/@postName").evaluate(xmlDocument, XPathConstants.NODESET);
         for (int index = 0; index < nodeList1.getLength(); index++) {
@@ -230,6 +233,9 @@ public class XpathExperimentValidator {
             } else {
                 returnMessage += "The metadata field postName '" + fieldNamesString + "' has been used more than once. Each postName must be unique.";
             }
+            if (forbiddenNames.contains(fieldNamesString)){
+                returnMessage += "The metadata field postName '" + fieldNamesString + "' uses a reserved name and cannot be used here.";
+            }            
         }
         return returnMessage;
     }
