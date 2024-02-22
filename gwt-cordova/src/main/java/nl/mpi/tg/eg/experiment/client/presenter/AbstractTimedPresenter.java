@@ -238,7 +238,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListener presenterListener, final String buttonGroup) {
         final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths());
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
+        addButtonToGroup(htmlTokenFormatter.formatString(buttonGroup), ((ComplexView) simpleView).addOptionButton(new PresenterEventListener() {
             @Override
             public String getLabel() {
                 return htmlTokenFormatter.formatString(presenterListener.getLabel());
@@ -251,7 +251,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
             @Override
             public String getStyleName() {
-                return presenterListener.getStyleName();
+                return htmlTokenFormatter.formatString(presenterListener.getStyleName());
             }
 
             @Override

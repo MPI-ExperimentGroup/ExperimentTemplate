@@ -220,7 +220,7 @@
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionTokenButton featureText="actionTokenButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionTokenButton"/>
         </actionTokenButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -404,7 +404,7 @@
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
-            <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionTokenButton featureText="actionTokenButton" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionTokenButton"/>
             </actionTokenButton>
         </showHtmlPopup>
@@ -2138,7 +2138,7 @@
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+        <actionTokenButton featureText="actionTokenButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionTokenButton"/>
         </actionTokenButton>
         <disableButtonGroup matchingRegex="matchingRegex"/>
@@ -2499,7 +2499,7 @@
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
             </actionButton>
-            <actionTokenButton featureText="actionTokenButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
+            <actionTokenButton featureText="actionTokenButton" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionTokenButton"/>
             </actionTokenButton>
         </showHtmlPopup>
