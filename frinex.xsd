@@ -1840,7 +1840,7 @@
 </xs:complexType>
 <xs:complexType name="actionTokenButtonType">
 <xs:annotation>
-<xs:documentation>Creates a button where any tokens in its label are evaluated before displaying. When clicked evaluates the contents of its element.</xs:documentation>
+<xs:documentation>Creates a button where any tokens in its label, styleName and groupId are evaluated before displaying. When clicked evaluates the contents of its element.</xs:documentation>
 </xs:annotation>
 <xs:choice minOccurs="0" maxOccurs="unbounded">
 <xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
@@ -1862,11 +1862,6 @@
 <xs:attribute name="featureText" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="eventTag" type="xs:string">
-<xs:annotation>
-<xs:documentation>When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="hotKey" type="hotKeyType">
