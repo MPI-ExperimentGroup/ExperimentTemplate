@@ -85,6 +85,7 @@
                                     </onSuccess>
                                     <onError>
                                         <plainText featureText="streamGroupCanvas onError A,B|B,C"/>
+                                        <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
@@ -96,6 +97,7 @@
                                     </onSuccess>
                                     <onError>
                                         <plainText featureText="streamGroupCanvas onError A,B,C"/>
+                                        <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
@@ -117,6 +119,7 @@
                                     </onSuccess>
                                     <onError>
                                         <plainText featureText="streamGroupCamera onErrorA,B|B,C"/>
+                                        <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
                                     </onError>
                                 </streamGroupCamera>
                             </actionButton>
