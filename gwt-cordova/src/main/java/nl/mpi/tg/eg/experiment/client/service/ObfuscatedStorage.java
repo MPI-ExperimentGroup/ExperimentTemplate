@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.http.client.URL;
 import com.google.gwt.storage.client.Storage;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.exception.LocalStorageException;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -174,13 +176,23 @@ public class ObfuscatedStorage {
 
     public void clearUserData(UserId userId) {
         final String userIdString1 = obfuscateString(userId.toString(), userId.toString()).substring(0, userId.toString().length());
+        final List<String> deleteKeysList = new ArrayList<>();
         for (int itemIndex = getLength() - 1; itemIndex > -1; itemIndex--) {
             final String key = key(itemIndex);
-            if (key.startsWith(appNameInternal + "." + userIdString1)) {
-                removeItem(key);
-            } else if (key.startsWith(appNameInternal + "." + userId.toString())) {
-                removeItem(key);
+            if (key.startsWith(appNameInternal + "." + userIdString1 + ".")) {
+                deleteKeysList.add(key);
+            } else if (key.startsWith(appNameInternal + "." + userId.toString() + ".")) {
+                deleteKeysList.add(key);
+            } else if (key.equals(appNameInternal + "." + "LastUserId")) {
+                // if the user data being deleted is the last user LastUserId then also delete it
+                if (userIdString1.equals(getItem(key)) || userId.toString().equals(getItem(key))) {
+                    deleteKeysList.add(key);
+                }
             }
+        }
+        // keeping the keys to delete in a list because removing items from the storage changes the index number of keys
+        while (!deleteKeysList.isEmpty()) {
+            removeItem(deleteKeysList.remove(0));
         }
     }
 }
