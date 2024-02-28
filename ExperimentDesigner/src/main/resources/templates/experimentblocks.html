@@ -49,6 +49,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
                     const code = javascript.javascriptGenerator.workspaceToCode(workspace);
                     document.getElementById('previewArea').value = code;
+                    // TODO: via the WizardStimulusPresenter process the JSON data and focus on the highlighed block ID
                 }
                 workspace.addChangeListener(updatePreview);
             </script>

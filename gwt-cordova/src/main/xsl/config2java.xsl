@@ -256,6 +256,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 $wnd.requestState = function(presenterName) {
                     return appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(presenterName);
                 }
+                $wnd.WizardStimulusPresenter = function(jsonBlocksData, selectedBlockId) {
+                    // TODO: process the JSON data and focus on the highlighed block ID
+                }
                 }-*/;
             </xsl:text>
         </xsl:if>
