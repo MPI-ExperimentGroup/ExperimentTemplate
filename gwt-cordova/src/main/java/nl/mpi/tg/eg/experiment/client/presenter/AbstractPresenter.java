@@ -801,11 +801,12 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
-    protected native void templateFeature(String presenterName, String domId, String featureAttribute, String jsonPath, String instructionalText)/*-{
+    protected native void templateFeature(String presenterName, String domId, String featureAttribute, String jsonPath, String instructionalText, String xmlPath)/*-{
         console.log("domId: " + domId);
         console.log("featureAttribute: " + featureAttribute);
         console.log("jsonPath: " + jsonPath);
         console.log("instructionalText: " + instructionalText);
+        console.log("xmlPath: " + xmlPath);
             if (typeof $wnd.templateFeatureHandler !== 'undefined') {
                 // TODO: add an onClick handler to the element so that when clicked the text becomes editable and on focus lost send the updated text to the wizard code
                 // TODO: when editing
