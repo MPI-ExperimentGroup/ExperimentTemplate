@@ -476,7 +476,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:text>(), </xsl:text>
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
         <xsl:value-of select="concat(', new XmlId(&quot;', generate-id(.), '&quot;)')" />
-        <xsl:text>);</xsl:text>
+        <xsl:text>);&#xa;</xsl:text>
         <xsl:apply-templates select="templateFeature" />
     </xsl:template>
     <xsl:template match="plainText">
@@ -835,7 +835,7 @@ or local-name() eq 'submitGroupEvent'
     </xsl:template>
     <xsl:template match="templateFeature">
         <!--xsl:value-of select="if(@featureText and templateFeature@attributeName eq 'featureText') then concat('templateFeature(', generate-id(.), ');') else ''" /-->        
-        <xsl:value-of select="concat('templateFeature(getSelfTag(), &quot;', generate-id(parent::element()), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;')" />
+        <xsl:value-of select="concat('    templateFeature(getSelfTag(), &quot;', generate-id(parent::element()), '&quot;, &quot;', @attributeName, '&quot;, &quot;', @jsonPath, '&quot;, &quot;', @description, '&quot;')" />
         <xsl:text>, "</xsl:text>
         <!-- TODO: utilise this generated JSON path in the editing and JSON compilation processes -->
         <xsl:for-each select="ancestor-or-self::*">
@@ -848,7 +848,7 @@ or local-name() eq 'submitGroupEvent'
             <!-- </xsl:if> -->
             </xsl:if>
         </xsl:for-each>
-        <xsl:text>");</xsl:text>
+        <xsl:text>");&#xa;</xsl:text>
     </xsl:template>
     <xsl:template match="zeroStimulusStopwatch|stopStimulusStopwatch">
         <xsl:value-of select="if(local-name() eq 'zeroStimulusStopwatch') then 'stopwatchZero' else ''" />
