@@ -24,17 +24,17 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
-import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
  * @since 29 February 2024 16:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class WizardStimulusPresenter extends AbstractTimedPresenter implements Presenter {
+public class WizardStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
     private String titleString = "WizardStimulusPresenter";
-    public WizardStimulusPresenter(RootLayoutPanel widgetTag, TimedStimulusView timedStimulusView, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) {
-        super(widgetTag, timedStimulusView, submissionService, userResults, localStorage, timerService);
+
+    public WizardStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, submissionService, userResults, localStorage, timerService);
     }
 
     @Override
@@ -50,8 +50,13 @@ public class WizardStimulusPresenter extends AbstractTimedPresenter implements P
     @Override
     protected void setContent(AppEventListener appEventListener) {
     }
-    
-    public void parseJsonData(final JSONObject jsonBlocksData, final String selectedBlockId){
+
+    @Override
+    protected String[] getStopwatchValues() {
+        return new String[]{};
+    }
+
+    public void parseJsonData(final JSONObject jsonBlocksData, final String selectedBlockId) {
         // TODO: process the JSON data and focus on the highlighed block ID
     }
 }
