@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
-import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -31,10 +31,14 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
  */
 public class WizardStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
-    private String titleString = "WizardStimulusPresenter";
+    private final String titleString = "WizardStimulusPresenter";
+    private final JavaScriptObject jsonBlocksData;
+    private final String selectedBlockId;
 
-    public WizardStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+    public WizardStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService, final JavaScriptObject jsonBlocksData, final String selectedBlockId) {
         super(widgetTag, submissionService, userResults, localStorage, timerService);
+        this.jsonBlocksData = jsonBlocksData;
+        this.selectedBlockId = selectedBlockId;
     }
 
     @Override
@@ -49,14 +53,15 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
 
     @Override
     protected void setContent(AppEventListener appEventListener) {
+        addText("selectedBlockId");
+        addText(selectedBlockId);
+        addPadding();
+        addText("jsonBlocksData");
+        addText(jsonBlocksData.toString());
     }
 
     @Override
     protected String[] getStopwatchValues() {
         return new String[]{};
-    }
-
-    public void parseJsonData(final JSONObject jsonBlocksData, final String selectedBlockId) {
-        // TODO: process the JSON data and focus on the highlighed block ID
     }
 }

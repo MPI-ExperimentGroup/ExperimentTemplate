@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.experiment.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -402,8 +404,9 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
     }
 
     public void previewWizardJson(final String jsonBlocksData, final String selectedBlockId) {
-        this.presenter = new WizardStimulusPresenter(widgetTag, localStorage, submissionService);
-            presenter.setState(this, null, null);
+        JavaScriptObject jsonBlocksObject = JsonUtils.safeEval(jsonBlocksData);
+        this.presenter = new WizardStimulusPresenter(widgetTag, submissionService, userResults, localStorage, timerService, jsonBlocksObject, selectedBlockId);
+        presenter.setState(this, null, null);
     }
 
     final protected native boolean triggerNotificationCallbacks() /*-{
