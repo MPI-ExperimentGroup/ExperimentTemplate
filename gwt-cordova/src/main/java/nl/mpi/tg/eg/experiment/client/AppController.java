@@ -49,6 +49,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.TestingVersionPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.model.ExperimentMetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.presenter.TemplateVersionPresenter;
+import nl.mpi.tg.eg.experiment.client.presenter.WizardStimulusPresenter;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 
