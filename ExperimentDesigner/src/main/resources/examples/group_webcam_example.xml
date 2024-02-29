@@ -6,6 +6,8 @@
         state="debug"              
         stagingServer="https://ems15.mpi.nl"     
         stunServer="coturn.mpi.nl"         
+        isAndroid="true"
+        isDesktop="true"
     />         
     <administration />     
     <metadata />  
