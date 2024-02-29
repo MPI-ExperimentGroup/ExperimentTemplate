@@ -400,6 +400,11 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
         }
     }
 
+    public void previewWizardJson(final String jsonBlocksData, final String selectedBlockId) {
+        this.presenter = new WizardStimulusPresenter(widgetTag, localStorage, submissionService);
+            presenter.setState(this, null, null);
+    }
+
     final protected native boolean triggerNotificationCallbacks() /*-{
         if ($wnd.cordova) if ($wnd.cordova.plugins) if ($wnd.cordova.plugins.notification) $wnd.cordova.plugins.notification.local.fireQueuedEvents();
     }-*/;
