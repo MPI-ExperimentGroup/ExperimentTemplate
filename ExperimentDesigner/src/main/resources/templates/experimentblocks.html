@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:fragment="editorblocks">
             <script src="./webjars/blockly/blockly.min.js"></script>
             <script src="frinexblocks.js"></script>
+            <script src="frinexblockhandler.js"></script>
             <table>
                 <tr>
                     <td class="editorPanel">
@@ -40,28 +41,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
                 <tr><td><textarea id="previewArea" cols="30" rows="10"></textarea></td></tr>
             </table>
-            <script>
-                const featureTypes = getFeatureBlocks();
-                const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
-
-                const supportedEvents = new Set([
-                    Blockly.Events.BLOCK_CHANGE,
-                    Blockly.Events.BLOCK_CREATE,
-                    Blockly.Events.BLOCK_DELETE,
-                    Blockly.Events.BLOCK_MOVE,
-                ]);
-
-                function updatePreview(event) {
-                    if (workspace.isDragging()) return;
-                    if (!supportedEvents.has(event.type)) return;
-
-                    const code = javascript.javascriptGenerator.workspaceToCode(workspace);
-                    document.getElementById('previewArea').value = code;
-                    // TODO: via the WizardStimulusPresenter process the JSON data and focus on the highlighed block ID
-                    document.querySelector("iframe").contentWindow.wizardStimulusPresenter(code,"asfd");
-                }
-                workspace.addChangeListener(updatePreview);
-            </script>
         </div>
     </body>
 </html>
