@@ -28,10 +28,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:fragment="editorblocks">
             <script src="./webjars/blockly/blockly.min.js"></script>
             <script src="frinexblocks.js"></script>
-            <div class="presenter">
-                <div id="editorDiv" style="height: 80vh; width: 80vw;"></div>
-                <textarea id="previewArea" cols="30" rows="10"></textarea>
-            </div>
+            <table>
+                <tr>
+                    <td class="editorPanel">
+                        <div id="editorDiv" style="height: 80vh; width: 50vw;"></div>
+                    </td>
+                    <td class="previewPanel">
+                        <iframe id="previewFrame" src="./compiled_templates/template_example/index.html" scrolling="no"
+                            style="border:1; overflow:hidden; height:80vh; width:50vw;"></iframe>
+                    </td>
+                </tr>
+                <tr><td><textarea id="previewArea" cols="30" rows="10"></textarea></td></tr>
+            </table>
             <script>
                 const featureTypes = getFeatureBlocks();
                 const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
