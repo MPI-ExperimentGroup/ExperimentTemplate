@@ -103,9 +103,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 //                        + "    }\n"
                 );
                 if (typeSubTypes.containsKey(blockType)) {
+                    writer.append("     var childDataLength = 0;\n");
                     for (String currentSubType : typeSubTypes.get(blockType)) {
                         writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
-                        writer.append("     childData += (childData === '')? '' : ',\\n';\n");
+                        writer.append("     childData += (childData.length == childDataLength)? '' : ',\\n';\n");
+                        writer.append("     childDataLength = childData.length;\n");
                     }
                 }
                 writer.append("    return '\"" + blockType + "\": {\\n  \"block_id\": \"' + block.id + '\"' + ((childData === '')? '' : ',\\n') + childData + '}';\n"
