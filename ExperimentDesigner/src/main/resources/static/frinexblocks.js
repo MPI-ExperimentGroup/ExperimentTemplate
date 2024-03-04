@@ -6344,17 +6344,17 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'Stimuli');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_experimentType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_experimentType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_deploymentType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_deploymentType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_deploymentType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_validationServiceType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_validationServiceType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_validationServiceType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_validationType'] = function(block, generator) {
     var childData = '';
@@ -6362,7 +6362,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'recordMatchType');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_validationType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_validationType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_administrationType'] = function(block, generator) {
     var childData = '';
@@ -6370,7 +6370,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'adminUserType');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_administrationType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_administrationType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_adminChartType'] = function(block, generator) {
     var childData = '';
@@ -6378,47 +6378,47 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'metadataType');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_adminChartType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_adminChartType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_dataTableType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_dataTableType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_dataTableType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_fieldType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_fieldType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_presenterType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_presenterType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_randomGroupingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_randomGroupingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimuliSelectType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stimuliSelectType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimuliSelectType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_htmlTextType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_htmlTextType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_htmlTextType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_htmlTokenTextType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_htmlTokenTextType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_htmlTokenTextType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_evaluateTokenTextType'] = function(block, generator) {
     var childData = '';
@@ -6429,17 +6429,17 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_evaluateTokenTextType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_evaluateTokenTextType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_logTokenTextType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_logTokenTextType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_logTokenTextType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_plainTextType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_plainTextType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_plainTextType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_imageType'] = function(block, generator) {
     var childData = '';
@@ -6447,12 +6447,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_imageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_imageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_menuItemType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_menuItemType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_menuItemType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_withStimuliType'] = function(block, generator) {
     var childData = '';
@@ -6460,7 +6460,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_withStimuliType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_withStimuliType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupStimuliType'] = function(block, generator) {
     var childData = '';
@@ -6468,7 +6468,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupStimuliType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupStimuliType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_loadStimulusType'] = function(block, generator) {
     var childData = '';
@@ -6479,7 +6479,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'endOfStimulus');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_loadStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_loadStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_withMatchingStimulusType'] = function(block, generator) {
     var childData = '';
@@ -6490,7 +6490,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'endOfStimulus');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_withMatchingStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_withMatchingStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_loadSdCardStimulusType'] = function(block, generator) {
     var childData = '';
@@ -6501,7 +6501,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'endOfStimulus');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_loadSdCardStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_loadSdCardStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_currentStimulusHasTagType'] = function(block, generator) {
     var childData = '';
@@ -6512,12 +6512,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_currentStimulusHasTagType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_currentStimulusHasTagType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_clearStimulusResponsesType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_clearStimulusResponsesType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_clearStimulusResponsesType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_validateStimuliResponsesType'] = function(block, generator) {
     var childData = '';
@@ -6528,7 +6528,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_validateStimuliResponsesType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_validateStimuliResponsesType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusExistsType'] = function(block, generator) {
     var childData = '';
@@ -6539,22 +6539,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusExistsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusExistsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimuliReportType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_showStimuliReportType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showStimuliReportType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendStimuliReportType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_sendStimuliReportType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendStimuliReportType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_targetButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_targetButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_targetButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_hotKeyInputType'] = function(block, generator) {
     var childData = '';
@@ -6562,7 +6562,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_hotKeyInputType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_hotKeyInputType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_actionButtonType'] = function(block, generator) {
     var childData = '';
@@ -6570,7 +6570,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_actionButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_actionButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_actionTokenButtonType'] = function(block, generator) {
     var childData = '';
@@ -6578,37 +6578,37 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_actionTokenButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_actionTokenButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_disableButtonGroupType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_disableButtonGroupType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_disableButtonGroupType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_enableButtonGroupType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_enableButtonGroupType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_enableButtonGroupType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_hideButtonGroupType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_hideButtonGroupType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_hideButtonGroupType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_styleButtonGroupType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_styleButtonGroupType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_styleButtonGroupType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showButtonGroupType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_showButtonGroupType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showButtonGroupType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_requestFocusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_requestFocusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_requestFocusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgLoadGroupsType'] = function(block, generator) {
     var childData = '';
@@ -6616,22 +6616,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_svgLoadGroupsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_svgLoadGroupsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupAddType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_svgGroupAddType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_svgGroupAddType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgSetLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_svgSetLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_svgSetLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupShowType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_svgGroupShowType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_svgGroupShowType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupActionType'] = function(block, generator) {
     var childData = '';
@@ -6639,12 +6639,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_svgGroupActionType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_svgGroupActionType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_svgGroupMatchingType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_svgGroupMatchingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_svgGroupMatchingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusButtonType'] = function(block, generator) {
     var childData = '';
@@ -6652,7 +6652,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusSliderType'] = function(block, generator) {
     var childData = '';
@@ -6660,7 +6660,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusSliderType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusSliderType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputLabelButtonType'] = function(block, generator) {
     var childData = '';
@@ -6668,7 +6668,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_touchInputLabelButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_touchInputLabelButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputImageButtonType'] = function(block, generator) {
     var childData = '';
@@ -6676,7 +6676,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_touchInputImageButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_touchInputImageButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputVideoButtonType'] = function(block, generator) {
     var childData = '';
@@ -6684,7 +6684,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_touchInputVideoButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_touchInputVideoButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputCaptureType'] = function(block, generator) {
     var childData = '';
@@ -6692,7 +6692,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_touchInputCaptureType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_touchInputCaptureType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_captureStartType'] = function(block, generator) {
     var childData = '';
@@ -6700,7 +6700,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_captureStartType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_captureStartType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchEndType'] = function(block, generator) {
     var childData = '';
@@ -6708,12 +6708,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_touchEndType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_touchEndType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_touchInputStopType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_touchInputStopType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_touchInputStopType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingButtonType'] = function(block, generator) {
     var childData = '';
@@ -6721,7 +6721,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ratingButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ratingButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingRadioButtonType'] = function(block, generator) {
     var childData = '';
@@ -6729,7 +6729,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ratingRadioButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ratingRadioButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingCheckboxType'] = function(block, generator) {
     var childData = '';
@@ -6737,12 +6737,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ratingCheckboxType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ratingCheckboxType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusFreeTextType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stimulusFreeTextType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusFreeTextType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingButtonType'] = function(block, generator) {
     var childData = '';
@@ -6750,7 +6750,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusRatingButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusRatingButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingRadioType'] = function(block, generator) {
     var childData = '';
@@ -6758,7 +6758,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusRatingRadioType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusRatingRadioType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusRatingCheckboxType'] = function(block, generator) {
     var childData = '';
@@ -6766,7 +6766,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusRatingCheckboxType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusRatingCheckboxType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusHasRatingOptionsType'] = function(block, generator) {
     var childData = '';
@@ -6777,12 +6777,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusHasRatingOptionsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusHasRatingOptionsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_clearStimulusResponseType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_clearStimulusResponseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_clearStimulusResponseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusHasResponseType'] = function(block, generator) {
     var childData = '';
@@ -6793,17 +6793,17 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusHasResponseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusHasResponseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_setStimulusCodeResponseType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_setStimulusCodeResponseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_setStimulusCodeResponseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addStimulusCodeResponseValidationType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_addStimulusCodeResponseValidationType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addStimulusCodeResponseValidationType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ratingFooterButtonType'] = function(block, generator) {
     var childData = '';
@@ -6811,12 +6811,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ratingFooterButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ratingFooterButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_targetFooterButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_targetFooterButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_targetFooterButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_actionFooterButtonType'] = function(block, generator) {
     var childData = '';
@@ -6824,67 +6824,67 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_actionFooterButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_actionFooterButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addPaddingType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_addPaddingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addPaddingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_localStorageDataType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_localStorageDataType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_localStorageDataType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimuliValidationType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stimuliValidationType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimuliValidationType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addKeyboardDebugType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_addKeyboardDebugType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addKeyboardDebugType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_uploadUsersDataMenuType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_uploadUsersDataMenuType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_uploadUsersDataMenuType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addDebugWidgetsType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_addDebugWidgetsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addDebugWidgetsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_allMetadataFieldsType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_allMetadataFieldsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_allMetadataFieldsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_metadataFieldType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_metadataFieldType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_metadataFieldType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusMetadataFieldType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stimulusMetadataFieldType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusMetadataFieldType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_metadataFieldConnectionType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_metadataFieldConnectionType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_metadataFieldConnectionType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_metadataFieldVisibilityDependantType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_metadataFieldVisibilityDependantType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_metadataFieldVisibilityDependantType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_metadataFieldDateTriggeredType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_metadataFieldDateTriggeredType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_metadataFieldDateTriggeredType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_saveMetadataButtonType'] = function(block, generator) {
     var childData = '';
@@ -6895,12 +6895,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_saveMetadataButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_saveMetadataButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_createUserButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_createUserButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_createUserButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_switchUserIdButtonType'] = function(block, generator) {
     var childData = '';
@@ -6911,52 +6911,52 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_switchUserIdButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_switchUserIdButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_selectUserMenuType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_selectUserMenuType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_selectUserMenuType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_selectLocaleMenuType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_selectLocaleMenuType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_selectLocaleMenuType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_eraseLocalStorageButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_eraseLocalStorageButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_eraseLocalStorageButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_eraseUsersDataButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_eraseUsersDataButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_eraseUsersDataButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showCurrentMsType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_showCurrentMsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showCurrentMsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_cancelPauseTimersType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_cancelPauseTimersType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_cancelPauseTimersType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_cancelPauseAllType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_cancelPauseAllType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_cancelPauseAllType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusProgressType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_showStimulusProgressType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showStimulusProgressType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_displayCompletionCodeType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_displayCompletionCodeType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_displayCompletionCodeType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_generateCompletionCodeType'] = function(block, generator) {
     var childData = '';
@@ -6967,7 +6967,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_generateCompletionCodeType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_generateCompletionCodeType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendAllDataType'] = function(block, generator) {
     var childData = '';
@@ -6978,7 +6978,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_sendAllDataType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendAllDataType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendMetadataType'] = function(block, generator) {
     var childData = '';
@@ -6989,37 +6989,37 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_sendMetadataType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendMetadataType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_redirectToUrlType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_redirectToUrlType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_redirectToUrlType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_eraseLocalStorageOnWindowClosingType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_eraseLocalStorageOnWindowClosingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_eraseLocalStorageOnWindowClosingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_keepStimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_keepStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_keepStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_removeMatchingStimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_removeMatchingStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_removeMatchingStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_centrePageType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_centrePageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_centrePageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_clearPageType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_clearPageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_clearPageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_backgroundImageType'] = function(block, generator) {
     var childData = '';
@@ -7027,42 +7027,42 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_backgroundImageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_backgroundImageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_allMenuItemsType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_allMenuItemsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_allMenuItemsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_prevStimulusButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_prevStimulusButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_prevStimulusButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_nextStimulusButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_nextStimulusButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_nextStimulusButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_nextStimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_nextStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_nextStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_prevStimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_prevStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_prevStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_nextMatchingStimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_nextMatchingStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_nextMatchingStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addKinTypeGuiType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_addKinTypeGuiType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addKinTypeGuiType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_hasGetParameterType'] = function(block, generator) {
     var childData = '';
@@ -7073,7 +7073,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_hasGetParameterType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_hasGetParameterType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_hasMetadataValueType'] = function(block, generator) {
     var childData = '';
@@ -7084,12 +7084,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'conditionFalse');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_hasMetadataValueType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_hasMetadataValueType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_setMetadataValueType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_setMetadataValueType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_setMetadataValueType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_matchOnEvalTokensType'] = function(block, generator) {
     var childData = '';
@@ -7103,7 +7103,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_matchOnEvalTokensType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_matchOnEvalTokensType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_progressIndicatorType'] = function(block, generator) {
     var childData = '';
@@ -7114,7 +7114,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_progressIndicatorType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_progressIndicatorType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_setMetadataEvalTokensType'] = function(block, generator) {
     var childData = '';
@@ -7125,52 +7125,52 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_setMetadataEvalTokensType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_setMetadataEvalTokensType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_activateRandomItemType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_activateRandomItemType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_activateRandomItemType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_gotoPresenterType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_gotoPresenterType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_gotoPresenterType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_gotoNextPresenterType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_gotoNextPresenterType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_gotoNextPresenterType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_logTimeStampType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_logTimeStampType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_logTimeStampType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_zeroStimulusStopwatchType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_zeroStimulusStopwatchType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_zeroStimulusStopwatchType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stopStimulusStopwatchType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stopStimulusStopwatchType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stopStimulusStopwatchType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_hardwareTimeStampType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_hardwareTimeStampType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_hardwareTimeStampType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_recorderToneInjectionType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_recorderToneInjectionType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_recorderToneInjectionType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_dtmfToneType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_dtmfToneType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_dtmfToneType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_audioButtonType'] = function(block, generator) {
     var childData = '';
@@ -7178,7 +7178,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_audioButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_audioButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_preloadAllStimuliType'] = function(block, generator) {
     var childData = '';
@@ -7189,7 +7189,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_preloadAllStimuliType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_preloadAllStimuliType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusType'] = function(block, generator) {
     var childData = '';
@@ -7197,7 +7197,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_showStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showStimulusGridType'] = function(block, generator) {
     var childData = '';
@@ -7208,7 +7208,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'responseIncorrect');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_showStimulusGridType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showStimulusGridType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_matchingStimulusGridType'] = function(block, generator) {
     var childData = '';
@@ -7219,7 +7219,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'responseIncorrect');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_matchingStimulusGridType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_matchingStimulusGridType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_pauseType'] = function(block, generator) {
     var childData = '';
@@ -7227,7 +7227,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_pauseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_pauseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_doLaterType'] = function(block, generator) {
     var childData = '';
@@ -7235,7 +7235,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_doLaterType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_doLaterType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_requestNotificationType'] = function(block, generator) {
     var childData = '';
@@ -7246,7 +7246,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_requestNotificationType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_requestNotificationType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_startTimerType'] = function(block, generator) {
     var childData = '';
@@ -7254,7 +7254,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_startTimerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_startTimerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block, generator) {
     var childData = '';
@@ -7262,22 +7262,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_compareTimerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_compareTimerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_clearTimerType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_clearTimerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_clearTimerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_logTimerValueType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_logTimerValueType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_logTimerValueType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_timerLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_timerLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_timerLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_randomMsPauseType'] = function(block, generator) {
     var childData = '';
@@ -7285,7 +7285,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_randomMsPauseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_randomMsPauseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_evaluatePauseType'] = function(block, generator) {
     var childData = '';
@@ -7296,7 +7296,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_evaluatePauseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_evaluatePauseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addTimerTriggerType'] = function(block, generator) {
     var childData = '';
@@ -7304,7 +7304,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_addTimerTriggerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addTimerTriggerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_startFrameRateTimerType'] = function(block, generator) {
     var childData = '';
@@ -7312,7 +7312,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_startFrameRateTimerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_startFrameRateTimerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block, generator) {
     var childData = '';
@@ -7320,7 +7320,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_addFrameTimeTriggerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addFrameTimeTriggerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addMediaTriggerType'] = function(block, generator) {
     var childData = '';
@@ -7328,7 +7328,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_addMediaTriggerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addMediaTriggerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addRecorderDtmfTriggerType'] = function(block, generator) {
     var childData = '';
@@ -7336,7 +7336,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_addRecorderDtmfTriggerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addRecorderDtmfTriggerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_addRecorderLevelTriggerType'] = function(block, generator) {
     var childData = '';
@@ -7344,7 +7344,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_addRecorderLevelTriggerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_addRecorderLevelTriggerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerDefinitionType'] = function(block, generator) {
     var childData = '';
@@ -7352,7 +7352,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_triggerDefinitionType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_triggerDefinitionType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_habituationParadigmListenerType'] = function(block, generator) {
     var childData = '';
@@ -7360,12 +7360,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_habituationParadigmListenerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_habituationParadigmListenerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerMatchingType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_triggerMatchingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_triggerMatchingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_triggerRandomType'] = function(block, generator) {
     var childData = '';
@@ -7373,12 +7373,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_triggerRandomType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_triggerRandomType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_resetTriggerType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_resetTriggerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_resetTriggerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_countdownLabelType'] = function(block, generator) {
     var childData = '';
@@ -7386,7 +7386,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_countdownLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_countdownLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusPauseType'] = function(block, generator) {
     var childData = '';
@@ -7394,12 +7394,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusPauseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusPauseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stimulusLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onTimeType'] = function(block, generator) {
     var childData = '';
@@ -7407,7 +7407,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onTimeType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onTimeType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block, generator) {
     var childData = '';
@@ -7415,7 +7415,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onTimerType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onTimerType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_conditionTrueType'] = function(block, generator) {
     var childData = '';
@@ -7423,7 +7423,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_conditionTrueType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_conditionTrueType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_conditionFalseType'] = function(block, generator) {
     var childData = '';
@@ -7431,7 +7431,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_conditionFalseType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_conditionFalseType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onSuccessType'] = function(block, generator) {
     var childData = '';
@@ -7439,7 +7439,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onSuccessType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onSuccessType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onActivateType'] = function(block, generator) {
     var childData = '';
@@ -7447,7 +7447,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onActivateType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onActivateType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_kinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
@@ -7455,7 +7455,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_kinTypeStringDiagramType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_kinTypeStringDiagramType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_loadKinTypeStringDiagramType'] = function(block, generator) {
     var childData = '';
@@ -7463,7 +7463,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_loadKinTypeStringDiagramType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_loadKinTypeStringDiagramType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_editableKinEntitesDiagramType'] = function(block, generator) {
     var childData = '';
@@ -7471,7 +7471,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_editableKinEntitesDiagramType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_editableKinEntitesDiagramType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onKeyUpType'] = function(block, generator) {
     var childData = '';
@@ -7479,7 +7479,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onKeyUpType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onKeyUpType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onKeyDownType'] = function(block, generator) {
     var childData = '';
@@ -7487,7 +7487,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onKeyDownType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onKeyDownType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_responseCorrectType'] = function(block, generator) {
     var childData = '';
@@ -7495,7 +7495,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_responseCorrectType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_responseCorrectType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_responseIncorrectType'] = function(block, generator) {
     var childData = '';
@@ -7503,7 +7503,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_responseIncorrectType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_responseIncorrectType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
     var childData = '';
@@ -7511,7 +7511,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupNetworkType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupNetworkType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_hasMoreStimulusType'] = function(block, generator) {
     var childData = '';
@@ -7519,7 +7519,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_hasMoreStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_hasMoreStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
     var childData = '';
@@ -7527,7 +7527,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_beforeStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_beforeStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_eachStimulusType'] = function(block, generator) {
     var childData = '';
@@ -7535,7 +7535,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_eachStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_eachStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_afterStimulusType'] = function(block, generator) {
     var childData = '';
@@ -7543,7 +7543,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_afterStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_afterStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_endOfStimulusType'] = function(block, generator) {
     var childData = '';
@@ -7551,7 +7551,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_endOfStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_endOfStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
     var childData = '';
@@ -7559,7 +7559,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_existingUserCheckType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_existingUserCheckType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block, generator) {
     var childData = '';
@@ -7567,7 +7567,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_multipleUsersType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_multipleUsersType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block, generator) {
     var childData = '';
@@ -7575,7 +7575,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_singleUserType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_singleUserType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block, generator) {
     var childData = '';
@@ -7583,7 +7583,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_aboveThresholdType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_aboveThresholdType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block, generator) {
     var childData = '';
@@ -7591,7 +7591,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_withinThresholdType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_withinThresholdType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaLoadedType'] = function(block, generator) {
     var childData = '';
@@ -7599,7 +7599,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_mediaLoadedType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_mediaLoadedType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaLoadFailedType'] = function(block, generator) {
     var childData = '';
@@ -7607,7 +7607,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_mediaLoadFailedType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_mediaLoadFailedType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
@@ -7615,7 +7615,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_mediaPlaybackStartedType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_mediaPlaybackStartedType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackCompleteType'] = function(block, generator) {
     var childData = '';
@@ -7623,7 +7623,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_mediaPlaybackCompleteType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_mediaPlaybackCompleteType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_tableType'] = function(block, generator) {
     var childData = '';
@@ -7631,7 +7631,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_tableType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_tableType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_rowType'] = function(block, generator) {
     var childData = '';
@@ -7639,7 +7639,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_rowType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_rowType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_columnType'] = function(block, generator) {
     var childData = '';
@@ -7647,7 +7647,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_columnType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_columnType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionAppendType'] = function(block, generator) {
     var childData = '';
@@ -7655,17 +7655,17 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_regionAppendType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_regionAppendType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionStyleType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_regionStyleType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_regionStyleType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionCodeStyleType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_regionCodeStyleType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_regionCodeStyleType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionReplaceType'] = function(block, generator) {
     var childData = '';
@@ -7673,12 +7673,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_regionReplaceType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_regionReplaceType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionClearType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_regionClearType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_regionClearType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_regionDragDropType'] = function(block, generator) {
     var childData = '';
@@ -7686,7 +7686,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_regionDragDropType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_regionDragDropType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondragstartType'] = function(block, generator) {
     var childData = '';
@@ -7694,7 +7694,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ondragstartType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ondragstartType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondragoverType'] = function(block, generator) {
     var childData = '';
@@ -7702,7 +7702,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ondragoverType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ondragoverType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_ondropType'] = function(block, generator) {
     var childData = '';
@@ -7710,7 +7710,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_ondropType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_ondropType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusPresentType'] = function(block, generator) {
     var childData = '';
@@ -7718,7 +7718,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusPresentType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusPresentType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusImageType'] = function(block, generator) {
     var childData = '';
@@ -7726,7 +7726,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusImageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusImageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageType'] = function(block, generator) {
     var childData = '';
@@ -7734,7 +7734,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusCodeImageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusCodeImageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageButtonType'] = function(block, generator) {
     var childData = '';
@@ -7742,7 +7742,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusCodeImageButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusCodeImageButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusCodeVideoType'] = function(block, generator) {
     var childData = '';
@@ -7750,7 +7750,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusCodeVideoType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusCodeVideoType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusVideoType'] = function(block, generator) {
     var childData = '';
@@ -7758,7 +7758,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusVideoType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusVideoType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusCodeAudioType'] = function(block, generator) {
     var childData = '';
@@ -7766,7 +7766,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusCodeAudioType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusCodeAudioType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusAudioType'] = function(block, generator) {
     var childData = '';
@@ -7774,27 +7774,27 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusAudioType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusAudioType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_playMediaType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_playMediaType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_playMediaType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_rewindMediaType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_rewindMediaType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_rewindMediaType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_pauseMediaType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_pauseMediaType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_pauseMediaType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_logMediaTimeStampType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_logMediaTimeStampType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_logMediaTimeStampType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusImageCaptureType'] = function(block, generator) {
     var childData = '';
@@ -7802,12 +7802,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_stimulusImageCaptureType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stimulusImageCaptureType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_VideoPanelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_VideoPanelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_VideoPanelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_AnnotationTimelinePanelType'] = function(block, generator) {
     var childData = '';
@@ -7815,7 +7815,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_AnnotationTimelinePanelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_AnnotationTimelinePanelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_audioInputSelectWebType'] = function(block, generator) {
     var childData = '';
@@ -7826,7 +7826,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_audioInputSelectWebType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_audioInputSelectWebType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderWebType'] = function(block, generator) {
     var childData = '';
@@ -7834,7 +7834,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_startAudioRecorderWebType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_startAudioRecorderWebType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderAppType'] = function(block, generator) {
     var childData = '';
@@ -7845,22 +7845,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_startAudioRecorderAppType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_startAudioRecorderAppType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_stopAudioRecorderType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_stopAudioRecorderType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_stopAudioRecorderType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderTagType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_startAudioRecorderTagType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_startAudioRecorderTagType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_endAudioRecorderTagType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_endAudioRecorderTagType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_endAudioRecorderTagType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showHtmlPopupType'] = function(block, generator) {
     var childData = '';
@@ -7868,22 +7868,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_showHtmlPopupType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showHtmlPopupType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_helpDialogueType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_helpDialogueType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_helpDialogueType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_userInfoType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_userInfoType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_userInfoType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_versionDataType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_versionDataType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_versionDataType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_showColourReportType'] = function(block, generator) {
     var childData = '';
@@ -7891,7 +7891,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_showColourReportType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_showColourReportType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
     var childData = '';
@@ -7899,7 +7899,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupInitialisationErrorType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupInitialisationErrorType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block, generator) {
     var childData = '';
@@ -7907,7 +7907,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupNetworkConnectingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupNetworkConnectingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block, generator) {
     var childData = '';
@@ -7915,7 +7915,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupFindingMembersType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupFindingMembersType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block, generator) {
     var childData = '';
@@ -7923,7 +7923,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupNetworkSynchronisingType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupNetworkSynchronisingType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block, generator) {
     var childData = '';
@@ -7931,7 +7931,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupPhaseListenersType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupPhaseListenersType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
@@ -7939,22 +7939,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupMemberActivityType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupMemberActivityType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberCodeLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_groupMemberCodeLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupMemberCodeLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_groupMemberLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupMemberLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMessageLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_groupMessageLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupMessageLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupResponseStimulusImageType'] = function(block, generator) {
     var childData = '';
@@ -7962,7 +7962,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupResponseStimulusImageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupResponseStimulusImageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupResponseFeedbackType'] = function(block, generator) {
     var childData = '';
@@ -7973,42 +7973,42 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'responseIncorrect');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_groupResponseFeedbackType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupResponseFeedbackType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupScoreLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_groupScoreLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupScoreLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_groupChannelScoreLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_groupChannelScoreLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_groupChannelScoreLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreLabelType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_scoreLabelType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_scoreLabelType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_submitGroupEventType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_submitGroupEventType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_submitGroupEventType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageButtonType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_sendGroupMessageButtonType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendGroupMessageButtonType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_sendGroupMessageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendGroupMessageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendGroupStoredMessageType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_sendGroupStoredMessageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendGroupStoredMessageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_streamGroupCanvasType'] = function(block, generator) {
     var childData = '';
@@ -8019,7 +8019,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_streamGroupCanvasType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_streamGroupCanvasType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_streamGroupCameraType'] = function(block, generator) {
     var childData = '';
@@ -8030,22 +8030,22 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_streamGroupCameraType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_streamGroupCameraType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_sendGroupTokenMessageType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_sendGroupTokenMessageType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_clearCurrentScoreType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_clearCurrentScoreType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_clearCurrentScoreType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreIncrementType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_scoreIncrementType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_scoreIncrementType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_bestScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
@@ -8053,7 +8053,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_bestScoreAboveThresholdType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_bestScoreAboveThresholdType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_totalScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
@@ -8061,7 +8061,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_totalScoreAboveThresholdType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_totalScoreAboveThresholdType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
@@ -8069,12 +8069,12 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_scoreAboveThresholdType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_scoreAboveThresholdType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_resetStimulusType'] = function(block, generator) {
     var childData = '';
      var childDataLength = 0;
-    return '"frinex_resetStimulusType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_resetStimulusType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_submitTestResultsType'] = function(block, generator) {
     var childData = '';
@@ -8085,7 +8085,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_submitTestResultsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_submitTestResultsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_validateMetadataType'] = function(block, generator) {
     var childData = '';
@@ -8096,7 +8096,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_validateMetadataType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_validateMetadataType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_transmitResultsType'] = function(block, generator) {
     var childData = '';
@@ -8107,7 +8107,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_transmitResultsType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_transmitResultsType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
     javascript.javascriptGenerator.forBlock['frinex_onErrorType'] = function(block, generator) {
     var childData = '';
@@ -8115,7 +8115,7 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
      childData += (childData.length == childDataLength)? '' : ',\n';
      childDataLength = childData.length;
-    return '"frinex_onErrorType": {\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n') + childData + '}';
+    return '{\n"block_type": "frinex_onErrorType"\n  "block_id": "' + block.id + '"' + ((childData === '')? '' : ',\n"child_blocks": [' + childData + ']') + '}';
   };
   return {
     "kind": "categoryToolbox",

@@ -110,7 +110,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         writer.append("     childDataLength = childData.length;\n");
                     }
                 }
-                writer.append("    return '\"" + blockType + "\": {\\n  \"block_id\": \"' + block.id + '\"' + ((childData === '')? '' : ',\\n') + childData + '}';\n"
+                writer.append("    return '{\\n\"block_type\": \"" + blockType + "\"\\n  \"block_id\": \"' + block.id + '\"' + ((childData === '')? '' : ',\\n\"child_blocks\": [' + childData + ']') + '}';\n"
                         + "  };\n");
             }
         }
