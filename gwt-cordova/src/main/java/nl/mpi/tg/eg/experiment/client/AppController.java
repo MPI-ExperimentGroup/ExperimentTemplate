@@ -403,9 +403,8 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
         }
     }
 
-    public void previewWizardJson(final String jsonBlocksData, final String selectedBlockId) {
-        JavaScriptObject jsonBlocksObject = JsonUtils.safeEval(jsonBlocksData);
-        this.presenter = new WizardStimulusPresenter(widgetTag, submissionService, userResults, localStorage, timerService, jsonBlocksObject, selectedBlockId);
+    public void previewWizardData(final String blocksData, final String selectedBlockId) {
+        this.presenter = new WizardStimulusPresenter(widgetTag, submissionService, userResults, localStorage, timerService, blocksData, selectedBlockId);
         presenter.setState(this, null, null);
     }
 

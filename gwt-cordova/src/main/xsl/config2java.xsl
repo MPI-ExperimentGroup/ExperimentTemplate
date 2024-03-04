@@ -256,9 +256,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 $wnd.requestState = function(presenterName) {
                     return appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(presenterName);
                 }
-                $wnd.wizardStimulusPresenter = function(jsonBlocksData, selectedBlockId) {
-                    // TODO: process the JSON data and focus on the highlighed block ID
-                    return appController.@nl.mpi.tg.eg.experiment.client.AppController::previewWizardJson(Ljava/lang/String;Ljava/lang/String;)(jsonBlocksData, selectedBlockId);
+                $wnd.wizardStimulusPresenter = function(blocksData, selectedBlockId) {
+                    return appController.@nl.mpi.tg.eg.experiment.client.AppController::previewWizardData(Ljava/lang/String;Ljava/lang/String;)(blocksData, selectedBlockId);
                 }
                 }-*/;
             </xsl:text>
