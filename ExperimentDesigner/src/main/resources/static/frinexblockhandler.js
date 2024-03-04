@@ -41,6 +41,6 @@ function updatePreview(event) {
     const code = javascript.javascriptGenerator.workspaceToCode(workspace);
     document.getElementById('previewArea').value = code;
     // TODO: via the WizardStimulusPresenter process the JSON data and focus on the highlighed block ID
-    document.querySelector("iframe").contentWindow.wizardStimulusPresenter(code, event.blockId);
+    document.querySelector("iframe").contentWindow.wizardStimulusPresenter('{ ' + code + ' }', event.blockId);
 }
 workspace.addChangeListener(updatePreview);
