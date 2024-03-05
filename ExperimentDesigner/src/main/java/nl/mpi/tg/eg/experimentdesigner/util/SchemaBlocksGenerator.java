@@ -380,6 +380,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                    writer.append("\"type\": \"input_field\", ");
 //                    writer.append("\"type\": \"input_value\", ");
 //                }
+                currentSubTypes.add("DO");
                 writer.append(""
                         //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
                         + "              \"check\": [\n");
