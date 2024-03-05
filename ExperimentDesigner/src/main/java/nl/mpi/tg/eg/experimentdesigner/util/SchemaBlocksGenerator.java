@@ -40,6 +40,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     List<String> featureTypeLists = new ArrayList<>();
     List<String> templateTypeLists = new ArrayList<>();
     Map<String, List<String>> typeSubTypes = new HashMap<>();
+    Map<String, List<String>> typeProperties = new HashMap<>();
 
     private void getStart(Writer writer) throws IOException {
         writer.append("function getFeatureBlocks() {\n"
@@ -137,7 +138,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     }
                 }
                 final String elementName = blockType.replaceAll("^frinex_|Type$", "");
-                writer.append("    return '<" + elementName + " block_id=\"' + block.id + '\" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '</" + elementName + ">');\n"
+                writer.append("    return '<" + elementName + " block_id=\"' + block.id + '\"");
+                if (typeProperties.containsKey(blockType)) {
+                    for (String currentProperty : typeProperties.get(blockType)) {
+                        writer.append(" " + currentProperty + "=\"' + block.getFieldValue('" + currentProperty + "') +'\"");
+                    }
+                }
+                writer.append(" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '</" + elementName + ">');\n"
                         + "  };\n");
             }
         }
@@ -211,6 +218,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             currentSubTypes = new ArrayList<>();
             typeSubTypes.put(currentType, currentSubTypes);
         }
+        List<String> currentTypeProperties;
+        if (typeProperties.containsKey(currentType)) {
+            currentTypeProperties = typeProperties.get(currentType);
+        } else {
+            currentTypeProperties = new ArrayList<>();
+            typeProperties.put(currentType, currentTypeProperties);
+        }
         writer.append("    {\n"
                 + "      \"type\": \"" + currentType + "\",\n"
                 + "      \"message0\": '" + featureType.name() + " %1',\n"
@@ -230,6 +244,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "          \"check\": \"String\"\n"
                 + "        }\n"
                 + "      ],\n");
+                currentTypeProperties.add("featureText");
             argsCount++;
         }
         if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
