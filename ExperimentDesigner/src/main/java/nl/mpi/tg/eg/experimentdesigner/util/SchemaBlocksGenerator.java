@@ -137,7 +137,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     }
                 }
                 final String elementName = blockType.replaceAll("^frinex_|Type$", "");
-                writer.append("    return '<" + elementName + " block_id=\"' + block.id + '\" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '\\n</" + elementName + ">');\n"
+                writer.append("    return '<" + elementName + " block_id=\"' + block.id + '\" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '</" + elementName + ">');\n"
                         + "  };\n");
             }
         }
@@ -222,12 +222,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         //                + "      \"output\": \"frinex_featureType\",\n"
         int argsCount = 1;
         if (featureType.canHaveText()) {
-            // featureText
-            writer.append("      \"message" + argsCount + "\": 'Text %1',\n"
+            writer.append("      \"message" + argsCount + "\": '%1',\n"
                 + "      \"args" + argsCount + "\": [\n"
                 + "        {\n"
                 + "          \"type\": \"field_input\",\n"
-                + "          \"name\": \"text\",\n"
+                + "          \"name\": \"featureText\",\n"
                 + "          \"check\": \"String\"\n"
                 + "        }\n"
                 + "      ],\n");
