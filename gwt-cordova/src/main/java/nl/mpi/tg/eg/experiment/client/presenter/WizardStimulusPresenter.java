@@ -75,7 +75,11 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
         addText(((Element) currentNode).getAttribute("block_id"));
         NodeList childNodes = currentNode.getChildNodes();
         for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
-            iterateBlocks(childNodes.item(nodeCount));
+            if (childNodes.item(nodeCount) instanceof Element) {
+                iterateBlocks(childNodes.item(nodeCount));
+            } else {
+                addText(childNodes.item(nodeCount).getNodeName());
+            }
         }
     }
 
