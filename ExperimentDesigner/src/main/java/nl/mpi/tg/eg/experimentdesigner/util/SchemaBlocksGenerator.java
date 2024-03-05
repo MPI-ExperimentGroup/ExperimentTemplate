@@ -137,7 +137,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     }
                 }
                 final String elementName = blockType.replaceAll("^frinex_|Type$", "");
-                writer.append("    return '<" + elementName + " block_id=\"' + block.id + '\" ' + ((childData === '')? '/>' : '>\\n' + childData + '\\n</" + elementName + ">');\n"
+                writer.append("    return '<" + elementName + " block_id=\"' + block.id + '\" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '\\n</" + elementName + ">');\n"
                         + "  };\n");
             }
         }
