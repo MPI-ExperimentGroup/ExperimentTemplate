@@ -17,8 +17,13 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.xml.client.DOMException;
+import com.google.gwt.xml.client.Document;
+import com.google.gwt.xml.client.Element;
+import com.google.gwt.xml.client.Node;
+import com.google.gwt.xml.client.NodeList;
+import com.google.gwt.xml.client.XMLParser;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -32,12 +37,12 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
 public class WizardStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
     private final String titleString = "WizardStimulusPresenter";
-    private final JavaScriptObject jsonBlocksData;
+    private final String blocksData;
     private final String selectedBlockId;
 
-    public WizardStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService, final JavaScriptObject jsonBlocksData, final String selectedBlockId) {
+    public WizardStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService, final String blocksData, final String selectedBlockId) {
         super(widgetTag, submissionService, userResults, localStorage, timerService);
-        this.jsonBlocksData = jsonBlocksData;
+        this.blocksData = blocksData;
         this.selectedBlockId = selectedBlockId;
     }
 
@@ -56,8 +61,22 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
         addText("selectedBlockId");
         addText(selectedBlockId);
         addPadding();
-        addText("jsonBlocksData");
-        addText(jsonBlocksData.toString());
+        try {
+            Document messageDom = XMLParser.parse(blocksData);
+            iterateBlocks(messageDom.getFirstChild());
+        } catch (DOMException e) {
+            addText("Error parsing blocksData");
+            addText(e.getMessage());
+        }
+    }
+
+    private void iterateBlocks(Node currentNode) {
+        addText(currentNode.getNodeName());
+        addText(((Element) currentNode).getAttribute("block_id"));
+        NodeList childNodes = currentNode.getChildNodes();
+        for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
+            iterateBlocks(childNodes.item(nodeCount));
+        }
     }
 
     @Override
