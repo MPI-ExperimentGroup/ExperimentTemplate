@@ -221,6 +221,18 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "      ],\n");
         //                + "      \"output\": \"frinex_featureType\",\n"
         int argsCount = 1;
+        if (featureType.canHaveText()) {
+            // featureText
+            writer.append("      \"message" + argsCount + "\": 'Text %1',\n"
+                + "      \"args" + argsCount + "\": [\n"
+                + "        {\n"
+                + "          \"type\": \"field_input\",\n"
+                + "          \"name\": \"text\",\n"
+                + "          \"check\": \"String\"\n"
+                + "        }\n"
+                + "      ],\n");
+            argsCount++;
+        }
         if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
 
             if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
