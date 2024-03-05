@@ -6366,14 +6366,17 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'DO');
     return '<field block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '\n</field>');
   };
     javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'DO');
     return '<presenter block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '\n</presenter>');
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function(block, generator) {
     var childData = '';
+     childData += generator.statementToCode(block, 'DO');
     return '<stimulus block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '\n</stimulus>');
   };
     javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function(block, generator) {
