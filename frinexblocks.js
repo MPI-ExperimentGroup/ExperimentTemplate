@@ -417,6 +417,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -433,6 +441,14 @@ function getFeatureBlocks() {
       "args0": [
         {
           "type": "input_dummy",
+        }
+      ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
         }
       ],
       "previousStatement": [
@@ -509,6 +525,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -553,6 +577,14 @@ function getFeatureBlocks() {
       "args0": [
         {
           "type": "input_dummy",
+        }
+      ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
         }
       ],
       "previousStatement": [
@@ -899,6 +931,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -945,8 +985,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "any %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "any %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -975,8 +1023,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "any %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "any %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -1243,8 +1299,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "any %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "any %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -1545,6 +1609,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -1743,6 +1815,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -1785,6 +1865,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -1803,8 +1891,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "any %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "any %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -2045,8 +2141,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "onSuccess %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "onSuccess %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "onSuccess",
@@ -2055,8 +2159,8 @@ function getFeatureBlocks() {
               ]
           }
         ],
-      "message2": "onError %1",
-      "args2": [
+      "message3": "onError %1",
+      "args3": [
             {
               "type": "input_statement",
               "name": "onError",
@@ -2083,6 +2187,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -2101,8 +2213,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "onSuccess %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "onSuccess %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "onSuccess",
@@ -2111,8 +2231,8 @@ function getFeatureBlocks() {
               ]
           }
         ],
-      "message2": "onError %1",
-      "args2": [
+      "message3": "onError %1",
+      "args3": [
             {
               "type": "input_statement",
               "name": "onError",
@@ -2191,6 +2311,14 @@ function getFeatureBlocks() {
       "args0": [
         {
           "type": "input_dummy",
+        }
+      ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
         }
       ],
       "previousStatement": [
@@ -2563,6 +2691,14 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2577,6 +2713,14 @@ function getFeatureBlocks() {
       "args0": [
         {
           "type": "input_dummy",
+        }
+      ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
         }
       ],
       "previousStatement": [
@@ -3279,8 +3423,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "onSuccess %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "onSuccess %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "onSuccess",
@@ -3289,8 +3441,8 @@ function getFeatureBlocks() {
               ]
           }
         ],
-      "message2": "onError %1",
-      "args2": [
+      "message3": "onError %1",
+      "args3": [
             {
               "type": "input_statement",
               "name": "onError",
@@ -3785,8 +3937,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "any %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "any %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -5191,8 +5351,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "any %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "any %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -5297,8 +5465,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "hasMediaRecorderPlayback %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "hasMediaRecorderPlayback %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -5413,8 +5589,16 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "hasActionButtons %1",
+      "message1": 'Text %1',
       "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
+        }
+      ],
+      "message2": "hasActionButtons %1",
+      "args2": [
             {
               "type": "input_statement",
               "name": "DO",
@@ -5439,6 +5623,14 @@ function getFeatureBlocks() {
       "args0": [
         {
           "type": "input_dummy",
+        }
+      ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
         }
       ],
       "previousStatement": [
@@ -5853,6 +6045,14 @@ function getFeatureBlocks() {
       "args0": [
         {
           "type": "input_dummy",
+        }
+      ],
+      "message1": 'Text %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "text",
+          "check": "String"
         }
       ],
       "previousStatement": [
