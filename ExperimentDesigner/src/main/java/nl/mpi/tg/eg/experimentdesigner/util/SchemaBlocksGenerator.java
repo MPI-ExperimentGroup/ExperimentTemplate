@@ -116,6 +116,33 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         }
     }
 
+    private void addXmlGenerator(Writer writer) throws IOException {
+        for (List<String> blockTypeLists : new List[]{adminTypeLists, featureTypeLists}) {
+            for (String blockType : blockTypeLists) {
+                writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block, generator) {\n"
+                        // block.getFieldValue("appNameDisplay")
+                        // + "  const statement = generator.statementToCode(block, 'MY_STATEMENT_INPUT');\n"
+                        // + "  const value = generator.valueToCode(block, 'MY_VALUE_INPUT', javascript.Order.ATOMIC);\n"
+                        //                    + "    var appNameDisplay = block.getFieldValue('appNameDisplay');\n"
+                        + "    var childData = '';\n"
+                //                        + "    block.getChildren().forEach(function (childBlock){console.log(childBlock.type)})"
+                //                        + "    for (var childIndex = 0; childIndex < block.getChildren().length; childIndex++) {\n"
+                //+ "     childData += generator.statementToCode(block.getChildren()[childIndex]);"
+                //                        + "     childData += generator.statementToCode(block, block.getChildren()[childIndex].type);\n"
+                //                        + "    }\n"
+                );
+                if (typeSubTypes.containsKey(blockType)) {
+                    for (String currentSubType : typeSubTypes.get(blockType)) {
+                        writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
+                    }
+                }
+                final String elementName = blockType.replaceAll("^Frinex_|Type$", "");
+                writer.append("    return '<" + elementName + " \"block_id\" = \"' + block.id + '\" ' + ((childData === '')? '/>' : '>\\n' + childData + '</\" + elementName + \">');\n"
+                        + "  };\n");
+            }
+        }
+    }
+
     private void addToolbox(Writer writer) throws IOException {
         writer.append("  return {\n"
                 + "    \"kind\": \"categoryToolbox\",\n"
@@ -578,7 +605,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         addTemplate(writer, "TemplateC");
         writer.append("  ]);\n");
 //        defineBlocks(writer);
-        addJavaScriptGenerator(writer);
+        // addJavaScriptGenerator(writer);
+        addXmlGenerator(writer);
         addToolbox(writer);
         getEnd(writer);
     }
