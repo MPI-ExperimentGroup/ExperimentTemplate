@@ -144,7 +144,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         writer.append(" " + currentProperty + "=\"' + block.getFieldValue('" + currentProperty + "') +'\"");
                     }
                 }
-                writer.append(" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '</" + elementName + ">');\n"
+                writer.append(" ' + ((childData === '')? '/>\\n' : '>\\n' + childData + '</" + elementName + ">\\n');\n"
                         + "  };\n");
             }
         }
