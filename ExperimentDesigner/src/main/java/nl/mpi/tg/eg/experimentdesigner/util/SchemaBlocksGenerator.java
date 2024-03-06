@@ -409,31 +409,17 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             }
 //            
             if (currentElement.childElements.length == 0) {
-            } else if (currentElement.childElements.length == 1 && currentElement.childElements[0].maxBounds == 0) {
+            } else if ("presenterType".equals(currentElement.typeName)) {
                 writer.append("      \"message" + argsCount + "\": \" %1\",\n");
-                writer.append("      \"args" + argsCount + "\": [\n"
-                        + "            {\n");
-//                if (childElement.maxBounds != 1) {
-                // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
-//                typeSubTypes
-                writer.append("              \"type\": \"input_statement\",\n              \"name\": \"DO\",\n");
-//                } else if (childElement.minBounds > 0) {
-//                } else {
-//                    writer.append("\"type\": \"input_field\", ");
-//                    writer.append("\"type\": \"input_value\", ");
-//                }
+                writer.append("      \"args" + argsCount + "\": [\n");
+                writer.append("            {\n");
+                writer.append("              \"type\": \"input_statement\",\n");
+                writer.append("              \"name\": \"DO\",\n");
+                writer.append("              \"check\": [\n");
+                writer.append("                \"frinex_anyType\",\n");
+                writer.append("              ]\n");
+                writer.append("          }\n        ],\n");
                 currentSubTypes.add("DO");
-                writer.append(""
-                        //                                        + "\"name\": \"" + childElement.elementName + "\",\n"
-                        + "              \"check\": [\n");
-                for (DocumentationElement childElement : currentElement.childElements[0].childElements) {
-                    writer.append("                \"frinex_" + childElement.typeName + "\",\n");
-                }
-                if ("presenterType".equals(currentElement.typeName)) {
-                    writer.append("                \"frinex_anyType\",\n");
-                }
-                writer.append("              ]\n"
-                        + "          }\n        ],\n");
                 argsCount++;
             } else if (currentElement.childElements.length > 1) {
                 List<String> inputFields = new ArrayList<>();
