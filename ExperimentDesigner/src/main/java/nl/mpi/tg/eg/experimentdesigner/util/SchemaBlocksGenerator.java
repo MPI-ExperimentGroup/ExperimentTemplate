@@ -28,6 +28,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 
 /**
@@ -246,6 +248,20 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "      ],\n");
                 currentTypeProperties.add("featureText");
             argsCount++;
+        }
+        if (featureType.getFeatureAttributes() != null) {
+            for (FeatureAttribute attribute : featureType.getFeatureAttributes()){
+                writer.append("      \"message" + argsCount + "\": '%1',\n"
+                    + "      \"args" + argsCount + "\": [\n"
+                    + "        {\n"
+                    + "          \"type\": \"field_input\",\n"
+                    + "          \"name\": \""+attribute.name()+"\",\n"
+                    + "          \"check\": \"String\"\n"
+                    + "        }\n"
+                    + "      ],\n");
+                    currentTypeProperties.add(attribute.name());
+                argsCount++;
+            }
         }
         if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
 
