@@ -231,24 +231,30 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "      \"type\": \"" + currentType + "\",\n"
                 + "      \"message0\": '" + featureType.name() + " %1',\n"
                 + "      \"args0\": [\n"
-                + "        {\n"
-                + "          \"type\": \"input_dummy\",\n"
-                + "        }\n"
+                + "        {\n");
+                if (featureType.canHaveText()) {
+                    writer.append("          \"type\": \"field_input\",\n"
+                    + "          \"name\": \"featureText\",\n"
+                    + "          \"check\": \"String\"\n");
+                } else {
+                    writer.append("          \"type\": \"input_dummy\",\n");
+                }
+                writer.append("        }\n"
                 + "      ],\n");
         //                + "      \"output\": \"frinex_featureType\",\n"
         int argsCount = 1;
-        if (featureType.canHaveText()) {
-            writer.append("      \"message" + argsCount + "\": 'text %1',\n"
-                + "      \"args" + argsCount + "\": [\n"
-                + "        {\n"
-                + "          \"type\": \"field_input\",\n"
-                + "          \"name\": \"featureText\",\n"
-                + "          \"check\": \"String\"\n"
-                + "        }\n"
-                + "      ],\n");
-                currentTypeProperties.add("featureText");
-            argsCount++;
-        }
+        // if (featureType.canHaveText()) {
+        //     writer.append("      \"message" + argsCount + "\": 'text %1',\n"
+        //         + "      \"args" + argsCount + "\": [\n"
+        //         + "        {\n"
+        //         + "          \"type\": \"field_input\",\n"
+        //         + "          \"name\": \"featureText\",\n"
+        //         + "          \"check\": \"String\"\n"
+        //         + "        }\n"
+        //         + "      ],\n");
+        //         currentTypeProperties.add("featureText");
+        //     argsCount++;
+        // }
         if (featureType.getFeatureAttributes() != null) {
             for (FeatureAttribute attribute : featureType.getFeatureAttributes()){
                 writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
