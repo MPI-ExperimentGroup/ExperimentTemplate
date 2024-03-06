@@ -136,7 +136,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 );
                 if (typeSubTypes.containsKey(blockType)) {
                     for (String currentSubType : typeSubTypes.get(blockType)) {
+                        if (!"DO".equals(currentSubType)){
+                            // TODO: not all currentSubType should be wrapped here eg presenters
+                            writer.append("     childData += '<" + currentSubType + ">';\n");
+                        }
                         writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
+                        if (!"DO".equals(currentSubType)){
+                            writer.append("     childData += '</" + currentSubType + ">';\n");
+                        }
                     }
                 }
                 final String elementName = blockType.replaceAll("^frinex_|Type$", "");
