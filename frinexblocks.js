@@ -399,7 +399,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -407,7 +407,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -433,7 +433,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -441,7 +441,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -467,7 +467,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'evaluateTokens %1',
       "args1": [
         {
           "type": "field_input",
@@ -475,7 +475,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -521,7 +521,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dataChannel %1',
       "args1": [
         {
           "type": "field_input",
@@ -529,7 +529,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'type %1',
       "args2": [
         {
           "type": "field_input",
@@ -537,7 +537,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'headerKey %1',
       "args3": [
         {
           "type": "field_input",
@@ -545,7 +545,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'dataLogFormat %1',
       "args4": [
         {
           "type": "field_input",
@@ -571,7 +571,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -597,7 +597,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'src %1',
       "args1": [
         {
           "type": "field_input",
@@ -605,7 +605,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -613,7 +613,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'msToNext %1',
       "args3": [
         {
           "type": "field_input",
@@ -649,7 +649,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -657,7 +657,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'target %1',
       "args2": [
         {
           "type": "field_input",
@@ -665,7 +665,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'hotKey %1',
       "args3": [
         {
           "type": "field_input",
@@ -673,7 +673,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -699,7 +699,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -707,7 +707,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maxStimuli %1',
       "args2": [
         {
           "type": "field_input",
@@ -715,7 +715,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'randomise %1',
       "args3": [
         {
           "type": "field_input",
@@ -723,7 +723,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'repeatCount %1',
       "args4": [
         {
           "type": "field_input",
@@ -731,7 +731,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'repeatRandomWindow %1',
       "args5": [
         {
           "type": "field_input",
@@ -739,7 +739,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'adjacencyThreshold %1',
       "args6": [
         {
           "type": "field_input",
@@ -775,7 +775,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -783,7 +783,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maxStimuli %1',
       "args2": [
         {
           "type": "field_input",
@@ -791,7 +791,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'randomise %1',
       "args3": [
         {
           "type": "field_input",
@@ -799,7 +799,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'repeatCount %1',
       "args4": [
         {
           "type": "field_input",
@@ -807,7 +807,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'repeatRandomWindow %1',
       "args5": [
         {
           "type": "field_input",
@@ -815,7 +815,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'adjacencyThreshold %1',
       "args6": [
         {
           "type": "field_input",
@@ -851,7 +851,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -859,7 +859,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maxStimuli %1',
       "args2": [
         {
           "type": "field_input",
@@ -867,7 +867,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'randomise %1',
       "args3": [
         {
           "type": "field_input",
@@ -875,7 +875,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'repeatCount %1',
       "args4": [
         {
           "type": "field_input",
@@ -883,7 +883,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'repeatRandomWindow %1',
       "args5": [
         {
           "type": "field_input",
@@ -891,7 +891,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'adjacencyThreshold %1',
       "args6": [
         {
           "type": "field_input",
@@ -937,7 +937,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -945,7 +945,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maxStimuli %1',
       "args2": [
         {
           "type": "field_input",
@@ -953,7 +953,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'randomise %1',
       "args3": [
         {
           "type": "field_input",
@@ -961,7 +961,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'repeatCount %1',
       "args4": [
         {
           "type": "field_input",
@@ -969,7 +969,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'repeatRandomWindow %1',
       "args5": [
         {
           "type": "field_input",
@@ -977,7 +977,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'matchingRegex %1',
       "args6": [
         {
           "type": "field_input",
@@ -1021,7 +1021,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -1029,7 +1029,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maxStimuli %1',
       "args2": [
         {
           "type": "field_input",
@@ -1037,7 +1037,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'excludeRegex %1',
       "args3": [
         {
           "type": "field_input",
@@ -1045,7 +1045,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'matchingRegex %1',
       "args4": [
         {
           "type": "field_input",
@@ -1053,7 +1053,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'replacementRegex %1',
       "args5": [
         {
           "type": "field_input",
@@ -1061,7 +1061,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'randomise %1',
       "args6": [
         {
           "type": "field_input",
@@ -1069,7 +1069,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'repeatCount %1',
       "args7": [
         {
           "type": "field_input",
@@ -1077,7 +1077,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'repeatRandomWindow %1',
       "args8": [
         {
           "type": "field_input",
@@ -1085,7 +1085,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message9": '%1',
+      "message9": 'adjacencyThreshold %1',
       "args9": [
         {
           "type": "field_input",
@@ -1221,7 +1221,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'offset %1',
       "args1": [
         {
           "type": "field_input",
@@ -1281,7 +1281,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'type %1',
       "args1": [
         {
           "type": "field_input",
@@ -1289,7 +1289,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -1297,7 +1297,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'headerKey %1',
       "args3": [
         {
           "type": "field_input",
@@ -1305,7 +1305,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'separator %1',
       "args4": [
         {
           "type": "field_input",
@@ -1329,7 +1329,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -1337,7 +1337,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'hotKey %1',
       "args2": [
         {
           "type": "field_input",
@@ -1345,7 +1345,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'target %1',
       "args3": [
         {
           "type": "field_input",
@@ -1353,7 +1353,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -1361,7 +1361,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'groupId %1',
       "args5": [
         {
           "type": "field_input",
@@ -1387,7 +1387,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'hotKey %1',
       "args1": [
         {
           "type": "field_input",
@@ -1395,7 +1395,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'groupId %1',
       "args2": [
         {
           "type": "field_input",
@@ -1431,7 +1431,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -1439,7 +1439,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -1447,7 +1447,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'hotKey %1',
       "args3": [
         {
           "type": "field_input",
@@ -1455,7 +1455,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -1463,7 +1463,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'groupId %1',
       "args5": [
         {
           "type": "field_input",
@@ -1501,7 +1501,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -1509,7 +1509,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'hotKey %1',
       "args2": [
         {
           "type": "field_input",
@@ -1517,7 +1517,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -1525,7 +1525,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -1563,7 +1563,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -1591,7 +1591,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -1619,7 +1619,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -1647,7 +1647,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -1655,7 +1655,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -1683,7 +1683,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -1711,7 +1711,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -1739,7 +1739,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'src %1',
       "args1": [
         {
           "type": "field_input",
@@ -1775,7 +1775,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -1783,7 +1783,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'visible %1',
       "args2": [
         {
           "type": "field_input",
@@ -1807,7 +1807,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -1815,7 +1815,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'evaluateTokens %1',
       "args2": [
         {
           "type": "field_input",
@@ -1839,7 +1839,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -1847,7 +1847,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'visible %1',
       "args2": [
         {
           "type": "field_input",
@@ -1871,7 +1871,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -1905,7 +1905,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -1913,7 +1913,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'visible %1',
       "args2": [
         {
           "type": "field_input",
@@ -1921,7 +1921,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'evaluateTokens %1',
       "args3": [
         {
           "type": "field_input",
@@ -1945,7 +1945,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -1953,7 +1953,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -1961,7 +1961,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'hotKey %1',
       "args3": [
         {
           "type": "field_input",
@@ -1969,7 +1969,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'dataChannel %1',
       "args4": [
         {
           "type": "field_input",
@@ -1977,7 +1977,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'styleName %1',
       "args5": [
         {
           "type": "field_input",
@@ -1985,7 +1985,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'groupId %1',
       "args6": [
         {
           "type": "field_input",
@@ -2019,7 +2019,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dataChannel %1',
       "args1": [
         {
           "type": "field_input",
@@ -2027,7 +2027,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -2035,7 +2035,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'groupId %1',
       "args3": [
         {
           "type": "field_input",
@@ -2043,7 +2043,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'initial %1',
       "args4": [
         {
           "type": "field_input",
@@ -2051,7 +2051,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'minimum %1',
       "args5": [
         {
           "type": "field_input",
@@ -2059,7 +2059,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'maximum %1',
       "args6": [
         {
           "type": "field_input",
@@ -2067,7 +2067,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'orientation %1',
       "args7": [
         {
           "type": "field_input",
@@ -2101,7 +2101,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2109,7 +2109,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'codeFormat %1',
       "args2": [
         {
           "type": "field_input",
@@ -2117,7 +2117,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -2125,7 +2125,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -2159,7 +2159,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2167,7 +2167,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'codeFormat %1',
       "args2": [
         {
           "type": "field_input",
@@ -2175,7 +2175,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -2183,7 +2183,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -2217,7 +2217,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2225,7 +2225,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'codeFormat %1',
       "args2": [
         {
           "type": "field_input",
@@ -2233,7 +2233,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'loop %1',
       "args3": [
         {
           "type": "field_input",
@@ -2241,7 +2241,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -2249,7 +2249,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'autoPlay %1',
       "args5": [
         {
           "type": "field_input",
@@ -2257,7 +2257,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'groupId %1',
       "args6": [
         {
           "type": "field_input",
@@ -2265,7 +2265,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'mediaId %1',
       "args7": [
         {
           "type": "field_input",
@@ -2299,7 +2299,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'showControls %1',
       "args1": [
         {
           "type": "field_input",
@@ -2307,7 +2307,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2367,7 +2367,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -2417,7 +2417,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2425,7 +2425,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2433,7 +2433,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabels %1',
       "args3": [
         {
           "type": "field_input",
@@ -2441,7 +2441,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelLeft %1',
       "args4": [
         {
           "type": "field_input",
@@ -2449,7 +2449,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'ratingLabelRight %1',
       "args5": [
         {
           "type": "field_input",
@@ -2457,7 +2457,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'orientation %1',
       "args6": [
         {
           "type": "field_input",
@@ -2465,7 +2465,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'styleName %1',
       "args7": [
         {
           "type": "field_input",
@@ -2473,7 +2473,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'groupId %1',
       "args8": [
         {
           "type": "field_input",
@@ -2507,7 +2507,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2515,7 +2515,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2523,7 +2523,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabels %1',
       "args3": [
         {
           "type": "field_input",
@@ -2531,7 +2531,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelLeft %1',
       "args4": [
         {
           "type": "field_input",
@@ -2539,7 +2539,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'ratingLabelRight %1',
       "args5": [
         {
           "type": "field_input",
@@ -2547,7 +2547,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'orientation %1',
       "args6": [
         {
           "type": "field_input",
@@ -2555,7 +2555,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'styleName %1',
       "args7": [
         {
           "type": "field_input",
@@ -2563,7 +2563,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'groupId %1',
       "args8": [
         {
           "type": "field_input",
@@ -2597,7 +2597,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2605,7 +2605,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2613,7 +2613,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabels %1',
       "args3": [
         {
           "type": "field_input",
@@ -2621,7 +2621,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelLeft %1',
       "args4": [
         {
           "type": "field_input",
@@ -2629,7 +2629,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'ratingLabelRight %1',
       "args5": [
         {
           "type": "field_input",
@@ -2637,7 +2637,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'orientation %1',
       "args6": [
         {
           "type": "field_input",
@@ -2645,7 +2645,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'styleName %1',
       "args7": [
         {
           "type": "field_input",
@@ -2653,7 +2653,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'groupId %1',
       "args8": [
         {
           "type": "field_input",
@@ -2687,7 +2687,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -2695,7 +2695,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'validationRegex %1',
       "args2": [
         {
           "type": "field_input",
@@ -2703,7 +2703,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataChannel %1',
       "args3": [
         {
           "type": "field_input",
@@ -2711,7 +2711,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'allowedCharCodes %1',
       "args4": [
         {
           "type": "field_input",
@@ -2719,7 +2719,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'hotKey %1',
       "args5": [
         {
           "type": "field_input",
@@ -2727,7 +2727,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'styleName %1',
       "args6": [
         {
           "type": "field_input",
@@ -2735,7 +2735,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'inputErrorMessage %1',
       "args7": [
         {
           "type": "field_input",
@@ -2743,7 +2743,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'groupId %1',
       "args8": [
         {
           "type": "field_input",
@@ -2767,7 +2767,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2775,7 +2775,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2783,7 +2783,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabelLeft %1',
       "args3": [
         {
           "type": "field_input",
@@ -2791,7 +2791,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelRight %1',
       "args4": [
         {
           "type": "field_input",
@@ -2799,7 +2799,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'orientation %1',
       "args5": [
         {
           "type": "field_input",
@@ -2807,7 +2807,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'styleName %1',
       "args6": [
         {
           "type": "field_input",
@@ -2815,7 +2815,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'groupId %1',
       "args7": [
         {
           "type": "field_input",
@@ -2849,7 +2849,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2857,7 +2857,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2865,7 +2865,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabelLeft %1',
       "args3": [
         {
           "type": "field_input",
@@ -2873,7 +2873,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelRight %1',
       "args4": [
         {
           "type": "field_input",
@@ -2881,7 +2881,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'orientation %1',
       "args5": [
         {
           "type": "field_input",
@@ -2889,7 +2889,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'styleName %1',
       "args6": [
         {
           "type": "field_input",
@@ -2897,7 +2897,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'groupId %1',
       "args7": [
         {
           "type": "field_input",
@@ -2931,7 +2931,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -2939,7 +2939,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -2947,7 +2947,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabelLeft %1',
       "args3": [
         {
           "type": "field_input",
@@ -2955,7 +2955,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelRight %1',
       "args4": [
         {
           "type": "field_input",
@@ -2963,7 +2963,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'orientation %1',
       "args5": [
         {
           "type": "field_input",
@@ -2971,7 +2971,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'styleName %1',
       "args6": [
         {
           "type": "field_input",
@@ -2979,7 +2979,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'groupId %1',
       "args7": [
         {
           "type": "field_input",
@@ -3049,7 +3049,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -3073,7 +3073,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupId %1',
       "args1": [
         {
           "type": "field_input",
@@ -3081,7 +3081,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'matchingRegex %1',
       "args2": [
         {
           "type": "field_input",
@@ -3125,7 +3125,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'codeFormat %1',
       "args1": [
         {
           "type": "field_input",
@@ -3133,7 +3133,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -3141,7 +3141,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'applyScore %1',
       "args3": [
         {
           "type": "field_input",
@@ -3149,7 +3149,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -3173,7 +3173,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -3181,7 +3181,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'validationRegex %1',
       "args2": [
         {
           "type": "field_input",
@@ -3189,7 +3189,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataChannel %1',
       "args3": [
         {
           "type": "field_input",
@@ -3197,7 +3197,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -3221,7 +3221,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -3229,7 +3229,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -3237,7 +3237,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'ratingLabels %1',
       "args3": [
         {
           "type": "field_input",
@@ -3245,7 +3245,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'ratingLabelLeft %1',
       "args4": [
         {
           "type": "field_input",
@@ -3253,7 +3253,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'ratingLabelRight %1',
       "args5": [
         {
           "type": "field_input",
@@ -3261,7 +3261,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'styleName %1',
       "args6": [
         {
           "type": "field_input",
@@ -3269,7 +3269,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'groupId %1',
       "args7": [
         {
           "type": "field_input",
@@ -3303,7 +3303,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -3311,7 +3311,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'target %1',
       "args2": [
         {
           "type": "field_input",
@@ -3319,7 +3319,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -3327,7 +3327,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -3353,7 +3353,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -3361,7 +3361,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -3369,7 +3369,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'hotKey %1',
       "args3": [
         {
           "type": "field_input",
@@ -3377,7 +3377,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -3385,7 +3385,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'groupId %1',
       "args5": [
         {
           "type": "field_input",
@@ -3493,7 +3493,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3555,7 +3555,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3581,7 +3581,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3589,7 +3589,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -3613,7 +3613,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3621,7 +3621,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'linkedFieldName %1',
       "args2": [
         {
           "type": "field_input",
@@ -3629,7 +3629,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'oneToMany %1',
       "args3": [
         {
           "type": "field_input",
@@ -3655,7 +3655,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3663,7 +3663,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'linkedFieldName %1',
       "args2": [
         {
           "type": "field_input",
@@ -3671,7 +3671,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'visibleRegex %1',
       "args3": [
         {
           "type": "field_input",
@@ -3679,7 +3679,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'enabledRegex %1',
       "args4": [
         {
           "type": "field_input",
@@ -3705,7 +3705,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3713,7 +3713,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'linkedFieldName %1',
       "args2": [
         {
           "type": "field_input",
@@ -3721,7 +3721,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'daysThresholds %1',
       "args3": [
         {
           "type": "field_input",
@@ -3729,7 +3729,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'visibleRegex %1',
       "args4": [
         {
           "type": "field_input",
@@ -3737,7 +3737,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'enabledRegex %1',
       "args5": [
         {
           "type": "field_input",
@@ -3763,7 +3763,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -3771,7 +3771,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'sendData %1',
       "args2": [
         {
           "type": "field_input",
@@ -3779,7 +3779,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'networkErrorMessage %1',
       "args3": [
         {
           "type": "field_input",
@@ -3787,7 +3787,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -3795,7 +3795,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'groupId %1',
       "args5": [
         {
           "type": "field_input",
@@ -3841,7 +3841,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -3849,7 +3849,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'target %1',
       "args2": [
         {
           "type": "field_input",
@@ -3857,7 +3857,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -3865,7 +3865,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -3891,7 +3891,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -3899,7 +3899,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -3907,7 +3907,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'groupId %1',
       "args3": [
         {
           "type": "field_input",
@@ -3915,7 +3915,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'fieldName %1',
       "args4": [
         {
           "type": "field_input",
@@ -3923,7 +3923,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'validationRegex %1',
       "args5": [
         {
           "type": "field_input",
@@ -3969,7 +3969,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -3977,7 +3977,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'fieldName %1',
       "args2": [
         {
           "type": "field_input",
@@ -4003,7 +4003,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4029,7 +4029,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4037,7 +4037,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'groupId %1',
       "args2": [
         {
           "type": "field_input",
@@ -4063,7 +4063,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -4071,7 +4071,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'target %1',
       "args2": [
         {
           "type": "field_input",
@@ -4079,7 +4079,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -4087,7 +4087,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -4167,7 +4167,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4323,7 +4323,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'src %1',
       "args1": [
         {
           "type": "field_input",
@@ -4383,7 +4383,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -4425,7 +4425,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4451,7 +4451,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -4459,7 +4459,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'src %1',
       "args2": [
         {
           "type": "field_input",
@@ -4467,7 +4467,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -4503,7 +4503,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4529,7 +4529,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -4537,7 +4537,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -4545,7 +4545,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'repeatIncorrect %1',
       "args3": [
         {
           "type": "field_input",
@@ -4553,7 +4553,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'hotKey %1',
       "args4": [
         {
           "type": "field_input",
@@ -4561,7 +4561,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'styleName %1',
       "args5": [
         {
           "type": "field_input",
@@ -4569,7 +4569,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'groupId %1',
       "args6": [
         {
           "type": "field_input",
@@ -4593,7 +4593,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -4601,7 +4601,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -4609,7 +4609,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'repeatIncorrect %1',
       "args3": [
         {
           "type": "field_input",
@@ -4617,7 +4617,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'hotKey %1',
       "args4": [
         {
           "type": "field_input",
@@ -4625,7 +4625,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'styleName %1',
       "args5": [
         {
           "type": "field_input",
@@ -4633,7 +4633,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'groupId %1',
       "args6": [
         {
           "type": "field_input",
@@ -4657,7 +4657,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'repeatIncorrect %1',
       "args1": [
         {
           "type": "field_input",
@@ -4681,7 +4681,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'repeatIncorrect %1',
       "args1": [
         {
           "type": "field_input",
@@ -4721,7 +4721,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'diagramName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4747,7 +4747,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'parameterName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4793,7 +4793,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4801,7 +4801,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'matchingRegex %1',
       "args2": [
         {
           "type": "field_input",
@@ -4847,7 +4847,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -4855,7 +4855,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataLogFormat %1',
       "args2": [
         {
           "type": "field_input",
@@ -4863,7 +4863,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'replacementRegex %1',
       "args3": [
         {
           "type": "field_input",
@@ -4889,7 +4889,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'evaluateTokens %1',
       "args1": [
         {
           "type": "field_input",
@@ -4897,7 +4897,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'matchingRegex %1',
       "args2": [
         {
           "type": "field_input",
@@ -4953,7 +4953,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'evaluateTokens %1',
       "args1": [
         {
           "type": "field_input",
@@ -4961,7 +4961,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -5007,7 +5007,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'fieldName %1',
       "args1": [
         {
           "type": "field_input",
@@ -5015,7 +5015,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'evaluateTokens %1',
       "args2": [
         {
           "type": "field_input",
@@ -5079,7 +5079,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'target %1',
       "args1": [
         {
           "type": "field_input",
@@ -5123,7 +5123,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -5151,7 +5151,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventId %1',
       "args1": [
         {
           "type": "field_input",
@@ -5181,7 +5181,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventId %1',
       "args1": [
         {
           "type": "field_input",
@@ -5211,7 +5211,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'opto1 %1',
       "args1": [
         {
           "type": "field_input",
@@ -5219,7 +5219,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'opto2 %1',
       "args2": [
         {
           "type": "field_input",
@@ -5227,7 +5227,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dtmf %1',
       "args3": [
         {
           "type": "field_input",
@@ -5255,7 +5255,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dtmf %1',
       "args1": [
         {
           "type": "field_input",
@@ -5283,7 +5283,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -5291,7 +5291,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dtmf %1',
       "args2": [
         {
           "type": "field_input",
@@ -5319,7 +5319,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -5327,7 +5327,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -5335,7 +5335,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'poster %1',
       "args3": [
         {
           "type": "field_input",
@@ -5343,7 +5343,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'autoPlay %1',
       "args4": [
         {
           "type": "field_input",
@@ -5351,7 +5351,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'hotKey %1',
       "args5": [
         {
           "type": "field_input",
@@ -5359,7 +5359,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'styleName %1',
       "args6": [
         {
           "type": "field_input",
@@ -5367,7 +5367,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'src %1',
       "args7": [
         {
           "type": "field_input",
@@ -5375,7 +5375,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'groupId %1',
       "args8": [
         {
           "type": "field_input",
@@ -5475,7 +5475,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'maxStimuli %1',
       "args1": [
         {
           "type": "field_input",
@@ -5483,7 +5483,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -5491,7 +5491,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'columnCount %1',
       "args3": [
         {
           "type": "field_input",
@@ -5499,7 +5499,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'imageWidth %1',
       "args4": [
         {
           "type": "field_input",
@@ -5507,7 +5507,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'eventTag %1',
       "args5": [
         {
           "type": "field_input",
@@ -5515,7 +5515,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'animate %1',
       "args6": [
         {
           "type": "field_input",
@@ -5559,7 +5559,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'columnCount %1',
       "args1": [
         {
           "type": "field_input",
@@ -5567,7 +5567,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -5575,7 +5575,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maxWidth %1',
       "args3": [
         {
           "type": "field_input",
@@ -5583,7 +5583,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'animate %1',
       "args4": [
         {
           "type": "field_input",
@@ -5591,7 +5591,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'matchingRegex %1',
       "args5": [
         {
           "type": "field_input",
@@ -5599,7 +5599,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'maxStimuli %1',
       "args6": [
         {
           "type": "field_input",
@@ -5607,7 +5607,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'randomise %1',
       "args7": [
         {
           "type": "field_input",
@@ -5651,7 +5651,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -5687,7 +5687,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -5725,7 +5725,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -5733,7 +5733,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'fieldName %1',
       "args2": [
         {
           "type": "field_input",
@@ -5741,7 +5741,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'targetOptions %1',
       "args3": [
         {
           "type": "field_input",
@@ -5749,7 +5749,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'dataLogFormat %1',
       "args4": [
         {
           "type": "field_input",
@@ -5795,7 +5795,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -5803,7 +5803,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'listenerId %1',
       "args2": [
         {
           "type": "field_input",
@@ -5839,7 +5839,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -5847,7 +5847,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'listenerId %1',
       "args2": [
         {
           "type": "field_input",
@@ -5883,7 +5883,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -5911,7 +5911,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -5919,7 +5919,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -5927,7 +5927,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataChannel %1',
       "args3": [
         {
           "type": "field_input",
@@ -5953,7 +5953,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -5961,7 +5961,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'msToNext %1',
       "args2": [
         {
           "type": "field_input",
@@ -5969,7 +5969,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'msLabelFormat %1',
       "args3": [
         {
           "type": "field_input",
@@ -5977,7 +5977,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -6003,7 +6003,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'minimum %1',
       "args1": [
         {
           "type": "field_input",
@@ -6011,7 +6011,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maximum %1',
       "args2": [
         {
           "type": "field_input",
@@ -6047,7 +6047,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'minimum %1',
       "args1": [
         {
           "type": "field_input",
@@ -6055,7 +6055,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maximum %1',
       "args2": [
         {
           "type": "field_input",
@@ -6063,7 +6063,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'evaluateTokens %1',
       "args3": [
         {
           "type": "field_input",
@@ -6109,7 +6109,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'minimum %1',
       "args1": [
         {
           "type": "field_input",
@@ -6117,7 +6117,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'maximum %1',
       "args2": [
         {
           "type": "field_input",
@@ -6125,7 +6125,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'evaluateTokens %1',
       "args3": [
         {
           "type": "field_input",
@@ -6133,7 +6133,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'listenerId %1',
       "args4": [
         {
           "type": "field_input",
@@ -6197,7 +6197,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'evaluateMs %1',
       "args1": [
         {
           "type": "field_input",
@@ -6205,7 +6205,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'threshold %1',
       "args2": [
         {
           "type": "field_input",
@@ -6239,7 +6239,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'evaluateMs %1',
       "args1": [
         {
           "type": "field_input",
@@ -6247,7 +6247,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'mediaId %1',
       "args2": [
         {
           "type": "field_input",
@@ -6255,7 +6255,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'threshold %1',
       "args3": [
         {
           "type": "field_input",
@@ -6291,7 +6291,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dtmf %1',
       "args1": [
         {
           "type": "field_input",
@@ -6329,7 +6329,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'threshold %1',
       "args1": [
         {
           "type": "field_input",
@@ -6337,7 +6337,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'thresholdMs %1',
       "args2": [
         {
           "type": "field_input",
@@ -6345,7 +6345,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'levelIndicatorStyle %1',
       "args3": [
         {
           "type": "field_input",
@@ -6383,7 +6383,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -6391,7 +6391,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'threshold %1',
       "args2": [
         {
           "type": "field_input",
@@ -6399,7 +6399,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maximum %1',
       "args3": [
         {
           "type": "field_input",
@@ -6435,7 +6435,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -6443,7 +6443,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'threshold %1',
       "args2": [
         {
           "type": "field_input",
@@ -6451,7 +6451,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maximum %1',
       "args3": [
         {
           "type": "field_input",
@@ -6487,7 +6487,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -6513,7 +6513,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -6549,7 +6549,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'listenerId %1',
       "args1": [
         {
           "type": "field_input",
@@ -6575,7 +6575,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -6583,7 +6583,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'msToNext %1',
       "args2": [
         {
           "type": "field_input",
@@ -6591,7 +6591,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'msLabelFormat %1',
       "args3": [
         {
           "type": "field_input",
@@ -6599,7 +6599,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -6661,7 +6661,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -6845,7 +6845,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -6853,7 +6853,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'kintypestring %1',
       "args2": [
         {
           "type": "field_input",
@@ -6889,7 +6889,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -6897,7 +6897,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'diagramName %1',
       "args2": [
         {
           "type": "field_input",
@@ -6933,7 +6933,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -6941,7 +6941,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'diagramName %1',
       "args2": [
         {
           "type": "field_input",
@@ -7081,7 +7081,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'groupMembers %1',
       "args1": [
         {
           "type": "field_input",
@@ -7089,7 +7089,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'groupCommunicationChannels %1',
       "args2": [
         {
           "type": "field_input",
@@ -7097,7 +7097,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'phasesPerStimulus %1',
       "args3": [
         {
           "type": "field_input",
@@ -7507,7 +7507,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -7515,7 +7515,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'showOnBackButton %1',
       "args2": [
         {
           "type": "field_input",
@@ -7579,7 +7579,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -7615,7 +7615,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'regionId %1',
       "args1": [
         {
           "type": "field_input",
@@ -7623,7 +7623,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -7659,7 +7659,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'regionId %1',
       "args1": [
         {
           "type": "field_input",
@@ -7667,7 +7667,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -7695,7 +7695,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'regionId %1',
       "args1": [
         {
           "type": "field_input",
@@ -7703,7 +7703,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -7727,7 +7727,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'regionId %1',
       "args1": [
         {
           "type": "field_input",
@@ -7735,7 +7735,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -7771,7 +7771,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'regionId %1',
       "args1": [
         {
           "type": "field_input",
@@ -7797,7 +7797,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'regionId %1',
       "args1": [
         {
           "type": "field_input",
@@ -7805,7 +7805,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'draggable %1',
       "args2": [
         {
           "type": "field_input",
@@ -7813,7 +7813,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'droptarget %1',
       "args3": [
         {
           "type": "field_input",
@@ -7821,7 +7821,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'codeFormat %1',
       "args4": [
         {
           "type": "field_input",
@@ -7829,7 +7829,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'dataChannel %1',
       "args5": [
         {
           "type": "field_input",
@@ -7941,7 +7941,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'percentOfPage %1',
       "args1": [
         {
           "type": "field_input",
@@ -7949,7 +7949,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -7957,7 +7957,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maxHeight %1',
       "args3": [
         {
           "type": "field_input",
@@ -7965,7 +7965,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'maxWidth %1',
       "args4": [
         {
           "type": "field_input",
@@ -7973,7 +7973,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'animate %1',
       "args5": [
         {
           "type": "field_input",
@@ -7981,7 +7981,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'replacementRegex %1',
       "args6": [
         {
           "type": "field_input",
@@ -7989,7 +7989,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'replacement %1',
       "args7": [
         {
           "type": "field_input",
@@ -7997,7 +7997,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'showControls %1',
       "args8": [
         {
           "type": "field_input",
@@ -8031,7 +8031,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -8039,7 +8039,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -8047,7 +8047,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataChannel %1',
       "args3": [
         {
           "type": "field_input",
@@ -8081,7 +8081,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'msToNext %1',
       "args1": [
         {
           "type": "field_input",
@@ -8089,7 +8089,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -8097,7 +8097,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'codeFormat %1',
       "args3": [
         {
           "type": "field_input",
@@ -8105,7 +8105,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'styleName %1',
       "args4": [
         {
           "type": "field_input",
@@ -8139,7 +8139,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dataChannel %1',
       "args1": [
         {
           "type": "field_input",
@@ -8147,7 +8147,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'codeFormat %1',
       "args2": [
         {
           "type": "field_input",
@@ -8155,7 +8155,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'styleName %1',
       "args3": [
         {
           "type": "field_input",
@@ -8163,7 +8163,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'groupId %1',
       "args4": [
         {
           "type": "field_input",
@@ -8197,7 +8197,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'maxHeight %1',
       "args1": [
         {
           "type": "field_input",
@@ -8205,7 +8205,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'codeFormat %1',
       "args2": [
         {
           "type": "field_input",
@@ -8213,7 +8213,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'percentOfPage %1',
       "args3": [
         {
           "type": "field_input",
@@ -8221,7 +8221,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'loop %1',
       "args4": [
         {
           "type": "field_input",
@@ -8229,7 +8229,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'styleName %1',
       "args5": [
         {
           "type": "field_input",
@@ -8237,7 +8237,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'autoPlay %1',
       "args6": [
         {
           "type": "field_input",
@@ -8245,7 +8245,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'showControls %1',
       "args7": [
         {
           "type": "field_input",
@@ -8253,7 +8253,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'maxWidth %1',
       "args8": [
         {
           "type": "field_input",
@@ -8261,7 +8261,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message9": '%1',
+      "message9": 'mediaId %1',
       "args9": [
         {
           "type": "field_input",
@@ -8295,7 +8295,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'loop %1',
       "args1": [
         {
           "type": "field_input",
@@ -8303,7 +8303,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -8311,7 +8311,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'autoPlay %1',
       "args3": [
         {
           "type": "field_input",
@@ -8319,7 +8319,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'showControls %1',
       "args4": [
         {
           "type": "field_input",
@@ -8327,7 +8327,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'mediaId %1',
       "args5": [
         {
           "type": "field_input",
@@ -8361,7 +8361,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'codeFormat %1',
       "args1": [
         {
           "type": "field_input",
@@ -8369,7 +8369,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'showPlaybackIndicator %1',
       "args2": [
         {
           "type": "field_input",
@@ -8377,7 +8377,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'autoPlay %1',
       "args3": [
         {
           "type": "field_input",
@@ -8385,7 +8385,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'mediaId %1',
       "args4": [
         {
           "type": "field_input",
@@ -8419,7 +8419,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'showPlaybackIndicator %1',
       "args1": [
         {
           "type": "field_input",
@@ -8427,7 +8427,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'autoPlay %1',
       "args2": [
         {
           "type": "field_input",
@@ -8435,7 +8435,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'mediaId %1',
       "args3": [
         {
           "type": "field_input",
@@ -8469,7 +8469,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'mediaId %1',
       "args1": [
         {
           "type": "field_input",
@@ -8477,7 +8477,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'loop %1',
       "args2": [
         {
           "type": "field_input",
@@ -8505,7 +8505,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'mediaId %1',
       "args1": [
         {
           "type": "field_input",
@@ -8533,7 +8533,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'mediaId %1',
       "args1": [
         {
           "type": "field_input",
@@ -8561,7 +8561,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'mediaId %1',
       "args1": [
         {
           "type": "field_input",
@@ -8569,7 +8569,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -8597,7 +8597,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -8605,7 +8605,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'percentOfPage %1',
       "args2": [
         {
           "type": "field_input",
@@ -8613,7 +8613,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maxHeight %1',
       "args3": [
         {
           "type": "field_input",
@@ -8621,7 +8621,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'maxWidth %1',
       "args4": [
         {
           "type": "field_input",
@@ -8629,7 +8629,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'msToNext %1',
       "args5": [
         {
           "type": "field_input",
@@ -8663,7 +8663,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'src %1',
       "args1": [
         {
           "type": "field_input",
@@ -8671,7 +8671,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'percentOfPage %1',
       "args2": [
         {
           "type": "field_input",
@@ -8679,7 +8679,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maxHeight %1',
       "args3": [
         {
           "type": "field_input",
@@ -8687,7 +8687,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'maxWidth %1',
       "args4": [
         {
           "type": "field_input",
@@ -8695,7 +8695,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'poster %1',
       "args5": [
         {
           "type": "field_input",
@@ -8719,7 +8719,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'src %1',
       "args1": [
         {
           "type": "field_input",
@@ -8727,7 +8727,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'poster %1',
       "args2": [
         {
           "type": "field_input",
@@ -8735,7 +8735,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'eventTag %1',
       "args3": [
         {
           "type": "field_input",
@@ -8743,7 +8743,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'columnCount %1',
       "args4": [
         {
           "type": "field_input",
@@ -8751,7 +8751,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'maxStimuli %1',
       "args5": [
         {
           "type": "field_input",
@@ -8785,7 +8785,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'deviceRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -8793,7 +8793,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'styleName %1',
       "args2": [
         {
           "type": "field_input",
@@ -8839,7 +8839,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -8847,7 +8847,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'downloadPermittedWindowMs %1',
       "args2": [
         {
           "type": "field_input",
@@ -8855,7 +8855,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'deviceRegex %1',
       "args3": [
         {
           "type": "field_input",
@@ -8863,7 +8863,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'mediaId %1',
       "args4": [
         {
           "type": "field_input",
@@ -8871,7 +8871,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'recordingFormat %1',
       "args5": [
         {
           "type": "field_input",
@@ -8879,7 +8879,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'levelIndicatorStyle %1',
       "args6": [
         {
           "type": "field_input",
@@ -8887,7 +8887,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'echoCancellation %1',
       "args7": [
         {
           "type": "field_input",
@@ -8895,7 +8895,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'noiseSuppression %1',
       "args8": [
         {
           "type": "field_input",
@@ -8903,7 +8903,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message9": '%1',
+      "message9": 'autoGainControl %1',
       "args9": [
         {
           "type": "field_input",
@@ -8937,7 +8937,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'filePerStimulus %1',
       "args1": [
         {
           "type": "field_input",
@@ -8945,7 +8945,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -8953,7 +8953,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'fieldName %1',
       "args3": [
         {
           "type": "field_input",
@@ -9015,7 +9015,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTier %1',
       "args1": [
         {
           "type": "field_input",
@@ -9041,7 +9041,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTier %1',
       "args1": [
         {
           "type": "field_input",
@@ -9049,7 +9049,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'eventTag %1',
       "args2": [
         {
           "type": "field_input",
@@ -9075,7 +9075,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -9111,7 +9111,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -9119,7 +9119,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'closeButtonLabel %1',
       "args2": [
         {
           "type": "field_input",
@@ -9181,7 +9181,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'scoreThreshold %1',
       "args1": [
         {
           "type": "field_input",
@@ -9347,7 +9347,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'phaseMembers %1',
       "args1": [
         {
           "type": "field_input",
@@ -9381,7 +9381,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -9405,7 +9405,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -9429,7 +9429,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -9453,7 +9453,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'percentOfPage %1',
       "args1": [
         {
           "type": "field_input",
@@ -9461,7 +9461,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -9469,7 +9469,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'maxHeight %1',
       "args3": [
         {
           "type": "field_input",
@@ -9477,7 +9477,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'maxWidth %1',
       "args4": [
         {
           "type": "field_input",
@@ -9485,7 +9485,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'animate %1',
       "args5": [
         {
           "type": "field_input",
@@ -9555,7 +9555,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -9579,7 +9579,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -9603,7 +9603,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'styleName %1',
       "args1": [
         {
           "type": "field_input",
@@ -9645,7 +9645,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'text %1',
       "args1": [
         {
           "type": "field_input",
@@ -9653,7 +9653,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'hotKey %1',
       "args2": [
         {
           "type": "field_input",
@@ -9661,7 +9661,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataChannel %1',
       "args3": [
         {
           "type": "field_input",
@@ -9669,7 +9669,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'eventTag %1',
       "args4": [
         {
           "type": "field_input",
@@ -9677,7 +9677,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'repeatIncorrect %1',
       "args5": [
         {
           "type": "field_input",
@@ -9685,7 +9685,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'incrementPhase %1',
       "args6": [
         {
           "type": "field_input",
@@ -9693,7 +9693,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": '%1',
+      "message7": 'styleName %1',
       "args7": [
         {
           "type": "field_input",
@@ -9701,7 +9701,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": '%1',
+      "message8": 'groupId %1',
       "args8": [
         {
           "type": "field_input",
@@ -9725,7 +9725,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -9733,7 +9733,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'incrementPhase %1',
       "args2": [
         {
           "type": "field_input",
@@ -9757,7 +9757,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -9765,7 +9765,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'incrementPhase %1',
       "args2": [
         {
           "type": "field_input",
@@ -9773,7 +9773,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'groupId %1',
       "args3": [
         {
           "type": "field_input",
@@ -9797,7 +9797,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -9805,7 +9805,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -9813,7 +9813,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'streamChannels %1',
       "args3": [
         {
           "type": "field_input",
@@ -9857,7 +9857,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -9865,7 +9865,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'dataChannel %1',
       "args2": [
         {
           "type": "field_input",
@@ -9873,7 +9873,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'streamChannels %1',
       "args3": [
         {
           "type": "field_input",
@@ -9917,7 +9917,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'eventTag %1',
       "args1": [
         {
           "type": "field_input",
@@ -9925,7 +9925,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'incrementPhase %1',
       "args2": [
         {
           "type": "field_input",
@@ -9933,7 +9933,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataLogFormat %1',
       "args3": [
         {
           "type": "field_input",
@@ -9957,7 +9957,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dataChannel %1',
       "args1": [
         {
           "type": "field_input",
@@ -9965,7 +9965,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'evaluateTokens %1',
       "args2": [
         {
           "type": "field_input",
@@ -9993,7 +9993,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'dataChannel %1',
       "args1": [
         {
           "type": "field_input",
@@ -10001,7 +10001,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'scoreValue %1',
       "args2": [
         {
           "type": "field_input",
@@ -10029,7 +10029,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'scoreThreshold %1',
       "args1": [
         {
           "type": "field_input",
@@ -10037,7 +10037,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'errorThreshold %1',
       "args2": [
         {
           "type": "field_input",
@@ -10045,7 +10045,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'potentialThreshold %1',
       "args3": [
         {
           "type": "field_input",
@@ -10053,7 +10053,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'correctStreak %1',
       "args4": [
         {
           "type": "field_input",
@@ -10061,7 +10061,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'errorStreak %1',
       "args5": [
         {
           "type": "field_input",
@@ -10069,7 +10069,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'gamesPlayed %1',
       "args6": [
         {
           "type": "field_input",
@@ -10105,7 +10105,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'scoreThreshold %1',
       "args1": [
         {
           "type": "field_input",
@@ -10113,7 +10113,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'errorThreshold %1',
       "args2": [
         {
           "type": "field_input",
@@ -10121,7 +10121,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'potentialThreshold %1',
       "args3": [
         {
           "type": "field_input",
@@ -10129,7 +10129,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'gamesPlayed %1',
       "args4": [
         {
           "type": "field_input",
@@ -10165,7 +10165,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'scoreThreshold %1',
       "args1": [
         {
           "type": "field_input",
@@ -10173,7 +10173,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'errorThreshold %1',
       "args2": [
         {
           "type": "field_input",
@@ -10181,7 +10181,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'potentialThreshold %1',
       "args3": [
         {
           "type": "field_input",
@@ -10189,7 +10189,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": '%1',
+      "message4": 'correctStreak %1',
       "args4": [
         {
           "type": "field_input",
@@ -10197,7 +10197,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": '%1',
+      "message5": 'errorStreak %1',
       "args5": [
         {
           "type": "field_input",
@@ -10205,7 +10205,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": '%1',
+      "message6": 'gamesPlayed %1',
       "args6": [
         {
           "type": "field_input",
@@ -10241,7 +10241,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'target %1',
       "args1": [
         {
           "type": "field_input",
@@ -10343,7 +10343,7 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": '%1',
+      "message1": 'receivingRegex %1',
       "args1": [
         {
           "type": "field_input",
@@ -10351,7 +10351,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": '%1',
+      "message2": 'sendingRegex %1',
       "args2": [
         {
           "type": "field_input",
@@ -10359,7 +10359,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": '%1',
+      "message3": 'dataLogFormat %1',
       "args3": [
         {
           "type": "field_input",
