@@ -333,15 +333,6 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": " %1",
-      "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-              ]
-          }
-        ],
       "previousStatement": [
         "frinex_fieldType",
       ],
@@ -392,15 +383,6 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": " %1",
-      "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-              ]
-          }
-        ],
       "previousStatement": [
         "frinex_stimulusType",
       ],
@@ -10542,7 +10524,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_fieldType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
     return '<field block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</field>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_presenterType'] = function(block, generator) {
@@ -10552,7 +10533,6 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
     return '<stimulus block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulus>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_randomGroupingType'] = function(block, generator) {
