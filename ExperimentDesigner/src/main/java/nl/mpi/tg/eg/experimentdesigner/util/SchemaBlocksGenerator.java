@@ -238,7 +238,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         //                + "      \"output\": \"frinex_featureType\",\n"
         int argsCount = 1;
         if (featureType.canHaveText()) {
-            writer.append("      \"message" + argsCount + "\": '%1',\n"
+            writer.append("      \"message" + argsCount + "\": 'text %1',\n"
                 + "      \"args" + argsCount + "\": [\n"
                 + "        {\n"
                 + "          \"type\": \"field_input\",\n"
@@ -251,11 +251,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         }
         if (featureType.getFeatureAttributes() != null) {
             for (FeatureAttribute attribute : featureType.getFeatureAttributes()){
-                writer.append("      \"message" + argsCount + "\": '%1',\n"
+                writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
                     + "      \"args" + argsCount + "\": [\n"
                     + "        {\n"
                     + "          \"type\": \"field_input\",\n"
-                    + "          \"name\": \""+attribute.name()+"\",\n"
+                    + "          \"name\": \"" + attribute.name() + "\",\n"
                     + "          \"check\": \"String\"\n"
                     + "        }\n"
                     + "      ],\n");
