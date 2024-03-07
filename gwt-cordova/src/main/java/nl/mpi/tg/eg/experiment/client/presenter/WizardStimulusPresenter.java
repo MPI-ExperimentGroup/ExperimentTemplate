@@ -113,7 +113,8 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
 
             @Override
             public int getHotKey() {
-                return new ExtendedKeyCodes().getExtendedKeyCodesMap().get("KEY_" + hotKey);
+                final Integer hotKeyCode = new ExtendedKeyCodes().getExtendedKeyCodesMap().get("KEY_" + hotKey);
+                return (hotKeyCode != null) ? hotKeyCode : -1;
             }
         };
     }
@@ -140,7 +141,8 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
 
             @Override
             public int getHotKey() {
-                return new ExtendedKeyCodes().getExtendedKeyCodesMap().get("KEY_" + hotKey);
+                final Integer hotKeyCode = new ExtendedKeyCodes().getExtendedKeyCodesMap().get("KEY_" + hotKey);
+                return (hotKeyCode != null) ? hotKeyCode : -1;
             }
         };
     }
