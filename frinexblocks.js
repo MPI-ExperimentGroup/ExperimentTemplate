@@ -10339,18 +10339,16 @@ function getFeatureBlocks() {
   ]);
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
-     childData += '<Administration>\n';
+     childData += '<administration>\n';
      childData += generator.statementToCode(block, 'Administration');
-     childData += '</Administration>\n';
-     childData += '<Metadata>\n';
+     childData += '</administration>\n';
+     childData += '<metadata>\n';
      childData += generator.statementToCode(block, 'Metadata');
-     childData += '</Metadata>\n';
-     childData += '<Presenters>\n';
+     childData += '</metadata>\n';
      childData += generator.statementToCode(block, 'Presenters');
-     childData += '</Presenters>\n';
-     childData += '<Stimuli>\n';
+     childData += '<stimuli>\n';
      childData += generator.statementToCode(block, 'Stimuli');
-     childData += '</Stimuli>\n';
+     childData += '</stimuli>\n';
     return '<experiment block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</experiment>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_deploymentType'] = function(block, generator) {
