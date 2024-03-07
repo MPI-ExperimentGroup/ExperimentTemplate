@@ -163,11 +163,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         writer.append("  return {\n"
                 + "    \"kind\": \"categoryToolbox\",\n"
                 + "    \"contents\": [\n");
-        writer.append("            {\n"
-                + "                \"kind\":\"category\",\n"
-                + "            \"name\":\"Experiment\",\n"
-                + "            \"categorystyle\":\"logic_category\","
-                + "            \"contents\":[");
+        writer.append("      {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Experiment\",\n"
+                + "        \"categorystyle\":\"logic_category\",\n"
+                + "        \"contents\":[");
         for (String blockType : adminTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"block\",\n"
@@ -175,21 +175,105 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     + "      },\n");
         }
         writer.append("            ]}, {\n"
-                + "                \"kind\":\"category\",\n"
-                + "            \"name\":\"Feature\",\n"
-                + "            \"categorystyle\":\"loop_category\","
-                + "            \"contents\":[");
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Feature\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
         for (String blockType : featureTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"block\",\n"
                     + "        \"type\": \"" + blockType + "\"\n"
                     + "      },\n");
         }
+        // Stimulus features
         writer.append("            ]}, {\n"
-                + "                \"kind\":\"category\",\n"
-                + "            \"name\":\"Template\",\n"
-                + "            \"categorystyle\":\"logic_category\","
-                + "            \"contents\":[");
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Stimuli\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(stimulus|stimuli).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
+        // Text features
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Text\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(text|label).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
+        // Region features
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Region\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(region).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
+        // Button features
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Button\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(button).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
+        // Media features
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Media\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(recorder|play|pause|media|audio|video).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
+        // Timer features
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Timer\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(stopwatch|timer|pause).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Template\",\n"
+                + "        \"categorystyle\":\"logic_category\",\n"
+                + "        \"contents\":[");
         for (String blockType : templateTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"block\",\n"
@@ -288,14 +372,14 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     if (childType.isChildType(featureType.getRequiresChildType())) {
                         writer.append("      \"message" + argsCount + "\": \"" + childType.name() + " %1\",\n");
                         writer.append("      \"args" + argsCount + "\": [\n"
-                                + "            {\n");
-                        writer.append("              \"type\": \"input_statement\",\n              \"name\": \"" + childType.name() + "\",\n");
+                                + "        {\n");
+                        writer.append("          \"type\": \"input_statement\",\n          \"name\": \"" + childType.name() + "\",\n");
                         writer.append(""
-                                + "              \"check\": [\n");
-                        writer.append("                \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
+                                + "          \"check\": [\n");
+                        writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
 //            }
-                        writer.append("              ]\n"
-                                + "          }\n        ],\n");
+                        writer.append("          ]\n"
+                                + "        }\n      ],\n");
                         argsCount++;
                         currentSubTypes.add(childType.name());
                     }
@@ -303,17 +387,16 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             } else {
                 writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
                 writer.append("      \"args" + argsCount + "\": [\n"
-                        + "            {\n");
-                writer.append("              \"type\": \"input_statement\",\n              \"name\": \"DO\",\n");
-                writer.append(""
-                        + "              \"check\": [\n");
+                        + "        {\n");
+                writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
+                writer.append("          \"check\": [\n");
 //            if (featureType.getRequiresChildType() == FeatureType.Contitionals.any) {
 //                writer.append("                \"frinex_featureType\",\n");
 //            } else {
-                writer.append("                \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
+                writer.append("            \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
 //            }
-                writer.append("              ]\n"
-                        + "          }\n        ],\n");
+                writer.append("          ]\n"
+                        + "        }\n      ],\n");
                 argsCount++;
                 currentSubTypes.add("DO");
             }
@@ -426,13 +509,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             } else if ("presenterType".equals(currentElement.typeName)) {
                 writer.append("      \"message" + argsCount + "\": \" %1\",\n");
                 writer.append("      \"args" + argsCount + "\": [\n");
-                writer.append("            {\n");
-                writer.append("              \"type\": \"input_statement\",\n");
-                writer.append("              \"name\": \"DO\",\n");
-                writer.append("              \"check\": [\n");
-                writer.append("                \"frinex_anyType\",\n");
-                writer.append("              ]\n");
-                writer.append("          }\n        ],\n");
+                writer.append("        {\n");
+                writer.append("          \"type\": \"input_statement\",\n");
+                writer.append("          \"name\": \"DO\",\n");
+                writer.append("          \"check\": [\n");
+                writer.append("            \"frinex_anyType\",\n");
+                writer.append("          ]\n");
+                writer.append("        }\n      ],\n");
                 currentSubTypes.add("DO");
                 argsCount++;
             } else if (currentElement.childElements.length > 1) {
