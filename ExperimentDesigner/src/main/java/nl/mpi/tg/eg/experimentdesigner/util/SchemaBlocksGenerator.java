@@ -262,7 +262,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        \"categorystyle\":\"loop_category\",\n"
                 + "        \"contents\":[");
         for (String blockType : featureTypeLists) {
-            if (blockType.toLowerCase().matches(".*(stopwatch|timer|pause).*")) {
+            // removed |pause from this match because it matches too many non timer things
+            if (blockType.toLowerCase().matches(".*(stopwatch|timer).*")) {
                 writer.append("      {\n"
                         + "        \"kind\": \"block\",\n"
                         + "        \"type\": \"" + blockType + "\"\n"
