@@ -136,13 +136,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 );
                 if (typeSubTypes.containsKey(blockType)) {
                     for (String currentSubType : typeSubTypes.get(blockType)) {
-                        if (!"DO".equals(currentSubType)){
+                        if (!"DO".equals(currentSubType) && !"Presenters".equals(currentSubType)) {
                             // TODO: not all currentSubType should be wrapped here eg presenters
-                            writer.append("     childData += '<" + currentSubType + ">\\n';\n");
+                            writer.append("     childData += '<" + currentSubType.substring(0, 1).toLowerCase() + currentSubType.substring(1) + ">\\n';\n");
                         }
                         writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
-                        if (!"DO".equals(currentSubType)){
-                            writer.append("     childData += '</" + currentSubType + ">\\n';\n");
+                        if (!"DO".equals(currentSubType) && !"Presenters".equals(currentSubType)) {
+                            writer.append("     childData += '</" + currentSubType.substring(0, 1).toLowerCase() + currentSubType.substring(1) + ">\\n';\n");
                         }
                     }
                 }
@@ -239,15 +239,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "      \"message0\": '" + featureType.name() + " %1',\n"
                 + "      \"args0\": [\n"
                 + "        {\n");
-                if (featureType.canHaveText()) {
-                    writer.append("          \"type\": \"field_input\",\n"
+        if (featureType.canHaveText()) {
+            writer.append("          \"type\": \"field_input\",\n"
                     + "          \"name\": \"featureText\",\n"
                     + "          \"check\": \"String\"\n");
-                    currentTypeProperties.add("featureText");
-                } else {
-                    writer.append("          \"type\": \"input_dummy\",\n");
-                }
-                writer.append("        }\n"
+            currentTypeProperties.add("featureText");
+        } else {
+            writer.append("          \"type\": \"input_dummy\",\n");
+        }
+        writer.append("        }\n"
                 + "      ],\n");
         //                + "      \"output\": \"frinex_featureType\",\n"
         int argsCount = 1;
@@ -264,16 +264,16 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         //     argsCount++;
         // }
         if (featureType.getFeatureAttributes() != null) {
-            for (FeatureAttribute attribute : featureType.getFeatureAttributes()){
+            for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
                 writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
-                    + "      \"args" + argsCount + "\": [\n"
-                    + "        {\n"
-                    + "          \"type\": \"field_input\",\n"
-                    + "          \"name\": \"" + attribute.name() + "\",\n"
-                    + "          \"check\": \"String\"\n"
-                    + "        }\n"
-                    + "      ],\n");
-                    currentTypeProperties.add(attribute.name());
+                        + "      \"args" + argsCount + "\": [\n"
+                        + "        {\n"
+                        + "          \"type\": \"field_input\",\n"
+                        + "          \"name\": \"" + attribute.name() + "\",\n"
+                        + "          \"check\": \"String\"\n"
+                        + "        }\n"
+                        + "      ],\n");
+                currentTypeProperties.add(attribute.name());
                 argsCount++;
             }
         }
