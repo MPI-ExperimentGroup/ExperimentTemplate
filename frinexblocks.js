@@ -13269,19 +13269,11 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_cancelPauseAllType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_zeroStimulusStopwatchType"
       },
       {
         "kind": "block",
         "type": "frinex_stopStimulusStopwatchType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_pauseType"
       },
       {
         "kind": "block",
@@ -13305,14 +13297,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_randomMsPauseType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_evaluatePauseType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_addTimerTriggerType"
       },
       {
@@ -13321,15 +13305,7 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_stimulusPauseType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_onTimerType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_pauseMediaType"
       },
             ]}, {
         "kind":"category",
