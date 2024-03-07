@@ -351,14 +351,14 @@ function getFeatureBlocks() {
       ],
       "message1": " %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_presenterType",
       ],
@@ -473,24 +473,24 @@ function getFeatureBlocks() {
       ],
       "message3": "onSuccess %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "onError %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -605,14 +605,14 @@ function getFeatureBlocks() {
       ],
       "message4": "hasMediaLoading %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaLoadingType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaLoadingType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -725,14 +725,14 @@ function getFeatureBlocks() {
       ],
       "message7": "eachStimulus %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_eachStimulusType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_eachStimulusType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -801,14 +801,14 @@ function getFeatureBlocks() {
       ],
       "message7": "groupStimulus %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_groupStimulusType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_groupStimulusType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -877,24 +877,24 @@ function getFeatureBlocks() {
       ],
       "message7": "hasMoreStimulus %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "hasMoreStimulus",
-              "check": [
-                "frinex_stimulusActionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "hasMoreStimulus",
+          "check": [
+            "frinex_stimulusActionType",
+          ]
+        }
+      ],
       "message8": "endOfStimulus %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "endOfStimulus",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "endOfStimulus",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -963,24 +963,24 @@ function getFeatureBlocks() {
       ],
       "message7": "hasMoreStimulus %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "hasMoreStimulus",
-              "check": [
-                "frinex_stimulusActionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "hasMoreStimulus",
+          "check": [
+            "frinex_stimulusActionType",
+          ]
+        }
+      ],
       "message8": "endOfStimulus %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "endOfStimulus",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "endOfStimulus",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -1071,24 +1071,24 @@ function getFeatureBlocks() {
       ],
       "message10": "hasMoreStimulus %1",
       "args10": [
-            {
-              "type": "input_statement",
-              "name": "hasMoreStimulus",
-              "check": [
-                "frinex_stimulusActionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "hasMoreStimulus",
+          "check": [
+            "frinex_stimulusActionType",
+          ]
+        }
+      ],
       "message11": "endOfStimulus %1",
       "args11": [
-            {
-              "type": "input_statement",
-              "name": "endOfStimulus",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "endOfStimulus",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -1109,24 +1109,24 @@ function getFeatureBlocks() {
       ],
       "message1": "conditionTrue %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "conditionFalse %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -1163,24 +1163,24 @@ function getFeatureBlocks() {
       ],
       "message1": "conditionTrue %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "conditionFalse %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -1207,24 +1207,24 @@ function getFeatureBlocks() {
       ],
       "message2": "conditionTrue %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message3": "conditionFalse %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -1375,14 +1375,14 @@ function getFeatureBlocks() {
       ],
       "message3": "hasKeyInputsCondition %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasKeyInputsConditionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasKeyInputsConditionType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -1437,14 +1437,14 @@ function getFeatureBlocks() {
       ],
       "message5": "any %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasActionButtonsType",
         "frinex_noneType",
@@ -1493,14 +1493,14 @@ function getFeatureBlocks() {
       ],
       "message4": "any %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasActionButtonsType",
         "frinex_noneType",
@@ -1707,14 +1707,14 @@ function getFeatureBlocks() {
       ],
       "message2": "svgGroupsLoaded %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_svgGroupsLoadedType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_svgGroupsLoadedType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -1839,14 +1839,14 @@ function getFeatureBlocks() {
       ],
       "message2": "any %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_svgGroupsLoadedType",
       ],
@@ -1947,14 +1947,14 @@ function getFeatureBlocks() {
       ],
       "message6": "any %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2029,14 +2029,14 @@ function getFeatureBlocks() {
       ],
       "message8": "any %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2087,14 +2087,14 @@ function getFeatureBlocks() {
       ],
       "message5": "any %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_touchInputStartTypeType",
       ],
@@ -2145,14 +2145,14 @@ function getFeatureBlocks() {
       ],
       "message5": "hasMediaLoadingButton %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaLoadingButtonType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaLoadingButtonType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_touchInputStartTypeType",
       ],
@@ -2227,14 +2227,14 @@ function getFeatureBlocks() {
       ],
       "message8": "hasMediaLoadingButton %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaLoadingButtonType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaLoadingButtonType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_touchInputStartTypeType",
       ],
@@ -2269,14 +2269,14 @@ function getFeatureBlocks() {
       ],
       "message3": "touchInputCaptureType %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_touchInputCaptureTypeType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_touchInputCaptureTypeType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2295,14 +2295,14 @@ function getFeatureBlocks() {
       ],
       "message1": "touchInputStartType %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_touchInputStartTypeType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_touchInputStartTypeType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_touchInputCaptureTypeType",
       ],
@@ -2329,14 +2329,14 @@ function getFeatureBlocks() {
       ],
       "message2": "any %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_touchInputCaptureTypeType",
       ],
@@ -2435,14 +2435,14 @@ function getFeatureBlocks() {
       ],
       "message9": "any %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2525,14 +2525,14 @@ function getFeatureBlocks() {
       ],
       "message9": "any %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2615,14 +2615,14 @@ function getFeatureBlocks() {
       ],
       "message9": "any %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2771,14 +2771,14 @@ function getFeatureBlocks() {
       ],
       "message8": "any %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2853,14 +2853,14 @@ function getFeatureBlocks() {
       ],
       "message8": "any %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2935,14 +2935,14 @@ function getFeatureBlocks() {
       ],
       "message8": "any %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -2961,24 +2961,24 @@ function getFeatureBlocks() {
       ],
       "message1": "conditionTrue %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "conditionFalse %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -3037,24 +3037,24 @@ function getFeatureBlocks() {
       ],
       "message3": "conditionTrue %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "conditionFalse %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -3219,14 +3219,14 @@ function getFeatureBlocks() {
       ],
       "message8": "any %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -3323,14 +3323,14 @@ function getFeatureBlocks() {
       ],
       "message5": "any %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -3727,24 +3727,24 @@ function getFeatureBlocks() {
       ],
       "message5": "onSuccess %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message6": "onError %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -3843,24 +3843,24 @@ function getFeatureBlocks() {
       ],
       "message5": "onSuccess %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message6": "onError %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4115,24 +4115,24 @@ function getFeatureBlocks() {
       ],
       "message1": "onSuccess %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "onError %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4153,24 +4153,24 @@ function getFeatureBlocks() {
       ],
       "message1": "onSuccess %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "onError %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4191,24 +4191,24 @@ function getFeatureBlocks() {
       ],
       "message1": "onSuccess %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "onError %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4381,14 +4381,14 @@ function getFeatureBlocks() {
       ],
       "message4": "any %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4649,24 +4649,24 @@ function getFeatureBlocks() {
       ],
       "message2": "conditionTrue %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message3": "conditionFalse %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4703,24 +4703,24 @@ function getFeatureBlocks() {
       ],
       "message3": "conditionTrue %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "conditionFalse %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4799,34 +4799,34 @@ function getFeatureBlocks() {
       ],
       "message3": "conditionTrue %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "conditionTrue",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionTrue",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "conditionFalse %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "conditionFalse",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "conditionFalse",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4863,24 +4863,24 @@ function getFeatureBlocks() {
       ],
       "message3": "onSuccess %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "onError %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -4917,24 +4917,24 @@ function getFeatureBlocks() {
       ],
       "message3": "onSuccess %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "onError %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5277,14 +5277,14 @@ function getFeatureBlocks() {
       ],
       "message9": "hasMediaPlayback %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5305,24 +5305,24 @@ function getFeatureBlocks() {
       ],
       "message1": "onSuccess %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "onError %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5343,14 +5343,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -5417,24 +5417,24 @@ function getFeatureBlocks() {
       ],
       "message7": "responseCorrect %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "responseCorrect",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "responseCorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message8": "responseIncorrect %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "responseIncorrect",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "responseIncorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -5509,24 +5509,24 @@ function getFeatureBlocks() {
       ],
       "message8": "responseCorrect %1",
       "args8": [
-            {
-              "type": "input_statement",
-              "name": "responseCorrect",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "responseCorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message9": "responseIncorrect %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "responseIncorrect",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "responseIncorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -5553,14 +5553,14 @@ function getFeatureBlocks() {
       ],
       "message2": "any %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5589,14 +5589,14 @@ function getFeatureBlocks() {
       ],
       "message2": "any %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5645,24 +5645,24 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5699,14 +5699,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5743,14 +5743,14 @@ function getFeatureBlocks() {
       ],
       "message3": "hasThreshold %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasThresholdType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasThresholdType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5907,14 +5907,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -5959,24 +5959,24 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6029,14 +6029,14 @@ function getFeatureBlocks() {
       ],
       "message5": "hasErrorTimer %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasErrorTimerType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasErrorTimerType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6057,14 +6057,14 @@ function getFeatureBlocks() {
       ],
       "message1": "hasFrameRateTriggers %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasFrameRateTriggersType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasFrameRateTriggersType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6101,14 +6101,14 @@ function getFeatureBlocks() {
       ],
       "message3": "hasErrorTimeCritical %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasErrorTimeCriticalType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasErrorTimeCriticalType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasFrameRateTriggersType",
       ],
@@ -6151,14 +6151,14 @@ function getFeatureBlocks() {
       ],
       "message4": "hasErrorTimeCritical %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasErrorTimeCriticalType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasErrorTimeCriticalType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6187,14 +6187,14 @@ function getFeatureBlocks() {
       ],
       "message2": "isTimeCritical %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_isTimeCriticalType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_isRecursiveTypeType",
         "frinex_noneType",
@@ -6241,14 +6241,14 @@ function getFeatureBlocks() {
       ],
       "message4": "isTimeCritical %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_isTimeCriticalType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_isRecursiveTypeType",
         "frinex_noneType",
@@ -6295,14 +6295,14 @@ function getFeatureBlocks() {
       ],
       "message4": "any %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6347,14 +6347,14 @@ function getFeatureBlocks() {
       ],
       "message4": "any %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6409,14 +6409,14 @@ function getFeatureBlocks() {
       ],
       "message2": "any %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6489,14 +6489,14 @@ function getFeatureBlocks() {
       ],
       "message4": "any %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6517,14 +6517,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -6567,14 +6567,14 @@ function getFeatureBlocks() {
       ],
       "message1": "isTimeCritical %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_isTimeCriticalType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasErrorTimeCriticalType",
       ],
@@ -6593,14 +6593,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasErrorTimerType",
       ],
@@ -6619,14 +6619,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasTrueFalseConditionType",
         "frinex_hasTrueFalseErrorConditionType",
@@ -6647,14 +6647,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasTrueFalseConditionType",
         "frinex_hasTrueFalseErrorConditionType",
@@ -6675,14 +6675,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasErrorSuccessType",
       ],
@@ -6701,14 +6701,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMediaLoadingButtonType",
       ],
@@ -6743,14 +6743,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6787,14 +6787,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6831,14 +6831,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -6859,14 +6859,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasKeyInputsConditionType",
       ],
@@ -6885,14 +6885,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasKeyInputsConditionType",
       ],
@@ -6911,14 +6911,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasCorrectIncorrectType",
       ],
@@ -6937,14 +6937,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasCorrectIncorrectType",
       ],
@@ -6987,14 +6987,14 @@ function getFeatureBlocks() {
       ],
       "message4": "groupNetwork %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_groupNetworkType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_groupNetworkType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupStimulusType",
       ],
@@ -7013,14 +7013,14 @@ function getFeatureBlocks() {
       ],
       "message1": "stimulusAction %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_stimulusActionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_stimulusActionType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMoreStimulusType",
       ],
@@ -7039,14 +7039,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_eachStimulusType",
       ],
@@ -7065,14 +7065,14 @@ function getFeatureBlocks() {
       ],
       "message1": "stimulusAction %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_stimulusActionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_stimulusActionType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_eachStimulusType",
       ],
@@ -7091,14 +7091,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_eachStimulusType",
       ],
@@ -7117,14 +7117,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMoreStimulusType",
         "frinex_groupStimulusType",
@@ -7145,14 +7145,14 @@ function getFeatureBlocks() {
       ],
       "message1": "hasUserCount %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasUserCountType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasUserCountType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -7173,14 +7173,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasUserCountType",
       ],
@@ -7199,14 +7199,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasUserCountType",
       ],
@@ -7225,14 +7225,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasThresholdType",
       ],
@@ -7251,14 +7251,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasThresholdType",
       ],
@@ -7277,14 +7277,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMediaLoadingType",
         "frinex_hasMediaRecorderPlaybackType",
@@ -7305,14 +7305,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMediaLoadingType",
         "frinex_hasMediaRecorderPlaybackType",
@@ -7333,14 +7333,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMediaPlaybackType",
         "frinex_hasMediaRecorderPlaybackType",
@@ -7361,14 +7361,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasMediaPlaybackType",
         "frinex_hasMediaRecorderPlaybackType",
@@ -7405,14 +7405,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -7433,14 +7433,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -7469,14 +7469,14 @@ function getFeatureBlocks() {
       ],
       "message2": "any %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -7513,14 +7513,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -7625,14 +7625,14 @@ function getFeatureBlocks() {
       ],
       "message3": "any %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -7719,14 +7719,14 @@ function getFeatureBlocks() {
       ],
       "message6": "dragDropType %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_dragDropTypeType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_dragDropTypeType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -7745,14 +7745,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_dragDropTypeType",
       ],
@@ -7771,14 +7771,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_dragDropTypeType",
       ],
@@ -7797,14 +7797,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_dragDropTypeType",
       ],
@@ -7887,14 +7887,14 @@ function getFeatureBlocks() {
       ],
       "message9": "hasMediaPlayback %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -7937,14 +7937,14 @@ function getFeatureBlocks() {
       ],
       "message4": "hasMediaLoading %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaLoadingType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaLoadingType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -7995,14 +7995,14 @@ function getFeatureBlocks() {
       ],
       "message5": "hasMediaLoading %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaLoadingType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaLoadingType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8053,14 +8053,14 @@ function getFeatureBlocks() {
       ],
       "message5": "hasMediaLoadingButton %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaLoadingButtonType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaLoadingButtonType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8151,14 +8151,14 @@ function getFeatureBlocks() {
       ],
       "message10": "hasMediaPlayback %1",
       "args10": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8217,14 +8217,14 @@ function getFeatureBlocks() {
       ],
       "message6": "hasMediaPlayback %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8275,14 +8275,14 @@ function getFeatureBlocks() {
       ],
       "message5": "hasMediaPlayback %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8325,14 +8325,14 @@ function getFeatureBlocks() {
       ],
       "message4": "hasMediaPlayback %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8513,14 +8513,14 @@ function getFeatureBlocks() {
       ],
       "message5": "any %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8635,14 +8635,14 @@ function getFeatureBlocks() {
       ],
       "message6": "any %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8677,24 +8677,24 @@ function getFeatureBlocks() {
       ],
       "message3": "onSuccess %1",
       "args3": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message4": "onError %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -8781,14 +8781,14 @@ function getFeatureBlocks() {
       ],
       "message9": "hasMediaRecorderPlayback %1",
       "args9": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaRecorderPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaRecorderPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8831,24 +8831,24 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_stimulusActionType",
       ],
@@ -8947,14 +8947,14 @@ function getFeatureBlocks() {
       ],
       "message1": "hasActionButtons %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasActionButtonsType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasActionButtonsType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -9047,14 +9047,14 @@ function getFeatureBlocks() {
       ],
       "message2": "hasThreshold %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasThresholdType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasThresholdType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -9075,14 +9075,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkType",
       ],
@@ -9101,14 +9101,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkType",
       ],
@@ -9127,14 +9127,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkType",
       ],
@@ -9153,14 +9153,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkType",
       ],
@@ -9179,14 +9179,14 @@ function getFeatureBlocks() {
       ],
       "message1": "groupMemberActivity %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_groupMemberActivityType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_groupMemberActivityType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkType",
       ],
@@ -9213,14 +9213,14 @@ function getFeatureBlocks() {
       ],
       "message2": "groupNetworkAction %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_groupNetworkActionType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_groupNetworkActionType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupMemberActivityType",
       ],
@@ -9351,14 +9351,14 @@ function getFeatureBlocks() {
       ],
       "message6": "hasMediaPlayback %1",
       "args6": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasMediaPlaybackType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkActionType",
       ],
@@ -9377,24 +9377,24 @@ function getFeatureBlocks() {
       ],
       "message1": "responseCorrect %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "responseCorrect",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "responseCorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "responseIncorrect %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "responseIncorrect",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "responseIncorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkActionType",
       ],
@@ -9673,24 +9673,24 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkActionType",
       ],
@@ -9733,24 +9733,24 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_groupNetworkActionType",
       ],
@@ -9929,14 +9929,14 @@ function getFeatureBlocks() {
       ],
       "message7": "hasThreshold %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasThresholdType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasThresholdType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -9989,14 +9989,14 @@ function getFeatureBlocks() {
       ],
       "message5": "hasThreshold %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasThresholdType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasThresholdType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -10065,14 +10065,14 @@ function getFeatureBlocks() {
       ],
       "message7": "hasThreshold %1",
       "args7": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_hasThresholdType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasThresholdType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -10119,24 +10119,24 @@ function getFeatureBlocks() {
       ],
       "message1": "onSuccess %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "onError %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -10157,24 +10157,24 @@ function getFeatureBlocks() {
       ],
       "message1": "onSuccess %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message2": "onError %1",
       "args2": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -10219,24 +10219,24 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-            {
-              "type": "input_statement",
-              "name": "onSuccess",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "message5": "onError %1",
       "args5": [
-            {
-              "type": "input_statement",
-              "name": "onError",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_noneType",
         "frinex_anyType",
@@ -10257,14 +10257,14 @@ function getFeatureBlocks() {
       ],
       "message1": "any %1",
       "args1": [
-            {
-              "type": "input_statement",
-              "name": "DO",
-              "check": [
-                "frinex_anyType",
-              ]
-          }
-        ],
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
       "previousStatement": [
         "frinex_hasErrorSuccessType",
         "frinex_hasTrueFalseErrorConditionType",
@@ -11667,10 +11667,11 @@ function getFeatureBlocks() {
   return {
     "kind": "categoryToolbox",
     "contents": [
-            {
-                "kind":"category",
-            "name":"Experiment",
-            "categorystyle":"logic_category",            "contents":[      {
+      {
+        "kind":"category",
+        "name":"Experiment",
+        "categorystyle":"logic_category",
+        "contents":[      {
         "kind": "block",
         "type": "frinex_experimentType"
       },
@@ -11719,9 +11720,10 @@ function getFeatureBlocks() {
         "type": "frinex_stimuliSelectType"
       },
             ]}, {
-                "kind":"category",
-            "name":"Feature",
-            "categorystyle":"loop_category",            "contents":[      {
+        "kind":"category",
+        "name":"Feature",
+        "categorystyle":"loop_category",
+        "contents":[      {
         "kind": "block",
         "type": "frinex_htmlTextType"
       },
@@ -12682,9 +12684,658 @@ function getFeatureBlocks() {
         "type": "frinex_onErrorType"
       },
             ]}, {
-                "kind":"category",
-            "name":"Template",
-            "categorystyle":"logic_category",            "contents":[      {
+        "kind":"category",
+        "name":"Stimuli",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_withStimuliType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupStimuliType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_loadStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_withMatchingStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_loadSdCardStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_currentStimulusHasTagType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_clearStimulusResponsesType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_validateStimuliResponsesType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusExistsType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_showStimuliReportType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendStimuliReportType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusSliderType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusFreeTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusRatingButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusRatingRadioType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusRatingCheckboxType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusHasRatingOptionsType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_clearStimulusResponseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusHasResponseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_setStimulusCodeResponseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_addStimulusCodeResponseValidationType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimuliValidationType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusMetadataFieldType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_showStimulusProgressType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_keepStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_removeMatchingStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_prevStimulusButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_nextStimulusButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_nextStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_prevStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_nextMatchingStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_zeroStimulusStopwatchType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stopStimulusStopwatchType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_preloadAllStimuliType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_showStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_showStimulusGridType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_matchingStimulusGridType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusPauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_hasMoreStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_beforeStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_eachStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_afterStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_endOfStimulusType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusPresentType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeImageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeVideoType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusVideoType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeAudioType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusAudioType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusImageCaptureType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_resetStimulusType"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Text",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_htmlTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_htmlTokenTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_evaluateTokenTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_logTokenTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_plainTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_svgSetLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_touchInputLabelButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusFreeTextType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_timerLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_countdownLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_scoreLabelType"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Region",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_regionAppendType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionStyleType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionCodeStyleType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionReplaceType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionClearType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionDragDropType"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Button",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_targetButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_actionButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_actionTokenButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_disableButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_enableButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_hideButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_styleButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_showButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_touchInputLabelButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_touchInputImageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_touchInputVideoButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_ratingButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_ratingRadioButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusRatingButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_ratingFooterButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_targetFooterButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_actionFooterButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_saveMetadataButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_createUserButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_switchUserIdButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_eraseLocalStorageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_eraseUsersDataButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_prevStimulusButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_nextStimulusButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_audioButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeImageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Media",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_touchInputVideoButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_cancelPauseTimersType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_cancelPauseAllType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_displayCompletionCodeType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_recorderToneInjectionType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_audioButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_pauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_randomMsPauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_evaluatePauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_addMediaTriggerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_addRecorderDtmfTriggerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_addRecorderLevelTriggerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusPauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_mediaLoadedType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_mediaLoadFailedType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_mediaPlaybackStartedType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_mediaPlaybackCompleteType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeVideoType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusVideoType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusCodeAudioType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusAudioType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_playMediaType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_rewindMediaType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_pauseMediaType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_logMediaTimeStampType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_VideoPanelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_audioInputSelectWebType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_startAudioRecorderWebType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_startAudioRecorderAppType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stopAudioRecorderType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_startAudioRecorderTagType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_endAudioRecorderTagType"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Timer",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_cancelPauseTimersType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_cancelPauseAllType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_zeroStimulusStopwatchType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stopStimulusStopwatchType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_pauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_startTimerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_compareTimerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_clearTimerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_logTimerValueType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_timerLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_randomMsPauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_evaluatePauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_addTimerTriggerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_startFrameRateTimerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_stimulusPauseType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_onTimerType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_pauseMediaType"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Template",
+        "categorystyle":"logic_category",
+        "contents":[      {
         "kind": "block",
         "type": "frinex_TemplateAType"
       },
