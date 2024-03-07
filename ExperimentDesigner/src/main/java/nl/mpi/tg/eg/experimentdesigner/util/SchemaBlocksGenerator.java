@@ -138,11 +138,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     for (String currentSubType : typeSubTypes.get(blockType)) {
                         if (!"DO".equals(currentSubType)){
                             // TODO: not all currentSubType should be wrapped here eg presenters
-                            writer.append("     childData += '<" + currentSubType + ">';\n");
+                            writer.append("     childData += '<" + currentSubType + ">\\n';\n");
                         }
                         writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
                         if (!"DO".equals(currentSubType)){
-                            writer.append("     childData += '</" + currentSubType + ">';\n");
+                            writer.append("     childData += '</" + currentSubType + ">\\n';\n");
                         }
                     }
                 }
