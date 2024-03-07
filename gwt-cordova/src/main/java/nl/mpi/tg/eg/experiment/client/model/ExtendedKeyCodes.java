@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @since Oct 26, 2017 2:11:02 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -152,7 +155,7 @@ public class ExtendedKeyCodes {
     public static final int KEY_R1_MD_DOWN = -1; // mouse
     public static final int KEY_R1_MD_LEFT = -1; // mouse
     public static final int KEY_R1_MD_RIGHT = -1; // mouse
-    
+
     // USB LP310 laser pointer remote
     public static final int KEY_LP310_UP = 38;
     public static final int KEY_LP310_UP_LONG_A = 116;
@@ -162,5 +165,149 @@ public class ExtendedKeyCodes {
     public static final int KEY_LP310_MIDDLE = 9;
     public static final int KEY_LP310_MIDDLE_LONG = 18;
     public static final int KEY_LP310_MIDDLE_DOUBLE = 13;
-    
+
+    public Map<String, Integer> getExtendedKeyCodesMap() {
+        Map<String, Integer> extendedKeyCodesMap = new HashMap<>();
+
+        extendedKeyCodesMap.put("KEY_A", KEY_A);
+        extendedKeyCodesMap.put("KEY_B", KEY_B);
+        extendedKeyCodesMap.put("KEY_C", KEY_C);
+        extendedKeyCodesMap.put("KEY_D", KEY_D);
+        extendedKeyCodesMap.put("KEY_E", KEY_E);
+        extendedKeyCodesMap.put("KEY_F", KEY_F);
+        extendedKeyCodesMap.put("KEY_G", KEY_G);
+        extendedKeyCodesMap.put("KEY_H", KEY_H);
+        extendedKeyCodesMap.put("KEY_I", KEY_I);
+        extendedKeyCodesMap.put("KEY_J", KEY_J);
+        extendedKeyCodesMap.put("KEY_K", KEY_K);
+        extendedKeyCodesMap.put("KEY_L", KEY_L);
+        extendedKeyCodesMap.put("KEY_M", KEY_M);
+        extendedKeyCodesMap.put("KEY_N", KEY_N);
+        extendedKeyCodesMap.put("KEY_O", KEY_O);
+        extendedKeyCodesMap.put("KEY_P", KEY_P);
+        extendedKeyCodesMap.put("KEY_Q", KEY_Q);
+        extendedKeyCodesMap.put("KEY_R", KEY_R);
+        extendedKeyCodesMap.put("KEY_S", KEY_S);
+        extendedKeyCodesMap.put("KEY_T", KEY_T);
+        extendedKeyCodesMap.put("KEY_U", KEY_U);
+        extendedKeyCodesMap.put("KEY_V", KEY_V);
+        extendedKeyCodesMap.put("KEY_W", KEY_W);
+        extendedKeyCodesMap.put("KEY_X", KEY_X);
+        extendedKeyCodesMap.put("KEY_Y", KEY_Y);
+        extendedKeyCodesMap.put("KEY_Z", KEY_Z);
+        extendedKeyCodesMap.put("KEY_ZERO", KEY_ZERO);
+        extendedKeyCodesMap.put("KEY_ONE", KEY_ONE);
+        extendedKeyCodesMap.put("KEY_TWO", KEY_TWO);
+        extendedKeyCodesMap.put("KEY_THREE", KEY_THREE);
+        extendedKeyCodesMap.put("KEY_FOUR", KEY_FOUR);
+        extendedKeyCodesMap.put("KEY_FIVE", KEY_FIVE);
+        extendedKeyCodesMap.put("KEY_SIX", KEY_SIX);
+        extendedKeyCodesMap.put("KEY_SEVEN", KEY_SEVEN);
+        extendedKeyCodesMap.put("KEY_EIGHT", KEY_EIGHT);
+        extendedKeyCodesMap.put("KEY_NINE", KEY_NINE);
+        extendedKeyCodesMap.put("KEY_NUM_ZERO", KEY_NUM_ZERO);
+        extendedKeyCodesMap.put("KEY_NUM_ONE", KEY_NUM_ONE);
+        extendedKeyCodesMap.put("KEY_NUM_TWO", KEY_NUM_TWO);
+        extendedKeyCodesMap.put("KEY_NUM_THREE", KEY_NUM_THREE);
+        extendedKeyCodesMap.put("KEY_NUM_FOUR", KEY_NUM_FOUR);
+        extendedKeyCodesMap.put("KEY_NUM_FIVE", KEY_NUM_FIVE);
+        extendedKeyCodesMap.put("KEY_NUM_SIX", KEY_NUM_SIX);
+        extendedKeyCodesMap.put("KEY_NUM_SEVEN", KEY_NUM_SEVEN);
+        extendedKeyCodesMap.put("KEY_NUM_EIGHT", KEY_NUM_EIGHT);
+        extendedKeyCodesMap.put("KEY_NUM_NINE", KEY_NUM_NINE);
+        extendedKeyCodesMap.put("KEY_NUM_MULTIPLY", KEY_NUM_MULTIPLY);
+        extendedKeyCodesMap.put("KEY_NUM_PLUS", KEY_NUM_PLUS);
+        extendedKeyCodesMap.put("KEY_NUM_MINUS", KEY_NUM_MINUS);
+        extendedKeyCodesMap.put("KEY_NUM_PERIOD", KEY_NUM_PERIOD);
+        extendedKeyCodesMap.put("KEY_NUM_DIVISION", KEY_NUM_DIVISION);
+        extendedKeyCodesMap.put("KEY_ALT", KEY_ALT);
+        extendedKeyCodesMap.put("KEY_BACKSPACE", KEY_BACKSPACE);
+        extendedKeyCodesMap.put("KEY_CTRL", KEY_CTRL);
+        extendedKeyCodesMap.put("KEY_DELETE", KEY_DELETE);
+        extendedKeyCodesMap.put("KEY_DOWN", KEY_DOWN);
+        extendedKeyCodesMap.put("KEY_END", KEY_END);
+        extendedKeyCodesMap.put("KEY_ENTER", KEY_ENTER);
+        extendedKeyCodesMap.put("KEY_ESCAPE", KEY_ESCAPE);
+        extendedKeyCodesMap.put("KEY_HOME", KEY_HOME);
+        extendedKeyCodesMap.put("KEY_LEFT", KEY_LEFT);
+        extendedKeyCodesMap.put("KEY_PAGEDOWN", KEY_PAGEDOWN);
+        extendedKeyCodesMap.put("KEY_PAGEUP", KEY_PAGEUP);
+        extendedKeyCodesMap.put("KEY_RIGHT", KEY_RIGHT);
+        extendedKeyCodesMap.put("KEY_SHIFT", KEY_SHIFT);
+        extendedKeyCodesMap.put("KEY_TAB", KEY_TAB);
+        extendedKeyCodesMap.put("KEY_UP", KEY_UP);
+        extendedKeyCodesMap.put("KEY_F1", KEY_F1);
+        extendedKeyCodesMap.put("KEY_F2", KEY_F2);
+        extendedKeyCodesMap.put("KEY_F3", KEY_F3);
+        extendedKeyCodesMap.put("KEY_F4", KEY_F4);
+        extendedKeyCodesMap.put("KEY_F5", KEY_F5);
+        extendedKeyCodesMap.put("KEY_F6", KEY_F6);
+        extendedKeyCodesMap.put("KEY_F7", KEY_F7);
+        extendedKeyCodesMap.put("KEY_F8", KEY_F8);
+        extendedKeyCodesMap.put("KEY_F9", KEY_F9);
+        extendedKeyCodesMap.put("KEY_F10", KEY_F10);
+        extendedKeyCodesMap.put("KEY_F11", KEY_F11);
+        extendedKeyCodesMap.put("KEY_F12", KEY_F12);
+        extendedKeyCodesMap.put("KEY_PAUSE", KEY_PAUSE);
+        extendedKeyCodesMap.put("KEY_SPACE", KEY_SPACE);
+
+        // Bluetooth remote R1 with mode M+A
+        extendedKeyCodesMap.put("KEY_R1_MA_A", KEY_R1_MA_A);
+        extendedKeyCodesMap.put("KEY_R1_MA_B", KEY_R1_MA_B);
+        extendedKeyCodesMap.put("KEY_R1_MA_C", KEY_R1_MA_C);  // vol
+        extendedKeyCodesMap.put("KEY_R1_MA_D", KEY_R1_MA_D);  // vol
+        extendedKeyCodesMap.put("KEY_R1_MA_ENTER", KEY_R1_MA_ENTER);
+        extendedKeyCodesMap.put("KEY_R1_MA_BACK", KEY_R1_MA_BACK);  // back
+        extendedKeyCodesMap.put("KEY_R1_MA_UP", KEY_R1_MA_UP);  // vol
+        extendedKeyCodesMap.put("KEY_R1_MA_DOWN", KEY_R1_MA_DOWN);  // vol
+        extendedKeyCodesMap.put("KEY_R1_MA_LEFT", KEY_R1_MA_LEFT);
+        extendedKeyCodesMap.put("KEY_R1_MA_RIGHT", KEY_R1_MA_RIGHT);
+
+        // Bluetooth remote R1 with mode M+B
+        extendedKeyCodesMap.put("KEY_R1_MB_A", KEY_R1_MB_A);
+        extendedKeyCodesMap.put("KEY_R1_MB_B", KEY_R1_MB_B);
+        extendedKeyCodesMap.put("KEY_R1_MB_C", KEY_R1_MB_C);
+        extendedKeyCodesMap.put("KEY_R1_MB_D", KEY_R1_MB_D);  // back
+        extendedKeyCodesMap.put("KEY_R1_MB_ENTER", KEY_R1_MB_ENTER);
+        extendedKeyCodesMap.put("KEY_R1_MB_BACK", KEY_R1_MB_BACK);
+        extendedKeyCodesMap.put("KEY_R1_MB_UP", KEY_R1_MB_UP);
+        extendedKeyCodesMap.put("KEY_R1_MB_DOWN", KEY_R1_MB_DOWN);
+        extendedKeyCodesMap.put("KEY_R1_MB_LEFT", KEY_R1_MB_LEFT);
+        extendedKeyCodesMap.put("KEY_R1_MB_RIGHT", KEY_R1_MB_RIGHT);
+
+        // Bluetooth remote R1 with mode M+C
+        extendedKeyCodesMap.put("KEY_R1_MC_A", KEY_R1_MC_A);  // back
+        extendedKeyCodesMap.put("KEY_R1_MC_B", KEY_R1_MC_B);
+        extendedKeyCodesMap.put("KEY_R1_MC_C", KEY_R1_MC_C);
+        extendedKeyCodesMap.put("KEY_R1_MC_D", KEY_R1_MC_D);
+        extendedKeyCodesMap.put("KEY_R1_MC_ENTER", KEY_R1_MC_ENTER);
+        extendedKeyCodesMap.put("KEY_R1_MC_BACK", KEY_R1_MC_BACK);
+        extendedKeyCodesMap.put("KEY_R1_MC_UP", KEY_R1_MC_UP);
+        extendedKeyCodesMap.put("KEY_R1_MC_DOWN", KEY_R1_MC_DOWN);
+        extendedKeyCodesMap.put("KEY_R1_MC_LEFT", KEY_R1_MC_LEFT);
+        extendedKeyCodesMap.put("KEY_R1_MC_RIGHT", KEY_R1_MC_RIGHT);
+
+        // Bluetooth remote R1 with mode M+D
+        extendedKeyCodesMap.put("KEY_R1_MD_A", KEY_R1_MD_A);
+        extendedKeyCodesMap.put("KEY_R1_MD_B", KEY_R1_MD_B);  // back
+        extendedKeyCodesMap.put("KEY_R1_MD_C", KEY_R1_MD_C);  // vol
+        extendedKeyCodesMap.put("KEY_R1_MD_D", KEY_R1_MD_D);  // vol
+        extendedKeyCodesMap.put("KEY_R1_MD_ENTER", KEY_R1_MD_ENTER);  // mouse
+        extendedKeyCodesMap.put("KEY_R1_MD_BACK", KEY_R1_MD_BACK);  // mouse
+        extendedKeyCodesMap.put("KEY_R1_MD_UP", KEY_R1_MD_UP);  // mouse
+        extendedKeyCodesMap.put("KEY_R1_MD_DOWN", KEY_R1_MD_DOWN);  // mouse
+        extendedKeyCodesMap.put("KEY_R1_MD_LEFT", KEY_R1_MD_LEFT);  // mouse
+        extendedKeyCodesMap.put("KEY_R1_MD_RIGHT", KEY_R1_MD_RIGHT);  // mouse
+
+        // USB LP310 laser pointer remote
+        extendedKeyCodesMap.put("KEY_LP310_UP", KEY_LP310_UP);
+        extendedKeyCodesMap.put("KEY_LP310_UP_LONG_A", KEY_LP310_UP_LONG_A);
+        extendedKeyCodesMap.put("KEY_LP310_UP_LONG_B", KEY_LP310_UP_LONG_B);
+        extendedKeyCodesMap.put("KEY_LP310_DOWN", KEY_LP310_DOWN);
+        extendedKeyCodesMap.put("KEY_LP310_DOWN_LONG", KEY_LP310_DOWN_LONG);
+        extendedKeyCodesMap.put("KEY_LP310_MIDDLE", KEY_LP310_MIDDLE);
+        extendedKeyCodesMap.put("KEY_LP310_MIDDLE_LONG", KEY_LP310_MIDDLE_LONG);
+        extendedKeyCodesMap.put("KEY_LP310_MIDDLE_DOUBLE", KEY_LP310_MIDDLE_DOUBLE);
+        return extendedKeyCodesMap;
+    }
 }
