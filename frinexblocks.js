@@ -1,5 +1,5 @@
 function setupTemplateCallback() {
-  javascript.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
+  workspace.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
 }
 function getFeatureBlocks() {
   Blockly.defineBlocksWithJsonArray([
