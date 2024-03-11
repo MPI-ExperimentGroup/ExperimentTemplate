@@ -10313,12 +10313,9 @@ function getFeatureBlocks() {
       "colour": 160
     },
   ]);
-
-  function setupTemplates() {
     javascript.registerButtonCallback("frinex_ExampleATemplate", loadTemplateAction);
     javascript.registerButtonCallback("frinex_ExampleBTemplate", loadTemplateAction);
     javascript.registerButtonCallback("frinex_ExampleCTemplate", loadTemplateAction);
-  }
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
      childData += '<administration>\n';
