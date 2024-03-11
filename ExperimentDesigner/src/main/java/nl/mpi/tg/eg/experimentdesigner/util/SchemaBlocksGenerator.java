@@ -248,7 +248,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        \"categorystyle\":\"loop_category\",\n"
                 + "        \"contents\":[");
         for (String blockType : featureTypeLists) {
-            if (blockType.toLowerCase().matches(".*(recorder|play|pause|media|audio|video).*")) {
+            // removed |pause from this match because it matches too many non media things
+            if (blockType.toLowerCase().matches(".*(recorder|play|media|audio|video).*")) {
                 writer.append("      {\n"
                         + "        \"kind\": \"block\",\n"
                         + "        \"type\": \"" + blockType + "\"\n"
