@@ -13137,14 +13137,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_cancelPauseTimersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_cancelPauseAllType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_displayCompletionCodeType"
       },
       {
@@ -13157,18 +13149,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_pauseType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_randomMsPauseType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_evaluatePauseType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_addMediaTriggerType"
       },
       {
@@ -13178,10 +13158,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_addRecorderLevelTriggerType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_stimulusPauseType"
       },
       {
         "kind": "block",
