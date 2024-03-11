@@ -1,4 +1,5 @@
 function getFeatureBlocks() {
+    javascript.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
   Blockly.defineBlocksWithJsonArray([
     {
       "type": "frinex_experimentType",
@@ -10313,9 +10314,6 @@ function getFeatureBlocks() {
       "colour": 160
     },
   ]);
-    javascript.registerButtonCallback("frinex_ExampleATemplate", loadTemplateAction);
-    javascript.registerButtonCallback("frinex_ExampleBTemplate", loadTemplateAction);
-    javascript.registerButtonCallback("frinex_ExampleCTemplate", loadTemplateAction);
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
      childData += '<administration>\n';
@@ -13268,15 +13266,18 @@ function getFeatureBlocks() {
         "categorystyle":"logic_category",
         "contents":[      {
         "kind": "button",
-        "callbackKey": "frinex_ExampleATemplate"
+        "text": "ExampleA",
+        "callbackKey": "loadTemplateCallback"
       },
       {
         "kind": "button",
-        "callbackKey": "frinex_ExampleBTemplate"
+        "text": "ExampleB",
+        "callbackKey": "loadTemplateCallback"
       },
       {
         "kind": "button",
-        "callbackKey": "frinex_ExampleCTemplate"
+        "text": "ExampleC",
+        "callbackKey": "loadTemplateCallback"
       },
     ]}]
   };
