@@ -1,5 +1,7 @@
+function setupTemplateCallback() {
+  javascript.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
+}
 function getFeatureBlocks() {
-    javascript.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
   Blockly.defineBlocksWithJsonArray([
     {
       "type": "frinex_experimentType",
