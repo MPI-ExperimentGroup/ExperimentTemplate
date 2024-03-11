@@ -279,7 +279,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         for (String templateType : templateTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"button\",\n"
-                    + "        \"callbackKey\": \"" + templateType + "\"\n"
+                    + "        \"text\": \"" + templateType + "\",\n"
+                    + "        \"callbackKey\": \"loadTemplateCallback\"\n"
                     + "      },\n");
         }
         writer.append("    ]}]\n"
@@ -449,8 +450,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
     
     private void addTemplate(Writer writer, final String templateType) throws IOException {
-        writer.append("    javascript.registerButtonCallback(\"frinex_" + templateType + "Template\", loadTemplateAction);\n");
-        templateTypeLists.add("frinex_" + templateType + "Template");
+        templateTypeLists.add(templateType);
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
@@ -652,6 +652,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
+        writer.append("    javascript.registerButtonCallback(\"loadTemplateCallback\", loadTemplateAction);\n");
         writer.append("  Blockly.defineBlocksWithJsonArray([\n");
 //        addElement(writer, rootElement);
 //        FeatureType[] sortedFeatureTypes = FeatureType.values();
