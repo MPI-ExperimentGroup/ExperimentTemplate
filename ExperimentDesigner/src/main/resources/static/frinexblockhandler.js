@@ -61,6 +61,25 @@ function loadTemplateAction(toolboxButton) {
 
     var childConnection = childBlock.previousConnection;
     parentConnection.connect(childConnection);
+
+
+    $.ajax({
+        type: "get",
+        url: "/example/" + toolboxButton.text,
+        dataType: "xml",
+        success: function (data) {
+            var successBlock = workspace.newBlock('frinex_onSuccessType');
+            successBlock.setFieldValue(data, 'featureText');
+            successBlock.initSvg();
+            successBlock.render();
+        },
+        error: function (xhr, status) {
+            var errorBlock = workspace.newBlock('frinex_onErrorType');
+            errorBlock.setFieldValue(status, 'featureText');
+            errorBlock.initSvg();
+            errorBlock.render();
+        }
+    });
 }
 
 workspace.addChangeListener(updatePreview);
