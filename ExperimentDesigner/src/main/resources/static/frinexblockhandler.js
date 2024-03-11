@@ -44,4 +44,10 @@ function updatePreview(event) {
     document.querySelector("iframe").contentWindow.wizardStimulusPresenter(code, event.blockId);
     document.querySelector("iframe").contentWindow.document.body.focus();
 }
+
+function loadTemplateAction(toolboxButton){
+    
+}
+
 workspace.addChangeListener(updatePreview);
+setupTemplates();

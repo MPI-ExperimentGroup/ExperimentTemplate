@@ -10312,31 +10312,13 @@ function getFeatureBlocks() {
       "output": "frinex_stimuliSelectType",
       "colour": 160
     },
-    {
-      "type": "frinex_TemplateAType",
-      "message0": 'TemplateA %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ]},
-    {
-      "type": "frinex_TemplateBType",
-      "message0": 'TemplateB %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ]},
-    {
-      "type": "frinex_TemplateCType",
-      "message0": 'TemplateC %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ]},
   ]);
+
+  function setupTemplates() {
+    javascript.registerButtonCallback("frinex_ExampleATemplate", loadTemplateAction);
+    javascript.registerButtonCallback("frinex_ExampleBTemplate", loadTemplateAction);
+    javascript.registerButtonCallback("frinex_ExampleCTemplate", loadTemplateAction);
+  }
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
      childData += '<administration>\n';
@@ -13288,16 +13270,16 @@ function getFeatureBlocks() {
         "name":"Template",
         "categorystyle":"logic_category",
         "contents":[      {
-        "kind": "block",
-        "type": "frinex_TemplateAType"
+        "kind": "button",
+        "callbackKey": "frinex_ExampleATemplate"
       },
       {
-        "kind": "block",
-        "type": "frinex_TemplateBType"
+        "kind": "button",
+        "callbackKey": "frinex_ExampleBTemplate"
       },
       {
-        "kind": "block",
-        "type": "frinex_TemplateCType"
+        "kind": "button",
+        "callbackKey": "frinex_ExampleCTemplate"
       },
     ]}]
   };
