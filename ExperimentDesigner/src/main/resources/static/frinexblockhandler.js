@@ -23,7 +23,7 @@
  */
 
 const featureTypes = getFeatureBlocks();
-const workspace = Blockly.inject('editorDiv', {toolbox: featureTypes});
+const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
 setupTemplateCallback();
 
 const supportedEvents = new Set([
@@ -46,8 +46,21 @@ function updatePreview(event) {
     document.querySelector("iframe").contentWindow.document.body.focus();
 }
 
-function loadTemplateAction(toolboxButton){
-    
+function loadTemplateAction(toolboxButton) {
+    //    toolboxButton.text
+    var parentBlock = workspace.newBlock('frinex_actionButtonType');
+    parentBlock.initSvg();
+    parentBlock.render();
+
+    var childBlock = workspace.newBlock('frinex_actionTokenButtonType');
+    childBlock.setFieldValue('TODO: parse the XML template: ' + toolboxButton.text, 'featureText');
+    childBlock.initSvg();
+    childBlock.render();
+
+    var parentConnection = parentBlock.getInput('DO').connection;
+
+    var childConnection = childBlock.previousConnection;
+    parentConnection.connect(childConnection);
 }
 
 workspace.addChangeListener(updatePreview);
