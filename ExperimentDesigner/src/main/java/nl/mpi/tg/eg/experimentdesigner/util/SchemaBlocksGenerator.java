@@ -441,11 +441,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void setupTemplates(Writer writer) throws IOException {
-        writer.append("\n  function setupTemplates() {\n");
+//        writer.append("\n  function setupTemplates() {\n");
         addTemplate(writer, "ExampleA");
         addTemplate(writer, "ExampleB");
         addTemplate(writer, "ExampleC");
-        writer.append("  }\n");
+//        writer.append("  }\n");
     }
     
     private void addTemplate(Writer writer, final String templateType) throws IOException {
