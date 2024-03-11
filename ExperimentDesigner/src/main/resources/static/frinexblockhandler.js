@@ -68,13 +68,13 @@ function loadTemplateAction(toolboxButton) {
         url: "/example/" + toolboxButton.text,
         dataType: "xml",
         success: function (data) {
-            var successBlock = workspace.newBlock('frinex_onSuccessType');
+            var successBlock = workspace.newBlock('frinex_htmlTextType');
             successBlock.setFieldValue(data, 'featureText');
             successBlock.initSvg();
             successBlock.render();
         },
         error: function (xhr, status) {
-            var errorBlock = workspace.newBlock('frinex_onErrorType');
+            var errorBlock = workspace.newBlock('frinex_htmlTextType');
             errorBlock.setFieldValue(status, 'featureText');
             errorBlock.initSvg();
             errorBlock.render();
