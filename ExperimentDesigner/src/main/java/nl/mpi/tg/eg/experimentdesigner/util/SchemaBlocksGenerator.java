@@ -45,6 +45,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     Map<String, List<String>> typeProperties = new HashMap<>();
 
     private void getStart(Writer writer) throws IOException {
+        writer.append("function setupTemplateCallback() {\n");
+        writer.append("  javascript.registerButtonCallback(\"loadTemplateCallback\", loadTemplateAction);\n");
+        writer.append("}\n");
+
         writer.append("function getFeatureBlocks() {\n"
         // + " \"type\": \"frinex_experiment\",\n"
         // + " \"message0\": 'Experiment name %1',\n"
@@ -442,13 +446,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void setupTemplates(Writer writer) throws IOException {
-//        writer.append("\n  function setupTemplates() {\n");
         addTemplate(writer, "ExampleA");
         addTemplate(writer, "ExampleB");
         addTemplate(writer, "ExampleC");
-//        writer.append("  }\n");
     }
-    
+
     private void addTemplate(Writer writer, final String templateType) throws IOException {
         templateTypeLists.add(templateType);
     }
@@ -652,7 +654,6 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
-        writer.append("    javascript.registerButtonCallback(\"loadTemplateCallback\", loadTemplateAction);\n");
         writer.append("  Blockly.defineBlocksWithJsonArray([\n");
 //        addElement(writer, rootElement);
 //        FeatureType[] sortedFeatureTypes = FeatureType.values();

@@ -24,6 +24,7 @@
 
 const featureTypes = getFeatureBlocks();
 const workspace = Blockly.inject('editorDiv', {toolbox: featureTypes});
+setupTemplateCallback();
 
 const supportedEvents = new Set([
     Blockly.Events.BLOCK_CHANGE,
@@ -50,4 +51,3 @@ function loadTemplateAction(toolboxButton){
 }
 
 workspace.addChangeListener(updatePreview);
-setupTemplates();
