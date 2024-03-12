@@ -244,7 +244,7 @@ public enum FeatureAttribute {
     deviceRegex(true),
     poster,
     autoPlay("When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.",
-            false, new String[]{"true", "false"}),
+            false, AttributeType.xsBoolean),
     loop("When true the media playback will be set to play in a loop. When false the media will be set to play once then stop.", true, AttributeType.xsBoolean),
     columnCount,
     kintypestring,

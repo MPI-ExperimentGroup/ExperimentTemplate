@@ -221,20 +221,6 @@
 </xs:simpleType>
 </xs:restriction>
 </xs:simpleType>
-<xs:simpleType name="autoPlayType">
-<xs:restriction>
-<xs:simpleType>
-<xs:list>
-<xs:simpleType>
-<xs:restriction base="xs:token">
-<xs:enumeration value="true"/>
-<xs:enumeration value="false"/>
-</xs:restriction>
-</xs:simpleType>
-</xs:list>
-</xs:simpleType>
-</xs:restriction>
-</xs:simpleType>
 <xs:simpleType name="dtmfType">
 <xs:restriction>
 <xs:simpleType>
@@ -2206,7 +2192,7 @@
 <xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:attribute name="autoPlay" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
 </xs:annotation>
@@ -3594,7 +3580,7 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:attribute name="autoPlay" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
 </xs:annotation>
@@ -4545,7 +4531,7 @@
 <xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:attribute name="autoPlay" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
 </xs:annotation>
@@ -4578,7 +4564,7 @@
 <xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:attribute name="autoPlay" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
 </xs:annotation>
@@ -4606,7 +4592,7 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:attribute name="autoPlay" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
 </xs:annotation>
@@ -4624,7 +4610,7 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="autoPlay" type="autoPlayType" use="required">
+<xs:attribute name="autoPlay" type="xs:boolean" use="required">
 <xs:annotation>
 <xs:documentation>When true media will be played as soon as it has loaded. Modern web browsers will prevent media from playing before the user interacts with the page after each time it has loaded. If this is an issue, it can be overcome by always having a begin button, or by having a replay button in the case of an initial failure.</xs:documentation>
 </xs:annotation>
