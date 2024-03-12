@@ -22,8 +22,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +31,8 @@ import java.util.Map;
 
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * @since 13 November 2023 12:33 PM (creation date)
@@ -41,6 +43,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     List<String> adminTypeLists = new ArrayList<>();
     List<String> featureTypeLists = new ArrayList<>();
     List<String> templateTypeLists = new ArrayList<>();
+    List<String> exampleTypeLists = new ArrayList<>();
+    List<String> snippetTypeLists = new ArrayList<>();
     Map<String, List<String>> typeSubTypes = new HashMap<>();
     Map<String, List<String>> typeProperties = new HashMap<>();
 
@@ -292,22 +296,22 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 + "        \"name\":\"Example\",\n"
                 + "        \"categorystyle\":\"logic_category\",\n"
                 + "        \"contents\":[");
-        for (String templateType : templateTypeLists) {
+        for (String exampleType : exampleTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"button\",\n"
-                    + "        \"text\": \"" + templateType + "\",\n"
+                    + "        \"text\": \"" + exampleType + "\",\n"
                     + "        \"callbackKey\": \"loadExampleCallback\"\n"
                     + "      },\n");
         }
-            writer.append("            ]}, {\n"
+        writer.append("            ]}, {\n"
                 + "        \"kind\":\"category\",\n"
                 + "        \"name\":\"My Snippets\",\n"
                 + "        \"categorystyle\":\"logic_category\",\n"
                 + "        \"contents\":[");
-        for (String templateType : templateTypeLists) {
+        for (String snippetType : snippetTypeLists) {
             writer.append("      {\n"
                     + "        \"kind\": \"button\",\n"
-                    + "        \"text\": \"" + templateType + "\",\n"
+                    + "        \"text\": \"" + snippetType + "\",\n"
                     + "        \"callbackKey\": \"loadMySnippetsCallback\"\n"
                     + "      },\n");
         }
@@ -469,14 +473,20 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         featureTypeLists.add("frinex_" + featureType.name() + "Type");
     }
 
-    private void setupTemplates(Writer writer) throws IOException {
-        addTemplate(writer, "ExampleA");
-        addTemplate(writer, "ExampleB");
-        addTemplate(writer, "ExampleC");
+    private void setupTemplates() throws IOException {
+        ClassLoader classLoader = MethodHandles.lookup().getClass().getClassLoader();
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(classLoader);
+        for (final Resource resource : resolver.getResources("classpath:/frinex-templates/*.xml")) {
+            templateTypeLists.add(resource.getFilename().replaceAll("\\.xml$", ""));
+        }
     }
 
-    private void addTemplate(Writer writer, final String templateType) throws IOException {
-        templateTypeLists.add(templateType);
+    private void setupExamples() throws IOException {
+        ClassLoader classLoader = MethodHandles.lookup().getClass().getClassLoader();
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(classLoader);
+        for (final Resource resource : resolver.getResources("classpath:/examples/*.xml")) {
+            templateTypeLists.add(resource.getFilename().replaceAll("\\.xml$", ""));
+        }
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement, String[] precedingBlocks) throws IOException {
@@ -756,7 +766,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0], null);
         addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], null);
         writer.append("  ]);\n");
-        setupTemplates(writer);
+        setupTemplates();
+        setupExamples();
 //        defineBlocks(writer);
         // addJavaScriptGenerator(writer);
         addXmlGenerator(writer);

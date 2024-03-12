@@ -13268,57 +13268,272 @@ function getFeatureBlocks() {
         "categorystyle":"logic_category",
         "contents":[      {
         "kind": "button",
-        "text": "ExampleA",
+        "text": "template_mpiantonymsproduction",
         "callbackKey": "loadTemplateCallback"
       },
       {
         "kind": "button",
-        "text": "ExampleB",
+        "text": "template_mpiauchoicereactiontime",
         "callbackKey": "loadTemplateCallback"
       },
       {
         "kind": "button",
-        "text": "ExampleC",
+        "text": "template_mpiausimplereactiontime",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiauteurstest",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpibq5bfi2",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpicategorisation",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpicorsi",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpidaivt",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpidigitspan",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiflamingo",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpigrammaticalgendercues1",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpigrammaticalgendercues2",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiidioms",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpikonopka",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpilettercomparison",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpilexicaldecision",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpimars",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpimaximalspeechrate",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpinonwordmonitoring",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpioneminutereading",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpipicturenaming",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiprescriptivegrammar",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpirapidautomatizednaming",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpirhymes",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiselfpacedreading",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpisentencegeneration",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpisentencemonitoring",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpispellingtest",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpispontaneousspeech",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpistairs4words2",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiverbalfluency",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpivichoicereactiontime",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpivisimplereactiontime",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiwerkwoorden",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiwoordenschattest",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "template_mpiwords2phrases",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "audio_recorder_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "framerate_timer_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "generic_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "group_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "group_streaming_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "group_webcam_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "hello_world_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "invitation_validation_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "local_storage_full",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "minimal_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "recorder_level_trigger_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "sound_onset_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "stimulus_lists_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "stimulus_timer_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "timer_averaging_example",
+        "callbackKey": "loadTemplateCallback"
+      },
+      {
+        "kind": "button",
+        "text": "with_stimulus_example",
         "callbackKey": "loadTemplateCallback"
       },
             ]}, {
         "kind":"category",
         "name":"Example",
         "categorystyle":"logic_category",
-        "contents":[      {
-        "kind": "button",
-        "text": "ExampleA",
-        "callbackKey": "loadExampleCallback"
-      },
-      {
-        "kind": "button",
-        "text": "ExampleB",
-        "callbackKey": "loadExampleCallback"
-      },
-      {
-        "kind": "button",
-        "text": "ExampleC",
-        "callbackKey": "loadExampleCallback"
-      },
-            ]}, {
+        "contents":[            ]}, {
         "kind":"category",
         "name":"My Snippets",
         "categorystyle":"logic_category",
-        "contents":[      {
-        "kind": "button",
-        "text": "ExampleA",
-        "callbackKey": "loadMySnippetsCallback"
-      },
-      {
-        "kind": "button",
-        "text": "ExampleB",
-        "callbackKey": "loadMySnippetsCallback"
-      },
-      {
-        "kind": "button",
-        "text": "ExampleC",
-        "callbackKey": "loadMySnippetsCallback"
-      },
-    ]}]
+        "contents":[    ]}]
   };
 }
