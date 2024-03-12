@@ -51,6 +51,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void getStart(Writer writer) throws IOException {
         writer.append("function setupTemplateCallback() {\n");
         writer.append("  workspace.registerButtonCallback(\"loadTemplateCallback\", loadTemplateAction);\n");
+        writer.append("  workspace.registerButtonCallback(\"loadTemplateCallback\", loadExampleCallback);\n");
+        writer.append("  workspace.registerButtonCallback(\"loadTemplateCallback\", loadMySnippetsCallback);\n");
         writer.append("}\n");
 
         writer.append("function getFeatureBlocks() {\n"
