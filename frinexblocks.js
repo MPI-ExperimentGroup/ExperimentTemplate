@@ -13446,91 +13446,91 @@ function getFeatureBlocks() {
         "text": "template_mpiwords2phrases",
         "callbackKey": "loadTemplateCallback"
       },
-      {
-        "kind": "button",
-        "text": "audio_recorder_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "framerate_timer_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "generic_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "group_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "group_streaming_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "group_webcam_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "hello_world_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "invitation_validation_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "local_storage_full",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "minimal_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "recorder_level_trigger_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "sound_onset_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "stimulus_lists_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "stimulus_timer_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "timer_averaging_example",
-        "callbackKey": "loadTemplateCallback"
-      },
-      {
-        "kind": "button",
-        "text": "with_stimulus_example",
-        "callbackKey": "loadTemplateCallback"
-      },
             ]}, {
         "kind":"category",
         "name":"Example",
         "categorystyle":"logic_category",
-        "contents":[            ]}, {
+        "contents":[      {
+        "kind": "button",
+        "text": "audio_recorder_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "framerate_timer_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "generic_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "group_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "group_streaming_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "group_webcam_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "hello_world_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "invitation_validation_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "local_storage_full",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "minimal_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "recorder_level_trigger_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "sound_onset_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "stimulus_lists_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "stimulus_timer_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "timer_averaging_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "with_stimulus_example",
+        "callbackKey": "loadExampleCallback"
+      },
+            ]}, {
         "kind":"category",
         "name":"My Snippets",
         "categorystyle":"logic_category",
