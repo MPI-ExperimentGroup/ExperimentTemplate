@@ -485,7 +485,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         ClassLoader classLoader = MethodHandles.lookup().getClass().getClassLoader();
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(classLoader);
         for (final Resource resource : resolver.getResources("classpath:/examples/*.xml")) {
-            templateTypeLists.add(resource.getFilename().replaceAll("\\.xml$", ""));
+            exampleTypeLists.add(resource.getFilename().replaceAll("\\.xml$", ""));
         }
     }
 
