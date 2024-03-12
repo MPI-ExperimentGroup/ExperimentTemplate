@@ -49,7 +49,7 @@ public class TemplateController {
     public @ResponseBody
     Resource getExampleXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
-        return new ClassPathResource("/example/" + filenameCleaned + ".xml");
+        return new ClassPathResource("/examples/" + filenameCleaned + ".xml");
     }
 
     @GetMapping(value = "/snippet/{filename}", produces = MediaType.TEXT_XML_VALUE)
