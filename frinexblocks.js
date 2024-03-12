@@ -13281,6 +13281,44 @@ function getFeatureBlocks() {
         "text": "ExampleC",
         "callbackKey": "loadTemplateCallback"
       },
+            ]}, {
+        "kind":"category",
+        "name":"Example",
+        "categorystyle":"logic_category",
+        "contents":[      {
+        "kind": "button",
+        "text": "ExampleA",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleB",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleC",
+        "callbackKey": "loadExampleCallback"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"My Snippets",
+        "categorystyle":"logic_category",
+        "contents":[      {
+        "kind": "button",
+        "text": "ExampleA",
+        "callbackKey": "loadMySnippetsCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleB",
+        "callbackKey": "loadMySnippetsCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleC",
+        "callbackKey": "loadMySnippetsCallback"
+      },
     ]}]
   };
 }
