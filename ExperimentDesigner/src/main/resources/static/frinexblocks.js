@@ -1,7 +1,7 @@
 function setupTemplateCallback() {
   workspace.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
-  workspace.registerButtonCallback("loadTemplateCallback", loadExampleCallback);
-  workspace.registerButtonCallback("loadTemplateCallback", loadMySnippetsCallback);
+  workspace.registerButtonCallback("loadExampleCallback", loadExampleCallback);
+  workspace.registerButtonCallback("loadMySnippetsCallback", loadMySnippetsCallback);
 }
 function getFeatureBlocks() {
   Blockly.defineBlocksWithJsonArray([
