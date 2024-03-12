@@ -37,16 +37,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TemplateController {
 
-    @GetMapping(value = "/template/{filename}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @GetMapping(value = "/template/{filename}", produces = MediaType.TEXT_XML_VALUE)
     public @ResponseBody
     Resource getTemplateXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
+        System.out.println(filenameCleaned);
         Path path = Paths.get(getClass().getResource("/frinex-templates/" + filenameCleaned + ".xml").toURI());
+        System.out.println(path.toString());
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
         return resource;
     }
 
-    @GetMapping(value = "/example/{filename}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @GetMapping(value = "/example/{filename}", produces = MediaType.TEXT_XML_VALUE)
     public @ResponseBody
     Resource getExampleXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
@@ -55,7 +57,7 @@ public class TemplateController {
         return resource;
     }
 
-    @GetMapping(value = "/snippet/{filename}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @GetMapping(value = "/snippet/{filename}", produces = MediaType.TEXT_XML_VALUE)
     public @ResponseBody
     Resource getSnippetXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
