@@ -57,7 +57,7 @@ public class TemplateController {
 
     @GetMapping(value = "/snippet/{filename}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody
-    Resource getExampleXml(@PathVariable final String filename) throws IOException, URISyntaxException {
+    Resource getSnippetXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
         Path path = Paths.get(getClass().getResource("/examples/" + filenameCleaned + ".xml").toURI());
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
