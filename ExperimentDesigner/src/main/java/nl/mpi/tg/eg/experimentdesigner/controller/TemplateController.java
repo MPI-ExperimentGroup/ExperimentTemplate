@@ -23,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -41,20 +42,14 @@ public class TemplateController {
     public @ResponseBody
     Resource getTemplateXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
-        System.out.println(filenameCleaned);
-        Path path = Paths.get(getClass().getResource("/frinex-templates/" + filenameCleaned + ".xml").toURI());
-        System.out.println(path.toString());
-        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
-        return resource;
+        return new ClassPathResource("/frinex-templates/" + filenameCleaned + ".xml");
     }
 
     @GetMapping(value = "/example/{filename}", produces = MediaType.TEXT_XML_VALUE)
     public @ResponseBody
     Resource getExampleXml(@PathVariable final String filename) throws IOException, URISyntaxException {
         final String filenameCleaned = filename.replaceAll("[^0-9A-Za-z-_]*", "");
-        Path path = Paths.get(getClass().getResource("/examples/" + filenameCleaned + ".xml").toURI());
-        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
-        return resource;
+        return new ClassPathResource("/example/" + filenameCleaned + ".xml");
     }
 
     @GetMapping(value = "/snippet/{filename}", produces = MediaType.TEXT_XML_VALUE)
