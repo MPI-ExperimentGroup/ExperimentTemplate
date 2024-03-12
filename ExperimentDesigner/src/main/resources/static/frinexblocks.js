@@ -1,3 +1,6 @@
+function setupTemplateCallback() {
+  workspace.registerButtonCallback("loadTemplateCallback", loadTemplateAction);
+}
 function getFeatureBlocks() {
   Blockly.defineBlocksWithJsonArray([
     {
@@ -10312,30 +10315,6 @@ function getFeatureBlocks() {
       "output": "frinex_stimuliSelectType",
       "colour": 160
     },
-    {
-      "type": "frinex_TemplateAType",
-      "message0": 'TemplateA %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ]},
-    {
-      "type": "frinex_TemplateBType",
-      "message0": 'TemplateB %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ]},
-    {
-      "type": "frinex_TemplateCType",
-      "message0": 'TemplateC %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ]},
   ]);
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
@@ -13137,14 +13116,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_cancelPauseTimersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_cancelPauseAllType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_displayCompletionCodeType"
       },
       {
@@ -13157,18 +13128,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_pauseType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_randomMsPauseType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_evaluatePauseType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_addMediaTriggerType"
       },
       {
@@ -13178,10 +13137,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_addRecorderLevelTriggerType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_stimulusPauseType"
       },
       {
         "kind": "block",
@@ -13312,16 +13267,57 @@ function getFeatureBlocks() {
         "name":"Template",
         "categorystyle":"logic_category",
         "contents":[      {
-        "kind": "block",
-        "type": "frinex_TemplateAType"
+        "kind": "button",
+        "text": "ExampleA",
+        "callbackKey": "loadTemplateCallback"
       },
       {
-        "kind": "block",
-        "type": "frinex_TemplateBType"
+        "kind": "button",
+        "text": "ExampleB",
+        "callbackKey": "loadTemplateCallback"
       },
       {
-        "kind": "block",
-        "type": "frinex_TemplateCType"
+        "kind": "button",
+        "text": "ExampleC",
+        "callbackKey": "loadTemplateCallback"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"Example",
+        "categorystyle":"logic_category",
+        "contents":[      {
+        "kind": "button",
+        "text": "ExampleA",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleB",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleC",
+        "callbackKey": "loadExampleCallback"
+      },
+            ]}, {
+        "kind":"category",
+        "name":"My Snippets",
+        "categorystyle":"logic_category",
+        "contents":[      {
+        "kind": "button",
+        "text": "ExampleA",
+        "callbackKey": "loadMySnippetsCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleB",
+        "callbackKey": "loadMySnippetsCallback"
+      },
+      {
+        "kind": "button",
+        "text": "ExampleC",
+        "callbackKey": "loadMySnippetsCallback"
       },
     ]}]
   };

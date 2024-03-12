@@ -286,6 +286,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     + "        \"text\": \"" + templateType + "\",\n"
                     + "        \"callbackKey\": \"loadTemplateCallback\"\n"
                     + "      },\n");
+        }
         writer.append("            ]}, {\n"
                 + "        \"kind\":\"category\",\n"
                 + "        \"name\":\"Example\",\n"
@@ -297,7 +298,8 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     + "        \"text\": \"" + templateType + "\",\n"
                     + "        \"callbackKey\": \"loadExampleCallback\"\n"
                     + "      },\n");
-        writer.append("            ]}, {\n"
+        }
+            writer.append("            ]}, {\n"
                 + "        \"kind\":\"category\",\n"
                 + "        \"name\":\"My Snippets\",\n"
                 + "        \"categorystyle\":\"logic_category\",\n"
