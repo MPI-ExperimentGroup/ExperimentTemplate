@@ -286,6 +286,28 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     + "        \"text\": \"" + templateType + "\",\n"
                     + "        \"callbackKey\": \"loadTemplateCallback\"\n"
                     + "      },\n");
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Example\",\n"
+                + "        \"categorystyle\":\"logic_category\",\n"
+                + "        \"contents\":[");
+        for (String templateType : templateTypeLists) {
+            writer.append("      {\n"
+                    + "        \"kind\": \"button\",\n"
+                    + "        \"text\": \"" + templateType + "\",\n"
+                    + "        \"callbackKey\": \"loadExampleCallback\"\n"
+                    + "      },\n");
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"My Snippets\",\n"
+                + "        \"categorystyle\":\"logic_category\",\n"
+                + "        \"contents\":[");
+        for (String templateType : templateTypeLists) {
+            writer.append("      {\n"
+                    + "        \"kind\": \"button\",\n"
+                    + "        \"text\": \"" + templateType + "\",\n"
+                    + "        \"callbackKey\": \"loadMySnippetsCallback\"\n"
+                    + "      },\n");
         }
         writer.append("    ]}]\n"
                 + "  };\n");
