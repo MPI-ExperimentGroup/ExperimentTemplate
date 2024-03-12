@@ -47,13 +47,24 @@ function updatePreview(event) {
 }
 
 function loadTemplateAction(toolboxButton) {
-    //    toolboxButton.text
+    loadAction("template", toolboxButton.text);
+}
+
+function loadExampleCallback(toolboxButton) {
+    loadAction("example", toolboxButton.text);
+}
+
+function loadMySnippetsCallback(toolboxButton) {
+    loadAction("snippet", toolboxButton.text);
+}
+
+function loadAction(actionType, actionName) {
     var parentBlock = workspace.newBlock('frinex_actionButtonType');
     parentBlock.initSvg();
     parentBlock.render();
 
     var childBlock = workspace.newBlock('frinex_actionTokenButtonType');
-    childBlock.setFieldValue('TODO: parse the XML template: ' + toolboxButton.text, 'featureText');
+    childBlock.setFieldValue('TODO: parse the XML ' + actionType + ': ' + actionName, 'featureText');
     childBlock.initSvg();
     childBlock.render();
 
@@ -65,7 +76,7 @@ function loadTemplateAction(toolboxButton) {
 
     $.ajax({
         type: "get",
-        url: "/example/" + toolboxButton.text,
+        url: "/" + actionType + "/" + actionName,
         dataType: "xml",
         success: function (data) {
             var successBlock = workspace.newBlock('frinex_htmlTextType');
