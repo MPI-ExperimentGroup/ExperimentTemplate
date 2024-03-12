@@ -3,16 +3,16 @@
   <groupId>nl.mpi.tg.eg.frinex</groupId>
   <artifactId>frinex-parent</artifactId>
   <versioning>
-    <lastUpdated>20240312155948</lastUpdated>
+    <lastUpdated>20240312164018</lastUpdated>
     <snapshot>
-      <timestamp>20240312.155948</timestamp>
+      <timestamp>20240312.164018</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.7-stable-20240312.155948-1</value>
-        <updated>20240312155948</updated>
+        <value>1.7-stable-20240312.164018-1</value>
+        <updated>20240312164018</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
