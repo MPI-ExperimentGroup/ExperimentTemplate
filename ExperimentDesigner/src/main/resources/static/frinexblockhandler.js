@@ -110,8 +110,8 @@ function buildFromXml(currentElement, parentBlock) {
         var childConnection = childBlock.previousConnection;
         parentConnection.connect(childConnection);
     }
-    for (childIndex = 0; childIndex < currentElement.children().length; childIndex++) {
-        buildFromXml(currentElement.children()[childIndex], childBlock);
+    for (childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+        buildFromXml($(currentElement).children()[childIndex], childBlock);
     }
 }
 
