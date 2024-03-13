@@ -59,19 +59,17 @@ function loadMySnippetsCallback(toolboxButton) {
 }
 
 function loadAction(actionType, actionName) {
-    var parentBlock = workspace.newBlock('frinex_actionButtonType');
-    parentBlock.initSvg();
-    parentBlock.render();
+    // var parentBlock = workspace.newBlock('frinex_actionButtonType');
+    // parentBlock.initSvg();
+    // parentBlock.render();
 
-    var childBlock = workspace.newBlock('frinex_actionTokenButtonType');
-    childBlock.setFieldValue('TODO: parse the XML ' + actionType + ': ' + actionName, 'featureText');
-    childBlock.initSvg();
-    childBlock.render();
-
-    var parentConnection = parentBlock.getInput('DO').connection;
-
-    var childConnection = childBlock.previousConnection;
-    parentConnection.connect(childConnection);
+    // var childBlock = workspace.newBlock('frinex_actionTokenButtonType');
+    // childBlock.setFieldValue('TODO: parse the XML ' + actionType + ': ' + actionName, 'featureText');
+    // childBlock.initSvg();
+    // childBlock.render();
+    // var parentConnection = parentBlock.getInput('DO').connection;
+    // var childConnection = childBlock.previousConnection;
+    // parentConnection.connect(childConnection);
 
 
     $.ajax({
@@ -79,10 +77,13 @@ function loadAction(actionType, actionName) {
         url: "/" + actionType + "/" + actionName,
         dataType: "xml",
         success: function (data) {
-            var successBlock = workspace.newBlock('frinex_htmlTextType');
-            successBlock.setFieldValue(data, 'featureText');
-            successBlock.initSvg();
-            successBlock.render();
+            for (childIndex = 0; childIndex < $(data).children().length; childIndex++) {
+                buildFromXml($(data).children()[childIndex], null);
+            }
+            // var successBlock = workspace.newBlock('frinex_htmlTextType');
+            // successBlock.setFieldValue(data, 'featureText');
+            // successBlock.initSvg();
+            // successBlock.render();
         },
         error: function (xhr, status) {
             var errorBlock = workspace.newBlock('frinex_htmlTextType');
@@ -91,6 +92,23 @@ function loadAction(actionType, actionName) {
             errorBlock.render();
         }
     });
+}
+
+function buildFromXml(currentElement, parentBlock) {
+    var childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
+    for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
+        childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+    }
+    childBlock.initSvg();
+    childBlock.render();
+    if (parentBlock != null) {
+        var parentConnection = parentBlock.getInput('DO').connection;
+        var childConnection = childBlock.previousConnection;
+        parentConnection.connect(childConnection);
+    }
+    for (childIndex = 0; childIndex < currentElement.children().length; childIndex++) {
+        buildFromXml(currentElement.children()[childIndex], childBlock);
+    }
 }
 
 workspace.addChangeListener(updatePreview);
