@@ -77,7 +77,7 @@ function loadAction(actionType, actionName) {
         url: "/" + actionType + "/" + actionName,
         dataType: "xml",
         success: function (data) {
-            for (childIndex = 0; childIndex < $(data).children().length; childIndex++) {
+            for (let childIndex = 0; childIndex < $(data).children().length; childIndex++) {
                 buildFromXml($(data).children()[childIndex], null);
             }
             // var successBlock = workspace.newBlock('frinex_htmlTextType');
@@ -110,7 +110,7 @@ function buildFromXml(currentElement, parentBlock) {
         var childConnection = childBlock.previousConnection;
         parentConnection.connect(childConnection);
     }
-    for (childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+    for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
         buildFromXml($(currentElement).children()[childIndex], childBlock);
     }
 }
