@@ -97,7 +97,11 @@ function loadAction(actionType, actionName) {
 function buildFromXml(currentElement, parentBlock) {
     var childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
     for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
-        childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+        try {
+            childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+        } catch (exception) {
+            console.error(exception);
+        }
     }
     childBlock.initSvg();
     childBlock.render();
