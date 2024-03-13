@@ -86,7 +86,7 @@ function loadAction(actionType, actionName) {
             // successBlock.render();
         },
         error: function (xhr, status) {
-            var errorBlock = workspace.newBlock('frinex_htmlTextType');
+            let errorBlock = workspace.newBlock('frinex_htmlTextType');
             errorBlock.setFieldValue(status, 'featureText');
             errorBlock.initSvg();
             errorBlock.render();
@@ -95,8 +95,8 @@ function loadAction(actionType, actionName) {
 }
 
 function buildFromXml(currentElement, parentBlock) {
-    var childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
     try {
+        let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
         for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
             try {
                 childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
@@ -108,8 +108,8 @@ function buildFromXml(currentElement, parentBlock) {
         childBlock.initSvg();
         childBlock.render();
         if (parentBlock != null) {
-            var parentConnection = parentBlock.getInput('DO').connection;
-            var childConnection = childBlock.previousConnection;
+            let parentConnection = parentBlock.getInput('DO').connection;
+            let childConnection = childBlock.previousConnection;
             parentConnection.connect(childConnection);
         }
     } catch (exception) {
@@ -117,6 +117,7 @@ function buildFromXml(currentElement, parentBlock) {
         console.error(exception);
     }
     for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+        // TODO: we probably should be passing the relevant connection not the block
         buildFromXml($(currentElement).children()[childIndex], childBlock);
     }
 }
