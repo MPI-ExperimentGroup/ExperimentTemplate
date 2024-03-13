@@ -96,19 +96,25 @@ function loadAction(actionType, actionName) {
 
 function buildFromXml(currentElement, parentBlock) {
     var childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
-    for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
-        try {
-            childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
-        } catch (exception) {
-            console.error(exception);
+    try {
+        for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
+            try {
+                childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+            } catch (exception) {
+                // TODO: test if the block field exists first
+                console.error(exception);
+            }
         }
-    }
-    childBlock.initSvg();
-    childBlock.render();
-    if (parentBlock != null) {
-        var parentConnection = parentBlock.getInput('DO').connection;
-        var childConnection = childBlock.previousConnection;
-        parentConnection.connect(childConnection);
+        childBlock.initSvg();
+        childBlock.render();
+        if (parentBlock != null) {
+            var parentConnection = parentBlock.getInput('DO').connection;
+            var childConnection = childBlock.previousConnection;
+            parentConnection.connect(childConnection);
+        }
+    } catch (exception) {
+        // TODO: test if the block type exists first
+        console.error(exception);
     }
     for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
         buildFromXml($(currentElement).children()[childIndex], childBlock);
