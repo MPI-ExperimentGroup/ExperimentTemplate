@@ -112,13 +112,18 @@ function buildFromXml(currentElement, parentBlock) {
             let childConnection = childBlock.previousConnection;
             parentConnection.connect(childConnection);
         }
+        for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+            // TODO: we probably should be passing the relevant connection not the block
+            buildFromXml($(currentElement).children()[childIndex], childBlock);
+        }
     } catch (exception) {
         // TODO: test if the block type exists first
         console.error(exception);
-    }
-    for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
-        // TODO: we probably should be passing the relevant connection not the block
-        buildFromXml($(currentElement).children()[childIndex], childBlock);
+        
+        for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+            // TODO: we probably should be passing the relevant connection not the block
+            buildFromXml($(currentElement).children()[childIndex], parentBlock);
+        }
     }
 }
 
