@@ -6866,7 +6866,7 @@
         <regionAppend regionId="stimulusButtons"></regionAppend>
         <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <regionReplace regionId="recordedMediaResult">
+                <regionReplace regionId="recordedMediaResult"> 
                     <startAudioRecorderWeb featureText="00:00:00" downloadPermittedWindowMs="30000" deviceRegex="(046d:0a45)" mediaId="recordedMedia_::stimulusId::">
                         <onSuccess>
                             <regionReplace regionId="stimulusLabel">
