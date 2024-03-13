@@ -1998,6 +1998,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, final int downloadPermittedWindowMs, final String mediaId, final String deviceRegexL, final ValueChangeListener<Double> changeListener, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
+        bumpAudioTicker(); // this has been added here because the recording indicator was not showing on the first recording
         ((ComplexView) simpleView).storeMediaLength(mediaId, -1d);
         // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
@@ -2109,6 +2110,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void startAudioRecorderApp(final MetadataField directoryMetadataField, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        bumpAudioTicker(); // this has been added here because the recording indicator was not showing on the first recording
         final String subdirectoryName = userResults.getUserData().getMetadataValue(directoryMetadataField);
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         super.startAudioRecorderApp(subdirectoryName, directoryName, filePerStimulus, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), onError, onSuccess);
