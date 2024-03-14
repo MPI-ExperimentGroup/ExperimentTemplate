@@ -340,122 +340,130 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     }
 
     private void addElement(Writer writer, final FeatureType featureType) throws IOException {
-        final String currentType = "frinex_" + featureType.name() + "Type";
-        List<String> currentSubTypes;
-        if (typeSubTypes.containsKey(currentType)) {
-            currentSubTypes = typeSubTypes.get(currentType);
+        if (featureType.isChildType(FeatureType.Contitionals.hasCorrectIncorrect)
+                || featureType.isChildType(FeatureType.Contitionals.hasMoreStimulus)
+                || featureType.isChildType(FeatureType.Contitionals.hasErrorSuccess)
+                || featureType.isChildType(FeatureType.Contitionals.hasTrueFalseCondition)
+                || featureType.isChildType(FeatureType.Contitionals.hasTrueFalseErrorCondition)) {
+            // skipping suppresed node types here and this list of conditionals must match that in the input statment section
         } else {
-            currentSubTypes = new ArrayList<>();
-            typeSubTypes.put(currentType, currentSubTypes);
-        }
-        List<String> currentTypeProperties;
-        if (typeProperties.containsKey(currentType)) {
-            currentTypeProperties = typeProperties.get(currentType);
-        } else {
-            currentTypeProperties = new ArrayList<>();
-            typeProperties.put(currentType, currentTypeProperties);
-        }
-        writer.append("    {\n"
-                + "      \"type\": \"" + currentType + "\",\n"
-                + "      \"message0\": '" + featureType.name() + " %1',\n"
-                + "      \"args0\": [\n"
-                + "        {\n");
-        if (featureType.canHaveText()) {
-            writer.append("          \"type\": \"field_input\",\n"
-                    + "          \"name\": \"featureText\",\n"
-                    + "          \"check\": \"String\"\n");
-            currentTypeProperties.add("featureText");
-        } else {
-            writer.append("          \"type\": \"input_dummy\",\n");
-        }
-        writer.append("        }\n"
-                + "      ],\n");
-        //                + "      \"output\": \"frinex_featureType\",\n"
-        int argsCount = 1;
-        // if (featureType.canHaveText()) {
-        //     writer.append("      \"message" + argsCount + "\": 'text %1',\n"
-        //         + "      \"args" + argsCount + "\": [\n"
-        //         + "        {\n"
-        //         + "          \"type\": \"field_input\",\n"
-        //         + "          \"name\": \"featureText\",\n"
-        //         + "          \"check\": \"String\"\n"
-        //         + "        }\n"
-        //         + "      ],\n");
-        //         currentTypeProperties.add("featureText");
-        //     argsCount++;
-        // }
-        if (featureType.getFeatureAttributes() != null) {
-            for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
-                writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
-                        + "      \"args" + argsCount + "\": [\n"
-                        + "        {\n"
-                        + "          \"type\": \"field_input\",\n"
-                        + "          \"name\": \"" + attribute.name() + "\",\n"
-                        + "          \"check\": \"String\"\n"
-                        + "        }\n"
-                        + "      ],\n");
-                currentTypeProperties.add(attribute.name());
-                argsCount++;
-            }
-        }
-        if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
 
-            if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
-                    || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
-                    || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
-                    || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
-                    || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseErrorCondition) {
-                for (FeatureType childType : FeatureType.values()) {
-                    if (childType.isChildType(featureType.getRequiresChildType())) {
-                        writer.append("      \"message" + argsCount + "\": \"" + childType.name() + " %1\",\n");
-                        writer.append("      \"args" + argsCount + "\": [\n"
-                                + "        {\n");
-                        writer.append("          \"type\": \"input_statement\",\n          \"name\": \"" + childType.name() + "\",\n");
-                        writer.append(""
-                                + "          \"check\": [\n");
-                        writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
-//            }
-                        writer.append("          ]\n"
-                                + "        }\n      ],\n");
-                        argsCount++;
-                        currentSubTypes.add(childType.name());
-                    }
-                }
+            final String currentType = "frinex_" + featureType.name() + "Type";
+            List<String> currentSubTypes;
+            if (typeSubTypes.containsKey(currentType)) {
+                currentSubTypes = typeSubTypes.get(currentType);
             } else {
-                writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
-                writer.append("      \"args" + argsCount + "\": [\n"
-                        + "        {\n");
-                writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
-                writer.append("          \"check\": [\n");
+                currentSubTypes = new ArrayList<>();
+                typeSubTypes.put(currentType, currentSubTypes);
+            }
+            List<String> currentTypeProperties;
+            if (typeProperties.containsKey(currentType)) {
+                currentTypeProperties = typeProperties.get(currentType);
+            } else {
+                currentTypeProperties = new ArrayList<>();
+                typeProperties.put(currentType, currentTypeProperties);
+            }
+            writer.append("    {\n"
+                    + "      \"type\": \"" + currentType + "\",\n"
+                    + "      \"message0\": '" + featureType.name() + " %1',\n"
+                    + "      \"args0\": [\n"
+                    + "        {\n");
+            if (featureType.canHaveText()) {
+                writer.append("          \"type\": \"field_input\",\n"
+                        + "          \"name\": \"featureText\",\n"
+                        + "          \"check\": \"String\"\n");
+                currentTypeProperties.add("featureText");
+            } else {
+                writer.append("          \"type\": \"input_dummy\",\n");
+            }
+            writer.append("        }\n"
+                    + "      ],\n");
+            //                + "      \"output\": \"frinex_featureType\",\n"
+            int argsCount = 1;
+            // if (featureType.canHaveText()) {
+            //     writer.append("      \"message" + argsCount + "\": 'text %1',\n"
+            //         + "      \"args" + argsCount + "\": [\n"
+            //         + "        {\n"
+            //         + "          \"type\": \"field_input\",\n"
+            //         + "          \"name\": \"featureText\",\n"
+            //         + "          \"check\": \"String\"\n"
+            //         + "        }\n"
+            //         + "      ],\n");
+            //         currentTypeProperties.add("featureText");
+            //     argsCount++;
+            // }
+            if (featureType.getFeatureAttributes() != null) {
+                for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
+                    writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
+                            + "      \"args" + argsCount + "\": [\n"
+                            + "        {\n"
+                            + "          \"type\": \"field_input\",\n"
+                            + "          \"name\": \"" + attribute.name() + "\",\n"
+                            + "          \"check\": \"String\"\n"
+                            + "        }\n"
+                            + "      ],\n");
+                    currentTypeProperties.add(attribute.name());
+                    argsCount++;
+                }
+            }
+            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+
+                if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseErrorCondition) {
+                    for (FeatureType childType : FeatureType.values()) {
+                        if (childType.isChildType(featureType.getRequiresChildType())) {
+                            writer.append("      \"message" + argsCount + "\": \"" + childType.name() + " %1\",\n");
+                            writer.append("      \"args" + argsCount + "\": [\n"
+                                    + "        {\n");
+                            writer.append("          \"type\": \"input_statement\",\n          \"name\": \"" + childType.name() + "\",\n");
+                            writer.append(""
+                                    + "          \"check\": [\n");
+                            writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
+//            }
+                            writer.append("          ]\n"
+                                    + "        }\n      ],\n");
+                            argsCount++;
+                            currentSubTypes.add(childType.name());
+                        }
+                    }
+                } else {
+                    writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
+                    writer.append("      \"args" + argsCount + "\": [\n"
+                            + "        {\n");
+                    writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
+                    writer.append("          \"check\": [\n");
 //            if (featureType.getRequiresChildType() == FeatureType.Contitionals.any) {
 //                writer.append("                \"frinex_featureType\",\n");
 //            } else {
-                writer.append("            \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
+                    writer.append("            \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
 //            }
-                writer.append("          ]\n"
-                        + "        }\n      ],\n");
-                argsCount++;
-                currentSubTypes.add("DO");
+                    writer.append("          ]\n"
+                            + "        }\n      ],\n");
+                    argsCount++;
+                    currentSubTypes.add("DO");
+                }
             }
-        }
-        // final String statementType = (featureType.getRequiresChildType() == FeatureType.Contitionals.any) ? "frinex_featureType" : "frinex_" + featureType.getChildTypeString() + "Type";
-        writer.append("      \"previousStatement\": [\n");
-        for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
-            writer.append("        \"frinex_" + statementType + "Type\",\n");
-            if (statementType == FeatureType.Contitionals.none) {
-                writer.append("        \"frinex_anyType\",\n");
+            // final String statementType = (featureType.getRequiresChildType() == FeatureType.Contitionals.any) ? "frinex_featureType" : "frinex_" + featureType.getChildTypeString() + "Type";
+            writer.append("      \"previousStatement\": [\n");
+            for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
+                writer.append("        \"frinex_" + statementType + "Type\",\n");
+                if (statementType == FeatureType.Contitionals.none) {
+                    writer.append("        \"frinex_anyType\",\n");
+                }
             }
-        }
-        writer.append("      ],\n"
-                + "      \"nextStatement\": [\n");
-        for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
-            writer.append("        \"frinex_" + statementType + "Type\",\n");
-            if (statementType == FeatureType.Contitionals.none) {
-                writer.append("        \"frinex_anyType\",\n");
+            writer.append("      ],\n"
+                    + "      \"nextStatement\": [\n");
+            for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
+                writer.append("        \"frinex_" + statementType + "Type\",\n");
+                if (statementType == FeatureType.Contitionals.none) {
+                    writer.append("        \"frinex_anyType\",\n");
+                }
             }
-        }
-        writer.append("      ],\n"
-                + "      \"colour\": 140,\n");
+            writer.append("      ],\n"
+                    + "      \"colour\": 140,\n");
 //        int argsCount = 0;
 //        switch (featureType.getRequiresChildType()) {
 //            case any:
@@ -471,8 +479,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                argsCount++;
 //                break;
 //        }
-        writer.append("      },\n");
-        featureTypeLists.add("frinex_" + featureType.name() + "Type");
+            writer.append("      },\n");
+            featureTypeLists.add("frinex_" + featureType.name() + "Type");
+        }
     }
 
     private void setupTemplates() throws IOException {
