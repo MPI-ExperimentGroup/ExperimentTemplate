@@ -114,9 +114,16 @@ function buildFromXml(currentElement, parentBlock) {
         childBlock.initSvg();
         childBlock.render();
         if (parentBlock != null) {
-            let parentConnection = parentBlock.getInput('DO').connection;
-            let childConnection = childBlock.previousConnection;
-            parentConnection.connect(childConnection);
+            // find the correct input if it exists
+            for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
+                let parentConnection = parentBlock.inputList[inputIndex];
+                let childConnection = childBlock.previousConnection;
+                let connectionPermitted = 0 < parentConnection.check.filter(arr1Item => childConnection.check.includes(arr1Item)).length;
+                if (connectionPermitted) {
+                    parentConnection.connect(childConnection);
+                    break;
+                }
+            }
         }
         for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
             // TODO: we probably should be passing the relevant connection not the block
