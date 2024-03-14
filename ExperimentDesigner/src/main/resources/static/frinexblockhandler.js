@@ -118,10 +118,12 @@ function buildFromXml(currentElement, parentBlock) {
             for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
                 let parentConnection = parentBlock.inputList[inputIndex];
                 let childConnection = childBlock.previousConnection;
-                let connectionPermitted = 0 < parentConnection.check.filter(arr1Item => childConnection.check.includes(arr1Item)).length;
-                if (connectionPermitted) {
-                    parentConnection.connect(childConnection);
-                    break;
+                if (parentConnection.check != null && (childConnection.check != null)) {
+                    let connectionPermitted = 0 < parentConnection.check.filter(parentItem => childConnection.check.includes(parentItem)).length;
+                    if (connectionPermitted) {
+                        parentConnection.connect(childConnection);
+                        break;
+                    }
                 }
             }
         }
@@ -132,7 +134,7 @@ function buildFromXml(currentElement, parentBlock) {
     } catch (exception) {
         // TODO: test if the block type exists first
         console.error(exception);
-        
+
         for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
             // TODO: we probably should be passing the relevant connection not the block
             buildFromXml($(currentElement).children()[childIndex], parentBlock);
