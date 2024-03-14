@@ -99,7 +99,9 @@ function buildFromXml(currentElement, parentBlock) {
         let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
         for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
             try {
-                childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+                if ("xmlns:xsi" !== currentElement.attributes[attributeIndex].name && "xsi:noNamespaceSchemaLocation" !== currentElement.attributes[attributeIndex].name) {
+                    childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+                }
             } catch (exception) {
                 // TODO: test if the block field exists first
                 console.error(exception);
