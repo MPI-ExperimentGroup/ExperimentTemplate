@@ -7085,62 +7085,6 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
-      "type": "frinex_mediaLoadedType",
-      "message0": 'mediaLoaded %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasMediaLoadingType",
-        "frinex_hasMediaRecorderPlaybackType",
-      ],
-      "nextStatement": [
-        "frinex_hasMediaLoadingType",
-        "frinex_hasMediaRecorderPlaybackType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_mediaLoadFailedType",
-      "message0": 'mediaLoadFailed %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasMediaLoadingType",
-        "frinex_hasMediaRecorderPlaybackType",
-      ],
-      "nextStatement": [
-        "frinex_hasMediaLoadingType",
-        "frinex_hasMediaRecorderPlaybackType",
-      ],
-      "colour": 140,
-      },
-    {
       "type": "frinex_mediaPlaybackStartedType",
       "message0": 'mediaPlaybackStarted %1',
       "args0": [
@@ -10469,16 +10413,6 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
     return '<withinThreshold block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</withinThreshold>\n');
   };
-    javascript.javascriptGenerator.forBlock['frinex_mediaLoadedType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<mediaLoaded block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</mediaLoaded>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_mediaLoadFailedType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<mediaLoadFailed block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</mediaLoadFailed>\n');
-  };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
@@ -11467,14 +11401,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_mediaLoadedType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_mediaLoadFailedType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_mediaPlaybackStartedType"
       },
       {
@@ -12212,14 +12138,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_addRecorderLevelTriggerType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_mediaLoadedType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_mediaLoadFailedType"
       },
       {
         "kind": "block",
