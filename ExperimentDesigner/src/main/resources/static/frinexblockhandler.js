@@ -117,7 +117,7 @@ function buildFromXml(currentElement, parentBlock) {
             // find the correct input if it exists
             for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
                 let parentConnection = parentBlock.inputList[inputIndex].connection;
-                let childConnection = childBlock.previousConnection;
+                let childConnection = (childBlock.outputConnection != null) ? childBlock.outputConnection : childBlock.previousConnection;
                 if (parentConnection != null) {
                     if (parentConnection.check != null && childConnection.check != null) {
                         let connectionPermitted = 0 < parentConnection.check.filter(parentItem => childConnection.check.includes(parentItem)).length;
