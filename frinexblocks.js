@@ -11995,6 +11995,82 @@ function getFeatureBlocks() {
       },
             ]}, {
         "kind":"category",
+        "name":"Group",
+        "categorystyle":"loop_category",
+        "contents":[      {
+        "kind": "block",
+        "type": "frinex_groupStimuliType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_disableButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_enableButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_hideButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_styleButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_showButtonGroupType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_svgLoadGroupsType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_svgGroupAddType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_svgGroupShowType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_svgGroupActionType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_svgGroupMatchingType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupNetworkType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupInitialisationErrorType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupNetworkConnectingType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupFindingMembersType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupNetworkSynchronisingType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupPhaseListenersType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberActivityType"
+      },
+            ]}, {
+        "kind":"category",
         "name":"Button",
         "categorystyle":"loop_category",
         "contents":[      {
