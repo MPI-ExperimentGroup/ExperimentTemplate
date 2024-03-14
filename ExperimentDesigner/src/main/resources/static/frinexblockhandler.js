@@ -99,6 +99,7 @@ function buildFromXml(currentElement, parentBlock) {
         let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
         for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
             try {
+                // TODO: keep the frinex version from noNamespaceSchemaLocation for reexport and in a way that the user can change it
                 if ("xmlns:xsi" !== currentElement.attributes[attributeIndex].name && "xsi:noNamespaceSchemaLocation" !== currentElement.attributes[attributeIndex].name) {
                     childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
                 }
