@@ -341,6 +341,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private void addElement(Writer writer, final FeatureType featureType) throws IOException {
         if (featureType.isChildType(FeatureType.Contitionals.hasCorrectIncorrect)
+                || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
                 || featureType.isChildType(FeatureType.Contitionals.hasMoreStimulus)
                 || featureType.isChildType(FeatureType.Contitionals.hasErrorSuccess)
                 || featureType.isChildType(FeatureType.Contitionals.hasTrueFalseCondition)
@@ -409,6 +410,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
 
                 if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
+                        || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
