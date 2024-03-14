@@ -6615,88 +6615,6 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
-      "type": "frinex_conditionTrueType",
-      "message0": 'conditionTrue %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasTrueFalseConditionType",
-        "frinex_hasTrueFalseErrorConditionType",
-      ],
-      "nextStatement": [
-        "frinex_hasTrueFalseConditionType",
-        "frinex_hasTrueFalseErrorConditionType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_conditionFalseType",
-      "message0": 'conditionFalse %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasTrueFalseConditionType",
-        "frinex_hasTrueFalseErrorConditionType",
-      ],
-      "nextStatement": [
-        "frinex_hasTrueFalseConditionType",
-        "frinex_hasTrueFalseErrorConditionType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_onSuccessType",
-      "message0": 'onSuccess %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasErrorSuccessType",
-      ],
-      "nextStatement": [
-        "frinex_hasErrorSuccessType",
-      ],
-      "colour": 140,
-      },
-    {
       "type": "frinex_onActivateType",
       "message0": 'onActivate %1',
       "args0": [
@@ -6907,58 +6825,6 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
-      "type": "frinex_responseCorrectType",
-      "message0": 'responseCorrect %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasCorrectIncorrectType",
-      ],
-      "nextStatement": [
-        "frinex_hasCorrectIncorrectType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_responseIncorrectType",
-      "message0": 'responseIncorrect %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasCorrectIncorrectType",
-      ],
-      "nextStatement": [
-        "frinex_hasCorrectIncorrectType",
-      ],
-      "colour": 140,
-      },
-    {
       "type": "frinex_groupNetworkType",
       "message0": 'groupNetwork %1',
       "args0": [
@@ -7005,32 +6871,6 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_groupStimulusType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_hasMoreStimulusType",
-      "message0": 'hasMoreStimulus %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "stimulusAction %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_stimulusActionType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasMoreStimulusType",
-      ],
-      "nextStatement": [
-        "frinex_hasMoreStimulusType",
       ],
       "colour": 140,
       },
@@ -7109,34 +6949,6 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_eachStimulusType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_endOfStimulusType",
-      "message0": 'endOfStimulus %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasMoreStimulusType",
-        "frinex_groupStimulusType",
-      ],
-      "nextStatement": [
-        "frinex_hasMoreStimulusType",
-        "frinex_groupStimulusType",
       ],
       "colour": 140,
       },
@@ -10253,38 +10065,6 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
-      "type": "frinex_onErrorType",
-      "message0": 'onError %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasErrorSuccessType",
-        "frinex_hasTrueFalseErrorConditionType",
-        "frinex_hasErrorTimerType",
-        "frinex_hasErrorTimeCriticalType",
-      ],
-      "nextStatement": [
-        "frinex_hasErrorSuccessType",
-        "frinex_hasTrueFalseErrorConditionType",
-        "frinex_hasErrorTimerType",
-        "frinex_hasErrorTimeCriticalType",
-      ],
-      "colour": 140,
-      },
-    {
       "type": "frinex_randomGroupingType",
       "message0": 'randomGrouping %1',
       "args0": [
@@ -11158,21 +10938,6 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
     return '<onTimer block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onTimer>\n');
   };
-    javascript.javascriptGenerator.forBlock['frinex_conditionTrueType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<conditionTrue block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</conditionTrue>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_conditionFalseType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<conditionFalse block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</conditionFalse>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_onSuccessType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<onSuccess block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onSuccess>\n');
-  };
     javascript.javascriptGenerator.forBlock['frinex_onActivateType'] = function(block, generator) {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
@@ -11203,25 +10968,10 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'DO');
     return '<onKeyDown block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onKeyDown>\n');
   };
-    javascript.javascriptGenerator.forBlock['frinex_responseCorrectType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<responseCorrect block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</responseCorrect>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_responseIncorrectType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<responseIncorrect block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</responseIncorrect>\n');
-  };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
     return '<groupNetwork block_id="' + block.id + '" groupMembers="' + block.getFieldValue('groupMembers') +'" groupCommunicationChannels="' + block.getFieldValue('groupCommunicationChannels') +'" phasesPerStimulus="' + block.getFieldValue('phasesPerStimulus') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetwork>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_hasMoreStimulusType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<hasMoreStimulus block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</hasMoreStimulus>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
     var childData = '';
@@ -11237,11 +10987,6 @@ function getFeatureBlocks() {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
     return '<afterStimulus block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</afterStimulus>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_endOfStimulusType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<endOfStimulus block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</endOfStimulus>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
     var childData = '';
@@ -11639,11 +11384,6 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'onError');
      childData += '</onError>\n';
     return '<transmitResults block_id="' + block.id + '" receivingRegex="' + block.getFieldValue('receivingRegex') +'" sendingRegex="' + block.getFieldValue('sendingRegex') +'" dataLogFormat="' + block.getFieldValue('dataLogFormat') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</transmitResults>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_onErrorType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<onError block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onError>\n');
   };
   return {
     "kind": "categoryToolbox",
@@ -12286,18 +12026,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_conditionTrueType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_conditionFalseType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_onSuccessType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_onActivateType"
       },
       {
@@ -12322,19 +12050,7 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_responseCorrectType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_responseIncorrectType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_groupNetworkType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_hasMoreStimulusType"
       },
       {
         "kind": "block",
@@ -12347,10 +12063,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_afterStimulusType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_endOfStimulusType"
       },
       {
         "kind": "block",
@@ -12660,10 +12372,6 @@ function getFeatureBlocks() {
         "kind": "block",
         "type": "frinex_transmitResultsType"
       },
-      {
-        "kind": "block",
-        "type": "frinex_onErrorType"
-      },
             ]}, {
         "kind":"category",
         "name":"Stimuli",
@@ -12830,10 +12538,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_hasMoreStimulusType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_beforeStimulusType"
       },
       {
@@ -12843,10 +12547,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_afterStimulusType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_endOfStimulusType"
       },
       {
         "kind": "block",
