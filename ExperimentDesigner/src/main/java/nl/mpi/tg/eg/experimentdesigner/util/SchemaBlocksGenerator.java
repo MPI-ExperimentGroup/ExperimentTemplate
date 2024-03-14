@@ -237,6 +237,20 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         + "      },\n");
             }
         }
+        // Group features
+        writer.append("            ]}, {\n"
+                + "        \"kind\":\"category\",\n"
+                + "        \"name\":\"Group\",\n"
+                + "        \"categorystyle\":\"loop_category\",\n"
+                + "        \"contents\":[");
+        for (String blockType : featureTypeLists) {
+            if (blockType.toLowerCase().matches(".*(group).*")) {
+                writer.append("      {\n"
+                        + "        \"kind\": \"block\",\n"
+                        + "        \"type\": \"" + blockType + "\"\n"
+                        + "      },\n");
+            }
+        }
         // Button features
         writer.append("            ]}, {\n"
                 + "        \"kind\":\"category\",\n"
