@@ -426,8 +426,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
                 if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
                         || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
-                        || featureType.isChildType(FeatureType.Contitionals.hasMediaLoading)
+//                        || featureType.isChildType(FeatureType.Contitionals.hasMediaLoading)
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMediaLoading
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseErrorCondition) {
