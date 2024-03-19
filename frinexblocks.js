@@ -10,19 +10,13 @@ function getFeatureBlocks() {
       "message0": 'experiment %1',
       "args0": [
         {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": 'appNameDisplay %1',
-      "args1": [
-        {
           "type": "field_input",
           "name": "appNameDisplay",
           "check": "String"
         }
       ],
-      "message2": " %1",
-      "args2": [
+      "message1": " %1",
+      "args1": [
         {
           "type": "input_value",
           "name": "DO",
@@ -33,8 +27,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message3": "Administration %1",
-      "args3": [
+      "message2": "Administration %1",
+      "args2": [
         {
           "type": "input_statement",
           "name": "Administration",
@@ -48,8 +42,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message4": "Metadata %1",
-      "args4": [
+      "message3": "Metadata %1",
+      "args3": [
         {
           "type": "input_statement",
           "name": "Metadata",
@@ -58,8 +52,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message5": "Presenters %1",
-      "args5": [
+      "message4": "Presenters %1",
+      "args4": [
         {
           "type": "input_statement",
           "name": "Presenters",
@@ -68,8 +62,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message6": "Stimuli %1",
-      "args6": [
+      "message5": "Stimuli %1",
+      "args5": [
         {
           "type": "input_statement",
           "name": "Stimuli",
