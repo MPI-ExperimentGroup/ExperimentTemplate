@@ -887,6 +887,7 @@ function getFeatureBlocks() {
           "name": "hasMoreStimulus",
           "check": [
             "frinex_stimulusActionType",
+            "frinex_anyType",
           ]
         }
       ],
@@ -973,6 +974,7 @@ function getFeatureBlocks() {
           "name": "hasMoreStimulus",
           "check": [
             "frinex_stimulusActionType",
+            "frinex_anyType",
           ]
         }
       ],
@@ -1082,6 +1084,7 @@ function getFeatureBlocks() {
           "name": "hasMoreStimulus",
           "check": [
             "frinex_stimulusActionType",
+            "frinex_anyType",
           ]
         }
       ],

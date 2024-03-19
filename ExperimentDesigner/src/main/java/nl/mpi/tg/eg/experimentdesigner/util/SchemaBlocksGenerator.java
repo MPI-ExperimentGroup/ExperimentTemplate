@@ -441,6 +441,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                                     + "          \"check\": [\n");
                             writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
 //            }
+                            if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus && childType.getRequiresChildType() != FeatureType.Contitionals.any) {
+                                writer.append("            \"frinex_anyType\",\n");
+                            }
                             writer.append("          ]\n"
                                     + "        }\n      ],\n");
                             argsCount++;
