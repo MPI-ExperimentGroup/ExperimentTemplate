@@ -101,7 +101,7 @@ function populateConnectionFromXml(currentElement, parentConnection) {
             childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
         } catch (exception) {
             // TODO: test if the block field exists first
-            console.error(exception);
+            // console.error(exception);
             // TODO: improve the field order in the resulting block
             // TODO: add some validation that the field is one of the optional fields before adding it
             childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
@@ -133,7 +133,7 @@ function buildFromXml(currentElement, parentBlock) {
                     parentHasConnection = true;
                     // parentHasConnection therefore the child block type does not exist so we add to the parent
                     for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
-                        populateConnectionFromXml($(currentElement).children()[childIndex], parentBlock.inputList[inputIndex].conection);
+                        populateConnectionFromXml($(currentElement).children()[childIndex], parentBlock.inputList[inputIndex].connection);
                     }
                 }
             }
@@ -148,7 +148,7 @@ function buildFromXml(currentElement, parentBlock) {
                     }
                 } catch (exception) {
                     // TODO: test if the block field exists first
-                    console.error(exception);
+                    // console.error(exception);
                     // TODO: improve the field order in the resulting block
                     // TODO: add some validation that the field is one of the optional fields before adding it
                     childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
