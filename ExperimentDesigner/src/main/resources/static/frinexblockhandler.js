@@ -23,7 +23,7 @@
  */
 
 const featureTypes = getFeatureBlocks();
-const workspace = Blockly.inject('editorDiv', {toolbox: featureTypes});
+const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
 setupTemplateCallback();
 
 const supportedEvents = new Set([
@@ -94,6 +94,36 @@ function loadAction(actionType, actionName) {
     });
 }
 
+function populateConnectionFromXml(currentElement, parentConnection) {
+    let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
+    for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
+        try {
+            childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+        } catch (exception) {
+            // TODO: test if the block field exists first
+            console.error(exception);
+            // TODO: improve the field order in the resulting block
+            // TODO: add some validation that the field is one of the optional fields before adding it
+            childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
+                .appendField(new Blockly.FieldTextInput(currentElement.attributes[attributeIndex].value), currentElement.attributes[attributeIndex].name);
+        }
+    }
+    childBlock.initSvg();
+    childBlock.render();
+    let childConnection = (childBlock.outputConnection !== null) ? childBlock.outputConnection : childBlock.previousConnection;
+    if (parentConnection !== null) {
+        if (parentConnection.check !== null && childConnection.check !== null) {
+            let connectionPermitted = 0 < parentConnection.check.filter(parentItem => childConnection.check.includes(parentItem)).length;
+            if (connectionPermitted) {
+                parentConnection.connect(childConnection);
+            }
+        }
+    }
+    for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+        buildFromXml($(currentElement).children()[childIndex], childBlock);
+    }
+}
+
 function buildFromXml(currentElement, parentBlock) {
     try {
         let parentHasConnection = false;
@@ -101,15 +131,14 @@ function buildFromXml(currentElement, parentBlock) {
             for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
                 if (currentElement.tagName === parentBlock.inputList[inputIndex].name) {
                     parentHasConnection = true;
+                    // parentHasConnection therefore the child block type does not exist so we add to the parent
+                    for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+                        populateConnectionFromXml($(currentElement).children()[childIndex], parentBlock.inputList[inputIndex].conection);
+                    }
                 }
             }
         }
-        if (parentHasConnection) {
-            // parentHasConnection therefore the child block type does not exist so we add to the parent
-            for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
-                buildFromXml($(currentElement).children()[childIndex], parentBlock);
-            }
-        } else {
+        if (!parentHasConnection) {
             let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
             for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
                 try {
@@ -123,7 +152,7 @@ function buildFromXml(currentElement, parentBlock) {
                     // TODO: improve the field order in the resulting block
                     // TODO: add some validation that the field is one of the optional fields before adding it
                     childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
-                            .appendField(new Blockly.FieldTextInput(currentElement.attributes[attributeIndex].value), currentElement.attributes[attributeIndex].name);
+                        .appendField(new Blockly.FieldTextInput(currentElement.attributes[attributeIndex].value), currentElement.attributes[attributeIndex].name);
                 }
             }
             childBlock.initSvg();
