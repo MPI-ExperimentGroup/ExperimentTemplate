@@ -388,6 +388,7 @@ function getFeatureBlocks() {
       "nextStatement": [
         "frinex_stimulusType",
       ],
+      "inputsInline": true,
       "colour": 160
     },
     {

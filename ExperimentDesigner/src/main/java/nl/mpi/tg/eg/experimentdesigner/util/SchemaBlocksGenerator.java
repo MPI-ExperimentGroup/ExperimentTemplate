@@ -713,6 +713,9 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
         } else if (!"experimentType".equals(currentElement.typeName)) {
             writer.append("      \"output\": \"frinex_" + currentElement.typeName + "\",\n");
         }
+        if ("stimulusType".equals(currentElement.typeName)) {
+            writer.append("      \"inputsInline\": true,\n");
+        }
         writer.append("      \"colour\": 160\n    },\n");
     }
 
