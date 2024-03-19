@@ -31,7 +31,7 @@ function getFeatureBlocks() {
       "args2": [
         {
           "type": "input_statement",
-          "name": "Administration",
+          "name": "administration",
           "check": [
             "frinex_validationType",
             "frinex_adminUserType",
@@ -46,7 +46,7 @@ function getFeatureBlocks() {
       "args3": [
         {
           "type": "input_statement",
-          "name": "Metadata",
+          "name": "metadata",
           "check": [
             "frinex_fieldType",
           ]
@@ -56,7 +56,7 @@ function getFeatureBlocks() {
       "args4": [
         {
           "type": "input_statement",
-          "name": "Presenters",
+          "name": "presenters",
           "check": [
             "frinex_presenterType",
           ]
@@ -66,7 +66,7 @@ function getFeatureBlocks() {
       "args5": [
         {
           "type": "input_statement",
-          "name": "Stimuli",
+          "name": "stimuli",
           "check": [
             "frinex_stimulusType",
           ]
