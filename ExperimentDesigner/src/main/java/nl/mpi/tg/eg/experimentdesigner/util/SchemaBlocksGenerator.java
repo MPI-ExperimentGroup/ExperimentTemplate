@@ -338,7 +338,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
     private int addAttributes(Writer writer, DocumentationElement currentElement, int argsCount) throws IOException {
         for (DocumentationAttribute attribute : currentElement.attributeTypes) {
-            if (!attribute.optional) {
+            if (!attribute.optional && !"appNameDisplay".equals(attribute.name)) {
                 writer.append("      \"message" + argsCount + "\": '" + attribute.name + " %1',\n"
                         + "      \"args" + argsCount + "\": [\n"
                         + "        {\n"
@@ -426,7 +426,6 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 
                 if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
                         || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
-//                        || featureType.isChildType(FeatureType.Contitionals.hasMediaLoading)
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMediaLoading
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
@@ -555,9 +554,15 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
 //                && !currentElement.hasStringContents) {
         writer.append("      \"message" + argsCount + "\": '" + currentElement.elementName + " %1',\n"
                 + "      \"args" + argsCount + "\": [\n"
-                + "        {\n"
-                + "          \"type\": \"input_dummy\",\n"
-                + "        }\n"
+                + "        {\n");
+        if (currentElement.elementName.equals("experiment")) {
+            writer.append("          \"type\": \"field_input\",\n"
+                    + "          \"name\": \"appNameDisplay\",\n"
+                    + "          \"check\": \"String\"\n");
+        } else {
+            writer.append("          \"type\": \"input_dummy\",\n");
+        }
+        writer.append("        }\n"
                 + "      ],\n");
         argsCount++;
         argsCount = addAttributes(writer, currentElement, argsCount);
