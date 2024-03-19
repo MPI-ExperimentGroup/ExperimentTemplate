@@ -97,9 +97,11 @@ function loadAction(actionType, actionName) {
 function buildFromXml(currentElement, parentBlock) {
     try {
         let parentHasConnection = false;
-        for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
-            if (currentElement.tagName === parentBlock.inputList[inputIndex].name) {
-                parentHasConnection = true;
+        if (parentBlock !== null) {
+            for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
+                if (currentElement.tagName === parentBlock.inputList[inputIndex].name) {
+                    parentHasConnection = true;
+                }
             }
         }
         if (parentHasConnection) {
