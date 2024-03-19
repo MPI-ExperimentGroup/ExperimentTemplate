@@ -105,7 +105,8 @@ function buildFromXml(currentElement, parentBlock) {
                 }
             } catch (exception) {
                 // TODO: test if the block field exists first
-                console.error(exception);
+                // console.error(exception);
+                // TODO: improve the field order in the resulting block
                 // TODO: add some validation that the field is one of the optional fields before adding it
                 childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
                     .appendField(new Blockly.FieldTextInput(currentElement.attributes[attributeIndex].value), currentElement.attributes[attributeIndex].name);
