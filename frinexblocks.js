@@ -608,13 +608,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "hasMediaLoading %1",
+      "message4": "mediaLoaded %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaLoaded",
           "check": [
-            "frinex_hasMediaLoadingType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "mediaLoadFailed %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "mediaLoadFailed",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -7772,13 +7782,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "hasMediaLoading %1",
+      "message4": "mediaLoaded %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaLoaded",
           "check": [
-            "frinex_hasMediaLoadingType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "mediaLoadFailed %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "mediaLoadFailed",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -7831,13 +7851,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasMediaLoading %1",
+      "message5": "mediaLoaded %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaLoaded",
           "check": [
-            "frinex_hasMediaLoadingType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "mediaLoadFailed %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "mediaLoadFailed",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9695,7 +9725,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_imageType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaLoaded>\n';
+     childData += generator.statementToCode(block, 'mediaLoaded');
+     childData += '</mediaLoaded>\n';
+     childData += '<mediaLoadFailed>\n';
+     childData += generator.statementToCode(block, 'mediaLoadFailed');
+     childData += '</mediaLoadFailed>\n';
     return '<image block_id="' + block.id + '" src="' + block.getFieldValue('src') +'" styleName="' + block.getFieldValue('styleName') +'" msToNext="' + block.getFieldValue('msToNext') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</image>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_menuItemType'] = function(block, generator) {
@@ -10588,12 +10623,22 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusImageType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaLoaded>\n';
+     childData += generator.statementToCode(block, 'mediaLoaded');
+     childData += '</mediaLoaded>\n';
+     childData += '<mediaLoadFailed>\n';
+     childData += generator.statementToCode(block, 'mediaLoadFailed');
+     childData += '</mediaLoadFailed>\n';
     return '<stimulusImage block_id="' + block.id + '" msToNext="' + block.getFieldValue('msToNext') +'" styleName="' + block.getFieldValue('styleName') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusImage>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaLoaded>\n';
+     childData += generator.statementToCode(block, 'mediaLoaded');
+     childData += '</mediaLoaded>\n';
+     childData += '<mediaLoadFailed>\n';
+     childData += generator.statementToCode(block, 'mediaLoadFailed');
+     childData += '</mediaLoadFailed>\n';
     return '<stimulusCodeImage block_id="' + block.id + '" msToNext="' + block.getFieldValue('msToNext') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" codeFormat="' + block.getFieldValue('codeFormat') +'" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusCodeImage>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageButtonType'] = function(block, generator) {
