@@ -23,7 +23,7 @@
  */
 
 const featureTypes = getFeatureBlocks();
-const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
+const workspace = Blockly.inject('editorDiv', {toolbox: featureTypes});
 setupTemplateCallback();
 
 const supportedEvents = new Set([
@@ -96,52 +96,59 @@ function loadAction(actionType, actionName) {
 
 function buildFromXml(currentElement, parentBlock) {
     try {
-        let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
-        for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
-            try {
-                // TODO: keep the frinex version from noNamespaceSchemaLocation for reexport and in a way that the user can change it
-                if ("xmlns:xsi" !== currentElement.attributes[attributeIndex].name && "xsi:noNamespaceSchemaLocation" !== currentElement.attributes[attributeIndex].name) {
-                    childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
-                }
-            } catch (exception) {
-                // TODO: test if the block field exists first
-                // console.error(exception);
-                // TODO: improve the field order in the resulting block
-                // TODO: add some validation that the field is one of the optional fields before adding it
-                childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
-                    .appendField(new Blockly.FieldTextInput(currentElement.attributes[attributeIndex].value), currentElement.attributes[attributeIndex].name);
+        let parentHasConnection = false;
+        for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
+            if (currentElement.tagName === parentBlock.inputList[inputIndex].name) {
+                parentHasConnection = true;
             }
         }
-        childBlock.initSvg();
-        childBlock.render();
-        if (parentBlock !== null) {
-            // find the correct input if it exists
-            for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
-                let parentConnection = parentBlock.inputList[inputIndex].connection;
-                let childConnection = (childBlock.outputConnection !== null) ? childBlock.outputConnection : childBlock.previousConnection;
-                if (parentConnection !== null) {
-                    if (parentConnection.check !== null && childConnection.check !== null) {
-                        let connectionPermitted = 0 < parentConnection.check.filter(parentItem => childConnection.check.includes(parentItem)).length;
-                        if (connectionPermitted) {
-                            parentConnection.connect(childConnection);
-                            break;
+        if (parentHasConnection) {
+            // parentHasConnection therefore the child block type does not exist so we add to the parent
+            for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+                buildFromXml($(currentElement).children()[childIndex], parentBlock);
+            }
+        } else {
+            let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
+            for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
+                try {
+                    // TODO: keep the frinex version from noNamespaceSchemaLocation for reexport and in a way that the user can change it
+                    if ("xmlns:xsi" !== currentElement.attributes[attributeIndex].name && "xsi:noNamespaceSchemaLocation" !== currentElement.attributes[attributeIndex].name) {
+                        childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
+                    }
+                } catch (exception) {
+                    // TODO: test if the block field exists first
+                    console.error(exception);
+                    // TODO: improve the field order in the resulting block
+                    // TODO: add some validation that the field is one of the optional fields before adding it
+                    childBlock.appendDummyInput().appendField(currentElement.attributes[attributeIndex].name)
+                            .appendField(new Blockly.FieldTextInput(currentElement.attributes[attributeIndex].value), currentElement.attributes[attributeIndex].name);
+                }
+            }
+            childBlock.initSvg();
+            childBlock.render();
+            if (parentBlock !== null) {
+                // find the correct input if it exists
+                for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
+                    let parentConnection = parentBlock.inputList[inputIndex].connection;
+                    let childConnection = (childBlock.outputConnection !== null) ? childBlock.outputConnection : childBlock.previousConnection;
+                    if (parentConnection !== null) {
+                        if (parentConnection.check !== null && childConnection.check !== null) {
+                            let connectionPermitted = 0 < parentConnection.check.filter(parentItem => childConnection.check.includes(parentItem)).length;
+                            if (connectionPermitted) {
+                                parentConnection.connect(childConnection);
+                                break;
+                            }
                         }
                     }
                 }
             }
-        }
-        for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
-            // TODO: we probably should be passing the relevant connection not the block
-            buildFromXml($(currentElement).children()[childIndex], childBlock);
+            for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+                // TODO: we probably should be passing the relevant connection not the block
+                buildFromXml($(currentElement).children()[childIndex], childBlock);
+            }
         }
     } catch (exception) {
-        // TODO: test if the block type exists first
         console.error(exception);
-
-        for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
-            // TODO: we probably should be passing the relevant connection not the block
-            buildFromXml($(currentElement).children()[childIndex], parentBlock);
-        }
     }
 }
 
