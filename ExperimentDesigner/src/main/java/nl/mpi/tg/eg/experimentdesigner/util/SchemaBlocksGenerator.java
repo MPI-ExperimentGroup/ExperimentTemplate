@@ -651,7 +651,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         final String subTypeGroup = (separatedGroups.containsKey(inputStatements.get(0))) ? separatedGroups.get(inputStatements.get(0)) : inputStatements.get(0);
                         // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
                         currentSubTypes.add(subTypeGroup);
-                        writer.append(subTypeGroup);
+                        writer.append(subTypeGroup.substring(0, 1).toLowerCase() + subTypeGroup.substring(1));
                         writer.append("\",\n");
 //                } else if (childElement.minBounds > 0) {
 //                } else {
