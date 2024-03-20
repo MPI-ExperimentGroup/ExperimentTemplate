@@ -494,7 +494,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     + "      \"nextStatement\": [\n");
             for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
                 writer.append("        \"frinex_" + statementType + "Type\",\n");
-                if (statementType == FeatureType.Contitionals.none) {
+                if (statementType == FeatureType.Contitionals.none | statementType.areChildenOptional) {
                     writer.append("        \"frinex_anyType\",\n");
                 }
             }
