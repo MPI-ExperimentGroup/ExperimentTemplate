@@ -148,11 +148,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     for (String currentSubType : typeSubTypes.get(blockType)) {
                         if (!"DO".equals(currentSubType) && !"Presenters".equals(currentSubType)) {
                             // TODO: not all currentSubType should be wrapped here eg presenters
-                            writer.append("     childData += '<" + currentSubType.substring(0, 1).toLowerCase() + currentSubType.substring(1) + ">\\n';\n");
+                            writer.append("     childData += '<" + currentSubType + ">\\n';\n");
                         }
                         writer.append("     childData += generator.statementToCode(block, '" + currentSubType + "');\n");
                         if (!"DO".equals(currentSubType) && !"Presenters".equals(currentSubType)) {
-                            writer.append("     childData += '</" + currentSubType.substring(0, 1).toLowerCase() + currentSubType.substring(1) + ">\\n';\n");
+                            writer.append("     childData += '</" + currentSubType + ">\\n';\n");
                         }
                     }
                 }
@@ -665,7 +665,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         writer.append("          \"type\": \"input_statement\",\n          \"name\": \"");
                         final String subTypeGroup = (separatedGroups.containsKey(inputStatements.get(0))) ? separatedGroups.get(inputStatements.get(0)) : inputStatements.get(0);
                         // TODO: use typeSubTypes to store the fields for each tyoe or remove typeSubTypes
-                        currentSubTypes.add(subTypeGroup);
+                        currentSubTypes.add(subTypeGroup.substring(0, 1).toLowerCase() + subTypeGroup.substring(1));
                         writer.append(subTypeGroup.substring(0, 1).toLowerCase() + subTypeGroup.substring(1));
                         writer.append("\",\n");
 //                } else if (childElement.minBounds > 0) {

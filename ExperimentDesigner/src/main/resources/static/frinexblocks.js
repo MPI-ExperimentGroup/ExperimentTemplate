@@ -9695,14 +9695,16 @@ function getFeatureBlocks() {
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
      childData += '<administration>\n';
-     childData += generator.statementToCode(block, 'Administration');
+     childData += generator.statementToCode(block, 'administration');
      childData += '</administration>\n';
      childData += '<metadata>\n';
-     childData += generator.statementToCode(block, 'Metadata');
+     childData += generator.statementToCode(block, 'metadata');
      childData += '</metadata>\n';
-     childData += generator.statementToCode(block, 'Presenters');
+     childData += '<presenters>\n';
+     childData += generator.statementToCode(block, 'presenters');
+     childData += '</presenters>\n';
      childData += '<stimuli>\n';
-     childData += generator.statementToCode(block, 'Stimuli');
+     childData += generator.statementToCode(block, 'stimuli');
      childData += '</stimuli>\n';
     return '<experiment block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</experiment>\n');
   };
