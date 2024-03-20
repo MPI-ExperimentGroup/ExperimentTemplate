@@ -76,12 +76,15 @@ function loadAction(actionType, actionName) {
         type: "get",
         url: "/" + actionType + "/" + actionName,
         dataType: "xml",
-        success: function (data) {
-            for (let childIndex = 0; childIndex < $(data).children().length; childIndex++) {
-                buildFromXml($(data).children()[childIndex], null);
+        success: function (inputData) {
+            for (let childIndex = 0; childIndex < $(inputData).children().length; childIndex++) {
+                buildFromXml($(inputData).children()[childIndex], null);
             }
+
+            let generatedData = javascript.javascriptGenerator.workspaceToCode(workspace);
+            compareLoadedXmlToGeneratedXml($(inputData), $(generatedData));
             // var successBlock = workspace.newBlock('frinex_htmlTextType');
-            // successBlock.setFieldValue(data, 'featureText');
+            // successBlock.setFieldValue(inputData, 'featureText');
             // successBlock.initSvg();
             // successBlock.render();
         },
@@ -92,6 +95,18 @@ function loadAction(actionType, actionName) {
             errorBlock.render();
         }
     });
+}
+
+function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
+    for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
+        if (generatedElements.children().length <= childIndex) {
+            document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].tagName + "\n";
+        } else if (inputElements.children()[childIndex].tagName !== generatedElements.children()[childIndex].tagName) {
+            document.getElementById('errorOutputArea').value += "expected: " + inputElements.children()[childIndex].tagName + " but found: " + generatedElements.children()[childIndex].tagName + "\n";
+        } else {
+            compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[childIndex]);
+        }
+    }
 }
 
 function populateConnectionFromXml(currentElement, parentConnection) {
