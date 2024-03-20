@@ -9104,143 +9104,13 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "groupMemberCodeLabel %1",
+      "message2": "groupNetworkAction %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "groupMemberCodeLabel",
+          "name": "DO",
           "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message3": "groupMemberLabel %1",
-      "args3": [
-        {
-          "type": "input_statement",
-          "name": "groupMemberLabel",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message4": "groupMessageLabel %1",
-      "args4": [
-        {
-          "type": "input_statement",
-          "name": "groupMessageLabel",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message5": "groupResponseStimulusImage %1",
-      "args5": [
-        {
-          "type": "input_statement",
-          "name": "groupResponseStimulusImage",
-          "check": [
-            "frinex_hasMediaPlaybackType",
-          ]
-        }
-      ],
-      "message6": "groupResponseFeedback %1",
-      "args6": [
-        {
-          "type": "input_statement",
-          "name": "groupResponseFeedback",
-          "check": [
-            "frinex_hasCorrectIncorrectType",
-          ]
-        }
-      ],
-      "message7": "groupScoreLabel %1",
-      "args7": [
-        {
-          "type": "input_statement",
-          "name": "groupScoreLabel",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message8": "groupChannelScoreLabel %1",
-      "args8": [
-        {
-          "type": "input_statement",
-          "name": "groupChannelScoreLabel",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message9": "submitGroupEvent %1",
-      "args9": [
-        {
-          "type": "input_statement",
-          "name": "submitGroupEvent",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message10": "sendGroupMessageButton %1",
-      "args10": [
-        {
-          "type": "input_statement",
-          "name": "sendGroupMessageButton",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message11": "sendGroupMessage %1",
-      "args11": [
-        {
-          "type": "input_statement",
-          "name": "sendGroupMessage",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message12": "sendGroupStoredMessage %1",
-      "args12": [
-        {
-          "type": "input_statement",
-          "name": "sendGroupStoredMessage",
-          "check": [
-            "frinex_noneType",
-          ]
-        }
-      ],
-      "message13": "streamGroupCanvas %1",
-      "args13": [
-        {
-          "type": "input_statement",
-          "name": "streamGroupCanvas",
-          "check": [
-            "frinex_hasErrorSuccessType",
-          ]
-        }
-      ],
-      "message14": "streamGroupCamera %1",
-      "args14": [
-        {
-          "type": "input_statement",
-          "name": "streamGroupCamera",
-          "check": [
-            "frinex_hasErrorSuccessType",
-          ]
-        }
-      ],
-      "message15": "sendGroupTokenMessage %1",
-      "args15": [
-        {
-          "type": "input_statement",
-          "name": "sendGroupTokenMessage",
-          "check": [
-            "frinex_noneType",
+            "frinex_groupNetworkActionType",
           ]
         }
       ],
@@ -9250,6 +9120,242 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_groupMemberActivityType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupMemberCodeLabelType",
+      "message0": 'groupMemberCodeLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupMemberLabelType",
+      "message0": 'groupMemberLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupMessageLabelType",
+      "message0": 'groupMessageLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupResponseStimulusImageType",
+      "message0": 'groupResponseStimulusImage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'percentOfPage %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "percentOfPage",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'maxHeight %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "maxHeight",
+          "check": "String"
+        }
+      ],
+      "message4": 'maxWidth %1',
+      "args4": [
+        {
+          "type": "field_input",
+          "name": "maxWidth",
+          "check": "String"
+        }
+      ],
+      "message5": 'animate %1',
+      "args5": [
+        {
+          "type": "field_input",
+          "name": "animate",
+          "check": "String"
+        }
+      ],
+      "message6": "hasMediaPlayback %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupResponseFeedbackType",
+      "message0": 'groupResponseFeedback %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": "responseCorrect %1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "responseCorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message2": "responseIncorrect %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "responseIncorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupScoreLabelType",
+      "message0": 'groupScoreLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupChannelScoreLabelType",
+      "message0": 'groupChannelScoreLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
         "frinex_anyType",
       ],
       "colour": 140,
@@ -9276,6 +9382,342 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_submitGroupEventType",
+      "message0": 'submitGroupEvent %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupMessageButtonType",
+      "message0": 'sendGroupMessageButton %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "featureText",
+          "check": "String"
+        }
+      ],
+      "message1": 'hotKey %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "hotKey",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'eventTag %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message4": 'repeatIncorrect %1',
+      "args4": [
+        {
+          "type": "field_input",
+          "name": "repeatIncorrect",
+          "check": "String"
+        }
+      ],
+      "message5": 'incrementPhase %1',
+      "args5": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "message6": 'styleName %1',
+      "args6": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "message7": 'groupId %1',
+      "args7": [
+        {
+          "type": "field_input",
+          "name": "groupId",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupMessageType",
+      "message0": 'sendGroupMessage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'incrementPhase %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupStoredMessageType",
+      "message0": 'sendGroupStoredMessage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'incrementPhase %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "message3": 'groupId %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "groupId",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_streamGroupCanvasType",
+      "message0": 'streamGroupCanvas %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'streamChannels %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "streamChannels",
+          "check": "String"
+        }
+      ],
+      "message4": "onSuccess %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "onError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_streamGroupCameraType",
+      "message0": 'streamGroupCamera %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'streamChannels %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "streamChannels",
+          "check": "String"
+        }
+      ],
+      "message4": "onSuccess %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "onError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupTokenMessageType",
+      "message0": 'sendGroupTokenMessage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'incrementPhase %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "message3": 'dataLogFormat %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "dataLogFormat",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
         "frinex_anyType",
       ],
       "colour": 140,
@@ -10945,53 +11387,87 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
-     childData += '<groupMemberCodeLabel>\n';
-     childData += generator.statementToCode(block, 'groupMemberCodeLabel');
-     childData += '</groupMemberCodeLabel>\n';
-     childData += '<groupMemberLabel>\n';
-     childData += generator.statementToCode(block, 'groupMemberLabel');
-     childData += '</groupMemberLabel>\n';
-     childData += '<groupMessageLabel>\n';
-     childData += generator.statementToCode(block, 'groupMessageLabel');
-     childData += '</groupMessageLabel>\n';
-     childData += '<groupResponseStimulusImage>\n';
-     childData += generator.statementToCode(block, 'groupResponseStimulusImage');
-     childData += '</groupResponseStimulusImage>\n';
-     childData += '<groupResponseFeedback>\n';
-     childData += generator.statementToCode(block, 'groupResponseFeedback');
-     childData += '</groupResponseFeedback>\n';
-     childData += '<groupScoreLabel>\n';
-     childData += generator.statementToCode(block, 'groupScoreLabel');
-     childData += '</groupScoreLabel>\n';
-     childData += '<groupChannelScoreLabel>\n';
-     childData += generator.statementToCode(block, 'groupChannelScoreLabel');
-     childData += '</groupChannelScoreLabel>\n';
-     childData += '<submitGroupEvent>\n';
-     childData += generator.statementToCode(block, 'submitGroupEvent');
-     childData += '</submitGroupEvent>\n';
-     childData += '<sendGroupMessageButton>\n';
-     childData += generator.statementToCode(block, 'sendGroupMessageButton');
-     childData += '</sendGroupMessageButton>\n';
-     childData += '<sendGroupMessage>\n';
-     childData += generator.statementToCode(block, 'sendGroupMessage');
-     childData += '</sendGroupMessage>\n';
-     childData += '<sendGroupStoredMessage>\n';
-     childData += generator.statementToCode(block, 'sendGroupStoredMessage');
-     childData += '</sendGroupStoredMessage>\n';
-     childData += '<streamGroupCanvas>\n';
-     childData += generator.statementToCode(block, 'streamGroupCanvas');
-     childData += '</streamGroupCanvas>\n';
-     childData += '<streamGroupCamera>\n';
-     childData += generator.statementToCode(block, 'streamGroupCamera');
-     childData += '</streamGroupCamera>\n';
-     childData += '<sendGroupTokenMessage>\n';
-     childData += generator.statementToCode(block, 'sendGroupTokenMessage');
-     childData += '</sendGroupTokenMessage>\n';
+     childData += generator.statementToCode(block, 'DO');
     return '<groupMemberActivity block_id="' + block.id + '" phaseMembers="' + block.getFieldValue('phaseMembers') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberActivity>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberCodeLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupMemberCodeLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberCodeLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupMemberLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupMessageLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupMessageLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMessageLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupResponseStimulusImageType'] = function(block, generator) {
+    var childData = '';
+     childData += generator.statementToCode(block, 'DO');
+    return '<groupResponseStimulusImage block_id="' + block.id + '" percentOfPage="' + block.getFieldValue('percentOfPage') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" maxHeight="' + block.getFieldValue('maxHeight') +'" maxWidth="' + block.getFieldValue('maxWidth') +'" animate="' + block.getFieldValue('animate') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupResponseStimulusImage>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupResponseFeedbackType'] = function(block, generator) {
+    var childData = '';
+     childData += '<responseCorrect>\n';
+     childData += generator.statementToCode(block, 'responseCorrect');
+     childData += '</responseCorrect>\n';
+     childData += '<responseIncorrect>\n';
+     childData += generator.statementToCode(block, 'responseIncorrect');
+     childData += '</responseIncorrect>\n';
+    return '<groupResponseFeedback block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupResponseFeedback>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupScoreLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupScoreLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupScoreLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupChannelScoreLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupChannelScoreLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupChannelScoreLabel>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreLabelType'] = function(block, generator) {
     var childData = '';
     return '<scoreLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</scoreLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_submitGroupEventType'] = function(block, generator) {
+    var childData = '';
+    return '<submitGroupEvent block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</submitGroupEvent>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageButtonType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupMessageButton block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" hotKey="' + block.getFieldValue('hotKey') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" eventTag="' + block.getFieldValue('eventTag') +'" repeatIncorrect="' + block.getFieldValue('repeatIncorrect') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" styleName="' + block.getFieldValue('styleName') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupMessageButton>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupMessage block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupMessage>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupStoredMessageType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupStoredMessage block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupStoredMessage>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_streamGroupCanvasType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<streamGroupCanvas block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCanvas>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_streamGroupCameraType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<streamGroupCamera block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCamera>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupTokenMessage block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" dataLogFormat="' + block.getFieldValue('dataLogFormat') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupTokenMessage>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_clearCurrentScoreType'] = function(block, generator) {
     var childData = '';
@@ -11930,7 +12406,63 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseFeedbackType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_scoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_submitGroupEventType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupStoredMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCanvasType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCameraType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupTokenMessageType"
       },
       {
         "kind": "block",
@@ -12182,6 +12714,10 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_resetStimulusType"
       },
             ]}, {
@@ -12231,6 +12767,26 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_stimulusLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
       },
       {
         "kind": "block",
@@ -12339,6 +12895,62 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_groupMemberActivityType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseFeedbackType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_submitGroupEventType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupStoredMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCanvasType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCameraType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupTokenMessageType"
       },
             ]}, {
         "kind":"category",
@@ -12451,6 +13063,10 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_stimulusCodeImageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
       },
             ]}, {
         "kind":"category",
