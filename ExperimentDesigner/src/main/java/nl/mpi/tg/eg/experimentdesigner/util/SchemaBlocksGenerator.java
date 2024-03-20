@@ -360,6 +360,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 || featureType.isChildType(FeatureType.Contitionals.hasMoreStimulus)
                 || featureType.isChildType(FeatureType.Contitionals.hasFrameRateTriggers)
                 || featureType.isChildType(FeatureType.Contitionals.hasThreshold)
+                || featureType.isChildType(FeatureType.Contitionals.hasUserCount)
                 || featureType.isChildType(FeatureType.Contitionals.hasErrorSuccess)
                 || featureType.isChildType(FeatureType.Contitionals.hasTrueFalseCondition)
                 || featureType.isChildType(FeatureType.Contitionals.hasTrueFalseErrorCondition)) {
@@ -431,6 +432,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasThreshold
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasUserCount
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasFrameRateTriggers
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMediaLoading
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess

@@ -7001,13 +7001,23 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "hasUserCount %1",
+      "message1": "multipleUsers %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "multipleUsers",
           "check": [
-            "frinex_hasUserCountType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message2": "singleUser %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "singleUser",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -7018,58 +7028,6 @@ function getFeatureBlocks() {
       "nextStatement": [
         "frinex_noneType",
         "frinex_anyType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_multipleUsersType",
-      "message0": 'multipleUsers %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "nextStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_singleUserType",
-      "message0": 'singleUser %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "nextStatement": [
-        "frinex_hasUserCountType",
       ],
       "colour": 140,
       },
@@ -10608,18 +10566,13 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<multipleUsers>\n';
+     childData += generator.statementToCode(block, 'multipleUsers');
+     childData += '</multipleUsers>\n';
+     childData += '<singleUser>\n';
+     childData += generator.statementToCode(block, 'singleUser');
+     childData += '</singleUser>\n';
     return '<existingUserCheck block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</existingUserCheck>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<multipleUsers block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</multipleUsers>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<singleUser block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</singleUser>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
@@ -11657,14 +11610,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_existingUserCheckType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_multipleUsersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_singleUserType"
       },
       {
         "kind": "block",
