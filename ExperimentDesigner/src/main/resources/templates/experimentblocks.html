@@ -21,26 +21,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Frinex Experiment Wizard</title>
-    </head>
-    <body>
-        <div th:fragment="editorblocks">
-            <script src="./webjars/blockly/blockly.min.js"></script>
-            <script src="frinexblocks.js"></script>
-            <table>
-                <tr>
-                    <td class="editorPanel">
-                        <div id="editorDiv" style="height: 80vh; width: 50vw;"></div>
-                    </td>
-                    <td class="previewPanel">
-                        <iframe id="previewFrame" src="./compiled_templates/template_example/index.html" scrolling="no"
-                            style="border:1; overflow:hidden; height:80vh; width:50vw;"></iframe>
-                    </td>
-                </tr>
-                <tr><td colspan="2"><textarea id="previewArea" cols="150" rows="100"></textarea></td></tr>
-            </table>
-            <script src="frinexblockhandler.js"></script>
-        </div>
-    </body>
+
+<head>
+    <title>Frinex Experiment Wizard</title>
+</head>
+
+<body>
+    <div th:fragment="editorblocks">
+        <script src="./webjars/blockly/blockly.min.js"></script>
+        <script src="frinexblocks.js"></script>
+        <table>
+            <tr>
+                <td class="editorPanel">
+                    <div id="editorDiv" style="height: 80vh; width: 50vw;"></div>
+                </td>
+                <td class="previewPanel">
+                    <iframe id="previewFrame" src="./compiled_templates/template_example/index.html" scrolling="no"
+                        style="border:1; overflow:hidden; height:80vh; width:50vw;"></iframe>
+                </td>
+            </tr>
+            <tr>
+                <td><textarea id="previewArea" style="width:100%" rows="100"></textarea></td>
+                <td><textarea id="errorOutputArea" style="width:100%" rows="100"></textarea></td>
+            </tr>
+        </table>
+        <script src="frinexblockhandler.js"></script>
+    </div>
+</body>
+
 </html>
