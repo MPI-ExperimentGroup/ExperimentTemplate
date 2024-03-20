@@ -6994,13 +6994,53 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "groupNetwork %1",
+      "message4": "groupInitialisationError %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "groupInitialisationError",
           "check": [
-            "frinex_groupNetworkType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "groupNetworkConnecting %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "groupNetworkConnecting",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "groupFindingMembers %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "groupFindingMembers",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message7": "groupNetworkSynchronising %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "groupNetworkSynchronising",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "groupPhaseListeners %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "groupPhaseListeners",
+          "check": [
+            "frinex_groupMemberActivityType",
           ]
         }
       ],
@@ -8955,136 +8995,6 @@ function getFeatureBlocks() {
       "nextStatement": [
         "frinex_noneType",
         "frinex_anyType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupInitialisationErrorType",
-      "message0": 'groupInitialisationError %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupNetworkConnectingType",
-      "message0": 'groupNetworkConnecting %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupFindingMembersType",
-      "message0": 'groupFindingMembers %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupNetworkSynchronisingType",
-      "message0": 'groupNetworkSynchronising %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupPhaseListenersType",
-      "message0": 'groupPhaseListeners %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "groupMemberActivity %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_groupMemberActivityType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -11121,7 +11031,21 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<groupInitialisationError>\n';
+     childData += generator.statementToCode(block, 'groupInitialisationError');
+     childData += '</groupInitialisationError>\n';
+     childData += '<groupNetworkConnecting>\n';
+     childData += generator.statementToCode(block, 'groupNetworkConnecting');
+     childData += '</groupNetworkConnecting>\n';
+     childData += '<groupFindingMembers>\n';
+     childData += generator.statementToCode(block, 'groupFindingMembers');
+     childData += '</groupFindingMembers>\n';
+     childData += '<groupNetworkSynchronising>\n';
+     childData += generator.statementToCode(block, 'groupNetworkSynchronising');
+     childData += '</groupNetworkSynchronising>\n';
+     childData += '<groupPhaseListeners>\n';
+     childData += generator.statementToCode(block, 'groupPhaseListeners');
+     childData += '</groupPhaseListeners>\n';
     return '<groupNetwork block_id="' + block.id + '" groupMembers="' + block.getFieldValue('groupMembers') +'" groupCommunicationChannels="' + block.getFieldValue('groupCommunicationChannels') +'" phasesPerStimulus="' + block.getFieldValue('phasesPerStimulus') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetwork>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
@@ -11359,31 +11283,6 @@ function getFeatureBlocks() {
      childData += generator.statementToCode(block, 'withinThreshold');
      childData += '</withinThreshold>\n';
     return '<showColourReport block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</showColourReport>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupInitialisationError block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupInitialisationError>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupNetworkConnecting block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetworkConnecting>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupFindingMembers block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupFindingMembers>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupNetworkSynchronising block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetworkSynchronising>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupPhaseListeners block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupPhaseListeners>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
@@ -12382,26 +12281,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_groupInitialisationErrorType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkConnectingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupFindingMembersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkSynchronisingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupPhaseListenersType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_groupMemberActivityType"
       },
       {
@@ -12871,26 +12750,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_groupNetworkType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupInitialisationErrorType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkConnectingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupFindingMembersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkSynchronisingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupPhaseListenersType"
       },
       {
         "kind": "block",
