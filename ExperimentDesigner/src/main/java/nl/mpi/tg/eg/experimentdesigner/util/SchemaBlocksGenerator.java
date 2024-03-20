@@ -358,7 +358,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
                 || featureType.isChildType(FeatureType.Contitionals.hasMediaLoading)
                 || featureType.isChildType(FeatureType.Contitionals.hasMoreStimulus)
-                || featureType.isChildType(FeatureType.Contitionals.hasFrameRateTriggers)
+                || featureType.isChildType(FeatureType.Contitionals.hasErrorTimeCritical)
                 || featureType.isChildType(FeatureType.Contitionals.hasThreshold)
                 || featureType.isChildType(FeatureType.Contitionals.hasUserCount)
                 || featureType.isChildType(FeatureType.Contitionals.hasErrorSuccess)
@@ -441,7 +441,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasThreshold
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasUserCount
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasFrameRateTriggers
+                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorTimeCritical
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMediaLoading
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition

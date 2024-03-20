@@ -6133,13 +6133,13 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "addFrameTimeTrigger %1",
+      "message1": "hasFrameRateTriggers %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "addFrameTimeTrigger",
+          "name": "DO",
           "check": [
-            "frinex_hasErrorTimeCriticalType",
+            "frinex_hasFrameRateTriggersType",
           ]
         }
       ],
@@ -6150,6 +6150,59 @@ function getFeatureBlocks() {
       "nextStatement": [
         "frinex_noneType",
         "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_addFrameTimeTriggerType",
+      "message0": 'addFrameTimeTrigger %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'evaluateMs %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "evaluateMs",
+          "check": "String"
+        }
+      ],
+      "message2": 'threshold %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "threshold",
+          "check": "String"
+        }
+      ],
+      "message3": "onTime %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "onTime",
+          "check": [
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
+      "message4": "onError %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_hasFrameRateTriggersType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_hasFrameRateTriggersType",
       ],
       "colour": 140,
       },
@@ -6185,13 +6238,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "hasErrorTimeCritical %1",
+      "message4": "onTime %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onTime",
           "check": [
-            "frinex_hasErrorTimeCriticalType",
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
+      "message5": "onError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -6594,32 +6657,6 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_onTimeType",
-      "message0": 'onTime %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "isTimeCritical %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_isTimeCriticalType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasErrorTimeCriticalType",
-      ],
-      "nextStatement": [
-        "frinex_hasErrorTimeCriticalType",
       ],
       "colour": 140,
       },
@@ -10435,14 +10472,27 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_startFrameRateTimerType'] = function(block, generator) {
     var childData = '';
-     childData += '<addFrameTimeTrigger>\n';
-     childData += generator.statementToCode(block, 'addFrameTimeTrigger');
-     childData += '</addFrameTimeTrigger>\n';
+     childData += generator.statementToCode(block, 'DO');
     return '<startFrameRateTimer block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</startFrameRateTimer>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onTime>\n';
+     childData += generator.statementToCode(block, 'onTime');
+     childData += '</onTime>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<addFrameTimeTrigger block_id="' + block.id + '" evaluateMs="' + block.getFieldValue('evaluateMs') +'" threshold="' + block.getFieldValue('threshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addFrameTimeTrigger>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_addMediaTriggerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onTime>\n';
+     childData += generator.statementToCode(block, 'onTime');
+     childData += '</onTime>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
     return '<addMediaTrigger block_id="' + block.id + '" evaluateMs="' + block.getFieldValue('evaluateMs') +'" mediaId="' + block.getFieldValue('mediaId') +'" threshold="' + block.getFieldValue('threshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addMediaTrigger>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_addRecorderDtmfTriggerType'] = function(block, generator) {
@@ -10491,11 +10541,6 @@ function getFeatureBlocks() {
     javascript.javascriptGenerator.forBlock['frinex_stimulusLabelType'] = function(block, generator) {
     var childData = '';
     return '<stimulusLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusLabel>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_onTimeType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<onTime block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onTime>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block, generator) {
     var childData = '';
@@ -11505,6 +11550,10 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_addFrameTimeTriggerType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_addMediaTriggerType"
       },
       {
@@ -11546,10 +11595,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_stimulusLabelType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_onTimeType"
       },
       {
         "kind": "block",
