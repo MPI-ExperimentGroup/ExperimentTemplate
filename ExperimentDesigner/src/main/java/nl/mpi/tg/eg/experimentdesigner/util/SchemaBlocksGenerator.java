@@ -392,6 +392,12 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         + "          \"name\": \"featureText\",\n"
                         + "          \"check\": \"String\"\n");
                 currentTypeProperties.add("featureText");
+            } else if (featureType.hasFeatureAttribute(FeatureAttribute.target)) {
+                writer.append("          \"type\": \"field_input\",\n"
+                        + "          \"name\": \"target\",\n"
+                        + "          \"check\": \"String\"\n");
+                currentTypeProperties.add("featureText");
+
             } else {
                 writer.append("          \"type\": \"input_dummy\",\n");
             }
@@ -413,22 +419,24 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
             // }
             if (featureType.getFeatureAttributes() != null) {
                 for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
-                    writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
-                            + "      \"args" + argsCount + "\": [\n"
-                            + "        {\n"
-                            + "          \"type\": \"field_input\",\n"
-                            + "          \"name\": \"" + attribute.name() + "\",\n"
-                            + "          \"check\": \"String\"\n"
-                            + "        }\n"
-                            + "      ],\n");
-                    currentTypeProperties.add(attribute.name());
-                    argsCount++;
+                    if (featureType.canHaveText() || FeatureAttribute.target != attribute) {
+                        writer.append("      \"message" + argsCount + "\": '" + attribute.name() + " %1',\n"
+                                + "      \"args" + argsCount + "\": [\n"
+                                + "        {\n"
+                                + "          \"type\": \"field_input\",\n"
+                                + "          \"name\": \"" + attribute.name() + "\",\n"
+                                + "          \"check\": \"String\"\n"
+                                + "        }\n"
+                                + "      ],\n");
+                        currentTypeProperties.add(attribute.name());
+                        argsCount++;
+                    }
                 }
             }
             if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
 
                 if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
-//                        || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
+                        //                        || featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasThreshold

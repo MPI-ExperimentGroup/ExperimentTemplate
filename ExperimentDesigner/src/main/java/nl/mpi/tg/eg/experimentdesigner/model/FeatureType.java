@@ -485,6 +485,17 @@ public enum FeatureType {
         return featureAttributes;
     }
 
+    public boolean hasFeatureAttribute(FeatureAttribute featureAttribute) {
+        if (featureAttributes != null) {
+            for (FeatureAttribute currentAttribute : featureAttributes) {
+                if (featureAttribute == currentAttribute) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public Contitionals getRequiresChildType() {
         return requiresChildType;
     }

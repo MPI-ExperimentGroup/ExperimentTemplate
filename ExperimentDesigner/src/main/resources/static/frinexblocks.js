@@ -5029,12 +5029,6 @@ function getFeatureBlocks() {
       "message0": 'gotoPresenter %1',
       "args0": [
         {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": 'target %1',
-      "args1": [
-        {
           "type": "field_input",
           "name": "target",
           "check": "String"
@@ -9473,12 +9467,6 @@ function getFeatureBlocks() {
       "type": "frinex_resetStimulusType",
       "message0": 'resetStimulus %1',
       "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": 'target %1',
-      "args1": [
         {
           "type": "field_input",
           "name": "target",
