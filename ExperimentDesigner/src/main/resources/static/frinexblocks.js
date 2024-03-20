@@ -5814,13 +5814,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "hasThreshold %1",
+      "message3": "aboveThreshold %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message4": "withinThreshold %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -6129,66 +6139,23 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "hasFrameRateTriggers %1",
+      "message1": "addFrameTimeTrigger %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_hasFrameRateTriggersType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_noneType",
-        "frinex_anyType",
-      ],
-      "nextStatement": [
-        "frinex_noneType",
-        "frinex_anyType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_addFrameTimeTriggerType",
-      "message0": 'addFrameTimeTrigger %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": 'evaluateMs %1',
-      "args1": [
-        {
-          "type": "field_input",
-          "name": "evaluateMs",
-          "check": "String"
-        }
-      ],
-      "message2": 'threshold %1',
-      "args2": [
-        {
-          "type": "field_input",
-          "name": "threshold",
-          "check": "String"
-        }
-      ],
-      "message3": "hasErrorTimeCritical %1",
-      "args3": [
-        {
-          "type": "input_statement",
-          "name": "DO",
+          "name": "addFrameTimeTrigger",
           "check": [
             "frinex_hasErrorTimeCriticalType",
           ]
         }
       ],
       "previousStatement": [
-        "frinex_hasFrameRateTriggersType",
+        "frinex_noneType",
         "frinex_anyType",
       ],
       "nextStatement": [
-        "frinex_hasFrameRateTriggersType",
+        "frinex_noneType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7103,58 +7070,6 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_hasUserCountType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_aboveThresholdType",
-      "message0": 'aboveThreshold %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasThresholdType",
-      ],
-      "nextStatement": [
-        "frinex_hasThresholdType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_withinThresholdType",
-      "message0": 'withinThreshold %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasThresholdType",
-      ],
-      "nextStatement": [
-        "frinex_hasThresholdType",
       ],
       "colour": 140,
       },
@@ -8929,13 +8844,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "hasThreshold %1",
+      "message2": "aboveThreshold %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message3": "withinThreshold %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9095,13 +9020,143 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "groupNetworkAction %1",
+      "message2": "groupMemberCodeLabel %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "groupMemberCodeLabel",
           "check": [
-            "frinex_groupNetworkActionType",
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message3": "groupMemberLabel %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "groupMemberLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message4": "groupMessageLabel %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "groupMessageLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message5": "groupResponseStimulusImage %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "groupResponseStimulusImage",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message6": "groupResponseFeedback %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "groupResponseFeedback",
+          "check": [
+            "frinex_hasCorrectIncorrectType",
+          ]
+        }
+      ],
+      "message7": "groupScoreLabel %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "groupScoreLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message8": "groupChannelScoreLabel %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "groupChannelScoreLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message9": "submitGroupEvent %1",
+      "args9": [
+        {
+          "type": "input_statement",
+          "name": "submitGroupEvent",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message10": "sendGroupMessageButton %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupMessageButton",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message11": "sendGroupMessage %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupMessage",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message12": "sendGroupStoredMessage %1",
+      "args12": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupStoredMessage",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message13": "streamGroupCanvas %1",
+      "args13": [
+        {
+          "type": "input_statement",
+          "name": "streamGroupCanvas",
+          "check": [
+            "frinex_hasErrorSuccessType",
+          ]
+        }
+      ],
+      "message14": "streamGroupCamera %1",
+      "args14": [
+        {
+          "type": "input_statement",
+          "name": "streamGroupCamera",
+          "check": [
+            "frinex_hasErrorSuccessType",
+          ]
+        }
+      ],
+      "message15": "sendGroupTokenMessage %1",
+      "args15": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupTokenMessage",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -9270,13 +9325,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": "hasThreshold %1",
+      "message7": "aboveThreshold %1",
       "args7": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "withinThreshold %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9330,13 +9395,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasThreshold %1",
+      "message5": "aboveThreshold %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "withinThreshold %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9406,13 +9481,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": "hasThreshold %1",
+      "message7": "aboveThreshold %1",
       "args7": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "withinThreshold %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -10362,7 +10447,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<compareTimer block_id="' + block.id + '" msToNext="' + block.getFieldValue('msToNext') +'" listenerId="' + block.getFieldValue('listenerId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</compareTimer>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_clearTimerType'] = function(block, generator) {
@@ -10399,13 +10489,10 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_startFrameRateTimerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<addFrameTimeTrigger>\n';
+     childData += generator.statementToCode(block, 'addFrameTimeTrigger');
+     childData += '</addFrameTimeTrigger>\n';
     return '<startFrameRateTimer block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</startFrameRateTimer>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<addFrameTimeTrigger block_id="' + block.id + '" evaluateMs="' + block.getFieldValue('evaluateMs') +'" threshold="' + block.getFieldValue('threshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addFrameTimeTrigger>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_addMediaTriggerType'] = function(block, generator) {
     var childData = '';
@@ -10533,16 +10620,6 @@ function getFeatureBlocks() {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
     return '<singleUser block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</singleUser>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<aboveThreshold block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</aboveThreshold>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<withinThreshold block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</withinThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
@@ -10747,7 +10824,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_showColourReportType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<showColourReport block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</showColourReport>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
@@ -10777,7 +10859,48 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<groupMemberCodeLabel>\n';
+     childData += generator.statementToCode(block, 'groupMemberCodeLabel');
+     childData += '</groupMemberCodeLabel>\n';
+     childData += '<groupMemberLabel>\n';
+     childData += generator.statementToCode(block, 'groupMemberLabel');
+     childData += '</groupMemberLabel>\n';
+     childData += '<groupMessageLabel>\n';
+     childData += generator.statementToCode(block, 'groupMessageLabel');
+     childData += '</groupMessageLabel>\n';
+     childData += '<groupResponseStimulusImage>\n';
+     childData += generator.statementToCode(block, 'groupResponseStimulusImage');
+     childData += '</groupResponseStimulusImage>\n';
+     childData += '<groupResponseFeedback>\n';
+     childData += generator.statementToCode(block, 'groupResponseFeedback');
+     childData += '</groupResponseFeedback>\n';
+     childData += '<groupScoreLabel>\n';
+     childData += generator.statementToCode(block, 'groupScoreLabel');
+     childData += '</groupScoreLabel>\n';
+     childData += '<groupChannelScoreLabel>\n';
+     childData += generator.statementToCode(block, 'groupChannelScoreLabel');
+     childData += '</groupChannelScoreLabel>\n';
+     childData += '<submitGroupEvent>\n';
+     childData += generator.statementToCode(block, 'submitGroupEvent');
+     childData += '</submitGroupEvent>\n';
+     childData += '<sendGroupMessageButton>\n';
+     childData += generator.statementToCode(block, 'sendGroupMessageButton');
+     childData += '</sendGroupMessageButton>\n';
+     childData += '<sendGroupMessage>\n';
+     childData += generator.statementToCode(block, 'sendGroupMessage');
+     childData += '</sendGroupMessage>\n';
+     childData += '<sendGroupStoredMessage>\n';
+     childData += generator.statementToCode(block, 'sendGroupStoredMessage');
+     childData += '</sendGroupStoredMessage>\n';
+     childData += '<streamGroupCanvas>\n';
+     childData += generator.statementToCode(block, 'streamGroupCanvas');
+     childData += '</streamGroupCanvas>\n';
+     childData += '<streamGroupCamera>\n';
+     childData += generator.statementToCode(block, 'streamGroupCamera');
+     childData += '</streamGroupCamera>\n';
+     childData += '<sendGroupTokenMessage>\n';
+     childData += generator.statementToCode(block, 'sendGroupTokenMessage');
+     childData += '</sendGroupTokenMessage>\n';
     return '<groupMemberActivity block_id="' + block.id + '" phaseMembers="' + block.getFieldValue('phaseMembers') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberActivity>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreLabelType'] = function(block, generator) {
@@ -10794,17 +10917,32 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_bestScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<bestScoreAboveThreshold block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" errorThreshold="' + block.getFieldValue('errorThreshold') +'" potentialThreshold="' + block.getFieldValue('potentialThreshold') +'" correctStreak="' + block.getFieldValue('correctStreak') +'" errorStreak="' + block.getFieldValue('errorStreak') +'" gamesPlayed="' + block.getFieldValue('gamesPlayed') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</bestScoreAboveThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_totalScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<totalScoreAboveThreshold block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" errorThreshold="' + block.getFieldValue('errorThreshold') +'" potentialThreshold="' + block.getFieldValue('potentialThreshold') +'" gamesPlayed="' + block.getFieldValue('gamesPlayed') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</totalScoreAboveThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<scoreAboveThreshold block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" errorThreshold="' + block.getFieldValue('errorThreshold') +'" potentialThreshold="' + block.getFieldValue('potentialThreshold') +'" correctStreak="' + block.getFieldValue('correctStreak') +'" errorStreak="' + block.getFieldValue('errorStreak') +'" gamesPlayed="' + block.getFieldValue('gamesPlayed') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</scoreAboveThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_resetStimulusType'] = function(block, generator) {
@@ -11426,10 +11564,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_addFrameTimeTriggerType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_addMediaTriggerType"
       },
       {
@@ -11531,14 +11665,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_singleUserType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_aboveThresholdType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_withinThresholdType"
       },
       {
         "kind": "block",
@@ -12642,6 +12768,11 @@ function getFeatureBlocks() {
       {
         "kind": "button",
         "text": "sound_onset_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "stimulus_event_example",
         "callbackKey": "loadExampleCallback"
       },
       {
