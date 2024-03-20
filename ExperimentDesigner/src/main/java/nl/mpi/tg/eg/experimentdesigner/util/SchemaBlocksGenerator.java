@@ -396,7 +396,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 writer.append("          \"type\": \"field_input\",\n"
                         + "          \"name\": \"target\",\n"
                         + "          \"check\": \"String\"\n");
-                currentTypeProperties.add("featureText");
+                currentTypeProperties.add("target");
 
             } else {
                 writer.append("          \"type\": \"input_dummy\",\n");
