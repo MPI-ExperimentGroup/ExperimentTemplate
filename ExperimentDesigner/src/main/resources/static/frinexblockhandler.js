@@ -106,7 +106,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
         }
         if (generatedElements.children().length <= comparisonTempIndex) {
             document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].localName + "\n";
-        } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonIndex].localName) {
+        } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonTempIndex].localName) {
             document.getElementById('errorOutputArea').value += "correct: " + generatedElements.children()[comparisonTempIndex].localName + "\n";
             comparisonIndex = comparisonTempIndex;
             compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[comparisonIndex]);
