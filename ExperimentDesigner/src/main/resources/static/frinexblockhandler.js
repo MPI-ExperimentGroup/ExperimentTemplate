@@ -105,10 +105,9 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
             document.getElementById('errorOutputArea').value += "unexpected: " + generatedElements.children()[comparisonTempIndex].localName + "\n";
             comparisonTempIndex++;
         }
-        if (generatedElements.children().length > comparisonTempIndex) {
+        if (generatedElements.children().length <= comparisonTempIndex) {
             document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].localName + "\n";
-        }
-        if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonIndex].localName) {
+        } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonIndex].localName) {
             comparisonIndex = comparisonTempIndex;
             compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[comparisonIndex]);
         }
