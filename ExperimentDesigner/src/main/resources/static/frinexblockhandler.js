@@ -82,7 +82,7 @@ function loadAction(actionType, actionName) {
             }
 
             let generatedData = javascript.javascriptGenerator.workspaceToCode(workspace);
-            compareLoadedXmlToGeneratedXml($(inputData), $($.parseXML(generatedData)));
+            compareLoadedXmlToGeneratedXml($(inputData).find("experiment"), $($.parseXML("<output>" + generatedData + "</output>")).find("experiment"));
             // var successBlock = workspace.newBlock('frinex_htmlTextType');
             // successBlock.setFieldValue(inputData, 'featureText');
             // successBlock.initSvg();
