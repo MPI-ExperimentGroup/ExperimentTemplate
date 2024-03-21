@@ -102,12 +102,12 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
         while (generatedElements.children().length > comparisonTempIndex && inputElements.children()[childIndex].localName !== generatedElements.children()[comparisonTempIndex].localName) {
-            document.getElementById('errorOutputArea').value += "unexpected: " + generatedElements.children()[comparisonTempIndex].localName + "\n";
             comparisonTempIndex++;
         }
         if (generatedElements.children().length <= comparisonTempIndex) {
             document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].localName + "\n";
         } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonIndex].localName) {
+            document.getElementById('errorOutputArea').value += "correct: " + generatedElements.children()[comparisonTempIndex].localName + "\n";
             comparisonIndex = comparisonTempIndex;
             compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[comparisonIndex]);
         }
