@@ -98,13 +98,19 @@ function loadAction(actionType, actionName) {
 }
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
+    let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
-        if (generatedElements.children().length <= childIndex) {
+        let comparisonTempIndex = comparisonIndex;
+        while (generatedElements.children().length > comparisonTempIndex && inputElements.children()[childIndex].localName !== generatedElements.children()[comparisonTempIndex].localName) {
+            document.getElementById('errorOutputArea').value += "unexpected: " + generatedElements.children()[comparisonTempIndex].localName + "\n";
+            comparisonTempIndex++;
+        }
+        if (generatedElements.children().length > comparisonTempIndex) {
             document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].localName + "\n";
-        } else if (inputElements.children()[childIndex].localName !== generatedElements.children()[childIndex].localName) {
-            document.getElementById('errorOutputArea').value += "expected: " + inputElements.children()[childIndex].localName + " but found: " + generatedElements.children()[childIndex].localName + "\n";
-        } else {
-            compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[childIndex]);
+        }
+        if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonIndex].localName) {
+            comparisonIndex = comparisonTempIndex;
+            compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[comparisonIndex]);
         }
     }
 }
