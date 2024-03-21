@@ -100,9 +100,9 @@ function loadAction(actionType, actionName) {
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         if (generatedElements.children().length <= childIndex) {
-            document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].tagName + "\n";
-        } else if (inputElements.children()[childIndex].tagName !== generatedElements.children()[childIndex].tagName) {
-            document.getElementById('errorOutputArea').value += "expected: " + inputElements.children()[childIndex].tagName + " but found: " + generatedElements.children()[childIndex].tagName + "\n";
+            document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].localName + "\n";
+        } else if (inputElements.children()[childIndex].localName !== generatedElements.children()[childIndex].localName) {
+            document.getElementById('errorOutputArea').value += "expected: " + inputElements.children()[childIndex].localName + " but found: " + generatedElements.children()[childIndex].localName + "\n";
         } else {
             compareLoadedXmlToGeneratedXml(inputElements.children()[childIndex], generatedElements.children()[childIndex]);
         }
@@ -110,7 +110,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
 }
 
 function populateConnectionFromXml(currentElement, parentConnection) {
-    let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
+    let childBlock = workspace.newBlock('frinex_' + currentElement.localName + 'Type');
     for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
         try {
             childBlock.setFieldValue(currentElement.attributes[attributeIndex].value, currentElement.attributes[attributeIndex].name);
@@ -144,7 +144,7 @@ function buildFromXml(currentElement, parentBlock) {
         let parentHasConnection = false;
         if (parentBlock !== null) {
             for (let inputIndex = 0; inputIndex < parentBlock.inputList.length; inputIndex++) {
-                if (currentElement.tagName === parentBlock.inputList[inputIndex].name) {
+                if (currentElement.localName === parentBlock.inputList[inputIndex].name) {
                     parentHasConnection = true;
                     // parentHasConnection therefore the child block type does not exist so we add to the parent
                     for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
@@ -154,7 +154,7 @@ function buildFromXml(currentElement, parentBlock) {
             }
         }
         if (!parentHasConnection) {
-            let childBlock = workspace.newBlock('frinex_' + currentElement.tagName + 'Type');
+            let childBlock = workspace.newBlock('frinex_' + currentElement.localName + 'Type');
             for (attributeIndex = 0; attributeIndex < currentElement.attributes.length; attributeIndex++) {
                 try {
                     // TODO: keep the frinex version from noNamespaceSchemaLocation for reexport and in a way that the user can change it
