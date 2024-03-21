@@ -103,7 +103,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addJavaScriptGenerator(Writer writer) throws IOException {
         for (List<String> blockTypeLists : new List[]{adminTypeLists, featureTypeLists}) {
             for (String blockType : blockTypeLists) {
-                writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block, generator) {\n"
+                writer.append("  javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block, generator) {\n"
                         // block.getFieldValue("appNameDisplay")
                         // + "  const statement = generator.statementToCode(block, 'MY_STATEMENT_INPUT');\n"
                         // + "  const value = generator.valueToCode(block, 'MY_VALUE_INPUT', javascript.Order.ATOMIC);\n"
@@ -132,7 +132,7 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
     private void addXmlGenerator(Writer writer) throws IOException {
         for (List<String> blockTypeLists : new List[]{adminTypeLists, featureTypeLists}) {
             for (String blockType : blockTypeLists) {
-                writer.append("    javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block, generator) {\n"
+                writer.append("  javascript.javascriptGenerator.forBlock['" + blockType + "'] = function(block, generator) {\n"
                         // block.getFieldValue("appNameDisplay")
                         // + "  const statement = generator.statementToCode(block, 'MY_STATEMENT_INPUT');\n"
                         // + "  const value = generator.valueToCode(block, 'MY_VALUE_INPUT', javascript.Order.ATOMIC);\n"
