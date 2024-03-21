@@ -999,6 +999,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1147,6 +1148,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1202,6 +1204,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1247,6 +1250,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1264,6 +1268,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1313,6 +1318,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1472,6 +1478,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_hasActionButtonsType",
+        "frinex_anyType",
         "frinex_noneType",
         "frinex_anyType",
       ],
@@ -1529,6 +1536,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_hasActionButtonsType",
+        "frinex_anyType",
         "frinex_noneType",
         "frinex_anyType",
       ],
@@ -1560,6 +1568,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1589,6 +1598,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1618,6 +1628,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1655,6 +1666,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1684,6 +1696,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1713,6 +1726,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1782,6 +1796,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_svgGroupsLoadedType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1815,6 +1830,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_svgGroupsLoadedType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1848,6 +1864,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_svgGroupsLoadedType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1883,6 +1900,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_svgGroupsLoadedType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1924,6 +1942,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_svgGroupsLoadedType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -1993,6 +2012,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2076,6 +2096,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2135,6 +2156,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_touchInputStartTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2194,6 +2216,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_touchInputStartTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2277,6 +2300,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_touchInputStartTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2320,6 +2344,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2397,6 +2422,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_touchInputStartTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2488,6 +2514,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2579,6 +2606,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2670,6 +2698,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2745,6 +2774,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2828,6 +2858,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2911,6 +2942,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -2994,6 +3026,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3031,6 +3064,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3056,6 +3090,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3109,6 +3144,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3158,6 +3194,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3201,6 +3238,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3284,6 +3322,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -3583,6 +3622,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4138,6 +4178,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4331,6 +4372,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4356,6 +4398,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4537,6 +4580,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4596,6 +4640,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4621,6 +4666,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4646,6 +4692,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -4663,6 +4710,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5029,12 +5077,6 @@ function getFeatureBlocks() {
       "message0": 'gotoPresenter %1',
       "args0": [
         {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": 'target %1',
-      "args1": [
-        {
           "type": "field_input",
           "name": "target",
           "check": "String"
@@ -5094,6 +5136,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5125,7 +5168,9 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_stimulusActionType",
+        "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5157,7 +5202,9 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_stimulusActionType",
+        "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5203,6 +5250,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5232,6 +5280,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5269,6 +5318,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5426,6 +5476,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5511,6 +5562,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5604,6 +5656,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5679,6 +5732,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -5814,13 +5868,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "hasThreshold %1",
+      "message3": "aboveThreshold %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message4": "withinThreshold %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -5860,6 +5924,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -6173,13 +6238,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "hasErrorTimeCritical %1",
+      "message3": "onTime %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onTime",
           "check": [
-            "frinex_hasErrorTimeCriticalType",
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
+      "message4": "onError %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -6189,6 +6264,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_hasFrameRateTriggersType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -6224,13 +6300,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "hasErrorTimeCritical %1",
+      "message4": "onTime %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onTime",
           "check": [
-            "frinex_hasErrorTimeCriticalType",
+            "frinex_isTimeCriticalType",
+          ]
+        }
+      ],
+      "message5": "onError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -6278,6 +6364,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_isRecursiveTypeType",
+        "frinex_anyType",
         "frinex_noneType",
         "frinex_anyType",
       ],
@@ -6333,6 +6420,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_isRecursiveTypeType",
+        "frinex_anyType",
         "frinex_noneType",
         "frinex_anyType",
       ],
@@ -6608,6 +6696,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -6633,32 +6722,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_onTimeType",
-      "message0": 'onTime %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "isTimeCritical %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_isTimeCriticalType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasErrorTimeCriticalType",
-      ],
-      "nextStatement": [
-        "frinex_hasErrorTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -6930,13 +6994,53 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "groupNetwork %1",
+      "message4": "groupInitialisationError %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "groupInitialisationError",
           "check": [
-            "frinex_groupNetworkType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "groupNetworkConnecting %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "groupNetworkConnecting",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "groupFindingMembers %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "groupFindingMembers",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message7": "groupNetworkSynchronising %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "groupNetworkSynchronising",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "groupPhaseListeners %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "groupPhaseListeners",
+          "check": [
+            "frinex_groupMemberActivityType",
           ]
         }
       ],
@@ -7034,13 +7138,23 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "hasUserCount %1",
+      "message1": "multipleUsers %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "multipleUsers",
           "check": [
-            "frinex_hasUserCountType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message2": "singleUser %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "singleUser",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -7051,110 +7165,6 @@ function getFeatureBlocks() {
       "nextStatement": [
         "frinex_noneType",
         "frinex_anyType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_multipleUsersType",
-      "message0": 'multipleUsers %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "nextStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_singleUserType",
-      "message0": 'singleUser %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "nextStatement": [
-        "frinex_hasUserCountType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_aboveThresholdType",
-      "message0": 'aboveThreshold %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasThresholdType",
-      ],
-      "nextStatement": [
-        "frinex_hasThresholdType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_withinThresholdType",
-      "message0": 'withinThreshold %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_hasThresholdType",
-      ],
-      "nextStatement": [
-        "frinex_hasThresholdType",
       ],
       "colour": 140,
       },
@@ -7400,6 +7410,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7433,6 +7444,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7570,6 +7582,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7597,6 +7610,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_dragDropTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7624,6 +7638,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_dragDropTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7651,6 +7666,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_dragDropTypeType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7742,6 +7758,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7803,6 +7820,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7872,6 +7890,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -7931,6 +7950,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8030,6 +8050,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8097,6 +8118,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8156,6 +8178,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8207,6 +8230,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8244,6 +8268,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8273,6 +8298,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8302,6 +8328,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8339,6 +8366,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8400,6 +8428,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8457,6 +8486,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8524,6 +8554,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8671,6 +8702,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8732,6 +8764,7 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8751,7 +8784,9 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8779,7 +8814,9 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8815,7 +8852,9 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_stimulusActionType",
+        "frinex_anyType",
         "frinex_isTimeCriticalType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -8929,13 +8968,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "hasThreshold %1",
+      "message2": "aboveThreshold %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message3": "withinThreshold %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -8946,136 +8995,6 @@ function getFeatureBlocks() {
       "nextStatement": [
         "frinex_noneType",
         "frinex_anyType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupInitialisationErrorType",
-      "message0": 'groupInitialisationError %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupNetworkConnectingType",
-      "message0": 'groupNetworkConnecting %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupFindingMembersType",
-      "message0": 'groupFindingMembers %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupNetworkSynchronisingType",
-      "message0": 'groupNetworkSynchronising %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "any %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_anyType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "colour": 140,
-      },
-    {
-      "type": "frinex_groupPhaseListenersType",
-      "message0": 'groupPhaseListeners %1',
-      "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": "groupMemberActivity %1",
-      "args1": [
-        {
-          "type": "input_statement",
-          "name": "DO",
-          "check": [
-            "frinex_groupMemberActivityType",
-          ]
-        }
-      ],
-      "previousStatement": [
-        "frinex_groupNetworkType",
-      ],
-      "nextStatement": [
-        "frinex_groupNetworkType",
       ],
       "colour": 140,
       },
@@ -9111,6 +9030,243 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_groupMemberActivityType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupMemberCodeLabelType",
+      "message0": 'groupMemberCodeLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupMemberLabelType",
+      "message0": 'groupMemberLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupMessageLabelType",
+      "message0": 'groupMessageLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupResponseStimulusImageType",
+      "message0": 'groupResponseStimulusImage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'percentOfPage %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "percentOfPage",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'maxHeight %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "maxHeight",
+          "check": "String"
+        }
+      ],
+      "message4": 'maxWidth %1',
+      "args4": [
+        {
+          "type": "field_input",
+          "name": "maxWidth",
+          "check": "String"
+        }
+      ],
+      "message5": 'animate %1',
+      "args5": [
+        {
+          "type": "field_input",
+          "name": "animate",
+          "check": "String"
+        }
+      ],
+      "message6": "hasMediaPlayback %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupResponseFeedbackType",
+      "message0": 'groupResponseFeedback %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": "responseCorrect %1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "responseCorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message2": "responseIncorrect %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "responseIncorrect",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupScoreLabelType",
+      "message0": 'groupScoreLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_groupChannelScoreLabelType",
+      "message0": 'groupChannelScoreLabel %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'styleName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -9136,6 +9292,342 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_submitGroupEventType",
+      "message0": 'submitGroupEvent %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupMessageButtonType",
+      "message0": 'sendGroupMessageButton %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "featureText",
+          "check": "String"
+        }
+      ],
+      "message1": 'hotKey %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "hotKey",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'eventTag %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message4": 'repeatIncorrect %1',
+      "args4": [
+        {
+          "type": "field_input",
+          "name": "repeatIncorrect",
+          "check": "String"
+        }
+      ],
+      "message5": 'incrementPhase %1',
+      "args5": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "message6": 'styleName %1',
+      "args6": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "message7": 'groupId %1',
+      "args7": [
+        {
+          "type": "field_input",
+          "name": "groupId",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupMessageType",
+      "message0": 'sendGroupMessage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'incrementPhase %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupStoredMessageType",
+      "message0": 'sendGroupStoredMessage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'incrementPhase %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "message3": 'groupId %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "groupId",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_streamGroupCanvasType",
+      "message0": 'streamGroupCanvas %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'streamChannels %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "streamChannels",
+          "check": "String"
+        }
+      ],
+      "message4": "onSuccess %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "onError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_streamGroupCameraType",
+      "message0": 'streamGroupCamera %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'dataChannel %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "dataChannel",
+          "check": "String"
+        }
+      ],
+      "message3": 'streamChannels %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "streamChannels",
+          "check": "String"
+        }
+      ],
+      "message4": "onSuccess %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "onError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_sendGroupTokenMessageType",
+      "message0": 'sendGroupTokenMessage %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'eventTag %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "eventTag",
+          "check": "String"
+        }
+      ],
+      "message2": 'incrementPhase %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "incrementPhase",
+          "check": "String"
+        }
+      ],
+      "message3": 'dataLogFormat %1',
+      "args3": [
+        {
+          "type": "field_input",
+          "name": "dataLogFormat",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_groupNetworkActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_groupNetworkActionType",
         "frinex_anyType",
       ],
       "colour": 140,
@@ -9174,6 +9666,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -9211,6 +9704,7 @@ function getFeatureBlocks() {
         "frinex_noneType",
         "frinex_anyType",
         "frinex_stimulusActionType",
+        "frinex_anyType",
       ],
       "colour": 140,
       },
@@ -9270,13 +9764,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": "hasThreshold %1",
+      "message7": "aboveThreshold %1",
       "args7": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "withinThreshold %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9330,13 +9834,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasThreshold %1",
+      "message5": "aboveThreshold %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "withinThreshold %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9406,13 +9920,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": "hasThreshold %1",
+      "message7": "aboveThreshold %1",
       "args7": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "aboveThreshold",
           "check": [
-            "frinex_hasThresholdType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "withinThreshold %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "withinThreshold",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9430,12 +9954,6 @@ function getFeatureBlocks() {
       "type": "frinex_resetStimulusType",
       "message0": 'resetStimulus %1',
       "args0": [
-        {
-          "type": "input_dummy",
-        }
-      ],
-      "message1": 'target %1',
-      "args1": [
         {
           "type": "field_input",
           "name": "target",
@@ -9627,14 +10145,16 @@ function getFeatureBlocks() {
     javascript.javascriptGenerator.forBlock['frinex_experimentType'] = function(block, generator) {
     var childData = '';
      childData += '<administration>\n';
-     childData += generator.statementToCode(block, 'Administration');
+     childData += generator.statementToCode(block, 'administration');
      childData += '</administration>\n';
      childData += '<metadata>\n';
-     childData += generator.statementToCode(block, 'Metadata');
+     childData += generator.statementToCode(block, 'metadata');
      childData += '</metadata>\n';
-     childData += generator.statementToCode(block, 'Presenters');
+     childData += '<presenters>\n';
+     childData += generator.statementToCode(block, 'presenters');
+     childData += '</presenters>\n';
      childData += '<stimuli>\n';
-     childData += generator.statementToCode(block, 'Stimuli');
+     childData += generator.statementToCode(block, 'stimuli');
      childData += '</stimuli>\n';
     return '<experiment block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</experiment>\n');
   };
@@ -10362,7 +10882,12 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_compareTimerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<compareTimer block_id="' + block.id + '" msToNext="' + block.getFieldValue('msToNext') +'" listenerId="' + block.getFieldValue('listenerId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</compareTimer>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_clearTimerType'] = function(block, generator) {
@@ -10404,12 +10929,22 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onTime>\n';
+     childData += generator.statementToCode(block, 'onTime');
+     childData += '</onTime>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
     return '<addFrameTimeTrigger block_id="' + block.id + '" evaluateMs="' + block.getFieldValue('evaluateMs') +'" threshold="' + block.getFieldValue('threshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addFrameTimeTrigger>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_addMediaTriggerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onTime>\n';
+     childData += generator.statementToCode(block, 'onTime');
+     childData += '</onTime>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
     return '<addMediaTrigger block_id="' + block.id + '" evaluateMs="' + block.getFieldValue('evaluateMs') +'" mediaId="' + block.getFieldValue('mediaId') +'" threshold="' + block.getFieldValue('threshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addMediaTrigger>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_addRecorderDtmfTriggerType'] = function(block, generator) {
@@ -10459,11 +10994,6 @@ function getFeatureBlocks() {
     var childData = '';
     return '<stimulusLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusLabel>\n');
   };
-    javascript.javascriptGenerator.forBlock['frinex_onTimeType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<onTime block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onTime>\n');
-  };
     javascript.javascriptGenerator.forBlock['frinex_onTimerType'] = function(block, generator) {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
@@ -10501,7 +11031,21 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_groupNetworkType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<groupInitialisationError>\n';
+     childData += generator.statementToCode(block, 'groupInitialisationError');
+     childData += '</groupInitialisationError>\n';
+     childData += '<groupNetworkConnecting>\n';
+     childData += generator.statementToCode(block, 'groupNetworkConnecting');
+     childData += '</groupNetworkConnecting>\n';
+     childData += '<groupFindingMembers>\n';
+     childData += generator.statementToCode(block, 'groupFindingMembers');
+     childData += '</groupFindingMembers>\n';
+     childData += '<groupNetworkSynchronising>\n';
+     childData += generator.statementToCode(block, 'groupNetworkSynchronising');
+     childData += '</groupNetworkSynchronising>\n';
+     childData += '<groupPhaseListeners>\n';
+     childData += generator.statementToCode(block, 'groupPhaseListeners');
+     childData += '</groupPhaseListeners>\n';
     return '<groupNetwork block_id="' + block.id + '" groupMembers="' + block.getFieldValue('groupMembers') +'" groupCommunicationChannels="' + block.getFieldValue('groupCommunicationChannels') +'" phasesPerStimulus="' + block.getFieldValue('phasesPerStimulus') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetwork>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_beforeStimulusType'] = function(block, generator) {
@@ -10521,28 +11065,13 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_existingUserCheckType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<multipleUsers>\n';
+     childData += generator.statementToCode(block, 'multipleUsers');
+     childData += '</multipleUsers>\n';
+     childData += '<singleUser>\n';
+     childData += generator.statementToCode(block, 'singleUser');
+     childData += '</singleUser>\n';
     return '<existingUserCheck block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</existingUserCheck>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_multipleUsersType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<multipleUsers block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</multipleUsers>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_singleUserType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<singleUser block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</singleUser>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_aboveThresholdType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<aboveThreshold block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</aboveThreshold>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_withinThresholdType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<withinThreshold block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</withinThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_mediaPlaybackStartedType'] = function(block, generator) {
     var childData = '';
@@ -10747,42 +11276,97 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_showColourReportType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<showColourReport block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</showColourReport>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupInitialisationErrorType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupInitialisationError block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupInitialisationError>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkConnectingType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupNetworkConnecting block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetworkConnecting>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupFindingMembersType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupFindingMembers block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupFindingMembers>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupNetworkSynchronisingType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupNetworkSynchronising block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupNetworkSynchronising>\n');
-  };
-    javascript.javascriptGenerator.forBlock['frinex_groupPhaseListenersType'] = function(block, generator) {
-    var childData = '';
-     childData += generator.statementToCode(block, 'DO');
-    return '<groupPhaseListeners block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupPhaseListeners>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
      childData += generator.statementToCode(block, 'DO');
     return '<groupMemberActivity block_id="' + block.id + '" phaseMembers="' + block.getFieldValue('phaseMembers') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberActivity>\n');
   };
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberCodeLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupMemberCodeLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberCodeLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupMemberLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupMemberLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupMessageLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupMessageLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMessageLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupResponseStimulusImageType'] = function(block, generator) {
+    var childData = '';
+     childData += generator.statementToCode(block, 'DO');
+    return '<groupResponseStimulusImage block_id="' + block.id + '" percentOfPage="' + block.getFieldValue('percentOfPage') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" maxHeight="' + block.getFieldValue('maxHeight') +'" maxWidth="' + block.getFieldValue('maxWidth') +'" animate="' + block.getFieldValue('animate') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupResponseStimulusImage>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupResponseFeedbackType'] = function(block, generator) {
+    var childData = '';
+     childData += '<responseCorrect>\n';
+     childData += generator.statementToCode(block, 'responseCorrect');
+     childData += '</responseCorrect>\n';
+     childData += '<responseIncorrect>\n';
+     childData += generator.statementToCode(block, 'responseIncorrect');
+     childData += '</responseIncorrect>\n';
+    return '<groupResponseFeedback block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupResponseFeedback>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupScoreLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupScoreLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupScoreLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_groupChannelScoreLabelType'] = function(block, generator) {
+    var childData = '';
+    return '<groupChannelScoreLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupChannelScoreLabel>\n');
+  };
     javascript.javascriptGenerator.forBlock['frinex_scoreLabelType'] = function(block, generator) {
     var childData = '';
     return '<scoreLabel block_id="' + block.id + '" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</scoreLabel>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_submitGroupEventType'] = function(block, generator) {
+    var childData = '';
+    return '<submitGroupEvent block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</submitGroupEvent>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageButtonType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupMessageButton block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" hotKey="' + block.getFieldValue('hotKey') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" eventTag="' + block.getFieldValue('eventTag') +'" repeatIncorrect="' + block.getFieldValue('repeatIncorrect') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" styleName="' + block.getFieldValue('styleName') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupMessageButton>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupMessageType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupMessage block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupMessage>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupStoredMessageType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupStoredMessage block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupStoredMessage>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_streamGroupCanvasType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<streamGroupCanvas block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCanvas>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_streamGroupCameraType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<streamGroupCamera block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCamera>\n');
+  };
+    javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block, generator) {
+    var childData = '';
+    return '<sendGroupTokenMessage block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" incrementPhase="' + block.getFieldValue('incrementPhase') +'" dataLogFormat="' + block.getFieldValue('dataLogFormat') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</sendGroupTokenMessage>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_clearCurrentScoreType'] = function(block, generator) {
     var childData = '';
@@ -10794,17 +11378,32 @@ function getFeatureBlocks() {
   };
     javascript.javascriptGenerator.forBlock['frinex_bestScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<bestScoreAboveThreshold block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" errorThreshold="' + block.getFieldValue('errorThreshold') +'" potentialThreshold="' + block.getFieldValue('potentialThreshold') +'" correctStreak="' + block.getFieldValue('correctStreak') +'" errorStreak="' + block.getFieldValue('errorStreak') +'" gamesPlayed="' + block.getFieldValue('gamesPlayed') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</bestScoreAboveThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_totalScoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<totalScoreAboveThreshold block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" errorThreshold="' + block.getFieldValue('errorThreshold') +'" potentialThreshold="' + block.getFieldValue('potentialThreshold') +'" gamesPlayed="' + block.getFieldValue('gamesPlayed') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</totalScoreAboveThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_scoreAboveThresholdType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<aboveThreshold>\n';
+     childData += generator.statementToCode(block, 'aboveThreshold');
+     childData += '</aboveThreshold>\n';
+     childData += '<withinThreshold>\n';
+     childData += generator.statementToCode(block, 'withinThreshold');
+     childData += '</withinThreshold>\n';
     return '<scoreAboveThreshold block_id="' + block.id + '" scoreThreshold="' + block.getFieldValue('scoreThreshold') +'" errorThreshold="' + block.getFieldValue('errorThreshold') +'" potentialThreshold="' + block.getFieldValue('potentialThreshold') +'" correctStreak="' + block.getFieldValue('correctStreak') +'" errorStreak="' + block.getFieldValue('errorStreak') +'" gamesPlayed="' + block.getFieldValue('gamesPlayed') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</scoreAboveThreshold>\n');
   };
     javascript.javascriptGenerator.forBlock['frinex_resetStimulusType'] = function(block, generator) {
@@ -11474,10 +12073,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_onTimeType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_onTimerType"
       },
       {
@@ -11523,22 +12118,6 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_existingUserCheckType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_multipleUsersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_singleUserType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_aboveThresholdType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_withinThresholdType"
       },
       {
         "kind": "block",
@@ -11702,31 +12281,67 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_groupInitialisationErrorType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkConnectingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupFindingMembersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkSynchronisingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupPhaseListenersType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_groupMemberActivityType"
       },
       {
         "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseFeedbackType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_scoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_submitGroupEventType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupStoredMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCanvasType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCameraType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupTokenMessageType"
       },
       {
         "kind": "block",
@@ -11978,6 +12593,10 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_resetStimulusType"
       },
             ]}, {
@@ -12027,6 +12646,26 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_stimulusLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
       },
       {
         "kind": "block",
@@ -12114,27 +12753,63 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
-        "type": "frinex_groupInitialisationErrorType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkConnectingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupFindingMembersType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupNetworkSynchronisingType"
-      },
-      {
-        "kind": "block",
-        "type": "frinex_groupPhaseListenersType"
-      },
-      {
-        "kind": "block",
         "type": "frinex_groupMemberActivityType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberCodeLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMemberLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupMessageLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseStimulusImageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupResponseFeedbackType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_groupChannelScoreLabelType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_submitGroupEventType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupStoredMessageType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCanvasType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_streamGroupCameraType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupTokenMessageType"
       },
             ]}, {
         "kind":"category",
@@ -12247,6 +12922,10 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_stimulusCodeImageButtonType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_sendGroupMessageButtonType"
       },
             ]}, {
         "kind":"category",
