@@ -43,7 +43,9 @@ function updatePreview(event) {
     document.getElementById('previewArea').value = code;
     // preview the blocks data in the ExperimentTemplate via the WizardStimulusPresenter
     document.querySelector("iframe").contentWindow.wizardStimulusPresenter(code, event.blockId);
-    document.querySelector("iframe").contentWindow.document.body.focus();
+    // document.querySelector("iframe").contentWindow.document.body.focus();
+    // by touching the SRC the browser renders the changes
+    document.querySelector("iframe").src = document.querySelector("iframe").src.split("#")[0] + "#" + Date();
 }
 
 function loadTemplateAction(toolboxButton) {
