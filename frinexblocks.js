@@ -10150,9 +10150,7 @@ function getFeatureBlocks() {
      childData += '<metadata>\n';
      childData += generator.statementToCode(block, 'metadata');
      childData += '</metadata>\n';
-     childData += '<presenters>\n';
      childData += generator.statementToCode(block, 'presenters');
-     childData += '</presenters>\n';
      childData += '<stimuli>\n';
      childData += generator.statementToCode(block, 'stimuli');
      childData += '</stimuli>\n';
