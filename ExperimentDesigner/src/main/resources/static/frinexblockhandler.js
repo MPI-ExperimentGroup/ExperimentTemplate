@@ -100,6 +100,7 @@ function loadAction(actionType, actionName) {
 }
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;" + generatedElements.localName + "&gt;</div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
@@ -109,16 +110,16 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
             comparisonTempIndex++;
         }
         if (generatedElements.children().length <= comparisonTempIndex) {
-            document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:red\">&lt;" + inputElements.children()[childIndex].localName + "&gt;</div>\n";
+            document.getElementById('errorOutputArea').innerHTML += "--<div style=\"color:red\">&lt;" + inputElements.children()[childIndex].localName + " /&gt;</div>\n";
         } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonTempIndex].localName) {
             while (missingNames.length > 0) {
-                document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:green\">&lt;" + missingNames.shift() + "&gt;</div>\n";
+                document.getElementById('errorOutputArea').innerHTML += "++<div style=\"color:green\">&lt;" + missingNames.shift() + " /&gt;</div>\n";
             }
-            document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;" + generatedElements.children()[comparisonTempIndex].localName + "&gt;</div>\n";
             comparisonIndex = comparisonTempIndex;
             compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]));
         }
     }
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;/" + generatedElements.localName + "&gt;</div>\n";
 }
 
 function populateConnectionFromXml(currentElement, parentConnection) {
