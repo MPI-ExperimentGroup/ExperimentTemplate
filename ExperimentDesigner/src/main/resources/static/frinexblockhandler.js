@@ -84,7 +84,8 @@ function loadAction(actionType, actionName) {
             }
 
             let generatedData = javascript.javascriptGenerator.workspaceToCode(workspace);
-            compareLoadedXmlToGeneratedXml($(inputData).find("experiment"), $($.parseXML("<output>" + generatedData + "</output>")).find("experiment"), 0);
+            // if there is more than one experiment node it is invalid and will be ignored
+            compareLoadedXmlToGeneratedXml($(inputData).find("experiment")[0], $($.parseXML("<output>" + generatedData + "</output>")).find("experiment")[0], 0);
             // var successBlock = workspace.newBlock('frinex_htmlTextType');
             // successBlock.setFieldValue(inputData, 'featureText');
             // successBlock.initSvg();
