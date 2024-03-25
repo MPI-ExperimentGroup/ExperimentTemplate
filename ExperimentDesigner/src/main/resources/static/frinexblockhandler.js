@@ -120,7 +120,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
             compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]), depthCount + 1);
         }
     }
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;/" + generatedElements.localName + "&gt;</div>\n";
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;/" + generatedElements.localName + "&gt;</div>\n";
 }
 
 function populateConnectionFromXml(currentElement, parentConnection) {
