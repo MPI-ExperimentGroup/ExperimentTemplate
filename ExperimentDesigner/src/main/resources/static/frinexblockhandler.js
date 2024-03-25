@@ -105,8 +105,8 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
         let comparisonTempIndex = comparisonIndex;
         let missingNames = [];
         while (generatedElements.children().length > comparisonTempIndex && inputElements.children()[childIndex].localName !== generatedElements.children()[comparisonTempIndex].localName) {
-            comparisonTempIndex++;
             missingNames.push(generatedElements.children()[comparisonTempIndex].localName);
+            comparisonTempIndex++;
         }
         if (generatedElements.children().length <= comparisonTempIndex) {
             document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:red\">&lt;" + inputElements.children()[childIndex].localName + "&gt;</div>\n";
