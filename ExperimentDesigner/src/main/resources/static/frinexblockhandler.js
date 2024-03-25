@@ -101,7 +101,7 @@ function loadAction(actionType, actionName) {
 }
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthCount) {
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements.localName + "&gt;</div>\n";
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + "&gt;</div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
