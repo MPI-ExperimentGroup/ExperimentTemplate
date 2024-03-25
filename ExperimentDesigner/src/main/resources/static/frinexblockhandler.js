@@ -84,7 +84,7 @@ function loadAction(actionType, actionName) {
             }
 
             let generatedData = javascript.javascriptGenerator.workspaceToCode(workspace);
-            compareLoadedXmlToGeneratedXml($(inputData).find("experiment"), $($.parseXML("<output>" + generatedData + "</output>")).find("experiment"));
+            compareLoadedXmlToGeneratedXml($(inputData).find("experiment"), $($.parseXML("<output>" + generatedData + "</output>")).find("experiment"), 0);
             // var successBlock = workspace.newBlock('frinex_htmlTextType');
             // successBlock.setFieldValue(inputData, 'featureText');
             // successBlock.initSvg();
@@ -99,9 +99,8 @@ function loadAction(actionType, actionName) {
     });
 }
 
-function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;" + generatedElements.localName + "&gt;</div>\n";
-    document.getElementById('errorOutputArea').innerHTML += "<div>\n";
+function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthCount) {
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements.localName + "&gt;</div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
@@ -111,16 +110,15 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
             comparisonTempIndex++;
         }
         if (generatedElements.children().length <= comparisonTempIndex) {
-            document.getElementById('errorOutputArea').innerHTML += "--<div style=\"color:red\">&lt;" + inputElements.children()[childIndex].localName + " /&gt;</div>\n";
+            document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:red\">--&lt;" + inputElements.children()[childIndex].localName + " /&gt;</div>\n";
         } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonTempIndex].localName) {
             while (missingNames.length > 0) {
-                document.getElementById('errorOutputArea').innerHTML += "++<div style=\"color:green\">&lt;" + missingNames.shift() + " /&gt;</div>\n";
+                document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:green\">++&lt;" + missingNames.shift() + " /&gt;</div>\n";
             }
             comparisonIndex = comparisonTempIndex;
-            compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]));
+            compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]), depthCount + 1);
         }
     }
-    document.getElementById('errorOutputArea').innerHTML += "</div>\n";
     document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;/" + generatedElements.localName + "&gt;</div>\n";
 }
 
