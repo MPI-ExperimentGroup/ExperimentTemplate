@@ -103,13 +103,18 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
+        let missingNames = [];
         while (generatedElements.children().length > comparisonTempIndex && inputElements.children()[childIndex].localName !== generatedElements.children()[comparisonTempIndex].localName) {
             comparisonTempIndex++;
+            missingNames.push(generatedElements.children()[comparisonTempIndex].localName);
         }
         if (generatedElements.children().length <= comparisonTempIndex) {
-            document.getElementById('errorOutputArea').value += "missing: " + inputElements.children()[childIndex].localName + "\n";
+            document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:red\">&lt;" + inputElements.children()[childIndex].localName + "&gt;</div>\n";
         } else if (inputElements.children()[childIndex].localName === generatedElements.children()[comparisonTempIndex].localName) {
-            document.getElementById('errorOutputArea').value += "correct: " + generatedElements.children()[comparisonTempIndex].localName + "\n";
+            while (missingNames.length > 0) {
+                document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:green\">&lt;" + missingNames.shift() + "&gt;</div>\n";
+            }
+            document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;" + generatedElements.children()[comparisonTempIndex].localName + "&gt;</div>\n";
             comparisonIndex = comparisonTempIndex;
             compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]));
         }
