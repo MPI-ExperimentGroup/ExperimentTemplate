@@ -101,6 +101,7 @@ function loadAction(actionType, actionName) {
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
     document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;" + generatedElements.localName + "&gt;</div>\n";
+    document.getElementById('errorOutputArea').innerHTML += "<div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
@@ -119,6 +120,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements) {
             compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]));
         }
     }
+    document.getElementById('errorOutputArea').innerHTML += "</div>\n";
     document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black\">&lt;/" + generatedElements.localName + "&gt;</div>\n";
 }
 
