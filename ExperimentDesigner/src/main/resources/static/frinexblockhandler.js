@@ -161,8 +161,10 @@ function buildFromXml(currentElement, parentBlock) {
                 if (currentElement.localName === parentBlock.inputList[inputIndex].name) {
                     parentHasConnection = true;
                     // parentHasConnection therefore the child block type does not exist so we add to the parent
-                    for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
-                        populateConnectionFromXml($(currentElement).children()[childIndex], parentBlock.inputList[inputIndex].connection);
+                    // we could update the targetConnection with the childBlock's nextConnection, but it is easier to just add them in the reverse order here
+                    let targetConnection = parentBlock.inputList[inputIndex].connection;
+                    for (let childIndex = $(currentElement).children().length - 1; childIndex >= 0; childIndex--) {
+                        populateConnectionFromXml($(currentElement).children()[childIndex], targetConnection);
                     }
                 }
             }
