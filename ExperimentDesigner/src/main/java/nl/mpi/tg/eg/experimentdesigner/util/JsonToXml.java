@@ -141,7 +141,12 @@ public class JsonToXml {
                         SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
                         final File schemaFile = new File(schemaDirectory + "/" + frinexVersion + ".xsd");
                         if (!schemaFile.exists()) {
-                            throw new IOException("The requested frinexVersion does not have a schema file available: " + frinexVersion);
+                            final File deprecatedSchemaFile = new File(schemaDirectory + "/" + frinexVersion.replaceAll("stable", "deprecated") + ".xsd");
+                            if (deprecatedSchemaFile.exists()) {
+                                throw new IOException("The requested frinexVersion has been deprecated and should not be used. If you must use this version then you need to specify: " + deprecatedSchemaFile.getName());
+                            } else {
+                                throw new IOException("The requested frinexVersion does not have a schema file available: " + frinexVersion);
+                            }
                         }
                         Schema schema = schemaFactory.newSchema(schemaFile);
                         Validator validator = schema.newValidator();
