@@ -101,7 +101,7 @@ function loadAction(actionType, actionName) {
 }
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthCount) {
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + "&gt;</div>\n";
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + ((inputElements.children().length > 0)? " /" : "") + "&gt;</div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
@@ -120,7 +120,9 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
             comparisonIndex = comparisonTempIndex + 1;
         }
     }
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;/" + inputElements[0].localName + "&gt;</div>\n";
+    if (inputElements.children().length > 0) {
+        document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;/" + inputElements[0].localName + "&gt;</div>\n";
+    }
 }
 
 function populateConnectionFromXml(currentElement, parentConnection) {
