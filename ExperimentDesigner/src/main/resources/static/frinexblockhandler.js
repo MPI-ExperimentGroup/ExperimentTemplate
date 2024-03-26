@@ -150,7 +150,7 @@ function populateConnectionFromXml(currentElement, parentConnection) {
             }
         }
     }
-    for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+    for (let childIndex = $(currentElement).children().length - 1; childIndex >= 0; childIndex--) {
         buildFromXml($(currentElement).children()[childIndex], childBlock);
     }
 }
@@ -206,7 +206,7 @@ function buildFromXml(currentElement, parentBlock) {
                     }
                 }
             }
-            for (let childIndex = 0; childIndex < $(currentElement).children().length; childIndex++) {
+            for (let childIndex = $(currentElement).children().length - 1; childIndex >= 0; childIndex--) {
                 // TODO: we probably should be passing the relevant connection not the block
                 buildFromXml($(currentElement).children()[childIndex], childBlock);
             }
