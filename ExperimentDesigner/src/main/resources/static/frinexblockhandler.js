@@ -116,8 +116,8 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
             while (missingNames.length > 0) {
                 document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:green\">++&lt;" + missingNames.shift() + " /&gt;</div>\n";
             }
-            comparisonIndex = comparisonTempIndex;
-            compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonIndex]), depthCount + 1);
+            compareLoadedXmlToGeneratedXml($(inputElements.children()[childIndex]), $(generatedElements.children()[comparisonTempIndex]), depthCount + 1);
+            comparisonIndex = comparisonTempIndex + 1;
         }
     }
     document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;/" + inputElements[0].localName + "&gt;</div>\n";
