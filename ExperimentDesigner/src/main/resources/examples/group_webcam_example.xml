@@ -3,10 +3,10 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd" 
     appNameDisplay="group_webcam_example">        
     <deployment          
-        state="debug"              
-        stagingServer="https://ems15.mpi.nl"     
+        state="debug"
         stunServer="coturn.mpi.nl"
     />         
+    <!-- stagingServer="https://ems15.mpi.nl" -->
     <administration />     
     <metadata />  
     <presenter type="stimulus">  
@@ -22,10 +22,10 @@
                         <htmlText featureText="groupInitialisationError please make sure the group and member code are provided in the URL" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput"> 
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
                         <htmlTokenText featureText="Group: ::groupId::" />
                         <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
                     </regionReplace>
@@ -35,10 +35,10 @@
                         <htmlText featureText="GroupStreamingTester groupNetworkConnecting" />
                     </regionReplace>
                     <regionReplace regionId="groupOutput"> 
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
-                        <htmlTokenText featureText="&lt;a href=&quot;https://ems15.mpi.nl/group_webcam_example/grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=A&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::A&quot;&gt;Assign member A&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=B&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::B&quot;&gt;Assign member B&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;?member=C&amp;group=::formatDateTime_yyyy.MM.dd_HH:mm::&amp;mockuser=::formatDateTime_yyyyMMddHHmm::C&quot;&gt;Assign member C&lt;/a&gt;" />
+                        <htmlTokenText featureText="&lt;a href=&quot;grouptestframes.html&quot;&gt;robot test page&lt;/a&gt;" />
                         <htmlTokenText featureText="Group: ::groupId::" />
                         <htmlTokenText featureText="MemberCode: ::groupMemberCode::" />
                     </regionReplace>
