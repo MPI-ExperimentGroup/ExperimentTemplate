@@ -5486,7 +5486,7 @@
 </xs:sequence>
 <xs:attribute name="idListField" type="xs:string">
 <xs:annotation>
-<xs:documentation>When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.</xs:documentation>
+<xs:documentation>When provided this metadata field must contain a list of stimuli IDs separated by commas which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
