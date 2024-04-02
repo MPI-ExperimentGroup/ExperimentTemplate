@@ -266,7 +266,7 @@ public class AbstractSchemaGenerator {
                 );
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1,
                         new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
-                        .documentedAttribute("idListField", AttributeType.xsString, "When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.", true));
+                        .documentedAttribute("idListField", AttributeType.xsString, "When provided this metadata field must contain a list of stimuli IDs separated by commas which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.", true));
             }
             if (!translatableAttribites.isEmpty()) {
                 Collections.sort(translatableAttribites);
