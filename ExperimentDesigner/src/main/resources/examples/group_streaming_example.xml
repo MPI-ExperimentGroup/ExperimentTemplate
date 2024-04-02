@@ -2,10 +2,10 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
             appNameDisplay="group_streaming_example"> 
         <deployment
-            state="staging"                                               
-            stagingServer="https://ems15.mpi.nl"               
+            state="staging"
             stunServer="coturn.mpi.nl"   
-        />                 
+        />
+        <!-- stagingServer="https://ems15.mpi.nl" -->
     <administration />    
     <scss>  
         .streamRegion {  
