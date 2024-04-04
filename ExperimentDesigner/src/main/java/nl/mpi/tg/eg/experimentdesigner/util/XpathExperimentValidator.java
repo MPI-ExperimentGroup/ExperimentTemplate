@@ -233,9 +233,23 @@ public class XpathExperimentValidator {
             } else {
                 returnMessage += "The metadata field postName '" + fieldNamesString + "' has been used more than once. Each postName must be unique.";
             }
-            if (forbiddenNames.contains(fieldNamesString)){
+            if (forbiddenNames.contains(fieldNamesString)) {
                 returnMessage += "The metadata field postName '" + fieldNamesString + "' uses a reserved name and cannot be used here.";
-            }            
+            }
+        }
+        for (int index = 0; index < nodeList1.getLength(); index++) {
+            final String fieldNamesString = nodeList1.item(index).getTextContent();
+            String fieldNameUnderscore = "";
+            for (String fieldNamesPart : fieldNamesString.split("_")) {
+                if (fieldNameUnderscore.length() == 0) {
+                    fieldNameUnderscore = fieldNamesPart;
+                } else {
+                    fieldNameUnderscore += fieldNamesPart.substring(0, 1).toUpperCase() + fieldNamesPart.substring(1);
+                }
+            }
+            if (!fieldNamesString.equals(fieldNameUnderscore) && fieldNames.contains(fieldNameUnderscore)) {
+                returnMessage += "The metadata field postName '" + fieldNameUnderscore + "' cannot be used with '" + fieldNamesString + "'.";
+            }
         }
         return returnMessage;
     }

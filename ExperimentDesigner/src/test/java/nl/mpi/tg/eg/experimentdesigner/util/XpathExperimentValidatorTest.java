@@ -385,12 +385,14 @@ public class XpathExperimentValidatorTest {
                 + "<field postName=\"acceptLang\" />"
                 + "<field postName=\"userAgent\" />"
                 + "<field postName=\"staleCopy\" />"
+                + "<field postName=\"stimulusList\" />"
+                + "<field postName=\"stimulus_list\" />"
                 + "</metadata>"
                 + "</experiment>");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validateMetadataFieldPostNames(xmlOkIdentifierDocument));
         assertEquals("The metadata field postName 'daga3_cut' has been used more than once. Each postName must be unique.", instance.validateMetadataFieldPostNames(xmlFailIdentifierDocument));
-        assertEquals("The metadata field postName 'id' uses a reserved name and cannot be used here.The metadata field postName 'submitDate' uses a reserved name and cannot be used here.The metadata field postName 'userId' uses a reserved name and cannot be used here.The metadata field postName 'remoteAddr' uses a reserved name and cannot be used here.The metadata field postName 'acceptLang' uses a reserved name and cannot be used here.The metadata field postName 'userAgent' uses a reserved name and cannot be used here.The metadata field postName 'staleCopy' uses a reserved name and cannot be used here.", instance.validateMetadataFieldPostNames(xmlFailReservedDocument));
+        assertEquals("The metadata field postName 'id' uses a reserved name and cannot be used here.The metadata field postName 'submitDate' uses a reserved name and cannot be used here.The metadata field postName 'userId' uses a reserved name and cannot be used here.The metadata field postName 'remoteAddr' uses a reserved name and cannot be used here.The metadata field postName 'acceptLang' uses a reserved name and cannot be used here.The metadata field postName 'userAgent' uses a reserved name and cannot be used here.The metadata field postName 'staleCopy' uses a reserved name and cannot be used here.The metadata field postName 'stimulusList' cannot be used with 'stimulus_list'.", instance.validateMetadataFieldPostNames(xmlFailReservedDocument));
     }
 
     /**
