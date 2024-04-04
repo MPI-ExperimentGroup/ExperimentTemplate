@@ -248,7 +248,7 @@ public class XpathExperimentValidator {
                 }
             }
             if (!fieldNamesString.equals(fieldNameUnderscore) && fieldNames.contains(fieldNameUnderscore)) {
-                returnMessage += "The metadata field postName '" + fieldNameUnderscore + "' cannot be used with '" + fieldNamesString + "'.";
+                returnMessage += "The metadata field postName '" + fieldNameUnderscore + "' and '" + fieldNamesString + "'cannot be used concurrently, please use one of the other not both.";
             }
         }
         return returnMessage;
