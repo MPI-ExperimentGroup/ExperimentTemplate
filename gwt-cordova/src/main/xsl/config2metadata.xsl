@@ -43,7 +43,7 @@
                 <xsl:text>controlledRegex_</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>=</xsl:text>
-                <xsl:value-of select="@controlledRegex" />
+                <xsl:value-of select="replace(@controlledRegex,'\\','\\\\')" />
                 <xsl:text>&#xa;</xsl:text>
                 <!--                   <xsl:text>preventServerDuplicates_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@preventServerDuplicates" /><xsl:text>
                 </xsl:text>
