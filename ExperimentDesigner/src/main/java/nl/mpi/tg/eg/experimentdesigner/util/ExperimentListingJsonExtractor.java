@@ -30,6 +30,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import nl.mpi.tg.eg.experimentdesigner.model.BuildListing;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
+
 import org.xml.sax.SAXException;
 
 /**
@@ -38,7 +40,9 @@ import org.xml.sax.SAXException;
  */
 public class ExperimentListingJsonExtractor {
 
-    public void extractListingJson(File xmlFile, File listingDirectory, final String frinexVersion) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
+    public void extractListingJson(File xmlFile, File listingDirectory, final String frinexVersion)
+            throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException, XpathExperimentException {
         String result = "";
         final File outputFile = new File(listingDirectory, xmlFile.getName().replaceAll(".xml$", ".json"));
         Writer fileWriter = getWriter(outputFile);
@@ -47,7 +51,8 @@ public class ExperimentListingJsonExtractor {
             Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
             final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-            mapper.writeValue(fileWriter, new BuildListing(experiment, frinexVersion, xmlFile.getName().replaceAll(".xml$", "")));
+            mapper.writeValue(fileWriter,
+                    new BuildListing(experiment, frinexVersion, xmlFile.getName().replaceAll(".xml$", "")));
 
             System.out.println(outputFile);
             try {
@@ -56,6 +61,14 @@ public class ExperimentListingJsonExtractor {
                 result += "Could not write listing JSON file: ";
                 result += iOException.getMessage();
                 System.out.println(iOException.getMessage());
+            }
+            for (PublishEvents publishEvents : experiment.getPublishEvents()) {
+                // check for icon.png in the stimuli directory if cordova or electron are selected
+                if (publishEvents.isIsAndroid() || publishEvents.isIsiOS()) {
+                    if (!new File(xmlFile.getParentFile(), "icon.png").exists()) {
+                        result += "To build mobile applications an icon.png must be provided in the stimuli directory.";
+                    }
+                }
             }
         } catch (JAXBException jAXBException) {
             result += "Could not parse the experiment XML needed to create the build listing: ";
