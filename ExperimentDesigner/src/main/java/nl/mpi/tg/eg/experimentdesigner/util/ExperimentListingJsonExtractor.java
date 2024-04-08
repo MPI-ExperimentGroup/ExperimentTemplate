@@ -65,7 +65,7 @@ public class ExperimentListingJsonExtractor {
             for (PublishEvents publishEvents : experiment.getPublishEvents()) {
                 // check for icon.png in the stimuli directory if building cordova or electron
                 if (publishEvents.isIsAndroid() || publishEvents.isIsiOS()) {
-                    File iconPng = new File(new File(xmlFile.getParentFile().getParentFile(),
+                    File iconPng = new File(new File(new File(xmlFile.getParentFile().getParentFile(), "static"),
                             xmlFile.getName().replaceAll(".xml$", "")), "icon.png");
                     System.out.println("checking for icon.png in: " + iconPng.getAbsolutePath());
                     if (!iconPng.exists()) {
