@@ -9,9 +9,9 @@
     <deployment
         publishDate="2020-02-02"
         expiryDate="2025-02-22"
-        isiOS="true"
-        isDesktop="true"      
-        isAndroid="true"  
+        isiOS="false"
+        isDesktop="false"      
+        isAndroid="false"  
         isWebApp="false"
         isUnity="true"                                 
         state="staging"        
