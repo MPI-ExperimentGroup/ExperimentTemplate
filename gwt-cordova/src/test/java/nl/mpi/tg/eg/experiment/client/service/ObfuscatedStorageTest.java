@@ -50,7 +50,9 @@ public class ObfuscatedStorageTest {
             @Override
             public void setItem(String key, String data) {
                 storageMap.put(key, data);
-                keyList.add(key);
+                if (!keyList.contains(key)) {
+                    keyList.add(key);
+                }
             }
 
             @Override
@@ -134,7 +136,7 @@ public class ObfuscatedStorageTest {
         instance.setItem(instance.getSCREEN_DATA(endPoint, userId), "test");
         assertEquals("userId", instance.isUSER_METADATA(instance.getUSER_METADATA(userId, postName), postName));
         assertNull(instance.isUSER_METADATA(instance.getUSER_RESULTS(userId, postName), postName));
-        assertEquals(80, instance.getLength());
+        assertEquals(58, instance.getLength());
         instance.clearUserData(userId);
         assertEquals(1, instance.getLength());
     }
