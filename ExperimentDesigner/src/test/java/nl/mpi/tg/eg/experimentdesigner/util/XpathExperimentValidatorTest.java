@@ -385,6 +385,7 @@ public class XpathExperimentValidatorTest {
                 + "<field postName=\"acceptLang\" />"
                 + "<field postName=\"userAgent\" />"
                 + "<field postName=\"staleCopy\" />"
+                + "<field postName=\"Musical_Pitch__Spatial\" />"
                 + "<field postName=\"stimulusList\" />"
                 + "<field postName=\"stimulus_list\" />"
                 + "</metadata>"

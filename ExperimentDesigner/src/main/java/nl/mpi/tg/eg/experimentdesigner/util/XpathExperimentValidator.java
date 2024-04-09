@@ -243,7 +243,7 @@ public class XpathExperimentValidator {
             for (String fieldNamesPart : fieldNamesString.split("_")) {
                 if (fieldNameUnderscore.length() == 0) {
                     fieldNameUnderscore = fieldNamesPart;
-                } else {
+                } else if (fieldNamesPart.length() > 0) {
                     fieldNameUnderscore += fieldNamesPart.substring(0, 1).toUpperCase() + fieldNamesPart.substring(1);
                 }
             }
