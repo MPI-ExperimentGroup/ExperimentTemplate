@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
-    appNameDisplay="Minimal Example">
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
+    appNameDisplay="Stimulus Lists Example">
     <deployment state="staging" />
     <metadata>
         <field controlledRegex=".*" controlledMessage="." postName="chosenList" registrationField="Stimuli Allocation Field"/>
