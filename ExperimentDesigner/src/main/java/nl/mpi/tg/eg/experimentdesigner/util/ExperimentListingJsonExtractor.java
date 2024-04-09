@@ -64,12 +64,20 @@ public class ExperimentListingJsonExtractor {
             }
             for (PublishEvents publishEvents : experiment.getPublishEvents()) {
                 // check for icon.png in the stimuli directory if building cordova or electron
-                if (publishEvents.isIsAndroid() || publishEvents.isIsiOS()) {
+                if (publishEvents.isIsAndroid() || publishEvents.isIsiOS() || publishEvents.isDesktop()) {
                     File iconPng = new File(new File(new File(xmlFile.getParentFile().getParentFile(), "static"),
                             xmlFile.getName().replaceAll(".xml$", "")), "icon.png");
                     System.out.println("checking for icon.png in: " + iconPng.getAbsolutePath());
                     if (!iconPng.exists()) {
-                        result += "To build mobile applications an icon.png must be provided in the stimuli directory.";
+                        result += "To build mobile and desktop applications an icon.png must be provided in the stimuli directory.";
+                    }
+                }
+                if (publishEvents.isIsAndroid() || publishEvents.isIsiOS() || publishEvents.isDesktop()) {
+                    File iconPng = new File(new File(new File(xmlFile.getParentFile().getParentFile(), "static"),
+                            xmlFile.getName().replaceAll(".xml$", "")), "splash.png");
+                    System.out.println("checking for splash.png in: " + iconPng.getAbsolutePath());
+                    if (!iconPng.exists()) {
+                        result += "To build mobile and desktop applications a splash.png must be provided in the stimuli directory.";
                     }
                 }
             }
