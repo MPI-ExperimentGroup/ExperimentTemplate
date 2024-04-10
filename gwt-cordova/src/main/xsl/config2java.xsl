@@ -648,6 +648,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
             <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
             <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
+            <!--TODO: this does not trigger for stimulusRatingRadio - - - the defaultStimulusGroup is never passed due to the lowercase S. Also stimulus radio needs to be grouped as radio buttons by stimulusId-->
             <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox') or contains(local-name(), 'Slider')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
             <xsl:text>);
             </xsl:text>
