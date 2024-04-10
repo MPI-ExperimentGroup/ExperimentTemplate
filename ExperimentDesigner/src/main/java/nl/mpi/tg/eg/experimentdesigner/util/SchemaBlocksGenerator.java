@@ -460,6 +460,11 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                             writer.append("          \"type\": \"input_statement\",\n          \"name\": \"" + childType.name() + "\",\n");
                             writer.append(""
                                     + "          \"check\": [\n");
+                            for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
+                                if (statementType != FeatureType.Contitionals.none) {
+                                    writer.append("        \"frinex_" + statementType + "Type\",\n");
+                                }
+                            }
                             writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
 //            }
                             if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus && childType.getRequiresChildType() != FeatureType.Contitionals.any) {
