@@ -454,10 +454,10 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                     }
                     for (FeatureType childType : FeatureType.values()) {
                         if (childType.isChildType(featureType.getRequiresChildType())) {
-                            writer.append("      \"message" + argsCount + "\": \"" + childType.name() + " %1\",\n");
+                            writer.append("      \"message" + argsCount + "\": \"" + ((childFeatureCount > 1) ? childType.name() : "") + " %1\",\n");
                             writer.append("      \"args" + argsCount + "\": [\n"
                                     + "        {\n");
-                            writer.append("          \"type\": \"input_statement\",\n          \"name\": \"" + ((childFeatureCount > 1) ? childType.name() : "") + "\",\n");
+                            writer.append("          \"type\": \"input_statement\",\n          \"name\": \"" + childType.name() + "\",\n");
                             writer.append(""
                                     + "          \"check\": [\n");
                             writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
