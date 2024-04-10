@@ -462,12 +462,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                                     + "          \"check\": [\n");
                             for (final FeatureType.Contitionals statementType : featureType.getIsChildType()) {
                                 if (statementType != FeatureType.Contitionals.none) {
-                                    writer.append("        \"frinex_" + statementType + "Type\",\n");
+                                    writer.append("            \"frinex_" + statementType + "Type\",\n");
                                 }
                             }
                             writer.append("            \"frinex_" + childType.getRequiresChildType() + "Type\",\n");
 //            }
                             if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus && childType.getRequiresChildType() != FeatureType.Contitionals.any) {
+                                // TODO: are we adding too many child types here
                                 writer.append("            \"frinex_anyType\",\n");
                             }
                             writer.append("          ]\n"
