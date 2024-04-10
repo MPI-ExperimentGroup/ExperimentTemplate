@@ -434,17 +434,17 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                 }
             }
             if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
-
-                if (featureType.getRequiresChildType() == FeatureType.Contitionals.hasCorrectIncorrect
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetwork
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMoreStimulus
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasThreshold
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasUserCount
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorTimeCritical
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasMediaLoading
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
-                        || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseErrorCondition) {
+                if (featureType.getRequiresChildType() == FeatureType.Contitionals.any) {
+                    writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
+                    writer.append("      \"args" + argsCount + "\": [\n" + "        {\n");
+                    writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
+                    writer.append("          \"check\": [\n");
+                    writer.append("            \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
+                    writer.append("          ]\n"
+                            + "        }\n      ],\n");
+                    argsCount++;
+                    currentSubTypes.add("DO");
+                } else {
                     int childFeatureCount = 0;
                     for (FeatureType childType : FeatureType.values()) {
                         if (childType.isChildType(featureType.getRequiresChildType())) {
@@ -471,21 +471,6 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                             currentSubTypes.add(childType.name());
                         }
                     }
-                } else {
-                    writer.append("      \"message" + argsCount + "\": \"" + featureType.getRequiresChildType() + " %1\",\n");
-                    writer.append("      \"args" + argsCount + "\": [\n"
-                            + "        {\n");
-                    writer.append("          \"type\": \"input_statement\",\n          \"name\": \"DO\",\n");
-                    writer.append("          \"check\": [\n");
-//            if (featureType.getRequiresChildType() == FeatureType.Contitionals.any) {
-//                writer.append("                \"frinex_featureType\",\n");
-//            } else {
-                    writer.append("            \"frinex_" + featureType.getRequiresChildType() + "Type\",\n");
-//            }
-                    writer.append("          ]\n"
-                            + "        }\n      ],\n");
-                    argsCount++;
-                    currentSubTypes.add("DO");
                 }
             }
             // final String statementType = (featureType.getRequiresChildType() == FeatureType.Contitionals.any) ? "frinex_featureType" : "frinex_" + featureType.getChildTypeString() + "Type";
