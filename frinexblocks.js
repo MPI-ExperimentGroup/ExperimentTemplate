@@ -733,13 +733,33 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": "eachStimulus %1",
+      "message7": "beforeStimulus %1",
       "args7": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "beforeStimulus",
           "check": [
-            "frinex_eachStimulusType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "eachStimulus %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "eachStimulus",
+          "check": [
+            "frinex_stimulusActionType",
+          ]
+        }
+      ],
+      "message9": "afterStimulus %1",
+      "args9": [
+        {
+          "type": "input_statement",
+          "name": "afterStimulus",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -809,13 +829,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message7": "groupStimulus %1",
+      "message7": "groupNetwork %1",
       "args7": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "groupNetwork",
           "check": [
-            "frinex_groupStimulusType",
+            "frinex_groupNetworkType",
+          ]
+        }
+      ],
+      "message8": "endOfStimulus %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "endOfStimulus",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -1398,13 +1428,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "hasKeyInputsCondition %1",
+      "message3": "onKeyUp %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onKeyUp",
           "check": [
-            "frinex_hasKeyInputsConditionType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message4": "onKeyDown %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onKeyDown",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -1746,13 +1786,53 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "svgGroupsLoaded %1",
+      "message2": "svgGroupAdd %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "svgGroupAdd",
           "check": [
-            "frinex_svgGroupsLoadedType",
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message3": "svgSetLabel %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "svgSetLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message4": "svgGroupShow %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "svgGroupShow",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message5": "svgGroupAction %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "svgGroupAction",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "svgGroupMatching %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "svgGroupMatching",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -2200,13 +2280,13 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasMediaLoadingButton %1",
+      "message5": " %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onActivate",
           "check": [
-            "frinex_hasMediaLoadingButtonType",
+            "frinex_anyType",
           ]
         }
       ],
@@ -2284,13 +2364,13 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message8": "hasMediaLoadingButton %1",
+      "message8": " %1",
       "args8": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onActivate",
           "check": [
-            "frinex_hasMediaLoadingButtonType",
+            "frinex_anyType",
           ]
         }
       ],
@@ -2328,13 +2408,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "touchInputCaptureType %1",
+      "message3": "captureStart %1",
       "args3": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "captureStart",
           "check": [
-            "frinex_touchInputCaptureTypeType",
+            "frinex_touchInputStartTypeType",
+          ]
+        }
+      ],
+      "message4": "touchEnd %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "touchEnd",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -2356,13 +2446,43 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "touchInputStartType %1",
+      "message1": "touchInputLabelButton %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "touchInputLabelButton",
           "check": [
-            "frinex_touchInputStartTypeType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message2": "touchInputImageButton %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "touchInputImageButton",
+          "check": [
+            "frinex_hasMediaLoadingButtonType",
+          ]
+        }
+      ],
+      "message3": "touchInputVideoButton %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "touchInputVideoButton",
+          "check": [
+            "frinex_hasMediaLoadingButtonType",
+          ]
+        }
+      ],
+      "message4": "touchInputStop %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "touchInputStop",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -5394,13 +5514,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message9": "hasMediaPlayback %1",
+      "message9": "mediaPlaybackStarted %1",
       "args9": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message10": "mediaPlaybackComplete %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -6166,13 +6296,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasErrorTimer %1",
+      "message5": "onTimer %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onTimer",
           "check": [
-            "frinex_hasErrorTimerType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "onError %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -6194,13 +6334,13 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "hasFrameRateTriggers %1",
+      "message1": " %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "addFrameTimeTrigger",
           "check": [
-            "frinex_hasFrameRateTriggersType",
+            "frinex_hasErrorTimeCriticalType",
           ]
         }
       ],
@@ -6346,13 +6486,223 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "isTimeCritical %1",
+      "message2": "disableButtonGroup %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "disableButtonGroup",
           "check": [
-            "frinex_isTimeCriticalType",
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message3": "enableButtonGroup %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "enableButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message4": "hideButtonGroup %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "hideButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message5": "styleButtonGroup %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "styleButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message6": "showButtonGroup %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "showButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message7": "requestFocus %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "requestFocus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message8": "logTimeStamp %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "logTimeStamp",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message9": "zeroStimulusStopwatch %1",
+      "args9": [
+        {
+          "type": "input_statement",
+          "name": "zeroStimulusStopwatch",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message10": "stopStimulusStopwatch %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "stopStimulusStopwatch",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message11": "hardwareTimeStamp %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "hardwareTimeStamp",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message12": "recorderToneInjection %1",
+      "args12": [
+        {
+          "type": "input_statement",
+          "name": "recorderToneInjection",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message13": "dtmfTone %1",
+      "args13": [
+        {
+          "type": "input_statement",
+          "name": "dtmfTone",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message14": "doLater %1",
+      "args14": [
+        {
+          "type": "input_statement",
+          "name": "doLater",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message15": "clearTimer %1",
+      "args15": [
+        {
+          "type": "input_statement",
+          "name": "clearTimer",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message16": "regionStyle %1",
+      "args16": [
+        {
+          "type": "input_statement",
+          "name": "regionStyle",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message17": "playMedia %1",
+      "args17": [
+        {
+          "type": "input_statement",
+          "name": "playMedia",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message18": "rewindMedia %1",
+      "args18": [
+        {
+          "type": "input_statement",
+          "name": "rewindMedia",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message19": "pauseMedia %1",
+      "args19": [
+        {
+          "type": "input_statement",
+          "name": "pauseMedia",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message20": "logMediaTimeStamp %1",
+      "args20": [
+        {
+          "type": "input_statement",
+          "name": "logMediaTimeStamp",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message21": "stopAudioRecorder %1",
+      "args21": [
+        {
+          "type": "input_statement",
+          "name": "stopAudioRecorder",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message22": "startAudioRecorderTag %1",
+      "args22": [
+        {
+          "type": "input_statement",
+          "name": "startAudioRecorderTag",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message23": "endAudioRecorderTag %1",
+      "args23": [
+        {
+          "type": "input_statement",
+          "name": "endAudioRecorderTag",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -6402,13 +6752,223 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "isTimeCritical %1",
+      "message4": "disableButtonGroup %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "disableButtonGroup",
           "check": [
-            "frinex_isTimeCriticalType",
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message5": "enableButtonGroup %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "enableButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message6": "hideButtonGroup %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "hideButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message7": "styleButtonGroup %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "styleButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message8": "showButtonGroup %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "showButtonGroup",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message9": "requestFocus %1",
+      "args9": [
+        {
+          "type": "input_statement",
+          "name": "requestFocus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message10": "logTimeStamp %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "logTimeStamp",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message11": "zeroStimulusStopwatch %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "zeroStimulusStopwatch",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message12": "stopStimulusStopwatch %1",
+      "args12": [
+        {
+          "type": "input_statement",
+          "name": "stopStimulusStopwatch",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message13": "hardwareTimeStamp %1",
+      "args13": [
+        {
+          "type": "input_statement",
+          "name": "hardwareTimeStamp",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message14": "recorderToneInjection %1",
+      "args14": [
+        {
+          "type": "input_statement",
+          "name": "recorderToneInjection",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message15": "dtmfTone %1",
+      "args15": [
+        {
+          "type": "input_statement",
+          "name": "dtmfTone",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message16": "doLater %1",
+      "args16": [
+        {
+          "type": "input_statement",
+          "name": "doLater",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message17": "clearTimer %1",
+      "args17": [
+        {
+          "type": "input_statement",
+          "name": "clearTimer",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message18": "regionStyle %1",
+      "args18": [
+        {
+          "type": "input_statement",
+          "name": "regionStyle",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message19": "playMedia %1",
+      "args19": [
+        {
+          "type": "input_statement",
+          "name": "playMedia",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message20": "rewindMedia %1",
+      "args20": [
+        {
+          "type": "input_statement",
+          "name": "rewindMedia",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message21": "pauseMedia %1",
+      "args21": [
+        {
+          "type": "input_statement",
+          "name": "pauseMedia",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message22": "logMediaTimeStamp %1",
+      "args22": [
+        {
+          "type": "input_statement",
+          "name": "logMediaTimeStamp",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message23": "stopAudioRecorder %1",
+      "args23": [
+        {
+          "type": "input_statement",
+          "name": "stopAudioRecorder",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message24": "startAudioRecorderTag %1",
+      "args24": [
+        {
+          "type": "input_statement",
+          "name": "startAudioRecorderTag",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message25": "endAudioRecorderTag %1",
+      "args25": [
+        {
+          "type": "input_statement",
+          "name": "endAudioRecorderTag",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -7086,13 +7646,583 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": "stimulusAction %1",
+      "message1": "withMatchingStimulus %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "withMatchingStimulus",
           "check": [
-            "frinex_stimulusActionType",
+            "frinex_hasMoreStimulusType",
+          ]
+        }
+      ],
+      "message2": "currentStimulusHasTag %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "currentStimulusHasTag",
+          "check": [
+            "frinex_hasTrueFalseConditionType",
+          ]
+        }
+      ],
+      "message3": "validateStimuliResponses %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "validateStimuliResponses",
+          "check": [
+            "frinex_hasTrueFalseConditionType",
+          ]
+        }
+      ],
+      "message4": "stimulusExists %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "stimulusExists",
+          "check": [
+            "frinex_hasTrueFalseConditionType",
+          ]
+        }
+      ],
+      "message5": "showStimuliReport %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "showStimuliReport",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message6": "sendStimuliReport %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "sendStimuliReport",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message7": "stimulusButton %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "stimulusButton",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "stimulusSlider %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "stimulusSlider",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message9": "touchInputCapture %1",
+      "args9": [
+        {
+          "type": "input_statement",
+          "name": "touchInputCapture",
+          "check": [
+            "frinex_touchInputCaptureTypeType",
+          ]
+        }
+      ],
+      "message10": "ratingButton %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "ratingButton",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message11": "ratingRadioButton %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "ratingRadioButton",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message12": "ratingCheckbox %1",
+      "args12": [
+        {
+          "type": "input_statement",
+          "name": "ratingCheckbox",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message13": "stimulusFreeText %1",
+      "args13": [
+        {
+          "type": "input_statement",
+          "name": "stimulusFreeText",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message14": "stimulusRatingButton %1",
+      "args14": [
+        {
+          "type": "input_statement",
+          "name": "stimulusRatingButton",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message15": "stimulusRatingRadio %1",
+      "args15": [
+        {
+          "type": "input_statement",
+          "name": "stimulusRatingRadio",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message16": "stimulusRatingCheckbox %1",
+      "args16": [
+        {
+          "type": "input_statement",
+          "name": "stimulusRatingCheckbox",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message17": "stimulusHasRatingOptions %1",
+      "args17": [
+        {
+          "type": "input_statement",
+          "name": "stimulusHasRatingOptions",
+          "check": [
+            "frinex_hasTrueFalseConditionType",
+          ]
+        }
+      ],
+      "message18": "clearStimulusResponse %1",
+      "args18": [
+        {
+          "type": "input_statement",
+          "name": "clearStimulusResponse",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message19": "stimulusHasResponse %1",
+      "args19": [
+        {
+          "type": "input_statement",
+          "name": "stimulusHasResponse",
+          "check": [
+            "frinex_hasTrueFalseConditionType",
+          ]
+        }
+      ],
+      "message20": "setStimulusCodeResponse %1",
+      "args20": [
+        {
+          "type": "input_statement",
+          "name": "setStimulusCodeResponse",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message21": "addStimulusCodeResponseValidation %1",
+      "args21": [
+        {
+          "type": "input_statement",
+          "name": "addStimulusCodeResponseValidation",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message22": "ratingFooterButton %1",
+      "args22": [
+        {
+          "type": "input_statement",
+          "name": "ratingFooterButton",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message23": "stimulusMetadataField %1",
+      "args23": [
+        {
+          "type": "input_statement",
+          "name": "stimulusMetadataField",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message24": "showStimulusProgress %1",
+      "args24": [
+        {
+          "type": "input_statement",
+          "name": "showStimulusProgress",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message25": "keepStimulus %1",
+      "args25": [
+        {
+          "type": "input_statement",
+          "name": "keepStimulus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message26": "removeMatchingStimulus %1",
+      "args26": [
+        {
+          "type": "input_statement",
+          "name": "removeMatchingStimulus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message27": "prevStimulusButton %1",
+      "args27": [
+        {
+          "type": "input_statement",
+          "name": "prevStimulusButton",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message28": "nextStimulusButton %1",
+      "args28": [
+        {
+          "type": "input_statement",
+          "name": "nextStimulusButton",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message29": "nextStimulus %1",
+      "args29": [
+        {
+          "type": "input_statement",
+          "name": "nextStimulus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message30": "prevStimulus %1",
+      "args30": [
+        {
+          "type": "input_statement",
+          "name": "prevStimulus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message31": "nextMatchingStimulus %1",
+      "args31": [
+        {
+          "type": "input_statement",
+          "name": "nextMatchingStimulus",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message32": "zeroStimulusStopwatch %1",
+      "args32": [
+        {
+          "type": "input_statement",
+          "name": "zeroStimulusStopwatch",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message33": "stopStimulusStopwatch %1",
+      "args33": [
+        {
+          "type": "input_statement",
+          "name": "stopStimulusStopwatch",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message34": "showStimulus %1",
+      "args34": [
+        {
+          "type": "input_statement",
+          "name": "showStimulus",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message35": "showStimulusGrid %1",
+      "args35": [
+        {
+          "type": "input_statement",
+          "name": "showStimulusGrid",
+          "check": [
+            "frinex_hasCorrectIncorrectType",
+          ]
+        }
+      ],
+      "message36": "matchingStimulusGrid %1",
+      "args36": [
+        {
+          "type": "input_statement",
+          "name": "matchingStimulusGrid",
+          "check": [
+            "frinex_hasCorrectIncorrectType",
+          ]
+        }
+      ],
+      "message37": "stimulusPause %1",
+      "args37": [
+        {
+          "type": "input_statement",
+          "name": "stimulusPause",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message38": "stimulusLabel %1",
+      "args38": [
+        {
+          "type": "input_statement",
+          "name": "stimulusLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message39": "regionCodeStyle %1",
+      "args39": [
+        {
+          "type": "input_statement",
+          "name": "regionCodeStyle",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message40": "regionDragDrop %1",
+      "args40": [
+        {
+          "type": "input_statement",
+          "name": "regionDragDrop",
+          "check": [
+            "frinex_dragDropTypeType",
+          ]
+        }
+      ],
+      "message41": "stimulusPresent %1",
+      "args41": [
+        {
+          "type": "input_statement",
+          "name": "stimulusPresent",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message42": "stimulusImage %1",
+      "args42": [
+        {
+          "type": "input_statement",
+          "name": "stimulusImage",
+          "check": [
+            "frinex_hasMediaLoadingType",
+          ]
+        }
+      ],
+      "message43": "stimulusCodeImage %1",
+      "args43": [
+        {
+          "type": "input_statement",
+          "name": "stimulusCodeImage",
+          "check": [
+            "frinex_hasMediaLoadingType",
+          ]
+        }
+      ],
+      "message44": "stimulusCodeImageButton %1",
+      "args44": [
+        {
+          "type": "input_statement",
+          "name": "stimulusCodeImageButton",
+          "check": [
+            "frinex_hasMediaLoadingButtonType",
+          ]
+        }
+      ],
+      "message45": "stimulusCodeVideo %1",
+      "args45": [
+        {
+          "type": "input_statement",
+          "name": "stimulusCodeVideo",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message46": "stimulusVideo %1",
+      "args46": [
+        {
+          "type": "input_statement",
+          "name": "stimulusVideo",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message47": "stimulusCodeAudio %1",
+      "args47": [
+        {
+          "type": "input_statement",
+          "name": "stimulusCodeAudio",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message48": "stimulusAudio %1",
+      "args48": [
+        {
+          "type": "input_statement",
+          "name": "stimulusAudio",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message49": "stimulusImageCapture %1",
+      "args49": [
+        {
+          "type": "input_statement",
+          "name": "stimulusImageCapture",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message50": "VideoPanel %1",
+      "args50": [
+        {
+          "type": "input_statement",
+          "name": "VideoPanel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message51": "AnnotationTimelinePanel %1",
+      "args51": [
+        {
+          "type": "input_statement",
+          "name": "AnnotationTimelinePanel",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message52": "startAudioRecorderWeb %1",
+      "args52": [
+        {
+          "type": "input_statement",
+          "name": "startAudioRecorderWeb",
+          "check": [
+            "frinex_hasMediaRecorderPlaybackType",
+          ]
+        }
+      ],
+      "message53": "startAudioRecorderApp %1",
+      "args53": [
+        {
+          "type": "input_statement",
+          "name": "startAudioRecorderApp",
+          "check": [
+            "frinex_hasErrorSuccessType",
+          ]
+        }
+      ],
+      "message54": "stopAudioRecorder %1",
+      "args54": [
+        {
+          "type": "input_statement",
+          "name": "stopAudioRecorder",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message55": "startAudioRecorderTag %1",
+      "args55": [
+        {
+          "type": "input_statement",
+          "name": "startAudioRecorderTag",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message56": "endAudioRecorderTag %1",
+      "args56": [
+        {
+          "type": "input_statement",
+          "name": "endAudioRecorderTag",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message57": "clearCurrentScore %1",
+      "args57": [
+        {
+          "type": "input_statement",
+          "name": "clearCurrentScore",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message58": "scoreIncrement %1",
+      "args58": [
+        {
+          "type": "input_statement",
+          "name": "scoreIncrement",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -7566,13 +8696,33 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": "dragDropType %1",
+      "message6": "ondragstart %1",
       "args6": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "ondragstart",
           "check": [
-            "frinex_dragDropTypeType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message7": "ondragover %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "ondragover",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message8": "ondrop %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "ondrop",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -7742,13 +8892,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message9": "hasMediaPlayback %1",
+      "message9": "mediaPlaybackStarted %1",
       "args9": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message10": "mediaPlaybackComplete %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -7934,13 +9094,13 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasMediaLoadingButton %1",
+      "message5": " %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "onActivate",
           "check": [
-            "frinex_hasMediaLoadingButtonType",
+            "frinex_anyType",
           ]
         }
       ],
@@ -8034,13 +9194,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message10": "hasMediaPlayback %1",
+      "message10": "mediaPlaybackStarted %1",
       "args10": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message11": "mediaPlaybackComplete %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -8102,13 +9272,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": "hasMediaPlayback %1",
+      "message6": "mediaPlaybackStarted %1",
       "args6": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message7": "mediaPlaybackComplete %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -8162,13 +9342,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message5": "hasMediaPlayback %1",
+      "message5": "mediaPlaybackStarted %1",
       "args5": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "mediaPlaybackComplete %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -8214,13 +9404,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "hasMediaPlayback %1",
+      "message4": "mediaPlaybackStarted %1",
       "args4": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message5": "mediaPlaybackComplete %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -8686,13 +9886,43 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message9": "hasMediaRecorderPlayback %1",
+      "message9": "mediaLoaded %1",
       "args9": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaLoaded",
           "check": [
-            "frinex_hasMediaRecorderPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message10": "mediaLoadFailed %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "mediaLoadFailed",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message11": "mediaPlaybackStarted %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackStarted",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message12": "mediaPlaybackComplete %1",
+      "args12": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -8868,13 +10098,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message1": "hasActionButtons %1",
+      "message1": "actionButton %1",
       "args1": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "actionButton",
           "check": [
-            "frinex_hasActionButtonsType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message2": "actionTokenButton %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "actionTokenButton",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -9014,13 +10254,143 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": "groupNetworkAction %1",
+      "message2": "groupMemberCodeLabel %1",
       "args2": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "groupMemberCodeLabel",
           "check": [
-            "frinex_groupNetworkActionType",
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message3": "groupMemberLabel %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "groupMemberLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message4": "groupMessageLabel %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "groupMessageLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message5": "groupResponseStimulusImage %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "groupResponseStimulusImage",
+          "check": [
+            "frinex_hasMediaPlaybackType",
+          ]
+        }
+      ],
+      "message6": "groupResponseFeedback %1",
+      "args6": [
+        {
+          "type": "input_statement",
+          "name": "groupResponseFeedback",
+          "check": [
+            "frinex_hasCorrectIncorrectType",
+          ]
+        }
+      ],
+      "message7": "groupScoreLabel %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "groupScoreLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message8": "groupChannelScoreLabel %1",
+      "args8": [
+        {
+          "type": "input_statement",
+          "name": "groupChannelScoreLabel",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message9": "submitGroupEvent %1",
+      "args9": [
+        {
+          "type": "input_statement",
+          "name": "submitGroupEvent",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message10": "sendGroupMessageButton %1",
+      "args10": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupMessageButton",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message11": "sendGroupMessage %1",
+      "args11": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupMessage",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message12": "sendGroupStoredMessage %1",
+      "args12": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupStoredMessage",
+          "check": [
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message13": "streamGroupCanvas %1",
+      "args13": [
+        {
+          "type": "input_statement",
+          "name": "streamGroupCanvas",
+          "check": [
+            "frinex_hasErrorSuccessType",
+          ]
+        }
+      ],
+      "message14": "streamGroupCamera %1",
+      "args14": [
+        {
+          "type": "input_statement",
+          "name": "streamGroupCamera",
+          "check": [
+            "frinex_hasErrorSuccessType",
+          ]
+        }
+      ],
+      "message15": "sendGroupTokenMessage %1",
+      "args15": [
+        {
+          "type": "input_statement",
+          "name": "sendGroupTokenMessage",
+          "check": [
+            "frinex_noneType",
           ]
         }
       ],
@@ -9160,13 +10530,23 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message6": "hasMediaPlayback %1",
+      "message6": "mediaPlaybackStarted %1",
       "args6": [
         {
           "type": "input_statement",
-          "name": "DO",
+          "name": "mediaPlaybackStarted",
           "check": [
-            "frinex_hasMediaPlaybackType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message7": "mediaPlaybackComplete %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "mediaPlaybackComplete",
+          "check": [
+            "frinex_anyType",
           ]
         }
       ],
@@ -10252,12 +11632,25 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_withStimuliType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<beforeStimulus>\n';
+     childData += generator.statementToCode(block, 'beforeStimulus');
+     childData += '</beforeStimulus>\n';
+     childData += '<eachStimulus>\n';
+     childData += generator.statementToCode(block, 'eachStimulus');
+     childData += '</eachStimulus>\n';
+     childData += '<afterStimulus>\n';
+     childData += generator.statementToCode(block, 'afterStimulus');
+     childData += '</afterStimulus>\n';
     return '<withStimuli block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" maxStimuli="' + block.getFieldValue('maxStimuli') +'" randomise="' + block.getFieldValue('randomise') +'" repeatCount="' + block.getFieldValue('repeatCount') +'" repeatRandomWindow="' + block.getFieldValue('repeatRandomWindow') +'" adjacencyThreshold="' + block.getFieldValue('adjacencyThreshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</withStimuli>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_groupStimuliType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<groupNetwork>\n';
+     childData += generator.statementToCode(block, 'groupNetwork');
+     childData += '</groupNetwork>\n';
+     childData += '<endOfStimulus>\n';
+     childData += generator.statementToCode(block, 'endOfStimulus');
+     childData += '</endOfStimulus>\n';
     return '<groupStimuli block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" maxStimuli="' + block.getFieldValue('maxStimuli') +'" randomise="' + block.getFieldValue('randomise') +'" repeatCount="' + block.getFieldValue('repeatCount') +'" repeatRandomWindow="' + block.getFieldValue('repeatRandomWindow') +'" adjacencyThreshold="' + block.getFieldValue('adjacencyThreshold') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupStimuli>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_loadStimulusType'] = function(block, generator) {
@@ -10338,7 +11731,12 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_hotKeyInputType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onKeyUp>\n';
+     childData += generator.statementToCode(block, 'onKeyUp');
+     childData += '</onKeyUp>\n';
+     childData += '<onKeyDown>\n';
+     childData += generator.statementToCode(block, 'onKeyDown');
+     childData += '</onKeyDown>\n';
     return '<hotKeyInput block_id="' + block.id + '" hotKey="' + block.getFieldValue('hotKey') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</hotKeyInput>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_actionButtonType'] = function(block, generator) {
@@ -10377,7 +11775,21 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_svgLoadGroupsType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<svgGroupAdd>\n';
+     childData += generator.statementToCode(block, 'svgGroupAdd');
+     childData += '</svgGroupAdd>\n';
+     childData += '<svgSetLabel>\n';
+     childData += generator.statementToCode(block, 'svgSetLabel');
+     childData += '</svgSetLabel>\n';
+     childData += '<svgGroupShow>\n';
+     childData += generator.statementToCode(block, 'svgGroupShow');
+     childData += '</svgGroupShow>\n';
+     childData += '<svgGroupAction>\n';
+     childData += generator.statementToCode(block, 'svgGroupAction');
+     childData += '</svgGroupAction>\n';
+     childData += '<svgGroupMatching>\n';
+     childData += generator.statementToCode(block, 'svgGroupMatching');
+     childData += '</svgGroupMatching>\n';
     return '<svgLoadGroups block_id="' + block.id + '" src="' + block.getFieldValue('src') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</svgLoadGroups>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_svgGroupAddType'] = function(block, generator) {
@@ -10418,22 +11830,42 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_touchInputImageButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onActivate>\n';
+     childData += generator.statementToCode(block, 'onActivate');
+     childData += '</onActivate>\n';
     return '<touchInputImageButton block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" codeFormat="' + block.getFieldValue('codeFormat') +'" styleName="' + block.getFieldValue('styleName') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</touchInputImageButton>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_touchInputVideoButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onActivate>\n';
+     childData += generator.statementToCode(block, 'onActivate');
+     childData += '</onActivate>\n';
     return '<touchInputVideoButton block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" codeFormat="' + block.getFieldValue('codeFormat') +'" loop="' + block.getFieldValue('loop') +'" styleName="' + block.getFieldValue('styleName') +'" autoPlay="' + block.getFieldValue('autoPlay') +'" groupId="' + block.getFieldValue('groupId') +'" mediaId="' + block.getFieldValue('mediaId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</touchInputVideoButton>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_touchInputCaptureType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<captureStart>\n';
+     childData += generator.statementToCode(block, 'captureStart');
+     childData += '</captureStart>\n';
+     childData += '<touchEnd>\n';
+     childData += generator.statementToCode(block, 'touchEnd');
+     childData += '</touchEnd>\n';
     return '<touchInputCapture block_id="' + block.id + '" showControls="' + block.getFieldValue('showControls') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</touchInputCapture>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_captureStartType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<touchInputLabelButton>\n';
+     childData += generator.statementToCode(block, 'touchInputLabelButton');
+     childData += '</touchInputLabelButton>\n';
+     childData += '<touchInputImageButton>\n';
+     childData += generator.statementToCode(block, 'touchInputImageButton');
+     childData += '</touchInputImageButton>\n';
+     childData += '<touchInputVideoButton>\n';
+     childData += generator.statementToCode(block, 'touchInputVideoButton');
+     childData += '</touchInputVideoButton>\n';
+     childData += '<touchInputStop>\n';
+     childData += generator.statementToCode(block, 'touchInputStop');
+     childData += '</touchInputStop>\n';
     return '<captureStart block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</captureStart>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_touchEndType'] = function(block, generator) {
@@ -10815,7 +12247,12 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_audioButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<audioButton block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" poster="' + block.getFieldValue('poster') +'" autoPlay="' + block.getFieldValue('autoPlay') +'" hotKey="' + block.getFieldValue('hotKey') +'" styleName="' + block.getFieldValue('styleName') +'" src="' + block.getFieldValue('src') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</audioButton>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_preloadAllStimuliType'] = function(block, generator) {
@@ -10917,12 +12354,19 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_addTimerTriggerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onTimer>\n';
+     childData += generator.statementToCode(block, 'onTimer');
+     childData += '</onTimer>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
     return '<addTimerTrigger block_id="' + block.id + '" minimum="' + block.getFieldValue('minimum') +'" maximum="' + block.getFieldValue('maximum') +'" evaluateTokens="' + block.getFieldValue('evaluateTokens') +'" listenerId="' + block.getFieldValue('listenerId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addTimerTrigger>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_startFrameRateTimerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<addFrameTimeTrigger>\n';
+     childData += generator.statementToCode(block, 'addFrameTimeTrigger');
+     childData += '</addFrameTimeTrigger>\n';
     return '<startFrameRateTimer block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</startFrameRateTimer>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_addFrameTimeTriggerType'] = function(block, generator) {
@@ -10947,12 +12391,142 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_addRecorderDtmfTriggerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<disableButtonGroup>\n';
+     childData += generator.statementToCode(block, 'disableButtonGroup');
+     childData += '</disableButtonGroup>\n';
+     childData += '<enableButtonGroup>\n';
+     childData += generator.statementToCode(block, 'enableButtonGroup');
+     childData += '</enableButtonGroup>\n';
+     childData += '<hideButtonGroup>\n';
+     childData += generator.statementToCode(block, 'hideButtonGroup');
+     childData += '</hideButtonGroup>\n';
+     childData += '<styleButtonGroup>\n';
+     childData += generator.statementToCode(block, 'styleButtonGroup');
+     childData += '</styleButtonGroup>\n';
+     childData += '<showButtonGroup>\n';
+     childData += generator.statementToCode(block, 'showButtonGroup');
+     childData += '</showButtonGroup>\n';
+     childData += '<requestFocus>\n';
+     childData += generator.statementToCode(block, 'requestFocus');
+     childData += '</requestFocus>\n';
+     childData += '<logTimeStamp>\n';
+     childData += generator.statementToCode(block, 'logTimeStamp');
+     childData += '</logTimeStamp>\n';
+     childData += '<zeroStimulusStopwatch>\n';
+     childData += generator.statementToCode(block, 'zeroStimulusStopwatch');
+     childData += '</zeroStimulusStopwatch>\n';
+     childData += '<stopStimulusStopwatch>\n';
+     childData += generator.statementToCode(block, 'stopStimulusStopwatch');
+     childData += '</stopStimulusStopwatch>\n';
+     childData += '<hardwareTimeStamp>\n';
+     childData += generator.statementToCode(block, 'hardwareTimeStamp');
+     childData += '</hardwareTimeStamp>\n';
+     childData += '<recorderToneInjection>\n';
+     childData += generator.statementToCode(block, 'recorderToneInjection');
+     childData += '</recorderToneInjection>\n';
+     childData += '<dtmfTone>\n';
+     childData += generator.statementToCode(block, 'dtmfTone');
+     childData += '</dtmfTone>\n';
+     childData += '<doLater>\n';
+     childData += generator.statementToCode(block, 'doLater');
+     childData += '</doLater>\n';
+     childData += '<clearTimer>\n';
+     childData += generator.statementToCode(block, 'clearTimer');
+     childData += '</clearTimer>\n';
+     childData += '<regionStyle>\n';
+     childData += generator.statementToCode(block, 'regionStyle');
+     childData += '</regionStyle>\n';
+     childData += '<playMedia>\n';
+     childData += generator.statementToCode(block, 'playMedia');
+     childData += '</playMedia>\n';
+     childData += '<rewindMedia>\n';
+     childData += generator.statementToCode(block, 'rewindMedia');
+     childData += '</rewindMedia>\n';
+     childData += '<pauseMedia>\n';
+     childData += generator.statementToCode(block, 'pauseMedia');
+     childData += '</pauseMedia>\n';
+     childData += '<logMediaTimeStamp>\n';
+     childData += generator.statementToCode(block, 'logMediaTimeStamp');
+     childData += '</logMediaTimeStamp>\n';
+     childData += '<stopAudioRecorder>\n';
+     childData += generator.statementToCode(block, 'stopAudioRecorder');
+     childData += '</stopAudioRecorder>\n';
+     childData += '<startAudioRecorderTag>\n';
+     childData += generator.statementToCode(block, 'startAudioRecorderTag');
+     childData += '</startAudioRecorderTag>\n';
+     childData += '<endAudioRecorderTag>\n';
+     childData += generator.statementToCode(block, 'endAudioRecorderTag');
+     childData += '</endAudioRecorderTag>\n';
     return '<addRecorderDtmfTrigger block_id="' + block.id + '" dtmf="' + block.getFieldValue('dtmf') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addRecorderDtmfTrigger>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_addRecorderLevelTriggerType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<disableButtonGroup>\n';
+     childData += generator.statementToCode(block, 'disableButtonGroup');
+     childData += '</disableButtonGroup>\n';
+     childData += '<enableButtonGroup>\n';
+     childData += generator.statementToCode(block, 'enableButtonGroup');
+     childData += '</enableButtonGroup>\n';
+     childData += '<hideButtonGroup>\n';
+     childData += generator.statementToCode(block, 'hideButtonGroup');
+     childData += '</hideButtonGroup>\n';
+     childData += '<styleButtonGroup>\n';
+     childData += generator.statementToCode(block, 'styleButtonGroup');
+     childData += '</styleButtonGroup>\n';
+     childData += '<showButtonGroup>\n';
+     childData += generator.statementToCode(block, 'showButtonGroup');
+     childData += '</showButtonGroup>\n';
+     childData += '<requestFocus>\n';
+     childData += generator.statementToCode(block, 'requestFocus');
+     childData += '</requestFocus>\n';
+     childData += '<logTimeStamp>\n';
+     childData += generator.statementToCode(block, 'logTimeStamp');
+     childData += '</logTimeStamp>\n';
+     childData += '<zeroStimulusStopwatch>\n';
+     childData += generator.statementToCode(block, 'zeroStimulusStopwatch');
+     childData += '</zeroStimulusStopwatch>\n';
+     childData += '<stopStimulusStopwatch>\n';
+     childData += generator.statementToCode(block, 'stopStimulusStopwatch');
+     childData += '</stopStimulusStopwatch>\n';
+     childData += '<hardwareTimeStamp>\n';
+     childData += generator.statementToCode(block, 'hardwareTimeStamp');
+     childData += '</hardwareTimeStamp>\n';
+     childData += '<recorderToneInjection>\n';
+     childData += generator.statementToCode(block, 'recorderToneInjection');
+     childData += '</recorderToneInjection>\n';
+     childData += '<dtmfTone>\n';
+     childData += generator.statementToCode(block, 'dtmfTone');
+     childData += '</dtmfTone>\n';
+     childData += '<doLater>\n';
+     childData += generator.statementToCode(block, 'doLater');
+     childData += '</doLater>\n';
+     childData += '<clearTimer>\n';
+     childData += generator.statementToCode(block, 'clearTimer');
+     childData += '</clearTimer>\n';
+     childData += '<regionStyle>\n';
+     childData += generator.statementToCode(block, 'regionStyle');
+     childData += '</regionStyle>\n';
+     childData += '<playMedia>\n';
+     childData += generator.statementToCode(block, 'playMedia');
+     childData += '</playMedia>\n';
+     childData += '<rewindMedia>\n';
+     childData += generator.statementToCode(block, 'rewindMedia');
+     childData += '</rewindMedia>\n';
+     childData += '<pauseMedia>\n';
+     childData += generator.statementToCode(block, 'pauseMedia');
+     childData += '</pauseMedia>\n';
+     childData += '<logMediaTimeStamp>\n';
+     childData += generator.statementToCode(block, 'logMediaTimeStamp');
+     childData += '</logMediaTimeStamp>\n';
+     childData += '<stopAudioRecorder>\n';
+     childData += generator.statementToCode(block, 'stopAudioRecorder');
+     childData += '</stopAudioRecorder>\n';
+     childData += '<startAudioRecorderTag>\n';
+     childData += generator.statementToCode(block, 'startAudioRecorderTag');
+     childData += '</startAudioRecorderTag>\n';
+     childData += '<endAudioRecorderTag>\n';
+     childData += generator.statementToCode(block, 'endAudioRecorderTag');
+     childData += '</endAudioRecorderTag>\n';
     return '<addRecorderLevelTrigger block_id="' + block.id + '" threshold="' + block.getFieldValue('threshold') +'" thresholdMs="' + block.getFieldValue('thresholdMs') +'" levelIndicatorStyle="' + block.getFieldValue('levelIndicatorStyle') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</addRecorderLevelTrigger>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_triggerDefinitionType'] = function(block, generator) {
@@ -11053,7 +12627,180 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_eachStimulusType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<withMatchingStimulus>\n';
+     childData += generator.statementToCode(block, 'withMatchingStimulus');
+     childData += '</withMatchingStimulus>\n';
+     childData += '<currentStimulusHasTag>\n';
+     childData += generator.statementToCode(block, 'currentStimulusHasTag');
+     childData += '</currentStimulusHasTag>\n';
+     childData += '<validateStimuliResponses>\n';
+     childData += generator.statementToCode(block, 'validateStimuliResponses');
+     childData += '</validateStimuliResponses>\n';
+     childData += '<stimulusExists>\n';
+     childData += generator.statementToCode(block, 'stimulusExists');
+     childData += '</stimulusExists>\n';
+     childData += '<showStimuliReport>\n';
+     childData += generator.statementToCode(block, 'showStimuliReport');
+     childData += '</showStimuliReport>\n';
+     childData += '<sendStimuliReport>\n';
+     childData += generator.statementToCode(block, 'sendStimuliReport');
+     childData += '</sendStimuliReport>\n';
+     childData += '<stimulusButton>\n';
+     childData += generator.statementToCode(block, 'stimulusButton');
+     childData += '</stimulusButton>\n';
+     childData += '<stimulusSlider>\n';
+     childData += generator.statementToCode(block, 'stimulusSlider');
+     childData += '</stimulusSlider>\n';
+     childData += '<touchInputCapture>\n';
+     childData += generator.statementToCode(block, 'touchInputCapture');
+     childData += '</touchInputCapture>\n';
+     childData += '<ratingButton>\n';
+     childData += generator.statementToCode(block, 'ratingButton');
+     childData += '</ratingButton>\n';
+     childData += '<ratingRadioButton>\n';
+     childData += generator.statementToCode(block, 'ratingRadioButton');
+     childData += '</ratingRadioButton>\n';
+     childData += '<ratingCheckbox>\n';
+     childData += generator.statementToCode(block, 'ratingCheckbox');
+     childData += '</ratingCheckbox>\n';
+     childData += '<stimulusFreeText>\n';
+     childData += generator.statementToCode(block, 'stimulusFreeText');
+     childData += '</stimulusFreeText>\n';
+     childData += '<stimulusRatingButton>\n';
+     childData += generator.statementToCode(block, 'stimulusRatingButton');
+     childData += '</stimulusRatingButton>\n';
+     childData += '<stimulusRatingRadio>\n';
+     childData += generator.statementToCode(block, 'stimulusRatingRadio');
+     childData += '</stimulusRatingRadio>\n';
+     childData += '<stimulusRatingCheckbox>\n';
+     childData += generator.statementToCode(block, 'stimulusRatingCheckbox');
+     childData += '</stimulusRatingCheckbox>\n';
+     childData += '<stimulusHasRatingOptions>\n';
+     childData += generator.statementToCode(block, 'stimulusHasRatingOptions');
+     childData += '</stimulusHasRatingOptions>\n';
+     childData += '<clearStimulusResponse>\n';
+     childData += generator.statementToCode(block, 'clearStimulusResponse');
+     childData += '</clearStimulusResponse>\n';
+     childData += '<stimulusHasResponse>\n';
+     childData += generator.statementToCode(block, 'stimulusHasResponse');
+     childData += '</stimulusHasResponse>\n';
+     childData += '<setStimulusCodeResponse>\n';
+     childData += generator.statementToCode(block, 'setStimulusCodeResponse');
+     childData += '</setStimulusCodeResponse>\n';
+     childData += '<addStimulusCodeResponseValidation>\n';
+     childData += generator.statementToCode(block, 'addStimulusCodeResponseValidation');
+     childData += '</addStimulusCodeResponseValidation>\n';
+     childData += '<ratingFooterButton>\n';
+     childData += generator.statementToCode(block, 'ratingFooterButton');
+     childData += '</ratingFooterButton>\n';
+     childData += '<stimulusMetadataField>\n';
+     childData += generator.statementToCode(block, 'stimulusMetadataField');
+     childData += '</stimulusMetadataField>\n';
+     childData += '<showStimulusProgress>\n';
+     childData += generator.statementToCode(block, 'showStimulusProgress');
+     childData += '</showStimulusProgress>\n';
+     childData += '<keepStimulus>\n';
+     childData += generator.statementToCode(block, 'keepStimulus');
+     childData += '</keepStimulus>\n';
+     childData += '<removeMatchingStimulus>\n';
+     childData += generator.statementToCode(block, 'removeMatchingStimulus');
+     childData += '</removeMatchingStimulus>\n';
+     childData += '<prevStimulusButton>\n';
+     childData += generator.statementToCode(block, 'prevStimulusButton');
+     childData += '</prevStimulusButton>\n';
+     childData += '<nextStimulusButton>\n';
+     childData += generator.statementToCode(block, 'nextStimulusButton');
+     childData += '</nextStimulusButton>\n';
+     childData += '<nextStimulus>\n';
+     childData += generator.statementToCode(block, 'nextStimulus');
+     childData += '</nextStimulus>\n';
+     childData += '<prevStimulus>\n';
+     childData += generator.statementToCode(block, 'prevStimulus');
+     childData += '</prevStimulus>\n';
+     childData += '<nextMatchingStimulus>\n';
+     childData += generator.statementToCode(block, 'nextMatchingStimulus');
+     childData += '</nextMatchingStimulus>\n';
+     childData += '<zeroStimulusStopwatch>\n';
+     childData += generator.statementToCode(block, 'zeroStimulusStopwatch');
+     childData += '</zeroStimulusStopwatch>\n';
+     childData += '<stopStimulusStopwatch>\n';
+     childData += generator.statementToCode(block, 'stopStimulusStopwatch');
+     childData += '</stopStimulusStopwatch>\n';
+     childData += '<showStimulus>\n';
+     childData += generator.statementToCode(block, 'showStimulus');
+     childData += '</showStimulus>\n';
+     childData += '<showStimulusGrid>\n';
+     childData += generator.statementToCode(block, 'showStimulusGrid');
+     childData += '</showStimulusGrid>\n';
+     childData += '<matchingStimulusGrid>\n';
+     childData += generator.statementToCode(block, 'matchingStimulusGrid');
+     childData += '</matchingStimulusGrid>\n';
+     childData += '<stimulusPause>\n';
+     childData += generator.statementToCode(block, 'stimulusPause');
+     childData += '</stimulusPause>\n';
+     childData += '<stimulusLabel>\n';
+     childData += generator.statementToCode(block, 'stimulusLabel');
+     childData += '</stimulusLabel>\n';
+     childData += '<regionCodeStyle>\n';
+     childData += generator.statementToCode(block, 'regionCodeStyle');
+     childData += '</regionCodeStyle>\n';
+     childData += '<regionDragDrop>\n';
+     childData += generator.statementToCode(block, 'regionDragDrop');
+     childData += '</regionDragDrop>\n';
+     childData += '<stimulusPresent>\n';
+     childData += generator.statementToCode(block, 'stimulusPresent');
+     childData += '</stimulusPresent>\n';
+     childData += '<stimulusImage>\n';
+     childData += generator.statementToCode(block, 'stimulusImage');
+     childData += '</stimulusImage>\n';
+     childData += '<stimulusCodeImage>\n';
+     childData += generator.statementToCode(block, 'stimulusCodeImage');
+     childData += '</stimulusCodeImage>\n';
+     childData += '<stimulusCodeImageButton>\n';
+     childData += generator.statementToCode(block, 'stimulusCodeImageButton');
+     childData += '</stimulusCodeImageButton>\n';
+     childData += '<stimulusCodeVideo>\n';
+     childData += generator.statementToCode(block, 'stimulusCodeVideo');
+     childData += '</stimulusCodeVideo>\n';
+     childData += '<stimulusVideo>\n';
+     childData += generator.statementToCode(block, 'stimulusVideo');
+     childData += '</stimulusVideo>\n';
+     childData += '<stimulusCodeAudio>\n';
+     childData += generator.statementToCode(block, 'stimulusCodeAudio');
+     childData += '</stimulusCodeAudio>\n';
+     childData += '<stimulusAudio>\n';
+     childData += generator.statementToCode(block, 'stimulusAudio');
+     childData += '</stimulusAudio>\n';
+     childData += '<stimulusImageCapture>\n';
+     childData += generator.statementToCode(block, 'stimulusImageCapture');
+     childData += '</stimulusImageCapture>\n';
+     childData += '<VideoPanel>\n';
+     childData += generator.statementToCode(block, 'VideoPanel');
+     childData += '</VideoPanel>\n';
+     childData += '<AnnotationTimelinePanel>\n';
+     childData += generator.statementToCode(block, 'AnnotationTimelinePanel');
+     childData += '</AnnotationTimelinePanel>\n';
+     childData += '<startAudioRecorderWeb>\n';
+     childData += generator.statementToCode(block, 'startAudioRecorderWeb');
+     childData += '</startAudioRecorderWeb>\n';
+     childData += '<startAudioRecorderApp>\n';
+     childData += generator.statementToCode(block, 'startAudioRecorderApp');
+     childData += '</startAudioRecorderApp>\n';
+     childData += '<stopAudioRecorder>\n';
+     childData += generator.statementToCode(block, 'stopAudioRecorder');
+     childData += '</stopAudioRecorder>\n';
+     childData += '<startAudioRecorderTag>\n';
+     childData += generator.statementToCode(block, 'startAudioRecorderTag');
+     childData += '</startAudioRecorderTag>\n';
+     childData += '<endAudioRecorderTag>\n';
+     childData += generator.statementToCode(block, 'endAudioRecorderTag');
+     childData += '</endAudioRecorderTag>\n';
+     childData += '<clearCurrentScore>\n';
+     childData += generator.statementToCode(block, 'clearCurrentScore');
+     childData += '</clearCurrentScore>\n';
+     childData += '<scoreIncrement>\n';
+     childData += generator.statementToCode(block, 'scoreIncrement');
+     childData += '</scoreIncrement>\n';
     return '<eachStimulus block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</eachStimulus>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_afterStimulusType'] = function(block, generator) {
@@ -11120,7 +12867,15 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_regionDragDropType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<ondragstart>\n';
+     childData += generator.statementToCode(block, 'ondragstart');
+     childData += '</ondragstart>\n';
+     childData += '<ondragover>\n';
+     childData += generator.statementToCode(block, 'ondragover');
+     childData += '</ondragover>\n';
+     childData += '<ondrop>\n';
+     childData += generator.statementToCode(block, 'ondrop');
+     childData += '</ondrop>\n';
     return '<regionDragDrop block_id="' + block.id + '" regionId="' + block.getFieldValue('regionId') +'" draggable="' + block.getFieldValue('draggable') +'" droptarget="' + block.getFieldValue('droptarget') +'" codeFormat="' + block.getFieldValue('codeFormat') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</regionDragDrop>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_ondragstartType'] = function(block, generator) {
@@ -11140,7 +12895,12 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusPresentType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<stimulusPresent block_id="' + block.id + '" percentOfPage="' + block.getFieldValue('percentOfPage') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" maxHeight="' + block.getFieldValue('maxHeight') +'" maxWidth="' + block.getFieldValue('maxWidth') +'" animate="' + block.getFieldValue('animate') +'" replacementRegex="' + block.getFieldValue('replacementRegex') +'" replacement="' + block.getFieldValue('replacement') +'" showControls="' + block.getFieldValue('showControls') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusPresent>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusImageType'] = function(block, generator) {
@@ -11165,27 +12925,49 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusCodeImageButtonType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<onActivate>\n';
+     childData += generator.statementToCode(block, 'onActivate');
+     childData += '</onActivate>\n';
     return '<stimulusCodeImageButton block_id="' + block.id + '" dataChannel="' + block.getFieldValue('dataChannel') +'" codeFormat="' + block.getFieldValue('codeFormat') +'" styleName="' + block.getFieldValue('styleName') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusCodeImageButton>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusCodeVideoType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<stimulusCodeVideo block_id="' + block.id + '" maxHeight="' + block.getFieldValue('maxHeight') +'" codeFormat="' + block.getFieldValue('codeFormat') +'" percentOfPage="' + block.getFieldValue('percentOfPage') +'" loop="' + block.getFieldValue('loop') +'" styleName="' + block.getFieldValue('styleName') +'" autoPlay="' + block.getFieldValue('autoPlay') +'" showControls="' + block.getFieldValue('showControls') +'" maxWidth="' + block.getFieldValue('maxWidth') +'" mediaId="' + block.getFieldValue('mediaId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusCodeVideo>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusVideoType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<stimulusVideo block_id="' + block.id + '" loop="' + block.getFieldValue('loop') +'" styleName="' + block.getFieldValue('styleName') +'" autoPlay="' + block.getFieldValue('autoPlay') +'" showControls="' + block.getFieldValue('showControls') +'" mediaId="' + block.getFieldValue('mediaId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusVideo>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusCodeAudioType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<stimulusCodeAudio block_id="' + block.id + '" codeFormat="' + block.getFieldValue('codeFormat') +'" showPlaybackIndicator="' + block.getFieldValue('showPlaybackIndicator') +'" autoPlay="' + block.getFieldValue('autoPlay') +'" mediaId="' + block.getFieldValue('mediaId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusCodeAudio>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_stimulusAudioType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<stimulusAudio block_id="' + block.id + '" showPlaybackIndicator="' + block.getFieldValue('showPlaybackIndicator') +'" autoPlay="' + block.getFieldValue('autoPlay') +'" mediaId="' + block.getFieldValue('mediaId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</stimulusAudio>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_playMediaType'] = function(block, generator) {
@@ -11230,7 +13012,18 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderWebType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaLoaded>\n';
+     childData += generator.statementToCode(block, 'mediaLoaded');
+     childData += '</mediaLoaded>\n';
+     childData += '<mediaLoadFailed>\n';
+     childData += generator.statementToCode(block, 'mediaLoadFailed');
+     childData += '</mediaLoadFailed>\n';
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<startAudioRecorderWeb block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" downloadPermittedWindowMs="' + block.getFieldValue('downloadPermittedWindowMs') +'" deviceRegex="' + block.getFieldValue('deviceRegex') +'" mediaId="' + block.getFieldValue('mediaId') +'" recordingFormat="' + block.getFieldValue('recordingFormat') +'" levelIndicatorStyle="' + block.getFieldValue('levelIndicatorStyle') +'" echoCancellation="' + block.getFieldValue('echoCancellation') +'" noiseSuppression="' + block.getFieldValue('noiseSuppression') +'" autoGainControl="' + block.getFieldValue('autoGainControl') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</startAudioRecorderWeb>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderAppType'] = function(block, generator) {
@@ -11257,7 +13050,12 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_showHtmlPopupType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<actionButton>\n';
+     childData += generator.statementToCode(block, 'actionButton');
+     childData += '</actionButton>\n';
+     childData += '<actionTokenButton>\n';
+     childData += generator.statementToCode(block, 'actionTokenButton');
+     childData += '</actionTokenButton>\n';
     return '<showHtmlPopup block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</showHtmlPopup>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_helpDialogueType'] = function(block, generator) {
@@ -11284,7 +13082,48 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_groupMemberActivityType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<groupMemberCodeLabel>\n';
+     childData += generator.statementToCode(block, 'groupMemberCodeLabel');
+     childData += '</groupMemberCodeLabel>\n';
+     childData += '<groupMemberLabel>\n';
+     childData += generator.statementToCode(block, 'groupMemberLabel');
+     childData += '</groupMemberLabel>\n';
+     childData += '<groupMessageLabel>\n';
+     childData += generator.statementToCode(block, 'groupMessageLabel');
+     childData += '</groupMessageLabel>\n';
+     childData += '<groupResponseStimulusImage>\n';
+     childData += generator.statementToCode(block, 'groupResponseStimulusImage');
+     childData += '</groupResponseStimulusImage>\n';
+     childData += '<groupResponseFeedback>\n';
+     childData += generator.statementToCode(block, 'groupResponseFeedback');
+     childData += '</groupResponseFeedback>\n';
+     childData += '<groupScoreLabel>\n';
+     childData += generator.statementToCode(block, 'groupScoreLabel');
+     childData += '</groupScoreLabel>\n';
+     childData += '<groupChannelScoreLabel>\n';
+     childData += generator.statementToCode(block, 'groupChannelScoreLabel');
+     childData += '</groupChannelScoreLabel>\n';
+     childData += '<submitGroupEvent>\n';
+     childData += generator.statementToCode(block, 'submitGroupEvent');
+     childData += '</submitGroupEvent>\n';
+     childData += '<sendGroupMessageButton>\n';
+     childData += generator.statementToCode(block, 'sendGroupMessageButton');
+     childData += '</sendGroupMessageButton>\n';
+     childData += '<sendGroupMessage>\n';
+     childData += generator.statementToCode(block, 'sendGroupMessage');
+     childData += '</sendGroupMessage>\n';
+     childData += '<sendGroupStoredMessage>\n';
+     childData += generator.statementToCode(block, 'sendGroupStoredMessage');
+     childData += '</sendGroupStoredMessage>\n';
+     childData += '<streamGroupCanvas>\n';
+     childData += generator.statementToCode(block, 'streamGroupCanvas');
+     childData += '</streamGroupCanvas>\n';
+     childData += '<streamGroupCamera>\n';
+     childData += generator.statementToCode(block, 'streamGroupCamera');
+     childData += '</streamGroupCamera>\n';
+     childData += '<sendGroupTokenMessage>\n';
+     childData += generator.statementToCode(block, 'sendGroupTokenMessage');
+     childData += '</sendGroupTokenMessage>\n';
     return '<groupMemberActivity block_id="' + block.id + '" phaseMembers="' + block.getFieldValue('phaseMembers') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupMemberActivity>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_groupMemberCodeLabelType'] = function(block, generator) {
@@ -11301,7 +13140,12 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_groupResponseStimulusImageType'] = function(block, generator) {
     var childData = '';
-     childData += generator.statementToCode(block, 'DO');
+     childData += '<mediaPlaybackStarted>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackStarted');
+     childData += '</mediaPlaybackStarted>\n';
+     childData += '<mediaPlaybackComplete>\n';
+     childData += generator.statementToCode(block, 'mediaPlaybackComplete');
+     childData += '</mediaPlaybackComplete>\n';
     return '<groupResponseStimulusImage block_id="' + block.id + '" percentOfPage="' + block.getFieldValue('percentOfPage') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" maxHeight="' + block.getFieldValue('maxHeight') +'" maxWidth="' + block.getFieldValue('maxWidth') +'" animate="' + block.getFieldValue('animate') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</groupResponseStimulusImage>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_groupResponseFeedbackType'] = function(block, generator) {
