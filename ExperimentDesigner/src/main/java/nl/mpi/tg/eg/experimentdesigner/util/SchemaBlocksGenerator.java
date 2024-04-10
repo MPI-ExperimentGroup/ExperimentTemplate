@@ -445,6 +445,13 @@ public class SchemaBlocksGenerator extends AbstractSchemaGenerator {
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasErrorSuccess
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseCondition
                         || featureType.getRequiresChildType() == FeatureType.Contitionals.hasTrueFalseErrorCondition) {
+                    int childFeatureCount = 0;
+                    for (FeatureType childType : FeatureType.values()) {
+                        if (childType.isChildType(featureType.getRequiresChildType())) {
+                            // if there is only one child input_statement then omit the label to keep the block small 
+                            childFeatureCount++;
+                        }
+                    }
                     for (FeatureType childType : FeatureType.values()) {
                         if (childType.isChildType(featureType.getRequiresChildType())) {
                             writer.append("      \"message" + argsCount + "\": \"" + childType.name() + " %1\",\n");
