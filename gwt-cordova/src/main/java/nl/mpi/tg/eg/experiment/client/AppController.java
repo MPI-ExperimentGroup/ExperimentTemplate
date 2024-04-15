@@ -325,7 +325,9 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             canAcceptNotifications = true;
             final boolean notificationSetsTarget = checkNotificationCallbacks();
             if (!notificationSetsTarget) {
-                lastAppState = (splashPresenter() != null) ? splashPresenter() : lastAppState;
+                /* checking for debug mode and allowing presenter navigation to bypass the splash presenter when in debug mode */
+                boolean bypassSplashPresenter = isDebugMode && lastAppState != ApplicationState.start;
+                lastAppState = (splashPresenter() != null && !bypassSplashPresenter) ? splashPresenter() : lastAppState;
                 if (compiledAsTemplate()) {
                     this.presenter = new TemplateVersionPresenter(widgetTag, lastAppState);
                     presenter.setState(this, null, null);
