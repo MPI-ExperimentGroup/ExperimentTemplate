@@ -2439,6 +2439,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimulusRatingButtonType">
+<xs:annotation>
+<xs:documentation>Adds rating buttons for the current stimulus based on the ratingLabels of the stimulus.</xs:documentation>
+</xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
@@ -2477,6 +2480,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimulusRatingRadioType">
+<xs:annotation>
+<xs:documentation>Adds a radio button group for the current stimulus based on the ratingLabels of the stimulus.</xs:documentation>
+</xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
@@ -2515,6 +2521,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="stimulusRatingCheckboxType">
+<xs:annotation>
+<xs:documentation>Adds a checkbox group for the current stimulus based on the ratingLabels of the stimulus.</xs:documentation>
+</xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
