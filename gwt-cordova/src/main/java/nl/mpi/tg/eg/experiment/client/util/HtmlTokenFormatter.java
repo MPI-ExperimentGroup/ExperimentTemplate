@@ -497,12 +497,12 @@ public class HtmlTokenFormatter {
                         final String uniqueId;
                         final String responseKey;
                         if (subPart[0].length() == 0) {
-                            uniqueId = currentStimulus.getUniqueId(); // show the current stimulus response
+                            uniqueId = (currentStimulus != null) ? currentStimulus.getUniqueId() : ""; // show the current stimulus response
                             responseKey = ""; // show all response values
                         } else {
                             final String[] keysPart = subPart[0].substring(1).split("_", 2);
                             if (keysPart[0].length() == 0) {
-                                uniqueId = currentStimulus.getUniqueId(); // show the current stimulus response
+                                uniqueId = (currentStimulus != null) ? currentStimulus.getUniqueId() : ""; // show the current stimulus response
                             } else {
                                 uniqueId = keysPart[0]; // extracted XXX from "::stimulusResponse_XXX"
                             }
