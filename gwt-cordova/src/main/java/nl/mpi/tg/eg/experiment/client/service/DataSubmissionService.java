@@ -362,9 +362,10 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 canSendData = localStorage.getDataAgreementValue(userId, metadataFieldProvider);
                 break;
         }
+        // the data is stored localy even if it is not sent at this point
+        localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
         // data at this point has been neither stored nor sent
         if (canSendData) {
-            localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
             final Timer timer = new Timer() {
                 @Override
                 public void run() {
