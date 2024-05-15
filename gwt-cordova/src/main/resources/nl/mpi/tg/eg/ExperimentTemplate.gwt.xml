@@ -21,7 +21,7 @@
     <inherits name="com.google.gwt.xml.XML" />
     <inherits name="com.google.web.bindery.autobean.AutoBean"/> 
     <inherits name="nl.mpi.tg.eg.frinex.FrinexCommon"/> 
-    <inherits name="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.FrinexAdVocAss"/> 
+    <!-- <inherits name="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.FrinexAdVocAss"/>  -->
     <inherits name="nl.mpi.kinnate.KinOathCore"/> 
     <inherits name="nl.mpi.kinnate.KinOathDiagram"/> 
     <inherits name="nl.mpi.kinoath.KinOathGraphSorter"/> 
