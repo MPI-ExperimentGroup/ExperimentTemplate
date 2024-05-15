@@ -242,9 +242,9 @@ public class DefaultExperiments {
                     } else {
                         if (!((presenterType == PresenterType.timeline || presenterType == PresenterType.colourPicker || presenterType == PresenterType.colourReport) && featureType.canHaveStimulusTags())) {
                             presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
-                            if (featureType.allowsCustomImplementation()) {
-                                presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes, true));
-                            }
+                            // if (featureType.allowsCustomImplementation()) {
+                            //     presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes, true));
+                            // }
                         }
                     }
                 }
