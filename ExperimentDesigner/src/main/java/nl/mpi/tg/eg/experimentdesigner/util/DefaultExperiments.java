@@ -272,7 +272,7 @@ public class DefaultExperiments {
 //                presenterFeature.addUndefinedAttribute("maxDurationMin", "10");
 //                presenterFeature.addUndefinedAttribute("firstStimulusDurationMs", "1500");
 //                presenterFeature.addUndefinedAttribute("learningTrials", "1000,1737,2045");
-                presenterFeature.addUndefinedAttribute("class", "nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider");
+                // presenterFeature.addUndefinedAttribute("class", "nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider");
 //                presenterFeature.addUndefinedAttribute("eventTag", "stimuliN");
                 presenterFeature.addUndefinedAttribute("numberOfBands", "54");
                 presenterFeature.addUndefinedAttribute("fineTuningUpperBoundForCycles", "2");

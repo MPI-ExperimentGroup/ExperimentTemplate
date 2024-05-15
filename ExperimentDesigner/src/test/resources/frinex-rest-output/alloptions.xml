@@ -1477,7 +1477,7 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <loadStimulusPlugin fineTuningUpperBoundForCycles="2" numberOfBands="54" fastTrackShablonSource="FastTrackShablonOrigin_NL" fineTuningShablonSource="FineTuningShablonOrigin_NL" wordsSource="Words_NL_2rounds_1" class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" nonwordsSource="NonWords_NL_2rounds_1">
+        <loadStimulusPlugin fineTuningUpperBoundForCycles="2" numberOfBands="54" fastTrackShablonSource="FastTrackShablonOrigin_NL" fineTuningShablonSource="FineTuningShablonOrigin_NL" wordsSource="Words_NL_2rounds_1" nonwordsSource="NonWords_NL_2rounds_1">
             <hasMoreStimulus>
                 <withMatchingStimulus eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
                     <hasMoreStimulus>
@@ -4625,7 +4625,7 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <loadStimulusPlugin fineTuningUpperBoundForCycles="2" numberOfBands="54" fastTrackShablonSource="FastTrackShablonOrigin_NL" fineTuningShablonSource="FineTuningShablonOrigin_NL" wordsSource="Words_NL_2rounds_1" class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" nonwordsSource="NonWords_NL_2rounds_1">
+        <loadStimulusPlugin fineTuningUpperBoundForCycles="2" numberOfBands="54" fastTrackShablonSource="FastTrackShablonOrigin_NL" fineTuningShablonSource="FineTuningShablonOrigin_NL" wordsSource="Words_NL_2rounds_1" nonwordsSource="NonWords_NL_2rounds_1">
             <hasMoreStimulus>
                 <withMatchingStimulus matchingRegex="">
                     <hasMoreStimulus>
