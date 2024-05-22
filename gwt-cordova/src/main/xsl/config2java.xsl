@@ -524,6 +524,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'svg' or @type = 'timel
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimulusFreeText|addStimulusCodeResponseValidation">           
+        <!-- TODO: it seems that addStimulusCodeResponseValidation can be put inside an afterStimulus and the result fails to compile -->
         <xsl:value-of select ="local-name()"/>    
         <xsl:text>(currentStimulus, </xsl:text>
         <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
