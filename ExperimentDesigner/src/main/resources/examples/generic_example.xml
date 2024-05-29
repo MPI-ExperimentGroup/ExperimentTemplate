@@ -2,7 +2,7 @@
 <experiment appNameDisplay="generic_example" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <deployment state="staging" />
     <administration/>
-    <metadata>
+    <metadata> 
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>

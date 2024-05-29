@@ -3,7 +3,7 @@
             appNameDisplay="group_example" 
             showMenuBar="false"
             preserveLastState="false"
-            obfuscateBrowserStorage="false" >
+            obfuscateBrowserStorage="false" > 
     <deployment state="staging" />
     <administration/>
     <metadata>

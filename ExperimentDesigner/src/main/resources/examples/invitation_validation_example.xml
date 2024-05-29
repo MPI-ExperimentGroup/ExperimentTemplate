@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd" 
     userIdGetParam="invitation_id" 
     appNameDisplay="invitation_validation_example" 
-    preserveLastState="false" >
+    preserveLastState="false" > 
     <deployment state="staging" isDesktop="true" isAndroid="true"/>
     <validationService>
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 

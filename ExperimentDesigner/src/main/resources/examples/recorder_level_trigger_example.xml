@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Recorder Level Trigger Example"> 
-    <deployment state="debug" />
+    <deployment state="debug" /> 
     <scss> 
         .indicatorActive {
                 background: darkgray;

@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Timer Averaging Example">
-    <deployment state="staging" />
+    <deployment state="staging" /> 
     <metadata>
         <field controlledMessage="." controlledRegex="0-9*" postName="samplesCount" registrationField="SampleCount" />
         <field controlledMessage="." controlledRegex="0-9*" postName="samplesSum" registrationField="SampleSum" />
