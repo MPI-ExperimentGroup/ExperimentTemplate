@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -63,6 +65,16 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query(value = "select max(submitDate) from TagData where userId = :userId")
     Date findLastSessionAccess(@Param("userId") String userId);
 
+//    AssignedValue(int assignedCount, int completedCount, Date lastChange, String value)
+//    assignedValue
+//    completedValue
+//    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+//    @Query(value = "select new AssignedValue(min(submitDate)) from TagData group by to_char(submitDate,'YYYY-MM-DD')")
+//    AssignedValue findAssignedValues(String[] valueOptions);
+          
+    @Query("select new AssignedValue(1, 1, max(submitDate), tagValue) from TagData group by TagValue where TagValue in :valueOptions and eventTag = :eventTag")
+    List<AssignedValue> findAssignedValues(@Param("eventTag") String eventTag, @Param("valueOptions") Set<String> valueOptions);
+    
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 
     int countByUserId(@Param("userId") String userId);
