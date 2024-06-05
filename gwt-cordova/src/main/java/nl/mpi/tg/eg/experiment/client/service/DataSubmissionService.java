@@ -88,6 +88,48 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return completionCode;
     }
 
+    public void serverValueAssign(final UserId userId, final String screenName, String eventTag, String valueOptions, int eventMs, final DataSubmissionListener dataSubmissionListener) {
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + "assignValue");
+        builder.setHeader("Content-type", "application/json");
+        RequestCallback requestCallback = new RequestCallback() {
+
+            @Override
+            public void onError(Request request, Throwable exception) {
+                logger.warning(builder.getUrl());
+                logger.log(Level.WARNING, "serverValueAssign", exception);
+                dataSubmissionListener.scoreSubmissionFailed(null);
+            }
+
+            @Override
+            public void onResponseReceived(Request request, Response response) {
+                final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
+                // here we also check that the JSON return value contains the correct user id, to test for cases where a web cashe or wifi login redirect returns stale data or a 200 code for a wifi login
+                if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
+                    final String text = response.getText();
+                    logger.info(text);
+                    dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
+                } else {
+                    logger.warning(builder.getUrl());
+                    logger.warning(response.getStatusText());
+                    dataSubmissionListener.scoreSubmissionFailed(null);
+                }
+            }
+        };
+        try {
+            String jsonData = "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                    + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                    + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                    + "\"screenName\": " + jsonEscape(screenName) + ",\n"
+                    + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
+                    + "\"tagValue\": " + jsonEscape(valueOptions) + ",\n"
+                    + "\"eventMs\": \"" + eventMs + "\" \n}";
+            builder.sendRequest(jsonData, requestCallback);
+        } catch (RequestException exception) {
+            logger.log(Level.SEVERE, "serverValueAssign failed", exception);
+            dataSubmissionListener.scoreSubmissionFailed(null);
+        }
+    }
+
     private String getMediaSubmitPath() {
         return serviceLocations.dataSubmitUrl() + "audioBlob";
     }
