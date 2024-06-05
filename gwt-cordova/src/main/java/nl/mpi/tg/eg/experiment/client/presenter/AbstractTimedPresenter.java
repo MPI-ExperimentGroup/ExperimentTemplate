@@ -496,6 +496,27 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
+    protected void serverValueAssign(final String targetOptions, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        // targetOptions="list1,list2,list3"
+        submissionService.serverValueAssign(userResults.getUserData().getUserId(), getSelfTag(), "serverValueAssign", targetOptions, duration.elapsedMillis(), onError, onSuccess);
+    }
+
+    protected void serverValueComplete(final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "serverValueComplete", metadataString, duration.elapsedMillis());
+        submissionService.submitAllData(userResults, new DataSubmissionListener() {
+            @Override
+            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                onSuccess.postLoadTimerFired();
+            }
+        });
+    }
+
     @Override
     public void savePresenterState() {
         if (submissionService != null && userResults.getUserData().isMetadataChanged()) {
