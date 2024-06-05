@@ -498,7 +498,30 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void serverValueAssign(final String targetOptions, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         // targetOptions="list1,list2,list3"
-        submissionService.serverValueAssign(userResults.getUserData().getUserId(), getSelfTag(), "serverValueAssign", targetOptions, duration.elapsedMillis(), onError, onSuccess);
+        final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
+        if (("," + targetOptions + ",").contains("," + metadataString + ",")) {
+            onSuccess.postLoadTimerFired();
+        } else {
+            DataSubmissionListener dataSubmissionListener = new DataSubmissionListener() {
+                @Override
+                public void scoreSubmissionFailed(DataSubmissionException exception) {
+                    onError.postLoadTimerFired();
+                }
+
+                @Override
+                public void scoreSubmissionComplete(JsArray<DataSubmissionResult> serverValueData) {
+                    try {
+                        userResults.getUserData().setMetadataValue(metadataField, serverValueData.get(0).getMessage());
+                        localStorage.storeData(userResults, metadataFieldProvider);
+                        localStorage.checkStorageException();
+                        onSuccess.postLoadTimerFired();
+                    } catch (LocalStorageException localStorageException) {
+                        onError.postLoadTimerFired();
+                    }
+                }
+            };
+            submissionService.serverValueAssign(userResults.getUserData().getUserId(), getSelfTag(), "serverValueAssign", targetOptions, duration.elapsedMillis(), dataSubmissionListener);
+        }
     }
 
     protected void serverValueComplete(final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
