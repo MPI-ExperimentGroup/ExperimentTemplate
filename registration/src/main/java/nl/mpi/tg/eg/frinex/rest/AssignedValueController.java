@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,20 +41,25 @@ public class AssignedValueController {
     @Autowired
     TagRepository tagRepository;
 
-    @RequestMapping(value = "/completeValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE){
-        responseEntity = new ResponseEntity<>(new TagData(userId, screenName, "completedValue", tagValue, 0, tagDate), HttpStatus.OK);
-        tagRepository.saveAll(experimentDataList);
-    }
+//    @RequestMapping(value = "/completeValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE){
+//        responseEntity = new ResponseEntity<>(new TagData(userId, screenName, "completedValue", tagValue, 0, tagDate), HttpStatus.OK);
+//        tagRepository.saveAll(experimentDataList);
+//    }
     
+    // TODO: add XML for  serverValueComplete(final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    // TODO: add XML for serverValueAssign(final String targetOptions, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    // TODO: add Example XML demonstrating and testing these features
     @RequestMapping(value = "/assignValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AssignedValue> assignValue(@RequestBody TagData tagData) {
         String[] valueOptions = tagData.getTagValue().split(",");
         final ResponseEntity responseEntity;
         //(valueOptions.length == 0 || 
-        if (!"assignValue".equals(tagData.getEventTag()) && !"completedValue".equals(tagData.getEventTag())) {
+        
+        if (!"assignValue".equals(tagData.getEventTag()) && !"serverValueComplete".equals(tagData.getEventTag())) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            AssignedValue // TODO: impliment this feature for serverAssignedValue          
+            List<AssignedValue> assignedValues =  tagRepository.findAssignedValues("assignedValue", Set.copyOf(Arrays.asList(valueOptions)) );
+// TODO: impliment this feature for serverAssignedValue          
                     //    serverAssignedValue targetOptions="list1,list2,list3" fieldName="storageField"
                     //    <serverAssignedValue isComplete="true" fieldName="storageField">
                     //    If I was to add a <serverAssignedValue valueOptions="list1,list2,list3" fieldName="storageField"> feature then there would also need to be a <serverAssignedValue isComplete="true" fieldName="storageField"> that would also be required in the experiment
