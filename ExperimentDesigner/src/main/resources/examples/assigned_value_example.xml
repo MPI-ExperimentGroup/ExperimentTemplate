@@ -1,0 +1,44 @@
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="Assigned Value Example">
+    <deployment state="staging" />
+    <administration>
+        <chart label="Assigned Values" type="pie">
+            <tagData matching="assignedValue" />
+        </chart>
+        <chart label="Completed Values" type="pie">
+            <tagData matching="completedValue" />
+        </chart>
+    </administration>
+    <metadata>
+        <field controlledMessage="Assigned Value" controlledRegex="." postName="assiged_value" registrationField="assiged_value"/>
+    </metadata>
+    <presenter self="Assigned_Value_Presenter">
+        <htmlTokenText featureText="assiged_value: ::metadataField_assiged_value::"/>
+        <actionButton featureText="Assign Value">
+            <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assiged_value">
+                <onSuccess>
+                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Assigning value failed"/>
+                </onError>
+            </serverValueAssign>
+        </actionButton>
+        <actionButton featureText="Set Completed">
+            <serverValueComplete fieldName="assiged_value">
+                <onSuccess>
+                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Setting complete failed"/>
+                </onError>
+            </serverValueComplete>
+        </actionButton>
+        <actionButton featureText="Clear Value">
+            <setMetadataValue fieldName="assiged_value" dataLogFormat=""/>
+            <gotoPresenter target="Assigned_Value_Presenter"/>
+        </actionButton>
+    </presenter>
+    <stimuli/>
+</experiment>
