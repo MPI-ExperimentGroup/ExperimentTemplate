@@ -846,6 +846,35 @@
 </xs:attribute>
 </xs:complexType>
 </xs:element>
+<xs:element name="tagData" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:attribute name="label" type="xs:string" use="required">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="screenName" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="eventTag" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="tagValue" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this tagValue will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="colour" type="rgbHexValue" use="required">
+<xs:annotation>
+<xs:documentation>RGB Hex Value</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
 <xs:element name="stimulusResponse" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="label" type="xs:string" use="required">
