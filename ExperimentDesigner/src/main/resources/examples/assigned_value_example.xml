@@ -11,12 +11,12 @@
         </chart>
     </administration>
     <metadata>
-        <field controlledMessage="Assigned Value" controlledRegex="." postName="assiged_value" registrationField="assiged_value"/>
+        <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
     </metadata>
     <presenter self="Assigned_Value_Presenter">
-        <htmlTokenText featureText="assiged_value: ::metadataField_assiged_value::"/>
+        <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
         <actionButton featureText="Assign Value">
-            <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assiged_value">
+            <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
                 <onSuccess>
                     <gotoPresenter target="Assigned_Value_Presenter"/>
                 </onSuccess>
@@ -26,7 +26,7 @@
             </serverValueAssign>
         </actionButton>
         <actionButton featureText="Set Completed">
-            <serverValueComplete fieldName="assiged_value">
+            <serverValueComplete fieldName="assigned_value">
                 <onSuccess>
                     <gotoPresenter target="Assigned_Value_Presenter"/>
                 </onSuccess>
@@ -36,7 +36,7 @@
             </serverValueComplete>
         </actionButton>
         <actionButton featureText="Clear Value">
-            <setMetadataValue fieldName="assiged_value" dataLogFormat=""/>
+            <setMetadataValue fieldName="assigned_value" dataLogFormat=""/>
             <gotoPresenter target="Assigned_Value_Presenter"/>
         </actionButton>
     </presenter>
