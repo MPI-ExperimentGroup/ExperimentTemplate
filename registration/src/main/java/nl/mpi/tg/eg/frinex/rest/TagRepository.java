@@ -64,6 +64,11 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     
     @Query(value = "select max(submitDate) from TagData where userId = :userId")
     Date findLastSessionAccess(@Param("userId") String userId);
+    
+    long countByScreenNameLikeAndEventTagLikeAndTagValueLike(
+        @Param("screenName") String screenName,
+        @Param("eventTag") String eventTag,
+        @Param("tagValue") String tagValue);
 
 //    AssignedValue(int assignedCount, int completedCount, Date lastChange, String value)
 //    assignedValue

@@ -570,6 +570,24 @@
                                 <xsl:text>, </xsl:text>
                             </xsl:if>
                         </xsl:for-each>
+                        <xsl:text>], tagData: [</xsl:text>
+                        <xsl:for-each select="tagData">
+                            <xsl:text>
+                                {label: "</xsl:text>
+                            <xsl:value-of select="@label" />
+                            <xsl:text>", screenName: "</xsl:text>
+                            <xsl:value-of select="if (@screenName) then @screenName else '%'" />
+                            <xsl:text>", eventTag: "</xsl:text>
+                            <xsl:value-of select="if (@eventTag) then @eventTag else '%'" />
+                            <xsl:text>", tagValue: "</xsl:text>
+                            <xsl:value-of select="if (@tagValue) then @tagValue else '%'" />
+                            <xsl:text>", colour: "</xsl:text>
+                            <xsl:value-of select="@colour" />
+                            <xsl:text>"}</xsl:text>
+                            <xsl:if test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:if>
+                        </xsl:for-each>
                         <xsl:text>], stimulusResponse: [</xsl:text>
                         <xsl:for-each select="stimulusResponse">
                             <xsl:text>

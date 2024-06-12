@@ -79,6 +79,22 @@ function generateChart(chartData) {
                 adminChart.update();
             });
         }
+        for (const tagData of chartData.tagData) {
+            data.labels.push(tagData.label);
+            const tagDataIndex = data.labels.length - 1;
+            //data.datasets[0].data.push(metadata.matching);
+            data.datasets[0].backgroundColor.push(tagData.colour + '20');
+            data.datasets[0].borderColor.push(tagData.colour + 'ff');
+            $.getJSON('tagData/search/countByScreenNameLikeAndEventTagLikeAndTagValueLike'
+                    + '?screenName=' + encodeURIComponent(tagData.screenName)
+                    + '&eventTag=' + tagData.eventTag
+                    + '&tagValue=' + tagData.tagValue,
+                    function (responseData) {
+                        // console.log(responseData);
+                        data.datasets[0].data[tagDataIndex] = responseData;
+                        adminChart.update();
+                    });
+        }
         for (const stimulusResponse of chartData.stimulusResponse) {
             data.labels.push(stimulusResponse.label);
             const responseIndex = data.labels.length - 1;
@@ -86,15 +102,15 @@ function generateChart(chartData) {
             data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
             data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
             $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-                + ((stimulusResponse.isCorrect)? 'AndIsCorrect?isCorrect=' + ((stimulusResponse.isCorrect !== 'Null')? encodeURIComponent(stimulusResponse.isCorrect) : '') + '&screenName=' : '?screenName=')
-                 + encodeURIComponent(stimulusResponse.screenName)
-                + '&scoreGroup=' + encodeURIComponent(stimulusResponse.scoreGroup)
-                + '&responseGroup=' + encodeURIComponent(stimulusResponse.responseGroup)
-                + '&stimulusId=' + encodeURIComponent(stimulusResponse.stimulusId)
-                + '&response=' + encodeURIComponent(stimulusResponse.response), function (responseData) {
-                    // console.log(responseData);
-                    data.datasets[0].data[responseIndex] = responseData;
-                    adminChart.update();
+                    + ((stimulusResponse.isCorrect) ? 'AndIsCorrect?isCorrect=' + ((stimulusResponse.isCorrect !== 'Null') ? encodeURIComponent(stimulusResponse.isCorrect) : '') + '&screenName=' : '?screenName=')
+                    + encodeURIComponent(stimulusResponse.screenName)
+                    + '&scoreGroup=' + encodeURIComponent(stimulusResponse.scoreGroup)
+                    + '&responseGroup=' + encodeURIComponent(stimulusResponse.responseGroup)
+                    + '&stimulusId=' + encodeURIComponent(stimulusResponse.stimulusId)
+                    + '&response=' + encodeURIComponent(stimulusResponse.response), function (responseData) {
+                // console.log(responseData);
+                data.datasets[0].data[responseIndex] = responseData;
+                adminChart.update();
             });
 
             // $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.columnName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {

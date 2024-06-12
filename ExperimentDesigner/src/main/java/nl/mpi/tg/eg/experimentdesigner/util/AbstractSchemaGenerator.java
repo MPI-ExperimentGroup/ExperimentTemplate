@@ -455,6 +455,12 @@ public class AbstractSchemaGenerator {
                                                 .stringAttribute("fieldName", false)
                                                 .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false),
+                                        new DocumentationElement("tagData", "Adds matching tag data as a dataset to the graph.", 0, 0, new DocumentationElement[0])
+                                                .stringAttribute("label", false)
+                                                .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
+                                                .documentedAttribute("eventTag", AttributeType.xsString, "Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
+                                                .documentedAttribute("tagValue", AttributeType.xsString, "Only records matching this tagValue will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
+                                                .colourRGBAttribute("colour", false),
                                         new DocumentationElement("stimulusResponse", "Adds matching stimuli responses as a dataset to the graph.", 0, 0, new DocumentationElement[0])
                                                 .stringAttribute("label", false)
                                                 // .stringAttribute("columnName", false)
