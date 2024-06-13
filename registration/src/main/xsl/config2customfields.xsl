@@ -80,6 +80,7 @@
                     @Column(length = 1024</xsl:text>
                     <!-- because we need backwards compatability existing columns cannot just be changed without updating the database, therefore we add a prefix to reserved words which we know cannot already be in use since the database create would have failed in those cases -->
                 <xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat(', name = &quot;field_', @postName, '&quot;') else ''" />
+                <!-- NOTE: the use of capitalisation and _ in two metadata fields collide with the Spring Data column naming and this has been addressed in the XML validaiton stage <field postName="stimulusList" registrationField="stimulusList" /><field postName="stimulus_list" registrationField="StimulusList" />-->
                 <xsl:text>)
                     private String </xsl:text>
                 <xsl:value-of select="@postName" />
