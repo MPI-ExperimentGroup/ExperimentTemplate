@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -45,31 +47,76 @@ public class AssignedValueController {
 //        responseEntity = new ResponseEntity<>(new TagData(userId, screenName, "completedValue", tagValue, 0, tagDate), HttpStatus.OK);
 //        tagRepository.saveAll(experimentDataList);
 //    }
-    
-    // TODO: add XML for  serverValueComplete(final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-    // TODO: add XML for serverValueAssign(final String targetOptions, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-    // TODO: add Example XML demonstrating and testing these features
     @RequestMapping(value = "/assignValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AssignedValue> assignValue(@RequestBody TagData tagData) {
         String[] valueOptions = tagData.getTagValue().split(",");
         final ResponseEntity responseEntity;
-        //(valueOptions.length == 0 || 
-        
         if (!"assignValue".equals(tagData.getEventTag()) && !"serverValueComplete".equals(tagData.getEventTag())) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            List<AssignedValue> assignedValues =  tagRepository.findAssignedValues("assignedValue", Set.copyOf(Arrays.asList(valueOptions)) );
-// TODO: impliment this feature for serverAssignedValue          
-                    //    serverAssignedValue targetOptions="list1,list2,list3" fieldName="storageField"
-                    //    <serverAssignedValue isComplete="true" fieldName="storageField">
-                    //    If I was to add a <serverAssignedValue valueOptions="list1,list2,list3" fieldName="storageField"> feature then there would also need to be a <serverAssignedValue isComplete="true" fieldName="storageField"> that would also be required in the experiment
-                    //    any value in fieldName will be overwritten when valueOptions is supplied
-                    //    if a value has already be assigned to the participant but not marked completed that value will be returned again which will overwrite any value in fieldName 
-                    //    if preceding values returned by the server have been marked as completed then a new value will be returned which will overwrite any value in fieldName 
-                    //            tagRepository.countByEventTagGroupBytagValue(userId, eventTag);
-                    //            tagRepository.saveAll(experimentDataList);
-                     // TODO: tagRepository.findAssignedValues
-                                responseEntity = new ResponseEntity<>(new TagData(userId, screenName, "assignedValue", tagValue, 0, tagDate), HttpStatus.OK);
+            List<AssignedValue> assignedValues = tagRepository.countAssignedValues("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            List<AssignedValue> completedValues = tagRepository.countAssignedValues("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            AssignedValue assignedRecord = null;
+            for (String currentValue : valueOptions) {
+                int assignedIndex = assignedValues.indexOf(currentValue);
+                int completedIndex = completedValues.indexOf(currentValue);
+                if (assignedIndex == -1) {
+                    if (assignedRecord == null) {
+                        // never been assigned so start with the first option
+                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
+                    } else if (assignedRecord.getAssignedCount() > 0) {
+                        // the previous choice has been assigned more so we replace it
+                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
+                    } else if (new Random().nextInt(0, valueOptions.length) == 0) {
+                        // randomly choose another that has never been assigned
+                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
+                    }
+                } else {
+                    final AssignedValue comparisonAssigned = assignedValues.get(assignedIndex);
+                    if (assignedRecord == null) {
+                        // nothing chosen so start with the first option
+                        assignedRecord = comparisonAssigned;
+                    } else if (assignedRecord.getAssignedCount() > comparisonAssigned.getAssignedCount()) {
+                        // the previous choice has been assigned more so we replace it
+                        assignedRecord = comparisonAssigned;
+                    } else if (assignedRecord.getAssignedCount() == comparisonAssigned.getAssignedCount()) {
+                        // this option has been assigned just as often
+                        int comparisonCompletedIndex = completedValues.indexOf(currentValue);
+                        if (completedIndex == -1 && comparisonCompletedIndex == -1) {
+                            // neither have been completed
+                            if (new Random().nextInt(0, valueOptions.length) == 0) {
+                                // randomly choose the another option
+                                assignedRecord = comparisonAssigned;
+                            }
+                        } else if (comparisonCompletedIndex == -1) {
+                            // the other has not been completed so we choose it
+                            assignedRecord = comparisonAssigned;
+                        } else if (completedIndex == -1) {
+                            // the current choice has not been completed so we keep it
+                        } else {
+                            AssignedValue chosenCompletedRecord = completedValues.get(completedIndex);
+                            AssignedValue otherCompletedRecord = completedValues.get(comparisonCompletedIndex);
+                            if (chosenCompletedRecord.getAssignedCount() == otherCompletedRecord.getAssignedCount()) {
+                                // both have been completed just as often
+                                if (new Random().nextInt(0, valueOptions.length) == 0) {
+                                    // randomly choose the another option
+                                    assignedRecord = comparisonAssigned;
+                                }
+                            } else if (chosenCompletedRecord.getAssignedCount() > otherCompletedRecord.getAssignedCount()) {
+                                // the other has been completed less often so we choose it
+                                assignedRecord = comparisonAssigned;
+                            }
+                        }
+                    }
+                }
+            }
+            if (assignedRecord != null) {
+                final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", assignedRecord.getValue(), 0, new Date());
+                tagRepository.save(assignedTagData);
+                responseEntity = new ResponseEntity<>(assignedTagData, HttpStatus.OK);
+            } else {
+                responseEntity = new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
         }
         return responseEntity;
     }

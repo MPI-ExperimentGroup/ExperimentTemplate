@@ -18,30 +18,26 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @since 04 June 2024 11:29 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class AssignedValue {
+
     private final int assignedCount;
-    private final int completedCount;
     private final Date lastChange;
     private final String value;
 
-    public AssignedValue(int assignedCount, int completedCount, Date lastChange, String value) {
+    public AssignedValue(int assignedCount, Date lastChange, String value) {
         this.assignedCount = assignedCount;
-        this.completedCount = completedCount;
         this.lastChange = lastChange;
         this.value = value;
     }
 
     public int getAssignedCount() {
         return assignedCount;
-    }
-
-    public int getCompletedCount() {
-        return completedCount;
     }
 
     public Date getLastChange() {
@@ -51,5 +47,27 @@ public class AssignedValue {
     public String getValue() {
         return value;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.value);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AssignedValue other = (AssignedValue) obj;
+        return Objects.equals(this.value, other.value);
+    }
+
 }
