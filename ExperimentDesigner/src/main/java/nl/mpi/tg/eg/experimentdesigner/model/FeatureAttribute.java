@@ -32,15 +32,15 @@ public enum FeatureAttribute {
     closeButtonLabel,
     back,
     next,
-    fieldName,
+    fieldName("The postName used to identify a metadata field.", false, AttributeType.postName),
     parameterName,
-    linkedFieldName,
+    linkedFieldName("The postName used to identify a linked metadata field.", false, AttributeType.postName),
     oneToMany,
     daysThresholds,
     code,
     //    tags,  // todo: consider updating some elements to take a tags attribute rather than a stimuli element
     codeFormat,
-    draggable("When true the item will be set as draggable. Will have no effect when false or not present.", true, AttributeType.xsBoolean), 
+    draggable("When true the item will be set as draggable. Will have no effect when false or not present.", true, AttributeType.xsBoolean),
     droptarget("When true the item will be set as a drop target for drag actions. Will have no effect when false or not present.", true, AttributeType.xsBoolean),
     validationRegex,
     allowedCharCodes(true),
@@ -55,7 +55,7 @@ public enum FeatureAttribute {
     headerKey(true), separator(true), // these attributes are used by the administration system to process the tabular data from custom stimuli modules eg advocas
     percentOfPage,
     maxHeight,
-    maxWidth, 
+    maxWidth,
     align,
     orientation(null, true, new String[]{"horizontal", "vertical", "flow"}),
     target(false), // this is probably not optional in some cases
@@ -70,7 +70,7 @@ public enum FeatureAttribute {
     dataLogFormat(false),
     // TODO: add documentation for daysBetween|length|random|replaceAll etc.
     evaluateTokens(false), // TODO: this is one of only a few attributes can take a &quot;. For other string attributes the &quot; will cause the compile to fail ungracefully and should be prevented in the XSD
-    evaluateMs(false), 
+    evaluateMs(false),
     filePerStimulus("When recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli"),
     eventTag("When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.", true, AttributeType.xsString),
     eventId("Event identifier.", true, AttributeType.postName),
@@ -237,8 +237,8 @@ public enum FeatureAttribute {
     //    webm,
     recordingFormat("", true, new String[]{"wav", "ogg", "ogv"}),
     levelIndicatorStyle("The CSS style name to use for the audio recording level indicator. When not present the audio level indicator will not be shown.", true, AttributeType.xsString),
-    echoCancellation("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean), 
-    noiseSuppression("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean), 
+    echoCancellation("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean),
+    noiseSuppression("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean),
     autoGainControl("When present this value will be passed on to web browser when the recording starts. Implementation is browser and platform specific.", true, AttributeType.xsBoolean),
     downloadPermittedWindowMs("A time window in milliseconds within which download from the server will be allowed. When set to a non zero value the recording will be downloaded from the server ready for playback. So if playback of the recorded audio is not needed then this should be set to 0 to save bandwidth.", false, AttributeType.xsInteger),
     deviceRegex(true),

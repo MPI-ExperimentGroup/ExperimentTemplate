@@ -129,6 +129,8 @@ public enum FeatureType {
     eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}, "For use in the debug type presenters to erase the local storage data. This action cannot be undone and if the local storage data has not be sent to the server or stored in the device storage, the data will be lost permanently."),
     eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
     showCurrentMs(false, false, null),
+    serverValueAssign(true, new FeatureAttribute[]{targetOptions, fieldName}, "Assigns a value from targetOptions based on the distribution data known by the server and puts the result into the metadata field identified by fieldName. Any value in the metadata field will be overwritten when valueOptions is supplied. However if the metadata field contains an item from targetOptions it will be unchanged and the server assigned counts will not be affected.", Contitionals.hasErrorSuccess, Contitionals.none),
+    serverValueComplete(true, new FeatureAttribute[]{fieldName}, "Marks the server assigned value stored in the metadata field identified by fieldName as completed on the server. This will not change the value stored in the metadata field. If a new assignment is required then the metadata field would need to be manually cleared before requesting a new value via serverValueAssign. The completion of values will affect the distribution and therefore which values might be assigned next.", Contitionals.hasErrorSuccess, Contitionals.none),
     //    @Deprecated //???
     //    enableStimulusButtons(false, false, null),
     //    @Deprecated // ???

@@ -496,7 +496,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
-    protected void serverValueAssign(final String targetOptions, final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    protected void serverValueAssign(final MetadataField metadataField, final String targetOptions, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         // targetOptions="list1,list2,list3"
         final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
         if (("," + targetOptions + ",").contains("," + metadataString + ",")) {

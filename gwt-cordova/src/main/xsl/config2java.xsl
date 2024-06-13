@@ -1158,7 +1158,7 @@ or local-name() eq 'ratingCheckbox'
             </xsl:text>
         </xsl:if>
     </xsl:template>
-    <xsl:template match="addFrameTimeTrigger|clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|regionDragDrop|logTimerValue|startTimer|clearTimer|dtmfTone|addMediaTrigger|addRecorderDtmfTrigger|addRecorderLevelTrigger|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|doLater|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
+    <xsl:template match="serverValueAssign|serverValueComplete|addFrameTimeTrigger|clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|regionDragDrop|logTimerValue|startTimer|clearTimer|dtmfTone|addMediaTrigger|addRecorderDtmfTrigger|addRecorderLevelTrigger|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|doLater|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -1275,6 +1275,8 @@ or local-name() eq 'backgroundImage'">
         <xsl:if test="local-name() eq 'addRecorderLevelTrigger'">
             <xsl:value-of select="if(@levelIndicatorStyle) then concat('&quot;', @levelIndicatorStyle, '&quot; /* levelIndicatorStyle */,') else 'null /* levelIndicatorStyle */,'" />
         </xsl:if>
+        <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField ') else ''" />
+        <xsl:value-of select="if(@targetOptions) then concat(', &quot;', @targetOptions, '&quot; /* targetOptions */') else ''" />
         <xsl:value-of select="if(@threshold) then concat(@threshold, '/* threshold */') else ''" />
         <xsl:value-of select="if(@thresholdMs) then concat(', ', @thresholdMs, '/* thresholdMs */') else ''" />
         <xsl:value-of select="if(@threshold and local-name() ne 'addFrameTimeTrigger' and local-name() ne 'addMediaTrigger') then ', ' else ''" />
