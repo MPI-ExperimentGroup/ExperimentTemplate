@@ -21,7 +21,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
@@ -153,7 +155,7 @@ public class allowValidationOnMissingValidationControllerTest {
             public ScreenData findTop1ByUserIdOrderBySubmitDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-            
+
         }, new TimeStampRepository() {
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
@@ -264,7 +266,7 @@ public class allowValidationOnMissingValidationControllerTest {
             public Participant findTop1ByUserIdOrderBySubmitDateDesc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-            
+
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -395,6 +397,16 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new TagRepository() {
+            @Override
+            public long countByScreenNameLikeAndEventTagLikeAndTagValueLike(String screenName, String eventTag, String tagValue) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public List<AssignedValue> countAssignedValues(String eventTag, Set<String> valueOptions) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
             @Override
             public long countDistinctDateByEventTag(String eventTag) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -539,12 +551,10 @@ public class allowValidationOnMissingValidationControllerTest {
             // public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
             //     throw new UnsupportedOperationException("Not required for this test class.");
             // }
-
             // @Override
             // public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
             //     throw new UnsupportedOperationException("Not required for this test class.");
             // }
-            
             @Override
             public Page<StimulusResponse> findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -559,7 +569,7 @@ public class allowValidationOnMissingValidationControllerTest {
             public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-            
+
             @Override
             public long countByResponseLike(String matchingLike) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -605,7 +615,6 @@ public class allowValidationOnMissingValidationControllerTest {
 //            public List<StimulusResponse> findByUserIdOrderByTagDateAsc(String userId) {
 //                throw new UnsupportedOperationException("Not required for this test class.");
 //            }
-
             @Override
             public List<StimulusResponse> findByUserIdOrderByTagDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
