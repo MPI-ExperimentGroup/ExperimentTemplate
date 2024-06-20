@@ -148,6 +148,9 @@ public class JsonToXml {
                                 throw new IOException("The requested Frinex version does not have a schema file available: " + frinexVersion);
                             }
                         }
+                        if (xmlFile.getName().contains("_production") || xmlFile.getName().contains("_staging")) {
+                            throw new XpathExperimentException("The use of _staging or _production in the experiment name conflicts with the target servers staging and production. ");
+                        }
                         Schema schema = schemaFactory.newSchema(schemaFile);
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
