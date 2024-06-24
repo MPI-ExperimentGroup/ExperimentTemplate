@@ -441,7 +441,7 @@ public class AbstractSchemaGenerator {
                             new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
                                     .documentedAttribute("name", AttributeType.xsString, "For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.", false),
                             // .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
-                            new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
+                            new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevented specific data types from being sent to the server until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
                                     .stringAttribute("fieldName", false)
                                     .stringAttribute("matchingRegex", false),
                             new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
