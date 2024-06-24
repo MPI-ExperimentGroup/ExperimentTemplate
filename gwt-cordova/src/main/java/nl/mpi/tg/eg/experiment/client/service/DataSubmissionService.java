@@ -394,9 +394,9 @@ public class DataSubmissionService extends AbstractSubmissionService {
             case timeStamp:
             case screenChange:
             case tagEvent:
-            case tagPairEvent:
                 canSendData = true;
                 break;
+            case tagPairEvent:
             case stimulusResponse:
             case groupEvent:
             case metadata:
