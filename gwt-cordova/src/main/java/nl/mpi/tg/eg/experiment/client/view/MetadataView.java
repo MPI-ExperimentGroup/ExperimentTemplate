@@ -240,7 +240,7 @@ public class MetadataView extends TimedStimulusView {
     public boolean validateFields() {
         boolean isValid = true;
         for (MetadataFieldWidget metadataField : fieldBoxes.values()) {
-            if (!metadataField.isValid()) {
+            if (metadataField.isEnabled() && !metadataField.isValid()) {
                 isValid = false;
             }
         }
