@@ -15286,6 +15286,11 @@ function getFeatureBlocks() {
         "categorystyle":"logic_category",
         "contents":[      {
         "kind": "button",
+        "text": "assigned_value_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
         "text": "audio_recorder_example",
         "callbackKey": "loadExampleCallback"
       },
