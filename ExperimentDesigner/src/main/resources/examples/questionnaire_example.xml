@@ -160,6 +160,7 @@
                 <plainText featureText="Agreement registered and data sent" />
             </onSuccess>
             <onError>
+                <plainText featureText="Sending data error" />
                 <hasMetadataValue fieldName="consentOption" matchingRegex="true">
                     <conditionTrue>
                         <plainText featureText="Sending data failed" />
