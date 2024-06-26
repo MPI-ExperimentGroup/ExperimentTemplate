@@ -220,6 +220,7 @@ function getFeatureBlocks() {
           "name": "metadataType",
           "check": [
             "frinex_metadataType",
+            "frinex_tagDataType",
             "frinex_stimulusResponseType",
           ]
         }
@@ -15285,6 +15286,11 @@ function getFeatureBlocks() {
         "name":"Example",
         "categorystyle":"logic_category",
         "contents":[      {
+        "kind": "button",
+        "text": "assigned_value_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
         "kind": "button",
         "text": "audio_recorder_example",
         "callbackKey": "loadExampleCallback"

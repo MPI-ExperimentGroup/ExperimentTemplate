@@ -495,7 +495,7 @@ For use with additional or external users a username for access to the administr
 <h3 id="dataAgreementFieldType" style="text-transform: uppercase;">
 dataAgreementField
 </h3>
-When present the named metadata field is used to prevented specific data types from being stored or sent until the agreement field matches the required value.
+When present the named metadata field is used to prevent specific data types from being sent to the server until the agreement field matches the required value.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">dataAgreementField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -559,6 +559,19 @@ Only records matching this string will be counted for this dataset. The percent 
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 <tr><td>
+<a href="#tagDataType"><span style="color:purple">&lt;</span><span style="color:blue">tagData</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+RGB Hex Value</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">tagValue</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this tagValue will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+<tr><td>
 <a href="#stimulusResponseType"><span style="color:purple">&lt;</span><span style="color:blue">stimulusResponse</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
 <span style="color:green">isCorrect</span><span style="color:grey">=&quot;[True, False, Null] (optional)&quot;</span><span>
@@ -612,6 +625,32 @@ Only records matching this string will be counted for this dataset. The percent 
 <tr>
 <td colspan='2' id='metadataTarget'>
 <button onclick="getExample('metadata', 'metadataTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="tagDataType" style="text-transform: uppercase;">
+tagData
+</h3>
+Adds matching tag data as a dataset to the graph.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">tagData</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+RGB Hex Value</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
+String</span><br/>
+<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">tagValue</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this tagValue will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='tagDataTarget'>
+<button onclick="getExample('tagData', 'tagDataTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="stimulusResponseType" style="text-transform: uppercase;">
@@ -8357,8 +8396,8 @@ hasMetadataValue
 Replaces any token values in the matchingRegex then checks if the metadata field value matches the resulting regex. If the regex matches then coditionTrue is triggered otherwise conditionFalse is triggered.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">hasMetadataValue</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">hasMetadataValue</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 Regular expression that will be used to determin a match.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
@@ -10408,8 +10447,8 @@ metadataField
 Adds a single metadata field input. The type of input depends on the regex of the metadata field. A date input will be used if the regex is [0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]. A checkbox will be used if the regex is true|false. A text area will be used (multiline) rather than a text box (single line) if the regex contains \\s. A select box will be used if the regex is a | separated list (except when { is used indicating a regular expression).
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">metadataField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">metadataField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -10426,10 +10465,10 @@ metadataFieldConnection
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">metadataFieldConnection</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">metadataFieldConnection</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
+<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a linked metadata field.</span><br/>
 <span style="color:green">oneToMany</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -10452,10 +10491,10 @@ Adds a metadata field input, the value and state of which is linked to the value
 String</span><br/>
 <span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
+<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a linked metadata field.</span><br/>
 <span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -10476,10 +10515,10 @@ Adds a metadata field input, the state of which is linked to the value of anothe
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">metadataFieldVisibilityDependant</span></td><td><span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
+<span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a linked metadata field.</span><br/>
 <span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -13283,8 +13322,8 @@ Request mobile notifications at given times in the future on Android and iOS app
 String</span><br/>
 <span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 Text that will be visible to the user.</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:green">targetOptions</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 <span style="color:purple">&gt;</span></td><td>
@@ -14153,8 +14192,8 @@ selectUserMenu
 Shows a menu listing the users in the system. The label on each menu item is determined by value of the provided metadata field. When a menu item is clicked the active user is changed and the next presenter is shown.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">selectUserMenu</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">selectUserMenu</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -14231,8 +14270,8 @@ The value of evaluateTokens will have any string tokens replaced, followed by ma
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">setMetadataEvalTokens</span></td><td><span style="color:green">evaluateTokens</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
@@ -14263,8 +14302,8 @@ The value of dataLogFormat will have any string tokens replaced. Next if the rep
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">setMetadataValue</span></td><td><span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 String</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
@@ -15555,8 +15594,8 @@ Switch the user id to the value in the specified metadata field. The value of th
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">switchUserIdButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><span>
 Text that will be visible to the user.</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 This value is used in multiple ways depending on the context, to set the button group name used to enable and disable button groups, to assign the storage name for stimulus responses and the field name in the JSON data transmitted to the admin server so that multiple responses can be collected for a single stimulus.</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
@@ -17706,8 +17745,8 @@ uploadUsersDataMenu
 For use in the debug type presenters to show a data upload menu for all participants that have data on the local device. The participant label on each button is determined by the fieldName attribute. Data for each participant will be automatically uploaded unless the dataAgreementField is set in the XML, in which case the data will be uploaded only if the agreement field matches the required value. If the participant data has been successfully sent to the server then a deletion button will be shown to remove the participant from the device. If there is an error writing to the local storage an error page will be shown that includes this menu.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">uploadUsersDataMenu</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">uploadUsersDataMenu</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
@@ -22447,8 +22486,8 @@ Starts the Android wav recorder, the recorded wav files will be saved on the dev
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderApp</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When present this tag will be logged in the timestamps table as close as possible to the moment the event occurs.</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 <span style="color:green">filePerStimulus</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:purple">&gt;</span></td><td>
@@ -24268,8 +24307,8 @@ Adds a metadata field input for the current stimulus. The user entered value wil
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><span>
 </span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
+<span style="color:green">fieldName</span><span style="color:grey">=&quot;Post Name String&quot;</span><span>
+The postName used to identify a metadata field.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
