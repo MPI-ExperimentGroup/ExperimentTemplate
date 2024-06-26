@@ -220,6 +220,7 @@ function getFeatureBlocks() {
           "name": "metadataType",
           "check": [
             "frinex_metadataType",
+            "frinex_tagDataType",
             "frinex_stimulusResponseType",
           ]
         }
