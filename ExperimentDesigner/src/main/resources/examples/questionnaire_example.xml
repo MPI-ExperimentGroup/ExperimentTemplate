@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="questionnaire_example">
+    <deployment state="debug" />
+    <administration>
+        <dataAgreementField fieldName="consentOption" matchingRegex="Yes" />
+    </administration>
+    <metadata>
+        <field controlledMessage="Must be at least 3 characters"
+            controlledRegex=".'{'3,'}'"
+            postName="nationality"
+            registrationField="What country were you born in" />
+        <field
+            controlledMessage="Select one option from the list (enter Netherlands to test sub questions)"
+            controlledRegex="Drenthe|Flevoland|Friesland|Gelderland|Groningen|Limburg|Noord-Brabant|Noord-Holland|Overijssel|Utrecht|Zeeland|Zuid-Holland"
+            postName="province"
+            registrationField="What province were you born in" />
+        <field controlledMessage="Must be at least 3 characters"
+            controlledRegex=".'{'3,'}'"
+            postName="growingup"
+            registrationField="Where did you grow up (enter Netherlands to test sub questions)" />
+        <field controlledMessage="Must be at least 3 characters"
+            controlledRegex=".'{'3,'}'"
+            postName="firstlanguage"
+            registrationField="what is your first language [L1] (enter Netherlands to test sub questions)" />
+        <field controlledMessage="Select one option from the list"
+            controlledRegex="Yes|No"
+            postName="dialect1"
+            registrationField="Do you speak a dialect (enter Netherlands to test sub questions)" />
+        <field controlledMessage="Must be at least 3 characters"
+            controlledRegex=".'{'3,'}'"
+            postName="dialect2"
+            registrationField="Which dialect" />
+        <field controlledMessage="Must be at least 1 digit"
+            controlledRegex="0-9'{'1,'}'"
+            postName="learningage"
+            registrationField="At what age did you start learning" />
+        <field controlledMessage="Select one option from the list"
+            controlledRegex="Yes|No" postName="otherchildhood"
+            registrationField="Have you learnt other languages as a child (select Yes to test sub questions)" />
+        <field controlledMessage="Must be at least 3 characters"
+            controlledRegex=".'{'3,'}'"
+            postName="otherchildhood2"
+            registrationField="Which languages" />
+        <field controlledMessage="Select one option from the listt"
+            controlledRegex="Yes|No" postName="adultlanguages1"
+            registrationField="Have you learnt a language as an adult" />
+        <field controlledMessage="" controlledRegex=".*" postName="language1"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="language2"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="language3"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="year1"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="year2"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="jaar3"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="frequency1"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="frequency2"
+            registrationField="" />
+        <field controlledMessage="" controlledRegex=".*" postName="frequency3"
+            registrationField="" />
+        <field controlledMessage="Consent1" controlledRegex="true|false" postName="consentOption"
+            registrationField="Do you consent for data in this form to be used" />
+    </metadata>
+
+    <presenter self="questionnaire" type="metadata">
+        <metadataField fieldName="nationality" />
+        <addPadding />
+        <metadataFieldVisibilityDependant fieldName="province" linkedFieldName="nationality"
+            visibleRegex=".*ederland" enabledRegex=".*ederland" />
+        <addPadding />
+        <metadataFieldVisibilityDependant fieldName="growingup" linkedFieldName="nationality"
+            visibleRegex=".*ederland" enabledRegex=".*ederland" />
+        <addPadding />
+        <metadataField fieldName="firstlanguage" />
+        <addPadding />
+        <metadataFieldVisibilityDependant fieldName="dialect1" linkedFieldName="firstlanguage"
+            visibleRegex=".*ederland.*" enabledRegex=".*ederland.*" />
+        <addPadding />
+        <metadataFieldVisibilityDependant fieldName="dialect2" linkedFieldName="dialect1"
+            visibleRegex="Yes" enabledRegex="Yes" />
+        <addPadding />
+        <metadataFieldVisibilityDependant fieldName="learningage"
+            linkedFieldName="firstlanguage"
+            visibleRegex="^(?:(?!ederland).)+$" enabledRegex="^(?:(?!ederland).)+$" />
+        <addPadding />
+        <metadataField fieldName="otherchildhood" />
+        <addPadding />
+        <metadataFieldVisibilityDependant fieldName="otherchildhood2"
+            linkedFieldName="otherchildhood"
+            visibleRegex="Yes" enabledRegex="Yes" />
+        <addPadding />
+        <metadataField fieldName="adultlanguages1" />
+        <addPadding />
+        <htmlText featureText="If so which" />
+        <addPadding />
+        <table>
+            <row>
+                <column>
+                    <row>
+                        <column>
+                            <htmlText featureText="Language" />
+                        </column>
+                        <column>
+                            <htmlText featureText="Year learnt" />
+                        </column>
+                        <column>
+                            <htmlText featureText="How often" />
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <metadataField fieldName="language1" />
+                        </column>
+                        <column>
+                            <metadataField fieldName="year1" />
+                        </column>
+                        <column>
+                            <metadataField fieldName="frequency1" />
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <metadataField fieldName="language2" />
+                        </column>
+                        <column>
+                            <metadataField fieldName="year2" />
+                        </column>
+                        <column>
+                            <metadataField fieldName="frequency2" />
+                        </column>
+                    </row>
+
+                    <row>
+                        <column>
+                            <metadataField fieldName="language3" />
+                        </column>
+                        <column>
+                            <metadataField fieldName="jaar3" />
+                        </column>
+                        <column>
+                            <metadataField fieldName="frequency3" />
+                        </column>
+                    </row>
+                </column>
+            </row>
+        </table>
+        <addPadding />
+        <metadataField fieldName="consentOption" />
+        <addPadding />
+        <saveMetadataButton featureText="Agree and continue" sendData="true"
+            networkErrorMessage="No connection to the server. Check your internet connection.">
+            <onSuccess>
+                <plainText featureText="Agreement registered and data sent" />
+            </onSuccess>
+            <onError>
+                <hasMetadataValue fieldName="consentOption" matchingRegex="true">
+                    <conditionTrue>
+                        <plainText featureText="Sending data failed" />
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="Cannot proceed without your agreement via the last checkbox in this form" />
+                    </conditionFalse>
+                </hasMetadataValue>
+            </onError>
+        </saveMetadataButton>
+        <addPadding />
+    </presenter>
+    <stimuli />
+</experiment>
