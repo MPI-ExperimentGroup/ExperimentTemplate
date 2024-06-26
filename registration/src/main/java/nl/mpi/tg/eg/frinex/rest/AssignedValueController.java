@@ -54,69 +54,69 @@ public class AssignedValueController {
         if (!"assignValue".equals(tagData.getEventTag()) && !"serverValueComplete".equals(tagData.getEventTag())) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            List<AssignedValue> assignedValues = tagRepository.countAssignedValues("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
-            List<AssignedValue> completedValues = tagRepository.countAssignedValues("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
-            AssignedValue assignedRecord = null;
-            for (String currentValue : valueOptions) {
-                int assignedIndex = assignedValues.indexOf(currentValue);
-                int completedIndex = completedValues.indexOf(currentValue);
-                if (assignedIndex == -1) {
-                    if (assignedRecord == null) {
-                        // never been assigned so start with the first option
-                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
-                    } else if (assignedRecord.getAssignedCount() > 0) {
-                        // the previous choice has been assigned more so we replace it
-                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
-                    } else if (new Random().nextInt(0, valueOptions.length) == 0) {
-                        // randomly choose another that has never been assigned
-                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
-                    }
-                } else {
-                    final AssignedValue comparisonAssigned = assignedValues.get(assignedIndex);
-                    if (assignedRecord == null) {
-                        // nothing chosen so start with the first option
-                        assignedRecord = comparisonAssigned;
-                    } else if (assignedRecord.getAssignedCount() > comparisonAssigned.getAssignedCount()) {
-                        // the previous choice has been assigned more so we replace it
-                        assignedRecord = comparisonAssigned;
-                    } else if (assignedRecord.getAssignedCount() == comparisonAssigned.getAssignedCount()) {
-                        // this option has been assigned just as often
-                        int comparisonCompletedIndex = completedValues.indexOf(currentValue);
-                        if (completedIndex == -1 && comparisonCompletedIndex == -1) {
-                            // neither have been completed
-                            if (new Random().nextInt(0, valueOptions.length) == 0) {
-                                // randomly choose the another option
-                                assignedRecord = comparisonAssigned;
-                            }
-                        } else if (comparisonCompletedIndex == -1) {
-                            // the other has not been completed so we choose it
-                            assignedRecord = comparisonAssigned;
-                        } else if (completedIndex == -1) {
-                            // the current choice has not been completed so we keep it
-                        } else {
-                            AssignedValue chosenCompletedRecord = completedValues.get(completedIndex);
-                            AssignedValue otherCompletedRecord = completedValues.get(comparisonCompletedIndex);
-                            if (chosenCompletedRecord.getAssignedCount() == otherCompletedRecord.getAssignedCount()) {
-                                // both have been completed just as often
-                                if (new Random().nextInt(0, valueOptions.length) == 0) {
-                                    // randomly choose the another option
-                                    assignedRecord = comparisonAssigned;
-                                }
-                            } else if (chosenCompletedRecord.getAssignedCount() > otherCompletedRecord.getAssignedCount()) {
-                                // the other has been completed less often so we choose it
-                                assignedRecord = comparisonAssigned;
-                            }
-                        }
-                    }
-                }
-            }
-            if (assignedRecord != null) {
-                final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", assignedRecord.getValue(), 0, new Date());
-                tagRepository.save(assignedTagData);
-                responseEntity = new ResponseEntity<>(assignedTagData, HttpStatus.OK);
-            } else {
+//            List<AssignedValue> assignedValues = tagRepository.countAssignedValues("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
+//            List<AssignedValue> completedValues = tagRepository.countAssignedValues("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
+//            AssignedValue assignedRecord = null;
+//            for (String currentValue : valueOptions) {
+//                int assignedIndex = assignedValues.indexOf(currentValue);
+//                int completedIndex = completedValues.indexOf(currentValue);
+//                if (assignedIndex == -1) {
+//                    if (assignedRecord == null) {
+//                        // never been assigned so start with the first option
+//                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
+//                    } else if (assignedRecord.getAssignedCount() > 0) {
+//                        // the previous choice has been assigned more so we replace it
+//                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
+//                    } else if (new Random().nextInt(0, valueOptions.length) == 0) {
+//                        // randomly choose another that has never been assigned
+//                        assignedRecord = new AssignedValue(0, new Date(), currentValue);
+//                    }
+//                } else {
+//                    final AssignedValue comparisonAssigned = assignedValues.get(assignedIndex);
+//                    if (assignedRecord == null) {
+//                        // nothing chosen so start with the first option
+//                        assignedRecord = comparisonAssigned;
+//                    } else if (assignedRecord.getAssignedCount() > comparisonAssigned.getAssignedCount()) {
+//                        // the previous choice has been assigned more so we replace it
+//                        assignedRecord = comparisonAssigned;
+//                    } else if (assignedRecord.getAssignedCount() == comparisonAssigned.getAssignedCount()) {
+//                        // this option has been assigned just as often
+//                        int comparisonCompletedIndex = completedValues.indexOf(currentValue);
+//                        if (completedIndex == -1 && comparisonCompletedIndex == -1) {
+//                            // neither have been completed
+//                            if (new Random().nextInt(0, valueOptions.length) == 0) {
+//                                // randomly choose the another option
+//                                assignedRecord = comparisonAssigned;
+//                            }
+//                        } else if (comparisonCompletedIndex == -1) {
+//                            // the other has not been completed so we choose it
+//                            assignedRecord = comparisonAssigned;
+//                        } else if (completedIndex == -1) {
+//                            // the current choice has not been completed so we keep it
+//                        } else {
+//                            AssignedValue chosenCompletedRecord = completedValues.get(completedIndex);
+//                            AssignedValue otherCompletedRecord = completedValues.get(comparisonCompletedIndex);
+//                            if (chosenCompletedRecord.getAssignedCount() == otherCompletedRecord.getAssignedCount()) {
+//                                // both have been completed just as often
+//                                if (new Random().nextInt(0, valueOptions.length) == 0) {
+//                                    // randomly choose the another option
+//                                    assignedRecord = comparisonAssigned;
+//                                }
+//                            } else if (chosenCompletedRecord.getAssignedCount() > otherCompletedRecord.getAssignedCount()) {
+//                                // the other has been completed less often so we choose it
+//                                assignedRecord = comparisonAssigned;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            if (assignedRecord != null) {
+//                final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", assignedRecord.getValue(), 0, new Date());
+//                tagRepository.save(assignedTagData);
+//                responseEntity = new ResponseEntity<>(assignedTagData, HttpStatus.OK);
+//            } else {
                 responseEntity = new ResponseEntity<>(HttpStatus.CONFLICT);
-            }
+//            }
         }
         return responseEntity;
     }
