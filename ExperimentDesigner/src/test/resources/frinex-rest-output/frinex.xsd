@@ -3179,75 +3179,6 @@
 <xs:complexType name="showCurrentMsType">
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
-<xs:complexType name="serverValueAssignType">
-<xs:annotation>
-<xs:documentation>Assigns a value from targetOptions based on the distribution data known by the server and puts the result into the metadata field identified by fieldName. Any value in the metadata field will be overwritten when valueOptions is supplied. However if the metadata field contains an item from targetOptions it will be unchanged and the server assigned counts will not be affected.</xs:documentation>
-</xs:annotation>
-<xs:sequence>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="featureText" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
-<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
-</xs:sequence>
-<xs:attribute name="featureText" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="targetOptions" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="fieldName" type="postName" use="required">
-<xs:annotation>
-<xs:documentation>The postName used to identify a metadata field.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-<xs:complexType name="serverValueCompleteType">
-<xs:annotation>
-<xs:documentation>Marks the server assigned value stored in the metadata field identified by fieldName as completed on the server. This will not change the value stored in the metadata field. If a new assignment is required then the metadata field would need to be manually cleared before requesting a new value via serverValueAssign. The completion of values will affect the distribution and therefore which values might be assigned next.</xs:documentation>
-</xs:annotation>
-<xs:sequence>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="featureText" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
-<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
-</xs:sequence>
-<xs:attribute name="featureText" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="fieldName" type="postName" use="required">
-<xs:annotation>
-<xs:documentation>The postName used to identify a metadata field.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
 <xs:complexType name="cancelPauseTimersType">
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
@@ -5679,8 +5610,6 @@
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
-<xs:element name="serverValueAssign" type="serverValueAssignType"/>
-<xs:element name="serverValueComplete" type="serverValueCompleteType"/>
 <xs:element name="cancelPauseTimers" type="cancelPauseTimersType"/>
 <xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
 <xs:element name="showStimulusProgress" type="showStimulusProgressType"/>
@@ -5945,8 +5874,6 @@
 <xs:element name="selectUserMenu" type="selectUserMenuType"/>
 <xs:element name="sendAllData" type="sendAllDataType"/>
 <xs:element name="sendMetadata" type="sendMetadataType"/>
-<xs:element name="serverValueAssign" type="serverValueAssignType"/>
-<xs:element name="serverValueComplete" type="serverValueCompleteType"/>
 <xs:element name="setMetadataEvalTokens" type="setMetadataEvalTokensType"/>
 <xs:element name="setMetadataValue" type="setMetadataValueType"/>
 <xs:element name="showButtonGroup" type="showButtonGroupType"/>
@@ -6055,8 +5982,6 @@
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
-<xs:element name="serverValueAssign" type="serverValueAssignType"/>
-<xs:element name="serverValueComplete" type="serverValueCompleteType"/>
 <xs:element name="cancelPauseTimers" type="cancelPauseTimersType"/>
 <xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
 <xs:element name="displayCompletionCode" type="displayCompletionCodeType"/>
@@ -6217,8 +6142,6 @@
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
-<xs:element name="serverValueAssign" type="serverValueAssignType"/>
-<xs:element name="serverValueComplete" type="serverValueCompleteType"/>
 <xs:element name="cancelPauseTimers" type="cancelPauseTimersType"/>
 <xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
 <xs:element name="showStimulusProgress" type="showStimulusProgressType"/>
@@ -6446,8 +6369,6 @@
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
-<xs:element name="serverValueAssign" type="serverValueAssignType"/>
-<xs:element name="serverValueComplete" type="serverValueCompleteType"/>
 <xs:element name="cancelPauseTimers" type="cancelPauseTimersType"/>
 <xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
 <xs:element name="showStimulusProgress" type="showStimulusProgressType"/>
@@ -6689,8 +6610,6 @@
 <xs:element name="eraseLocalStorageButton" type="eraseLocalStorageButtonType"/>
 <xs:element name="eraseUsersDataButton" type="eraseUsersDataButtonType"/>
 <xs:element name="showCurrentMs" type="showCurrentMsType"/>
-<xs:element name="serverValueAssign" type="serverValueAssignType"/>
-<xs:element name="serverValueComplete" type="serverValueCompleteType"/>
 <xs:element name="cancelPauseTimers" type="cancelPauseTimersType"/>
 <xs:element name="cancelPauseAll" type="cancelPauseAllType"/>
 <xs:element name="showStimulusProgress" type="showStimulusProgressType"/>
