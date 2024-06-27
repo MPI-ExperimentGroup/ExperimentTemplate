@@ -6,7 +6,7 @@
     <deployment state="debug" />
     <administration>
         <dataAgreementField fieldName="consentOption" matchingRegex="true" />
-    </administration> 
+    </administration>
     <scss>
         input, select {
             margin-bottom: 50px;
@@ -163,7 +163,8 @@
                         <plainText featureText="Sending data failed" />
                     </conditionTrue>
                     <conditionFalse>
-                        <plainText featureText="Cannot proceed without your agreement via the last checkbox in this form" />
+                        <plainText
+                            featureText="Cannot proceed without your agreement via the last checkbox in this form" />
                     </conditionFalse>
                 </hasMetadataValue>
             </onError>
