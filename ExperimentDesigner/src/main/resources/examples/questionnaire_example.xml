@@ -149,9 +149,8 @@
                 </column>
             </row>
         </table>
-        <!-- <addPadding /> -->
+        <addPadding />
         <metadataField fieldName="consentOption" />
-        <!-- <addPadding /> -->
         <saveMetadataButton featureText="Agree and continue" sendData="true"
             networkErrorMessage="No connection to the server. Check your internet connection.">
             <onSuccess>
