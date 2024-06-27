@@ -146,7 +146,7 @@
                             <metadataField fieldName="frequency3" />
                         </column>
                     </row>
-                </column>
+                </column> 
             </row>
         </table>
         <addPadding />
