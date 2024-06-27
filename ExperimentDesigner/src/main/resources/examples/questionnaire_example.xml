@@ -150,21 +150,27 @@
             </row>
         </table>
         <addPadding />
+        <regionClear regionId="consentStatus"></regionClear>
         <metadataField fieldName="consentOption" />
         <saveMetadataButton featureText="Agree and continue" sendData="true"
             networkErrorMessage="No connection to the server. Check your internet connection.">
             <onSuccess>
-                <plainText featureText="Agreement registered and data sent" />
+                <regionReplace regionId="consentStatus" styleName="metadataOK">
+                    <plainText featureText="Agreement registered and data sent" />
+                </regionReplace>
             </onSuccess>
             <onError>
                 <plainText featureText="Sending data error" />
                 <hasMetadataValue fieldName="consentOption" matchingRegex="true">
                     <conditionTrue>
-                        <plainText featureText="Sending data failed" />
+                        <regionReplace regionId="consentStatus" styleName="metadataError">
+                            <plainText featureText="Sending data failed" />
+                        </regionReplace>
                     </conditionTrue>
                     <conditionFalse>
-                        <plainText
-                            featureText="Cannot proceed without your agreement via the last checkbox in this form" />
+                        <regionReplace regionId="consentStatus" styleName="metadataError">
+                            <plainText featureText="Cannot proceed without your agreement via the last checkbox in this form" />
+                        </regionReplace>
                     </conditionFalse>
                 </hasMetadataValue>
             </onError>

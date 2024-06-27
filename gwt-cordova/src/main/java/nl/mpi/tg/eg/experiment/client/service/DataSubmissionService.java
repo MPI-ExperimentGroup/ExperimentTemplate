@@ -482,26 +482,30 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
                 @Override
                 public void onResponseReceived(Request request, Response response) {
-                    final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
-                    // here we also check that the JSON return value contains the correct user id, to test for cases where a web cashe or wifi login redirect returns stale data or a 200 code for a wifi login
-                    if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
-                        final String text = response.getText();
-                        logger.info(text);
+                    try {
+                        final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
+                        // here we also check that the JSON return value contains the correct user id, to test for cases where a web cashe or wifi login redirect returns stale data or a 200 code for a wifi login
+                        if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
+                            final String text = response.getText();
+                            logger.info(text);
 //                    localStorage.stowSentData(userId, jsonData);
-                        try {
-                            localStorage.checkStorageException();
-                            dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
-                        } catch (LocalStorageException localStorageException) {
-                            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.localStorageError, endpoint.name()));
-                        }
-                    } else {
-                        logger.warning(builder.getUrl());
-                        logger.warning(response.getStatusText());
-                        if (sumbmissionResult.length() > 0) {
-                            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.dataRejected, sumbmissionResult.get(0).getMessage()));
+                            try {
+                                localStorage.checkStorageException();
+                                dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
+                            } catch (LocalStorageException localStorageException) {
+                                dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.localStorageError, endpoint.name()));
+                            }
                         } else {
-                            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
+                            logger.warning(builder.getUrl());
+                            logger.warning(response.getStatusText());
+                            if (sumbmissionResult.length() > 0) {
+                                dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.dataRejected, sumbmissionResult.get(0).getMessage()));
+                            } else {
+                                dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
+                            }
                         }
+                    } catch (IllegalArgumentException argumentException) {
+                        dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
                     }
                 }
             };
