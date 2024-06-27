@@ -77,7 +77,7 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 //    @Query(value = "select new AssignedValue(min(submitDate)) from TagData group by to_char(submitDate,'YYYY-MM-DD')")
 //    AssignedValue findAssignedValues(String[] valueOptions);
           
-    @Query("select new AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where TagValue in :valueOptions and eventTag = :eventTag group by TagValue")
+    @Query("select new nl.mpi.tg.eg.frinex.model.AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where TagValue in :valueOptions and eventTag = :eventTag group by TagValue")
     List<AssignedValue> countAssignedValues(@Param("eventTag") String eventTag, @Param("valueOptions") Set<String> valueOptions);
     
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);

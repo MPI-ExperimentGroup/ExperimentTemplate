@@ -26,17 +26,17 @@ import java.util.Objects;
  */
 public class AssignedValue {
 
-    private final int assignedCount;
+    private final long assignedCount;
     private final Date lastChange;
     private final String value;
 
-    public AssignedValue(int assignedCount, Date lastChange, String value) {
+    public AssignedValue(long assignedCount, Date lastChange, String value) {
         this.assignedCount = assignedCount;
         this.lastChange = lastChange;
         this.value = value;
     }
 
-    public int getAssignedCount() {
+    public long getAssignedCount() {
         return assignedCount;
     }
 
