@@ -134,10 +134,10 @@ public class MetadataView extends TimedStimulusView {
                         fieldBox.setEnabled(value.matches(enabledRegex));
                     }
                 }
-                addText(existingValue);
-                if (daysSince != null) {
-                    addText(Long.toString(daysSince));
-                }
+//                addText(existingValue);
+//                if (daysSince != null) {
+//                    addText(Long.toString(daysSince));
+//                }
             }
 
             @Override
