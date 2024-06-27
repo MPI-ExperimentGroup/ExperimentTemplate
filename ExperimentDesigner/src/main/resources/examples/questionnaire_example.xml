@@ -32,7 +32,7 @@
         <field controlledMessage="Must be at least 3 characters"
             controlledRegex=".'{'3,'}'"
             postName="firstlanguage"
-            registrationField="what is your first language [L1] (enter Netherlands to test sub questions)" />
+            registrationField="What is your first language [L1] (enter Netherlands to test sub questions)" />
         <field controlledMessage="Select one option from the list"
             controlledRegex="Yes|No"
             postName="dialect1"
@@ -42,7 +42,7 @@
             postName="dialect2"
             registrationField="Which dialect" />
         <field controlledMessage="Must be at least 1 digit"
-            controlledRegex="0-9'{'1,'}'"
+            controlledRegex="[0-9]'{'1,'}'"
             postName="learningage"
             registrationField="At what age did you start learning" />
         <field controlledMessage="Select one option from the list"
