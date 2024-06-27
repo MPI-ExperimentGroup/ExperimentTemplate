@@ -156,8 +156,9 @@
             networkErrorMessage="No connection to the server. Check your internet connection.">
             <onSuccess>
                 <regionReplace regionId="consentStatus" styleName="metadataOK">
-                    <plainText featureText="Agreement registered and data sent" />
+                    <plainText featureText="Agreement registered and data sent to the server" />
                 </regionReplace>
+                <eraseUsersDataButton featureText="Clear Local Data (if second person whats to fill in this questionnaire)" target="questionnaire"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Sending data error" />
