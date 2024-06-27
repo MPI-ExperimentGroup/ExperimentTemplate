@@ -15342,6 +15342,11 @@ function getFeatureBlocks() {
       },
       {
         "kind": "button",
+        "text": "questionnaire_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
         "text": "recorder_level_trigger_example",
         "callbackKey": "loadExampleCallback"
       },
