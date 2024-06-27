@@ -516,6 +516,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 logger.log(Level.SEVERE, "submit data failed", exception);
                 dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, endpoint.name()));
             }
+        } else {
+            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.dataAgreementError, endpoint.name()));
         }
     }
 

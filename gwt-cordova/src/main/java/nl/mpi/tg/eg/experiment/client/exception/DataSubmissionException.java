@@ -31,7 +31,8 @@ public class DataSubmissionException extends Exception {
         buildererror,
         connectionerror,
         dataRejected,
-        localStorageError
+        localStorageError,
+        dataAgreementError
     }
 
     public DataSubmissionException(ErrorType errorType, Throwable cause) {
