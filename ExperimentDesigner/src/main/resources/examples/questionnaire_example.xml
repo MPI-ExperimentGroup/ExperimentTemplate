@@ -14,7 +14,7 @@
         .noPadding input {
             margin-bottom: 0px;
         }
-        </scss>
+    </scss>
     <metadata>
         <field controlledMessage="Must be at least 3 characters"
             controlledRegex=".'{'3,'}'"
@@ -79,35 +79,25 @@
 
     <presenter self="questionnaire" type="metadata">
         <metadataField fieldName="nationality" />
-        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="province" linkedFieldName="nationality"
-            visibleRegex=".*ederland" enabledRegex=".*ederland" />
-        <!-- <addPadding /> -->
+            visibleRegex=".*[Nn]ederland.*" enabledRegex=".*ederland" />
         <metadataFieldVisibilityDependant fieldName="growingup" linkedFieldName="nationality"
-            visibleRegex=".*ederland" enabledRegex=".*ederland" />
-        <!-- <addPadding /> -->
+            visibleRegex=".*[Nn]ederland.*" enabledRegex=".*ederland" />
         <metadataField fieldName="firstlanguage" />
-        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="dialect1" linkedFieldName="firstlanguage"
             visibleRegex=".*ederland.*" enabledRegex=".*ederland.*" />
-        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="dialect2" linkedFieldName="dialect1"
             visibleRegex="Yes" enabledRegex="Yes" />
-        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="learningage"
             linkedFieldName="firstlanguage"
             visibleRegex="^(?:(?!ederland).)+$" enabledRegex="^(?:(?!ederland).)+$" />
-        <!-- <addPadding /> -->
         <metadataField fieldName="otherchildhood" />
-        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="otherchildhood2"
             linkedFieldName="otherchildhood"
             visibleRegex="Yes" enabledRegex="Yes" />
-        <!-- <addPadding /> -->
         <metadataField fieldName="adultlanguages1" />
-        <!-- <addPadding /> -->
         <htmlText featureText="If so which" />
-        <!-- <addPadding /> -->
+        <addPadding />
         <table styleName="noPadding">
             <row>
                 <column>
