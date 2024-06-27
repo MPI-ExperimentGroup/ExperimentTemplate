@@ -3,10 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="questionnaire_example">
-    <deployment state="debug" />
+    <deployment state="staging" />
     <administration>
         <dataAgreementField fieldName="consentOption" matchingRegex="true" />
     </administration>
+    <scss>
+        input, select {
+            margin-bottom: 50px;
+        }
+        .noPadding input {
+            margin-bottom: 0px;
+        }
+        </scss>
     <metadata>
         <field controlledMessage="Must be at least 3 characters"
             controlledRegex=".'{'3,'}'"
@@ -71,36 +79,36 @@
 
     <presenter self="questionnaire" type="metadata">
         <metadataField fieldName="nationality" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="province" linkedFieldName="nationality"
             visibleRegex=".*ederland" enabledRegex=".*ederland" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="growingup" linkedFieldName="nationality"
             visibleRegex=".*ederland" enabledRegex=".*ederland" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataField fieldName="firstlanguage" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="dialect1" linkedFieldName="firstlanguage"
             visibleRegex=".*ederland.*" enabledRegex=".*ederland.*" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="dialect2" linkedFieldName="dialect1"
             visibleRegex="Yes" enabledRegex="Yes" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="learningage"
             linkedFieldName="firstlanguage"
             visibleRegex="^(?:(?!ederland).)+$" enabledRegex="^(?:(?!ederland).)+$" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataField fieldName="otherchildhood" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataFieldVisibilityDependant fieldName="otherchildhood2"
             linkedFieldName="otherchildhood"
             visibleRegex="Yes" enabledRegex="Yes" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataField fieldName="adultlanguages1" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <htmlText featureText="If so which" />
-        <addPadding />
-        <table>
+        <!-- <addPadding /> -->
+        <table styleName="noPadding">
             <row>
                 <column>
                     <row>
@@ -151,9 +159,9 @@
                 </column>
             </row>
         </table>
-        <addPadding />
+        <!-- <addPadding /> -->
         <metadataField fieldName="consentOption" />
-        <addPadding />
+        <!-- <addPadding /> -->
         <saveMetadataButton featureText="Agree and continue" sendData="true"
             networkErrorMessage="No connection to the server. Check your internet connection.">
             <onSuccess>
@@ -171,7 +179,7 @@
                 </hasMetadataValue>
             </onError>
         </saveMetadataButton>
-        <addPadding />
+        <!-- <addPadding /> -->
     </presenter>
     <stimuli />
 </experiment>
