@@ -73,7 +73,7 @@
             registrationField="" />
         <field controlledMessage="" controlledRegex=".*" postName="frequency3"
             registrationField="" />
-        <field controlledMessage="Consent1" controlledRegex="true|false" postName="consentOption"
+        <field controlledMessage="Check this if you consent to your data being used" controlledRegex="true|false" postName="consentOption"
             registrationField="Do you consent for data in this form to be used" />
     </metadata>
 
