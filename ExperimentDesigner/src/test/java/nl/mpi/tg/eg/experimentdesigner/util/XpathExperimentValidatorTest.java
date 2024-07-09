@@ -685,6 +685,12 @@ public class XpathExperimentValidatorTest {
             {"<experiment><deployment state=\"production\" frinexVersion=\"snapshot\"/></experiment>",
                 "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
             },
+            {"<experiment xsi:noNamespaceSchemaLocation=\"http://frinexbuild.mpi.nl/alpha.xsd\"><deployment state=\"production\" /></experiment>",
+                "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
+            },
+            {"<experiment xsi:noNamespaceSchemaLocation=\"http://frinexbuild.mpi.nl/subdirectory/alpha.xsd\"><deployment state=\"production\" /></experiment>",
+                "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
+            },
             {"<experiment><deployment state=\"production\" frinexVersion=\"alpha\"/></experiment>",
                 "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n"
             },

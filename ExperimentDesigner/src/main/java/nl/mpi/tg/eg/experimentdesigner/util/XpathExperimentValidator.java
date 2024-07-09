@@ -414,6 +414,10 @@ public class XpathExperimentValidator {
         String returnMessage = "";
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         String frinexVersion = (String) validationXPath.compile("/experiment/deployment/@frinexVersion").evaluate(xmlDocument, XPathConstants.STRING);
+        String frinexVersion2 = (String) validationXPath.compile("/experiment/@noNamespaceSchemaLocation").evaluate(xmlDocument, XPathConstants.STRING);
+        if (!frinexVersion2.isBlank()) {
+            frinexVersion = frinexVersion2.replaceAll("^.*/", "").replaceAll("\\.[Xx][Ss][Dd]$", "");
+        }
         String state = (String) validationXPath.compile("/experiment/deployment/@state").evaluate(xmlDocument, XPathConstants.STRING);
         if ("production".equals(state) && frinexVersion != null) {
             if (frinexVersion.contains("snapshot")) {
