@@ -415,17 +415,17 @@ public class XpathExperimentValidator {
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         String frinexVersion = (String) validationXPath.compile("/experiment/deployment/@frinexVersion").evaluate(xmlDocument, XPathConstants.STRING);
         String frinexVersion2 = (String) validationXPath.compile("/experiment/@noNamespaceSchemaLocation").evaluate(xmlDocument, XPathConstants.STRING);
-        if (!frinexVersion2.isBlank()) {
+        if (frinexVersion.isBlank() && !frinexVersion2.isBlank()) {
             frinexVersion = frinexVersion2.replaceAll("^.*/", "").replaceAll("\\.[Xx][Ss][Dd]$", "");
         }
         String state = (String) validationXPath.compile("/experiment/deployment/@state").evaluate(xmlDocument, XPathConstants.STRING);
         if ("production".equals(state) && frinexVersion != null) {
             if (frinexVersion.contains("snapshot")) {
-                returnMessage = "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
+                returnMessage = "The snapshot versions cannot be used for production deployments. Please specify a Frinex stable version for example xsi:noNamespaceSchemaLocation=\"http://frinexbuild.mpi.nl/1.7.XXXX-stable.xsd\" or frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
             } else if (frinexVersion.contains("alpha")) {
-                returnMessage = "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
+                returnMessage = "The frinexVersion=\"alpha\" is too ambiguous for production deployments. Please specify the Frinex version for example xsi:noNamespaceSchemaLocation=\"http://frinexbuild.mpi.nl/1.7.XXXX-stable.xsd\" or frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
             } else if (frinexVersion.contains("beta")) {
-                returnMessage = "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
+                returnMessage = "The frinexVersion=\"beta\" is too ambiguous for production deployments. Please specify the Frinex version for example xsi:noNamespaceSchemaLocation=\"http://frinexbuild.mpi.nl/1.7.XXXX-stable.xsd\" or frinexVersion=\"1.7.XXXX-stable\". You can find the version number on the initial page of the staging version of your experiment FRINEX Version: 1.7.XXXX-stable.\n";
             }
         }
         return returnMessage;
