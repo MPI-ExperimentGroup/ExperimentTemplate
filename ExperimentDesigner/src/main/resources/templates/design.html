@@ -22,14 +22,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Frinex Experiment Designer</title>
+        <title>Frinex Experiment Builder</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" th:href="${contextPath} + '/designer.css'"/>
         <script th:src="${contextPath} + '/webjars/jquery/jquery.min.js'"></script>
     </head>
     <body>
-        <div id="header"><h1>Frinex Experiment Designer</h1></div>
+        <div id="header"><h1>Frinex Experiment Builder</h1></div>
         <table id="menu" class="menu">
             <tr>
                 <td><a th:attr="class=${detailType eq 'preview' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/preview'">Preview Wizard</a></td>
