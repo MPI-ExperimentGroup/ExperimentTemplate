@@ -4,7 +4,7 @@
             xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"  
             userIdGetParam="uuid"    
             appNameDisplay="With Stimulus Example" 
-            preserveLastState="false"    
+            preserveLastState="false"     
             obfuscateBrowserStorage="false"       
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
 > 
