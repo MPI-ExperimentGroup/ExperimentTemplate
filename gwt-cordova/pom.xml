@@ -89,17 +89,17 @@
         <dependency>
             <groupId>nl.mpi</groupId>
             <artifactId>kinoath-diagram</artifactId>
-            <version>1.6.43-pretesting</version>
+            <version>1.6.43-stable</version>
         </dependency>
         <dependency>
             <groupId>nl.mpi</groupId>
             <artifactId>graph-sorter</artifactId>
-            <version>1.6.13-pretesting</version>
+            <version>1.6.13-stable</version>
         </dependency>
         <dependency>
             <groupId>nl.mpi</groupId>
             <artifactId>kin-type-string-parser</artifactId>
-            <version>1.6.14-pretesting</version>
+            <version>1.6.14-stable</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
