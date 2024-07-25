@@ -410,7 +410,7 @@ public class AbstractSchemaGenerator {
                         .booleanAttribute("isiOS", true, "If true an iOS version of this experiment will be generated.")
                         .booleanAttribute("isAndroid", true, "If true an Android version of this experiment will be generated.")
                         .booleanAttribute("isUnity", true, "Experimental feature, if true a Unity version of this experiment will be generated.")
-                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server.", false, "validate", "debug", "draft", "staging", "production", "undeploy"),
+                        .restrictedAttribute("state", null, "The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.", false, "validate", "debug", "draft", "staging", "production", "undeploy", "transfer"),
                 new DocumentationElement("validationService", "Server side validation / registration services.", 0, 1,
                         new DocumentationElement[]{
                             new DocumentationElement("validation", "When metadata is sent to the server via transmitResults, this validation section defines the server side validation of metadata fields and optional restoring the value of metadata fields from the most recent validated record. "

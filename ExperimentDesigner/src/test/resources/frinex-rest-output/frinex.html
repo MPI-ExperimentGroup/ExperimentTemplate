@@ -135,8 +135,8 @@ When provided determines which production server the experiment is deployed to.<
 The date from which the experiment will be deployed.</span><br/>
 <span style="color:green">stagingServer</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When provided determines which staging server the experiment is deployed to.</span><br/>
-<span style="color:green">state</span><span style="color:grey">=&quot;[validate, debug, draft, staging, production, undeploy]&quot;</span><span>
-The type of deployment to be run when changes are pushed to the build server.</span><br/>
+<span style="color:green">state</span><span style="color:grey">=&quot;[validate, debug, draft, staging, production, undeploy, transfer]&quot;</span><span>
+The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</span><br/>
 <span style="color:green">stunServer</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When provided determines which stun server will be used for group experiments which stream the participants camera, microphone or canvas. When not provided no stun server will be used and any group streaming will have to be within the same local area network.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
@@ -234,8 +234,8 @@ When provided determines which production server the experiment is deployed to.<
 The date from which the experiment will be deployed.</span><br/>
 <span style="color:green">stagingServer</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When provided determines which staging server the experiment is deployed to.</span><br/>
-<span style="color:green">state</span><span style="color:grey">=&quot;[validate, debug, draft, staging, production, undeploy]&quot;</span><span>
-The type of deployment to be run when changes are pushed to the build server.</span><br/>
+<span style="color:green">state</span><span style="color:grey">=&quot;[validate, debug, draft, staging, production, undeploy, transfer]&quot;</span><span>
+The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</span><br/>
 <span style="color:green">stunServer</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
 When provided determines which stun server will be used for group experiments which stream the participants camera, microphone or canvas. When not provided no stun server will be used and any group streaming will have to be within the same local area network.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>

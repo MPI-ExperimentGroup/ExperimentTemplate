@@ -42,6 +42,7 @@ public class PublishEvents implements Serializable {
         draft,
         staging,
         production,
+        transfer,
         undeploy
     };
 
