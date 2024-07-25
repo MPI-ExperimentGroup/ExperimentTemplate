@@ -324,7 +324,7 @@
 </xs:attribute>
 <xs:attribute name="state" use="required">
 <xs:annotation>
-<xs:documentation>The type of deployment to be run when changes are pushed to the build server.</xs:documentation>
+<xs:documentation>The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</xs:documentation>
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction>
@@ -338,6 +338,7 @@
 <xs:enumeration value="staging"/>
 <xs:enumeration value="production"/>
 <xs:enumeration value="undeploy"/>
+<xs:enumeration value="transfer"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>
@@ -538,7 +539,7 @@
 </xs:attribute>
 <xs:attribute name="state" use="required">
 <xs:annotation>
-<xs:documentation>The type of deployment to be run when changes are pushed to the build server.</xs:documentation>
+<xs:documentation>The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</xs:documentation>
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction>
@@ -552,6 +553,7 @@
 <xs:enumeration value="staging"/>
 <xs:enumeration value="production"/>
 <xs:enumeration value="undeploy"/>
+<xs:enumeration value="transfer"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>
