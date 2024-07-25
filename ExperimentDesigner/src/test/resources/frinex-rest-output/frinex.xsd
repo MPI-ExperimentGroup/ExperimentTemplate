@@ -324,7 +324,7 @@
 </xs:attribute>
 <xs:attribute name="state" use="required">
 <xs:annotation>
-<xs:documentation>The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</xs:documentation>
+<xs:documentation>The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a staging version that outputs more debug information. Draft will build a staging version faster but might not be as reliable in different browsers. Staging will deploy only to the staging server and any existing production deployment will be unaffected. Production will deploy both staging and production and can only be done when the previous production version, if it exists, has been undeployed. Undeploy will remove the experiment from both the staging and production servers. While undeployment will make the database unaccessible the data remains unaffected and will be there for future deployments. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</xs:documentation>
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction>
@@ -539,7 +539,7 @@
 </xs:attribute>
 <xs:attribute name="state" use="required">
 <xs:annotation>
-<xs:documentation>The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a version that outputs more debug information. Draft will build faster but might not be as reliable in different browsers. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</xs:documentation>
+<xs:documentation>The type of deployment to be run when changes are pushed to the build server. Validate will check the XML. Debug will build a version that produces a staging version that outputs more debug information. Draft will build a staging version faster but might not be as reliable in different browsers. Staging will deploy only to the staging server and any existing production deployment will be unaffected. Production will deploy both staging and production and can only be done when the previous production version, if it exists, has been undeployed. Undeploy will remove the experiment from both the staging and production servers. While undeployment will make the database unaccessible the data remains unaffected and will be there for future deployments. Transfer releases ownership of the experiment to allow it to be built from an other GIT repository.</xs:documentation>
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction>
