@@ -4,7 +4,7 @@
             showMenuBar="false"  
             preserveLastState="false"
             obfuscateBrowserStorage="false" > 
-    <deployment state="staging" />
+    <deployment state="staging" /> 
     <administration/>
     <metadata>
         <field controlledMessage="stimulusImageRegion" controlledRegex=".'{'3,'}'" postName="stimulusImageRegion" registrationField="stimulusImageRegion" />
