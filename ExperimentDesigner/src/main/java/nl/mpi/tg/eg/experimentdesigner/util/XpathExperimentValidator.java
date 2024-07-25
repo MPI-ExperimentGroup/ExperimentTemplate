@@ -55,6 +55,17 @@ public class XpathExperimentValidator {
         unknown, gtlt, coloncolon
     }
 
+    public String extractDeploymentState(Reader xmlFileSource) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
+        final Scanner fileScanner = new Scanner(xmlFileSource);
+        String foundItem = fileScanner.findWithinHorizon("state\\s*=\\s*\"[^\"]*\"", 3000);
+        if (foundItem != null) {
+            String deploymentState = foundItem.replaceAll("state\\s*=\\s*\"", "").replaceAll("\"", "");
+            return deploymentState;
+        } else {
+            return "";
+        }
+    }
+
     public String extractFrinexVersion(Reader xmlFileSource, String defaultSchemaName) throws IllegalArgumentException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException {
         final Scanner fileScanner = new Scanner(xmlFileSource);
         String frinexVersion = null;

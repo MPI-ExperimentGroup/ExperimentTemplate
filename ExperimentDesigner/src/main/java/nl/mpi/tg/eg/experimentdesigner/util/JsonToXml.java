@@ -138,37 +138,40 @@ public class JsonToXml {
                         final XpathExperimentValidator experimentValidator = new XpathExperimentValidator();
                         // look for a frinex version element otherwise use the default schema file
                         final String frinexVersion = experimentValidator.extractFrinexVersion(new FileReader(xmlFile), "frinex");
-                        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
-                        final File schemaFile = new File(schemaDirectory + "/" + frinexVersion + ".xsd");
-                        if (!schemaFile.exists()) {
-                            final File deprecatedSchemaFile = new File(schemaDirectory + "/" + frinexVersion.replaceAll("stable", "deprecated") + ".xsd");
-                            if (deprecatedSchemaFile.exists()) {
-                                throw new IOException("The requested Frinex version has been deprecated and should not be used. If you must use this version then you need to specify: " + frinexVersion.replaceAll("stable", "deprecated"));
-                            } else {
-                                throw new IOException("The requested Frinex version does not have a schema file available: " + frinexVersion);
+                        final String deploymentState = experimentValidator.extractDeploymentState(new FileReader(xmlFile));
+                        if (!"undeploy".equals(deploymentState) && !"transfer".equals(deploymentState)) {
+                            SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+                            final File schemaFile = new File(schemaDirectory + "/" + frinexVersion + ".xsd");
+                            if (!schemaFile.exists()) {
+                                final File deprecatedSchemaFile = new File(schemaDirectory + "/" + frinexVersion.replaceAll("stable", "deprecated") + ".xsd");
+                                if (deprecatedSchemaFile.exists()) {
+                                    throw new IOException("The requested Frinex version has been deprecated and should not be used. If you must use this version then you need to specify: " + frinexVersion.replaceAll("stable", "deprecated"));
+                                } else {
+                                    throw new IOException("The requested Frinex version does not have a schema file available: " + frinexVersion);
+                                }
                             }
-                        }
-                        if (xmlFile.getName().contains("_production") || xmlFile.getName().contains("_staging")) {
-                            throw new XpathExperimentException("The use of _staging or _production in the experiment name conflicts with the target servers staging and production. ");
-                        }
-                        Schema schema = schemaFactory.newSchema(schemaFile);
-                        Validator validator = schema.newValidator();
-                        validator.validate(xmlFileStream);
-                        try {
-                            experimentValidator.validateDocument(xmlFile);
-                        } catch (SAXException saxe) {
-                            if (saxe.getMessage().contains("One of '{translation, onSuccess}' is expected.")) {
-                                throw new XpathExperimentException(saxe.getMessage() + " Please ensure the order of onSuccess and onError is correct. ");
-                            } else {
-                                throw new XpathExperimentException(saxe.getMessage());
+                            if (xmlFile.getName().contains("_production") || xmlFile.getName().contains("_staging")) {
+                                throw new XpathExperimentException("The use of _staging or _production in the experiment name conflicts with the target servers staging and production. ");
                             }
+                            Schema schema = schemaFactory.newSchema(schemaFile);
+                            Validator validator = schema.newValidator();
+                            validator.validate(xmlFileStream);
+                            try {
+                                experimentValidator.validateDocument(xmlFile);
+                            } catch (SAXException saxe) {
+                                if (saxe.getMessage().contains("One of '{translation, onSuccess}' is expected.")) {
+                                    throw new XpathExperimentException(saxe.getMessage() + " Please ensure the order of onSuccess and onError is correct. ");
+                                } else {
+                                    throw new XpathExperimentException(saxe.getMessage());
+                                }
+                            }
+                            final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
+                            experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory), frinexVersion);
+                            final UmlGenerator umlGenerator = new UmlGenerator();
+                            final File outputUmlFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".uml"));
+                            final File outputSvgFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".svg"));
+                            umlGenerator.generateUml(xmlFile, outputUmlFile, outputSvgFile, UmlGenerator.DiagramType.state);
                         }
-                        final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
-                        experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory), frinexVersion);
-                        final UmlGenerator umlGenerator = new UmlGenerator();
-                        final File outputUmlFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".uml"));
-                        final File outputSvgFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".svg"));
-                        umlGenerator.generateUml(xmlFile, outputUmlFile, outputSvgFile, UmlGenerator.DiagramType.state);
                     } catch (SAXException | IOException | IllegalArgumentException | ParserConfigurationException | XPathExpressionException | XpathExperimentException | JAXBException saxe) {
                         System.out.println(saxe.getMessage());
                         // save the error into a log file

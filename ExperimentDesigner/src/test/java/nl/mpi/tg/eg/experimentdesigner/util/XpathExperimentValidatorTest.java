@@ -49,6 +49,19 @@ public class XpathExperimentValidatorTest {
     }
 
     /**
+     * Test of extractDeploymentState method, of class XpathExperimentValidator.
+     */
+    @Test
+    public void testExtractDeploymentState() throws Exception {
+        System.out.println("extractDeploymentState");
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        assertEquals("found", instance.extractDeploymentState(new StringReader("<experiment><deployment state=\"found\"/></experiment>")));
+        assertEquals("found", instance.extractDeploymentState(new StringReader("<experiment><deployment state      =       \"found\"         /></experiment>")));
+        assertEquals("", instance.extractDeploymentState(new StringReader("<experiment><deployment state=\"\"/></experiment>")));
+        assertEquals("", instance.extractDeploymentState(new StringReader("<experiment><deployment/></experiment>")));
+        assertEquals("", instance.extractDeploymentState(new StringReader("<experiment></experiment>")));
+    }
+    /**
      * Test of extractFrinexVersion method, of class XpathExperimentValidator.
      */
     @Test
