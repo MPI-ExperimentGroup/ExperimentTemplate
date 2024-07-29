@@ -165,13 +165,13 @@ public class JsonToXml {
                                     throw new XpathExperimentException(saxe.getMessage());
                                 }
                             }
-                            final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
-                            experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory), frinexVersion);
-                            final UmlGenerator umlGenerator = new UmlGenerator();
-                            final File outputUmlFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".uml"));
-                            final File outputSvgFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".svg"));
-                            umlGenerator.generateUml(xmlFile, outputUmlFile, outputSvgFile, UmlGenerator.DiagramType.state);
                         }
+                        final ExperimentListingJsonExtractor experimentListingJsonExtractor = new ExperimentListingJsonExtractor();
+                        experimentListingJsonExtractor.extractListingJson(xmlFile, new File(listingDirectory), frinexVersion);
+                        final UmlGenerator umlGenerator = new UmlGenerator();
+                        final File outputUmlFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".uml"));
+                        final File outputSvgFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", ".svg"));
+                        umlGenerator.generateUml(xmlFile, outputUmlFile, outputSvgFile, UmlGenerator.DiagramType.state);
                     } catch (SAXException | IOException | IllegalArgumentException | ParserConfigurationException | XPathExpressionException | XpathExperimentException | JAXBException saxe) {
                         System.out.println(saxe.getMessage());
                         // save the error into a log file
