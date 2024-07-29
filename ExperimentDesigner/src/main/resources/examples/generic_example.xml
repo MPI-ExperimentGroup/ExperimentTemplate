@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="generic_example" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/1.6.3189-stable.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <deployment state="transfer" />  
+    <deployment state="transfer" /> 
     <administration/>   
     <metadata> 
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
