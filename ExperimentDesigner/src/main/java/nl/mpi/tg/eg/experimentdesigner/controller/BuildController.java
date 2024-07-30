@@ -26,6 +26,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 /**
  * @since Feb 27, 2022 11:56 AM (creation date)
@@ -47,8 +49,15 @@ public class BuildController {
     )
     public @ResponseBody
     String buildHistory() throws IOException {
-        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
-        return new String(Files.readAllBytes(buildhistory.toPath()));
+//        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
+//        return new String(Files.readAllBytes(buildhistory.toPath()));
+        return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
+                .get()
+                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
+                .header("user-agent", "FrinexWizard")
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
     }
 
     @RequestMapping(
@@ -57,7 +66,13 @@ public class BuildController {
     )
     public @ResponseBody
     String buildHistoryJS() throws IOException {
-        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
-        return new String(Files.readAllBytes(buildhistory.toPath()));
+//        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
+//        return new String(Files.readAllBytes(buildhistory.toPath()));
+        return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
+                .get()
+                .header("user-agent", "FrinexWizard")
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
     }
 }
