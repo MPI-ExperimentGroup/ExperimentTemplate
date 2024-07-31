@@ -85,7 +85,7 @@ function loadAction(actionType, actionName) {
         url: "/" + actionType + "/" + actionName,
         dataType: "text",
         success: function (inputData) {
-            loadedXml = $($($.parseXML(inputData)).find("experiment")[0]);
+            loadedXml = $($.parseXML(inputData)).find("experiment")[0];
             buildFromXml(loadedXml, null);
             // for (let childIndex = 0; childIndex < loadedXml.children().length; childIndex++) {
             //     buildFromXml(loadedXml.children()[childIndex], null);
