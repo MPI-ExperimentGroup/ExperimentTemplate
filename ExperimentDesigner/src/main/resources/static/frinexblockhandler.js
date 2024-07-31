@@ -86,9 +86,10 @@ function loadAction(actionType, actionName) {
         dataType: "text",
         success: function (inputData) {
             loadedXml = $($($.parseXML(inputData)).find("experiment")[0]);
-            for (let childIndex = 0; childIndex < loadedXml.children().length; childIndex++) {
-                buildFromXml(loadedXml.children()[childIndex], null);
-            }
+            buildFromXml(loadedXml, null);
+            // for (let childIndex = 0; childIndex < loadedXml.children().length; childIndex++) {
+            //     buildFromXml(loadedXml.children()[childIndex], null);
+            // }
             // let generatedXml = javascript.javascriptGenerator.workspaceToCode(workspace);
             // if there is more than one experiment node it is invalid and will be ignored
             // compareLoadedXmlToGeneratedXml($($(loadedXml).find("experiment")[0]), $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
