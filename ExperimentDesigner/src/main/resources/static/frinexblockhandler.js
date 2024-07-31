@@ -48,6 +48,7 @@ function updatePreview(event) {
     // by touching the SRC the browser renders the changes
     document.querySelector("iframe").src = document.querySelector("iframe").src.split("#")[0] + "#" + Date();
     if (loadedXml !== undefined) {
+        document.getElementById('errorOutputArea').innerHTML = "";
         // if there is more than one experiment node it is invalid and will be ignored
         compareLoadedXmlToGeneratedXml($($(loadedXml).find("experiment")[0]), $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
     }
