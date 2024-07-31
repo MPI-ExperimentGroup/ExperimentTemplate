@@ -83,7 +83,7 @@ function loadAction(actionType, actionName) {
     $.ajax({
         type: "get",
         url: "/" + actionType + "/" + actionName,
-        dataType: "application/xml",
+        dataType: "application/text",
         success: function (inputData) {
             loadedXml = inputData.getElementsByTagName("experiment")[0];
             for (let childIndex = 0; childIndex < $(inputData).children().length; childIndex++) {
