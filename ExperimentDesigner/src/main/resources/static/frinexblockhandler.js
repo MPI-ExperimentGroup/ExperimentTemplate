@@ -24,6 +24,7 @@
 
 const featureTypes = getFeatureBlocks();
 const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
+var loadedXml;
 setupTemplateCallback();
 
 const supportedEvents = new Set([
@@ -39,13 +40,17 @@ function updatePreview(event) {
     if (!supportedEvents.has(event.type))
         return;
 
-    const code = javascript.javascriptGenerator.workspaceToCode(workspace);
-    document.getElementById('previewArea').value = code;
+    const generatedXml = javascript.javascriptGenerator.workspaceToCode(workspace);
+    document.getElementById('previewArea').value = generatedXml;
     // preview the blocks data in the ExperimentTemplate via the WizardStimulusPresenter
-    document.querySelector("iframe").contentWindow.wizardStimulusPresenter(code, event.blockId);
+    document.querySelector("iframe").contentWindow.wizardStimulusPresenter(generatedXml, event.blockId);
     // document.querySelector("iframe").contentWindow.document.body.focus();
     // by touching the SRC the browser renders the changes
     document.querySelector("iframe").src = document.querySelector("iframe").src.split("#")[0] + "#" + Date();
+    if (loadedXml !== undefined) {
+        // if there is more than one experiment node it is invalid and will be ignored
+        compareLoadedXmlToGeneratedXml($($(loadedXml).find("experiment")[0]), $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
+    }
 }
 
 function loadTemplateAction(toolboxButton) {
@@ -79,13 +84,13 @@ function loadAction(actionType, actionName) {
         url: "/" + actionType + "/" + actionName,
         dataType: "xml",
         success: function (inputData) {
+            loadedXml = inputData;
             for (let childIndex = 0; childIndex < $(inputData).children().length; childIndex++) {
                 buildFromXml($(inputData).children()[childIndex], null);
             }
-
-            let generatedData = javascript.javascriptGenerator.workspaceToCode(workspace);
+            // let generatedXml = javascript.javascriptGenerator.workspaceToCode(workspace);
             // if there is more than one experiment node it is invalid and will be ignored
-            compareLoadedXmlToGeneratedXml($($(inputData).find("experiment")[0]), $($($.parseXML("<output>" + generatedData + "</output>")).find("experiment")[0]), 0);
+            // compareLoadedXmlToGeneratedXml($($(loadedXml).find("experiment")[0]), $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
             // var successBlock = workspace.newBlock('frinex_htmlTextType');
             // successBlock.setFieldValue(inputData, 'featureText');
             // successBlock.initSvg();
@@ -101,7 +106,7 @@ function loadAction(actionType, actionName) {
 }
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthCount) {
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + ((inputElements.children().length === 0)? " /" : "") + "&gt;</div>\n";
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + ((inputElements.children().length === 0) ? " /" : "") + "&gt;</div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
