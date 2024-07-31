@@ -128,7 +128,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
             while (missingNames.length > 0) {
                 document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:green\">++&lt;" + missingNames.shift() + " /&gt;</div>\n";
             }
-            compareLoadedXmlToGeneratedXml($(inputElements.children[childIndex]), $(generatedElements.children[comparisonTempIndex]), depthCount + 1);
+            compareLoadedXmlToGeneratedXml(inputElements.children[childIndex], generatedElements.children[comparisonTempIndex], depthCount + 1);
             comparisonIndex = comparisonTempIndex + 1;
         }
     }
