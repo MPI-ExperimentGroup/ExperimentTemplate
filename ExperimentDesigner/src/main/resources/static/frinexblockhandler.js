@@ -50,7 +50,7 @@ function updatePreview(event) {
     if (loadedXml !== undefined) {
         document.getElementById('errorOutputArea').innerHTML = "";
         // if there is more than one experiment node it is invalid and will be ignored
-        compareLoadedXmlToGeneratedXml($(loadedXml).find("experiment")[0], $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
+        compareLoadedXmlToGeneratedXml(loadedXml, $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
     }
 }
 
@@ -85,7 +85,7 @@ function loadAction(actionType, actionName) {
         url: "/" + actionType + "/" + actionName,
         dataType: "xml",
         success: function (inputData) {
-            loadedXml = inputData;
+            loadedXml = inputData.getElementsByTagName("experiment")[0];
             for (let childIndex = 0; childIndex < $(inputData).children().length; childIndex++) {
                 buildFromXml($(inputData).children()[childIndex], null);
             }
