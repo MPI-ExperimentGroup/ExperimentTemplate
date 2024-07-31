@@ -118,7 +118,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
     for (let childIndex = 0; childIndex < inputElements.children.length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
         let missingNames = [];
-        while (generatedElements.children.length > comparisonTempIndex && inputElements.children[childIndex].localName !== generatedElements.children==[comparisonTempIndex].localName) {
+        while (generatedElements.children.length > comparisonTempIndex && inputElements.children[childIndex].localName !== generatedElements.children[comparisonTempIndex].localName) {
             missingNames.push(generatedElements.children[comparisonTempIndex].localName);
             comparisonTempIndex++;
         }
