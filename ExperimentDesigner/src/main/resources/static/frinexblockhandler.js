@@ -50,7 +50,7 @@ function updatePreview(event) {
     if (loadedXml !== undefined) {
         document.getElementById('errorOutputArea').innerHTML = "";
         // if there is more than one experiment node it is invalid and will be ignored
-        compareLoadedXmlToGeneratedXml(loadedXml, $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
+        compareLoadedXmlToGeneratedXml($(loadedXml), $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
     }
 }
 
