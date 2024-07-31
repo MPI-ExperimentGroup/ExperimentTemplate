@@ -133,7 +133,7 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
         }
     }
     if (inputElements.children.length > 0) {
-        document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;/" + inputElements[0].localName + "&gt;</div>\n";
+        document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;/" + inputElements.localName + "&gt;</div>\n";
     }
 }
 
