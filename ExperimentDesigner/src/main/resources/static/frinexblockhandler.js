@@ -50,7 +50,7 @@ function updatePreview(event) {
     if (loadedXml !== undefined) {
         document.getElementById('errorOutputArea').innerHTML = "";
         // if there is more than one experiment node it is invalid and will be ignored
-        compareLoadedXmlToGeneratedXml($($(loadedXml).find("experiment")[0]), $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
+        compareLoadedXmlToGeneratedXml($(loadedXml).find("experiment")[0], $($($.parseXML("<output>" + generatedXml + "</output>")).find("experiment")[0]), 0);
     }
 }
 
@@ -107,7 +107,12 @@ function loadAction(actionType, actionName) {
 }
 
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthCount) {
-    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + ((inputElements.children().length === 0) ? " /" : "") + "&gt;</div>\n";
+    let attributesDiff = "";
+    for (let attrIndex = 0; attrIndex < inputElements.attributes.length; attrIndex++) {
+        attributesDiff += " ";
+        attributesDiff += inputElements.attributes[attrIndex].name + "=\"" + inputElements.attributes[attrIndex].value + "\"";
+    }
+    document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements[0].localName + attributesDiff + ((inputElements.children().length === 0) ? " /" : "") + "&gt;</div>\n";
     let comparisonIndex = 0;
     for (let childIndex = 0; childIndex < inputElements.children().length; childIndex++) {
         let comparisonTempIndex = comparisonIndex;
