@@ -110,8 +110,18 @@ function loadAction(actionType, actionName) {
 function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthCount) {
     let attributesDiff = "";
     for (let attrIndex = 0; attrIndex < inputElements.attributes.length; attrIndex++) {
-        attributesDiff += " ";
+        attributesDiff += " <span style=\"color:"
+            + ((generatedElements.getNamedItem(inputElements.attributes[attrIndex].name) === null) ? "red; text-decoration: line-through;" : "black; ")
+            + "\" >";
         attributesDiff += inputElements.attributes[attrIndex].name + "=\"" + inputElements.attributes[attrIndex].value + "\"";
+        attributesDiff += " </span>"
+    }
+    for (let attrIndex = 0; attrIndex < generatedElements.attributes.length; attrIndex++) {
+        if (inputElements.getNamedItem(generatedElements.attributes[attrIndex].name) === null) {
+            attributesDiff += " <span style=\"color:green;\" >";
+            attributesDiff += generatedElements.attributes[attrIndex].name + "=\"" + generatedElements.attributes[attrIndex].value + "\"";
+            attributesDiff += " </span>"
+        }
     }
     document.getElementById('errorOutputArea').innerHTML += "<div style=\"color:black; margin-left: " + (depthCount * 10) + "px;\">&lt;" + inputElements.localName + attributesDiff + ((inputElements.children.length === 0) ? " /" : "") + "&gt;</div>\n";
     let comparisonIndex = 0;
