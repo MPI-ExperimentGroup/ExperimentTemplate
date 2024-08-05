@@ -62,7 +62,7 @@ public class BuildController {
             produces = "application/javascript"
     )
     public @ResponseBody
-    Flux<String> buildHistoryJS() throws IOException {
+    Flux<byte[]> buildHistoryJS() throws IOException {
 //        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
 //        return new String(Files.readAllBytes(buildhistory.toPath()));
         return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
@@ -70,6 +70,6 @@ public class BuildController {
                 .header("user-agent", "FrinexWizard")
                 .accept(MediaType.ALL)
                 .retrieve()
-                .bodyToFlux(String.class);
+                .bodyToFlux(byte[].class);
     }
 }
