@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
+import reactor.core.publisher.Flux;
 
 /**
  * @since Feb 27, 2022 11:56 AM (creation date)
@@ -64,7 +65,7 @@ public class BuildController {
             produces = "application/javascript"
     )
     public @ResponseBody
-    ResponseEntity<StreamingResponseBody> buildHistoryJS() throws IOException {
+    Flux<DataBuffer> buildHistoryJS() throws IOException {
 //        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
 //        return new String(Files.readAllBytes(buildhistory.toPath()));
         return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
@@ -72,7 +73,7 @@ public class BuildController {
                 .header("user-agent", "FrinexWizard")
                 .accept(MediaType.ALL)
                 .retrieve()
-                .bodyToMono(ResponseEntity.class)
+                .bodyToMono(Flux.class)
                 .block();
     }
 }
