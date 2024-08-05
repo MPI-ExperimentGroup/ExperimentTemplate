@@ -21,7 +21,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,8 +71,6 @@ public class BuildController {
                 .get()
                 .header("user-agent", "FrinexWizard")
                 .accept(MediaType.ALL)
-                .retrieve()
-                .bodyToMono(Flux.class)
-                .block();
+                .exchangeToFlux(clientResponse -> clientResponse.bodyToFlux(DataBuffer.class));
     }
 }
