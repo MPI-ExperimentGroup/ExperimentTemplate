@@ -46,7 +46,7 @@ public class BuildController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public @ResponseBody
-    String buildHistory() throws IOException {
+    Flux<String> buildHistory() throws IOException {
 //        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
 //        return new String(Files.readAllBytes(buildhistory.toPath()));
         return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
@@ -54,8 +54,7 @@ public class BuildController {
                 .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
                 .header("user-agent", "FrinexWizard")
                 .retrieve()
-                .bodyToMono(String.class)
-                .block();
+                .bodyToFlux(String.class);
     }
 
     @RequestMapping(
@@ -70,6 +69,7 @@ public class BuildController {
                 .get()
                 .header("user-agent", "FrinexWizard")
                 .accept(MediaType.ALL)
-                .exchangeToFlux(res -> res.bodyToFlux(String.class));
+                .retrieve()
+                .bodyToFlux(String.class);
     }
 }
