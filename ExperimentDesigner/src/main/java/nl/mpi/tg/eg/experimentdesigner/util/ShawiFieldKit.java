@@ -33,7 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardWelcomeScreen;
-import org.apache.tomcat.util.digester.ArrayStack;
+// import org.apache.tomcat.util.digester.ArrayStack;
 
 /**
  * @since Feb 22, 2016 4:39:04 PM (creation date)
@@ -82,8 +82,8 @@ public class ShawiFieldKit {
         experimentMenuPresenter.addTargetScreen(bowpedScreen);
         final WizardStimulusScreen grammaticalityScreen = createStimulusScreen(experiment, experimentMenuPresenter, "Grammaticality", experimentMenuPresenter, new String[]{"Grammaticality"}, maxStimuliPerTag, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 7, obfuscateScreenNames);
         experimentMenuPresenter.addTargetScreen(grammaticalityScreen);
-        ArrayList<String> tagList = new ArrayStack<>();
-        tagList.add("AntiNominalHierrarchy");
+        ArrayList<String> tagList = new ArrayList<>();
+        tagList.add("AntiNominalHierrarchy"); // was ArrayStack 2024-08-05
         for (int tagCounter = 1; tagCounter < 6; tagCounter++) {
             tagList.add("Filler" + tagCounter);
         }
