@@ -111,13 +111,13 @@ function compareLoadedXmlToGeneratedXml(inputElements, generatedElements, depthC
     let attributesDiff = "";
     for (let attrIndex = 0; attrIndex < inputElements.attributes.length; attrIndex++) {
         attributesDiff += " <span style=\"color:"
-            + ((generatedElements.getNamedItem(inputElements.attributes[attrIndex].name) === null) ? "red; text-decoration: line-through;" : "black; ")
+            + ((generatedElements.attributes.getNamedItem(inputElements.attributes[attrIndex].name) === null) ? "red; text-decoration: line-through;" : "black; ")
             + "\" >";
         attributesDiff += inputElements.attributes[attrIndex].name + "=\"" + inputElements.attributes[attrIndex].value + "\"";
         attributesDiff += " </span>"
     }
     for (let attrIndex = 0; attrIndex < generatedElements.attributes.length; attrIndex++) {
-        if (inputElements.getNamedItem(generatedElements.attributes[attrIndex].name) === null) {
+        if (inputElements.attributes.getNamedItem(generatedElements.attributes[attrIndex].name) === null) {
             attributesDiff += " <span style=\"color:green;\" >";
             attributesDiff += generatedElements.attributes[attrIndex].name + "=\"" + generatedElements.attributes[attrIndex].value + "\"";
             attributesDiff += " </span>"
