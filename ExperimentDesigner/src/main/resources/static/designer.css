@@ -369,3 +369,14 @@ textarea.wizardTextbox {
     background-color: #3f51b521;
 }
 /* end build listing table styles */
+
+.repositoryListing table,
+.repositoryListing th,
+.repositoryListing td {
+    border: 1px solid #d4d4d4;
+    border-spacing: 0px;
+}
+
+.repositoryListing tr:hover {
+    background-color: #3f51b521;
+}

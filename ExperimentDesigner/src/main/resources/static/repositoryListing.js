@@ -43,7 +43,7 @@ function populateListing(repository, username) {
                         tableCell.id = keyString + cellString;
                         tableRow.appendChild(tableCell);
                     }
-                    document.getElementById('experimentTable').appendChild(tableRow);
+                    document.getElementById('repositoryListing').appendChild(tableRow);
                 }
                 for (var cellString in data.table[keyString]) {
                     if (cellString === '_date') {
@@ -68,11 +68,11 @@ function doSort() {
     var sortDirection = (sortData) ? sortData.split('_')[1] : 'd';
     if ($.isNumeric(sortItem)) {
         if (sortDirection === 'd') {
-            $('#experimentTable tr:gt(0)').each(function () { }).sort(function (b, a) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#experimentTable tbody');
-            $('#experimentTable tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_a') });
+            $('#repositoryListing tr:gt(0)').each(function () { }).sort(function (b, a) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
+            $('#repositoryListing tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_a') });
         } else {
-            $('#experimentTable tr:gt(0)').each(function () { }).sort(function (a, b) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#experimentTable tbody');
-            $('#experimentTable tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_d') });
+            $('#repositoryListing tr:gt(0)').each(function () { }).sort(function (a, b) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
+            $('#repositoryListing tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_d') });
         }
     }
 }
