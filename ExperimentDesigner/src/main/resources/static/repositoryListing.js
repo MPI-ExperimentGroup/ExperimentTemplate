@@ -22,7 +22,7 @@
  Author     : Peter Withers <peter.withers@mpi.nl>
  */
 
- function updateListing() {
+ function populateListing(username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
         document.getElementById('usernameDiv').innerText = username;        
         for (var keyString in data.table) {
