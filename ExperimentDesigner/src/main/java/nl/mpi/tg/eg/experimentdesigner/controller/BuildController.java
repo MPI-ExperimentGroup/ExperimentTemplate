@@ -89,7 +89,7 @@ public class BuildController {
 
     @RequestMapping("/repositoryXml/{experimentName}")
     public @ResponseBody
-    Mono<byte[]> loadXml(@PathVariable Experiment experimentName) throws IOException {
+    Mono<byte[]> loadXml(@PathVariable String experimentName) throws IOException {
         return WebClient.create("http://frinexbuild.mpi.nl/" + experimentName + "/" + experimentName + ".xml")
                 .get()
                 .header("user-agent", "FrinexWizard")
