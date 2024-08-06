@@ -147,7 +147,7 @@ public class ExperimentController {
     public String blocksEdit(Model model, HttpServletRequest request, @PathVariable String experimentName) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "blocks");
-        model.addAttribute("experimentName", "experimentName");
+        model.addAttribute("experimentName", experimentName);
         return "design";
     }
 
