@@ -29,8 +29,10 @@ function populateListing(repository, username) {
         var repositoryAll = $("#repositoryAll").prop('checked');
         var userAll = $("#userAll").prop('checked');
         for (var keyString in data.table) {
-            if ((repositoryAll || data.table[keyString]['_repository'].value === 'repository')
-                && (userAll || data.table[keyString]['_committer'].value === 'username')) {
+            if ((repositoryAll || (data.table[keyString]['_repository'] !== undefined // older listings might not have the _repository and _committer
+                && data.table[keyString]['_repository'].value === repository))
+                && (userAll || (data.table[keyString]['_committer'] !== undefined // older listings might not have the _repository and _committer
+                    && data.table[keyString]['_committer'].value === username))) {
                 var experimentRow = document.getElementById(keyString + '_row');
                 if (!experimentRow) {
                     var tableRow = document.createElement('tr');
