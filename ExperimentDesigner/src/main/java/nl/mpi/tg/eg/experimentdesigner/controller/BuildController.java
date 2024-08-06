@@ -42,7 +42,7 @@ public class BuildController {
         model.addAttribute("detailType", "repository");
         Principal principal = request.getUserPrincipal();
         model.addAttribute("username", (principal != null) ? principal.getName() : "");
-        model.addAttribute("repository", (principal != null) ? "/git/" + principal.getName().replaceAll("[.@]?", "_") + ".git" : "");
+        model.addAttribute("repository", (principal != null) ? "/git/" + principal.getName().replaceAll("[@.]?", "_") + ".git" : "");
         return "design";
     }
 
