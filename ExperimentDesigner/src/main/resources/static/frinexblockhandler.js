@@ -66,6 +66,24 @@ function loadMySnippetsCallback(toolboxButton) {
     loadAction("snippet", toolboxButton.text);
 }
 
+function loadXml(experimentName) {
+    $.ajax({
+        type: "get",
+        url: "/repositoryXml/" + experimentName,
+        dataType: "text",
+        success: function (inputData) {
+            loadedXml = $($.parseXML(inputData)).find("experiment")[0];
+            buildFromXml(loadedXml, null);
+        },
+        error: function (xhr, status) {
+            let errorBlock = workspace.newBlock('frinex_htmlTextType');
+            errorBlock.setFieldValue(status, 'featureText');
+            errorBlock.initSvg();
+            errorBlock.render();
+        }
+    });
+}
+
 function loadAction(actionType, actionName) {
     // var parentBlock = workspace.newBlock('frinex_actionButtonType');
     // parentBlock.initSvg();

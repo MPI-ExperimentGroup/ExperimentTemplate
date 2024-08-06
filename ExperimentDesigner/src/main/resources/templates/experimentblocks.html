@@ -28,6 +28,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 <body>
     <div th:fragment="editorblocks">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            $(window).on("load", function () {
+                var experimentName = /*[[${experimentName}]]*/ undefined;
+                if (experimentName !== undefined) {
+                    loadXml(experimentName);
+                }
+            });
+            /*]]>*/
+        </script>
         <script src="./webjars/blockly/blockly.min.js"></script>
         <script src="frinexblocks.js"></script>
         <table>
@@ -42,7 +52,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </tr>
             <tr>
                 <td><textarea id="previewArea" style="width:100%" rows="100"></textarea></td>
-                <td style="vertical-align: top;"><div id="errorOutputArea" style="width:100%"></div></td>
+                <td style="vertical-align: top;">
+                    <div id="errorOutputArea" style="width:100%"></div>
+                </td>
             </tr>
         </table>
         <script src="frinexblockhandler.js"></script>

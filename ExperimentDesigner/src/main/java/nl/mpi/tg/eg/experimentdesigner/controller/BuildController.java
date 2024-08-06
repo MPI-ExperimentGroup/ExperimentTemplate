@@ -20,9 +20,11 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 import java.io.IOException;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -81,6 +83,17 @@ public class BuildController {
                 .get()
                 .header("user-agent", "FrinexWizard")
                 .accept(MediaType.ALL)
+                .retrieve()
+                .bodyToMono(byte[].class);
+    }
+
+    @RequestMapping("/repositoryXml/{experimentName}")
+    public @ResponseBody
+    Mono<byte[]> loadXml(@PathVariable Experiment experimentName) throws IOException {
+        return WebClient.create("http://frinexbuild.mpi.nl/" + experimentName + "/" + experimentName + ".xml")
+                .get()
+                .header("user-agent", "FrinexWizard")
+                .accept(MediaType.APPLICATION_XML)
                 .retrieve()
                 .bodyToMono(byte[].class);
     }
