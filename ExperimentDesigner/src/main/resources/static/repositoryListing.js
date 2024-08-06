@@ -22,4 +22,41 @@
  Author     : Peter Withers <peter.withers@mpi.nl>
  */
 
+ function updateListing() {
+    $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
+        for (var keyString in data.table) {
+            var experimentRow = document.getElementById(keyString + '_row');
+            if (!experimentRow) {
+                var tableRow = document.createElement('tr');
+                experimentRow = tableRow;
+                tableRow.id = keyString + '_row';
+                for (var cellString of ['_repository', '_committer', '_experiment', '_date']) {
+                    var tableCell = document.createElement('td');
+                    tableCell.id = keyString + cellString;
+                    tableRow.appendChild(tableCell);
+                }
+                document.getElementById('experimentTable').appendChild(tableRow);
+            }
+        }
+        doSort();
+    });
+}
 
+function doSort() {
+    var sortData = location.href.split('#')[1];
+    var sortItem = (sortData) ? sortData.split('_')[0] : '4';
+    var sortDirection = (sortData) ? sortData.split('_')[1] : 'd';
+    if ($.isNumeric(sortItem)) {
+        if (sortDirection === 'd') {
+            $('#experimentTable tr:gt(0)').each(function () { }).sort(function (b, a) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#experimentTable tbody');
+            $('#experimentTable tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_a') });
+        } else {
+            $('#experimentTable tr:gt(0)').each(function () { }).sort(function (a, b) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#experimentTable tbody');
+            $('#experimentTable tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_d') });
+        }
+    }
+}
+
+$(window).on('hashchange', function (e) {
+    doSort();
+});
