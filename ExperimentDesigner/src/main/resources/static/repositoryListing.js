@@ -24,6 +24,7 @@
 
 function populateListing(username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
+        document.getElementById('repositoryDiv').innerText = repository;
         document.getElementById('usernameDiv').innerText = username;
         for (var keyString in data.table) {
             var experimentRow = document.getElementById(keyString + '_row');

@@ -28,13 +28,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 <body>
     <div th:fragment="repositoryListing">
-        <input type="checkbox" name="repository" value="ON" />
-        <input type="checkbox" name="built_by" value="ON" />
+        <div id="repositoryDiv"></div>
         <div id="usernameDiv"></div>
         <table id='experimentTable'>
             <tr>
-                <td><a href="#1">Repository</a></td>
-                <td><a href="#2">Committer</a></td>
+                <td><a href="#1">Repository<input type="checkbox" name="repositoryAll" />(all)</a></td>
+                <td><a href="#2">Committer<input type="checkbox" name="userAll" />(all)</a></td>
                 <td><a href="#3">Experiment</a></td>
                 <td><a href="#4">Date</a></td>
             </tr>
@@ -42,7 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script src='repositoryListing.js'></script>
         <script th:inline="javascript">
             /*<![CDATA[*/
-            populateListing(/*[[${username}]]*/ '');
+            populateListing(/*[[${repository}]]*/ '', /*[[${username}]]*/ '');
             /*]]>*/
         </script>
     </div>
