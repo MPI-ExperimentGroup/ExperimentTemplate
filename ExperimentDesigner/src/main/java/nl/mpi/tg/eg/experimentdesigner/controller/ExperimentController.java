@@ -137,7 +137,14 @@ public class ExperimentController {
     }
 
     @RequestMapping("/blocks")
-    public String blocksWizard(Model model, HttpServletRequest request, @RequestParam String experimentName) {
+    public String blocksWizard(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "blocks");
+        return "design";
+    }
+
+    @RequestMapping("/blocks/{experimentName}")
+    public String blocksEdit(Model model, HttpServletRequest request, @PathVariable String experimentName) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "blocks");
         model.addAttribute("experimentName", "experimentName");
