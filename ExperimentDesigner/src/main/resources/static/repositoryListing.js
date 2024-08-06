@@ -26,8 +26,8 @@ function populateListing(repository, username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
         document.getElementById('repositoryDiv').innerText = repository;
         document.getElementById('usernameDiv').innerText = username;
-        var repositoryAll = $("#repositoryAll").prop('checked');
-        var userAll = $("#userAll").prop('checked');
+        var repositoryAll = !$("#repositoryAll").prop('checked');
+        var userAll = !$("#userAll").prop('checked');
         for (var keyString in data.table) {
             var experimentRow = document.getElementById(keyString + '_row');
             if ((repositoryAll || (data.table[keyString]['_repository'] !== undefined // older listings might not have the _repository and _committer
@@ -38,7 +38,7 @@ function populateListing(repository, username) {
                     var tableRow = document.createElement('tr');
                     experimentRow = tableRow;
                     tableRow.id = keyString + '_row';
-                    for (var cellString of ['_repository', '_committer', '_experiment', '_date']) {
+                    for (var cellString of ['_repository', '_committer', '_experiment', '_date', '_edit']) {
                         var tableCell = document.createElement('td');
                         tableCell.id = keyString + cellString;
                         tableRow.appendChild(tableCell);
@@ -49,6 +49,7 @@ function populateListing(repository, username) {
                     if (cellString === '_date') {
                         var currentBuildDate = new Date(data.table[keyString][cellString].value);
                         document.getElementById(keyString + cellString).innerHTML = currentBuildDate.getFullYear() + '-' + ((currentBuildDate.getMonth() + 1 < 10) ? '0' : '') + (currentBuildDate.getMonth() + 1) + '-' + ((currentBuildDate.getDate() < 10) ? '0' : '') + currentBuildDate.getDate() + 'T' + ((currentBuildDate.getHours() < 10) ? '0' : '') + currentBuildDate.getHours() + ':' + ((currentBuildDate.getMinutes() < 10) ? '0' : '') + currentBuildDate.getMinutes() + ':' + ((currentBuildDate.getSeconds() < 10) ? '0' : '') + currentBuildDate.getSeconds();
+                        document.getElementById(keyString + '_edit').innerHTML = '<a href=\'/blocks?' + data.table[keyString]['_experiment'].value + '\'>edit</a>';
                     } else if (cellString === '_repository' || cellString === '_committer' || cellString === '_experiment') {
                         var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
                         document.getElementById(keyString + cellString).innerHTML = data.table[keyString][cellString].value + buildTimeSting;
