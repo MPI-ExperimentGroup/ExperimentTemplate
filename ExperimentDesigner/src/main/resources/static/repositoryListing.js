@@ -22,21 +22,30 @@
  Author     : Peter Withers <peter.withers@mpi.nl>
  */
 
- function populateListing(username) {
+function populateListing(username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
-        document.getElementById('usernameDiv').innerText = username;        
+        document.getElementById('usernameDiv').innerText = username;
         for (var keyString in data.table) {
             var experimentRow = document.getElementById(keyString + '_row');
             if (!experimentRow) {
                 var tableRow = document.createElement('tr');
                 experimentRow = tableRow;
                 tableRow.id = keyString + '_row';
-                for (var cellString of ['_repository', '_committer', '_experiment', '_date']) {
+                for (var cellString of ['_repository', '_committer', '_experiment', '_date', '_frinex_version', '_validation_json_xsd']) {
                     var tableCell = document.createElement('td');
                     tableCell.id = keyString + cellString;
                     tableRow.appendChild(tableCell);
                 }
                 document.getElementById('experimentTable').appendChild(tableRow);
+            }
+            for (var cellString in data.table[keyString]) {
+                if (cellString === '_date') {
+                    var currentBuildDate = new Date(data.table[keyString][cellString].value);
+                    document.getElementById(keyString + cellString).innerHTML = currentBuildDate.getFullYear() + '-' + ((currentBuildDate.getMonth() + 1 < 10) ? '0' : '') + (currentBuildDate.getMonth() + 1) + '-' + ((currentBuildDate.getDate() < 10) ? '0' : '') + currentBuildDate.getDate() + 'T' + ((currentBuildDate.getHours() < 10) ? '0' : '') + currentBuildDate.getHours() + ':' + ((currentBuildDate.getMinutes() < 10) ? '0' : '') + currentBuildDate.getMinutes() + ':' + ((currentBuildDate.getSeconds() < 10) ? '0' : '') + currentBuildDate.getSeconds();
+                } else {
+                    var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
+                    document.getElementById(keyString + cellString).innerHTML = data.table[keyString][cellString].value + buildTimeSting;
+                }
             }
         }
         doSort();
