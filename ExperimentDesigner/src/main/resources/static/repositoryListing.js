@@ -29,11 +29,11 @@ function populateListing(repository, username) {
         var repositoryAll = $("#repositoryAll").prop('checked');
         var userAll = $("#userAll").prop('checked');
         for (var keyString in data.table) {
+            var experimentRow = document.getElementById(keyString + '_row');
             if ((repositoryAll || (data.table[keyString]['_repository'] !== undefined // older listings might not have the _repository and _committer
                 && data.table[keyString]['_repository'].value === repository))
                 && (userAll || (data.table[keyString]['_committer'] !== undefined // older listings might not have the _repository and _committer
                     && data.table[keyString]['_committer'].value === username))) {
-                var experimentRow = document.getElementById(keyString + '_row');
                 if (!experimentRow) {
                     var tableRow = document.createElement('tr');
                     experimentRow = tableRow;
@@ -54,6 +54,8 @@ function populateListing(repository, username) {
                         document.getElementById(keyString + cellString).innerHTML = data.table[keyString][cellString].value + buildTimeSting;
                     }
                 }
+            } else if (experimentRow) {
+                experimentRow.remove();
             }
         }
         doSort();
