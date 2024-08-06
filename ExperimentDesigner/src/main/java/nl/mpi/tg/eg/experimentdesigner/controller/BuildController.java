@@ -35,6 +35,13 @@ import reactor.core.publisher.Mono;
 @Controller
 public class BuildController {
 
+    @RequestMapping("/repository")
+    public String repositoryListing(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "repository");
+        return "design";
+    }
+
     @RequestMapping("/builds")
     public String buildListing(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
