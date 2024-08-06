@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import java.io.IOException;
+import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,8 @@ public class BuildController {
     public String repositoryListing(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "repository");
+        Principal principal = request.getUserPrincipal();
+        model.addAttribute("username", (principal != null) ? principal.getName() : "");
         return "design";
     }
 
