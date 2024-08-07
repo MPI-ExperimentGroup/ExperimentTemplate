@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
+import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,14 +49,38 @@ public class AssignedValueController {
 //        tagRepository.saveAll(experimentDataList);
 //    }
     @RequestMapping(value = "/assignValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AssignedValue> assignValue(@RequestBody TagData tagData) {
+    public ResponseEntity<DataSubmissionResult> assignValue(@RequestBody TagData tagData) {
         String[] valueOptions = tagData.getTagValue().split(",");
-        final ResponseEntity responseEntity;
+        final ResponseEntity<DataSubmissionResult> responseEntity;
         if (!"assignValue".equals(tagData.getEventTag()) && !"serverValueComplete".equals(tagData.getEventTag())) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-//            List<AssignedValue> assignedValues = tagRepository.countAssignedValues("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
-//            List<AssignedValue> completedValues = tagRepository.countAssignedValues("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            Random randomStream = new Random();
+            final String selectedValue;
+            // if we have gotten here then the metadata field on the client side must have been cleared, therefore we always assign a value
+            List<TagData> assignedValues = tagRepository.findByEventTagAndTagValueInOrderByTagDateAsc("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            List<TagData> completedValues = tagRepository.findByEventTagAndTagValueInOrderByTagDateAsc("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            final List<String> unassignedValues = Arrays.asList(valueOptions);
+            for (TagData assignedTag : assignedValues) {
+                unassignedValues.remove(assignedTag.getTagValue());
+            }
+            if (unassignedValues.isEmpty()) {
+                final List<String> uncompletedValues = Arrays.asList(valueOptions);
+                for (TagData completedTag : completedValues) {
+                    uncompletedValues.remove(completedTag.getTagValue());
+                }
+                if (uncompletedValues.isEmpty()) {
+                    // all values have been assigned and completed we choose a random one
+                    final List<String> allValues = Arrays.asList(valueOptions);
+                    selectedValue = allValues.get(randomStream.nextInt(allValues.size()));
+                } else {
+                    // there is a value that has not been completed so we choose a random uncompleted one
+                    selectedValue = uncompletedValues.get(randomStream.nextInt(uncompletedValues.size()));
+                }
+            } else {
+                // there is a value that has not been used so we choose a random unassigned one
+                selectedValue = unassignedValues.get(randomStream.nextInt(unassignedValues.size()));
+            }
 //            AssignedValue assignedRecord = null;
 //            for (String currentValue : valueOptions) {
 //                int assignedIndex = assignedValues.indexOf(currentValue);
@@ -110,13 +135,9 @@ public class AssignedValueController {
 //                    }
 //                }
 //            }
-//            if (assignedRecord != null) {
-//                final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", assignedRecord.getValue(), 0, new Date());
-//                tagRepository.save(assignedTagData);
-//                responseEntity = new ResponseEntity<>(assignedTagData, HttpStatus.OK);
-//            } else {
-                responseEntity = new ResponseEntity<>(HttpStatus.CONFLICT);
-//            }
+            final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", selectedValue, 0, new Date());
+            tagRepository.save(assignedTagData);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(tagData.getUserId(), selectedValue, true), HttpStatus.OK);
         }
         return responseEntity;
     }
