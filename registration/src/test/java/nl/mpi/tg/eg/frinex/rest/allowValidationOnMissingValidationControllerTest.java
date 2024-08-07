@@ -403,7 +403,7 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<AssignedValue> countAssignedValues(String eventTag, Set<String> valueOptions) {
+            public List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(String eventTag, Set<String> valueOptions) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
