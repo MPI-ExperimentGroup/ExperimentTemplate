@@ -15489,11 +15489,6 @@ function getFeatureBlocks() {
       },
       {
         "kind": "button",
-        "text": "stimulus_event_example",
-        "callbackKey": "loadExampleCallback"
-      },
-      {
-        "kind": "button",
         "text": "stimulus_lists_example",
         "callbackKey": "loadExampleCallback"
       },
