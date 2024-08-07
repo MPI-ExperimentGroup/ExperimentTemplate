@@ -4266,9 +4266,7 @@ function getFeatureBlocks() {
       "message0": 'serverValueAssign %1',
       "args0": [
         {
-          "type": "field_input",
-          "name": "featureText",
-          "check": "String"
+          "type": "input_dummy",
         }
       ],
       "message1": 'targetOptions %1',
@@ -4322,9 +4320,7 @@ function getFeatureBlocks() {
       "message0": 'serverValueComplete %1',
       "args0": [
         {
-          "type": "field_input",
-          "name": "featureText",
-          "check": "String"
+          "type": "input_dummy",
         }
       ],
       "message1": 'fieldName %1',
@@ -12341,7 +12337,7 @@ function getFeatureBlocks() {
      childData += '<onError>\n';
      childData += generator.statementToCode(block, 'onError');
      childData += '</onError>\n';
-    return '<serverValueAssign block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" targetOptions="' + block.getFieldValue('targetOptions') +'" fieldName="' + block.getFieldValue('fieldName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</serverValueAssign>\n');
+    return '<serverValueAssign block_id="' + block.id + '" targetOptions="' + block.getFieldValue('targetOptions') +'" fieldName="' + block.getFieldValue('fieldName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</serverValueAssign>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_serverValueCompleteType'] = function(block, generator) {
     var childData = '';
@@ -12351,7 +12347,7 @@ function getFeatureBlocks() {
      childData += '<onError>\n';
      childData += generator.statementToCode(block, 'onError');
      childData += '</onError>\n';
-    return '<serverValueComplete block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" fieldName="' + block.getFieldValue('fieldName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</serverValueComplete>\n');
+    return '<serverValueComplete block_id="' + block.id + '" fieldName="' + block.getFieldValue('fieldName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</serverValueComplete>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_cancelPauseTimersType'] = function(block, generator) {
     var childData = '';
