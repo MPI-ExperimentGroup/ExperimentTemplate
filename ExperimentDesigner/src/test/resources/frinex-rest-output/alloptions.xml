@@ -267,7 +267,7 @@
         </switchUserIdButton>
         <selectUserMenu fieldName="workerId" styleName="styleName"/>
         <selectLocaleMenu styleName="styleName"/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
+        <serverValueAssign fieldName="workerId" targetOptions="target">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -275,7 +275,7 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
+        <serverValueComplete fieldName="workerId">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -1854,7 +1854,7 @@
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
+        <serverValueAssign fieldName="workerId" targetOptions="target">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -1862,7 +1862,7 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
+        <serverValueComplete fieldName="workerId">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -3141,7 +3141,7 @@
         </switchUserIdButton>
         <selectUserMenu fieldName="workerId"/>
         <selectLocaleMenu/>
-        <serverValueAssign featureText="" fieldName="workerId">
+        <serverValueAssign fieldName="workerId">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -3149,7 +3149,7 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
+        <serverValueComplete fieldName="workerId">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -4704,7 +4704,7 @@
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <serverValueAssign featureText="" fieldName="workerId">
+        <serverValueAssign fieldName="workerId">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
@@ -4712,7 +4712,7 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
+        <serverValueComplete fieldName="workerId">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>

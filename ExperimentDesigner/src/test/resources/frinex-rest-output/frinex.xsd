@@ -3185,28 +3185,7 @@
 <xs:annotation>
 <xs:documentation>Assigns a value from targetOptions based on the distribution data known by the server and puts the result into the metadata field identified by fieldName. Any value in the metadata field will be overwritten when valueOptions is supplied. However if the metadata field contains an item from targetOptions it will be unchanged and the server assigned counts will not be affected.</xs:documentation>
 </xs:annotation>
-<xs:sequence>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="featureText" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
-</xs:sequence>
-<xs:attribute name="featureText" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="targetOptions" type="xs:string">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
@@ -3222,28 +3201,7 @@
 <xs:annotation>
 <xs:documentation>Marks the server assigned value stored in the metadata field identified by fieldName as completed on the server. This will not change the value stored in the metadata field. If a new assignment is required then the metadata field would need to be manually cleared before requesting a new value via serverValueAssign. The completion of values will affect the distribution and therefore which values might be assigned next.</xs:documentation>
 </xs:annotation>
-<xs:sequence>
-<xs:element name="translation" minOccurs="0" maxOccurs="unbounded">
-<xs:complexType>
-<xs:attribute name="locale" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="featureText" type="xs:string">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-</xs:element>
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
-</xs:sequence>
-<xs:attribute name="featureText" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>Text that will be visible to the user.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="fieldName" type="postName" use="required">
 <xs:annotation>
 <xs:documentation>The postName used to identify a metadata field.</xs:documentation>
