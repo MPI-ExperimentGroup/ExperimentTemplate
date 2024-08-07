@@ -4262,6 +4262,110 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
+      "type": "frinex_serverValueAssignType",
+      "message0": 'serverValueAssign %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "featureText",
+          "check": "String"
+        }
+      ],
+      "message1": 'targetOptions %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "targetOptions",
+          "check": "String"
+        }
+      ],
+      "message2": 'fieldName %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "fieldName",
+          "check": "String"
+        }
+      ],
+      "message3": "onSuccess %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message4": "onError %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_serverValueCompleteType",
+      "message0": 'serverValueComplete %1',
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "featureText",
+          "check": "String"
+        }
+      ],
+      "message1": 'fieldName %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "fieldName",
+          "check": "String"
+        }
+      ],
+      "message2": "onSuccess %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message3": "onError %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
       "type": "frinex_cancelPauseTimersType",
       "message0": 'cancelPauseTimers %1',
       "args0": [
@@ -12229,6 +12333,26 @@ function getFeatureBlocks() {
     var childData = '';
     return '<showCurrentMs block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</showCurrentMs>\n');
   };
+  javascript.javascriptGenerator.forBlock['frinex_serverValueAssignType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<serverValueAssign block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" targetOptions="' + block.getFieldValue('targetOptions') +'" fieldName="' + block.getFieldValue('fieldName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</serverValueAssign>\n');
+  };
+  javascript.javascriptGenerator.forBlock['frinex_serverValueCompleteType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<serverValueComplete block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" fieldName="' + block.getFieldValue('fieldName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</serverValueComplete>\n');
+  };
   javascript.javascriptGenerator.forBlock['frinex_cancelPauseTimersType'] = function(block, generator) {
     var childData = '';
     return '<cancelPauseTimers block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</cancelPauseTimers>\n');
@@ -13835,6 +13959,14 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_serverValueAssignType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_serverValueCompleteType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_cancelPauseTimersType"
       },
       {
@@ -15353,6 +15485,11 @@ function getFeatureBlocks() {
       {
         "kind": "button",
         "text": "sound_onset_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
+        "text": "stimulus_event_example",
         "callbackKey": "loadExampleCallback"
       },
       {

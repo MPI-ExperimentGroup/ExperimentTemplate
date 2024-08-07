@@ -77,22 +77,6 @@
             </onError>
         </switchUserIdButton>
         <eraseUsersDataButton featureText="eraseUsersDataButton" groupId="groupId" styleName="styleName" target="target"/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <displayCompletionCode/>
         <generateCompletionCode>
             <onSuccess>
@@ -494,22 +478,6 @@
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <cancelPauseTimers/>
         <centrePage/>
         <actionButton featureText="Clear Screen">
@@ -2275,14 +2243,6 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess/>
-            <onError/>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess/>
-            <onError/>
-        </serverValueComplete>
         <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -2337,22 +2297,6 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -2459,22 +2403,6 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -2571,22 +2499,6 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
@@ -2748,22 +2660,6 @@
         <uploadUsersDataMenu fieldName="workerId"/>
         <addDebugWidgets/>
         <eraseLocalStorageButton groupId="groupId" styleName="styleName"/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -2847,22 +2743,6 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -2975,22 +2855,6 @@
             <svgGroupMatching evaluateTokens="evaluateTokens" visible="visible" groupId="groupId"/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="serverValueAssign" fieldName="workerId" targetOptions="target">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="serverValueComplete" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
             <plainText featureText="plainText in backgroundImage"/>
@@ -3087,22 +2951,6 @@
             </onError>
         </switchUserIdButton>
         <eraseUsersDataButton featureText="" target="target"/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <displayCompletionCode/>
         <generateCompletionCode>
             <onSuccess>
@@ -3504,22 +3352,6 @@
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <cancelPauseTimers/>
         <centrePage/>
         <actionButton featureText="Clear Screen">
@@ -5209,14 +5041,6 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <htmlTokenText featureText=""/>
         <actionButton featureText=""/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess/>
-            <onError/>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess/>
-            <onError/>
-        </serverValueComplete>
         <helpDialogue featureText="" closeButtonLabel=""/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -5271,22 +5095,6 @@
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <hasGetParameter parameterName="">
             <conditionTrue>
@@ -5393,22 +5201,6 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
@@ -5505,22 +5297,6 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <cancelPauseTimers/>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
@@ -5682,22 +5458,6 @@
         <uploadUsersDataMenu fieldName="workerId"/>
         <addDebugWidgets/>
         <eraseLocalStorageButton/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <hasGetParameter parameterName="">
             <conditionTrue>
@@ -5781,22 +5541,6 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
@@ -5909,22 +5653,6 @@
             <svgGroupMatching evaluateTokens="" visible=""/>
         </svgLoadGroups>
         <addPadding/>
-        <serverValueAssign featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueAssign>
-        <serverValueComplete featureText="" fieldName="workerId">
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-        </serverValueComplete>
         <centrePage/>
         <backgroundImage msToNext="60" src="">
             <plainText featureText="plainText in backgroundImage"/>
