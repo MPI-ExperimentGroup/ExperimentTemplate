@@ -13,7 +13,7 @@
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
     </metadata>
-    <presenter self="Assigned_Value_Presenter">
+    <presenter self="Assigned_Value_Presenter" type="metadata">
         <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
         <actionButton featureText="Assign Value">
             <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
