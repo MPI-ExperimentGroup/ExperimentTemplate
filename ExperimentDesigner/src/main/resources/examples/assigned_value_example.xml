@@ -1,7 +1,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Assigned Value Example"> 
-    <deployment state="staging" /> 
+    <deployment state="staging" />  
     <administration>
         <chart label="Assigned Values" type="pie">
             <!-- <tagData matching="assignedValue" /> -->
