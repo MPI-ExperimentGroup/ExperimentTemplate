@@ -88,7 +88,9 @@ function generateChart(chartData) {
             $.getJSON('tagevents/search/countByScreenNameLikeAndEventTagLikeAndTagValueLike'
                     + '?screenName=' + encodeURIComponent(tagData.screenName)
                     + '&eventTag=' + tagData.eventTag
-                    + '&tagValue=' + tagData.tagValue,
+                    + '&tagValue=' + tagData.tagValue
+                    + '&dummy=value'
+                    ,
                     function (responseData) {
                         // console.log(responseData);
                         data.datasets[0].data[tagDataIndex] = responseData;
