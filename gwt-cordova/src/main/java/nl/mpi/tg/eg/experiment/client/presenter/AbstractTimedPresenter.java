@@ -525,13 +525,13 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
                     }
                 }
             };
-            submissionService.serverValueAssign(userResults.getUserData().getUserId(), getSelfTag(), "serverValueAssign", targetOptions, duration.elapsedMillis(), dataSubmissionListener);
+            submissionService.serverValueAssign(userResults.getUserData().getUserId(), getSelfTag(), "assignValue", targetOptions, duration.elapsedMillis(), dataSubmissionListener);
         }
     }
 
     protected void serverValueComplete(final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "serverValueComplete", metadataString, duration.elapsedMillis());
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "completedValue", metadataString, duration.elapsedMillis());
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
