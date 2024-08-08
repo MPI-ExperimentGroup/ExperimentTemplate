@@ -121,7 +121,7 @@
                         <htmlText featureText="GroupStreamingExample groupNetworkSynchronising" />
                         <addPadding />
                         <htmlTokenText featureText="Stimulus: ::stimulusId:: Phase: ::groupRequestedPhase:: Channel: ::groupActiveChannel::" />                    
-                    </regionReplace>
+                    </regionReplace> 
                 </groupNetworkSynchronising>
                 <groupPhaseListeners>
                     <!-- ab video|bc video| ca video|ab canvas|bc canvas|ca canvas|abc video|abc canvas -->

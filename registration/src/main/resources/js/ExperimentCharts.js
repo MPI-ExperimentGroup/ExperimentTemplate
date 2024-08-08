@@ -85,7 +85,7 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(tagData.colour + '20');
             data.datasets[0].borderColor.push(tagData.colour + 'ff');
-            $.getJSON('tagData/search/countByScreenNameLikeAndEventTagLikeAndTagValueLike'
+            $.getJSON('tagevents/search/countByScreenNameLikeAndEventTagLikeAndTagValueLike'
                     + '?screenName=' + encodeURIComponent(tagData.screenName)
                     + '&eventTag=' + tagData.eventTag
                     + '&tagValue=' + tagData.tagValue,

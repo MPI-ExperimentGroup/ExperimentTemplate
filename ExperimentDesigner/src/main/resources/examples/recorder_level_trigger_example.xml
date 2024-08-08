@@ -12,7 +12,7 @@
         .indicatorOff {
                 background: none;
                 padding: 15px;
-                border-radius: 15px;
+                border-radius: 15px; 
         }
         .recordingLevelIndicator {
                 height: 5px;
