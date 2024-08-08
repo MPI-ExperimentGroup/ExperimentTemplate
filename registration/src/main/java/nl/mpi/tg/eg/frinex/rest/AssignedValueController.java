@@ -17,12 +17,12 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,12 +60,12 @@ public class AssignedValueController {
             // if we have gotten here then the metadata field on the client side must have been cleared, therefore we always assign a value
             List<TagData> assignedValues = tagRepository.findByEventTagAndTagValueInOrderByTagDateAsc("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
             List<TagData> completedValues = tagRepository.findByEventTagAndTagValueInOrderByTagDateAsc("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
-            final List<String> unassignedValues = Arrays.asList(valueOptions);
+            final ArrayList<String> unassignedValues = new ArrayList(Arrays.asList(valueOptions));
             for (TagData assignedTag : assignedValues) {
                 unassignedValues.remove(assignedTag.getTagValue());
             }
             if (unassignedValues.isEmpty()) {
-                final List<String> uncompletedValues = Arrays.asList(valueOptions);
+                final ArrayList<String> uncompletedValues = new ArrayList(Arrays.asList(valueOptions));
                 for (TagData completedTag : completedValues) {
                     uncompletedValues.remove(completedTag.getTagValue());
                 }
