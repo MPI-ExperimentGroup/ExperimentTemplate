@@ -8,7 +8,7 @@
         <field controlledMessage="." controlledRegex="." postName="name" registrationField="name"></field>
     </metadata>
     <presenter type="stimulus" self="induce_storage_error">
-        <htmlText
+        <htmlText 
             featureText="The function of this presenter is to induce an out of storage error. This is done by automatically stuffing data into the local storage and creating new participants until it breaks."></htmlText>
         <setMetadataValue fieldName="name" replacementRegex=""
             dataLogFormat="::formatDateTime_yyyy.MM.dd HH:mm:ss::" />
