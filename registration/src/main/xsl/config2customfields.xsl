@@ -561,7 +561,9 @@
                                 {label: "</xsl:text>
                             <xsl:value-of select="@label" />
                             <xsl:text>", fieldname: "</xsl:text>
-                            <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                                <xsl:for-each select="tokenize(@fieldName,'_')">
+                                    <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                                </xsl:for-each>
                             <xsl:text>", matching: "</xsl:text>
                             <xsl:value-of select="@matching" />
                             <xsl:text>", colour: "</xsl:text>

@@ -2,7 +2,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Assigned Value Example">   
     <deployment state="staging" />     
-    <administration>
+    <administration> 
         <chart label="Assigned Values" type="pie">
             <tagData label="assigned" colour="#220000" eventTag="assignedValue" /> 
             <tagData label="completed" colour="#000022" eventTag="completedValue" /> 
