@@ -4,10 +4,17 @@
     <deployment state="staging" />  
     <administration>
         <chart label="Assigned Values" type="pie">
-            <!-- <tagData matching="assignedValue" /> --> 
+            <tagData label="assigned" colour="#220000" eventTag="assignedValue" /> 
+            <tagData label="completed" colour="#000022" eventTag="completedValue" /> 
         </chart>
-        <chart label="Completed Values" type="pie">
-            <!-- <tagData matching="completedValue" /> -->
+        <chart label="" type="bar">
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Lophocytes" colour="#220000" />
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Collencytes" colour="#220022" />
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Rhabdiferous" colour="#220044" />
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Oocytes" colour="#220066" />
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Sclerocytes" colour="#220088" />
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Myocytes" colour="#2200AA" />
+            <metadata label="Assigned Value" fieldName="assigned_value" matching="Archaeocytes" colour="#2200BB" />
         </chart>
     </administration>
     <metadata>
@@ -39,6 +46,7 @@
             <setMetadataValue fieldName="assigned_value" dataLogFormat=""/>
             <gotoPresenter target="Assigned_Value_Presenter"/>
         </actionButton>
+        <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
     </presenter>
     <stimuli/>
 </experiment>
