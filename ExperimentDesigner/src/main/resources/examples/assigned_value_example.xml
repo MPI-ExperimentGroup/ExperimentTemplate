@@ -32,8 +32,9 @@
             <tagData label="ArchaeocytesAssigned" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
             <tagData label="ArchaeocytesCompleted" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
         </chart>
-        <dataTable label="Events Assigned" source="tag" eventTag="assignedValue" columnNames="UserId,TagValue,TagDate" />
-        <dataTable label="Events Completed" source="tag" eventTag="completedValue" columnNames="UserId,TagValue,TagDate" />
+        <dataTable label="Events Assigned" source="tagdata" eventTag="assignedValue" columnNames="UserId,TagValue,TagDate" />
+        <dataTable label="Events Completed" source="tagdata" eventTag="completedValue" columnNames="UserId,TagValue,TagDate" />
+        <dataTable label="Events Assigned / Completed" source="tagdata" eventTag="%edValue" columnNames="UserId,TagValue,TagDate" />
     </administration>
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
