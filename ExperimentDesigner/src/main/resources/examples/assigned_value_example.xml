@@ -82,7 +82,7 @@
     <presenter type="menu">
         <allMenuItems />
     </presenter>
-    <presenter self="Assignment_Before_Completion" type="metadata">
+    <presenter self="Assignment_Before_Completion" type="stimulus">
         <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
         <actionButton featureText="Assign Value">
             <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
