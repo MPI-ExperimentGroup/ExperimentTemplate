@@ -738,7 +738,7 @@
 <xs:restriction base="xs:token">
 <xs:enumeration value="stimulusResponse"/>
 <xs:enumeration value="tagpair"/>
-<xs:enumeration value="tag"/>
+<xs:enumeration value="tagdata"/>
 <xs:enumeration value="metadata"/>
 <xs:enumeration value="timestamp"/>
 </xs:restriction>
@@ -988,7 +988,7 @@
 <xs:restriction base="xs:token">
 <xs:enumeration value="stimulusResponse"/>
 <xs:enumeration value="tagpair"/>
-<xs:enumeration value="tag"/>
+<xs:enumeration value="tagdata"/>
 <xs:enumeration value="metadata"/>
 <xs:enumeration value="timestamp"/>
 </xs:restriction>
