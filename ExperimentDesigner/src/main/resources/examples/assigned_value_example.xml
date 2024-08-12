@@ -4,17 +4,33 @@
     <deployment state="staging" />     
     <administration> 
         <chart label="Assigned Values" type="pie">
-            <tagData label="assigned" colour="#220000" eventTag="assignedValue" /> 
-            <tagData label="completed" colour="#000022" eventTag="completedValue" /> 
+            <tagData label="assigned" colour="#550000" eventTag="assignedValue" /> 
+            <tagData label="completed" colour="#000055" eventTag="completedValue" /> 
         </chart>
-        <chart label="" type="bar">
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Lophocytes" colour="#220000" />
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Collencytes" colour="#220022" />
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Rhabdiferous" colour="#220044" />
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Oocytes" colour="#220066" />
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Sclerocytes" colour="#220088" />
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Myocytes" colour="#2200AA" />
-            <metadata label="Assigned Value" fieldName="assigned_value" matching="Archaeocytes" colour="#2200BB" />
+        <chart label="metadata assigned_value" type="bar">
+            <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#BB0000" />
+            <metadata label="Collencytes" fieldName="assigned_value" matching="Collencytes" colour="#AA0022" />
+            <metadata label="Rhabdiferous" fieldName="assigned_value" matching="Rhabdiferous" colour="#880044" />
+            <metadata label="Oocytes" fieldName="assigned_value" matching="Oocytes" colour="#660066" />
+            <metadata label="Sclerocytes" fieldName="assigned_value" matching="Sclerocytes" colour="#440088" />
+            <metadata label="Myocytes" fieldName="assigned_value" matching="Myocytes" colour="#2200AA" />
+            <metadata label="Archaeocytes" fieldName="assigned_value" matching="Archaeocytes" colour="#0000BB" />
+        </chart>
+        <chart label="Assigned / Completed" type="bar">
+            <tagData label="LophocytesAssigned" eventTag="assignedValue" tagValue="Lophocytes" colour="#BB0000" />
+            <tagData label="LophocytesCompleted" eventTag="completedValue" tagValue="Lophocytes" colour="#BB0000" />
+            <tagData label="CollencytesAssigned" eventTag="assignedValue" tagValue="Collencytes" colour="#AA0022" />
+            <tagData label="CollencytesCompleted" eventTag="completedValue" tagValue="Collencytes" colour="#AA0022" />
+            <tagData label="RhabdiferousAssigned" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880044" />
+            <tagData label="RhabdiferousCompleted" eventTag="completedValue" tagValue="Rhabdiferous" colour="#880044" />
+            <tagData label="OocytesAssigned" eventTag="assignedValue" tagValue="Oocytes" colour="#660066" />
+            <tagData label="OocytesCompleted" eventTag="completedValue" tagValue="Oocytes" colour="#660066" />
+            <tagData label="SclerocytesAssigned" eventTag="assignedValue" tagValue="Sclerocytes" colour="#440088" />
+            <tagData label="SclerocytesCompleted" eventTag="completedValue" tagValue="Sclerocytes" colour="#440088" />
+            <tagData label="MyocytesAssigned" eventTag="assignedValue" tagValue="Myocytes" colour="#2200AA" />
+            <tagData label="MyocytesCompleted" eventTag="completedValue" tagValue="Myocytes" colour="#2200AA" />
+            <tagData label="ArchaeocytesAssigned" eventTag="assignedValue" tagValue="Archaeocytes" colour="#0000BB" />
+            <tagData label="ArchaeocytesCompleted" eventTag="completedValue" tagValue="Archaeocytes" colour="#0000BB" />
         </chart>
     </administration>
     <metadata>
