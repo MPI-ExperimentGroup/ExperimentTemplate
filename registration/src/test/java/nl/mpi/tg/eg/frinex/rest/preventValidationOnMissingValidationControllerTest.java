@@ -405,6 +405,11 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
+            public Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, String screenName, String eventTag, String tagValue) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(String eventTag, Set<String> valueOptions) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
