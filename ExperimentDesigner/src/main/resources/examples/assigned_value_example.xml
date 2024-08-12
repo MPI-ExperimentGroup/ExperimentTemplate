@@ -62,7 +62,7 @@
             <tagData label="MyocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
             <tagData label="ArchaeocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
             <tagData label="ArchaeocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
-        </chart>
+        </chart> 
         <chart label="Metadata Assigned Value (can be overwritten by clearing and reassigning)" type="bar">
             <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#880000" />
             <metadata label="Collencytes" fieldName="assigned_value" matching="Collencytes" colour="#880000" />
