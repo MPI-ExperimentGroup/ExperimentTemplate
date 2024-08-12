@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -87,6 +88,9 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 //    List<AssignedValue> countAssignedValues(@Param("eventTag") String eventTag, @Param("valueOptions") Set<String> valueOptions);
     
     List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
+    
+    @Query("select new nl.mpi.tg.eg.frinex.model.AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where TagValue in :valueOptions and eventTag = :eventTag group by TagValue")
+    List<AssignedValue> countByDistinctByEventTagAndTagValueIn(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
 
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 

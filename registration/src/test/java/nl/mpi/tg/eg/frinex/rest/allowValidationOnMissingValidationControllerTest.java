@@ -408,6 +408,11 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
+            public List<AssignedValue> countByDistinctByEventTagAndTagValueIn(String eventTag, Set<String> tagValues) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
             public List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(String eventTag, Set<String> valueOptions) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }

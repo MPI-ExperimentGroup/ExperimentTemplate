@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,19 +59,19 @@ public class AssignedValueController {
             Random randomStream = new Random();
             final String selectedValue;
             // if we have gotten here then the metadata field on the client side must have been cleared, therefore we always assign a value
-            List<TagData> assignedValues = tagRepository.findByEventTagAndTagValueInOrderByTagDateAsc("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
-            List<TagData> completedValues = tagRepository.findByEventTagAndTagValueInOrderByTagDateAsc("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
-            final ArrayList<String> unassignedValues = new ArrayList(Arrays.asList(valueOptions));
-            for (TagData assignedTag : assignedValues) {
-                unassignedValues.remove(assignedTag.getTagValue());
+            List<AssignedValue> assignedValues = tagRepository.countByDistinctByEventTagAndTagValueIn("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            List<AssignedValue> completedValues = tagRepository.countByDistinctByEventTagAndTagValueIn("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            final ArrayList<String> unassignedValues = new ArrayList<>(Arrays.asList(valueOptions));
+            for (AssignedValue assignedTag : assignedValues) {
+                unassignedValues.remove(assignedTag.getValue());
             }
             if (unassignedValues.isEmpty()) {
-                final ArrayList<String> uncompletedValues = new ArrayList(Arrays.asList(valueOptions));
-                for (TagData completedTag : completedValues) {
-                    uncompletedValues.remove(completedTag.getTagValue());
+                final ArrayList<String> uncompletedValues = new ArrayList<>(Arrays.asList(valueOptions));
+                for (AssignedValue completedTag : completedValues) {
+                    uncompletedValues.remove(completedTag.getValue());
                 }
                 if (uncompletedValues.isEmpty()) {
-                    // all values have been assigned and completed we choose a random one
+                    // all values have been assigned and completed we chooxse a random one
                     final List<String> allValues = Arrays.asList(valueOptions);
                     selectedValue = allValues.get(randomStream.nextInt(allValues.size()));
                 } else {
