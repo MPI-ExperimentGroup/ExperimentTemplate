@@ -61,10 +61,10 @@
                 </onError>
             </serverValueComplete>
         </actionButton>
-        <actionButton featureText="Clear Value">
+        <!-- <actionButton featureText="Clear Value">
             <setMetadataValue fieldName="assigned_value" dataLogFormat=""/>
             <gotoPresenter target="Assigned_Value_Presenter"/>
-        </actionButton>
+        </actionButton> -->
         <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
     </presenter>
     <stimuli/>
