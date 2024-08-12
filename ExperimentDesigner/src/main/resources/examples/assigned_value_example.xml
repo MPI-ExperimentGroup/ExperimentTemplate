@@ -2,19 +2,19 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Assigned Value Example">   
     <deployment state="staging" />     
-    <administration> 
+    <administration allowDataDeletion="true"> 
         <chart label="Total Events" type="pie">
             <tagData label="assigned" colour="#880000" eventTag="assignedValue" /> 
             <tagData label="completed" colour="#000088" eventTag="completedValue" /> 
-        </chart>
-        <chart label="Metadata Assigned Value" type="bar">
-            <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#BB0000" />
-            <metadata label="Collencytes" fieldName="assigned_value" matching="Collencytes" colour="#AA0022" />
-            <metadata label="Rhabdiferous" fieldName="assigned_value" matching="Rhabdiferous" colour="#880044" />
-            <metadata label="Oocytes" fieldName="assigned_value" matching="Oocytes" colour="#660066" />
-            <metadata label="Sclerocytes" fieldName="assigned_value" matching="Sclerocytes" colour="#440088" />
-            <metadata label="Myocytes" fieldName="assigned_value" matching="Myocytes" colour="#2200AA" />
-            <metadata label="Archaeocytes" fieldName="assigned_value" matching="Archaeocytes" colour="#0000BB" />
+        </chart> 
+        <chart label="Metadata Assigned Value (can be overwritten by clearing and reassigning)" type="bar">
+            <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#880000" />
+            <metadata label="Collencytes" fieldName="assigned_value" matching="Collencytes" colour="#880000" />
+            <metadata label="Rhabdiferous" fieldName="assigned_value" matching="Rhabdiferous" colour="#880000" />
+            <metadata label="Oocytes" fieldName="assigned_value" matching="Oocytes" colour="#880000" />
+            <metadata label="Sclerocytes" fieldName="assigned_value" matching="Sclerocytes" colour="#880000" />
+            <metadata label="Myocytes" fieldName="assigned_value" matching="Myocytes" colour="#880000" />
+            <metadata label="Archaeocytes" fieldName="assigned_value" matching="Archaeocytes" colour="#880000" />
         </chart>
         <chart label="Event Counts" type="bar">
             <tagData label="LophocytesAssigned" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />

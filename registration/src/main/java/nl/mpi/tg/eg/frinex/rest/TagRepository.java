@@ -20,8 +20,9 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -66,6 +67,11 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     Date findLastSessionAccess(@Param("userId") String userId);
     
     long countByScreenNameLikeAndEventTagLikeAndTagValueLike(
+        @Param("screenName") String screenName,
+        @Param("eventTag") String eventTag,
+        @Param("tagValue") String tagValue);
+
+    Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
         @Param("screenName") String screenName,
         @Param("eventTag") String eventTag,
         @Param("tagValue") String tagValue);
