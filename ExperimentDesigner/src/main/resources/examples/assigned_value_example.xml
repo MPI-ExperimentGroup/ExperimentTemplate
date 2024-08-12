@@ -80,7 +80,9 @@
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
     </metadata>
     <presenter type="menu">
-        <allMenuItems />
+        <menuItem featureText="Assignment_Before_Completion" target="Assignment_Before_Completion"></menuItem>
+        <menuItem featureText="Assignment_Or_Completion" target="Assignment_Or_Completion"></menuItem>
+        <menuItem featureText="Assignment_Or_Completion_Or_Clear" target="Assignment_Or_Completion_Or_Clear"></menuItem>
     </presenter>
     <presenter self="Assignment_Before_Completion" type="metadata">
         <regionReplace regionId="buttonRegion">
