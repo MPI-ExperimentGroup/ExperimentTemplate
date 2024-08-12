@@ -79,6 +79,9 @@
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
     </metadata>
+    <presenter type="menu">
+        <allMenuItems />
+    </presenter>
     <presenter self="Assignment_Before_Completion" type="metadata">
         <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
         <actionButton featureText="Assign Value">
@@ -91,7 +94,7 @@
                             <onSuccess>
                                 <clearPage/>
                                 <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
-                                <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
+                                <createUserButton featureText="CreateNewUser" target="Assignment_Before_Completion"/>
                             </onSuccess>
                             <onError>
                                 <plainText featureText="Setting complete failed"/>
@@ -110,7 +113,7 @@
         <actionButton featureText="Assign Value">
             <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
                 <onSuccess>
-                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                    <gotoPresenter target="Assignment_Or_Completion"/>
                 </onSuccess>
                 <onError>
                     <plainText featureText="Assigning value failed"/>
@@ -120,21 +123,21 @@
         <actionButton featureText="Set Completed">
             <serverValueComplete fieldName="assigned_value">
                 <onSuccess>
-                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                    <gotoPresenter target="Assignment_Or_Completion"/>
                 </onSuccess>
                 <onError>
                     <plainText featureText="Setting complete failed"/>
                 </onError>
             </serverValueComplete>
         </actionButton>
-        <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
+        <createUserButton featureText="CreateNewUser" target="Assignment_Or_Completion"/>
     </presenter>
     <presenter self="Assignment_Or_Completion_Or_Clear" type="metadata">
         <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
         <actionButton featureText="Assign Value">
             <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
                 <onSuccess>
-                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                    <gotoPresenter target="Assignment_Or_Completion_Or_Clear"/>
                 </onSuccess>
                 <onError>
                     <plainText featureText="Assigning value failed"/>
@@ -144,7 +147,7 @@
         <actionButton featureText="Set Completed">
             <serverValueComplete fieldName="assigned_value">
                 <onSuccess>
-                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                    <gotoPresenter target="Assignment_Or_Completion_Or_Clear"/>
                 </onSuccess>
                 <onError>
                     <plainText featureText="Setting complete failed"/>
@@ -153,9 +156,9 @@
         </actionButton>
         <actionButton featureText="Clear Value">
             <setMetadataValue fieldName="assigned_value" dataLogFormat=""/>
-            <gotoPresenter target="Assigned_Value_Presenter"/>
+            <gotoPresenter target="Assignment_Or_Completion_Or_Clear"/>
         </actionButton>
-        <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
+        <createUserButton featureText="CreateNewUser" target="Assignment_Or_Completion_Or_Clear"/>
     </presenter>
     <stimuli/>
 </experiment>
