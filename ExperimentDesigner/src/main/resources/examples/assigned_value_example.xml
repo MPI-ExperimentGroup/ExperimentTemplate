@@ -3,11 +3,11 @@
     appNameDisplay="Assigned Value Example">   
     <deployment state="staging" />     
     <administration> 
-        <chart label="Assigned Values" type="pie">
-            <tagData label="assigned" colour="#550000" eventTag="assignedValue" /> 
-            <tagData label="completed" colour="#000055" eventTag="completedValue" /> 
+        <chart label="Total Events" type="pie">
+            <tagData label="assigned" colour="#880000" eventTag="assignedValue" /> 
+            <tagData label="completed" colour="#000088" eventTag="completedValue" /> 
         </chart>
-        <chart label="metadata assigned_value" type="bar">
+        <chart label="Metadata Assigned Value" type="bar">
             <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#BB0000" />
             <metadata label="Collencytes" fieldName="assigned_value" matching="Collencytes" colour="#AA0022" />
             <metadata label="Rhabdiferous" fieldName="assigned_value" matching="Rhabdiferous" colour="#880044" />
@@ -16,22 +16,24 @@
             <metadata label="Myocytes" fieldName="assigned_value" matching="Myocytes" colour="#2200AA" />
             <metadata label="Archaeocytes" fieldName="assigned_value" matching="Archaeocytes" colour="#0000BB" />
         </chart>
-        <chart label="Assigned / Completed" type="bar">
-            <tagData label="LophocytesAssigned" eventTag="assignedValue" tagValue="Lophocytes" colour="#BB0000" />
-            <tagData label="LophocytesCompleted" eventTag="completedValue" tagValue="Lophocytes" colour="#BB0000" />
-            <tagData label="CollencytesAssigned" eventTag="assignedValue" tagValue="Collencytes" colour="#AA0022" />
-            <tagData label="CollencytesCompleted" eventTag="completedValue" tagValue="Collencytes" colour="#AA0022" />
-            <tagData label="RhabdiferousAssigned" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880044" />
-            <tagData label="RhabdiferousCompleted" eventTag="completedValue" tagValue="Rhabdiferous" colour="#880044" />
-            <tagData label="OocytesAssigned" eventTag="assignedValue" tagValue="Oocytes" colour="#660066" />
-            <tagData label="OocytesCompleted" eventTag="completedValue" tagValue="Oocytes" colour="#660066" />
-            <tagData label="SclerocytesAssigned" eventTag="assignedValue" tagValue="Sclerocytes" colour="#440088" />
-            <tagData label="SclerocytesCompleted" eventTag="completedValue" tagValue="Sclerocytes" colour="#440088" />
-            <tagData label="MyocytesAssigned" eventTag="assignedValue" tagValue="Myocytes" colour="#2200AA" />
-            <tagData label="MyocytesCompleted" eventTag="completedValue" tagValue="Myocytes" colour="#2200AA" />
-            <tagData label="ArchaeocytesAssigned" eventTag="assignedValue" tagValue="Archaeocytes" colour="#0000BB" />
-            <tagData label="ArchaeocytesCompleted" eventTag="completedValue" tagValue="Archaeocytes" colour="#0000BB" />
+        <chart label="Event Counts" type="bar">
+            <tagData label="LophocytesAssigned" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
+            <tagData label="LophocytesCompleted" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
+            <tagData label="CollencytesAssigned" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
+            <tagData label="CollencytesCompleted" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
+            <tagData label="RhabdiferousAssigned" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
+            <tagData label="RhabdiferousCompleted" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
+            <tagData label="OocytesAssigned" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
+            <tagData label="OocytesCompleted" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
+            <tagData label="SclerocytesAssigned" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
+            <tagData label="SclerocytesCompleted" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
+            <tagData label="MyocytesAssigned" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
+            <tagData label="MyocytesCompleted" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
+            <tagData label="ArchaeocytesAssigned" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
+            <tagData label="ArchaeocytesCompleted" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
         </chart>
+        <dataTable label="Events Assigned" source="tag" eventTag="assignedValue" columnNames="UserId,TagValue,TagDate" />
+        <dataTable label="Events Completed" source="tag" eventTag="completedValue" columnNames="UserId,TagValue,TagDate" />
     </administration>
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
