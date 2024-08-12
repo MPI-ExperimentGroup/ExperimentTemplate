@@ -3,9 +3,17 @@
     appNameDisplay="Assigned Value Example">   
     <deployment state="staging" />     
     <administration allowDataDeletion="true"> 
-        <chart label="Total Events" type="pie">
-            <tagData label="assigned" colour="#880000" eventTag="assignedValue" /> 
-            <tagData label="completed" colour="#000088" eventTag="completedValue" /> 
+        <chart label="Total Events (Assignment_Before_Completion)" type="pie">
+            <tagData label="assigned" screenName="Assignment_Before_Completion" colour="#880000" eventTag="assignedValue" /> 
+            <tagData label="completed" screenName="Assignment_Before_Completion" colour="#000088" eventTag="completedValue" /> 
+        </chart> 
+        <chart label="Total Events (Assignment_Or_Completion)" type="pie">
+            <tagData label="assigned" screenName="Assignment_Or_Completion" colour="#880000" eventTag="assignedValue" /> 
+            <tagData label="completed" screenName="Assignment_Or_Completion" colour="#000088" eventTag="completedValue" /> 
+        </chart> 
+        <chart label="Total Events (Assignment_Or_Completion_Or_Clear)" type="pie">
+            <tagData label="assigned" screenName="Assignment_Or_Completion_Or_Clear" colour="#880000" eventTag="assignedValue" /> 
+            <tagData label="completed" screenName="Assignment_Or_Completion_Or_Clear" colour="#000088" eventTag="completedValue" /> 
         </chart> 
         <chart label="Metadata Assigned Value (can be overwritten by clearing and reassigning)" type="bar">
             <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#880000" />
@@ -16,30 +24,88 @@
             <metadata label="Myocytes" fieldName="assigned_value" matching="Myocytes" colour="#880000" />
             <metadata label="Archaeocytes" fieldName="assigned_value" matching="Archaeocytes" colour="#880000" />
         </chart>
-        <chart label="Event Counts" type="bar">
-            <tagData label="LophocytesAssigned" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
-            <tagData label="LophocytesCompleted" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
-            <tagData label="CollencytesAssigned" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
-            <tagData label="CollencytesCompleted" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
-            <tagData label="RhabdiferousAssigned" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
-            <tagData label="RhabdiferousCompleted" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
-            <tagData label="OocytesAssigned" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
-            <tagData label="OocytesCompleted" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
-            <tagData label="SclerocytesAssigned" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
-            <tagData label="SclerocytesCompleted" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
-            <tagData label="MyocytesAssigned" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
-            <tagData label="MyocytesCompleted" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
-            <tagData label="ArchaeocytesAssigned" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
-            <tagData label="ArchaeocytesCompleted" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
+        <chart label="Event Counts (Assignment_Before_Completion)" type="bar">
+            <tagData label="LophocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
+            <tagData label="LophocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
+            <tagData label="CollencytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
+            <tagData label="CollencytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
+            <tagData label="RhabdiferousAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
+            <tagData label="RhabdiferousCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
+            <tagData label="OocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
+            <tagData label="OocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
+            <tagData label="SclerocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
+            <tagData label="SclerocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
+            <tagData label="MyocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
+            <tagData label="MyocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
+            <tagData label="ArchaeocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
+            <tagData label="ArchaeocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
         </chart>
-        <dataTable label="Events Assigned" source="tagdata" eventTag="assignedValue" columnNames="UserId,EventTag,TagValue,TagDate" />
-        <dataTable label="Events Completed" source="tagdata" eventTag="completedValue" columnNames="UserId,EventTag,TagValue,TagDate" />
-        <dataTable label="Events Assigned / Completed" source="tagdata" eventTag="%edValue" columnNames="UserId,EventTag,TagValue,TagDate" />
+        <chart label="Event Counts (Assignment_Or_Completion)" type="bar">
+            <tagData label="LophocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
+            <tagData label="LophocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
+            <tagData label="CollencytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
+            <tagData label="CollencytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
+            <tagData label="RhabdiferousAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
+            <tagData label="RhabdiferousCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
+            <tagData label="OocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
+            <tagData label="OocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
+            <tagData label="SclerocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
+            <tagData label="SclerocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
+            <tagData label="MyocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
+            <tagData label="MyocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
+            <tagData label="ArchaeocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
+            <tagData label="ArchaeocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
+        </chart>
+        <chart label="Event Counts (Assignment_Or_Completion_Or_Clear)" type="bar">
+            <tagData label="LophocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
+            <tagData label="LophocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
+            <tagData label="CollencytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
+            <tagData label="CollencytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
+            <tagData label="RhabdiferousAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
+            <tagData label="RhabdiferousCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
+            <tagData label="OocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
+            <tagData label="OocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
+            <tagData label="SclerocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
+            <tagData label="SclerocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
+            <tagData label="MyocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
+            <tagData label="MyocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
+            <tagData label="ArchaeocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
+            <tagData label="ArchaeocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
+        </chart>
+        <dataTable label="Events Assigned" source="tagdata" eventTag="assignedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
+        <dataTable label="Events Completed" source="tagdata" eventTag="completedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
+        <dataTable label="Events Assigned / Completed" source="tagdata" eventTag="%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
     </administration>
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
     </metadata>
-    <presenter self="Assigned_Value_Presenter" type="metadata">
+    <presenter self="Assignment_Before_Completion" type="metadata">
+        <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
+        <actionButton featureText="Assign Value">
+            <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
+                <onSuccess>
+                    <clearPage/>
+                    <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
+                    <actionButton featureText="Set Completed">
+                        <serverValueComplete fieldName="assigned_value">
+                            <onSuccess>
+                                <clearPage/>
+                                <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
+                                <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="Setting complete failed"/>
+                            </onError>
+                        </serverValueComplete>
+                    </actionButton>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Assigning value failed"/>
+                </onError>
+            </serverValueAssign>
+        </actionButton>
+    </presenter>
+    <presenter self="Assignment_Or_Completion" type="metadata">
         <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
         <actionButton featureText="Assign Value">
             <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
@@ -61,10 +127,34 @@
                 </onError>
             </serverValueComplete>
         </actionButton>
-        <!-- <actionButton featureText="Clear Value">
+        <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
+    </presenter>
+    <presenter self="Assignment_Or_Completion_Or_Clear" type="metadata">
+        <htmlTokenText featureText="assigned_value: ::metadataField_assigned_value::"/>
+        <actionButton featureText="Assign Value">
+            <serverValueAssign targetOptions="Lophocytes,Collencytes,Rhabdiferous,Oocytes,Sclerocytes,Myocytes,Archaeocytes" fieldName="assigned_value">
+                <onSuccess>
+                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Assigning value failed"/>
+                </onError>
+            </serverValueAssign>
+        </actionButton>
+        <actionButton featureText="Set Completed">
+            <serverValueComplete fieldName="assigned_value">
+                <onSuccess>
+                    <gotoPresenter target="Assigned_Value_Presenter"/>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Setting complete failed"/>
+                </onError>
+            </serverValueComplete>
+        </actionButton>
+        <actionButton featureText="Clear Value">
             <setMetadataValue fieldName="assigned_value" dataLogFormat=""/>
             <gotoPresenter target="Assigned_Value_Presenter"/>
-        </actionButton> -->
+        </actionButton>
         <createUserButton featureText="CreateNewUser" target="Assigned_Value_Presenter"/>
     </presenter>
     <stimuli/>

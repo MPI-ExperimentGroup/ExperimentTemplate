@@ -1,0 +1,298 @@
+diff --git a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/model/FeatureType.java b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/model/FeatureType.java
+index ebed6dceb..5705c14a2 100644
+--- a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/model/FeatureType.java
++++ b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/model/FeatureType.java
+@@ -281,7 +281,7 @@ public enum FeatureType {
+     //preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
+     showColourReport(false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
+-    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels /* TODO: can we remove groupCommunicationChannels by replacing it with an equivalent of streamChannels eg messageChannels*/ , groupCameraChannels, groupAudioChannels, groupCanvasChannels, phasesPerStimulus}, "Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.", Contitionals.groupNetwork, Contitionals.groupStimulus),
++    groupNetwork(false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels /* //TODO: can we remove groupCommunicationChannels by replacing it with an equivalent of streamChannels eg messageChannels*/, groupCameraChannels, groupAudioChannels, groupCanvasChannels, phasesPerStimulus}, "Connects a group of participants so that they can interact in a defined manner during the experiment. For each stimulus there is a number of phases which is determined by phasesPerStimulus.", Contitionals.groupNetwork, Contitionals.groupStimulus),
+     groupInitialisationError(false, new FeatureAttribute[]{}, "When the specified group already has enough members new members cannot be assigned to it or the member code has not been provided the contents of this element will be triggered. It is recommended that the paricipant is instructed here to request a new group which can be assigned in the URL along with the member code. Please note that a group and its members are rememberd on the server by design and reloading the page or clearing the browser storage will have no effect on group status.", Contitionals.any, Contitionals.groupNetwork),
+     groupFindingMembers(false, new FeatureAttribute[]{}, "When the the connection to the group server is established the second stage is waiting for the other group members.", Contitionals.any, Contitionals.groupNetwork),
+     groupNetworkConnecting(false, new FeatureAttribute[]{}, "The first stage in setting up a group is connecting to the group server. The contents of this element will be triggered while this connection is being established.", Contitionals.any, Contitionals.groupNetwork),
+@@ -486,6 +486,15 @@ public enum FeatureType {
+         return isChildType;
+     }
+ 
++    public String getChildTypeString() {
++        StringBuilder stringBuilder = new StringBuilder();
++        for (Contitionals contitional : isChildType) {
++            stringBuilder.append("_");
++            stringBuilder.append(contitional.name());
++        }
++        return stringBuilder;
++    }
++
+     public boolean isChildType(Contitionals value) {
+         for (Contitionals contitional : isChildType) {
+             if (contitional == value) {
+diff --git a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/AbstractSchemaGenerator.java b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/AbstractSchemaGenerator.java
+index fc58a5f40..a608431fa 100644
+--- a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/AbstractSchemaGenerator.java
++++ b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/AbstractSchemaGenerator.java
+@@ -20,7 +20,9 @@ package nl.mpi.tg.eg.experimentdesigner.util;
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.Comparator;
++import java.util.HashMap;
+ import java.util.List;
++import java.util.Map;
+ import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
+ import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+@@ -31,6 +33,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+  */
+ public class AbstractSchemaGenerator {
+ 
++    Map<String, List<String>> childTypeLists = new HashMap<>();
++
+     enum ChildType {
+         allOnceUnordered, choiceAnyCount, sequenceOnceOrdered
+     }
+@@ -99,7 +103,7 @@ public class AbstractSchemaGenerator {
+         final int minBounds;
+         final int maxBounds;
+         final List<DocumentationAttribute> attributeTypes = new ArrayList<>();
+-        final String[] childTypeNames;
++        final String typeExtends;
+         final DocumentationElement[] childElements;
+         final ChildType childOption;
+         final boolean hasStringContents;
+@@ -111,7 +115,7 @@ public class AbstractSchemaGenerator {
+             this.documentationText = documentationText;
+             this.minBounds = minBounds;
+             this.maxBounds = maxBounds;
+-            this.childTypeNames = new String[0];
++            this.typeExtends = null;
+             this.childElements = new DocumentationElement[0];
+             this.hasStringContents = hasStringContents;
+             this.childOption = ChildType.sequenceOnceOrdered;
+@@ -124,7 +128,7 @@ public class AbstractSchemaGenerator {
+             this.documentationText = documentationText;
+             this.minBounds = minBounds;
+             this.maxBounds = maxBounds;
+-            this.childTypeNames = new String[0];
++            this.typeExtends = null;
+             this.childElements = childElements;
+             this.hasStringContents = false;
+             this.childOption = ChildType.sequenceOnceOrdered;
+@@ -137,7 +141,7 @@ public class AbstractSchemaGenerator {
+             this.documentationText = documentationText;
+             this.minBounds = minBounds;
+             this.maxBounds = maxBounds;
+-            this.childTypeNames = new String[0];
++            this.typeExtends = null;
+             this.childElements = childElements;
+             this.hasStringContents = false;
+             this.childOption = ChildType.sequenceOnceOrdered;
+@@ -171,72 +175,78 @@ public class AbstractSchemaGenerator {
+             }
+             this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount
+                     : (!translatableAttribites.isEmpty()) ? ChildType.sequenceOnceOrdered : ChildType.allOnceUnordered;
+-            List<String> childTypeList = new ArrayList<>();
+-            if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType)) {
+-                childTypeList.add(featureType.name());
+-            }
+-            switch (featureType.getRequiresChildType()) {
+-                // these items link to separate lists of element groups: general, stimuli, group...
+-                case stimulusAction:
++            this.typeExtends = featureType.getRequiresChildType().name();
++            if (!childTypeLists.containsKey(this.typeExtends)) {
++                List<String> childTypeList = new ArrayList<>();
++                childTypeLists.put(this.typeExtends, childTypeList);
++                if (featureType.isChildType(FeatureType.Contitionals.isRecursiveType)) {
++                    childTypeList.add(featureType.name());
++                }
++                switch (featureType.getRequiresChildType()) {
++                    // these items link to separate lists of element groups: general, stimuli, group...
++                    case stimulusAction:
+ //                    childTypeList.add("...Stimulus Features...");
+ //                    childTypeList.add("...General Features...");
+-                    break;
+-                case groupNetworkAction:
++                        break;
++                    case groupNetworkAction:
+ //                    childTypeList.add("...Group Features...");
+ //                    childTypeList.add("...General Features...");
+-                    break;
+-                case none:
+-                    break;
++                        break;
++                    case none:
++                        break;
+ //                case hasMediaLoading:
+ //                    childTypeList.add("mediaLoaded");
+ //                    childTypeList.add("mediaLoadFailed");
+ //                    break;
+-                case hasMediaPlayback:
+-                case hasMediaLoadingButton:
+-                    childTypeList.add("mediaLoaded");
+-                    childTypeList.add("mediaLoadFailed");
++                    case hasMediaPlayback:
++                    case hasMediaLoadingButton:
++                        childTypeList.add("mediaLoaded");
++                        childTypeList.add("mediaLoadFailed");
+ //                    childTypeList.add("mediaPlaybackStarted");
+ //                    childTypeList.add("mediaPlaybackComplete");
+-                    break;
+-                case hasMediaRecorderPlayback:
+-                    childTypeList.add("onError");
+-                    childTypeList.add("onSuccess");
+-                    break;
++                        break;
++                    case hasMediaRecorderPlayback:
++                        childTypeList.add("onError");
++                        childTypeList.add("onSuccess");
++                        break;
+ //                case hasMoreStimulus:
+ //                    childTypeList.add("onError");
+ //                    childTypeList.add("onSuccess");
+ //                    break;
+-            }
+-            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+-                for (final FeatureType featureRef : FeatureType.values()) {
+-                    if (featureRef.isChildType(featureType.getRequiresChildType())
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.none))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.svgGroupsLoaded))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.touchInputStartType))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.svgGroupsLoaded && featureRef.isChildType(FeatureType.Contitionals.none))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.none))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.none))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.none))
+-                            || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))) {
+-                        // note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example
+-                        // note: we are falsely allowing all group types here because the XSD does not consider the parent element
+-                        // currently allowing all groupNetworkAction in any element
+-                        // currently allowing all stimulusAction in any element
+-                        childTypeList.add(featureRef.name());
+-                        if (featureRef.allowsCustomImplementation()) {
+-                            childTypeList.add(featureRef.name() + "Plugin");
++                }
++                if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
++                    for (final FeatureType featureRef : FeatureType.values()) {
++                        if (featureRef.isChildType(featureType.getRequiresChildType())
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.none))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.svgGroupsLoaded))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.any && featureRef.isChildType(FeatureType.Contitionals.touchInputStartType))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.svgGroupsLoaded && featureRef.isChildType(FeatureType.Contitionals.none))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.none))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.touchInputStartType && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.none))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.stimulusAction && featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.none))
++                                || (featureType.getRequiresChildType() == FeatureType.Contitionals.groupNetworkAction && featureRef.isChildType(FeatureType.Contitionals.stimulusAction))) {
++                            // note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example
++                            // note: we are falsely allowing all group types here because the XSD does not consider the parent element
++                            // currently allowing all groupNetworkAction in any element
++                            // currently allowing all stimulusAction in any element
++                            childTypeList.add(featureRef.name());
++                            if (featureRef.allowsCustomImplementation()) {
++                                childTypeList.add(featureRef.name() + "Plugin");
++                            }
++                            // calculate a name for the extendsType
++                            // add all the child types to the extendsType once
+                         }
+                     }
+-                }
+-            } else {
+-                for (final FeatureType featureRef : FeatureType.values()) {
+-                    if (featureType.getRequiresChildType() != FeatureType.Contitionals.none
+-                            && featureRef.isChildType(featureType.getRequiresChildType())) {
+-                        childTypeList.add(featureRef.name());
++                } else {
++                    for (final FeatureType featureRef : FeatureType.values()) {
++                        if (featureType.getRequiresChildType() != FeatureType.Contitionals.none
++                                && featureRef.isChildType(featureType.getRequiresChildType())) {
++                            childTypeList.add(featureRef.name());
++                        }
+                     }
+                 }
+             }
+@@ -253,7 +263,7 @@ public class AbstractSchemaGenerator {
+                 //.documentedAttribute("allocationServiceName", AttributeType.xsString, "When provided the named service will be created on the sever and used to allocate the least used tag for use in stimuli allocation. If multiple tags are equally the least used, one of them will randomly be allocated. Any number of allocation service names can be used and they can be shared across different stimuli lists. Please note that the use of this feature prevents the experiment being used offline. The allocation of a tag does not mean that it will be used by the participant, for example if after allocation the browser is closed and the participant does not complete the experiment then the distribution will necessarily be affected.", true));
+                 );
+                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected. All stimuli which contain any of the tags will be included in the list of stimuli. The number of selected stimuli will be limited to the maximum that has been requested. The stimuli selected by these tags will always be selected even if a randomGrouping is used.", 0, 1,
+-                         new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
++                        new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)})
+                         .documentedAttribute("idListField", AttributeType.xsString, "When provided this metadata field must contain a list of stimuli IDs which will then be used in the stimuli selection process. This allows stimuli lists to be generated and stored between presenters.", true));
+             }
+             if (!translatableAttribites.isEmpty()) {
+@@ -269,7 +279,6 @@ public class AbstractSchemaGenerator {
+             if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
+                 tagsAttribute("tags", false);
+             }
+-            this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
+             this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
+             this.hasStringContents = false;
+             this.allowsCustomImplementation = featureType.allowsCustomImplementation();
+@@ -421,7 +430,7 @@ public class AbstractSchemaGenerator {
+                         new DocumentationElement[]{
+                             new DocumentationElement("adminUser", "User that can access to the administration system and JSON REST interface for this experiment. Multiple users can be defined.", 0, 0, new DocumentationElement[0])
+                                     .documentedAttribute("name", AttributeType.xsString, "For use with additional or external users a username for access to the administration system and JSON REST interface for this experiment.", false),
+-//                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
++                            //                                    .documentedAttribute("password", AttributeType.xsString, "User password for access to the administration system and JSON REST interface for this experiment.", false),
+                             new DocumentationElement("dataAgreementField", "When present the named metadata field is used to prevent specific data types from being stored or sent until the agreement field matches the required value.", 0, 1, new DocumentationElement[0])
+                                     .stringAttribute("fieldName", false)
+                                     .stringAttribute("matchingRegex", false),
+@@ -443,7 +452,19 @@ public class AbstractSchemaGenerator {
+                                                 .colourRGBAttribute("colour", false)
+                                     })
+                                     .stringAttribute("label", false)
+-                                    .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", "line", "pie", "bubble", "radar")
++                                    .restrictedAttribute("type", null, "The type of chart to be displayed.", false, "bar", /*"box",*/ "line", "pie", "bubble", "radar")
++//                                , new DocumentationElement("table", "When present defines a table that will be displayed on the main page of the experiment admin. Multiple tables can be used.", 0, 0,
++//                                    new DocumentationElement[]{
++//                                        new DocumentationElement("metadata", "Adds matching metadata as a dataset to the graph.", 0, 0, new DocumentationElement[0])
++//                                                .stringAttribute("label", false)
++//                                                .stringAttribute("fieldName", false)
++//                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
++//                                        new DocumentationElement("stimuli", "Adds matching stimuli responses as a dataset to the graph.", 0, 0, new DocumentationElement[0])
++//                                                .stringAttribute("label", false)
++//                                                .stringAttribute("coloumName", false)
++//                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
++//                                    })
++//                                    .stringAttribute("label", false)
+                         }).documentedAttribute("allowDataDeletion", AttributeType.xsBoolean, "Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.", true),
+                 new DocumentationElement("scss", "Custom SCSS or CSS styles can be added in this element. The SCSS content will be processed into CSS and the combined result will be included in the experiments CSS file. The resulting styles can then be used on any feature that takes a styleName attribute.", 0, 1, true),
+                 new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data. The value of each field will be stored in the admin metadata table (participant listing). It is advisable to explicitly sendMetadata at relevant points in the experiment. "
+diff --git a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/JsonToXml.java b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/JsonToXml.java
+index 1b1bd7f8d..e0ef3b86f 100644
+--- a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/JsonToXml.java
++++ b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/JsonToXml.java
+@@ -174,6 +174,7 @@ public class JsonToXml {
+                             System.out.println(iOException.getMessage());
+                         }
+                     }
++                    // TODO: perhaps also check for icon.png in the stimuli directory if cordova or electron are selected
+                 }
+             }
+         }
+diff --git a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/SchemaGenerator.java b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/SchemaGenerator.java
+index 2288a71ff..1b03d34d9 100644
+--- a/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/SchemaGenerator.java
++++ b/ExperimentDesigner/src/main/java/nl/mpi/tg/eg/experimentdesigner/util/SchemaGenerator.java
+@@ -299,7 +299,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
+             if (currentElement.childOption == ChildType.choiceAnyCount) {
+ //                writer.append("<xs:choice2 minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
+             }
+-            for (String childTypeName : currentElement.childTypeNames) {
++            for (String childTypeName : childTypeLists.get(currentElement.typeExtends)) {
+                 writer.append("<xs:element name=\"");
+                 writer.append(childTypeName);
+                 writer.append("\" type=\"");
+@@ -318,7 +318,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
+             if (currentElement.elementName.equals("experiment")) {
+                 writer.append("</xs:sequence>\n");
+             }
+-        } else if (!isPresenterType && (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0)) {
++        } else if (!isPresenterType && (currentElement.childElements.length > 0 || childTypeLists.containsKey(currentElement.typeExtends))) {
+ //            writer.append("</xs:").append((currentElement.areChildenOptional) ? "choice" : "all").append(">\n");
+             writer.append("</xs:").append((currentElement.childOption == ChildType.choiceAnyCount) ? "choice" : (currentElement.childOption == ChildType.sequenceOnceOrdered) ? "sequence" : "all").append(">\n");
+ //            writer.append("</xs:sequence>");
