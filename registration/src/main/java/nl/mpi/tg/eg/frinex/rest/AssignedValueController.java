@@ -45,10 +45,37 @@ public class AssignedValueController {
     @Autowired
     TagRepository tagRepository;
 
-//    @RequestMapping(value = "/completeValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE){
-//        responseEntity = new ResponseEntity<>(new TagData(userId, screenName, "completedValue", tagValue, 0, tagDate), HttpStatus.OK);
-//        tagRepository.saveAll(experimentDataList);
-//    }
+    @RequestMapping(value = "/completeValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DataSubmissionResult> completeValue(@RequestBody TagData completedTagData) {
+        final ResponseEntity<DataSubmissionResult> responseEntity;
+        List<TagData> usersValues = tagRepository.findTop1ByUserIdAndEventTagInOrderByTagDateAsc(completedTagData.getUserId(), Set.copyOf(Arrays.asList(new String[]{"assignedValue", "completedValue"})));
+        if (usersValues.isEmpty()) {
+            // nothing has been assigned so fail here
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else if ("completedValue".equals(usersValues.get(0).getEventTag())) {
+            if (usersValues.get(0).getTagValue().equals(completedTagData.getTagValue())) {
+                // the last assignment has been completed so do nothing but return ok
+                responseEntity = new ResponseEntity<>(new DataSubmissionResult(completedTagData.getUserId(), completedTagData.getTagValue(), true), HttpStatus.OK);
+            } else {
+                // the last assignment has been completed but for a differnt value so fail here
+                responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+        } else if ("assignedValue".equals(usersValues.get(0).getEventTag())) {
+            if (usersValues.get(0).getTagValue().equals(completedTagData.getTagValue())) {
+                // the completed value matches the last assigned so we store the completion and return ok
+                tagRepository.save(completedTagData);
+                responseEntity = new ResponseEntity<>(new DataSubmissionResult(completedTagData.getUserId(), completedTagData.getTagValue(), true), HttpStatus.OK);
+            } else {
+                // a differnt value has been assigned so fail here
+                responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+        } else {
+            // neither completedValue nor assignedValue was found so fail here
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+        return responseEntity;
+    }
+
     @RequestMapping(value = "/assignValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DataSubmissionResult> assignValue(@RequestBody TagData tagData) {
         String[] valueOptions = tagData.getTagValue().split(",");
@@ -78,11 +105,11 @@ public class AssignedValueController {
                         if (minimumCount == null) {
                             minimumCount = completedTag.getAssignedCount();
                             leastCompleted.add(completedTag);
-                        } else if (minimumCount > completedTag.getAssignedCount()){
+                        } else if (minimumCount > completedTag.getAssignedCount()) {
                             minimumCount = completedTag.getAssignedCount();
                             leastCompleted.clear();
                             leastCompleted.add(completedTag);
-                        } else if (minimumCount > completedTag.getAssignedCount()){
+                        } else if (minimumCount > completedTag.getAssignedCount()) {
                             leastCompleted.add(completedTag);
                         }
 

@@ -88,8 +88,16 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return completionCode;
     }
 
+    public void serverValueComplete(final UserId userId, final String screenName, String eventTag, String completedValue, int eventMs, final DataSubmissionListener dataSubmissionListener) {
+        serverValueSend(userId, screenName, eventTag, completedValue, eventMs, dataSubmissionListener, "completeValue");
+    }
+
     public void serverValueAssign(final UserId userId, final String screenName, String eventTag, String valueOptions, int eventMs, final DataSubmissionListener dataSubmissionListener) {
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + "assignValue");
+        serverValueSend(userId, screenName, eventTag, valueOptions, eventMs, dataSubmissionListener, "assignValue");
+    }
+
+    public void serverValueSend(final UserId userId, final String screenName, String eventTag, String tagValue, int eventMs, final DataSubmissionListener dataSubmissionListener, final String assignValueAction) {
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + assignValueAction);
         builder.setHeader("Content-type", "application/json");
         RequestCallback requestCallback = new RequestCallback() {
 
@@ -121,7 +129,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                     + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
                     + "\"screenName\": " + jsonEscape(screenName) + ",\n"
                     + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
-                    + "\"tagValue\": " + jsonEscape(valueOptions) + ",\n"
+                    + "\"tagValue\": " + jsonEscape(tagValue) + ",\n"
                     + "\"eventMs\": \"" + eventMs + "\" \n}";
             builder.sendRequest(jsonData, requestCallback);
         } catch (RequestException exception) {

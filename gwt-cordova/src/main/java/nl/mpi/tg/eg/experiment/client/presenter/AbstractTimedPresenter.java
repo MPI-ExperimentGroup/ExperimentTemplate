@@ -531,18 +531,18 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void serverValueComplete(final MetadataField metadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String metadataString = userResults.getUserData().getMetadataValue(metadataField);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "completedValue", metadataString, duration.elapsedMillis());
-        submissionService.submitAllData(userResults, new DataSubmissionListener() {
+        DataSubmissionListener dataSubmissionListener = new DataSubmissionListener() {
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
                 onError.postLoadTimerFired();
             }
 
             @Override
-            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> serverValueData) {
                 onSuccess.postLoadTimerFired();
             }
-        });
+        };
+        submissionService.serverValueComplete(userResults.getUserData().getUserId(), getSelfTag(), "completedValue", metadataString, duration.elapsedMillis(), dataSubmissionListener);
     }
 
     @Override
