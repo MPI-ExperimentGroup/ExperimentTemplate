@@ -59,8 +59,8 @@ public class AssignedValueController {
             Random randomStream = new Random();
             final String selectedValue;
             // if we have gotten here then the metadata field on the client side must have been cleared, therefore we always assign a value
-            List<AssignedValue> assignedValues = tagRepository.countByDistinctByEventTagAndTagValueIn("assignedValue", Set.copyOf(Arrays.asList(valueOptions)));
-            List<AssignedValue> completedValues = tagRepository.countByDistinctByEventTagAndTagValueIn("completedValue", Set.copyOf(Arrays.asList(valueOptions)));
+            List<AssignedValue> assignedValues = tagRepository.countByDistinctByEventTagAndScreenNameAndTagValueIn("assignedValue", tagData.getScreenName(), Set.copyOf(Arrays.asList(valueOptions)));
+            List<AssignedValue> completedValues = tagRepository.countByDistinctByEventTagAndScreenNameAndTagValueIn("completedValue", tagData.getScreenName(), Set.copyOf(Arrays.asList(valueOptions)));
             final ArrayList<String> unassignedValues = new ArrayList<>(Arrays.asList(valueOptions));
             for (AssignedValue assignedTag : assignedValues) {
                 unassignedValues.remove(assignedTag.getValue());

@@ -405,7 +405,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<AssignedValue> countByDistinctByEventTagAndTagValueIn(String eventTag, Set<String> tagValues) {
+            public List<AssignedValue> countByDistinctByEventTagAndScreenNameAndTagValueIn(String eventTag, String screenName, Set<String> tagValues) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
