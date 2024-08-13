@@ -89,6 +89,8 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     
     List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
     
+    List<TagData> findTop1ByUserIdAndEventTagInOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTags") Set<String> eventTags);
+    
     @Query("select new nl.mpi.tg.eg.frinex.model.AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where tagValue in :tagValues and eventTag = :eventTag and screenName = :screenName group by tagValue")
     List<AssignedValue> countByDistinctByEventTagAndScreenNameAndTagValueIn(@Param("eventTag") String eventTag, @Param("screenName") String screenName, @Param("tagValues") Set<String> tagValues);
 
