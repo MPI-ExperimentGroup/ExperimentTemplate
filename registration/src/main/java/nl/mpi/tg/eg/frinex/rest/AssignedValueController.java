@@ -71,9 +71,24 @@ public class AssignedValueController {
                     uncompletedValues.remove(completedTag.getValue());
                 }
                 if (uncompletedValues.isEmpty()) {
-                    // all values have been assigned and completed we chooxse a random one
-                    final List<String> allValues = Arrays.asList(valueOptions);
-                    selectedValue = allValues.get(randomStream.nextInt(allValues.size()));
+                    // all values have been assigned and completed so we search for the the least completed ones
+                    final ArrayList<AssignedValue> leastCompleted = new ArrayList<>();
+                    Long minimumCount = null;
+                    for (AssignedValue completedTag : completedValues) {
+                        if (minimumCount == null) {
+                            minimumCount = completedTag.getAssignedCount();
+                            leastCompleted.add(completedTag);
+                        } else if (minimumCount > completedTag.getAssignedCount()){
+                            minimumCount = completedTag.getAssignedCount();
+                            leastCompleted.clear();
+                            leastCompleted.add(completedTag);
+                        } else if (minimumCount > completedTag.getAssignedCount()){
+                            leastCompleted.add(completedTag);
+                        }
+
+                    }
+                    // if there is more than one which is the least completed then we chose from them randomly
+                    selectedValue = leastCompleted.get(randomStream.nextInt(leastCompleted.size())).getValue();
                 } else {
                     // there is a value that has not been completed so we choose a random uncompleted one
                     selectedValue = uncompletedValues.get(randomStream.nextInt(uncompletedValues.size()));
