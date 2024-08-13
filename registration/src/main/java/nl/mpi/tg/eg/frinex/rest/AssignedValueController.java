@@ -46,7 +46,7 @@ public class AssignedValueController {
     TagRepository tagRepository;
 
     @RequestMapping(value = "/completeValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DataSubmissionResult> completeValue(@RequestBody TagData completedTagData) {
+    public synchronized ResponseEntity<DataSubmissionResult> completeValue(@RequestBody TagData completedTagData) {
         final ResponseEntity<DataSubmissionResult> responseEntity;
         List<TagData> usersValues = tagRepository.findTop1ByUserIdAndEventTagInOrderByTagDateAsc(completedTagData.getUserId(), Set.copyOf(Arrays.asList(new String[]{"assignedValue", "completedValue"})));
         if (usersValues.isEmpty()) {
@@ -77,7 +77,7 @@ public class AssignedValueController {
     }
 
     @RequestMapping(value = "/assignValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DataSubmissionResult> assignValue(@RequestBody TagData tagData) {
+    public synchronized ResponseEntity<DataSubmissionResult> assignValue(@RequestBody TagData tagData) {
         String[] valueOptions = tagData.getTagValue().split(",");
         final ResponseEntity<DataSubmissionResult> responseEntity;
         if (!"assignValue".equals(tagData.getEventTag()) && !"serverValueComplete".equals(tagData.getEventTag())) {
