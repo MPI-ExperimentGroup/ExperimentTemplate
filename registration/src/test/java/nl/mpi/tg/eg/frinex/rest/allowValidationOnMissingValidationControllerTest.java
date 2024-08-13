@@ -408,7 +408,7 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<TagData> findFirstByUserIdAndEventTagInOrderByTagDateAsc(String userId, Set<String> eventTags) {
+            public List<TagData> findFirstByUserIdAndEventTagInOrderByTagDateDesc(String userId, Set<String> eventTags) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
