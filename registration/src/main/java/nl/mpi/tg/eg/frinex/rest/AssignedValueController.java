@@ -48,7 +48,7 @@ public class AssignedValueController {
     @RequestMapping(value = "/completeValue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public synchronized ResponseEntity<DataSubmissionResult> completeValue(@RequestBody TagData completedTagData) {
         final ResponseEntity<DataSubmissionResult> responseEntity;
-        List<TagData> usersValues = tagRepository.findTop1ByUserIdAndEventTagInOrderByTagDateAsc(completedTagData.getUserId(), Set.copyOf(Arrays.asList(new String[]{"assignedValue", "completedValue"})));
+        List<TagData> usersValues = tagRepository.findFirstByUserIdAndEventTagInOrderByTagDateAsc(completedTagData.getUserId(), Set.copyOf(Arrays.asList(new String[]{"assignedValue", "completedValue"})));
         if (usersValues.isEmpty()) {
             // nothing has been assigned so fail here
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
