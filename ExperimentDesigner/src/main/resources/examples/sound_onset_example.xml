@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/stable.xsd"
         appNameDisplay="sound_onset_example"> 
-        <deployment state="staging" />
+        <deployment state="staging" /> 
         <scss>
                 .indicatorActive {
                         background: darkgray;

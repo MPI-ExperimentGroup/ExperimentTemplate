@@ -19,7 +19,7 @@
             <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
         </validation>
     </validationService>
-    <scss/>
+    <scss/> 
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="token" preventServerDuplicates="false" registrationField="participants token"/>

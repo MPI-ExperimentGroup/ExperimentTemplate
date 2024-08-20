@@ -148,7 +148,7 @@
                     </row>
                 </column> 
             </row>
-        </table>
+        </table> 
         <addPadding />
         <regionClear regionId="consentStatus"></regionClear>
         <metadataField fieldName="consentOption" />

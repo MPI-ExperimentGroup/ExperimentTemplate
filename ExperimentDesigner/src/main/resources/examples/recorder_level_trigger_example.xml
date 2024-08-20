@@ -7,7 +7,7 @@
         .indicatorActive {
                 background: darkgray;
                 padding: 15px;
-                border-radius: 15px;
+                border-radius: 15px; 
         }
         .indicatorOff {
                 background: none;

@@ -3,5 +3,5 @@
         appNameDisplay="Minimal Example">
     <metadata/> 
     <presenter/> 
-    <stimuli/> 
+    <stimuli/>  
 </experiment>
