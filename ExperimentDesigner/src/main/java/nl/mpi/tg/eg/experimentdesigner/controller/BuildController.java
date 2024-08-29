@@ -105,7 +105,7 @@ public class BuildController {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         StringBuilder stringBuilder = new StringBuilder();
         ProcessBuilder builder = new ProcessBuilder(
-                "git", "checkout", "http://frinexbuild.mpi.nl/git/" + repositoryNameCleaned + ".git");
+                "git", "clone", "http://frinexbuild.mpi.nl/git/" + repositoryNameCleaned + ".git");
         builder.redirectErrorStream(true);
         builder.directory(new File("/FrinexExperiments"));
         try {
