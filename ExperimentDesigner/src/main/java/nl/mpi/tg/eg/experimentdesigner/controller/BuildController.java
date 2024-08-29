@@ -17,10 +17,12 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
-import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +41,7 @@ import reactor.core.publisher.Mono;
 public class BuildController {
 
     @RequestMapping("/repository")
-    public String repositoryListing(Model model, HttpServletRequest request) {
+    public String repositoryPage(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "repository");
         Principal principal = request.getUserPrincipal();
@@ -96,5 +98,29 @@ public class BuildController {
                 .accept(MediaType.APPLICATION_XML)
                 .retrieve()
                 .bodyToMono(byte[].class);
+    }
+
+    @RequestMapping("/repositoryClone/{repositoryName}")
+    public String repositoryClone(@PathVariable String repositoryName) {
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        StringBuilder stringBuilder = new StringBuilder();
+        ProcessBuilder builder = new ProcessBuilder(
+                "git", "checkout", "http://frinexbuild.mpi.nl/git/" + repositoryNameCleaned + ".git");
+        builder.redirectErrorStream(true);
+        builder.directory(new File("/FrinexExperiments"));
+        try {
+            Process process = builder.start();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            do {
+                line = bufferedReader.readLine();
+                if (line != null) {
+                    stringBuilder.append(line);
+                }
+            } while (line != null);
+        } catch (IOException exception) {
+            stringBuilder.append(exception.getMessage());
+        }
+        return stringBuilder.toString();
     }
 }
