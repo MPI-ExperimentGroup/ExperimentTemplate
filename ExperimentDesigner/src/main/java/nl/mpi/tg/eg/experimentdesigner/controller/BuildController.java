@@ -18,14 +18,11 @@
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -126,10 +123,6 @@ public class BuildController {
         } catch (IOException exception) {
             stringBuilder.append(exception.getMessage());
         }
-            return ResponseEntity.ok()
-                    .contentLength(stringBuilder.length())
-                    .contentType(MediaType.TEXT_PLAIN)
-                    .body(stringBuilder.toString());
-        }
+        return ResponseEntity.ok().body(stringBuilder.toString());
     }
 }
