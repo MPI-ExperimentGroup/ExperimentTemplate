@@ -76,7 +76,7 @@ public class RepositoryController {
         if (workingDirectory.exists()) {
             if (workingDirectory.isDirectory()) {
                 for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[Xx][Mm][Ll]$"))) {
-                    stringBuilder.append(listingFile.getName());
+                    stringBuilder.append(listingFile.getName()).append("<br>");
                 }
             } else {
                 stringBuilder.append("Not a directory: ").append(repositoryNameCleaned);
