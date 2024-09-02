@@ -21,7 +21,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
+import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +38,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RepositoryController {
 
+    private static final Logger LOG = Logger.getLogger(StimulusController.class.getName());
+
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
-    public void repositoryClone(HttpServletResponse response, @PathVariable String repositoryName) throws IOException {
+    public void repositoryClone(HttpServletResponse response, @PathVariable String repositoryName) {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        response.setContentType("application/text");
-        response.addHeader("Content-Transfer-Encoding", "text");
+        response.setStatus(200);
         ProcessBuilder builder = new ProcessBuilder(
                 "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git");
         builder.redirectErrorStream(true);
@@ -53,12 +57,13 @@ public class RepositoryController {
             do {
                 line = bufferedReader.readLine();
                 if (line != null) {
-                    response.getOutputStream().print(line + "<br>");
+                    response.getWriter().println(line + "<br>");
+                    response.flushBuffer();
                 }
             } while (line != null);
             response.getOutputStream().flush();
         } catch (IOException exception) {
-            response.sendError(0, exception.getMessage() + "<br>");
+            LOG.log(Level.INFO, "clone failed", exception);
         }
     }
 
