@@ -73,8 +73,16 @@ public class RepositoryController {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         StringBuilder stringBuilder = new StringBuilder();
         File workingDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned);
-        for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("\\.[Xx][Mm][Ll]"))) {
-            stringBuilder.append(listingFile.getName());
+        if (workingDirectory.exists()) {
+            if (workingDirectory.isDirectory()) {
+                for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[Xx][Mm][Ll]$"))) {
+                    stringBuilder.append(listingFile.getName());
+                }
+            } else {
+                stringBuilder.append("Not a directory: ").append(repositoryNameCleaned);
+            }
+        } else {
+            stringBuilder.append("Directory not found: ").append(repositoryNameCleaned);
         }
         return ResponseEntity.ok().body(stringBuilder.toString());
     }
