@@ -49,7 +49,7 @@ function populateListing(repository, username) {
                     if (cellString === '_date') {
                         var currentBuildDate = new Date(data.table[keyString][cellString].value);
                         document.getElementById(keyString + cellString).innerHTML = currentBuildDate.getFullYear() + '-' + ((currentBuildDate.getMonth() + 1 < 10) ? '0' : '') + (currentBuildDate.getMonth() + 1) + '-' + ((currentBuildDate.getDate() < 10) ? '0' : '') + currentBuildDate.getDate() + 'T' + ((currentBuildDate.getHours() < 10) ? '0' : '') + currentBuildDate.getHours() + ':' + ((currentBuildDate.getMinutes() < 10) ? '0' : '') + currentBuildDate.getMinutes() + ':' + ((currentBuildDate.getSeconds() < 10) ? '0' : '') + currentBuildDate.getSeconds();
-                        const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table['_repository'].value);
+                        const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyString]['_repository'].value);
                         document.getElementById(keyString + '_edit').innerHTML = 
                                 '<a href=\'/blocks/' + data.table[keyString]['_experiment'].value + '\'>preview</a>'
                                 + '<a href=\'/repository/' + repositoryName + '\'>edit</a>';
