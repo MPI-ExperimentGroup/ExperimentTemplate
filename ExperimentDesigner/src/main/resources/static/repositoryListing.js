@@ -54,7 +54,7 @@ function populateListing(repository, username) {
                         if (data.table[keyString]['_repository']) {
                             const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyString]['_repository'].value);
                             document.getElementById(keyString + '_repository').innerHTML =
-                                ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
+                                ((repositoryName && repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                         }
                     } else if (cellString === '_repository' || cellString === '_committer' || cellString === '_experiment') {
                         var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
