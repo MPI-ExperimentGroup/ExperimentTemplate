@@ -21,8 +21,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,11 +34,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RepositoryController {
-    
+
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
-    public ResponseEntity<Reader> repositoryClone(@PathVariable String repositoryName) {
+    public void repositoryClone(HttpServletResponse response, @PathVariable String repositoryName) throws IOException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        response.setContentType("application/text");
+        response.addHeader("Content-Transfer-Encoding", "text");
         ProcessBuilder builder = new ProcessBuilder(
                 "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git");
         builder.redirectErrorStream(true);
@@ -48,19 +49,26 @@ public class RepositoryController {
             Process process = builder.start();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
-            return ResponseEntity.ok().body(bufferedReader);
+            String line;
+            do {
+                line = bufferedReader.readLine();
+                if (line != null) {
+                    response.getOutputStream().print(line + "<br>");
+                }
+            } while (line != null);
+            response.getOutputStream().flush();
         } catch (IOException exception) {
-            return ResponseEntity.internalServerError().body(new StringReader(exception.getMessage()));
+            response.sendError(0, exception.getMessage() + "<br>");
         }
     }
-    
+
     @RequestMapping("/repository/list/{repositoryName}")
     @ResponseBody
     public ResponseEntity<String> repositoryList(@PathVariable String repositoryName) {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         StringBuilder stringBuilder = new StringBuilder();
         ProcessBuilder builder = new ProcessBuilder(
-                "ls -l", "/FrinexExperiments/" + repositoryNameCleaned);
+                "/bin/ls -l", "/FrinexExperiments/" + repositoryNameCleaned);
         builder.redirectErrorStream(true);
         builder.directory(new File("/FrinexExperiments"));
         try {
