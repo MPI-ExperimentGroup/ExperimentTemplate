@@ -58,5 +58,30 @@ public class RepositoryController {
         }
         return ResponseEntity.ok().body(stringBuilder.toString());
     }
+    
+    @RequestMapping("/repository/list/{repositoryName}")
+    @ResponseBody
+    public ResponseEntity<String> repositoryList(@PathVariable String repositoryName) {
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        StringBuilder stringBuilder = new StringBuilder();
+        ProcessBuilder builder = new ProcessBuilder(
+                "ls -l", "/FrinexExperiments/" + repositoryNameCleaned);
+        builder.redirectErrorStream(true);
+        builder.directory(new File("/FrinexExperiments"));
+        try {
+            Process process = builder.start();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            do {
+                line = bufferedReader.readLine();
+                if (line != null) {
+                    stringBuilder.append(line);
+                }
+            } while (line != null);
+        } catch (IOException exception) {
+            stringBuilder.append(exception.getMessage());
+        }
+        return ResponseEntity.ok().body(stringBuilder.toString());
+    }
 
 }
