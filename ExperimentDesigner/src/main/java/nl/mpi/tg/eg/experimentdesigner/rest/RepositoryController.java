@@ -58,12 +58,12 @@ public class RepositoryController {
                 line = bufferedReader.readLine();
                 if (line != null) {
                     response.getWriter().println(line + "<br>");
-                    response.flushBuffer();
+                    response.getWriter().flush();
                 }
             } while (line != null);
-            response.getOutputStream().flush();
+            response.getWriter().flush();
         } catch (IOException exception) {
-            LOG.log(Level.INFO, "clone failed", exception);
+            LOG.log(Level.SEVERE, "clone failed", exception);
         }
     }
 
