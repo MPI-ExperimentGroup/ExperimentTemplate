@@ -21,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,9 +38,8 @@ public class RepositoryController {
     
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
-    public ResponseEntity<String> repositoryClone(@PathVariable String repositoryName) {
+    public ResponseEntity<Reader> repositoryClone(@PathVariable String repositoryName) {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        StringBuilder stringBuilder = new StringBuilder();
         ProcessBuilder builder = new ProcessBuilder(
                 "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git");
         builder.redirectErrorStream(true);
@@ -46,17 +47,11 @@ public class RepositoryController {
         try {
             Process process = builder.start();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            do {
-                line = bufferedReader.readLine();
-                if (line != null) {
-                    stringBuilder.append(line);
-                }
-            } while (line != null);
+            // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
+            return ResponseEntity.ok().body(bufferedReader);
         } catch (IOException exception) {
-            stringBuilder.append(exception.getMessage());
+            return ResponseEntity.internalServerError().body(new StringReader(exception.getMessage()));
         }
-        return ResponseEntity.ok().body(stringBuilder.toString());
     }
     
     @RequestMapping("/repository/list/{repositoryName}")
