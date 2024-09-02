@@ -52,7 +52,7 @@ function populateListing(repository, username) {
                         const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyString]['_repository'].value);
                         document.getElementById(keyString + '_edit').innerHTML = 
                                 '<a href=\'/blocks/' + data.table[keyString]['_experiment'].value + '\'>preview</a>'
-                                + '<a href=\'/repository/' + repositoryName + '\'>edit</a>';
+                                + ((repositoryName.length > 1)? '&nbsp;<a href=\'/repository/' + repositoryName[1] + '\'>edit</a>' : '');
                     } else if (cellString === '_repository' || cellString === '_committer' || cellString === '_experiment') {
                         var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
                         document.getElementById(keyString + cellString).innerHTML = data.table[keyString][cellString].value + buildTimeSting;
