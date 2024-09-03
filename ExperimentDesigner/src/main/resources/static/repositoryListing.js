@@ -93,7 +93,7 @@ function doFilter() {
 
 function doSort() {
     var sortData = location.href.split('#')[1];
-    var sortItem = (sortData) ? sortData.split('_')[0] : '7';
+    var sortItem = (sortData) ? sortData.split('_')[0] : '9';
     var sortDirection = (sortData) ? sortData.split('_')[1] : 'd';
     if ($.isNumeric(sortItem)) {
         if (sortDirection === 'd') {
