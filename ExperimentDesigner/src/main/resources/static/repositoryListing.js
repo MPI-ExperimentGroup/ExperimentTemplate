@@ -49,7 +49,7 @@ function populateListing(repository, username) {
                     if (data.table[keyStringRaw]['_repository']) {
                         const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyStringRaw]['_repository'].value);
                         if (repositoryName) {
-                            if (repository === data.table[keyString]['_repository'] || username === data.table[keyString]['_committer']) {
+                            if (repository === data.table[keyStringRaw]['_repository'].value || username === data.table[keyStringRaw]['_committer'].value) {
                                 document.getElementById(keyString + '_edit').innerHTML =
                                     '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
                                 document.getElementById(keyString + '_static').innerHTML =
