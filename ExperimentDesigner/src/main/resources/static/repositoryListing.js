@@ -49,12 +49,15 @@ function populateListing(repository, username) {
                     if (data.table[keyStringRaw]['_repository']) {
                         const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyStringRaw]['_repository'].value);
                         if (repositoryName) {
-                            document.getElementById(keyString + '_edit').innerHTML =
-                            '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
-                            document.getElementById(keyString + '_static').innerHTML =
-                            '<a href=\'/files/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>files</a>';
-                            document.getElementById(keyString + '_clone').innerHTML =
-                                ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
+                            if (repository === data.table[keyString]['_repository'] || username === data.table[keyString]['_committer']) {
+                                document.getElementById(keyString + '_edit').innerHTML =
+                                    '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
+                                document.getElementById(keyString + '_static').innerHTML =
+                                    '<a href=\'/files/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>files</a>';
+                                document.getElementById(keyString + '_clone').innerHTML =
+                                    ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
+                                document.getElementById(keyString + '_preview').innerHTML = '';
+                            }
                         }
                     }
                 } else if (cellString === '_committer' || cellString === '_repository') {
