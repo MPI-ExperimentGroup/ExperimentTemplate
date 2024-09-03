@@ -33,7 +33,7 @@ function populateListing(repository, username) {
                 var tableRow = document.createElement('tr');
                 experimentRow = tableRow;
                 tableRow.id = keyString + '_row';
-                for (var cellString of ['_repository', '_clone', '_committer', '_blank', '_experiment', '_edit', '_static', '_preview', '_date']) {
+                for (var cellString of ['_repository', '_clone', '_committer', '_blank', '_experiment', '_edit', '_preview', '_static', '_date']) {
                     var tableCell = document.createElement('td');
                     tableCell.id = keyString + cellString;
                     tableRow.appendChild(tableCell);
@@ -53,7 +53,7 @@ function populateListing(repository, username) {
                                 document.getElementById(keyString + '_edit').innerHTML =
                                     '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
                                 document.getElementById(keyString + '_static').innerHTML =
-                                    '<a href=\'/files/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>files</a>';
+                                    '<a href=\'/files/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>media</a>';
                                 document.getElementById(keyString + '_clone').innerHTML =
                                     ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                                 document.getElementById(keyString + '_preview').innerHTML = '';
