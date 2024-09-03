@@ -73,9 +73,9 @@ function doFilter() {
     var userAll = !$("#userAll").prop('checked');
     $('#repositoryListing tr[id]').each(function () {
         if ((repositoryAll || //(data.table[keyString]['_repository'] !== undefined // older listings might not have the _repository and _committer
-            $("#" + this.id.replace(/_row$/g, "_repository").innerHTML === repository))
+            $("#" + this.id.replace(/_row$/g, "_repository")).innerHTML === repository)
             && (userAll || //(data.table[keyString]['_committer'] !== undefined // older listings might not have the _repository and _committer
-                $("#" + this.id.replace(/_row$/g, "_committer").innerHTML === username))) {
+                $("#" + this.id.replace(/_row$/g, "_committer")).innerHTML === username)) {
             $(this).show();
         } else {
             $(this).hide();
