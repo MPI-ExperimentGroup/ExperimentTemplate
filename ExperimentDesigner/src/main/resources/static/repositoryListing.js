@@ -26,7 +26,8 @@ function populateListing(repository, username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
         document.getElementById('repositoryDiv').innerText = repository;
         document.getElementById('usernameDiv').innerText = username;
-        for (var keyString in data.table) {
+        for (var keyStringRaw in data.table) {
+            var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
             var experimentRow = document.getElementById(keyString + '_row');
             if (!experimentRow) {
                 var tableRow = document.createElement('tr');
@@ -39,25 +40,25 @@ function populateListing(repository, username) {
                 }
                 document.getElementById('repositoryListing').appendChild(tableRow);
             }
-            for (var cellString in data.table[keyString]) {
+            for (var cellString in data.table[keyStringRaw]) {
                 if (cellString === '_date') {
-                    var currentBuildDate = new Date(data.table[keyString][cellString].value);
+                    var currentBuildDate = new Date(data.table[keyStringRaw][cellString].value);
                     document.getElementById(keyString + cellString).innerHTML = currentBuildDate.getFullYear() + '-' + ((currentBuildDate.getMonth() + 1 < 10) ? '0' : '') + (currentBuildDate.getMonth() + 1) + '-' + ((currentBuildDate.getDate() < 10) ? '0' : '') + currentBuildDate.getDate() + 'T' + ((currentBuildDate.getHours() < 10) ? '0' : '') + currentBuildDate.getHours() + ':' + ((currentBuildDate.getMinutes() < 10) ? '0' : '') + currentBuildDate.getMinutes() + ':' + ((currentBuildDate.getSeconds() < 10) ? '0' : '') + currentBuildDate.getSeconds();
                     document.getElementById(keyString + '_edit').innerHTML =
-                        '<a href=\'/blocks/' + data.table[keyString]['_experiment'].value + '\'>preview</a>';
-                    if (data.table[keyString]['_repository']) {
-                        const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyString]['_repository'].value);
+                        '<a href=\'/blocks/' + data.table[keyStringRaw]['_experiment'].value + '\'>preview</a>';
+                    if (data.table[keyStringRaw]['_repository']) {
+                        const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyStringRaw]['_repository'].value);
                         if (repositoryName) {
                             document.getElementById(keyString + '_clone').innerHTML =
                                 ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                         }
                     }
                 } else if (cellString === '_committer' || cellString === '_repository') {
-                    var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
-                    document.getElementById(keyString + cellString).innerHTML = (data.table[keyString][cellString].value + buildTimeSting);
+                    var buildTimeSting = (typeof data.table[keyStringRaw][cellString].ms !== 'undefined' && data.table[keyStringRaw][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyStringRaw][cellString].ms / 60000) + ':' + ((data.table[keyStringRaw][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyStringRaw][cellString].ms / 1000 % 60) + ')' : '';
+                    document.getElementById(keyString + cellString).innerHTML = (data.table[keyStringRaw][cellString].value + buildTimeSting);
                 } else if (cellString === '_experiment') {
-                    var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
-                    document.getElementById(keyString + cellString).innerHTML = (data.table[keyString][cellString].value + buildTimeSting).replace(/[^A-z0-9_-]/g, "");
+                    var buildTimeSting = (typeof data.table[keyStringRaw][cellString].ms !== 'undefined' && data.table[keyStringRaw][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyStringRaw][cellString].ms / 60000) + ':' + ((data.table[keyStringRaw][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyStringRaw][cellString].ms / 1000 % 60) + ')' : '';
+                    document.getElementById(keyString + cellString).innerHTML = (data.table[keyStringRaw][cellString].value + buildTimeSting).replace(/[^A-z0-9_-]/g, "");
                 }
             }
         }
@@ -90,10 +91,10 @@ function doSort() {
     if ($.isNumeric(sortItem)) {
         if (sortDirection === 'd') {
             $('#repositoryListing tr[id]').each(function () { }).sort(function (b, a) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
-            $('#repositoryListing tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_a') });
+            $('#repositoryListing tr:first').children('td').each(function (index) { $(this).children('a').attr('href', '#' + (index + 1) + '_a') });
         } else {
             $('#repositoryListing tr[id]').each(function () { }).sort(function (a, b) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
-            $('#repositoryListing tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_d') });
+            $('#repositoryListing tr:first').children('td').each(function (index) { $(this).children('a').attr('href', '#' + (index + 1) + '_d') });
         }
     }
 }
