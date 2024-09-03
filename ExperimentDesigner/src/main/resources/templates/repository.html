@@ -28,24 +28,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 <body>
     <div th:fragment="repositoryListing">
-        <div>
-            <span id="repositoryDiv"></span>
-            <input type="checkbox" id="repositoryAll"
-                th:attr="onclick=|populateListing('${repository}', '${username}');|" />
-                filter
-        </div>
-        <div>
-            <span id="usernameDiv"></span>
-            <input type="checkbox" checked id="userAll" th:attr="onclick=|populateListing('${repository}', '${username}');|" />
-            filter
-        </div>
         <table id='repositoryListing'>
             <tr>
                 <td><a href="#1">Repository</a></td>
+                <td></td>
                 <td><a href="#2">Committer</a></td>
+                <td></td>
                 <td><a href="#3">Experiment</a></td>
+                <td></td>
                 <td><a href="#4">Date</a></td>
                 <td></td>
+            </tr>
+            <tr>
+                <td><span id="repositoryDiv"></span></td>
+                <td>
+                    <input type="checkbox" id="repositoryAll"
+                        th:attr="onclick=|doFilter();|" />
+                    filter
+                </td>
+                <td><span id="usernameDiv"></span></td>
+                <td><input type="checkbox" checked id="userAll"
+                        th:attr="onclick=|doFilter();|" />
+                    filter</td>
             </tr>
         </table>
         <script src='repositoryListing.js'></script>
