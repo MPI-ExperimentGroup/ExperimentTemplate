@@ -32,7 +32,7 @@ function populateListing(repository, username) {
                 var tableRow = document.createElement('tr');
                 experimentRow = tableRow;
                 tableRow.id = keyString + '_row';
-                for (var cellString of ['_repository', '_clone', '_committer', '_experiment', '_date', '_edit']) {
+                for (var cellString of ['_repository', '_clone', '_committer', '_blank', '_experiment', '_edit', '_date']) {
                     var tableCell = document.createElement('td');
                     tableCell.id = keyString + cellString;
                     tableRow.appendChild(tableCell);
@@ -54,7 +54,7 @@ function populateListing(repository, username) {
                     }
                 } else if (cellString === '_repository' || cellString === '_committer' || cellString === '_experiment') {
                     var buildTimeSting = (typeof data.table[keyString][cellString].ms !== 'undefined' && data.table[keyString][cellString].built) ? '&nbsp;(' + parseInt(data.table[keyString][cellString].ms / 60000) + ':' + ((data.table[keyString][cellString].ms / 1000 % 60 < 10) ? '0' : '') + parseInt(data.table[keyString][cellString].ms / 1000 % 60) + ')' : '';
-                    document.getElementById(keyString + cellString).innerHTML = (data.table[keyString][cellString].value + buildTimeSting).replace(/[^0-9_-]/g, "");
+                    document.getElementById(keyString + cellString).innerHTML = (data.table[keyString][cellString].value + buildTimeSting).replace(/[^A-z0-9_-]/g, "");
                 }
             }
         }
@@ -64,6 +64,8 @@ function populateListing(repository, username) {
 }
 
 function doFilter() {
+    var repository = document.getElementById('repositoryDiv').innerText;
+    var username = document.getElementById('usernameDiv').innerText;
     var repositoryAll = !$("#repositoryAll").prop('checked');
     var userAll = !$("#userAll").prop('checked');
     $('#repositoryListing tr[id]').each(function () {
