@@ -70,9 +70,9 @@ function doFilter() {
     var userAll = !$("#userAll").prop('checked');
     $('#repositoryListing tr[id]').each(function () {
         if ((repositoryAll || //(data.table[keyString]['_repository'] !== undefined // older listings might not have the _repository and _committer
-            $(this.id.replace(/_row$/g, "_repository").innerHTML === repository))
+            $("#" + this.id.replace(/_row$/g, "_repository").innerHTML === repository))
             && (userAll || //(data.table[keyString]['_committer'] !== undefined // older listings might not have the _repository and _committer
-                $(this.id.replace(/_row$/g, "_committer").innerHTML === username))) {
+                $("#" + this.id.replace(/_row$/g, "_committer").innerHTML === username))) {
             $(this).show();
         } else {
             $(this).hide();
@@ -86,10 +86,10 @@ function doSort() {
     var sortDirection = (sortData) ? sortData.split('_')[1] : 'd';
     if ($.isNumeric(sortItem)) {
         if (sortDirection === 'd') {
-            $('#repositoryListing tr:gt(0)').each(function () { }).sort(function (b, a) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
+            $('#repositoryListing tr[id]').each(function () { }).sort(function (b, a) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
             $('#repositoryListing tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_a') });
         } else {
-            $('#repositoryListing tr:gt(0)').each(function () { }).sort(function (a, b) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
+            $('#repositoryListing tr[id]').each(function () { }).sort(function (a, b) { return $('td:nth-of-type(' + sortItem + ')', a).text().localeCompare($('td:nth-of-type(' + sortItem + ')', b).text()); }).appendTo('#repositoryListing tbody');
             $('#repositoryListing tr:first').children('td').children('a').each(function (index) { $(this).attr('href', '#' + (index + 1) + '_d') });
         }
     }
