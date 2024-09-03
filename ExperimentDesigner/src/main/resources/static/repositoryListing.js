@@ -33,7 +33,7 @@ function populateListing(repository, username) {
                 var tableRow = document.createElement('tr');
                 experimentRow = tableRow;
                 tableRow.id = keyString + '_row';
-                for (var cellString of ['_repository', '_clone', '_committer', '_blank', '_experiment', '_edit', '_date']) {
+                for (var cellString of ['_repository', '_clone', '_committer', '_blank', '_experiment', '_edit', '_static', '_preview', '_date']) {
                     var tableCell = document.createElement('td');
                     tableCell.id = keyString + cellString;
                     tableRow.appendChild(tableCell);
@@ -44,11 +44,15 @@ function populateListing(repository, username) {
                 if (cellString === '_date') {
                     var currentBuildDate = new Date(data.table[keyStringRaw][cellString].value);
                     document.getElementById(keyString + cellString).innerHTML = currentBuildDate.getFullYear() + '-' + ((currentBuildDate.getMonth() + 1 < 10) ? '0' : '') + (currentBuildDate.getMonth() + 1) + '-' + ((currentBuildDate.getDate() < 10) ? '0' : '') + currentBuildDate.getDate() + 'T' + ((currentBuildDate.getHours() < 10) ? '0' : '') + currentBuildDate.getHours() + ':' + ((currentBuildDate.getMinutes() < 10) ? '0' : '') + currentBuildDate.getMinutes() + ':' + ((currentBuildDate.getSeconds() < 10) ? '0' : '') + currentBuildDate.getSeconds();
-                    document.getElementById(keyString + '_edit').innerHTML =
+                    document.getElementById(keyString + '_preview').innerHTML =
                         '<a href=\'/blocks/' + data.table[keyStringRaw]['_experiment'].value + '\'>preview</a>';
                     if (data.table[keyStringRaw]['_repository']) {
                         const repositoryName = /\/git\/([A-z0-9_]*).git/.exec(data.table[keyStringRaw]['_repository'].value);
                         if (repositoryName) {
+                            document.getElementById(keyString + '_edit').innerHTML =
+                            '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
+                            document.getElementById(keyString + '_static').innerHTML =
+                            '<a href=\'/files/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>files</a>';
                             document.getElementById(keyString + '_clone').innerHTML =
                                 ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                         }
