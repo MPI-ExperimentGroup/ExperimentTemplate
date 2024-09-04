@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
 import org.springframework.core.io.Resource;
@@ -45,7 +46,7 @@ public class RepositoryController {
 
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
-    public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException, IOException {
+    public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
         if (cloneRunnable == null) {
@@ -57,8 +58,8 @@ public class RepositoryController {
                     builder.redirectErrorStream(true);
                     builder.directory(new File("/FrinexExperiments"));
                     builder.redirectOutput(log);
-//                    try {
-                    Process process = builder.start();
+                    try {
+                        Process process = builder.start();
 //                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 //                        // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
 //                        String line;
@@ -70,9 +71,9 @@ public class RepositoryController {
 //                            }
 //                        } while (line != null);
 //                        response.getWriter().flush();
-//                    } catch (IOException exception) {
-//                        LOG.log(Level.SEVERE, "clone failed", exception);
-//                    }
+                    } catch (IOException exception) {
+                        LOG.log(Level.SEVERE, "clone failed", exception);
+                    }
 
                 }
             };
