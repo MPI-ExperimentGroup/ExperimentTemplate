@@ -88,6 +88,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <div th:if="${detailType} eq 'preview'" th:include="preview :: previewPanel"></div>
                                 <div th:if="${detailType} eq 'builds'" th:include="builds :: buildListing"></div>
                                 <div th:if="${detailType} eq 'repository'" th:include="repository :: repositoryListing"></div>
+                                <div th:if="${detailType} eq 'media'" th:include="media :: repositoryListing"></div>
                             </td>
                         </tr>
                     </table>
