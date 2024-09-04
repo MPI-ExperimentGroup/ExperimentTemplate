@@ -17,14 +17,15 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.rest;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Logger;
-import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,32 +40,53 @@ import org.springframework.web.bind.annotation.RestController;
 public class RepositoryController {
 
     private static final Logger LOG = Logger.getLogger(StimulusController.class.getName());
+    Runnable cloneRunnable = null;
 
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
-    public void repositoryClone(HttpServletResponse response, @PathVariable String repositoryName) {
+    public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        response.setStatus(200);
-        ProcessBuilder builder = new ProcessBuilder(
-                "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git");
-        builder.redirectErrorStream(true);
-        builder.directory(new File("/FrinexExperiments"));
-        try {
-            Process process = builder.start();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
-            String line;
-            do {
-                line = bufferedReader.readLine();
-                if (line != null) {
-                    response.getWriter().println(line + "<br>");
-                    response.getWriter().flush();
+        File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
+        if (cloneRunnable == null) {
+            cloneRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    ProcessBuilder builder = new ProcessBuilder(
+                            "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git");
+                    builder.redirectErrorStream(true);
+                    builder.directory(new File("/FrinexExperiments"));
+                    builder.redirectOutput(log);
+//                    try {
+//                        Process process = builder.start();
+//                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+//                        // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
+//                        String line;
+//                        do {
+//                            line = bufferedReader.readLine();
+//                            if (line != null) {
+//                                response.getWriter().println(line + "<br>");
+//                                response.getWriter().flush();
+//                            }
+//                        } while (line != null);
+//                        response.getWriter().flush();
+//                    } catch (IOException exception) {
+//                        LOG.log(Level.SEVERE, "clone failed", exception);
+//                    }
+
                 }
-            } while (line != null);
-            response.getWriter().flush();
-        } catch (IOException exception) {
-            LOG.log(Level.SEVERE, "clone failed", exception);
+            };
+            cloneRunnable.run();
         }
+//        try {
+        Path path = Paths.get(log.toURI());
+        Resource resource = new UrlResource(path.toUri());
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(resource);
+//        } catch (MalformedURLException exception) {
+//            LOG.log(Level.SEVERE, "reading log failed", exception);
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND);
+//        }
     }
 
     @RequestMapping("/repository/list/{repositoryName}")
