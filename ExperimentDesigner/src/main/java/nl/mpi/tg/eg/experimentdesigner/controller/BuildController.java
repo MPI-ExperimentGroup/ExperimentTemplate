@@ -51,7 +51,7 @@ public class BuildController {
         return "design";
     }
     
-    @RequestMapping("/media/{repository}/{experiment}")
+    @RequestMapping("/repository/{repository}/{experiment}")
     public String repositoryMedia(Model model, HttpServletRequest request, @PathVariable String repository, @PathVariable String experiment) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "media");

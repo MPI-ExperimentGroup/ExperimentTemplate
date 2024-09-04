@@ -61,6 +61,40 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             /*]]>*/
         </script>
     </div>
+    <div th:fragment="experimentMedia">
+        <table id='repositoryListing'>
+            <tr>
+                <td><a href="#1">Experiment</a></td>
+                <td></td>
+                <td><a href="#3">File Name</a></td>
+                <td></td>
+                <td><a href="#5">Preview</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="#9">Date</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span id="repositoryDiv"></span></td>
+                <td>
+                    <input type="checkbox" id="repositoryAll"
+                        th:attr="onclick=|doFilter();|" />
+                    filter
+                </td>
+                <td><span id="usernameDiv"></span></td>
+                <td><input type="checkbox" checked id="userAll"
+                        th:attr="onclick=|doFilter();|" />
+                    filter</td>
+            </tr>
+        </table>
+        <script src='repositoryListing.js'></script>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            populateMedia(/*[[${repository}]]*/ '', /*[[${experiment}]]*/ '', /*[[${username}]]*/ '');
+            /*]]>*/
+        </script>
+    </div>
 </body>
 
 </html>
