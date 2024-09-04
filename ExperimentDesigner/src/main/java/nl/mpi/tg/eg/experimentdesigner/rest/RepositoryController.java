@@ -83,7 +83,7 @@ public class RepositoryController {
         Path path = Paths.get(log.toURI());
         Resource resource = new UrlResource(path.toUri());
         return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_PDF)
+                .contentType(MediaType.TEXT_PLAIN)
                 .body(resource);
 //        } catch (MalformedURLException exception) {
 //            LOG.log(Level.SEVERE, "reading log failed", exception);
