@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.rest;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,7 +45,7 @@ public class RepositoryController {
 
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
-    public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
+    public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException, IOException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
         if (cloneRunnable == null) {
@@ -57,7 +58,7 @@ public class RepositoryController {
                     builder.directory(new File("/FrinexExperiments"));
                     builder.redirectOutput(log);
 //                    try {
-//                        Process process = builder.start();
+                    Process process = builder.start();
 //                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 //                        // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
 //                        String line;
