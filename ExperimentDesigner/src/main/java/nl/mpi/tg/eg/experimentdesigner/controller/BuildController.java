@@ -50,6 +50,17 @@ public class BuildController {
         model.addAttribute("repository", (principal != null) ? "/git/" + principal.getName().replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
         return "design";
     }
+    
+    @RequestMapping("/media/{repository}/{experiment}")
+    public String repositoryMedia(Model model, HttpServletRequest request, @PathVariable String repository, @PathVariable String experiment) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "media");
+        model.addAttribute("experiment", experiment);
+        Principal principal = request.getUserPrincipal();
+        model.addAttribute("username", (principal != null) ? principal.getName() : "");
+        model.addAttribute("repository", (principal != null) ? "/git/" + repository.replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
+        return "design";
+    }
 
     @RequestMapping("/builds")
     public String buildListing(Model model, HttpServletRequest request) {

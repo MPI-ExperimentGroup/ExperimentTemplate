@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2024 Max Planck Institute for Psycholinguistics
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+ * @since 06 August 2024 11:44 AM (creation date)
+ * @author Peter Withers <peter.withers@mpi.nl>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Frinex Experiment Wizard</title>
+</head>
+
+<body>
+    <div th:fragment="repositoryListing">
+        <table id='repositoryListing'>
+            <tr>
+                <td><a href="#1">Experiment</a></td>
+                <td></td>
+                <td><a href="#3">File Name</a></td>
+                <td></td>
+                <td><a href="#5">Preview</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="#9">Date</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span id="repositoryDiv"></span></td>
+                <td>
+                    <input type="checkbox" id="repositoryAll"
+                        th:attr="onclick=|doFilter();|" />
+                    filter
+                </td>
+                <td><span id="usernameDiv"></span></td>
+                <td><input type="checkbox" checked id="userAll"
+                        th:attr="onclick=|doFilter();|" />
+                    filter</td>
+            </tr>
+        </table>
+        <script src='repositoryListing.js'></script>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            populateMedia(/*[[${repository}]]*/ '', /*[[${experiment}]]*/ '', /*[[${username}]]*/ '');
+            /*]]>*/
+        </script>
+    </div>
+</body>
+
+</html>
