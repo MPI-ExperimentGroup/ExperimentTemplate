@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
@@ -42,15 +43,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class RepositoryController {
 
     private static final Logger LOG = Logger.getLogger(StimulusController.class.getName());
-    Runnable cloneRunnable = null;
+    HashMap<String, Runnable> cloneRunnables = new HashMap<>();
 
     @RequestMapping("/repository/clone/{repositoryName}")
     @ResponseBody
     public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
-        if (cloneRunnable == null) {
-            cloneRunnable = new Runnable() {
+        if (!cloneRunnables.containsKey(repositoryNameCleaned)) {
+            cloneRunnables.put(repositoryNameCleaned, new Runnable() {
                 @Override
                 public void run() {
                     ProcessBuilder builder = new ProcessBuilder(
@@ -76,8 +77,8 @@ public class RepositoryController {
                     }
 
                 }
-            };
-            cloneRunnable.run();
+            });
+            cloneRunnables.get(repositoryNameCleaned).run();
         }
 //        try {
         Path path = Paths.get(log.toURI());
