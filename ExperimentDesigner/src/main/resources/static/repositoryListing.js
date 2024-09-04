@@ -22,6 +22,9 @@
  Author     : Peter Withers <peter.withers@mpi.nl>
  */
 
+function populateMedia(repository, experiment, username) {
+}
+
 function populateListing(repository, username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
         document.getElementById('repositoryDiv').innerText = repository;
