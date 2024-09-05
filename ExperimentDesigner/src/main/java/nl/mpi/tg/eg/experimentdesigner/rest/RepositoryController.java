@@ -104,7 +104,8 @@ public class RepositoryController {
             if (workingDirectory.isDirectory()) {
                 stringBuilder.append("\"listing\": [");
                 boolean isFirst = true;
-                for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[PpJjOoMmWwXx][NnPpGgPpAaMm][Gg34VvLl]$"))) {
+                // for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[PpJjOoMmWwXx][NnPpGgPpAaMm][Gg34VvLl]$"))) {
+                for (File listingFile : workingDirectory.listFiles()) {
                     if (isFirst) {
                         isFirst = false;
                     } else {
