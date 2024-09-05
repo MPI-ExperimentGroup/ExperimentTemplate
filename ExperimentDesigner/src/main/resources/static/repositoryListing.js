@@ -84,7 +84,7 @@ function populateMedia(repository, experiment) {
         $("#cloneLog")[0].innerText = cloneData;
         $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
             if (listingData.listing) {
-                for (var keyStringRaw in listingData.listing) {
+                for (var keyStringRaw of listingData.listing) {
                     var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
                     var listingRow = document.getElementById(keyString + '_row');
                     if (!listingRow) {
@@ -98,12 +98,17 @@ function populateMedia(repository, experiment) {
                         }
                         document.getElementById('repositoryListing').appendChild(tableRow);
                     }
+                    $("#" + keyString + "_file").innerHTML = keyStringRaw;
                 }
             } if (listingData.error) {
                 $("#errorMessage")[0].innerHTML = listingData.error;
+            } else {
+                $("#errorMessage")[0].innerHTML = "";
             }
             if ($("#cloneLog:contains(', done.')").length < 1) {
                 setTimeout(populateMedia, 1000, repository, experiment);
+            } else {
+                $("#cloneLog")[0].hide();
             }
         });
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
