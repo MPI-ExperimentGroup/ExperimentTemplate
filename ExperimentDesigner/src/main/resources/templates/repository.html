@@ -62,30 +62,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </script>
     </div>
     <div th:fragment="experimentMedia">
+        <div id="experimentName"></div>
+        <pre id="cloneLog"></pre>
         <table id='repositoryListing'>
             <tr>
-                <td><a href="#1">Experiment</a></td>
-                <td></td>
-                <td><a href="#3">File Name</a></td>
-                <td></td>
-                <td><a href="#5">Preview</a></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="#9">Date</a></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><span id="repositoryDiv"></span></td>
-                <td>
-                    <input type="checkbox" id="repositoryAll"
-                        th:attr="onclick=|doFilter();|" />
-                    filter
-                </td>
-                <td><span id="usernameDiv"></span></td>
-                <td><input type="checkbox" checked id="userAll"
-                        th:attr="onclick=|doFilter();|" />
-                    filter</td>
+                <td><a href="#1">File</a></td>
+                <td><a href="#2">Date</a></td>
+                <td><a href="#3">Preview</a></td>
             </tr>
         </table>
         <script src='/repositoryListing.js'></script>

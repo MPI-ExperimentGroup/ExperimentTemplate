@@ -77,6 +77,33 @@ function populateListing(repository, username) {
     });
 }
 
+function populateMedia(repository, experiment) {
+    $("#experimentName").innerHTML = repository + "&nbsp;" + experiment;
+    $.get('/repository/clone/' + repository, function (cloneData) {
+        $("#cloneLog").innerText = cloneData;
+        $.getJSON('/repository/' + repository + "/" + experiment, function (listingData) {
+            for (var keyStringRaw in listingData.listing) {
+                var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
+                var listingRow = document.getElementById(keyString + '_row');
+                if (!listingRow) {
+                    var tableRow = document.createElement('tr');
+                    listingRow = tableRow;
+                    tableRow.id = keyString + '_row';
+                    for (var cellString of ['_file', '_date', '_preview']) {
+                        var tableCell = document.createElement('td');
+                        tableCell.id = keyString + cellString;
+                        tableRow.appendChild(tableCell);
+                    }
+                    document.getElementById('repositoryListing').appendChild(tableRow);
+                }
+            }
+        });
+        // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
+        // http://frinexbuild.mpi.nl:7070/repository/pull/experiments
+        // http://frinexbuild.mpi.nl:7070/repository/experiments/electron_wrapper_test
+    });
+}
+
 function doFilter() {
     var repository = document.getElementById('repositoryDiv').innerText;
     var username = document.getElementById('usernameDiv').innerText;
