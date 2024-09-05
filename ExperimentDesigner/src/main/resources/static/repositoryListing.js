@@ -78,10 +78,10 @@ function populateListing(repository, username) {
 }
 
 function populateMedia(repository, experiment) {
-    $("#experimentName").innerHTML = repository + "&nbsp;" + experiment;
+    $("#experimentName")[0].innerHTML = repository + "&nbsp;" + experiment;
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
-        $("#cloneLog").innerText = cloneData;
+        $("#cloneLog")[0].innerText = cloneData;
         $.getJSON('/repository/' + repositoryShort + "/" + experiment, function (listingData) {
             for (var keyStringRaw in listingData.listing) {
                 var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
