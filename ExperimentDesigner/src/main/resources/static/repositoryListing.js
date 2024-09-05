@@ -82,7 +82,7 @@ function populateMedia(repository, experiment) {
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
         $("#cloneLog")[0].innerText = cloneData;
-        $.getJSON('/repository/listing/' + repositoryShort + "/" + experiment, function (listingData) {
+        $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
             if (listingData.listing) {
                 for (var keyStringRaw in listingData.listing) {
                     var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
