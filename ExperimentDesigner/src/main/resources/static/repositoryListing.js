@@ -102,6 +102,9 @@ function populateMedia(repository, experiment) {
             } if (listingData.error) {
                 $("#errorMessage")[0].innerHTML = listingData.error;
             }
+            if ($("#cloneLog:contains(', done.')").length < 1) {
+                setTimeout(populateMedia, 1000, repository, experiment);
+            }
         });
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
         // http://frinexbuild.mpi.nl:7070/repository/pull/experiments
