@@ -83,20 +83,24 @@ function populateMedia(repository, experiment) {
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
         $("#cloneLog")[0].innerText = cloneData;
         $.getJSON('/repository/' + repositoryShort + "/" + experiment, function (listingData) {
-            for (var keyStringRaw in listingData.listing) {
-                var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
-                var listingRow = document.getElementById(keyString + '_row');
-                if (!listingRow) {
-                    var tableRow = document.createElement('tr');
-                    listingRow = tableRow;
-                    tableRow.id = keyString + '_row';
-                    for (var cellString of ['_file', '_date', '_preview']) {
-                        var tableCell = document.createElement('td');
-                        tableCell.id = keyString + cellString;
-                        tableRow.appendChild(tableCell);
+            if (listingData.listing) {
+                for (var keyStringRaw in listingData.listing) {
+                    var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
+                    var listingRow = document.getElementById(keyString + '_row');
+                    if (!listingRow) {
+                        var tableRow = document.createElement('tr');
+                        listingRow = tableRow;
+                        tableRow.id = keyString + '_row';
+                        for (var cellString of ['_file', '_date', '_preview']) {
+                            var tableCell = document.createElement('td');
+                            tableCell.id = keyString + cellString;
+                            tableRow.appendChild(tableCell);
+                        }
+                        document.getElementById('repositoryListing').appendChild(tableRow);
                     }
-                    document.getElementById('repositoryListing').appendChild(tableRow);
                 }
+            } if (listingData.error) {
+                $("#errorMessage")[0].innerHTML = listingData.error;
             }
         });
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments

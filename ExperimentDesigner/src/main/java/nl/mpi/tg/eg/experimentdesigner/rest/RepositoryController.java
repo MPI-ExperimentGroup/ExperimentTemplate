@@ -92,23 +92,34 @@ public class RepositoryController {
 //        }
     }
 
-    @RequestMapping("/repository/list/{repositoryName}")
+    @RequestMapping("/repository/list/{repositoryName}/{experimentName}")
     @ResponseBody
-    public ResponseEntity<String> repositoryList(@PathVariable String repositoryName) {
+    public ResponseEntity<String> repositoryList(@PathVariable String repositoryName, @PathVariable String experimentName) {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
         StringBuilder stringBuilder = new StringBuilder();
-        File workingDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned);
+        stringBuilder.append("{");
+        File workingDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned);
         if (workingDirectory.exists()) {
             if (workingDirectory.isDirectory()) {
+                stringBuilder.append("\"listing\": [");
+                boolean isFirst = true;
                 for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[Xx][Mm][Ll]$"))) {
-                    stringBuilder.append(listingFile.getName()).append("<br>");
+                    if (isFirst) {
+                        isFirst = false;
+                    } else {
+                        stringBuilder.append(",");
+                    }
+                    stringBuilder.append("\"").append(listingFile.getName()).append("\"");
                 }
+                stringBuilder.append("]");
             } else {
-                stringBuilder.append("Not a directory: ").append(repositoryNameCleaned);
+                stringBuilder.append("\"error\": \"Not a directory: ").append(repositoryNameCleaned).append("\"");
             }
         } else {
-            stringBuilder.append("Directory not found: ").append(repositoryNameCleaned);
+            stringBuilder.append("\"error\": \"Directory not found: ").append(repositoryNameCleaned).append("\"");
         }
+        stringBuilder.append("}");
         return ResponseEntity.ok().body(stringBuilder.toString());
     }
 
