@@ -41,7 +41,7 @@ import reactor.core.publisher.Mono;
 @Controller
 public class BuildController {
 
-    @RequestMapping("/listing")
+    @RequestMapping("/list")
     public String listing(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "listing");
