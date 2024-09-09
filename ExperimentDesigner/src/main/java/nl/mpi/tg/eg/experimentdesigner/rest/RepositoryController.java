@@ -122,7 +122,7 @@ public class RepositoryController {
             boolean isFirst = true;
             for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
                 if (workingDirectory.isDirectory()) {
-                    recurseDirectories(workingDirectory, "/", stringBuilder, isFirst);
+                    isFirst = recurseDirectories(workingDirectory, "/" + workingDirectory.getName() + "/", stringBuilder, isFirst);
                 }
             }
             stringBuilder.append("]\n");
