@@ -95,14 +95,14 @@ public class RepositoryController {
     private boolean recurseDirectories(File directory, String pathString, StringBuilder stringBuilder, boolean isFirst) {
         // for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[PpJjOoMmWwXx][NnPpGgPpAaMm][Gg34VvLl]$"))) {
         for (File listingFile : directory.listFiles()) {
-            if (isFirst) {
-                isFirst = false;
-            } else {
-                stringBuilder.append(",\n");
-            }
             if (listingFile.isDirectory()) {
                 isFirst = recurseDirectories(listingFile, pathString + listingFile.getName() + "/", stringBuilder, isFirst);
             } else {
+                if (isFirst) {
+                    isFirst = false;
+                } else {
+                    stringBuilder.append(",\n");
+                }
                 stringBuilder.append("\"").append(listingFile.getName()).append("\"");
             }
         }
