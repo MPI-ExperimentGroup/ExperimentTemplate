@@ -101,14 +101,14 @@ function populateMedia(repository, experiment) {
                     $("#" + keyString + "_file").innerHTML = keyStringRaw;
                 }
             } if (listingData.error) {
-                $("#errorMessage")[0].innerHTML = listingData.error;
+                $("#errorMessage").html(listingData.error);
             } else {
-                $("#errorMessage")[0].innerHTML = "";
+                $("#errorMessage").empty();
             }
             if ($("#cloneLog:contains(', done.')").length < 1) {
                 setTimeout(populateMedia, 1000, repository, experiment);
             } else {
-                $("#cloneLog")[0].hide();
+                $("#cloneLog").hide();
             }
         });
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
