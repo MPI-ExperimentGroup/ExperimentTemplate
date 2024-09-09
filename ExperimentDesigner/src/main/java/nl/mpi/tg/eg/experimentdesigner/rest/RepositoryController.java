@@ -92,6 +92,24 @@ public class RepositoryController {
 //        }
     }
 
+    private boolean recurseDirectories(File directory, StringBuilder stringBuilder, boolean isFirst) {
+        // for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[PpJjOoMmWwXx][NnPpGgPpAaMm][Gg34VvLl]$"))) {
+        for (File listingFile : directory.listFiles()) {
+            if (isFirst) {
+                isFirst = false;
+            } else {
+                stringBuilder.append(",\n");
+            }
+            stringBuilder.append("\"").append(listingFile.getName()).append("\"");
+            if (listingFile.isDirectory()) {
+                stringBuilder.append(",[");
+                recurseDirectories(listingFile, stringBuilder, true);
+                stringBuilder.append("]\n");
+            }
+        }
+        return isFirst;
+    }
+
     @RequestMapping("/repository/list/{repositoryName}/{experimentName}")
     @ResponseBody
     public ResponseEntity<String> repositoryList(@PathVariable String repositoryName, @PathVariable String experimentName) {
@@ -99,26 +117,18 @@ public class RepositoryController {
         String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
-        File workingDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned);
-        if (workingDirectory.exists()) {
-            if (workingDirectory.isDirectory()) {
-                stringBuilder.append("\"listing\": [");
-                boolean isFirst = true;
-                // for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[PpJjOoMmWwXx][NnPpGgPpAaMm][Gg34VvLl]$"))) {
-                for (File listingFile : workingDirectory.listFiles()) {
-                    if (isFirst) {
-                        isFirst = false;
-                    } else {
-                        stringBuilder.append(",");
-                    }
-                    stringBuilder.append("\"").append(listingFile.getName()).append("\"");
+        final File repositoryDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned);
+        if (repositoryDirectory.isDirectory()) {
+            stringBuilder.append("\"listing\": [");
+            boolean isFirst = true;
+            for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
+                if (workingDirectory.isDirectory()) {
+                    recurseDirectories(workingDirectory, stringBuilder, isFirst);
                 }
-                stringBuilder.append("]");
-            } else {
-                stringBuilder.append("\"error\": \"Not a directory: ").append(repositoryNameCleaned).append("/").append(experimentNameCleaned).append("\"");
             }
+            stringBuilder.append("]\n");
         } else {
-            stringBuilder.append("\"error\": \"Directory not found: ").append(repositoryNameCleaned).append("/").append(experimentNameCleaned).append("\"");
+            stringBuilder.append("\"error\": \"Checkout not found: ").append(repositoryNameCleaned).append("/").append(experimentNameCleaned).append("\"");
         }
         stringBuilder.append("}");
         return ResponseEntity.ok().body(stringBuilder.toString());
