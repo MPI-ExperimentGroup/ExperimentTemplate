@@ -94,14 +94,21 @@ function populateMedia(repository, experiment) {
                         var tableRow = document.createElement('tr');
                         listingRow = tableRow;
                         tableRow.id = keyString + '_row';
-                        for (var cellString of ['_file', '_date', '_preview']) {
+                        for (var cellString of ['_dir', '_file', '_preview']) {
                             var tableCell = document.createElement('td');
                             tableCell.id = keyString + cellString;
                             tableRow.appendChild(tableCell);
                         }
                         document.getElementById('repositoryListing').appendChild(tableRow);
                     }
-                    $("#" + keyString + "_file").innerHTML = keyStringRaw;
+                    var lastSlash = keyStringRaw.lastIndexOf("/");
+                    if (lastSlash < 0) {
+                        $("#" + keyString + "_file").html(keyStringRaw);
+                    } else {
+                        $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash));
+                        $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
+                    }
+                    $("#" + keyString + "_preview").html("<img src=\"" + '/repository/file/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
                 }
             } if (listingData.error) {
                 $("#errorMessage").html(listingData.error);

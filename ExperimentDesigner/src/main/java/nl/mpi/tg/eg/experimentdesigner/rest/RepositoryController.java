@@ -119,7 +119,7 @@ public class RepositoryController {
         stringBuilder.append("{");
         final File repositoryDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned);
         if (repositoryDirectory.isDirectory()) {
-            stringBuilder.append("\"listing\": [");
+            stringBuilder.append("\n\"listing\":[\n");
             boolean isFirst = true;
             for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
                 if (workingDirectory.isDirectory()) {
