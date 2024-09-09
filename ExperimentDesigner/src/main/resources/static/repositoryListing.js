@@ -86,45 +86,45 @@ function populateMedia(repository, experiment) {
         // using innerText because it preserves linebreaks
         $("#cloneLog")[0].innerText = cloneData + cloneIndicator;
         cloneIndicator = (cloneIndicator === "|") ? "/" : (cloneIndicator === "/") ? "-" : (cloneIndicator === "-") ? "\\" : "|";
-        $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
-            if (listingData.listing) {
-                for (var keyStringRaw of listingData.listing) {
-                    var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
-                    var listingRow = document.getElementById(keyString + '_row');
-                    if (!listingRow) {
-                        var tableRow = document.createElement('tr');
-                        listingRow = tableRow;
-                        tableRow.id = keyString + '_row';
-                        for (var cellString of ['_dir', '_file', '_preview']) {
-                            var tableCell = document.createElement('td');
-                            tableCell.id = keyString + cellString;
-                            tableRow.appendChild(tableCell);
+        if ($("#cloneLog:contains(', done.')").length < 1) {
+            $("#repositoryListing").hide();
+            setTimeout(populateMedia, 1000, repository, experiment);
+        } else {
+            $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
+                if (listingData.listing) {
+                    for (var keyStringRaw of listingData.listing) {
+                        var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
+                        var listingRow = document.getElementById(keyString + '_row');
+                        if (!listingRow) {
+                            var tableRow = document.createElement('tr');
+                            listingRow = tableRow;
+                            tableRow.id = keyString + '_row';
+                            for (var cellString of ['_dir', '_file', '_preview']) {
+                                var tableCell = document.createElement('td');
+                                tableCell.id = keyString + cellString;
+                                tableRow.appendChild(tableCell);
+                            }
+                            document.getElementById('repositoryListing').appendChild(tableRow);
                         }
-                        document.getElementById('repositoryListing').appendChild(tableRow);
+                        var lastSlash = keyStringRaw.lastIndexOf("/");
+                        if (lastSlash < 0) {
+                            $("#" + keyString + "_folder").html("/");
+                            $("#" + keyString + "_file").html(keyStringRaw);
+                        } else {
+                            $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
+                            $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
+                        }
+                        $("#" + keyString + "_preview").html("<img src=\"" + '/repository/file/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
                     }
-                    var lastSlash = keyStringRaw.lastIndexOf("/");
-                    if (lastSlash < 0) {
-                        $("#" + keyString + "_folder").html("/");
-                        $("#" + keyString + "_file").html(keyStringRaw);
-                    } else {
-                        $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
-                        $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
-                    }
-                    $("#" + keyString + "_preview").html("<img src=\"" + '/repository/file/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
+                } if (listingData.error) {
+                    $("#errorMessage").html(listingData.error);
+                } else {
+                    $("#errorMessage").empty();
                 }
-            } if (listingData.error) {
-                $("#errorMessage").html(listingData.error);
-            } else {
-                $("#errorMessage").empty();
-            }
-            if ($("#cloneLog:contains(', done.')").length < 1) {
-                $("#repositoryListing").hide();
-                setTimeout(populateMedia, 1000, repository, experiment);
-            } else {
                 $("#cloneLog").hide();
                 $("#repositoryListing").show();
-            }
-        });
+            });
+        }
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
         // http://frinexbuild.mpi.nl:7070/repository/pull/experiments
         // http://frinexbuild.mpi.nl:7070/repository/experiments/electron_wrapper_test
