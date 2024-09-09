@@ -120,9 +120,13 @@ public class RepositoryController {
         if (repositoryDirectory.isDirectory()) {
             stringBuilder.append("\n\"listing\":[\n");
             boolean isFirst = true;
-            for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
-                if (workingDirectory.isDirectory()) {
-                    isFirst = recurseDirectories(workingDirectory, "/" + workingDirectory.getName() + "/", stringBuilder, isFirst);
+            if ("*".equals(experimentName)) {
+                recurseDirectories(repositoryDirectory, "/", stringBuilder, isFirst);
+            } else {
+                for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
+                    if (workingDirectory.isDirectory()) {
+                        isFirst = recurseDirectories(workingDirectory, "/" + workingDirectory.getName() + "/", stringBuilder, isFirst);
+                    }
                 }
             }
             stringBuilder.append("]\n");
