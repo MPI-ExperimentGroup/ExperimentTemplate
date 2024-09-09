@@ -42,7 +42,7 @@ import reactor.core.publisher.Mono;
 public class BuildController {
 
     @RequestMapping("/listing")
-    public String repositoryPage(Model model, HttpServletRequest request) {
+    public String listing(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "listing");
         Principal principal = request.getUserPrincipal();
