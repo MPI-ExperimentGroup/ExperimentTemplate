@@ -123,12 +123,16 @@ function populateMedia(repository, experiment) {
                 }
                 $("#cloneLog").hide();
                 $("#repositoryListing").show();
-            });
+            }.fail(function () {
+                $("#errorMessage").html("Listing error");
+            }));
         }
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
         // http://frinexbuild.mpi.nl:7070/repository/pull/experiments
         // http://frinexbuild.mpi.nl:7070/repository/experiments/electron_wrapper_test
-    });
+    }.fail(function () {
+        $("#errorMessage").html("Clone error");
+    }));
 }
 
 function doFilter() {
