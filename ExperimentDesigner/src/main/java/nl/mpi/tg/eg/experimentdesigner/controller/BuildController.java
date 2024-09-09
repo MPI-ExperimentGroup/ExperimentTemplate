@@ -41,24 +41,24 @@ import reactor.core.publisher.Mono;
 @Controller
 public class BuildController {
 
-    @RequestMapping("/repository")
+    @RequestMapping("/listing")
     public String repositoryPage(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "repository");
+        model.addAttribute("detailType", "listing");
         Principal principal = request.getUserPrincipal();
         model.addAttribute("username", (principal != null) ? principal.getName() : "");
         model.addAttribute("repository", (principal != null) ? "/git/" + principal.getName().replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
         return "design";
     }
-    
+
     @RequestMapping("/repository/{repository}/{experimentPath}")
-    public String repositoryMedia(Model model, HttpServletRequest request, @PathVariable String repository, @PathVariable String experimentPath) {
+    public String repository(Model model, HttpServletRequest request, @PathVariable(required = false) String repository, @PathVariable(required = false) String experimentPath) {
         model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "media");
+        model.addAttribute("detailType", "repository");
         model.addAttribute("experimentPath", experimentPath);
         Principal principal = request.getUserPrincipal();
         model.addAttribute("username", (principal != null) ? principal.getName() : "");
-        model.addAttribute("repository", (principal != null) ? "/git/" + repository.replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
+        model.addAttribute("repository", (principal != null) ? "/git/" + ((repository == null) ? principal.getName() : repository).replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
         return "design";
     }
 

@@ -81,7 +81,7 @@ var cloneIndicator = "-";
 
 function populateMedia(repository, experiment) {
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
-    $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/bocks/" + repositoryShort + "/" + experiment + "\">edit</a>");
+    $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">edit</a>");
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
         // using innerText because it preserves linebreaks
         $("#cloneLog")[0].innerText = cloneData + cloneIndicator;
