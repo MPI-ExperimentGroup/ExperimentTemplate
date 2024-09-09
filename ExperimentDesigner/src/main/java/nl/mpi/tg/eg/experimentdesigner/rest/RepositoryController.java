@@ -92,7 +92,7 @@ public class RepositoryController {
 //        }
     }
 
-    private boolean recurseDirectories(File directory, StringBuilder stringBuilder, boolean isFirst) {
+    private boolean recurseDirectories(File directory, String pathString, StringBuilder stringBuilder, boolean isFirst) {
         // for (File listingFile : workingDirectory.listFiles((File pathname) -> pathname.getName().matches("[A-z0-9_-]*\\.[PpJjOoMmWwXx][NnPpGgPpAaMm][Gg34VvLl]$"))) {
         for (File listingFile : directory.listFiles()) {
             if (isFirst) {
@@ -100,11 +100,10 @@ public class RepositoryController {
             } else {
                 stringBuilder.append(",\n");
             }
-            stringBuilder.append("\"").append(listingFile.getName()).append("\"");
             if (listingFile.isDirectory()) {
-                stringBuilder.append(",[");
-                recurseDirectories(listingFile, stringBuilder, true);
-                stringBuilder.append("]\n");
+                isFirst = recurseDirectories(listingFile, pathString + listingFile.getName() + "/", stringBuilder, isFirst);
+            } else {
+                stringBuilder.append("\"").append(listingFile.getName()).append("\"");
             }
         }
         return isFirst;
@@ -123,7 +122,7 @@ public class RepositoryController {
             boolean isFirst = true;
             for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
                 if (workingDirectory.isDirectory()) {
-                    recurseDirectories(workingDirectory, stringBuilder, isFirst);
+                    recurseDirectories(workingDirectory, "/", stringBuilder, isFirst);
                 }
             }
             stringBuilder.append("]\n");
