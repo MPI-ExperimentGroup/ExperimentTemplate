@@ -69,7 +69,7 @@ function loadMySnippetsCallback(toolboxButton) {
 function loadXml(experimentName) {
     $.ajax({
         type: "get",
-        url: "/repositoryXml/" + experimentName,
+        url: experimentName,
         dataType: "text",
         success: function (inputData) {
             loadedXml = $($.parseXML(inputData)).find("experiment")[0];

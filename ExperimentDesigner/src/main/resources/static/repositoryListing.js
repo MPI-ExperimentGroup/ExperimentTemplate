@@ -80,8 +80,8 @@ function populateListing(repository, username) {
 var cloneIndicator = "-";
 
 function populateMedia(repository, experiment) {
-    $("#experimentName").html(repository + "&nbsp;" + experiment);
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
+    $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/bocks/" + repositoryShort + "/" + experiment + "\">edit</a>");
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
         // using innerText because it preserves linebreaks
         $("#cloneLog")[0].innerText = cloneData + cloneIndicator;
@@ -114,7 +114,7 @@ function populateMedia(repository, experiment) {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                         }
-                        $("#" + keyString + "_preview").html("<img src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
+                        $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
                     }
                 } if (listingData.error) {
                     $("#errorMessage").html(listingData.error);
