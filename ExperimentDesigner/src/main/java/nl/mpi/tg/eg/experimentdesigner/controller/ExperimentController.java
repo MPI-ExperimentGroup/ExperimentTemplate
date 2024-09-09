@@ -151,6 +151,15 @@ public class ExperimentController {
         return "design";
     }
 
+    @RequestMapping("/blocks/{repositoryName}/{experimentName}")
+    public String blocksEdit(Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "blocks");
+        model.addAttribute("repositoryName", repositoryName);
+        model.addAttribute("experimentName", experimentName);
+        return "design";
+    }
+
     @RequestMapping("/wizard/start")
     public String startWizard(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
