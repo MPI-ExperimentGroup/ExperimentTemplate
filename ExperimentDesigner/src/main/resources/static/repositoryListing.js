@@ -83,7 +83,8 @@ function populateMedia(repository, experiment) {
     $("#experimentName").html(repository + "&nbsp;" + experiment);
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
-        $("#cloneLog").text(cloneData + cloneIndicator);
+        // using innerText because it preserves linebreaks
+        $("#cloneLog")[0].innerText = cloneData + cloneIndicator;
         cloneIndicator = (cloneIndicator === "|") ? "/" : (cloneIndicator === "/") ? "-" : (cloneIndicator === "-") ? "\\" : "|";
         $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
             if (listingData.listing) {
@@ -103,9 +104,10 @@ function populateMedia(repository, experiment) {
                     }
                     var lastSlash = keyStringRaw.lastIndexOf("/");
                     if (lastSlash < 0) {
+                        $("#" + keyString + "_folder").html("/");
                         $("#" + keyString + "_file").html(keyStringRaw);
                     } else {
-                        $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash));
+                        $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                         $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                     }
                     $("#" + keyString + "_preview").html("<img src=\"" + '/repository/file/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
@@ -116,9 +118,11 @@ function populateMedia(repository, experiment) {
                 $("#errorMessage").empty();
             }
             if ($("#cloneLog:contains(', done.')").length < 1) {
+                $("#repositoryListing").hide();
                 setTimeout(populateMedia, 1000, repository, experiment);
             } else {
                 $("#cloneLog").hide();
+                $("#repositoryListing").show();
             }
         });
         // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
