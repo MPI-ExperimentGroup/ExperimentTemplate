@@ -51,14 +51,25 @@ public class BuildController {
         return "design";
     }
 
+    @RequestMapping("/repository/{repository}")
+    public String repository(Model model, HttpServletRequest request, @PathVariable(required = false) String repository) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "repository");
+        model.addAttribute("experimentPath", "*");
+        Principal principal = request.getUserPrincipal();
+        model.addAttribute("username", (principal != null) ? principal.getName() : "");
+        model.addAttribute("repository", (principal != null) ? "/git/" + ((repository == null) ? principal.getName() : repository).replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
+        return "design";
+    }
+
     @RequestMapping("/repository/{repository}/{experimentPath}")
-    public String repository(Model model, HttpServletRequest request, @PathVariable(required = false) String repository, @PathVariable(required = false) String experimentPath) {
+    public String repositoryExperiment(Model model, HttpServletRequest request, @PathVariable String repository, @PathVariable String experimentPath) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "repository");
         model.addAttribute("experimentPath", experimentPath);
         Principal principal = request.getUserPrincipal();
         model.addAttribute("username", (principal != null) ? principal.getName() : "");
-        model.addAttribute("repository", (principal != null) ? "/git/" + ((repository == null) ? principal.getName() : repository).replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
+        model.addAttribute("repository", (principal != null) ? "/git/" + repository.replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
         return "design";
     }
 
