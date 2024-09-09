@@ -77,11 +77,14 @@ function populateListing(repository, username) {
     });
 }
 
+var cloneIndicator = "-";
+
 function populateMedia(repository, experiment) {
-    $("#experimentName")[0].innerHTML = repository + "&nbsp;" + experiment;
+    $("#experimentName").html(repository + "&nbsp;" + experiment);
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
-        $("#cloneLog")[0].innerText = cloneData;
+        $("#cloneLog").text(cloneData + cloneIndicator);
+        cloneIndicator = (cloneIndicator === "|") ? "/" : (cloneIndicator === "/") ? "-" : (cloneIndicator === "-") ? "\\" : "|";
         $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
             if (listingData.listing) {
                 for (var keyStringRaw of listingData.listing) {
