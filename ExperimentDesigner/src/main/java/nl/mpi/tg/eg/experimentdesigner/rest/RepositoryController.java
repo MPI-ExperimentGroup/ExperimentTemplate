@@ -103,7 +103,7 @@ public class RepositoryController {
                 } else {
                     stringBuilder.append(",\n");
                 }
-                stringBuilder.append("\"").append(listingFile.getName()).append("\"");
+                stringBuilder.append("\"").append(pathString).append(listingFile.getName()).append("\"");
             }
         }
         return isFirst;
