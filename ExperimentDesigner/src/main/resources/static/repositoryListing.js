@@ -114,7 +114,7 @@ function populateMedia(repository, experiment) {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                         }
-                        $("#" + keyString + "_preview").html("<img src=\"" + '/repository/file/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
+                        $("#" + keyString + "_preview").html("<img src=\"" + '/clone/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
                     }
                 } if (listingData.error) {
                     $("#errorMessage").html(listingData.error);
