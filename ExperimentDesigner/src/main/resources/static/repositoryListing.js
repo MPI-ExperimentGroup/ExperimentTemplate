@@ -99,7 +99,7 @@ function populateMedia(repository, experiment) {
                             var tableRow = document.createElement('tr');
                             listingRow = tableRow;
                             tableRow.id = keyString + '_row';
-                            for (var cellString of ['_dir', '_file', '_preview']) {
+                            for (var cellString of ['_folder', '_file', '_preview']) {
                                 var tableCell = document.createElement('td');
                                 tableCell.id = keyString + cellString;
                                 tableRow.appendChild(tableCell);
@@ -114,7 +114,7 @@ function populateMedia(repository, experiment) {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                         }
-                        $("#" + keyString + "_preview").html("<img src=\"" + '/clone/' + repositoryShort + "/" + experiment + "/" + keyStringRaw + "\"/>");
+                        $("#" + keyString + "_preview").html("<img src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
                     }
                 } if (listingData.error) {
                     $("#errorMessage").html(listingData.error);
