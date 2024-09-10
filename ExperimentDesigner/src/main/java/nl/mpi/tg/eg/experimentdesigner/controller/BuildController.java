@@ -81,8 +81,8 @@ public class BuildController {
     }
 
     @RequestMapping(
-            value = "/buildhistory.json",
-            produces = MediaType.APPLICATION_JSON_VALUE
+            value = "/buildhistory.json"
+//,            produces = MediaType.APPLICATION_JSON_VALUE
     )
     public @ResponseBody
     Flux<String> buildHistory() throws IOException {
@@ -90,7 +90,7 @@ public class BuildController {
 //        return new String(Files.readAllBytes(buildhistory.toPath()));
         return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
                 .get()
-                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
+//                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
                 .header("user-agent", "FrinexWizard").header("Accept-Encoding", "gzip")
                 .retrieve()
                 .bodyToFlux(String.class);
