@@ -59,6 +59,7 @@ public class RepositoryController {
                     builder.redirectErrorStream(true);
                     builder.directory(new File("/FrinexExperiments"));
                     builder.redirectOutput(log);
+                    builder.redirectError(log);
                     try {
                         Process process = builder.start();
 //                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
