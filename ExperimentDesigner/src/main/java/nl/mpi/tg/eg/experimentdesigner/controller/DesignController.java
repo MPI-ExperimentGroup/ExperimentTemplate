@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBContext;
