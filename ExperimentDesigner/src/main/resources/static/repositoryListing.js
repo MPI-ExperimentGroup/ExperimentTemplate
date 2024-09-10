@@ -57,6 +57,7 @@ function populateListing(repository, username) {
                                     '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
                                 document.getElementById(keyString + '_static').innerHTML =
                                     '<a href=\'/repository/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>media</a>';
+                                    '<a href=\'/experiment/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>experiment</a>';
                                 document.getElementById(keyString + '_clone').innerHTML =
                                     ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                                 document.getElementById(keyString + '_preview').innerHTML = '';

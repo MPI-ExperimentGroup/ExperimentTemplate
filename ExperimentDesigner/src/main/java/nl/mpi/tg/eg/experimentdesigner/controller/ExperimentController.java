@@ -18,10 +18,11 @@
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
@@ -56,7 +57,6 @@ import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
 import nl.mpi.tg.eg.experimentdesigner.util.TransmissionChain;
 import nl.mpi.tg.eg.experimentdesigner.util.WellspringsSamoanFieldKit;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -64,7 +64,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @since Nov 4, 2015 1:59:50 PM (creation date)
@@ -93,6 +92,22 @@ public class ExperimentController {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "experiments");
         model.addAttribute("allExperiments", experimentRepository.findAll());
+        return "design";
+    }
+
+    @RequestMapping("/experiment/{repositoryName}/{experimentName}")
+    public String designXmlView(Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) throws JAXBException {
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
+        File xmlFile = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned + ".xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+        Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
+        final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "configuration");
+        model.addAttribute("repositoryName", "repositoryName");
+        model.addAttribute("experimentName", "experimentName");
+        model.addAttribute("experiment", experiment);
         return "design";
     }
 
