@@ -49,17 +49,17 @@ public class RepositoryController {
     @ResponseBody
     public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
+//        File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
         if (!cloneRunnables.containsKey(repositoryNameCleaned)) {
             cloneRunnables.put(repositoryNameCleaned, new Runnable() {
                 @Override
                 public void run() {
                     ProcessBuilder builder = new ProcessBuilder(
-                            "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git");
+                            "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git &>> /FrinexExperiments/" + repositoryNameCleaned + ".log");
                     builder.redirectErrorStream(true);
                     builder.directory(new File("/FrinexExperiments"));
-                    builder.redirectOutput(log);
-                    builder.redirectError(log);
+//                    builder.redirectOutput(log);
+//                    builder.redirectError(log);
                     try {
                         Process process = builder.start();
 //                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
