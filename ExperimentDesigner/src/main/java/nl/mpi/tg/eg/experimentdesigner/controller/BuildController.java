@@ -50,15 +50,15 @@ public class BuildController {
         return "design";
     }
 
-    @RequestMapping("/repository/{repository}")
-    public String repository(Model model, HttpServletRequest request, @PathVariable(required = false) String repository) {
-        model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "repository");
-        model.addAttribute("experimentPath", "*");
+    @RequestMapping("/repository")
+    public String repository(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
-        model.addAttribute("username", (principal != null) ? principal.getName() : "");
-        model.addAttribute("repository", (principal != null) ? "/git/" + ((repository == null) ? principal.getName() : repository).replaceAll("[^a-zA-Z0-9]", "_") + ".git" : "");
-        return "design";
+        return repositoryNamed(model, request, principal.getName().replaceAll("[^a-zA-Z0-9]", "_"));
+    }
+
+    @RequestMapping("/repository/{repository}")
+    public String repositoryNamed(Model model, HttpServletRequest request, String repository) {
+        return repositoryExperiment(model, request, repository, "*");
     }
 
     @RequestMapping("/repository/{repository}/{experimentPath}")
