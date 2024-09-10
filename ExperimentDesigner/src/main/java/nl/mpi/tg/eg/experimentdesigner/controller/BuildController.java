@@ -80,22 +80,16 @@ public class BuildController {
     }
 
     @RequestMapping(
-            value = "/buildhistory.json"
-    //,            produces = MediaType.APPLICATION_JSON_VALUE
+            value = "/buildhistory.json",
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
     public @ResponseBody
     Flux<String> buildHistory() throws IOException {
-//    Mono<byte[]> buildHistory() throws IOException {
-//        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
-//        return new String(Files.readAllBytes(buildhistory.toPath()));
         return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
                 .get()
-                //                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
                 .header("user-agent", "FrinexWizard").header("Accept-Encoding", "gzip")
-                .accept(MediaType.ALL)
+                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
                 .retrieve()
-                //                .bodyToFlux(String.class);
-                //                .bodyToMono(byte[].class);
                 .bodyToFlux(DataBuffer.class)
                 .map(buffer -> {
                     String string = buffer.toString(Charset.forName("UTF-8"));
