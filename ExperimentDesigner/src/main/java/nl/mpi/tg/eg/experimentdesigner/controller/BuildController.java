@@ -91,7 +91,7 @@ public class BuildController {
         return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
                 .get()
                 .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
-                .header("user-agent", "FrinexWizard")
+                .header("user-agent", "FrinexWizard").header("Accept-Encoding", "gzip")
                 .retrieve()
                 .bodyToFlux(String.class);
     }
