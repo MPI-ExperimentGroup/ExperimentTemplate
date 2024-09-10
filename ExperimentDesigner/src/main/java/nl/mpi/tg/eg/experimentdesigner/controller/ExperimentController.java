@@ -95,7 +95,7 @@ public class ExperimentController {
         return "design";
     }
 
-    @RequestMapping("/experiment/{repositoryName}/{experimentName}")
+    @RequestMapping("/experimentXML/{repositoryName}/{experimentName}")
     public String designXmlView(Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) throws JAXBException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
