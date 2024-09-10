@@ -17,14 +17,13 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,21 +81,27 @@ public class BuildController {
 
     @RequestMapping(
             value = "/buildhistory.json"
-//,            produces = MediaType.APPLICATION_JSON_VALUE
+    //,            produces = MediaType.APPLICATION_JSON_VALUE
     )
     public @ResponseBody
-//    Flux<String> buildHistory() throws IOException {
-    Mono<byte[]> buildHistory() throws IOException {
+    Flux<String> buildHistory() throws IOException {
+//    Mono<byte[]> buildHistory() throws IOException {
 //        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
 //        return new String(Files.readAllBytes(buildhistory.toPath()));
         return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
                 .get()
-//                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
+                //                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
                 .header("user-agent", "FrinexWizard").header("Accept-Encoding", "gzip")
                 .accept(MediaType.ALL)
                 .retrieve()
-//                .bodyToFlux(String.class);
-                .bodyToMono(byte[].class);
+                //                .bodyToFlux(String.class);
+                //                .bodyToMono(byte[].class);
+                .bodyToFlux(DataBuffer.class)
+                .map(buffer -> {
+                    String string = buffer.toString(Charset.forName("UTF-8"));
+                    DataBufferUtils.release(buffer);
+                    return string;
+                });
     }
 
     @RequestMapping(
