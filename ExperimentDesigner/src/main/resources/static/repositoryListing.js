@@ -57,7 +57,7 @@ function populateListing(repository, username) {
                                     '<a href=\'/blocks/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>edit</a>';
                                 document.getElementById(keyString + '_static').innerHTML =
                                     '<a href=\'/repository/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>media</a>' +
-                                    '<a href=\'/experimentXML/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>experiment</a>';
+                                    '<a href=\'/experiment/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>experiment</a>';
                                 document.getElementById(keyString + '_clone').innerHTML =
                                     ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                                 document.getElementById(keyString + '_preview').innerHTML = '';
@@ -85,7 +85,7 @@ function populateMedia(repository, experiment) {
     if ("*" === experiment) {
         $("#experimentName").html(repository);
     } else {
-        $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">edit</a>");
+        $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">blocks</a>" + "&nbsp;<a href=\"/experiment/" + repositoryShort + "/" + experiment + "\">form</a>");
     }
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
         // using innerText because it preserves linebreaks

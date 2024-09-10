@@ -63,11 +63,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <tr>
                             <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/configuration'">Configuration</a></td>
                         </tr><tr>
-                            <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/metadata'">Metadata</a></td>
+                            <!-- <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/metadata'">Metadata</a></td> -->
+                            <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/metadata'">Metadata</a></td>
                         </tr><tr>
-                            <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/stimuli'">Stimuli</a></td>
+                            <!-- <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/stimuli'">Stimuli</a></td> -->
+                            <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/stimuli'">Stimuli</a></td>
                         </tr><tr>
-                            <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id}+ '/screens'">Screens</a></td>
+                            <!-- <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id}+ '/screens'">Screens</a></td> -->
+                            <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/screens'">Screens</a></td>
                         </tr><tr>
                             <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
                         </tr>

@@ -143,10 +143,20 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping("/experiment/{experiment}/{detailType}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment, @PathVariable String detailType) {
+    // @RequestMapping("/experiment/{experiment}/{detailType}")
+    @RequestMapping("/experiment/{repositoryName}/{experimentName}/{detailType}")
+    // public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment, @PathVariable String detailType) {
+    public String designView(Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName, @PathVariable String detailType) throws JAXBException {
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
+        File xmlFile = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned + ".xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+        Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
+        final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", detailType);
+        model.addAttribute("repositoryName", repositoryName);
+        model.addAttribute("experimentName", experimentName);
         populateModel(model, experiment);
         return "design";
     }

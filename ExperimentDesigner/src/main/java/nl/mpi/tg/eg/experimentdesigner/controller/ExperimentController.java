@@ -95,7 +95,7 @@ public class ExperimentController {
         return "design";
     }
 
-    @RequestMapping("/experimentXML/{repositoryName}/{experimentName}")
+    @RequestMapping("/experiment/{repositoryName}/{experimentName}")
     public String designXmlView(Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) throws JAXBException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
         String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
@@ -105,19 +105,19 @@ public class ExperimentController {
         final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
-        model.addAttribute("repositoryName", "repositoryName");
-        model.addAttribute("experimentName", "experimentName");
+        model.addAttribute("repositoryName", repositoryName);
+        model.addAttribute("experimentName", experimentName);
         model.addAttribute("experiment", experiment);
         return "design";
     }
 
-    @RequestMapping("/experiment/{experiment}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
-        model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "configuration");
-        model.addAttribute("experiment", experiment);
-        return "design";
-    }
+    // @RequestMapping("/experiment/{experiment}")
+    // public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
+    //     model.addAttribute("contextPath", request.getContextPath());
+    //     model.addAttribute("detailType", "configuration");
+    //     model.addAttribute("experiment", experiment);
+    //     return "design";
+    // }
 
     @RequestMapping("/experiments/add")
     public String addExperiment(Model model, HttpServletRequest request) {
