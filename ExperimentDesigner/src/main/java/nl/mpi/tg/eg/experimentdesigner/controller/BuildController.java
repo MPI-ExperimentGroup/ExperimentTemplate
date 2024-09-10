@@ -57,7 +57,7 @@ public class BuildController {
     }
 
     @RequestMapping("/repository/{repository}")
-    public String repositoryNamed(Model model, HttpServletRequest request, String repository) {
+    public String repositoryNamed(Model model, HttpServletRequest request, @PathVariable String repository) {
         return repositoryExperiment(model, request, repository, "*");
     }
 
