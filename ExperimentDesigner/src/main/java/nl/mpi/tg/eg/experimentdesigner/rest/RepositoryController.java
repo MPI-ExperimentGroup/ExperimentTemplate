@@ -49,7 +49,7 @@ public class RepositoryController {
     @ResponseBody
     public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-//        File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
+        File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
         if (!cloneRunnables.containsKey(repositoryNameCleaned)) {
             cloneRunnables.put(repositoryNameCleaned, new Runnable() {
                 @Override
