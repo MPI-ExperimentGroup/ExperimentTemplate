@@ -121,7 +121,15 @@ public class RepositoryController {
             stringBuilder.append("\n\"listing\":[\n");
             boolean isFirst = true;
             if ("*".equals(experimentName)) {
-                recurseDirectories(repositoryDirectory, "/", stringBuilder, isFirst);
+//                recurseDirectories(repositoryDirectory, "/", stringBuilder, isFirst);
+                for (File listingFile : repositoryDirectory.listFiles()) {
+                    if (isFirst) {
+                        isFirst = false;
+                    } else {
+                        stringBuilder.append(",\n");
+                    }
+                    stringBuilder.append("\"").append(listingFile.getName());
+                }
             } else {
                 for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
                     if (workingDirectory.isDirectory()) {
