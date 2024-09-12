@@ -58,7 +58,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="duplicatesControlledMessage" /></span>
                         <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Metadata Field</button></span>                    
                     </form>
-                    <script th:inline="javascript" th:with="serverUpdatePath=${(wizardScreenId != null)? contextPath + '/wizard/' + wizardScreenId : contextPath + '/experiment/' + experiment.id}">
+                    <!-- <script th:inline="javascript" th:with="serverUpdatePath=${(wizardScreenId != null)? contextPath + '/wizard/' + wizardScreenId : contextPath + '/experiment/' + experiment.id}"> -->
+                    <script th:inline="javascript" th:with="serverUpdatePath=${(wizardScreenId != null)? contextPath + '/wizard/' + wizardScreenId : contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName}">
                         /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                         function postChanges(rowId) {

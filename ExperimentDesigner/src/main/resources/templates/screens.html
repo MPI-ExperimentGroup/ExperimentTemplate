@@ -57,7 +57,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </select>
                         </span>
                         <span class="td"><button th:id="${'updateRowButton' + presenterScreen.getId()}" style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + presenterScreen.getId() + ')'}">Save Changes</button></span>
-                        <span class="td" th:if="${detailType} eq 'screens'"><a th:href="${contextPath} + '/experiment/' + ${experiment.id} + '/screen/' + ${presenterScreen.getId()}" >
+                        <!-- <span class="td" th:if="${detailType} eq 'screens'"><a th:href="${contextPath} + '/experiment/' + ${experiment.id} + '/screen/' + ${presenterScreen.getId()}" > -->
+                        <span class="td" th:if="${detailType} eq 'screens'"><a th:href="${contextPath} + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/screen/' + ${presenterScreen.getId()}" >
                                 <button type="button" name="editScreenId">Edit</button>
                             </a></span>
                     </form>
@@ -89,7 +90,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/screen/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        // $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/screen/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/screen/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -99,17 +101,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function deleteRow(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/screen/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        // $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/screen/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/screen/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
 //                                        $('#screenErrorDiv').text("");
 //                                                $('#updateRowForm' + rowId).remove();
-                                        window.location.href = /*[[${contextPath + '/experiment/' + experiment.id + '/screens'}]]*/;
+                                        // window.location.href = /*[[${contextPath + '/experiment/' + experiment.id + '/screens'}]]*/;
+                                        window.location.href = /*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/screens'}]]*/;
                                         }).fail(function(data) {
                                         var jsonResponse = JSON.parse(data.responseText);
                                                 $('#screenErrorDiv').text(jsonResponse.message);
                                         });
                                         };
                                         function postScreen() {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/screen/add'}]]*/, $("#addScreenForm").serialize()).done(function(data) {
+                                        // $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/screen/add'}]]*/, $("#addScreenForm").serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/screen/add'}]]*/, $("#addScreenForm").serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#screenErrorDiv').before(data);
                                         }).fail(function(data) {
@@ -194,7 +199,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <script th:fragment="featureScript" th:inline="javascript">
                             /*<![CDATA[*/
                             function insertFeature(event) {
-                            $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/feature/add'}]]*/, $(event).serialize()).done(function(data) {
+                            // $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/feature/add'}]]*/, $(event).serialize()).done(function(data) {
+                            $.post(/*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/feature/add'}]]*/, $(event).serialize()).done(function(data) {
                             $(event).find('[class=errorDiv]').text("");
                                     $(event).before(data);
                             }).fail(function(data) {
@@ -203,7 +209,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             });
                             }
                             function postFeatureChanges(event) {
-                            $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/feature/update'}]]*/, $(event).serialize()).done(function(data) {
+                            // $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/feature/update'}]]*/, $(event).serialize()).done(function(data) {
+                            $.post(/*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/feature/update'}]]*/, $(event).serialize()).done(function(data) {
 //                            $(event).find('[class=errorDiv]').text("");
 //                                    $(event).parent().replaceWith(data);
                             }).fail(function(data) {
@@ -212,7 +219,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             });
                             }
                             function deleteFeature(event) {
-                            $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/feature/delete'}]]*/, $(event).serialize()).done(function(data) {
+                            // $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/feature/delete'}]]*/, $(event).serialize()).done(function(data) {
+                            $.post(/*[[${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/feature/delete'}]]*/, $(event).serialize()).done(function(data) {
                             $(event).parent().remove("[class=featuresrow]");
                             }).fail(function(data) {
                             var jsonResponse = JSON.parse(data.responseText);

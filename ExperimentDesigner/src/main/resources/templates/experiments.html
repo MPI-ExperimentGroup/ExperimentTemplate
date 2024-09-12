@@ -46,8 +46,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickablerow" th:each="experiment : ${allExperiments}" th:onclick="'javascript:window.location=\'experiment/' + ${experiment.id} + '\';'">                    
-                        <td th:text="${experiment.id}"></td>
+                    <!-- <tr class="clickablerow" th:each="experiment : ${allExperiments}" th:onclick="'javascript:window.location=\'experiment/' + ${experiment.id} + '\';'">                     -->
+                    <tr class="clickablerow" th:each="experiment : ${allExperiments}" th:onclick="'javascript:window.location=\'experiment/' + ${repositoryName} + '/' + ${experimentName} + '\';'">                    
+                        <!-- <td th:text="${experiment.id}"></td> -->
+                        <td th:text="${repositoryName} + '/' + ${experimentName}"></td>
                         <td th:text="${experiment.appNameDisplay}"></td>
                         <td th:text="${experiment.appNameInternal}"></td>
                         <td th:text="${experiment.resourceNetworkPath}"></td>
@@ -68,7 +70,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <!--<a th:href="${contextPath + '/experiments/add'}">Create new experiment</a>-->
         </div>
         <div th:fragment="editexperiment">
-            <form action="#" th:action="${contextPath + '/experiment/' + experiment.id + '/update'}" th:object="${experiment}" method="post">
+            <!-- <form action="#" th:action="${contextPath + '/experiment/' + experiment.id + '/update'}" th:object="${experiment}" method="post"> -->
+            <form action="#" th:action="${contextPath + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/update'}" th:object="${experiment}" method="post">
                 <input type="hidden" th:field="*{id}" />
                 <table class="addpresenterform">
                     <tr><td><b>App Display Name</b></td><td><input type="text" th:field="*{appNameDisplay}" /></td></tr>

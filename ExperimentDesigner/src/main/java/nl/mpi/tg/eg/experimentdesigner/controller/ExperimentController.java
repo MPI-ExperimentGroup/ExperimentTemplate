@@ -18,10 +18,13 @@
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -103,24 +106,23 @@ public class ExperimentController {
         JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
         Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
         final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
-//        model.addAttribute("contextPath", request.getContextPath());
-//        model.addAttribute("detailType", "configuration");
-//        model.addAttribute("repositoryName", repositoryName);
-//        model.addAttribute("experimentName", experimentName);
-//        model.addAttribute("experiment", experiment);
-//        return "design";
-        experimentRepository.save(experiment);
-        return designView(model, request, experiment);
-    }
-
-    @RequestMapping("/experiment/{experiment}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
+        model.addAttribute("repositoryName", repositoryName);
+        model.addAttribute("experimentName", experimentName);
         model.addAttribute("experiment", experiment);
         return "design";
+        // experimentRepository.save(experiment);
+        // return designView(model, request, experiment);
     }
 
+//    @RequestMapping("/experiment/{experiment}")
+//    public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
+//        model.addAttribute("contextPath", request.getContextPath());
+//        model.addAttribute("detailType", "configuration");
+//        model.addAttribute("experiment", experiment);
+//        return "design";
+//    }
     @RequestMapping("/experiments/add")
     public String addExperiment(Model model, HttpServletRequest request) {
         Experiment createdExperiment = DefaultExperiments.getDefault();
@@ -144,7 +146,6 @@ public class ExperimentController {
         // TODO: return the requested file for the given template from the Docker volume containing the template files
         return "previewframe";
     } */
-    
     @RequestMapping("/wizard")
     public String listWizard(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
@@ -329,8 +330,16 @@ public class ExperimentController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/experiment/{experiment}/update", method = RequestMethod.POST)
-    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
+//    @RequestMapping(value = "/experiment/{experiment}/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{repositoryName}/{experimentName}/update", method = RequestMethod.POST)
+//    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
+    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) throws JAXBException, IOException {
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
+        File xmlFile = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned + ".xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+        Unmarshaller jaxbUnMarshaller = jaxbContext.<Experiment>createUnmarshaller();
+        final Experiment experiment = (Experiment) jaxbUnMarshaller.unmarshal(xmlFile);
         experiment.setAppNameDisplay(updatedExperiment.getAppNameDisplay());
         experiment.setAppNameInternal(updatedExperiment.getAppNameInternal());
         experiment.setBackgroundColour(updatedExperiment.getBackgroundColour());
@@ -344,10 +353,18 @@ public class ExperimentController {
         experiment.setPrimaryColour2(updatedExperiment.getPrimaryColour2());
         experiment.setPrimaryColour3(updatedExperiment.getPrimaryColour3());
         experiment.setPrimaryColour4(updatedExperiment.getPrimaryColour4());
-        experimentRepository.save(experiment);
+//        experimentRepository.save(experiment);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        // TODO: set the correct schema based on the frinex version set in the XML
+        jaxbMarshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, "http://frinexbuild.mpi.nl/frinex.xsd");
+        FileWriter fileWriter = new FileWriter(xmlFile);
+        jaxbMarshaller.marshal(experiment, fileWriter);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
         model.addAttribute("experiment", experiment);
+        model.addAttribute("repositoryName", repositoryName);
+        model.addAttribute("experimentName", experimentName);
         return "design";
     }
 }
