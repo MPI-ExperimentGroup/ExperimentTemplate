@@ -100,8 +100,8 @@ public class ExperimentController {
 
     @RequestMapping("/experiment/{repositoryName}/{experimentName}")
     public String designXmlView(Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) throws JAXBException {
-        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.-]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.-]", "");
         File xmlFile = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned + ".xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
         Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
@@ -334,8 +334,8 @@ public class ExperimentController {
     @RequestMapping(value = "/experiment/{repositoryName}/{experimentName}/update", method = RequestMethod.POST)
 //    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
     public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable String repositoryName, @PathVariable String experimentName) throws JAXBException, IOException {
-        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.-]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.-]", "");
         File xmlFile = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned + ".xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
         Unmarshaller jaxbUnMarshaller = jaxbContext.<Experiment>createUnmarshaller();

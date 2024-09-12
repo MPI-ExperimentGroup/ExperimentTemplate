@@ -51,7 +51,7 @@ public class RepositoryController {
     @RequestMapping("/git/clone/{repositoryName}")
     @ResponseBody
     public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
-        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.-]", "");
         File log = new File("/FrinexExperiments/" + repositoryNameCleaned + ".log");
         if (!cloneRunnables.containsKey(repositoryNameCleaned)) {
             cloneRunnables.put(repositoryNameCleaned, new Runnable() {
@@ -109,7 +109,7 @@ public class RepositoryController {
     }
 
     private void repositoryCommand(String repositoryName, HttpServletResponse response, String command) throws MalformedURLException, IOException {
-        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.-]", "");
         ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "git " + command);
         builder.redirectErrorStream(true);
         builder.directory(new File("/FrinexExperiments/" + repositoryNameCleaned));
@@ -146,8 +146,8 @@ public class RepositoryController {
     @RequestMapping("/repository/list/{repositoryName}/{experimentName}")
     @ResponseBody
     public ResponseEntity<String> repositoryList(@PathVariable String repositoryName, @PathVariable String experimentName) {
-        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.]", "");
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.-]", "");
+        String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.-]", "");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
         final File repositoryDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned);
