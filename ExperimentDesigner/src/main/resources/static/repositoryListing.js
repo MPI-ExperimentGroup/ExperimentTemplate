@@ -59,7 +59,7 @@ function populateListing(repository, username) {
                                     '<a href=\'/repository/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>media</a>' +
                                     '<a href=\'/experiment/' + repositoryName[1] + '/' + data.table[keyStringRaw]['_experiment'].value + '\'>experiment</a>';
                                 document.getElementById(keyString + '_clone').innerHTML =
-                                    ((repositoryName.length > 1) ? '<a href=\'/repository/clone/' + repositoryName[1] + '\'>clone</a>' : '');
+                                    ((repositoryName.length > 1) ? '<a href=\'/git/clone/' + repositoryName[1] + '\'>clone</a>' : '');
                                 document.getElementById(keyString + '_preview').innerHTML = '';
                             }
                         }
@@ -85,9 +85,9 @@ function populateMedia(repository, experiment) {
     if ("*" === experiment) {
         $("#experimentName").html(repository);
     } else {
-        $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/repository/status/" + repositoryShort + "\">status</a>" + "&nbsp;<a href=\"/repository/diff/" + repositoryShort + "\">diff</a>" + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">blocks</a>" + "&nbsp;<a href=\"/experiment/" + repositoryShort + "/" + experiment + "\">form</a>");
+        $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/git/status/" + repositoryShort + "\">status</a>" + "&nbsp;<a href=\"/git/diff/" + repositoryShort + "\">diff</a>" + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">blocks</a>" + "&nbsp;<a href=\"/experiment/" + repositoryShort + "/" + experiment + "\">form</a>");
     }
-    $.get('/repository/clone/' + repositoryShort, function (cloneData) {
+    $.get('/git/clone/' + repositoryShort, function (cloneData) {
         // using innerText because it preserves linebreaks
         $("#cloneLog")[0].innerText = cloneData + cloneIndicator;
         cloneIndicator = (cloneIndicator === "|") ? "/" : (cloneIndicator === "/") ? "-" : (cloneIndicator === "-") ? "\\" : "|";
@@ -132,8 +132,8 @@ function populateMedia(repository, experiment) {
                 $("#errorMessage").html("Listing error");
             });
         }
-        // http://frinexbuild.mpi.nl:7070/repository/clone/experiments
-        // http://frinexbuild.mpi.nl:7070/repository/pull/experiments
+        // http://frinexbuild.mpi.nl:7070/git/clone/experiments
+        // http://frinexbuild.mpi.nl:7070/git/pull/experiments
         // http://frinexbuild.mpi.nl:7070/repository/experiments/electron_wrapper_test
     }).fail(function () {
         $("#errorMessage").html("Clone error");

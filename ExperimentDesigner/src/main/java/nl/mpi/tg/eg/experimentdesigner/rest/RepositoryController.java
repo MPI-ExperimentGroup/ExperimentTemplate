@@ -48,7 +48,7 @@ public class RepositoryController {
     private static final Logger LOG = Logger.getLogger(StimulusController.class.getName());
     HashMap<String, Runnable> cloneRunnables = new HashMap<>();
 
-    @RequestMapping("/repository/clone/{repositoryName}")
+    @RequestMapping("/git/clone/{repositoryName}")
     @ResponseBody
     public ResponseEntity<Resource> repositoryClone(@PathVariable String repositoryName) throws MalformedURLException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
@@ -96,13 +96,13 @@ public class RepositoryController {
 //        }
     }
 
-    @RequestMapping("/repository/status/{repositoryName}")
+    @RequestMapping("/git/status/{repositoryName}")
     @ResponseBody
     public void repositoryStatus(@PathVariable String repositoryName, HttpServletResponse response) throws MalformedURLException, IOException {
         repositoryCommand(repositoryName, response, "status");
     }
 
-    @RequestMapping("/repository/diff/{repositoryName}")
+    @RequestMapping("/git/diff/{repositoryName}")
     @ResponseBody
     public void repositoryDiff(@PathVariable String repositoryName, HttpServletResponse response) throws MalformedURLException, IOException {
         repositoryCommand(repositoryName, response, "diff");
