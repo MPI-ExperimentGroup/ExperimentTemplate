@@ -17,14 +17,17 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.rest;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -91,6 +94,26 @@ public class RepositoryController {
 //            LOG.log(Level.SEVERE, "reading log failed", exception);
 //            return ResponseEntity.status(HttpStatus.NOT_FOUND);
 //        }
+    }
+
+    @RequestMapping("/repository/diff/{repositoryName}")
+    @ResponseBody
+    public void repositoryDiff(@PathVariable String repositoryName, HttpServletResponse response) throws MalformedURLException, IOException {
+        String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
+        ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "git diff");
+        builder.redirectErrorStream(true);
+        builder.directory(new File("/FrinexExperiments/" + repositoryNameCleaned));
+        Process process = builder.start();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        do {
+            line = bufferedReader.readLine();
+            if (line != null) {
+                response.getWriter().println(line + "<br>");
+                response.getWriter().flush();
+            }
+        } while (line != null);
+        response.getWriter().flush();
     }
 
     private boolean recurseDirectories(File directory, String pathString, StringBuilder stringBuilder, boolean isFirst) {

@@ -85,7 +85,7 @@ function populateMedia(repository, experiment) {
     if ("*" === experiment) {
         $("#experimentName").html(repository);
     } else {
-        $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">blocks</a>" + "&nbsp;<a href=\"/experiment/" + repositoryShort + "/" + experiment + "\">form</a>");
+        $("#experimentName").html(repository + "&nbsp;" + experiment + "&nbsp;<a href=\"/repository/diff/" + repositoryShort + "/" + experiment + "\">diff</a>" + "&nbsp;<a href=\"/blocks/" + repositoryShort + "/" + experiment + "\">blocks</a>" + "&nbsp;<a href=\"/experiment/" + repositoryShort + "/" + experiment + "\">form</a>");
     }
     $.get('/repository/clone/' + repositoryShort, function (cloneData) {
         // using innerText because it preserves linebreaks

@@ -61,7 +61,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </table>
                     <table class="experimentmenu menu" th:if="${experiment} ne null">            
                         <tr>
-                            <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/configuration'">Configuration</a></td>
+                            <!--<td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/configuration'">Configuration</a></td>-->
+                            <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/configuration'">Configuration</a></td>
                         </tr><tr>
                              <!-- <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/metadata'">Metadata</a></td>  -->
                             <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + ${repositoryName} + '/' + ${experimentName} + '/metadata'">Metadata</a></td>
