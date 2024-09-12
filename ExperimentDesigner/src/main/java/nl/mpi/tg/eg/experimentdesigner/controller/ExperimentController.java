@@ -103,21 +103,23 @@ public class ExperimentController {
         JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
         Unmarshaller jaxbMarshaller = jaxbContext.<Experiment>createUnmarshaller();
         final Experiment experiment = (Experiment) jaxbMarshaller.unmarshal(xmlFile);
+//        model.addAttribute("contextPath", request.getContextPath());
+//        model.addAttribute("detailType", "configuration");
+//        model.addAttribute("repositoryName", repositoryName);
+//        model.addAttribute("experimentName", experimentName);
+//        model.addAttribute("experiment", experiment);
+//        return "design";
+        experimentRepository.save(experiment);
+        return designView(model, request, experiment);
+    }
+
+    @RequestMapping("/experiment/{experiment}")
+    public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
-        model.addAttribute("repositoryName", repositoryName);
-        model.addAttribute("experimentName", experimentName);
         model.addAttribute("experiment", experiment);
         return "design";
     }
-
-    // @RequestMapping("/experiment/{experiment}")
-    // public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
-    //     model.addAttribute("contextPath", request.getContextPath());
-    //     model.addAttribute("detailType", "configuration");
-    //     model.addAttribute("experiment", experiment);
-    //     return "design";
-    // }
 
     @RequestMapping("/experiments/add")
     public String addExperiment(Model model, HttpServletRequest request) {
