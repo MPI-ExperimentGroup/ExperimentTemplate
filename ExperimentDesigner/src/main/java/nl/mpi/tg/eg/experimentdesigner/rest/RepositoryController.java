@@ -96,11 +96,21 @@ public class RepositoryController {
 //        }
     }
 
+    @RequestMapping("/repository/status/{repositoryName}")
+    @ResponseBody
+    public void repositoryStatus(@PathVariable String repositoryName, HttpServletResponse response) throws MalformedURLException, IOException {
+        repositoryCommand(repositoryName, response, "status");
+    }
+
     @RequestMapping("/repository/diff/{repositoryName}")
     @ResponseBody
     public void repositoryDiff(@PathVariable String repositoryName, HttpServletResponse response) throws MalformedURLException, IOException {
+        repositoryCommand(repositoryName, response, "diff");
+    }
+
+    private void repositoryCommand(String repositoryName, HttpServletResponse response, String command) throws MalformedURLException, IOException {
         String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.]", "");
-        ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "git diff");
+        ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "git " + command);
         builder.redirectErrorStream(true);
         builder.directory(new File("/FrinexExperiments/" + repositoryNameCleaned));
         Process process = builder.start();
