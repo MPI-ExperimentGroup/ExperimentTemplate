@@ -83,8 +83,8 @@ public class RepositoryController {
                         // }
                         // } while (line != null);
                         // response.getWriter().flush();
-                        process.waitFor();
-                    } catch (IOException | InterruptedException exception) {
+//                        process.waitFor();
+                    } catch (IOException exception) {
                         LOG.log(Level.SEVERE, "clone failed", exception);
                     }
 
@@ -170,7 +170,11 @@ public class RepositoryController {
                     } else {
                         stringBuilder.append(",\n");
                     }
-                    stringBuilder.append("\"").append(listingFile.getName()).append("\"");
+                    if (listingFile.getName().endsWith(".xml")) {
+                        stringBuilder.append("<a href=\"/repository/").append(repositoryDirectory).append("/").append(listingFile.getName().replaceAll("\\.git$", "")).append("\">\"").append(listingFile.getName()).append("\"</a>");
+                    } else {
+                        stringBuilder.append("\"").append(listingFile.getName()).append("\"");
+                    }
                 }
             } else {
                 for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
