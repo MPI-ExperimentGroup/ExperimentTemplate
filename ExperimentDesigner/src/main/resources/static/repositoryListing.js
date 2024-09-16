@@ -22,9 +22,6 @@
  Author     : Peter Withers <peter.withers@mpi.nl>
  */
 
-function populateMedia(repository, experiment, username) {
-}
-
 function populateListing(repository, username) {
     $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
         document.getElementById('repositoryDiv').innerText = repository;
@@ -80,7 +77,7 @@ function populateListing(repository, username) {
 
 var cloneIndicator = "-";
 
-function populateMedia(repository, experiment) {
+function populateMedia(repository, experiment, username) {
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
     if ("*" === experiment) {
         $("#experimentName").html(repository);
@@ -114,7 +111,11 @@ function populateMedia(repository, experiment) {
                         var lastSlash = keyStringRaw.lastIndexOf("/");
                         if (lastSlash < 0) {
                             $("#" + keyString + "_folder").html("/");
-                            $("#" + keyString + "_file").html(keyStringRaw);
+                            if (/\.git$/.exec(keyStringRaw) != null) {
+                                $("#" + keyString + "_file").html('<a href="' + repository + '/' + keyStringRaw.replace(/\.git$/, "") + '">' + keyStringRaw + '</a>');
+                            } else {
+                                $("#" + keyString + "_file").html(keyStringRaw);
+                            }
                         } else {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));

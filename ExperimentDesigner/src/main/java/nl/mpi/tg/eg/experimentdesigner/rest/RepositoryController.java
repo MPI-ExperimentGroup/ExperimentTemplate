@@ -170,11 +170,7 @@ public class RepositoryController {
                     } else {
                         stringBuilder.append(",\n");
                     }
-                    if (listingFile.getName().endsWith(".xml")) {
-                        stringBuilder.append("<a href=\"/repository/").append(repositoryDirectory).append("/").append(listingFile.getName().replaceAll("\\.git$", "")).append("\">\"").append(listingFile.getName()).append("\"</a>");
-                    } else {
-                        stringBuilder.append("\"").append(listingFile.getName()).append("\"");
-                    }
+                    stringBuilder.append("\"").append(listingFile.getName()).append("\"");
                 }
             } else {
                 for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
