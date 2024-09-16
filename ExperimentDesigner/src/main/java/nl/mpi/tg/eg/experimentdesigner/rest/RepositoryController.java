@@ -58,25 +58,31 @@ public class RepositoryController {
                 @Override
                 public void run() {
                     ProcessBuilder builder = new ProcessBuilder(
-                            "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git &>> /FrinexExperiments/" + repositoryNameCleaned + ".log; sleep 5;");
+                            "/bin/bash", "-c",
+                            "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/"
+                            + repositoryNameCleaned + ".git &>> /FrinexExperiments/" + repositoryNameCleaned
+                            + ".log; sleep 5;");
                     builder.redirectErrorStream(true);
                     builder.directory(new File("/FrinexExperiments"));
-//                    builder.redirectOutput(log);
-//                    builder.redirectError(log);
+                    // builder.redirectOutput(log);
+                    // builder.redirectError(log);
                     try {
                         Process process = builder.start();
-//                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-//                        // TODO: while the data here is limited to the container and behind a password we might want to filter what returned here from bash
-//                        String line;
-//                        do {
-//                            line = bufferedReader.readLine();
-//                            if (line != null) {
-//                                response.getWriter().println(line + "<br>");
-//                                response.getWriter().flush();
-//                            }
-//                        } while (line != null);
-//                        response.getWriter().flush();
-                    } catch (IOException exception) {
+                        // BufferedReader bufferedReader = new BufferedReader(new
+                        // InputStreamReader(process.getInputStream()));
+                        // // TODO: while the data here is limited to the container and behind a
+                        // password we might want to filter what returned here from bash
+                        // String line;
+                        // do {
+                        // line = bufferedReader.readLine();
+                        // if (line != null) {
+                        // response.getWriter().println(line + "<br>");
+                        // response.getWriter().flush();
+                        // }
+                        // } while (line != null);
+                        // response.getWriter().flush();
+                        process.waitFor();
+                    } catch (IOException | InterruptedException exception) {
                         LOG.log(Level.SEVERE, "clone failed", exception);
                     }
 
@@ -84,16 +90,16 @@ public class RepositoryController {
             });
             cloneRunnables.get(repositoryNameCleaned).run();
         }
-//        try {
+        // try {
         Path path = Paths.get(log.toURI());
         Resource resource = new UrlResource(path.toUri());
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_PLAIN)
                 .body(resource);
-//        } catch (MalformedURLException exception) {
-//            LOG.log(Level.SEVERE, "reading log failed", exception);
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND);
-//        }
+        // } catch (MalformedURLException exception) {
+        // LOG.log(Level.SEVERE, "reading log failed", exception);
+        // return ResponseEntity.status(HttpStatus.NOT_FOUND);
+        // }
     }
 
     @RequestMapping("/git/status/{repositoryName}")
@@ -155,7 +161,7 @@ public class RepositoryController {
             stringBuilder.append("\n\"listing\":[\n");
             boolean isFirst = true;
             if ("*".equals(experimentName)) {
-//                recurseDirectories(repositoryDirectory, "/", stringBuilder, isFirst);
+                // recurseDirectories(repositoryDirectory, "/", stringBuilder, isFirst);
                 for (File listingFile : repositoryDirectory.listFiles()) {
                     if (isFirst) {
                         isFirst = false;
