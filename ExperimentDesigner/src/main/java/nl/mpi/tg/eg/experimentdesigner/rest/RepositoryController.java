@@ -92,16 +92,20 @@ public class RepositoryController {
             });
             cloneRunnables.get(repositoryNameCleaned).run();
         }
-        // try {
-        Path path = Paths.get(log.toURI());
-        Resource resource = new UrlResource(path.toUri());
-        return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .body(resource);
-        // } catch (MalformedURLException exception) {
-        // LOG.log(Level.SEVERE, "reading log failed", exception);
-        // return ResponseEntity.status(HttpStatus.NOT_FOUND);
-        // }
+        if (log.exists()) {
+            // try {
+            Path path = Paths.get(log.toURI());
+            Resource resource = new UrlResource(path.toUri());
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_PLAIN)
+                    .body(resource);
+            // } catch (MalformedURLException exception) {
+            // LOG.log(Level.SEVERE, "reading log failed", exception);
+            // return ResponseEntity.status(HttpStatus.NOT_FOUND);
+            // }
+        } else {
+            return ResponseEntity.ok().build();
+        }
     }
 
     @RequestMapping("/git/status/{repositoryName}")
