@@ -114,7 +114,7 @@ function populateMedia(repository, experiment, username) {
                             if (/^\./.exec(keyStringRaw) != null) {
                                 // skipping hidden files
                             } else if (/\.xml$/.exec(keyStringRaw) != null) {
-                                $("#" + keyString + "_file").html('<a href="' + repository + '/' + keyStringRaw.replace(/\.xml$/, "") + '">' + keyStringRaw + '</a>');
+                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.xml$/, "") + '">' + keyStringRaw + '</a>');
                             } else {
                                 $("#" + keyString + "_file").html(keyStringRaw);
                             }
