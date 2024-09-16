@@ -111,10 +111,8 @@ function populateMedia(repository, experiment, username) {
                         var lastSlash = keyStringRaw.lastIndexOf("/");
                         if (lastSlash < 0) {
                             $("#" + keyString + "_folder").html("/");
-                            if (/^\./.exec(keyStringRaw) != null) {
-                                // skipping hidden files
-                            } else if (/\.xml$/.exec(keyStringRaw) != null) {
-                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.xml$/, "") + '">' + keyStringRaw + '</a>');
+                            if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
+                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
                             } else {
                                 $("#" + keyString + "_file").html(keyStringRaw);
                             }
@@ -122,8 +120,12 @@ function populateMedia(repository, experiment, username) {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                         }
-                        if (/\.jpg$|\.png$/.exec(keyStringRaw) != null) {
+                        if (/\.jpg$|\.png$\.gif$/.exec(keyStringRaw) != null) {
                             $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
+                        }
+                        if (/^\./.exec(keyStringRaw) != null) {
+                            // skipping hidden files
+                            $("#" + keyString + "_row").hide();
                         }
                     }
                 } if (listingData.error) {
