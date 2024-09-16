@@ -58,7 +58,7 @@ public class RepositoryController {
                 @Override
                 public void run() {
                     ProcessBuilder builder = new ProcessBuilder(
-                            "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git &>> /FrinexExperiments/" + repositoryNameCleaned + ".log");
+                            "/bin/bash", "-c", "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/" + repositoryNameCleaned + ".git &>> /FrinexExperiments/" + repositoryNameCleaned + ".log; sleep 5;");
                     builder.redirectErrorStream(true);
                     builder.directory(new File("/FrinexExperiments"));
 //                    builder.redirectOutput(log);
