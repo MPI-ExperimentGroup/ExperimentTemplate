@@ -111,8 +111,10 @@ function populateMedia(repository, experiment, username) {
                         var lastSlash = keyStringRaw.lastIndexOf("/");
                         if (lastSlash < 0) {
                             $("#" + keyString + "_folder").html("/");
-                            if (/\.git$/.exec(keyStringRaw) != null) {
-                                $("#" + keyString + "_file").html('<a href="' + repository + '/' + keyStringRaw.replace(/\.git$/, "") + '">' + keyStringRaw + '</a>');
+                            if (/^\./.exec(keyStringRaw) != null) {
+                                // skipping hidden files
+                            } else if (/\.xml$/.exec(keyStringRaw) != null) {
+                                $("#" + keyString + "_file").html('<a href="' + repository + '/' + keyStringRaw.replace(/\.xml$/, "") + '">' + keyStringRaw + '</a>');
                             } else {
                                 $("#" + keyString + "_file").html(keyStringRaw);
                             }
@@ -120,7 +122,9 @@ function populateMedia(repository, experiment, username) {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                         }
-                        $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
+                        if (/\.jpg$|\.png$/.exec(keyStringRaw) != null) {
+                            $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
+                        }
                     }
                 } if (listingData.error) {
                     $("#errorMessage").html(listingData.error);
