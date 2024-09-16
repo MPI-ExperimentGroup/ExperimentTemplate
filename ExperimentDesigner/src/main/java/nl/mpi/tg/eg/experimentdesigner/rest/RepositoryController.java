@@ -62,7 +62,7 @@ public class RepositoryController {
                             "git clone http://WizardUser:$WizardUserPass@frinexbuild.mpi.nl/wizardgit/"
                             + repositoryNameCleaned + ".git &>> /FrinexExperiments/" + repositoryNameCleaned
                             // echo "done" into the log because sometimes the log file does not contain all of the git output
-                            + ".log; sleep 5; echo \"done\" >> /FrinexExperiments/" + repositoryNameCleaned
+                            + ".log; sleep 5; echo \", done.\" >> /FrinexExperiments/" + repositoryNameCleaned
                             + ".log;");
                     builder.redirectErrorStream(true);
                     builder.directory(new File("/FrinexExperiments"));
