@@ -25,10 +25,14 @@ import com.google.gwt.xml.client.Element;
 import com.google.gwt.xml.client.Node;
 import com.google.gwt.xml.client.NodeList;
 import com.google.gwt.xml.client.XMLParser;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
+import nl.mpi.tg.eg.experiment.client.listener.FrameTimeTrigger;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.ExtendedKeyCodes;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.XmlId;
@@ -104,6 +108,40 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
                 }
             }
         };
+    }
+
+    private SingleStimulusListener getNamedListener(final Node currentNode, final String nodeName, final Stimulus currentStimulus) {
+        return new SingleStimulusListener() {
+            @Override
+            public void postLoadTimerFired(Stimulus currentStimulus) {
+                NodeList childNodes = currentNode.getChildNodes();
+                for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
+                    if (nodeName.equals(childNodes.item(nodeCount).getNodeName())) {
+                        iterateBlocks(childNodes.item(nodeCount));
+                    }
+                }
+            }
+        };
+    }
+
+    private FrameTimeTrigger[] getFrameTimeTriggers(final Node currentNode, final Stimulus currentStimulus) {
+        List<FrameTimeTrigger> frameTimeTriggerList = new ArrayList<>();
+        NodeList childNodes = currentNode.getChildNodes();
+        for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
+            if ("addFrameTimeTrigger".equals(childNodes.item(nodeCount).getNodeName())) {
+                int triggerMs = 0;
+                int threshold = 0;
+                if (((Element) childNodes.item(nodeCount)).hasAttribute("triggerMs")) {
+                    triggerMs = Integer.parseInt(((Element) childNodes.item(nodeCount)).getAttribute("triggerMs"));
+                }
+                if (((Element) childNodes.item(nodeCount)).hasAttribute("threshold")) {
+                    threshold = Integer.parseInt(((Element) childNodes.item(nodeCount)).getAttribute("threshold"));
+                }
+                frameTimeTriggerList.add(new FrameTimeTrigger(currentStimulus, getNamedListener(childNodes.item(nodeCount), "onLate"), getNamedListener(childNodes.item(nodeCount), "onTime", currentStimulus), triggerMs, threshold) {
+                });
+            }
+        }
+        return frameTimeTriggerList.toArray(new FrameTimeTrigger[]{});
     }
 
     private PresenterEventListener getPresenterEventListener(final Node currentNode, final String featureText, final String styleName, final String hotKey) {
@@ -194,13 +232,37 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
             if (((Element) currentNode).hasAttribute("msToNext")) {
                 msToNext = Integer.parseInt(((Element) currentNode).getAttribute("msToNext"));
             }
+            int dataChannel = 0;
+            if (((Element) currentNode).hasAttribute("dataChannel")) {
+                dataChannel = Integer.parseInt(((Element) currentNode).getAttribute("dataChannel"));
+            }
+            int minimumMs = 0;
+            if (((Element) currentNode).hasAttribute("minimumMs")) {
+                minimumMs = Integer.parseInt(((Element) currentNode).getAttribute("minimumMs"));
+            }
+            int maximumMs = 0;
+            if (((Element) currentNode).hasAttribute("maximumMs")) {
+                maximumMs = Integer.parseInt(((Element) currentNode).getAttribute("maximumMs"));
+            }
             String listenerId = "";
             if (((Element) currentNode).hasAttribute("listenerId")) {
                 listenerId = ((Element) currentNode).getAttribute("listenerId");
             }
+            String eventTag = "";
+            if (((Element) currentNode).hasAttribute("eventTag")) {
+                eventTag = ((Element) currentNode).getAttribute("eventTag");
+            }
             String src = "";
             if (((Element) currentNode).hasAttribute("src")) {
                 src = ((Element) currentNode).getAttribute("src");
+            }
+            String msLabelFormat = "";
+            if (((Element) currentNode).hasAttribute("msLabelFormat")) {
+                msLabelFormat = ((Element) currentNode).getAttribute("msLabelFormat");
+            }
+            String evaluateTokens = "";
+            if (((Element) currentNode).hasAttribute("evaluateTokens")) {
+                evaluateTokens = ((Element) currentNode).getAttribute("evaluateTokens");
             }
             switch (currentNode.getNodeName()) {
                 case "plainText":
@@ -239,6 +301,33 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
                 case "image":
                     image(src, msToNext, getNamedListener(currentNode, "mediaLoaded"), getNamedListener(currentNode, "mediaLoadFailed"));
                     break;
+                case "clearTimer":
+                    clearTimer(listenerId);
+                    break;
+                case "compareTimer":
+                    compareTimer(msToNext, listenerId, getNamedListener(currentNode, "aboveThreshold"), getNamedListener(currentNode, "withinThreshold"));
+                    break;
+                case "logTimerValue":
+                    logTimerValue(listenerId, eventTag, dataChannel);
+                    break;
+                case "timerLabel":
+                    timerLabel(styleName, msToNext, listenerId, msLabelFormat);
+                    break;
+                case "cancelPauseTimers":
+                    cancelPauseTimers();
+                    break;
+                case "addTimerTrigger":
+                    addTimerTrigger(currentStimulus, listenerId, minimumMs, maximumMs, evaluateTokens, getNamedListener(currentNode, "onError"), getNamedListener(currentNode, "onTimer"));
+                    break;
+                case "startFrameRateTimer":
+                    startFrameRateTimer(getFrameTimeTriggers(currentNode, currentStimulus));
+                    break;
+//                case "zeroStimulusStopwatch":
+//                    zeroStimulusStopwatch();
+//                    break;
+//                case "stopStimulusStopwatch":
+//                    stopStimulusStopwatch();
+//                    break;
                 case "experiment":
                 case "presenter":
                     NodeList childNodes = currentNode.getChildNodes();
