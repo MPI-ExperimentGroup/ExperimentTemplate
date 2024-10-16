@@ -257,7 +257,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                     return appController.@nl.mpi.tg.eg.experiment.client.AppController::requestStateFromString(Ljava/lang/String;)(presenterName);
                 }
                 $wnd.wizardStimulusPresenter = function(blocksData, selectedBlockId) {
-                    return appController.@nl.mpi.tg.eg.experiment.client.AppController::previewWizardData(Ljava/lang/String;Ljava/lang/String;)(blocksData, selectedBlockId);
+                    return appController.@nl.mpi.tg.eg.experiment.client.AppController::previewWizardData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(blocksData, selectedBlockId, staticFilesPath);
                 }
                 }-*/;
             </xsl:text>

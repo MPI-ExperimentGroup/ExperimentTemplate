@@ -43,7 +43,7 @@ function updatePreview(event) {
     const generatedXml = javascript.javascriptGenerator.workspaceToCode(workspace);
     document.getElementById('previewArea').value = generatedXml;
     // preview the blocks data in the ExperimentTemplate via the WizardStimulusPresenter
-    document.querySelector("iframe").contentWindow.wizardStimulusPresenter(generatedXml, event.blockId);
+    document.querySelector("iframe").contentWindow.wizardStimulusPresenter(generatedXml, event.blockId, staticFilesPath);
     // document.querySelector("iframe").contentWindow.document.body.focus();
     // by touching the SRC the browser renders the changes
     document.querySelector("iframe").src = document.querySelector("iframe").src.split("#")[0] + "#" + Date();

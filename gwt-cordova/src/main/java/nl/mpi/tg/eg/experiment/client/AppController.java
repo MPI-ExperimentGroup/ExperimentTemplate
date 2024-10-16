@@ -405,8 +405,8 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
         }
     }
 
-    public void previewWizardData(final String blocksData, final String selectedBlockId) {
-        this.presenter = new WizardStimulusPresenter(widgetTag, submissionService, userResults, localStorage, timerService, blocksData, selectedBlockId);
+    public void previewWizardData(final String blocksData, final String selectedBlockId, final String staticFilesPath) {
+        this.presenter = new WizardStimulusPresenter(widgetTag, submissionService, userResults, localStorage, timerService, blocksData, selectedBlockId, staticFilesPath);
         presenter.setState(this, null, null);
     }
 

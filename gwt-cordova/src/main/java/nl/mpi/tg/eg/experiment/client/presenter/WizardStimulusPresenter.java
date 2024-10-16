@@ -51,13 +51,15 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
     private final String titleString = "WizardStimulusPresenter";
     private final String blocksData;
     private final String selectedBlockId;
+    private final String staticFilesPath;
 
     public WizardStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService,
             UserResults userResults, final LocalStorage localStorage, final TimerService timerService,
-            final String blocksData, final String selectedBlockId) {
+            final String blocksData, final String selectedBlockId, final String staticFilesPath) {
         super(widgetTag, submissionService, userResults, localStorage, timerService);
         this.blocksData = blocksData;
         this.selectedBlockId = selectedBlockId;
+        this.staticFilesPath = staticFilesPath;
     }
 
     @Override
@@ -254,7 +256,7 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
             }
             String src = "";
             if (((Element) currentNode).hasAttribute("src")) {
-                src = ((Element) currentNode).getAttribute("src");
+                src = staticFilesPath + ((Element) currentNode).getAttribute("src");
             }
             String msLabelFormat = "";
             if (((Element) currentNode).hasAttribute("msLabelFormat")) {
