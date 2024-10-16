@@ -26,6 +26,7 @@ import com.google.gwt.xml.client.Node;
 import com.google.gwt.xml.client.NodeList;
 import com.google.gwt.xml.client.XMLParser;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListener;
+import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListener;
 import nl.mpi.tg.eg.experiment.client.model.ExtendedKeyCodes;
@@ -86,6 +87,20 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
                 NodeList childNodes = currentNode.getChildNodes();
                 for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
                     iterateBlocks(childNodes.item(nodeCount));
+                }
+            }
+        };
+    }
+
+    private CancelableStimulusListener getNamedListener(final Node currentNode, final String nodeName) {
+        return new CancelableStimulusListener() {
+            @Override
+            protected void trigggerCancelableEvent() {
+                NodeList childNodes = currentNode.getChildNodes();
+                for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
+                    if (nodeName.equals(childNodes.item(nodeCount).getNodeName())) {
+                        iterateBlocks(childNodes.item(nodeCount));
+                    }
                 }
             }
         };
@@ -175,6 +190,18 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
             if (((Element) currentNode).hasAttribute("regionId")) {
                 regionId = ((Element) currentNode).getAttribute("regionId");
             }
+            int msToNext = 0;
+            if (((Element) currentNode).hasAttribute("msToNext")) {
+                msToNext = Integer.parseInt(((Element) currentNode).getAttribute("msToNext"));
+            }
+            String listenerId = "";
+            if (((Element) currentNode).hasAttribute("listenerId")) {
+                listenerId = ((Element) currentNode).getAttribute("listenerId");
+            }
+            String src = "";
+            if (((Element) currentNode).hasAttribute("src")) {
+                src = ((Element) currentNode).getAttribute("src");
+            }
             switch (currentNode.getNodeName()) {
                 case "plainText":
                     addText(featureText);
@@ -205,6 +232,12 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
                     break;
                 case "regionClear":
                     regionClear(currentStimulus, regionId);
+                    break;
+                case "startTimer":
+                    startTimer(msToNext, listenerId, getTimedStimulusListener(currentNode));
+                    break;
+                case "image":
+                    image(src, msToNext, getNamedListener(currentNode, "mediaLoaded"), getNamedListener(currentNode, "mediaLoadFailed"));
                     break;
                 case "experiment":
                 case "presenter":
