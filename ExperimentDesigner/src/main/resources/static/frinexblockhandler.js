@@ -25,6 +25,7 @@
 const featureTypes = getFeatureBlocks();
 const workspace = Blockly.inject('editorDiv', { toolbox: featureTypes });
 var loadedXml;
+var staticFilesPath;
 setupTemplateCallback();
 
 const supportedEvents = new Set([
@@ -66,13 +67,14 @@ function loadMySnippetsCallback(toolboxButton) {
     loadAction("snippet", toolboxButton.text);
 }
 
-function loadXml(experimentName) {
+function loadXml(experimentName, staticFilesPathL) {
     $.ajax({
         type: "get",
         url: experimentName,
         dataType: "text",
         success: function (inputData) {
             loadedXml = $($.parseXML(inputData)).find("experiment")[0];
+            staticFilesPath = staticFilesPathL;
             buildFromXml(loadedXml, null);
         },
         error: function (xhr, status) {

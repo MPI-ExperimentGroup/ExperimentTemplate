@@ -38,9 +38,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     var repositoryName = /*[[${repositoryName}]]*/ null;
                     var experimentName = /*[[${experimentName}]]*/ null;
                     if (repositoryName !== null && experimentName !== null) {
-                        loadXml("/clone/" + repositoryName + "/" + experimentName + ".xml");
+                        loadXml("/clone/" + repositoryName + "/" + experimentName + ".xml", "/clone/" + repositoryName + "/" + experimentName + "/");
                     } else if (experimentName !== null) {
-                        loadXml("/repositoryXml/" + experimentName);
+                        loadXml("/repositoryXml/" + experimentName, "./static/");
                     }
                 }
             }
