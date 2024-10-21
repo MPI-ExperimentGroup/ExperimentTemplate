@@ -68,13 +68,13 @@ function loadMySnippetsCallback(toolboxButton) {
 }
 
 function loadXml(experimentName, staticFilesPathL) {
+    staticFilesPath = staticFilesPathL;
     $.ajax({
         type: "get",
         url: experimentName,
         dataType: "text",
         success: function (inputData) {
             loadedXml = $($.parseXML(inputData)).find("experiment")[0];
-            staticFilesPath = staticFilesPathL;
             buildFromXml(loadedXml, null);
         },
         error: function (xhr, status) {
