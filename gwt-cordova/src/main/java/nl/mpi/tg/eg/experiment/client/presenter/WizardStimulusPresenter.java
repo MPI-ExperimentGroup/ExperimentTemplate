@@ -131,14 +131,8 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
         NodeList childNodes = currentNode.getChildNodes();
         for (int nodeCount = 0; nodeCount < childNodes.getLength(); nodeCount++) {
             if ("addFrameTimeTrigger".equals(childNodes.item(nodeCount).getNodeName())) {
-                int triggerMs = 0;
-                int threshold = 0;
-                if (((Element) childNodes.item(nodeCount)).hasAttribute("triggerMs")) {
-                    triggerMs = Integer.parseInt(((Element) childNodes.item(nodeCount)).getAttribute("triggerMs"));
-                }
-                if (((Element) childNodes.item(nodeCount)).hasAttribute("threshold")) {
-                    threshold = Integer.parseInt(((Element) childNodes.item(nodeCount)).getAttribute("threshold"));
-                }
+                int triggerMs = parseAttribute((Element) currentNode, "triggerMs", 0);
+                int threshold = parseAttribute((Element) currentNode, "threshold", 0);
                 frameTimeTriggerList.add(new FrameTimeTrigger(currentStimulus, getNamedListener(childNodes.item(nodeCount), "onLate"), getNamedListener(childNodes.item(nodeCount), "onTime", currentStimulus), triggerMs, threshold) {
                 });
             }
@@ -202,70 +196,45 @@ public class WizardStimulusPresenter extends AbstractStimulusPresenter implement
         };
     }
 
+    private int parseAttribute(Element currentNode, String attributeName, int defaultValue) {
+        if (currentNode.hasAttribute(attributeName)) {
+            try {
+                return Integer.parseInt(((Element) currentNode).getAttribute(attributeName));
+            } catch (NumberFormatException exception) {
+                return defaultValue;
+            }
+        } else {
+            return defaultValue;
+        }
+    }
+
+    private String parseAttribute(Element currentNode, String attributeName, String defaultValue) {
+        if (currentNode.hasAttribute(attributeName)) {
+            return ((Element) currentNode).getAttribute(attributeName);
+        } else {
+            return defaultValue;
+        }
+    }
+
     private void iterateBlocks(final Node currentNode) throws DOMException {
         if (currentNode instanceof Element) {
             XmlId xmlId = null;
             Stimulus currentStimulus = null;
-            String featureText = "";
-            if (((Element) currentNode).hasAttribute("featureText")) {
-                featureText = ((Element) currentNode).getAttribute("featureText");
-            }
-            String styleName = "";
-            if (((Element) currentNode).hasAttribute("styleName")) {
-                styleName = ((Element) currentNode).getAttribute("styleName");
-            }
-            String buttonGroup = "";
-            if (((Element) currentNode).hasAttribute("buttonGroup")) {
-                buttonGroup = ((Element) currentNode).getAttribute("buttonGroup");
-            }
-            String hotKey = "";
-            if (((Element) currentNode).hasAttribute("hotKey")) {
-                hotKey = ((Element) currentNode).getAttribute("hotKey");
-            }
-            String target = "";
-            if (((Element) currentNode).hasAttribute("target")) {
-                target = ((Element) currentNode).getAttribute("target");
-            }
-            String regionId = "";
-            if (((Element) currentNode).hasAttribute("regionId")) {
-                regionId = ((Element) currentNode).getAttribute("regionId");
-            }
-            int msToNext = 0;
-            if (((Element) currentNode).hasAttribute("msToNext")) {
-                msToNext = Integer.parseInt(((Element) currentNode).getAttribute("msToNext"));
-            }
-            int dataChannel = 0;
-            if (((Element) currentNode).hasAttribute("dataChannel")) {
-                dataChannel = Integer.parseInt(((Element) currentNode).getAttribute("dataChannel"));
-            }
-            int minimumMs = 0;
-            if (((Element) currentNode).hasAttribute("minimumMs")) {
-                minimumMs = Integer.parseInt(((Element) currentNode).getAttribute("minimumMs"));
-            }
-            int maximumMs = 0;
-            if (((Element) currentNode).hasAttribute("maximumMs")) {
-                maximumMs = Integer.parseInt(((Element) currentNode).getAttribute("maximumMs"));
-            }
-            String listenerId = "";
-            if (((Element) currentNode).hasAttribute("listenerId")) {
-                listenerId = ((Element) currentNode).getAttribute("listenerId");
-            }
-            String eventTag = "";
-            if (((Element) currentNode).hasAttribute("eventTag")) {
-                eventTag = ((Element) currentNode).getAttribute("eventTag");
-            }
-            String src = "";
-            if (((Element) currentNode).hasAttribute("src")) {
-                src = staticFilesPath + ((Element) currentNode).getAttribute("src");
-            }
-            String msLabelFormat = "";
-            if (((Element) currentNode).hasAttribute("msLabelFormat")) {
-                msLabelFormat = ((Element) currentNode).getAttribute("msLabelFormat");
-            }
-            String evaluateTokens = "";
-            if (((Element) currentNode).hasAttribute("evaluateTokens")) {
-                evaluateTokens = ((Element) currentNode).getAttribute("evaluateTokens");
-            }
+            String featureText = parseAttribute((Element) currentNode, "featureText", "");
+            String styleName = parseAttribute((Element) currentNode, "styleName", "");
+            String buttonGroup = parseAttribute((Element) currentNode, "buttonGroup", "");
+            String hotKey = parseAttribute((Element) currentNode, "hotKey", "");
+            String target = parseAttribute((Element) currentNode, "target", "");
+            String regionId = parseAttribute((Element) currentNode, "regionId", "");
+            int msToNext = parseAttribute((Element) currentNode, "msToNext", 0);
+            int dataChannel = parseAttribute((Element) currentNode, "dataChannel", 0);
+            int minimumMs = parseAttribute((Element) currentNode, "minimumMs", 0);
+            int maximumMs = parseAttribute((Element) currentNode, "maximumMs", 0);
+            String listenerId = parseAttribute((Element) currentNode, "listenerId", "");
+            String eventTag = parseAttribute((Element) currentNode, "eventTag", "");
+            String src = staticFilesPath + parseAttribute((Element) currentNode, "src", "");
+            String msLabelFormat = parseAttribute((Element) currentNode, "msLabelFormat", "");
+            String evaluateTokens = parseAttribute((Element) currentNode, "evaluateTokens", "");
             switch (currentNode.getNodeName()) {
                 case "plainText":
                     addText(featureText);
