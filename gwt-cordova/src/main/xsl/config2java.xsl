@@ -259,7 +259,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 $wnd.wizardStimulusPresenter = function(blocksData, selectedBlockId, staticFilesPath) {
                     return appController.@nl.mpi.tg.eg.experiment.client.AppController::previewWizardData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(blocksData, selectedBlockId, staticFilesPath);
                 }
-                if ($wnd.triggerBlocksWizard) $wnd.triggerBlocksWizard();
+                $wnd.parent.handleReadyEvent();
                 }-*/;
             </xsl:text>
         </xsl:if>
