@@ -45,11 +45,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             loadXml("/repositoryXml/" + experimentName, "./static/");
                         }
                     } else {
+                        // here we are relying on the GWT start up to trigger handleReadyEvent() again
                         expectedReadyEvents++;
-                        $("iframe").contents().find("#prerunMessage").bind('destroyed', function() {
-                            // the prerunMessage element is removed when GWT is ready
-                            handleReadyEvent();
-                        })
+                        // $("iframe").contents().find("#prerunMessage").bind('destroyed', function() {
+                        //     // the prerunMessage element is removed when GWT is ready
+                        //     handleReadyEvent();
+                        // })
+                        // $("iframe").contents().find("#prerunMessage").parent().on('DOMSubtreeModified', function(){
+                        //     console.log('changed');
+                        // });
                     }
                 }
             }
