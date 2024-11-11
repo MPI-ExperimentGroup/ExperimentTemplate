@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Entity;
@@ -33,12 +34,9 @@ import javax.persistence.Transient;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class AudioData {
+public class AudioData implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date submitDate;
     private String experimentName;
     private String screenName;
@@ -47,7 +45,6 @@ public class AudioData {
     private AudioType recordingFormat = AudioType.ogg;
     private UUID shortLivedToken;
     private Long downloadPermittedWindowMs = null;
-    @Lob
     private byte[] dataBlob;
 
     public AudioData() {
@@ -70,10 +67,13 @@ public class AudioData {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
 
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     public Date getSubmitDate() {
         return submitDate;
     }
@@ -127,6 +127,7 @@ public class AudioData {
         this.recordingFormat = recordingFormat;
     }
 
+    @Lob
     @JsonIgnore
     public byte[] getDataBlob() {
         return dataBlob;
