@@ -70,9 +70,10 @@ public class TemplateVersionPresenter extends LocalStoragePresenter implements P
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListener singleShotEventListener) {
-                if (allowBackAction(appEventListener)) {
-                    appEventListener.requestApplicationState(startTesingState);
-                }
+                // if (allowBackAction(appEventListener)) {
+                //     appEventListener.requestApplicationState(startTesingState);
+                // }
+                handleReadyEvent();
             }
 
             @Override
@@ -91,4 +92,8 @@ public class TemplateVersionPresenter extends LocalStoragePresenter implements P
             }
         });
     }
+    
+    protected native String handleReadyEvent() /*-{
+        return $wnd.parent.handleReadyEvent();
+    }-*/;
 }
