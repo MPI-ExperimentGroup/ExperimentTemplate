@@ -183,3 +183,25 @@ function doSort() {
 $(window).on('hashchange', function (e) {
     doSort();
 });
+
+function enableFileDragDrop() {
+    $("#repositoryListing").on("dragenter", e => { 
+        $("#repositoryListing").addClass("fileDragDrop"); 
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    $("#repositoryListing").on("dragleave", e => { 
+        $("#repositoryListing").removeClass("fileDragDrop");
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    $("#repositoryListing").on("drop", e => {
+        if(e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.originalEvent.dataTransfer.files.forEach(dropFile => {
+                console.log(dropFile);
+            });
+        }
+    });
+}

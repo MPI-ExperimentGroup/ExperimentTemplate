@@ -380,3 +380,8 @@ textarea.wizardTextbox {
 #repositoryListing tr:hover {
     background-color: #3f51b521;
 }
+
+.fileDragDrop {
+    background: lightblue;
+    opacity: 50%;
+}
