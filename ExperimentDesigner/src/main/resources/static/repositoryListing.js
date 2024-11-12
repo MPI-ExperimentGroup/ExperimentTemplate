@@ -184,7 +184,7 @@ $(window).on('hashchange', function (e) {
     doSort();
 });
 
-function enableFileDragDrop(repository, experiment) {
+function enableFileDragDrop(repository, experiment, parameterName, token) {
     // prevent dropping to the bod of the document which would navigate to the dropped file
     $("body").on("dragover", e => {
         e.preventDefault();
@@ -219,6 +219,7 @@ function enableFileDragDrop(repository, experiment) {
                 $("#repositoryListing").append("<tr><td>" + repositoryShort + "</td><td>" + fileName + "</td><td id=\"" + fileName + "\">uploading</td></tr>")
                 var formdata = new FormData();
                 formdata.append('file', e.originalEvent.dataTransfer.files[fileIndex]);
+                formdata.append(parameterName, token);
                 $.ajax({
                     type: "POST",
                     url: "/repository/add/" + repositoryShort + "/" + experiment + "/" + fileName,
