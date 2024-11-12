@@ -216,13 +216,23 @@ function enableFileDragDrop(repository, experiment) {
             for (let fileIndex = 0; fileIndex < e.originalEvent.dataTransfer.files.length; fileIndex++) {
                 const fileName = e.originalEvent.dataTransfer.files[fileIndex].name;
                 $("#repositoryListing").append("<tr><td>" + fileName + "</td><td id=\"" + fileName + "\">uploading</td></tr>")
-                $.post("/repository/add/" + repository + "/" + experiment + "/" + fileName,
-                    { data: e.originalEvent.dataTransfer.files[fileIndex].stream },
-                    function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/repository/add/" + repository + "/" + experiment + "/" + fileName,
+                    data: e.originalEvent.dataTransfer.files[fileIndex].stream,
+                    success: function () {
                         $("#" + fileName).html("success");
-                    }).fail(function () {
-                        $("#" + fileName).html("error");
-                    });
+                    },
+                    processData: false,
+                    contentType: false
+                });
+                // $.post("/repository/add/" + repository + "/" + experiment + "/" + fileName,
+                //     { data: e.originalEvent.dataTransfer.files[fileIndex].stream },
+                //     function () {
+                //         $("#" + fileName).html("success");
+                //     }).fail(function () {
+                //         $("#" + fileName).html("error");
+                //     });
             }
         }
     });
