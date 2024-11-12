@@ -185,27 +185,37 @@ $(window).on('hashchange', function (e) {
 });
 
 function enableFileDragDrop() {
-    $("#experimentName").on("dragover", e => {
-        $("#experimentName").addClass("fileDragDrop"); 
+    // prevent dropping to the bod of the document which would navigate to the dropped file
+    $("#body").on("dragover", e => {
         e.preventDefault();
         e.stopPropagation();
     });
-    $("#experimentName").on("dragenter", e => {
-        $("#experimentName").addClass("fileDragDrop"); 
+    $("body").on("drop", e => {
         e.preventDefault();
         e.stopPropagation();
     });
-    $("#experimentName").on("dragleave", e => {
-        $("#experimentName").removeClass("fileDragDrop");
+    // handle the dropping of multiple files for upload
+    $("#repositoryListing").on("dragover", e => {
+        $("#repositoryListing").addClass("fileDragDrop");
+        e.preventDefault();
+        e.stopPropagation();
     });
-    $("#experimentName").on("drop", e => {
-        $("#experimentName").removeClass("fileDragDrop");
-        if(e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+    $("#repositoryListing").on("dragenter", e => {
+        $("#repositoryListing").addClass("fileDragDrop");
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    $("#repositoryListing").on("dragleave", e => {
+        $("#repositoryListing").removeClass("fileDragDrop");
+    });
+    $("#repositoryListing").on("drop", e => {
+        $("#repositoryListing").removeClass("fileDragDrop");
+        if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
             e.preventDefault();
             e.stopPropagation();
-            e.originalEvent.dataTransfer.files.forEach(dropFile => {
-                console.log(dropFile);
-            });
+            for (let fileIndex = 0; fileIndex < e.originalEvent.dataTransfer.files.length; fileIndex++) {
+                console.log(e.originalEvent.dataTransfer.files[fileIndex]);
+            }
         }
     });
 }
