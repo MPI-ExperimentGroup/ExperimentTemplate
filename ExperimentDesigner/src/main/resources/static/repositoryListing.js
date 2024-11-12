@@ -185,17 +185,17 @@ $(window).on('hashchange', function (e) {
 });
 
 function enableFileDragDrop() {
-    $("#repositoryListing").on("dragenter", e => { 
-        $("#repositoryListing").addClass("fileDragDrop"); 
+    $("#experimentName").on("dragenter", e => { 
+        $("#experimentName").addClass("fileDragDrop"); 
         e.preventDefault();
         e.stopPropagation();
     });
-    $("#repositoryListing").on("dragleave", e => { 
-        $("#repositoryListing").removeClass("fileDragDrop");
+    $("#experimentName").on("dragleave", e => { 
+        $("#experimentName").removeClass("fileDragDrop");
         e.preventDefault();
         e.stopPropagation();
     });
-    $("#repositoryListing").on("drop", e => {
+    $("#experimentName").on("drop", e => {
         if(e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
             e.preventDefault();
             e.stopPropagation();
