@@ -184,7 +184,7 @@ $(window).on('hashchange', function (e) {
     doSort();
 });
 
-function enableFileDragDrop() {
+function enableFileDragDrop(repository, experiment) {
     // prevent dropping to the bod of the document which would navigate to the dropped file
     $("body").on("dragover", e => {
         e.preventDefault();
@@ -214,7 +214,15 @@ function enableFileDragDrop() {
             e.preventDefault();
             e.stopPropagation();
             for (let fileIndex = 0; fileIndex < e.originalEvent.dataTransfer.files.length; fileIndex++) {
-                console.log(e.originalEvent.dataTransfer.files[fileIndex]);
+                const fileName = e.originalEvent.dataTransfer.files[fileIndex].name;
+                $("#repositoryListing").append("<tr><td>" + fileName + "</td><td id=\"" + fileName + "\">uploading</td></tr>")
+                $.post("/repository/add/" + repository + "/" + experiment + "/" + fileName,
+                    { data: e.originalEvent.dataTransfer.files[fileIndex].stream },
+                    function () {
+                        $("#" + fileName).html("success");
+                    }).fail(function () {
+                        $("#" + fileName).html("error");
+                    });
             }
         }
     });
