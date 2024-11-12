@@ -217,10 +217,12 @@ function enableFileDragDrop(repository, experiment) {
                 const fileName = e.originalEvent.dataTransfer.files[fileIndex].name;
                 var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
                 $("#repositoryListing").append("<tr><td>" + repositoryShort + "</td><td>" + fileName + "</td><td id=\"" + fileName + "\">uploading</td></tr>")
+                var formdata = new FormData();
+                formdata.append('file', e.originalEvent.dataTransfer.files[fileIndex]);
                 $.ajax({
                     type: "POST",
                     url: "/repository/add/" + repositoryShort + "/" + experiment + "/" + fileName,
-                    data: e.originalEvent.dataTransfer.files[fileIndex].stream,
+                    data: formdata,
                     success: function () {
                         $("#" + fileName).html("success");
                     },
