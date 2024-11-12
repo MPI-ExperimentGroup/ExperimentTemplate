@@ -185,22 +185,21 @@ $(window).on('hashchange', function (e) {
 });
 
 function enableFileDragDrop() {
-    $("#experimentName").on("dragenter", e => { 
+    $("#experimentName").on("dragover", e => {
         $("#experimentName").addClass("fileDragDrop"); 
         e.preventDefault();
         e.stopPropagation();
     });
-    $("#experimentName").on("dragenter", e => { 
+    $("#experimentName").on("dragenter", e => {
         $("#experimentName").addClass("fileDragDrop"); 
         e.preventDefault();
         e.stopPropagation();
     });
-    $("#experimentName").on("dragleave", e => { 
+    $("#experimentName").on("dragleave", e => {
         $("#experimentName").removeClass("fileDragDrop");
-        e.preventDefault();
-        e.stopPropagation();
     });
     $("#experimentName").on("drop", e => {
+        $("#experimentName").removeClass("fileDragDrop");
         if(e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
             e.preventDefault();
             e.stopPropagation();
