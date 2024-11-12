@@ -31,12 +31,16 @@ import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @since 02 September 2024 11:228 AM (creation date)
@@ -191,4 +195,26 @@ public class RepositoryController {
         return ResponseEntity.ok().body(stringBuilder.toString());
     }
 
+    @RequestMapping(value = "/repository/add/{repositoryName}/{experimentName}/{fileName}", method = RequestMethod.POST)
+    public ResponseEntity<String> uploadFile(@PathVariable String repositoryName, @PathVariable String experimentName, @PathVariable String fileName, @RequestParam("file") MultipartFile uploadFile) {
+        if (!uploadFile.isEmpty()) {
+            try {
+                String repositoryNameCleaned = repositoryName.replaceAll("[^A-z0-9_\\.-]", "");
+                String experimentNameCleaned = experimentName.replaceAll("[^A-z0-9_\\.-]", "");
+                final File experimentDirectory = new File("/FrinexExperiments/" + repositoryNameCleaned + "/" + experimentNameCleaned);
+                if (!experimentDirectory.isDirectory()) {
+                    // if missing then make the experiment directory only
+                    // if the repository directory does not exist then this will fail which is the correct outcome for that condition
+                    experimentDirectory.mkdir();
+                }
+                uploadFile.transferTo(new File(experimentDirectory, fileName));
+            } catch (IOException exception) {
+                LOG.log(Level.INFO, "upload of stimulus failed", exception);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
