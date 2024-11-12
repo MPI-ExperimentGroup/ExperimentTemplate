@@ -190,6 +190,11 @@ function enableFileDragDrop() {
         e.preventDefault();
         e.stopPropagation();
     });
+    $("#experimentName").on("dragenter", e => { 
+        $("#experimentName").addClass("fileDragDrop"); 
+        e.preventDefault();
+        e.stopPropagation();
+    });
     $("#experimentName").on("dragleave", e => { 
         $("#experimentName").removeClass("fileDragDrop");
         e.preventDefault();
