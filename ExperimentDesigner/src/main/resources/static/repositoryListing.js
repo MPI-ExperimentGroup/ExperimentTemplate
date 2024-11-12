@@ -229,8 +229,8 @@ function enableFileDragDrop(repository, experiment) {
                     },
                     processData: false,
                     contentType: false
-                }).fail(function () {
-                    $("#" + fileName).html("error");
+                }).fail((e) => {
+                    $("#" + fileName).html("error: " + e.responseCode);
                 });
                 // $.post("/repository/add/" + repository + "/" + experiment + "/" + fileName,
                 //     { data: e.originalEvent.dataTransfer.files[fileIndex].stream },
