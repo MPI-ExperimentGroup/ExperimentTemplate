@@ -224,13 +224,13 @@ function enableFileDragDrop(repository, experiment) {
                     url: "/repository/add/" + repositoryShort + "/" + experiment + "/" + fileName,
                     data: formdata,
                     success: function () {
-                        $("#" + fileName).html("success");
-                    },
-                    error: function () {
-                        $("#" + fileName).html("error");
+                        // $("#" + fileName).html("success");
+                        $("#" + fileName).html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + "/" + experiment + "/" + fileName + "\"/>");
                     },
                     processData: false,
                     contentType: false
+                }).fail(function () {
+                    $("#" + fileName).html("error");
                 });
                 // $.post("/repository/add/" + repository + "/" + experiment + "/" + fileName,
                 //     { data: e.originalEvent.dataTransfer.files[fileIndex].stream },
