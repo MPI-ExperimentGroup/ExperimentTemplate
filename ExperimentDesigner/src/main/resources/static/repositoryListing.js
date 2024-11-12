@@ -186,7 +186,7 @@ $(window).on('hashchange', function (e) {
 
 function enableFileDragDrop() {
     // prevent dropping to the bod of the document which would navigate to the dropped file
-    $("#body").on("dragover", e => {
+    $("body").on("dragover", e => {
         e.preventDefault();
         e.stopPropagation();
     });
