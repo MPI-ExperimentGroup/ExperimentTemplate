@@ -60,6 +60,7 @@ public class PublishEvents implements Serializable {
     private boolean isiOS;
     private boolean isAndroid;
     private boolean isUnity;
+    private boolean isVirtualReality;
     private String productionServer;
     private String stagingServer;
     private String frinexVersion;
@@ -70,7 +71,7 @@ public class PublishEvents implements Serializable {
     public PublishEvents() {
     }
 
-    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isUnity, boolean isDesktop, String stagingServer, String productionServer, String frinexVersion) {
+    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isUnity, boolean isVirtualReality, boolean isDesktop, String stagingServer, String productionServer, String frinexVersion) {
         this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
@@ -78,6 +79,7 @@ public class PublishEvents implements Serializable {
         this.isiOS = isiOS;
         this.isAndroid = isAndroid;
         this.isUnity = isUnity;
+        this.isVirtualReality = isVirtualReality;
         this.isDesktop = isDesktop;
         this.experiment = experiment;
         this.frinexVersion = frinexVersion;
@@ -127,6 +129,11 @@ public class PublishEvents implements Serializable {
     @XmlAttribute
     public boolean isIsUnity() {
         return isUnity;
+    }
+
+    @XmlAttribute
+    public boolean isIsVirtualReality() {
+        return isVirtualReality;
     }
 
     @XmlAttribute
@@ -187,6 +194,10 @@ public class PublishEvents implements Serializable {
 
     public void setIsUnity(boolean isUnity) {
         this.isUnity = isUnity;
+    }
+
+    public void setIsVirtualReality(boolean isVirtualReality) {
+        this.isVirtualReality = isVirtualReality;
     }
     
     public void setStagingServer(String stagingServer) {
