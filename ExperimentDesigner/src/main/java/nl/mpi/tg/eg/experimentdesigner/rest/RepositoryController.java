@@ -21,7 +21,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -207,7 +209,10 @@ public class RepositoryController {
                     // if the repository directory does not exist then this will fail which is the correct outcome for that condition
                     experimentDirectory.mkdir();
                 }
-                uploadFile.transferTo(new File(experimentDirectory, fileName));
+//                uploadFile.transferTo(new File(experimentDirectory, fileName));
+                try ( OutputStream os = Files.newOutputStream(new File(experimentDirectory, fileName).toPath())) {
+                    os.write(uploadFile.getBytes());
+                }
             } catch (IOException exception) {
                 LOG.log(Level.INFO, "upload of stimulus failed", exception);
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
