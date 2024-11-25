@@ -180,12 +180,12 @@ public class RepositoryController {
                     } else {
                         stringBuilder.append(",\n");
                     }
-                    stringBuilder.append("\"/").append(listingFile.getName()).append("\"");
+                    stringBuilder.append("\"").append(listingFile.getName()).append("\"");
                 }
             } else {
                 for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
                     if (workingDirectory.isDirectory()) {
-                        isFirst = recurseDirectories(workingDirectory, "/" + workingDirectory.getName() + "/", stringBuilder, isFirst);
+                        isFirst = recurseDirectories(workingDirectory, workingDirectory.getName() + "/", stringBuilder, isFirst);
                     }
                 }
             }

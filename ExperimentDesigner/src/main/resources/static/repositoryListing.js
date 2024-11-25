@@ -112,14 +112,14 @@ function populateMedia(repository, experiment, username) {
                         if (lastSlash < 0) {
                             $("#" + keyString + "_folder").html("/");
                             if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
-                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
+                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
                             } else {
                                 $("#" + keyString + "_file").html(keyStringRaw);
                             }
                         } else {
                             $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             // $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
-                            $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + keyStringRaw + '">' + keyStringRaw + '</a>');
+                            $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw + '">' + keyStringRaw + '</a>');
                         }
                         if (/\.[Jj][Pp][Gg]$|\.[Pp][Nn][Gg]$|\.[Gg][Ii][Ff]$/.exec(keyStringRaw) != null) {
                             $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + keyStringRaw + "\"/>");
