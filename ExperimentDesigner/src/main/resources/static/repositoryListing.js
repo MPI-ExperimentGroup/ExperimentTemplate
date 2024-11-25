@@ -112,7 +112,7 @@ function populateMedia(repository, experiment, username) {
                         if (lastSlash < 0) {
                             $("#" + keyString + "_folder").html("/");
                             if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
-                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
+                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
                             } else {
                                 $("#" + keyString + "_file").html(keyStringRaw);
                             }
