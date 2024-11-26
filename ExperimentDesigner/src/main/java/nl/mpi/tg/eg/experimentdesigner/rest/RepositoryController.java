@@ -180,7 +180,8 @@ public class RepositoryController {
                     } else {
                         stringBuilder.append(",\n");
                     }
-                    stringBuilder.append("\"").append(listingFile.getName()).append("\"");
+                    stringBuilder.append("\"").append(listingFile.getName());
+                    stringBuilder.append((listingFile.isDirectory()) ? "/\"" : "\"");
                 }
             } else {
                 for (File workingDirectory : repositoryDirectory.listFiles((File dir, String name) -> experimentNameCleaned.toLowerCase().equals(name.toLowerCase()))) {
@@ -210,7 +211,7 @@ public class RepositoryController {
                     experimentDirectory.mkdir();
                 }
 //                uploadFile.transferTo(new File(experimentDirectory, fileName));
-                try ( OutputStream os = Files.newOutputStream(new File(experimentDirectory, fileName).toPath())) {
+                try (OutputStream os = Files.newOutputStream(new File(experimentDirectory, fileName).toPath())) {
                     os.write(uploadFile.getBytes());
                 }
             } catch (IOException exception) {
