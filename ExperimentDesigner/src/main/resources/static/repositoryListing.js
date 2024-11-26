@@ -231,6 +231,7 @@ function enableFileDragDrop(repository, experiment, parameterName, token) {
                     url: "/repository/add/" + repositoryShort + "/" + experiment + "/" + fileName,
                     data: formdata,
                     success: function () {
+                        $("#" + keyString + "_row").remove();
                         updateFileRow(repositoryShort, fileName);
                         doSort();
                     },
