@@ -108,7 +108,7 @@ function populateMedia(repository, experiment, username) {
                             }
                             document.getElementById('repositoryListing').appendChild(tableRow);
                         }
-                        if (keyStringRaw.endsWith("/")) {
+                        if (keyStringRaw.endsWith("/") || keyStringRaw.endsWith(".xml")) {
                             $("#" + keyString + "_folder").html("/");
                             if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
                                 $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
