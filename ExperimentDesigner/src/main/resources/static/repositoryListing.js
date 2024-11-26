@@ -108,8 +108,7 @@ function populateMedia(repository, experiment, username) {
                             }
                             document.getElementById('repositoryListing').appendChild(tableRow);
                         }
-                        var lastSlash = keyStringRaw.lastIndexOf("/");
-                        if (lastSlash < 0) {
+                        if (keyStringRaw.endsWith("/")) {
                             $("#" + keyString + "_folder").html("/");
                             if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
                                 $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
@@ -117,7 +116,9 @@ function populateMedia(repository, experiment, username) {
                                 $("#" + keyString + "_file").html(keyStringRaw);
                             }
                         } else {
-                            $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
+                            $("#" + keyString + "_folder").html(keyStringRaw);
+                            // var lastSlash = keyStringRaw.lastIndexOf("/");
+                            // $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
                             // $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
                             $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw + '">' + keyStringRaw + '</a>');
                         }
