@@ -77,6 +77,43 @@ function populateListing(repository, username) {
 
 var cloneIndicator = "-";
 
+function updateFileRow(repositoryShort, keyStringRaw) {
+    var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
+    var listingRow = document.getElementById(keyString + '_row');
+    if (!listingRow) {
+        var tableRow = document.createElement('tr');
+        listingRow = tableRow;
+        tableRow.id = keyString + '_row';
+        for (var cellString of ['_folder', '_file', '_preview']) {
+            var tableCell = document.createElement('td');
+            tableCell.id = keyString + cellString;
+            tableRow.appendChild(tableCell);
+        }
+        document.getElementById('repositoryListing').appendChild(tableRow);
+    }
+    if (keyStringRaw.endsWith("/") || keyStringRaw.endsWith(".xml")) {
+        $("#" + keyString + "_folder").html("/");
+        if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
+            $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
+        } else {
+            $("#" + keyString + "_file").html(keyStringRaw);
+        }
+    } else {
+        $("#" + keyString + "_folder").html(keyStringRaw);
+        // var lastSlash = keyStringRaw.lastIndexOf("/");
+        // $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
+        // $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
+        $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw + '">' + keyStringRaw + '</a>');
+    }
+    if (/\.[Jj][Pp][Gg]$|\.[Pp][Nn][Gg]$|\.[Gg][Ii][Ff]$/.exec(keyStringRaw) != null) {
+        $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + '/' + keyStringRaw + "\"/>");
+    }
+    if (/^\./.exec(keyStringRaw) != null) {
+        // skipping hidden files
+        $("#" + keyString + "_row").hide();
+    }
+}
+
 function populateMedia(repository, experiment, username) {
     var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
     if ("*" === experiment) {
@@ -95,40 +132,7 @@ function populateMedia(repository, experiment, username) {
             $.getJSON('/repository/list/' + repositoryShort + "/" + experiment, function (listingData) {
                 if (listingData.listing) {
                     for (var keyStringRaw of listingData.listing) {
-                        var keyString = keyStringRaw.replace(/[^A-z0-9_-]/g, "");
-                        var listingRow = document.getElementById(keyString + '_row');
-                        if (!listingRow) {
-                            var tableRow = document.createElement('tr');
-                            listingRow = tableRow;
-                            tableRow.id = keyString + '_row';
-                            for (var cellString of ['_folder', '_file', '_preview']) {
-                                var tableCell = document.createElement('td');
-                                tableCell.id = keyString + cellString;
-                                tableRow.appendChild(tableCell);
-                            }
-                            document.getElementById('repositoryListing').appendChild(tableRow);
-                        }
-                        if (keyStringRaw.endsWith("/") || keyStringRaw.endsWith(".xml")) {
-                            $("#" + keyString + "_folder").html("/");
-                            if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
-                                $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
-                            } else {
-                                $("#" + keyString + "_file").html(keyStringRaw);
-                            }
-                        } else {
-                            $("#" + keyString + "_folder").html(keyStringRaw);
-                            // var lastSlash = keyStringRaw.lastIndexOf("/");
-                            // $("#" + keyString + "_folder").html(keyStringRaw.slice(0, lastSlash) + "/");
-                            // $("#" + keyString + "_file").html(keyStringRaw.slice(lastSlash + 1));
-                            $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw + '">' + keyStringRaw + '</a>');
-                        }
-                        if (/\.[Jj][Pp][Gg]$|\.[Pp][Nn][Gg]$|\.[Gg][Ii][Ff]$/.exec(keyStringRaw) != null) {
-                            $("#" + keyString + "_preview").html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + '/' + keyStringRaw + "\"/>");
-                        }
-                        if (/^\./.exec(keyStringRaw) != null) {
-                            // skipping hidden files
-                            $("#" + keyString + "_row").hide();
-                        }
+                        updateFileRow(repositoryShort, keyStringRaw);
                     }
                 } if (listingData.error) {
                     $("#errorMessage").html(listingData.error);
@@ -217,7 +221,8 @@ function enableFileDragDrop(repository, experiment, parameterName, token) {
             for (let fileIndex = 0; fileIndex < e.originalEvent.dataTransfer.files.length; fileIndex++) {
                 const fileName = e.originalEvent.dataTransfer.files[fileIndex].name;
                 var repositoryShort = repository.replace(/^\/git\/|\.git$/g, "");
-                $("#repositoryListing").append("<tr><td>" + repositoryShort + "</td><td>" + fileName + "</td><td id=\"" + fileName + "\">uploading</td></tr>")
+                var keyString = fileName.replace(/[^A-z0-9_-]/g, "");
+                $("#repositoryListing").append("<tr id='" + keyString + "_row'><td>" + repositoryShort + "</td><td>" + fileName + "</td><td id=\"" + fileName + "\">uploading</td></tr>")
                 var formdata = new FormData();
                 formdata.append('file', e.originalEvent.dataTransfer.files[fileIndex]);
                 formdata.append(parameterName, token);
@@ -226,8 +231,8 @@ function enableFileDragDrop(repository, experiment, parameterName, token) {
                     url: "/repository/add/" + repositoryShort + "/" + experiment + "/" + fileName,
                     data: formdata,
                     success: function () {
-                        // $("#" + fileName).html("success");
-                        $("#" + fileName).html("<img style=\"max-width: 100px;\" src=\"" + '/clone/' + repositoryShort + "/" + experiment + "/" + fileName + "\"/>");
+                        updateFileRow(repositoryShort, fileName);
+                        doSort();
                     },
                     processData: false,
                     contentType: false
