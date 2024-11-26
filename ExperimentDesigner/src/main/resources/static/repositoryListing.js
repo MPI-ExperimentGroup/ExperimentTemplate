@@ -93,11 +93,11 @@ function updateFileRow(repositoryShort, keyStringRaw) {
     }
     if (keyStringRaw.endsWith("/") || keyStringRaw.endsWith(".xml")) {
         $("#" + keyString + "_folder").html("/");
-        if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
-            $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
-        } else {
-            $("#" + keyString + "_file").html(keyStringRaw);
-        }
+        // // if (/\.[Xx][Mm][Ll]$/.exec(keyStringRaw) != null) {
+        $("#" + keyString + "_file").html('<a href="/repository/' + repositoryShort + '/' + keyStringRaw.replace(/\.[Xx][Mm][Ll]$/, "") + '">' + keyStringRaw + '</a>');
+        // } else {
+        //     $("#" + keyString + "_file").html(keyStringRaw);
+        // }
     } else {
         $("#" + keyString + "_folder").html(keyStringRaw);
         // var lastSlash = keyStringRaw.lastIndexOf("/");
