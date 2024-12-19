@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
-    appNameDisplay="Timer Averaging Example"> 
+    appNameDisplay="Timer Averaging Example">
     <deployment state="staging" />
     <metadata>
         <field controlledMessage="." controlledRegex="0-9*" postName="samplesCount" registrationField="SampleCount" />
