@@ -73,6 +73,10 @@ public class AudioData implements Serializable {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     public Date getSubmitDate() {
         return submitDate;

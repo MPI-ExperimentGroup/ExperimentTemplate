@@ -4,7 +4,7 @@
         <deployment 
             state="staging"
             stunServer="coturn.mpi.nl"    
-        />
+        /> 
         <!-- stagingServer="https://ems15.mpi.nl" -->
     <administration />     
     <scss>  

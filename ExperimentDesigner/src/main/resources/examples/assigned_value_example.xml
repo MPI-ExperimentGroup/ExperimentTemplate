@@ -1,7 +1,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"  
     appNameDisplay="Assigned Value Example">     
-    <deployment state="staging" />         
+    <deployment state="staging" />   
     <administration allowDataDeletion="true"> 
         <chart label="Total Events (Assignment_Before_Completion)" type="pie">
             <tagData label="assigned" screenName="Assignment_Before_Completion" colour="#880000" eventTag="assignedValue" /> 
