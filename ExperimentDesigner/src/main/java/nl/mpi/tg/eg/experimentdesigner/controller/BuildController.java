@@ -17,12 +17,11 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -83,19 +81,11 @@ public class BuildController {
             value = "/buildhistory.json",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+
     public @ResponseBody
-    Flux<String> buildHistory() throws IOException {
-        return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
-                .get()
-                .header("user-agent", "FrinexWizard").header("Accept-Encoding", "gzip")
-                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToFlux(DataBuffer.class)
-                .map(buffer -> {
-                    String string = buffer.toString(Charset.forName("UTF-8"));
-                    DataBufferUtils.release(buffer);
-                    return string;
-                });
+    String buildHistory() throws IOException {
+        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
+        return new String(Files.readAllBytes(buildhistory.toPath()));
     }
 
     @RequestMapping(
@@ -103,17 +93,46 @@ public class BuildController {
             produces = "application/javascript"
     )
     public @ResponseBody
-    Mono<byte[]> buildHistoryJS() throws IOException {
-//        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
-//        return new String(Files.readAllBytes(buildhistory.toPath()));
-        return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
-                .get()
-                .header("user-agent", "FrinexWizard")
-                .accept(MediaType.ALL)
-                .retrieve()
-                .bodyToMono(byte[].class);
+    String buildHistoryJS() throws IOException {
+        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
+        return new String(Files.readAllBytes(buildhistory.toPath()));
     }
 
+//    @RequestMapping(
+//            value = "/buildhistory.json",
+//            produces = MediaType.APPLICATION_JSON_VALUE
+//    )
+//    public @ResponseBody
+//    Flux<String> buildHistory() throws IOException {
+//        return WebClient.create("http://frinexbuild.mpi.nl/buildhistory.json")
+//                .get()
+//                .header("user-agent", "FrinexWizard").header("Accept-Encoding", "gzip")
+//                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON)
+//                .retrieve()
+//                .bodyToFlux(DataBuffer.class)
+//                .map(buffer -> {
+//                    String string = buffer.toString(Charset.forName("UTF-8"));
+//                    DataBufferUtils.release(buffer);
+//                    return string;
+//                });
+//    }
+//
+//    @RequestMapping(
+//            value = "/buildlisting.js",
+//            produces = "application/javascript"
+//    )
+//    public @ResponseBody
+//    Mono<byte[]> buildHistoryJS() throws IOException {
+////        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
+////        return new String(Files.readAllBytes(buildhistory.toPath()));
+//        return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
+//                .get()
+//                .header("user-agent", "FrinexWizard")
+//                .accept(MediaType.ALL)
+//                .retrieve()
+//                .bodyToMono(byte[].class);
+//    }
+    
     @RequestMapping("/repositoryXml/{experimentName}")
     public @ResponseBody
     Mono<byte[]> loadXml(@PathVariable String experimentName) throws IOException {
