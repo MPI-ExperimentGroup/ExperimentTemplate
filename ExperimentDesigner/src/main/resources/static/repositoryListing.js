@@ -23,7 +23,7 @@
  */
 
 function populateListing(repository, username) {
-    $.getJSON('buildhistory.json?' + new Date().getTime(), function (data) {
+    $.getJSON('artifacts/buildhistory.json?' + new Date().getTime(), function (data) {
         document.getElementById('repositoryDiv').innerText = repository;
         document.getElementById('usernameDiv').innerText = username;
         for (var keyStringRaw in data.table) {

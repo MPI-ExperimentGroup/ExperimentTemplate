@@ -77,26 +77,25 @@ public class BuildController {
         return "design";
     }
 
-    @RequestMapping(
-            value = "/buildhistory.json",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-
-    public @ResponseBody
-    String buildHistory() throws IOException {
-        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
-        return new String(Files.readAllBytes(buildhistory.toPath()));
-    }
-
-    @RequestMapping(
-            value = "/buildlisting.js",
-            produces = "application/javascript"
-    )
-    public @ResponseBody
-    String buildHistoryJS() throws IOException {
-        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
-        return new String(Files.readAllBytes(buildhistory.toPath()));
-    }
+//    @RequestMapping(
+//            value = "/buildhistory.json",
+//            produces = MediaType.APPLICATION_JSON_VALUE
+//    )
+//    public @ResponseBody
+//    String buildHistory() throws IOException {
+//        File buildhistory = new File("/FrinexBuildService/artifacts/buildhistory.json");
+//        return new String(Files.readAllBytes(buildhistory.toPath()));
+//    }
+//
+//    @RequestMapping(
+//            value = "/buildlisting.js",
+//            produces = "application/javascript"
+//    )
+//    public @ResponseBody
+//    String buildHistoryJS() throws IOException {
+//        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
+//        return new String(Files.readAllBytes(buildhistory.toPath()));
+//    }
 
 //    @RequestMapping(
 //            value = "/buildhistory.json",
