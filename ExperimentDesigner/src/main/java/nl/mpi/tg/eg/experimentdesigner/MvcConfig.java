@@ -38,5 +38,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/clone/**").addResourceLocations("file:/FrinexExperiments/");
         registry.addResourceHandler("/builds/**").addResourceLocations("file:/FrinexBuildService/artifacts/");
+        registry.addResourceHandler("/buildhistory.json").addResourceLocations("file:/FrinexBuildService/artifacts/buildhistory.json");
     }
 }
