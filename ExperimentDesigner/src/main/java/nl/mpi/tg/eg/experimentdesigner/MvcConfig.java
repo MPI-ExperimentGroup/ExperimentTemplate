@@ -39,6 +39,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/clone/**").addResourceLocations("file:/FrinexExperiments/");
         registry.addResourceHandler("/artifacts/**").addResourceLocations("file:/FrinexBuildService/artifacts/");
         registry.addResourceHandler("/buildhistory.json").addResourceLocations("file:/FrinexBuildService/artifacts/buildhistory.json");
-        // registry.addResourceHandler("/buildlisting.js").addResourceLocations("file:/FrinexBuildService/artifacts/buildlisting.js");
+        registry.addResourceHandler("/buildlisting.js").addResourceLocations("file:/FrinexBuildService/buildlisting.js");
     }
 }
