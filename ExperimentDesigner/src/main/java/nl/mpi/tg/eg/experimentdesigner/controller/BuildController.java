@@ -17,9 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
@@ -116,21 +114,22 @@ public class BuildController {
 //                });
 //    }
 //
-//    @RequestMapping(
-//            value = "/buildlisting.js",
-//            produces = "application/javascript"
-//    )
-//    public @ResponseBody
-//    Mono<byte[]> buildHistoryJS() throws IOException {
-////        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
-////        return new String(Files.readAllBytes(buildhistory.toPath()));
-//        return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
-//                .get()
-//                .header("user-agent", "FrinexWizard")
-//                .accept(MediaType.ALL)
-//                .retrieve()
-//                .bodyToMono(byte[].class);
-//    }
+   @RequestMapping(
+           value = "/buildlisting.js",
+           produces = "application/javascript"
+   )
+   // buildlisting.js is not in a volume so we get it from the build server for now
+   public @ResponseBody
+   Mono<byte[]> buildHistoryJS() throws IOException {
+//        File buildhistory = new File("/FrinexBuildService/artifacts/buildlisting.js");
+//        return new String(Files.readAllBytes(buildhistory.toPath()));
+       return WebClient.create("http://frinexbuild.mpi.nl/buildlisting.js")
+               .get()
+               .header("user-agent", "FrinexWizard")
+               .accept(MediaType.ALL)
+               .retrieve()
+               .bodyToMono(byte[].class);
+   }
     
     @RequestMapping("/repositoryXml/{experimentName}")
     public @ResponseBody
