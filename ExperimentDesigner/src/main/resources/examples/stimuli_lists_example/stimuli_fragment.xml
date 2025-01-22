@@ -118,7 +118,6 @@
 <stimulus identifier="verb_Welcome" code="Welcome" tags="verb" label="Welcome" />
 <stimulus identifier="verb_Wish" code="Wish" tags="verb" label="Wish" />
 <stimulus identifier="verb_Advise" code="Advise" tags="verb" label="Advise" />
-<stimulus identifier="verb_Encourage" code="Encourage" tags="verb" label="Encourage" />
 <stimulus identifier="The [animal] [verb] the fruit. " tags="sentence" label="The ::metadataField_animal:: ::metadataField_verb:: the fruit." />
 <stimulus identifier="The [animal] will [verb] you to pass. " tags="sentence" label="The ::metadataField_animal:: will ::metadataField_verb:: you to pass." />
 <stimulus identifier="The [animal] [verb] the quiet. " tags="sentence" label="The ::metadataField_animal:: ::metadataField_verb:: the quiet." />
