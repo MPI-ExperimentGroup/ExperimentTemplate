@@ -1,0 +1,181 @@
+
+<stimulus identifier="Elephant" code="Elephant" tags="animal" label="Elephant" />
+<stimulus identifier="Tiger" code="Tiger" tags="animal" label="Tiger" />
+<stimulus identifier="Lion" code="Lion" tags="animal" label="Lion" />
+<stimulus identifier="Bear" code="Bear" tags="animal" label="Bear" />
+<stimulus identifier="Giraffe" code="Giraffe" tags="animal" label="Giraffe" />
+<stimulus identifier="Zebra" code="Zebra" tags="animal" label="Zebra" />
+<stimulus identifier="Kangaroo" code="Kangaroo" tags="animal" label="Kangaroo" />
+<stimulus identifier="Panda" code="Panda" tags="animal" label="Panda" />
+<stimulus identifier="Koala" code="Koala" tags="animal" label="Koala" />
+<stimulus identifier="Dolphin" code="Dolphin" tags="animal" label="Dolphin" />
+<stimulus identifier="Whale" code="Whale" tags="animal" label="Whale" />
+<stimulus identifier="Shark" code="Shark" tags="animal" label="Shark" />
+<stimulus identifier="Crocodile" code="Crocodile" tags="animal" label="Crocodile" />
+<stimulus identifier="Alligator" code="Alligator" tags="animal" label="Alligator" />
+<stimulus identifier="Hippopotamus" code="Hippopotamus" tags="animal" label="Hippopotamus" />
+<stimulus identifier="Rhinoceros" code="Rhinoceros" tags="animal" label="Rhinoceros" />
+<stimulus identifier="Cheetah" code="Cheetah" tags="animal" label="Cheetah" />
+<stimulus identifier="Leopard" code="Leopard" tags="animal" label="Leopard" />
+<stimulus identifier="Wolf" code="Wolf" tags="animal" label="Wolf" />
+<stimulus identifier="Fox" code="Fox" tags="animal" label="Fox" />
+<stimulus identifier="Deer" code="Deer" tags="animal" label="Deer" />
+<stimulus identifier="Moose" code="Moose" tags="animal" label="Moose" />
+<stimulus identifier="Bison" code="Bison" tags="animal" label="Bison" />
+<stimulus identifier="Gorilla" code="Gorilla" tags="animal" label="Gorilla" />
+<stimulus identifier="Chimpanzee" code="Chimpanzee" tags="animal" label="Chimpanzee" />
+<stimulus identifier="Orangutan" code="Orangutan" tags="animal" label="Orangutan" />
+<stimulus identifier="Sloth" code="Sloth" tags="animal" label="Sloth" />
+<stimulus identifier="Hedgehog" code="Hedgehog" tags="animal" label="Hedgehog" />
+<stimulus identifier="Rabbit" code="Rabbit" tags="animal" label="Rabbit" />
+<stimulus identifier="Squirrel" code="Squirrel" tags="animal" label="Squirrel" />
+<stimulus identifier="Raccoon" code="Raccoon" tags="animal" label="Raccoon" />
+<stimulus identifier="Skunk" code="Skunk" tags="animal" label="Skunk" />
+<stimulus identifier="Otter" code="Otter" tags="animal" label="Otter" />
+<stimulus identifier="Beaver" code="Beaver" tags="animal" label="Beaver" />
+<stimulus identifier="Bat" code="Bat" tags="animal" label="Bat" />
+<stimulus identifier="Owl" code="Owl" tags="animal" label="Owl" />
+<stimulus identifier="Eagle" code="Eagle" tags="animal" label="Eagle" />
+<stimulus identifier="Falcon" code="Falcon" tags="animal" label="Falcon" />
+<stimulus identifier="Parrot" code="Parrot" tags="animal" label="Parrot" />
+<stimulus identifier="Penguin" code="Penguin" tags="animal" label="Penguin" />
+<stimulus identifier="Swan" code="Swan" tags="animal" label="Swan" />
+<stimulus identifier="Crane" code="Crane" tags="animal" label="Crane" />
+<stimulus identifier="Flamingo" code="Flamingo" tags="animal" label="Flamingo" />
+<stimulus identifier="Ostrich" code="Ostrich" tags="animal" label="Ostrich" />
+<stimulus identifier="Peacock" code="Peacock" tags="animal" label="Peacock" />
+<stimulus identifier="Pigeon" code="Pigeon" tags="animal" label="Pigeon" />
+<stimulus identifier="Crow" code="Crow" tags="animal" label="Crow" />
+<stimulus identifier="Seagull" code="Seagull" tags="animal" label="Seagull" />
+<stimulus identifier="Turtle" code="Turtle" tags="animal" label="Turtle" />
+<stimulus identifier="Tortoise" code="Tortoise" tags="animal" label="Tortoise" />
+<stimulus identifier="Snake" code="Snake" tags="animal" label="Snake" />
+<stimulus identifier="Lizard" code="Lizard" tags="animal" label="Lizard" />
+<stimulus identifier="Frog" code="Frog" tags="animal" label="Frog" />
+<stimulus identifier="Salamander" code="Salamander" tags="animal" label="Salamander" />
+<stimulus identifier="Antelope" code="Antelope" tags="animal" label="Antelope" />
+<stimulus identifier="Buffalo" code="Buffalo" tags="animal" label="Buffalo" />
+<stimulus identifier="Camel" code="Camel" tags="animal" label="Camel" />
+<stimulus identifier="Horse" code="Horse" tags="animal" label="Horse" />
+<stimulus identifier="Donkey" code="Donkey" tags="animal" label="Donkey" />
+<stimulus identifier="Sheep" code="Sheep" tags="animal" label="Sheep" />
+<stimulus identifier="Accept" code="Accept" tags="verb" label="Accept" />
+<stimulus identifier="Allow" code="Allow" tags="verb" label="Allow" />
+<stimulus identifier="Appreciate" code="Appreciate" tags="verb" label="Appreciate" />
+<stimulus identifier="Assist" code="Assist" tags="verb" label="Assist" />
+<stimulus identifier="Authorize" code="Authorize" tags="verb" label="Authorize" />
+<stimulus identifier="Beware" code="Beware" tags="verb" label="Beware" />
+<stimulus identifier="Celebrate" code="Celebrate" tags="verb" label="Celebrate" />
+<stimulus identifier="Cherish" code="Cherish" tags="verb" label="Cherish" />
+<stimulus identifier="Commend" code="Commend" tags="verb" label="Commend" />
+<stimulus identifier="Compliment" code="Compliment" tags="verb" label="Compliment" />
+<stimulus identifier="Concede" code="Concede" tags="verb" label="Concede" />
+<stimulus identifier="Confirm" code="Confirm" tags="verb" label="Confirm" />
+<stimulus identifier="Consider" code="Consider" tags="verb" label="Consider" />
+<stimulus identifier="Consult" code="Consult" tags="verb" label="Consult" />
+<stimulus identifier="Contribute" code="Contribute" tags="verb" label="Contribute" />
+<stimulus identifier="Defer" code="Defer" tags="verb" label="Defer" />
+<stimulus identifier="Deliver" code="Deliver" tags="verb" label="Deliver" />
+<stimulus identifier="Deny" code="Deny" tags="verb" label="Deny" />
+<stimulus identifier="Describe" code="Describe" tags="verb" label="Describe" />
+<stimulus identifier="Encourage" code="Encourage" tags="verb" label="Encourage" />
+<stimulus identifier="Engage" code="Engage" tags="verb" label="Engage" />
+<stimulus identifier="Enlighten" code="Enlighten" tags="verb" label="Enlighten" />
+<stimulus identifier="Entertain" code="Entertain" tags="verb" label="Entertain" />
+<stimulus identifier="Examine" code="Examine" tags="verb" label="Examine" />
+<stimulus identifier="Excuse" code="Excuse" tags="verb" label="Excuse" />
+<stimulus identifier="Explain" code="Explain" tags="verb" label="Explain" />
+<stimulus identifier="Express" code="Express" tags="verb" label="Express" />
+<stimulus identifier="Facilitate" code="Facilitate" tags="verb" label="Facilitate" />
+<stimulus identifier="Favor" code="Favor" tags="verb" label="Favor" />
+<stimulus identifier="Grant" code="Grant" tags="verb" label="Grant" />
+<stimulus identifier="Help" code="Help" tags="verb" label="Help" />
+<stimulus identifier="Honor" code="Honor" tags="verb" label="Honor" />
+<stimulus identifier="Identify" code="Identify" tags="verb" label="Identify" />
+<stimulus identifier="Imagine" code="Imagine" tags="verb" label="Imagine" />
+<stimulus identifier="Inquire" code="Inquire" tags="verb" label="Inquire" />
+<stimulus identifier="Inform" code="Inform" tags="verb" label="Inform" />
+<stimulus identifier="Inspire" code="Inspire" tags="verb" label="Inspire" />
+<stimulus identifier="Invite" code="Invite" tags="verb" label="Invite" />
+<stimulus identifier="Join" code="Join" tags="verb" label="Join" />
+<stimulus identifier="Mention" code="Mention" tags="verb" label="Mention" />
+<stimulus identifier="Observe" code="Observe" tags="verb" label="Observe" />
+<stimulus identifier="Offer" code="Offer" tags="verb" label="Offer" />
+<stimulus identifier="Permit" code="Permit" tags="verb" label="Permit" />
+<stimulus identifier="Polish" code="Polish" tags="verb" label="Polish" />
+<stimulus identifier="Pray" code="Pray" tags="verb" label="Pray" />
+<stimulus identifier="Promise" code="Promise" tags="verb" label="Promise" />
+<stimulus identifier="Provide" code="Provide" tags="verb" label="Provide" />
+<stimulus identifier="Recommend" code="Recommend" tags="verb" label="Recommend" />
+<stimulus identifier="Refine" code="Refine" tags="verb" label="Refine" />
+<stimulus identifier="Regard" code="Regard" tags="verb" label="Regard" />
+<stimulus identifier="Respect" code="Respect" tags="verb" label="Respect" />
+<stimulus identifier="Respond" code="Respond" tags="verb" label="Respond" />
+<stimulus identifier="Support" code="Support" tags="verb" label="Support" />
+<stimulus identifier="Thank" code="Thank" tags="verb" label="Thank" />
+<stimulus identifier="Understand" code="Understand" tags="verb" label="Understand" />
+<stimulus identifier="Uphold" code="Uphold" tags="verb" label="Uphold" />
+<stimulus identifier="Welcome" code="Welcome" tags="verb" label="Welcome" />
+<stimulus identifier="Wish" code="Wish" tags="verb" label="Wish" />
+<stimulus identifier="Advise" code="Advise" tags="verb" label="Advise" />
+<stimulus identifier="Encourage" code="Encourage" tags="verb" label="Encourage" />
+<stimulus identifier="The [animal] [verb] the fruit. " tags="sentence" label="The [animal] [verb] the fruit. " />
+<stimulus identifier="The [animal] will [verb] you to pass. " tags="sentence" label="The [animal] will [verb] you to pass. " />
+<stimulus identifier="The [animal] [verb] the quiet. " tags="sentence" label="The [animal] [verb] the quiet. " />
+<stimulus identifier="The [animal] can [verb] you with the task. " tags="sentence" label="The [animal] can [verb] you with the task. " />
+<stimulus identifier="The [animal] will [verb] the move. " tags="sentence" label="The [animal] will [verb] the move. " />
+<stimulus identifier="The [animal] [verb] of predators. " tags="sentence" label="The [animal] [verb] of predators. " />
+<stimulus identifier="The [animal] will [verb] the victory. " tags="sentence" label="The [animal] will [verb] the victory. " />
+<stimulus identifier="The [animal] [verb] the bamboo. " tags="sentence" label="The [animal] [verb] the bamboo. " />
+<stimulus identifier="The [animal] will [verb] your efforts. " tags="sentence" label="The [animal] will [verb] your efforts. " />
+<stimulus identifier="The [animal] [verb] your swimming. " tags="sentence" label="The [animal] [verb] your swimming. " />
+<stimulus identifier="The [animal] [verb] the point. " tags="sentence" label="The [animal] [verb] the point. " />
+<stimulus identifier="The [animal] will [verb] the details. " tags="sentence" label="The [animal] will [verb] the details. " />
+<stimulus identifier="The [animal] [verb] the threat. " tags="sentence" label="The [animal] [verb] the threat. " />
+<stimulus identifier="The [animal] will [verb] with others. " tags="sentence" label="The [animal] will [verb] with others. " />
+<stimulus identifier="The [animal] [verb] to the group. " tags="sentence" label="The [animal] [verb] to the group. " />
+<stimulus identifier="The [animal] will [verb] to the leader. " tags="sentence" label="The [animal] will [verb] to the leader. " />
+<stimulus identifier="The [animal] [verb] the message fast. " tags="sentence" label="The [animal] [verb] the message fast. " />
+<stimulus identifier="The [animal] will [verb] the accusation. " tags="sentence" label="The [animal] will [verb] the accusation. " />
+<stimulus identifier="The [animal] will [verb] the situation. " tags="sentence" label="The [animal] will [verb] the situation. " />
+<stimulus identifier="The [animal] [verb] you to be clever. " tags="sentence" label="The [animal] [verb] you to be clever. " />
+<stimulus identifier="The [animal] will [verb] with the group. " tags="sentence" label="The [animal] will [verb] with the group. " />
+<stimulus identifier="The [animal] will [verb] you on the path. " tags="sentence" label="The [animal] will [verb] you on the path. " />
+<stimulus identifier="The [animal] will [verb] your idea. " tags="sentence" label="The [animal] will [verb] your idea. " />
+<stimulus identifier="The [animal] [verb] the tools. " tags="sentence" label="The [animal] [verb] the tools. " />
+<stimulus identifier="The [animal] will [verb] your absence. " tags="sentence" label="The [animal] will [verb] your absence. " />
+<stimulus identifier="The [animal] [verb] the concept. " tags="sentence" label="The [animal] [verb] the concept. " />
+<stimulus identifier="The [animal] will [verb] gratitude. " tags="sentence" label="The [animal] will [verb] gratitude. " />
+<stimulus identifier="The [animal] will [verb] the process. " tags="sentence" label="The [animal] will [verb] the process. " />
+<stimulus identifier="The [animal] [verb] the best route. " tags="sentence" label="The [animal] [verb] the best route. " />
+<stimulus identifier="The [animal] will [verb] you access. " tags="sentence" label="The [animal] will [verb] you access. " />
+<stimulus identifier="The [animal] will [verb] with the food. " tags="sentence" label="The [animal] will [verb] with the food. " />
+<stimulus identifier="The [animal] will [verb] your decision. " tags="sentence" label="The [animal] will [verb] your decision. " />
+<stimulus identifier="The [animal] [verb] the problem. " tags="sentence" label="The [animal] [verb] the problem. " />
+<stimulus identifier="The [animal] will [verb] a new way. " tags="sentence" label="The [animal] will [verb] a new way. " />
+<stimulus identifier="The [animal] will [verb] about the details. " tags="sentence" label="The [animal] will [verb] about the details. " />
+<stimulus identifier="The [animal] will [verb] you soon. " tags="sentence" label="The [animal] will [verb] you soon. " />
+<stimulus identifier="The [animal] will [verb] your actions. " tags="sentence" label="The [animal] will [verb] your actions. " />
+<stimulus identifier="The [animal] will [verb] you to join. " tags="sentence" label="The [animal] will [verb] you to join. " />
+<stimulus identifier="The [animal] [verb] the conversation. " tags="sentence" label="The [animal] [verb] the conversation. " />
+<stimulus identifier="The [animal] will [verb] the fish. " tags="sentence" label="The [animal] will [verb] the fish. " />
+<stimulus identifier="The [animal] will [verb] the pond. " tags="sentence" label="The [animal] will [verb] the pond. " />
+<stimulus identifier="The [animal] will [verb] assistance. " tags="sentence" label="The [animal] will [verb] assistance. " />
+<stimulus identifier="The [animal] will [verb] the approach. " tags="sentence" label="The [animal] will [verb] the approach. " />
+<stimulus identifier="The [animal] will [verb] the plan. " tags="sentence" label="The [animal] will [verb] the plan. " />
+<stimulus identifier="The [animal] will [verb] for good fortune. " tags="sentence" label="The [animal] will [verb] for good fortune. " />
+<stimulus identifier="The [animal] will [verb] to return. " tags="sentence" label="The [animal] will [verb] to return. " />
+<stimulus identifier="The [animal] will [verb] some guidance. " tags="sentence" label="The [animal] will [verb] some guidance. " />
+<stimulus identifier="The [animal] will [verb] the beach. " tags="sentence" label="The [animal] will [verb] the beach. " />
+<stimulus identifier="The [animal] will [verb] the process. " tags="sentence" label="The [animal] will [verb] the process. " />
+<stimulus identifier="The [animal] will [verb] your opinion. " tags="sentence" label="The [animal] will [verb] your opinion. " />
+<stimulus identifier="The [animal] will [verb] your space. " tags="sentence" label="The [animal] will [verb] your space. " />
+<stimulus identifier="The [animal] will [verb] quickly. " tags="sentence" label="The [animal] will [verb] quickly. " />
+<stimulus identifier="The [animal] will [verb] your decision. " tags="sentence" label="The [animal] will [verb] your decision. " />
+<stimulus identifier="The [animal] will [verb] you for help. " tags="sentence" label="The [animal] will [verb] you for help. " />
+<stimulus identifier="The [animal] will [verb] your choice. " tags="sentence" label="The [animal] will [verb] your choice. " />
+<stimulus identifier="The [animal] will [verb] the tradition. " tags="sentence" label="The [animal] will [verb] the tradition. " />
+<stimulus identifier="The [animal] will [verb] the travelers. " tags="sentence" label="The [animal] will [verb] the travelers. " />
+<stimulus identifier="The [animal] will [verb] you well. " tags="sentence" label="The [animal] will [verb] you well. " />
+<stimulus identifier="The [animal] will [verb] you to rest. " tags="sentence" label="The [animal] will [verb] you to rest. " />
+<stimulus identifier="The [animal] will [verb] your efforts." tags="sentence" label="The [animal] will [verb] your efforts." />
