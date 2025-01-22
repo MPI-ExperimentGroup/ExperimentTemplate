@@ -15,7 +15,9 @@ for verb in Accept Allow Appreciate Assist Authorize Beware Celebrate Cherish Co
     echo "<stimulus identifier=\"$verb\" code=\"$verb\" tags=\"verb\" label=\"$verb\" />" >> $outputDirectory/stimuli_fragment.xml
     for animal in Elephant Tiger Lion Bear Giraffe Zebra Kangaroo Panda Koala Dolphin Whale Shark Crocodile Alligator Hippopotamus Rhinoceros Cheetah Leopard Wolf Fox Deer Moose Bison Gorilla Chimpanzee Orangutan Sloth Hedgehog Rabbit Squirrel Raccoon Skunk Otter Beaver Bat Owl Eagle Falcon Parrot Penguin Swan Crane Flamingo Ostrich Peacock Pigeon Crow Seagull Turtle Tortoise Snake Lizard Frog Salamander Antelope Buffalo Camel Horse Donkey Sheep; do
         echo $animal
-        convert -gravity center -size 128x128 -background blue -fill white -pointsize 18 label:"$animal\n$verb" $outputDirectory/$animal'_'$verb.png
+        if [ ! -f $outputDirectory/$animal'_'$verb.png ]; then
+            convert -gravity center -size 128x128 -background blue -fill white -pointsize 18 label:"$animal\n$verb" $outputDirectory/$animal'_'$verb.png
+        fi
     done
 done
 
