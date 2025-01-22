@@ -277,8 +277,6 @@
             label="The ::metadataField_animal:: will ::metadataField_verb:: some guidance." />
         <stimulus identifier="The [animal] will [verb] the beach. " tags="sentence"
             label="The ::metadataField_animal:: will ::metadataField_verb:: the beach." />
-        <stimulus identifier="The [animal] will [verb] the process. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the process." />
         <stimulus identifier="The [animal] will [verb] your opinion. " tags="sentence"
             label="The ::metadataField_animal:: will ::metadataField_verb:: your opinion." />
         <stimulus identifier="The [animal] will [verb] your space. " tags="sentence"
