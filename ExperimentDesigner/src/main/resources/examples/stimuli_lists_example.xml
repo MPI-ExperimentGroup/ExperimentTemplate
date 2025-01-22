@@ -283,8 +283,6 @@
             label="The ::metadataField_animal:: will ::metadataField_verb:: your space." />
         <stimulus identifier="The [animal] will [verb] quickly. " tags="sentence"
             label="The ::metadataField_animal:: will ::metadataField_verb:: quickly." />
-        <stimulus identifier="The [animal] will [verb] your decision. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your decision." />
         <stimulus identifier="The [animal] will [verb] you for help. " tags="sentence"
             label="The ::metadataField_animal:: will ::metadataField_verb:: you for help." />
         <stimulus identifier="The [animal] will [verb] your choice. " tags="sentence"
