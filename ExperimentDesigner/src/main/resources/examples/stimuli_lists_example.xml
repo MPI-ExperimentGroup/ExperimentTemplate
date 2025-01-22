@@ -185,120 +185,120 @@
         <stimulus identifier="verb_Wish" code="Wish" tags="verb" label="Wish" />
         <stimulus identifier="verb_Advise" code="Advise" tags="verb" label="Advise" />
         <stimulus identifier="The [animal] [verb] the fruit. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the fruit." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the fruit." />
         <stimulus identifier="The [animal] will [verb] you to pass. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you to pass." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you to pass." />
         <stimulus identifier="The [animal] [verb] the quiet. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the quiet." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the quiet." />
         <stimulus identifier="The [animal] can [verb] you with the task. " tags="sentence"
-            label="The ::metadataField_animal:: can ::metadataField_verb:: you with the task." />
+            ratingLabels="The ::metadataField_animal:: can ::metadataField_verb:: you with the task." />
         <stimulus identifier="The [animal] will [verb] the move. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the move." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the move." />
         <stimulus identifier="The [animal] [verb] of predators. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: of predators." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: of predators." />
         <stimulus identifier="The [animal] will [verb] the victory. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the victory." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the victory." />
         <stimulus identifier="The [animal] [verb] the bamboo. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the bamboo." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the bamboo." />
         <stimulus identifier="The [animal] will [verb] your efforts. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your efforts." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your efforts." />
         <stimulus identifier="The [animal] [verb] your swimming. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: your swimming." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: your swimming." />
         <stimulus identifier="The [animal] [verb] the point. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the point." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the point." />
         <stimulus identifier="The [animal] will [verb] the details. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the details." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the details." />
         <stimulus identifier="The [animal] [verb] the threat. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the threat." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the threat." />
         <stimulus identifier="The [animal] will [verb] with others. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: with others." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: with others." />
         <stimulus identifier="The [animal] [verb] to the group. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: to the group." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: to the group." />
         <stimulus identifier="The [animal] will [verb] to the leader. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: to the leader." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: to the leader." />
         <stimulus identifier="The [animal] [verb] the message fast. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the message fast." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the message fast." />
         <stimulus identifier="The [animal] will [verb] the accusation. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the accusation." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the accusation." />
         <stimulus identifier="The [animal] will [verb] the situation. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the situation." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the situation." />
         <stimulus identifier="The [animal] [verb] you to be clever. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: you to be clever." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: you to be clever." />
         <stimulus identifier="The [animal] will [verb] with the group. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: with the group." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: with the group." />
         <stimulus identifier="The [animal] will [verb] you on the path. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you on the path." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you on the path." />
         <stimulus identifier="The [animal] will [verb] your idea. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your idea." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your idea." />
         <stimulus identifier="The [animal] [verb] the tools. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the tools." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the tools." />
         <stimulus identifier="The [animal] will [verb] your absence. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your absence." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your absence." />
         <stimulus identifier="The [animal] [verb] the concept. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the concept." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the concept." />
         <stimulus identifier="The [animal] will [verb] gratitude. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: gratitude." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: gratitude." />
         <stimulus identifier="The [animal] will [verb] the process. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the process." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the process." />
         <stimulus identifier="The [animal] [verb] the best route. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the best route." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the best route." />
         <stimulus identifier="The [animal] will [verb] you access. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you access." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you access." />
         <stimulus identifier="The [animal] will [verb] with the food. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: with the food." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: with the food." />
         <stimulus identifier="The [animal] will [verb] your decision. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your decision." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your decision." />
         <stimulus identifier="The [animal] [verb] the problem. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the problem." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the problem." />
         <stimulus identifier="The [animal] will [verb] a new way. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: a new way." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: a new way." />
         <stimulus identifier="The [animal] will [verb] about the details. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: about the details." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: about the details." />
         <stimulus identifier="The [animal] will [verb] you soon. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you soon." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you soon." />
         <stimulus identifier="The [animal] will [verb] your actions. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your actions." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your actions." />
         <stimulus identifier="The [animal] will [verb] you to join. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you to join." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you to join." />
         <stimulus identifier="The [animal] [verb] the conversation. " tags="sentence"
-            label="The ::metadataField_animal:: ::metadataField_verb:: the conversation." />
+            ratingLabels="The ::metadataField_animal:: ::metadataField_verb:: the conversation." />
         <stimulus identifier="The [animal] will [verb] the fish. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the fish." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the fish." />
         <stimulus identifier="The [animal] will [verb] the pond. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the pond." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the pond." />
         <stimulus identifier="The [animal] will [verb] assistance. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: assistance." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: assistance." />
         <stimulus identifier="The [animal] will [verb] the approach. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the approach." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the approach." />
         <stimulus identifier="The [animal] will [verb] the plan. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the plan." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the plan." />
         <stimulus identifier="The [animal] will [verb] for good fortune. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: for good fortune." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: for good fortune." />
         <stimulus identifier="The [animal] will [verb] to return. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: to return." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: to return." />
         <stimulus identifier="The [animal] will [verb] some guidance. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: some guidance." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: some guidance." />
         <stimulus identifier="The [animal] will [verb] the beach. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the beach." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the beach." />
         <stimulus identifier="The [animal] will [verb] your opinion. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your opinion." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your opinion." />
         <stimulus identifier="The [animal] will [verb] your space. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your space." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your space." />
         <stimulus identifier="The [animal] will [verb] quickly. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: quickly." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: quickly." />
         <stimulus identifier="The [animal] will [verb] you for help. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you for help." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you for help." />
         <stimulus identifier="The [animal] will [verb] your choice. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your choice." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your choice." />
         <stimulus identifier="The [animal] will [verb] the tradition. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the tradition." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the tradition." />
         <stimulus identifier="The [animal] will [verb] the travelers. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: the travelers." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: the travelers." />
         <stimulus identifier="The [animal] will [verb] you well. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you well." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you well." />
         <stimulus identifier="The [animal] will [verb] you to rest. " tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: you to rest." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: you to rest." />
         <stimulus identifier="The [animal] will [verb] your efforts." tags="sentence"
-            label="The ::metadataField_animal:: will ::metadataField_verb:: your efforts." />
+            ratingLabels="The ::metadataField_animal:: will ::metadataField_verb:: your efforts." />
     </stimuli>
 </experiment>
