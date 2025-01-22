@@ -21,7 +21,7 @@
                     <hasMoreStimulus>
                         <regionReplace regionId="imageRegion">
                             <stimulusCodeImage msToNext="0"
-                                codeFormat="stimuli/::metadataField_animal::_::code::.png">
+                                codeFormat="stimuli/::metadataField_animal::_::stimulusCode::.png">
                                 <mediaLoaded>
                                     <pause msToNext="1500">
                                         <nextStimulus repeatIncorrect="false" />
