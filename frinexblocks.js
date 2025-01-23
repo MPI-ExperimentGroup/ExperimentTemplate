@@ -15480,6 +15480,11 @@ function getFeatureBlocks() {
       },
       {
         "kind": "button",
+        "text": "sixty_lists_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
         "text": "sound_onset_example",
         "callbackKey": "loadExampleCallback"
       },
