@@ -25,7 +25,7 @@
                             maxStimuli="1000">
                             <beforeStimulus />
                             <eachStimulus>
-                                <htmlTokenText featureText="::stimulusRatingLabel_1::" />
+                                <htmlTokenText featureText="::stimulusRatingLabel_0::" />
                             </eachStimulus>
                             <afterStimulus>
                                 <actionButton featureText="Set Completed">
