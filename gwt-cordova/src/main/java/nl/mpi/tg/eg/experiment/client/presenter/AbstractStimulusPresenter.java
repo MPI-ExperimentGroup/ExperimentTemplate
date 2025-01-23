@@ -516,9 +516,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void stimulusLabel(final Stimulus currentStimulus, String styleName) {
         final String label = currentStimulus.getLabel();
         if (label != null) {
-            // NOTE: the stimulus label needs to remain immutable otherwise what the participant sees can become ambiguous and therefore the label cannot be formatted
-            // final String labelFormatted = new HtmlTokenFormatter
-            HTML html = timedStimulusView.addHtmlText(label, styleName);
+            // by formatting the stimulus label the exact text is no longer immutable, however this is already the case with stimulusCodeImage etc.
+            final String labelFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(label);
+            HTML html = timedStimulusView.addHtmlText(labelFormatted, styleName);
             timedEventMonitor.addVisibilityListener(widgetTag.getElement(), html.getElement(), "stimulusLabel");
         }
     }
