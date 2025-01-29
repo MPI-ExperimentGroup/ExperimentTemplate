@@ -20,10 +20,16 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -38,13 +44,179 @@ public class AssignedValueControllerTest {
     public AssignedValueControllerTest() {
     }
 
+    private AssignedValueController getInstance() {
+        AssignedValueController instance = new AssignedValueController();
+        instance.tagRepository = new TagRepository() {
+            @Override
+            public List<TagData> findAllDistinctRecords() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public long countDistinctTagValueByEventTag(String eventTag) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public long countDistinctUserIdAndTagValueByEventTag(String userId, String eventTag) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public long countDistinctDateByEventTag(String eventTag) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public long countDistinctUserIdAndDateByEventTag(String userId, String eventTag) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(String userId) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(String userId, String eventTag) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Date[][] findFirstAndLastSessionAccess() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Date findFirstSessionAccess(String userId) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Date findLastSessionAccess(String userId) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public long countByScreenNameLikeAndEventTagLikeAndTagValueLike(String screenName, String eventTag, String tagValue) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, String screenName, String eventTag, String tagValue) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(String eventTag, Set<String> tagValues) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public List<TagData> findFirstByUserIdAndEventTagInOrderByTagDateDesc(String userId, Set<String> eventTags) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public List<AssignedValue> countByDistinctByEventTagAndScreenNameAndTagValueIn(String eventTag, String screenName, Set<String> tagValues) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public int countDistinctTagDateByUserIdAndTagValue(String userId, String tagValue) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public int countByUserId(String userId) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public <S extends TagData> S save(S entity) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void delete(TagData entity) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void deleteAll(Iterable<? extends TagData> arg0) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void deleteById(Long arg0) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public <S extends TagData> Iterable<S> saveAll(Iterable<S> arg0) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void deleteAll() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void deleteAllById(Iterable<? extends Long> ids) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void deleteByUserId(String userId) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Iterable<TagData> findAll(Sort sort) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Page<TagData> findAll(Pageable pageable) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Optional<TagData> findById(Long id) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public boolean existsById(Long id) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Iterable<TagData> findAll() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public Iterable<TagData> findAllById(Iterable<Long> ids) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public long count() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
+        return instance;
+    }
+
     /**
      * Test of completeValue method, of class AssignedValueController.
      */
     @Test
     public void testCompleteValue() {
         System.out.println("completeValue");
-        TagData completedTagData = new TagData("userId", "screenName", "eventTag", "tagValue", 0, new Date());
+        TagData completedTagData = new TagData("userId", "screenName", "completeValue", "tagValue", 0, new Date());
         AssignedValueController instance = new AssignedValueController();
         ResponseEntity<DataSubmissionResult> expResult = null;
         ResponseEntity<DataSubmissionResult> result = instance.completeValue(completedTagData);
@@ -59,7 +231,7 @@ public class AssignedValueControllerTest {
         System.out.println("assignValue");
         List<String> expectedValues = Arrays.asList(targetOptionsAnimal.split(","));
         TagData tagData = new TagData("userId", "screenName", "eventTag", targetOptionsAnimal, 0, new Date());
-        AssignedValueController instance = new AssignedValueController();
+        AssignedValueController instance = getInstance();
         final int valuesLength = expectedValues.size();
         for (int item = 0; item < valuesLength; item++) {
             ResponseEntity<DataSubmissionResult> result = instance.assignValue(tagData);
