@@ -80,7 +80,7 @@ public class AssignedValueController {
     public synchronized ResponseEntity<DataSubmissionResult> assignValue(@RequestBody TagData tagData) {
         String[] valueOptions = tagData.getTagValue().split(",");
         final ResponseEntity<DataSubmissionResult> responseEntity;
-        if (!"assignValue".equals(tagData.getEventTag()) && !"serverValueComplete".equals(tagData.getEventTag())) {
+        if (!"assignValue".equals(tagData.getEventTag()) && !"completeValue".equals(tagData.getEventTag())) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             Random randomStream = new Random();

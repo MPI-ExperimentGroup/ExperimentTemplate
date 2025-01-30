@@ -1,6 +1,6 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
-    appNameDisplay="stimuli_lists_example">
+    appNameDisplay="sixty_lists_example">
     <deployment isWebApp="true" state="debug" /> 
     <metadata>
         <field controlledMessage="." controlledRegex=".*" postName="animal"
