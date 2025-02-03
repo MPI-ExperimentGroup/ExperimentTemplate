@@ -1,13 +1,104 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
     appNameDisplay="sixty_lists_example">
-    <deployment isWebApp="true" state="debug" /> 
+    <deployment isWebApp="true" state="debug" />
     <metadata>
         <field controlledMessage="." controlledRegex=".*" postName="animal"
             registrationField="animal" />
         <field controlledMessage="." controlledRegex=".*" postName="verb" registrationField="verb" />
     </metadata>
     <presenter self="assign_verb" type="stimulus">
+        <setMetadataValue fieldName="verb" dataLogFormat="" />
+        <setMetadataValue fieldName="animal" dataLogFormat="" />
+        <setMetadataEvalTokens
+            evaluateTokens="getRandomItem('Accept,Allow,Appreciate,Assist,Authorize,Beware,Celebrate,Cherish,Commend,Compliment,Concede,Confirm,Consider,Consult,Contribute,Defer,Deliver,Deny,Describe,Encourage,Engage,Enlighten,Entertain,Examine,Excuse,Explain,Express,Facilitate,Favor,Grant,Help,Honor,Identify,Imagine,Inquire,Inform,Inspire,Invite,Join,Mention,Observe,Offer,Permit,Polish,Pray,Promise,Provide,Recommend,Refine,Regard,Respect,Respond,Support,Thank,Understand,Uphold,Welcome,Wish,Advise,Encourage')"
+            fieldName="verb">
+            <onSuccess>
+                <setMetadataEvalTokens
+                    evaluateTokens="getRandomItem('Elephant,Tiger,Lion,Bear,Giraffe,Zebra,Kangaroo,Panda,Koala,Dolphin,Whale,Shark,Crocodile,Alligator,Hippopotamus,Rhinoceros,Cheetah,Leopard,Wolf,Fox,Deer,Moose,Bison,Gorilla,Chimpanzee,Orangutan,Sloth,Hedgehog,Rabbit,Squirrel,Raccoon,Skunk,Otter,Beaver,Bat,Owl,Eagle,Falcon,Parrot,Penguin,Swan,Crane,Flamingo,Ostrich,Peacock,Pigeon,Crow,Seagull,Turtle,Tortoise,Snake,Lizard,Frog,Salamander,Antelope,Buffalo,Camel,Horse,Donkey,Sheep')"
+                    fieldName="animal">
+                    <onSuccess>
+                        <clearPage />
+                        <centrePage />
+                        <htmlTokenText featureText="verb assigned: ::metadataField_verb::" />
+                        <withStimuli eventTag="sentence" randomise="true" repeatCount="1"
+                            maxStimuli="1000">
+                            <beforeStimulus />
+                            <eachStimulus>
+                                <stimulusLabel />
+                            </eachStimulus>
+                            <afterStimulus>
+                                <regionReplace regionId="buttonRegion">
+                                    <htmlTokenText
+                                        featureText="verb complete: ::metadataField_verb::" />
+                                    <actionButton featureText="Continue">
+                                        <gotoPresenter target="assign_animal" />
+                                    </actionButton>
+                                </regionReplace>
+                            </afterStimulus>
+                            <stimuli>
+                                <tag>sentence</tag>
+                            </stimuli>
+                        </withStimuli>
+                    </onSuccess>
+                    <onError>
+                        <plainText featureText="Assigning value failed" />
+                    </onError>
+                </setMetadataEvalTokens>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Assigning value failed" />
+            </onError>
+        </setMetadataEvalTokens>
+    </presenter>
+    <presenter self="assign_animal" type="stimulus">
+        <setMetadataValue fieldName="verb" dataLogFormat="" />
+        <setMetadataValue fieldName="animal" dataLogFormat="" />
+        <setMetadataEvalTokens
+            evaluateTokens="getRandomItem('Elephant,Tiger,Lion,Bear,Giraffe,Zebra,Kangaroo,Panda,Koala,Dolphin,Whale,Shark,Crocodile,Alligator,Hippopotamus,Rhinoceros,Cheetah,Leopard,Wolf,Fox,Deer,Moose,Bison,Gorilla,Chimpanzee,Orangutan,Sloth,Hedgehog,Rabbit,Squirrel,Raccoon,Skunk,Otter,Beaver,Bat,Owl,Eagle,Falcon,Parrot,Penguin,Swan,Crane,Flamingo,Ostrich,Peacock,Pigeon,Crow,Seagull,Turtle,Tortoise,Snake,Lizard,Frog,Salamander,Antelope,Buffalo,Camel,Horse,Donkey,Sheep')"
+            fieldName="animal">
+            <onSuccess>
+                <clearPage />
+                <centrePage />
+                <loadStimulus eventTag="verb" randomise="true" repeatCount="1" maxStimuli="1000">
+                    <hasMoreStimulus>
+                        <regionReplace regionId="imageRegion">
+                            <htmlTokenText featureText="::stimulusRatingLabel_1::" />
+                            <stimulusCodeImage msToNext="0"
+                                codeFormat="stimuli/::metadataField_animal::_::stimulusCode::.png">
+                                <mediaLoaded>
+                                    <pause msToNext="1500">
+                                        <nextStimulus repeatIncorrect="false" />
+                                    </pause>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Media load failed" />
+                                </mediaLoadFailed>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <actionButton featureText="Set Completed">
+                            <regionReplace regionId="buttonRegion">
+                                <htmlTokenText
+                                    featureText="animal complete: ::metadataField_animal::" />
+                                <gotoPresenter target="createNewUser" />
+                            </regionReplace>
+                        </actionButton>
+                    </endOfStimulus>
+                    <randomGrouping />
+                    <stimuli>
+                        <tag>verb</tag>
+                    </stimuli>
+                </loadStimulus>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Assigning value failed" />
+            </onError>
+        </setMetadataEvalTokens>
+    </presenter>
+    <!-- the following examples are for the current alpha version only -->
+    <!-- <presenter self="assign_verb" type="stimulus">
         <setMetadataValue fieldName="verb" dataLogFormat="" />
         <setMetadataValue fieldName="animal" dataLogFormat="" />
         <serverValueAssign
@@ -33,7 +124,7 @@
                                         <regionReplace regionId="buttonRegion">
                                             <htmlTokenText
                                                 featureText="verb complete: ::metadataField_verb::" />
-                                            <actionButton featureText="Continue">   
+                                            <actionButton featureText="Continue">
                                                 <gotoPresenter target="assign_animal" />
                                             </actionButton>
                                         </regionReplace>
@@ -110,7 +201,7 @@
                 <plainText featureText="Assigning value failed" />
             </onError>
         </serverValueAssign>
-    </presenter>
+    </presenter> -->
     <presenter type="transmission" self="createNewUser">
         <createUserButton featureText="CreateNewUser" target="assign_verb" />
     </presenter>
