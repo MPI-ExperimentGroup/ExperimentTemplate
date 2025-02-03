@@ -35,7 +35,7 @@
                     </hasMoreStimulus>
                     <endOfStimulus>
                         <actionTokenButton featureText="Animal Complete: ::metadataField_animal::">
-                            <gotoPresenter target="createNewUser" />
+                            <gotoPresenter target="parameter_verb" />
                         </actionTokenButton>
                     </endOfStimulus>
                     <randomGrouping />
@@ -48,6 +48,77 @@
                 <plainText featureText="Assigning value failed" />
             </onError>
         </setMetadataEvalTokens>
+    </presenter>
+    <presenter self="parameter_verb" type="stimulus">
+        <hasGetParameter parameterName="verb">
+            <conditionTrue>
+                <hasMetadataValue fieldName="verb"
+                    matchingRegex="Elephant|Tiger|Lion|Bear|Giraffe|Zebra|Kangaroo|Panda|Koala|Dolphin|Whale|Shark|Crocodile|Alligator|Hippopotamus|Rhinoceros|Cheetah|Leopard|Wolf|Fox|Deer|Moose|Bison|Gorilla|Chimpanzee|Orangutan|Sloth|Hedgehog|Rabbit|Squirrel|Raccoon|Skunk|Otter|Beaver|Bat|Owl|Eagle|Falcon|Parrot|Penguin|Swan|Crane|Flamingo|Ostrich|Peacock|Pigeon|Crow|Seagull|Turtle|Tortoise|Snake|Lizard|Frog|Salamander|Antelope|Buffalo|Camel|Horse|Donkey|Sheep">
+                    <conditionTrue>
+                        <clearPage />
+                        <centrePage />
+                        <loadStimulus eventTag="animal" randomise="true" repeatCount="1"
+                            maxStimuli="1000">
+                            <hasMoreStimulus>
+                                <regionReplace regionId="imageRegion">
+                                    <htmlTokenText
+                                        featureText="::stimulusCode::_::metadataField_verb::" />
+                                    <stimulusCodeImage msToNext="0"
+                                        codeFormat="::stimulusCode::_::metadataField_verb::.png">
+                                        <mediaLoaded>
+                                            <pause msToNext="1000">
+                                                <nextStimulus repeatIncorrect="false" />
+                                            </pause>
+                                        </mediaLoaded>
+                                        <mediaLoadFailed>
+                                            <htmlText featureText="Media load failed" />
+                                        </mediaLoadFailed>
+                                    </stimulusCodeImage>
+                                </regionReplace>
+                            </hasMoreStimulus>
+                            <endOfStimulus>
+                                <actionTokenButton
+                                    featureText="Animal Complete: ::metadataField_animal::">
+                                    <gotoPresenter target="createNewUser" />
+                                </actionTokenButton>
+                            </endOfStimulus>
+                            <randomGrouping />
+                            <stimuli>
+                                <tag>animal</tag>
+                            </stimuli>
+                        </loadStimulus>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <clearPage />
+                        <centrePage />
+                        <plainText
+                            featureText="The URL you have been given is incorrect, there must be a valid GET parameter for the verb" />
+                        <htmlTokenText
+                            featureText="&lt;a href=&quot;?&quot;&gt;Reset GET parameter&lt;/a&gt;" />
+                    </conditionFalse>
+                </hasMetadataValue>
+            </conditionTrue>
+            <conditionFalse>
+                <clearPage />
+                <centrePage />
+                <withStimuli eventTag="verb" randomise="false" repeatCount="1"
+                    maxStimuli="1000">
+                    <beforeStimulus>
+                        <plainText
+                            featureText="Normally you would be provided a link for this example, but instead you can click on any of the following options" />
+                    </beforeStimulus>
+                    <eachStimulus>
+                        <htmlTokenText
+                            featureText="&lt;a href=&quot;?verb=::metadataField_animal::_::stimulusCode::&quot;&gt;::metadataField_animal::_::stimulusCode::&lt;/a&gt;" />
+                    </eachStimulus>
+                    <afterStimulus></afterStimulus>
+                    <randomGrouping />
+                    <stimuli>
+                        <tag>verb</tag>
+                    </stimuli>
+                </withStimuli>
+            </conditionFalse>
+        </hasGetParameter>
     </presenter>
     <!-- the following examples are for the current alpha version only -->
     <!-- <presenter self="assign_verb" type="stimulus">
