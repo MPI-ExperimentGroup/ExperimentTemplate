@@ -109,7 +109,7 @@
                     </beforeStimulus>
                     <eachStimulus>
                         <htmlTokenText
-                            featureText="&lt;a href=&quot;?verb=::metadataField_animal::_::stimulusCode::&quot;&gt;::metadataField_animal::_::stimulusCode::&lt;/a&gt;" />
+                            featureText="&lt;a href=&quot;?verb=::stimulusCode::&quot;&gt;::stimulusCode::&lt;/a&gt;" />
                     </eachStimulus>
                     <afterStimulus></afterStimulus>
                     <randomGrouping />
