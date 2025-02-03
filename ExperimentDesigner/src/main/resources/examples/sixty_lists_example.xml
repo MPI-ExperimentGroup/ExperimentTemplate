@@ -159,7 +159,7 @@
         </serverValueAssign>
     </presenter> -->
     <presenter type="transmission" self="createNewUser">
-        <createUserButton featureText="CreateNewUser" target="assign_verb" />
+        <createUserButton featureText="CreateNewUser" target="assign_animal" />
     </presenter>
     <stimuli>
         <stimulus identifier="animal_Elephant" code="Elephant" tags="animal" label="Elephant" />
