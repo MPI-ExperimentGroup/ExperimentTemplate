@@ -23,7 +23,7 @@
                             <stimulusCodeImage msToNext="0"
                                 codeFormat="::metadataField_animal::_::stimulusCode::.png">
                                 <mediaLoaded>
-                                    <pause msToNext="1500">
+                                    <pause msToNext="1000">
                                         <nextStimulus repeatIncorrect="false" />
                                     </pause>
                                 </mediaLoaded>
@@ -34,13 +34,9 @@
                         </regionReplace>
                     </hasMoreStimulus>
                     <endOfStimulus>
-                        <actionButton featureText="Set Completed">
-                            <regionReplace regionId="buttonRegion">
-                                <htmlTokenText
-                                    featureText="animal complete: ::metadataField_animal::" />
-                                <gotoPresenter target="createNewUser" />
-                            </regionReplace>
-                        </actionButton>
+                        <actionTokenButton featureText="Animal Complete: ::metadataField_animal::">
+                            <gotoPresenter target="createNewUser" />
+                        </actionTokenButton>
                     </endOfStimulus>
                     <randomGrouping />
                     <stimuli>
@@ -58,11 +54,11 @@
         <setMetadataValue fieldName="verb" dataLogFormat="" />
         <setMetadataValue fieldName="animal" dataLogFormat="" />
         <serverValueAssign
-            targetOptions="Accept,Allow,Appreciate,Assist,Authorize,Beware,Celebrate,Cherish,Commend,Compliment,Concede,Confirm,Consider,Consult,Contribute,Defer,Deliver,Deny,Describe,Encourage,Engage,Enlighten,Entertain,Examine,Excuse,Explain,Express,Facilitate,Favor,Grant,Help,Honor,Identify,Imagine,Inquire,Inform,Inspire,Invite,Join,Mention,Observe,Offer,Permit,Polish,Pray,Promise,Provide,Recommend,Refine,Regard,Respect,Respond,Support,Thank,Understand,Uphold,Welcome,Wish,Advise,Encourage"
+    targetOptions="Accept,Allow,Appreciate,Assist,Authorize,Beware,Celebrate,Cherish,Commend,Compliment,Concede,Confirm,Consider,Consult,Contribute,Defer,Deliver,Deny,Describe,Encourage,Engage,Enlighten,Entertain,Examine,Excuse,Explain,Express,Facilitate,Favor,Grant,Help,Honor,Identify,Imagine,Inquire,Inform,Inspire,Invite,Join,Mention,Observe,Offer,Permit,Polish,Pray,Promise,Provide,Recommend,Refine,Regard,Respect,Respond,Support,Thank,Understand,Uphold,Welcome,Wish,Advise,Encourage"
             fieldName="verb">
             <onSuccess>
                 <serverValueAssign
-                    targetOptions="Elephant,Tiger,Lion,Bear,Giraffe,Zebra,Kangaroo,Panda,Koala,Dolphin,Whale,Shark,Crocodile,Alligator,Hippopotamus,Rhinoceros,Cheetah,Leopard,Wolf,Fox,Deer,Moose,Bison,Gorilla,Chimpanzee,Orangutan,Sloth,Hedgehog,Rabbit,Squirrel,Raccoon,Skunk,Otter,Beaver,Bat,Owl,Eagle,Falcon,Parrot,Penguin,Swan,Crane,Flamingo,Ostrich,Peacock,Pigeon,Crow,Seagull,Turtle,Tortoise,Snake,Lizard,Frog,Salamander,Antelope,Buffalo,Camel,Horse,Donkey,Sheep"
+    targetOptions="Elephant,Tiger,Lion,Bear,Giraffe,Zebra,Kangaroo,Panda,Koala,Dolphin,Whale,Shark,Crocodile,Alligator,Hippopotamus,Rhinoceros,Cheetah,Leopard,Wolf,Fox,Deer,Moose,Bison,Gorilla,Chimpanzee,Orangutan,Sloth,Hedgehog,Rabbit,Squirrel,Raccoon,Skunk,Otter,Beaver,Bat,Owl,Eagle,Falcon,Parrot,Penguin,Swan,Crane,Flamingo,Ostrich,Peacock,Pigeon,Crow,Seagull,Turtle,Tortoise,Snake,Lizard,Frog,Salamander,Antelope,Buffalo,Camel,Horse,Donkey,Sheep"
                     fieldName="animal">
                     <onSuccess>
                         <clearPage />
@@ -109,7 +105,7 @@
         <setMetadataValue fieldName="verb" dataLogFormat="" />
         <setMetadataValue fieldName="animal" dataLogFormat="" />
         <serverValueAssign
-            targetOptions="Elephant,Tiger,Lion,Bear,Giraffe,Zebra,Kangaroo,Panda,Koala,Dolphin,Whale,Shark,Crocodile,Alligator,Hippopotamus,Rhinoceros,Cheetah,Leopard,Wolf,Fox,Deer,Moose,Bison,Gorilla,Chimpanzee,Orangutan,Sloth,Hedgehog,Rabbit,Squirrel,Raccoon,Skunk,Otter,Beaver,Bat,Owl,Eagle,Falcon,Parrot,Penguin,Swan,Crane,Flamingo,Ostrich,Peacock,Pigeon,Crow,Seagull,Turtle,Tortoise,Snake,Lizard,Frog,Salamander,Antelope,Buffalo,Camel,Horse,Donkey,Sheep"
+    targetOptions="Elephant,Tiger,Lion,Bear,Giraffe,Zebra,Kangaroo,Panda,Koala,Dolphin,Whale,Shark,Crocodile,Alligator,Hippopotamus,Rhinoceros,Cheetah,Leopard,Wolf,Fox,Deer,Moose,Bison,Gorilla,Chimpanzee,Orangutan,Sloth,Hedgehog,Rabbit,Squirrel,Raccoon,Skunk,Otter,Beaver,Bat,Owl,Eagle,Falcon,Parrot,Penguin,Swan,Crane,Flamingo,Ostrich,Peacock,Pigeon,Crow,Seagull,Turtle,Tortoise,Snake,Lizard,Frog,Salamander,Antelope,Buffalo,Camel,Horse,Donkey,Sheep"
             fieldName="animal">
             <onSuccess>
                 <clearPage />
