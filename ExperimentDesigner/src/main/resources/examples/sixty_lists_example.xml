@@ -7,7 +7,7 @@
             registrationField="animal" />
         <field controlledMessage="." controlledRegex=".*" postName="verb" registrationField="verb" />
     </metadata>
-    <presenter self="assign_animal" type="stimulus">
+    <presenter self="assign_animal" type="stimulus"> 
         <!-- <setMetadataValue fieldName="verb" dataLogFormat="" />
         <setMetadataValue fieldName="animal" dataLogFormat="" /> -->
         <setMetadataEvalTokens
