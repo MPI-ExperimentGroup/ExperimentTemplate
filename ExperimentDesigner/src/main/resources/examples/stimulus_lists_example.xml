@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
     appNameDisplay="Stimulus Lists Example">
     <deployment state="staging" />  
-    <metadata>
+    <metadata> 
         <field controlledRegex=".*" controlledMessage="." postName="chosenList" registrationField="Stimuli Allocation Field"/>
     </metadata>
     <presenter type="stimulus" self="predefined_stimuli_example" title="Predefined Stimuli Example">
