@@ -1,7 +1,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
     appNameDisplay="sixty_lists_example">  
-    <deployment isWebApp="true" state="staging" />
+    <deployment isWebApp="true" state="staging" /> 
     <metadata>   
         <field controlledMessage="." controlledRegex=".*" postName="animal"
             registrationField="animal" />
