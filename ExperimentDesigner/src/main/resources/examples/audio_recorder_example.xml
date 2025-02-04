@@ -2,7 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"  
     appNameDisplay="audio_recorder_example">
-    <deployment state="staging" /> 
+    <deployment state="staging" />
     <administration />
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'"
