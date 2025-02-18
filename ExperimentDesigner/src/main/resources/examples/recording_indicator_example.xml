@@ -21,7 +21,7 @@
         }
     </scss>
     <metadata />
-    <presenter title="Custom Recording Indicator">
+    <presenter title="Custom Recording Indicator" type="stimulus">
         <plainText featureText="This example shows how the recording indicator can be customised." />
         <plainText
             featureText="Care must be made that it is clear to the user that audio is being recorded, otherwise your mobile apps might get banned by  iOS and PlayStore." />
