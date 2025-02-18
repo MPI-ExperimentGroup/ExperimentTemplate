@@ -24,7 +24,7 @@
     <presenter title="Custom Recording Indicator" type="stimulus">
         <plainText featureText="This example shows how the recording indicator can be customised by redefining the .recordingLabel style." />
         <plainText
-            featureText="Care must be made that it is clear to the user that audio is being recorded, otherwise your mobile apps might get banned by  iOS and PlayStore." />
+            featureText="Care must be made that it is clear to the user that audio is being recorded, otherwise your mobile apps might get banned by iOS and PlayStore." />
         <addPadding />
         <loadStimulus eventTag="One_Long_Recording" randomise="true" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="1">
