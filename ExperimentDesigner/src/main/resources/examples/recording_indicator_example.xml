@@ -30,7 +30,7 @@
             maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <actionButton groupId="recordButtonGroup"
-                    featureText="Start One Long Recording (until failure)">
+                    featureText="Start Recording">
                     <clearCurrentScore evaluateTokens="" />
                     <regionReplace regionId="recordedMediaMessages" />
                     <startAudioRecorderWeb featureText="00:00:00"
@@ -58,7 +58,7 @@
                 <addPadding />
                 <regionReplace regionId="AudioRecorderWebLevelIndicator" />
                 <addPadding />
-                <actionButton groupId="abortButtonGroup" featureText="Abort Long Recording">
+                <actionButton groupId="abortButtonGroup" featureText="Stop Recording">
                     <stopAudioRecorder />
                 </actionButton>
             </hasMoreStimulus>
