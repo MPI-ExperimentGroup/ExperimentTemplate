@@ -65,8 +65,8 @@
             <endOfStimulus>
                 <stopAudioRecorder />
                 <actionButton featureText="resetStimulus" hotKey="SPACE">
-                    <resetStimulus target="One_Long_Recording" />
-                    <gotoPresenter target="One_Long_Recording" />
+                    <resetStimulus target="example" />
+                    <gotoPresenter target="example" />
                 </actionButton>
             </endOfStimulus>
             <randomGrouping />
