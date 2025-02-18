@@ -22,42 +22,60 @@
     </scss>
     <metadata />
     <presenter title="Custom Recording Indicator" type="stimulus">
-        <plainText featureText="This example shows how the recording indicator can be customised." />
+        <plainText featureText="This example shows how the recording indicator can be customised by redefining the .recordingLabel style." />
         <plainText
             featureText="Care must be made that it is clear to the user that audio is being recorded, otherwise your mobile apps might get banned by  iOS and PlayStore." />
         <addPadding />
-        <actionButton groupId="recordButtonGroup"
-            featureText="Start One Long Recording (until failure)">
-            <clearCurrentScore evaluateTokens="" />
-            <regionReplace regionId="recordedMediaMessages" />
-            <startAudioRecorderWeb featureText="00:00:00"
-                downloadPermittedWindowMs="0" deviceRegex=""
-                mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
-                <onSuccess>
-                </onSuccess>
-                <onError>
-                    <htmlText featureText="startAudioRecorder onError" />
-                </onError>
-                <mediaLoaded>
-                    <regionReplace regionId="loadedMediaMessages">
-                        <plainText featureText="AudioRecordingLoaded" />
-                    </regionReplace>
-                </mediaLoaded>
-                <mediaLoadFailed>
-                    <regionReplace regionId="loadedMediaMessages">
-                        <plainText featureText="AudioRecordingLoadFailed" />
-                    </regionReplace>
-                </mediaLoadFailed>
-                <mediaPlaybackStarted />
-                <mediaPlaybackComplete></mediaPlaybackComplete>
-            </startAudioRecorderWeb>
-        </actionButton>
-        <addPadding />
-        <regionReplace regionId="AudioRecorderWebLevelIndicator" />
-        <addPadding />
-        <actionButton groupId="abortButtonGroup" featureText="Abort Long Recording">
-            <stopAudioRecorder />
-        </actionButton>
+        <loadStimulus eventTag="One_Long_Recording" randomise="true" repeatRandomWindow="0"
+            maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <actionButton groupId="recordButtonGroup"
+                    featureText="Start One Long Recording (until failure)">
+                    <clearCurrentScore evaluateTokens="" />
+                    <regionReplace regionId="recordedMediaMessages" />
+                    <startAudioRecorderWeb featureText="00:00:00"
+                        downloadPermittedWindowMs="0" deviceRegex=""
+                        mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
+                        <onSuccess>
+                        </onSuccess>
+                        <onError>
+                            <htmlText featureText="startAudioRecorder onError" />
+                        </onError>
+                        <mediaLoaded>
+                            <regionReplace regionId="loadedMediaMessages">
+                                <plainText featureText="AudioRecordingLoaded" />
+                            </regionReplace>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <regionReplace regionId="loadedMediaMessages">
+                                <plainText featureText="AudioRecordingLoadFailed" />
+                            </regionReplace>
+                        </mediaLoadFailed>
+                        <mediaPlaybackStarted />
+                        <mediaPlaybackComplete></mediaPlaybackComplete>
+                    </startAudioRecorderWeb>
+                </actionButton>
+                <addPadding />
+                <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+                <addPadding />
+                <actionButton groupId="abortButtonGroup" featureText="Abort Long Recording">
+                    <stopAudioRecorder />
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder />
+                <actionButton featureText="resetStimulus" hotKey="SPACE">
+                    <resetStimulus target="One_Long_Recording" />
+                    <gotoPresenter target="One_Long_Recording" />
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping />
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
-    <stimuli />
+    <stimuli>
+        <stimulus identifier="one"></stimulus>
+    </stimuli>
 </experiment>
