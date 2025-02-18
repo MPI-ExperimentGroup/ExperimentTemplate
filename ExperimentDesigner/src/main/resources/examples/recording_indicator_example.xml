@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="recording_indicator_example">
+    <deployment state="staging" />
+    <scss>
+        .recordingLabel {
+            border-radius: 5px;
+            background: none;
+            color: black;
+            border: 1px black;
+            border-style: solid;
+        }
+        .recordingLevelIndicator {
+            height: 5px;
+            width: 25vw;
+        }
+        .bargraphInner.recordingLevelIndicator {
+            min-height: 5px;
+            background: blue;
+        }
+    </scss>
+    <metadata />
+    <presenter title="Custom Recording Indicator">
+        <plainText featureText="This example shows how the recording indicator can be customised." />
+        <plainText
+            featureText="Care must be made that it is clear to the user that audio is being recorded, otherwise your mobile apps might get banned by  iOS and PlayStore." />
+        <addPadding />
+        <actionButton groupId="recordButtonGroup"
+            featureText="Start One Long Recording (until failure)">
+            <clearCurrentScore evaluateTokens="" />
+            <regionReplace regionId="recordedMediaMessages" />
+            <startAudioRecorderWeb featureText="00:00:00"
+                downloadPermittedWindowMs="0" deviceRegex=""
+                mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
+                <onSuccess>
+                </onSuccess>
+                <onError>
+                    <htmlText featureText="startAudioRecorder onError" />
+                </onError>
+                <mediaLoaded>
+                    <regionReplace regionId="loadedMediaMessages">
+                        <plainText featureText="AudioRecordingLoaded" />
+                    </regionReplace>
+                </mediaLoaded>
+                <mediaLoadFailed>
+                    <regionReplace regionId="loadedMediaMessages">
+                        <plainText featureText="AudioRecordingLoadFailed" />
+                    </regionReplace>
+                </mediaLoadFailed>
+                <mediaPlaybackStarted />
+                <mediaPlaybackComplete></mediaPlaybackComplete>
+            </startAudioRecorderWeb>
+        </actionButton>
+        <addPadding />
+        <regionReplace regionId="AudioRecorderWebLevelIndicator" />
+        <addPadding />
+        <actionButton groupId="abortButtonGroup" featureText="Abort Long Recording">
+            <stopAudioRecorder />
+        </actionButton>
+    </presenter>
+    <stimuli />
+</experiment>
