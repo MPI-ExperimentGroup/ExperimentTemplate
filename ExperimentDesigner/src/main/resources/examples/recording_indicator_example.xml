@@ -71,11 +71,11 @@
             </endOfStimulus>
             <randomGrouping />
             <stimuli>
-                <tag>RecorderPauseTest</tag>
+                <tag>example_tag</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
     <stimuli>
-        <stimulus identifier="one"></stimulus>
+        <stimulus identifier="one" tags="example_tag"></stimulus>
     </stimuli>
 </experiment>
