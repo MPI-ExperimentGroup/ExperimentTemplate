@@ -3770,7 +3770,7 @@
 </xs:complexType>
 <xs:complexType name="pauseType">
 <xs:annotation>
-<xs:documentation>Pause in milliseconds. When the time is up the contents of this element are evaluated.</xs:documentation>
+<xs:documentation>Pause in milliseconds. When the time is up the contents of this element are evaluated. If tokens are required to calculate the ms value, an evaluatePause can be used.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="msToNext" type="xs:integer" use="required">
@@ -3781,7 +3781,7 @@
 </xs:complexType>
 <xs:complexType name="doLaterType">
 <xs:annotation>
-<xs:documentation>After the specified milliseconds have passed the contents of this element are evaluated.</xs:documentation>
+<xs:documentation>After the specified milliseconds have passed the contents of this element are evaluated. If tokens are required to calculate the ms value, an evaluatePause can be used.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="msToNext" type="xs:integer" use="required">
