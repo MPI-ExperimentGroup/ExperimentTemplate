@@ -20,11 +20,13 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -40,6 +42,7 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
     List<TagData> findAllDistinctRecords();
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select count(distinct tagValue) from TagData where eventTag = :eventTag")
     long countDistinctTagValueByEventTag(String eventTag);
     
@@ -58,6 +61,7 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from TagData group by userId order by firstAccess asc")
     Date[][] findFirstAndLastSessionAccess();
     

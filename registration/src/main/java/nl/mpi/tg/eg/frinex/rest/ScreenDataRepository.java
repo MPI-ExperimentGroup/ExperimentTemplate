@@ -49,8 +49,10 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
 
     ScreenData findTop1ByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
     
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     ScreenData findTop1ByOrderBySubmitDateAsc();
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     ScreenData findTop1ByOrderBySubmitDateDesc();
 
     @Override
