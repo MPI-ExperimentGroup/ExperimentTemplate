@@ -486,6 +486,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("label", false)
                                     .restrictedAttribute("source", null, "The source data for chart to be displayed in the table.", false, "stimulusResponse", "tagpair", "tagdata", "metadata", "timestamp")
                                     .stringAttribute("columnNames", false)                                                
+                                    .documentedAttribute("userId", AttributeType.xsString, "Only records matching this userId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                     .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
 //                                    .documentedAttribute("dataChannel", AttributeType.xsDecimal, "Only records matching this dataChannel will be included for this dataset.", true)
                                     .documentedAttribute("responseGroup", AttributeType.xsString, "Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
