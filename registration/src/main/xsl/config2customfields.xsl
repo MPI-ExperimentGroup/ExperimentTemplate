@@ -653,6 +653,8 @@
                         <xsl:value-of select="if (@source) then @source else '%'" />
                         <xsl:text>", columnNames: "</xsl:text>
                         <xsl:value-of select="if (@columnNames) then @columnNames else '%'" />
+                        <xsl:text>", userId: "</xsl:text>
+                        <xsl:value-of select="if (@userId) then @userId else '%'" />
                         <xsl:text>", screenName: "</xsl:text>
                         <xsl:value-of select="if (@screenName) then @screenName else '%'" />
                         <xsl:text>", eventTag: "</xsl:text>
