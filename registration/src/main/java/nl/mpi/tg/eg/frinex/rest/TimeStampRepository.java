@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -40,10 +42,11 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
 
     @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId and eventTag = :eventTag order by tagDate asc, eventMs asc")
     List<TimeStamp> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
-
-    @Query("select distinct eventTag from TimeStamp order by eventTag")
-    List<String> findDistinctEventTag();
-
+    
+    Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, 
+        @Param("userId") String userId,
+        @Param("eventTag") String eventTag);
+    
     @Override
     @RestResource(exported = false)
     public abstract <S extends TimeStamp> S save(S entity);
