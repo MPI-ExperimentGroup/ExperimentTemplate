@@ -764,6 +764,11 @@
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="userId" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this userId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="screenName" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
@@ -1012,6 +1017,11 @@
 <xs:attribute name="columnNames" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="userId" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this userId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="screenName" type="xs:string">
