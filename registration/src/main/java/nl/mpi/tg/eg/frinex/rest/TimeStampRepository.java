@@ -47,6 +47,9 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
         @Param("userId") String userId,
         @Param("eventTag") String eventTag);
     
+    @Query("select distinct eventTag from TimeStamp order by eventTag")
+    List<String> findDistinctEventTag();
+
     @Override
     @RestResource(exported = false)
     public abstract <S extends TimeStamp> S save(S entity);
