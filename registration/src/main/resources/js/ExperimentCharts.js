@@ -216,7 +216,7 @@ function generateTable(tableData) {
         + '&eventTag=' + encodeURIComponent(tableData.eventTag)
         + '&tagValue=' + encodeURIComponent(tableData.tagValue1)
         ) : (tableData.source === "timestamp") ? (
-        'timestamp/search/findByUserIdLikeAndEventTagLike'
+        'timestamps/search/findByUserIdLikeAndEventTagLike'
         + '?userId=' + encodeURIComponent(tableData.userId)
         + '&eventTag=' + encodeURIComponent(tableData.eventTag)
         ) : (tableData.source === "stimulusResponse") ? (
