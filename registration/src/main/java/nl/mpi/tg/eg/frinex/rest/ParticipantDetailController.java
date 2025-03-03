@@ -91,9 +91,6 @@ public class ParticipantDetailController {
         model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
         model.addAttribute("participantCompletionCode", this.tagPairRepository.findByUserIdAndEventTagAndTagValue1OrderByTagDateAsc(id, DATA_SUBMISSION, COMPLETION_CODE));
         model.addAttribute("participantAudioTestCount", this.tagRepository.countDistinctTagDateByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG)); // todo: this can go or be updated
-        if (!simpleMode) {
-            model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserIdOrderByTagDateAsc(id));
-        }
         model.addAttribute("participantTagData", this.tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(id));
 //        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findByUserIdDistinctOrderByTagDateAsc(id));
         final List<StimulusResponse> contentDistinct = new ArrayList<>();
@@ -205,6 +202,5 @@ public class ParticipantDetailController {
     private static final String CARLY_BLUE_CHAIROGG = "carly_blue_chair.ogg";
     private static final String COMPLETION_CODE = "CompletionCode";
     private static final String BROWSER_WINDOW_CLOSED = "BrowserWindowClosed";
-    private static final String STIMULUS1_NEXT = "stimulus1Next";
     private static final String SUBSET_STIMULUS = "SubsetStimulus";
 }
