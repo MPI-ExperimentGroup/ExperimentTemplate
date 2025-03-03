@@ -305,10 +305,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <div th:if="${!simpleMode}" class="table-container" id="timestamptable">
-            <script>
-                generateTable({divId: "timestamptable", label: "Time Stamp Data", source: "timestamp", columnNames: "TagDate,EventTag,EventMs", userId: "${paramId}"});
+        <span th:if="${!simpleMode}" class="table-container" id="timestamptable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "timestamptable", label: "Time Stamp Data", source: "timestamp", columnNames: "TagDate,EventTag,EventMs", userId: paramId, eventTag: "%"});
+                /*]]>*/
             </script>
-        </div>
+        </span>
     </body>
 </html>
