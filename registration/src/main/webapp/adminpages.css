@@ -45,10 +45,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #datatable a, .datatable a {
     color: white;
 }
- ̰
-#datatable, .datatable {    
+
+/*#datatable, .datatable {    
     width: 100%;
-}
+}*/
 
 input[type=submit], .headerButton, .tableButton, .downloadLink {
     border-radius: 15px;
