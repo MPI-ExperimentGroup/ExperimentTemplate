@@ -790,11 +790,6 @@
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="recordingFormat" type="xs:string">
-<xs:annotation>
-<xs:documentation>Only records matching this recordingFormat will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
 <xs:attribute name="isCorrect">
 <xs:annotation>
 <xs:documentation>Only records matching this isCorrect value will be included for this dataset.</xs:documentation>
@@ -1049,11 +1044,6 @@
 <xs:attribute name="stimulusId" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="recordingFormat" type="xs:string">
-<xs:annotation>
-<xs:documentation>Only records matching this recordingFormat will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isCorrect">

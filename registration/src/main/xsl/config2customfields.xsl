@@ -673,8 +673,8 @@
                         <xsl:value-of select="if (@scoreGroup) then @scoreGroup else '%'" />
                         <xsl:text>", stimulusId: "</xsl:text>
                         <xsl:value-of select="if (@stimulusId) then @stimulusId else '%'" />
-                        <xsl:text>", recordingFormat: "</xsl:text>
-                        <xsl:value-of select="if (@recordingFormat) then @recordingFormat else '%'" />
+                        <!-- <xsl:text>", recordingFormat: "</xsl:text>
+                        <xsl:value-of select="if (@recordingFormat) then @recordingFormat else '%'" /> -->
                         <xsl:text>", response: "</xsl:text>
                         <xsl:value-of select="if (@response) then @response else '%'" />
                         <xsl:value-of select="if (@isCorrect) then concat('&quot;, isCorrect: &quot;', @isCorrect) else ''" />

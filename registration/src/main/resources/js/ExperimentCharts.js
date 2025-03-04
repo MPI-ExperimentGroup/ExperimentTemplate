@@ -227,11 +227,11 @@ function generateTable(tableData) {
         + '?userId=' + encodeURIComponent(tableData.userId)
         + '&eventTag=' + encodeURIComponent(tableData.eventTag)
         ) : (tableData.source === "mediaResponse") ? (
-        'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLikeAndRecordingFormatLike'
+        'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLike'
         + '?userId=' + encodeURIComponent(tableData.userId)
         + '&screenName=' + encodeURIComponent(tableData.screenName)
         + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
-        + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
+        // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
         ) : (tableData.source === "stimulusResponse") ? (
         'stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
         + ((tableData.isCorrect)? 'AndIsCorrect?isCorrect=' + ((tableData.isCorrect !== 'Null')? encodeURIComponent(tableData.isCorrect) : '') + '&screenName=' : '?screenName=')
