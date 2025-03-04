@@ -73,6 +73,7 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     
+    @Transactional
     Page<AudioData> findByUserIdLikeAndScreenNameLikeAndStimulusIdLike(Pageable pageable, 
     @Param("userId") String userId,
     @Param("screenName") String screenName,
