@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.UUID;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.AudioData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -70,6 +72,13 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
+    
+    Page<AudioData> findByUserIdLikeAndScreenNameLikeAndStimulusIdLikeAndRecordingFormatLikeAndSubmitDateLike(Pageable pageable, 
+    @Param("userId") String userId,
+    @Param("screenName") String screenName,
+    @Param("stimulusId") String stimulusId,
+    @Param("recordingFormat") String recordingFormat,
+    @Param("submitDate") String submitDate);
 
     @Transactional
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})

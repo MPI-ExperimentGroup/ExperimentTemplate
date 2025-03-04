@@ -100,7 +100,7 @@ public class ParticipantDetailController {
             }
         }
         model.addAttribute("participantResponseData", contentDistinct);
-        model.addAttribute("participantAudioData", this.audioDataRepository.findByUserIdOrderBySubmitDateAsc(id));
+//        model.addAttribute("participantAudioData", this.audioDataRepository.findByUserIdOrderBySubmitDateAsc(id));
         return "participantdetail";
     }
 

@@ -176,6 +176,13 @@ function loadMore(tableId) {
             for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
                 const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
+                if (columnName === "MediaFile") {
+                    if (recordData.video) {
+                        dataRow += "<video controls='true' preload='none' width='320' height='240'><source src='audio'" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id + "' type='video/ogg' /></video>";
+                    } else {
+                        dataRow += "<audio controls='true' preload='none'><source src='audio/'" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id + "' type='audio/'" + recordData.recordingFormat + "' /></audio>";
+                    }
+                }
                 if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
                     touchInputReport = true;
                     touchInputReportCounter++;
@@ -219,6 +226,13 @@ function generateTable(tableData) {
         'timestamps/search/findByUserIdLikeAndEventTagLike'
         + '?userId=' + encodeURIComponent(tableData.userId)
         + '&eventTag=' + encodeURIComponent(tableData.eventTag)
+        ) : (tableData.source === "mediaResponse") ? (
+        'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLikeAndRecordingFormatLikeAndSubmitDateLike'
+        + '?userId=' + encodeURIComponent(tableData.userId)
+        + '&screenName=' + encodeURIComponent(tableData.screenName)
+        + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
+        + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
+        + '&submitDate=' + encodeURIComponent(tableData.submitDate)
         ) : (tableData.source === "stimulusResponse") ? (
         'stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
         + ((tableData.isCorrect)? 'AndIsCorrect?isCorrect=' + ((tableData.isCorrect !== 'Null')? encodeURIComponent(tableData.isCorrect) : '') + '&screenName=' : '?screenName=')

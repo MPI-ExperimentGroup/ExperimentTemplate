@@ -751,6 +751,7 @@
 <xs:enumeration value="tagdata"/>
 <xs:enumeration value="metadata"/>
 <xs:enumeration value="timestamp"/>
+<xs:enumeration value="mediaResponse"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>
@@ -787,6 +788,16 @@
 <xs:attribute name="stimulusId" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="recordingFormat" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this recordingFormat will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="submitDate" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this submitDate will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isCorrect">
@@ -1006,6 +1017,7 @@
 <xs:enumeration value="tagdata"/>
 <xs:enumeration value="metadata"/>
 <xs:enumeration value="timestamp"/>
+<xs:enumeration value="mediaResponse"/>
 </xs:restriction>
 </xs:simpleType>
 </xs:list>
@@ -1042,6 +1054,16 @@
 <xs:attribute name="stimulusId" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="recordingFormat" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this recordingFormat will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="submitDate" type="xs:string">
+<xs:annotation>
+<xs:documentation>Only records matching this submitDate will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="isCorrect">
