@@ -176,7 +176,7 @@ function loadMore(tableId) {
             for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
                 const columnName = columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1);
-                if (columnName === "MediaFile") {
+                if (columnName === "mediaFile") {
                     if (recordData.video) {
                         dataRow += "<video controls='true' preload='none' width='320' height='240'><source src='audio'" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id + "' type='video/ogg' /></video>";
                     } else {
