@@ -179,9 +179,9 @@ function loadMore(tableId) {
                 if (columnName === "mediaFile") {
                     dataRow += "<td>";
                     if (recordData.video) {
-                        dataRow += "<video controls='true' preload='none' width='320' height='240'><source src='" + recordData._links.audioData.href + "' type='video/" + recordData.recordingFormat + "' /></video>";
+                        dataRow += "<video controls='true' preload='none' width='320' height='240'><source src='" + recordData.mediaPath + "' type='video/" + recordData.recordingFormat + "' /></video>";
                     } else {
-                        dataRow += "<audio controls='true' preload='none'><source src='" + recordData._links.audioData.href + "' type='audio/" + recordData.recordingFormat + "' /></audio>";
+                        dataRow += "<audio controls='true' preload='none'><source src='" + recordData.mediaPath + "' type='audio/" + recordData.recordingFormat + "' /></audio>";
                     }
                     dataRow += "</td>";
                 } else if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
