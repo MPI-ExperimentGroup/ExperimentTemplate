@@ -177,13 +177,14 @@ function loadMore(tableId) {
                 const columnLabel = columnHeader.innerText;
                 const columnName = (columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1)).replace(/ID$/, "Id");
                 if (columnName === "mediaFile") {
+                    dataRow += "<td>";
                     if (recordData.video) {
                         dataRow += "<video controls='true' preload='none' width='320' height='240'><source src='audio'" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id + "' type='video/ogg' /></video>";
                     } else {
                         dataRow += "<audio controls='true' preload='none'><source src='audio/'" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id + "' type='audio/'" + recordData.recordingFormat + "' /></audio>";
                     }
-                }
-                if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
+                    dataRow += "</td>";
+                } else if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
                     touchInputReport = true;
                     touchInputReportCounter++;
                     dataRow += "<td class='popupOuter'>";
