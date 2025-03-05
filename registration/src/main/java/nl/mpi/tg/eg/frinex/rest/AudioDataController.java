@@ -45,6 +45,11 @@ public class AudioDataController {
 
     @RequestMapping(value = "audio/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public HttpEntity<byte[]> getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
+        return getMedia(userId, screenName, stimulusId, id);
+    }
+
+    @RequestMapping(value = "media/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
+    public HttpEntity<byte[]> getMedia(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
         HttpHeaders header = new HttpHeaders();
         final AudioData audioData = this.audioDataRepository.findById(id).get();
         // TODO: video/ogv is not quite correct and should be video/ogg

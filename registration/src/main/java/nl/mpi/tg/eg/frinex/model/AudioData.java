@@ -159,6 +159,6 @@ public class AudioData implements Serializable {
 
     @Transient
     public String getMediaPath() {
-        return (isVideo() ? "video" : "audio") + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + recordingFormat.name();
+        return "/media/" + userId + "_" + screenName + "_" + stimulusId + "_" + id;
     }
 }
