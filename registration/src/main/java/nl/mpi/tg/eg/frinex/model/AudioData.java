@@ -157,6 +157,7 @@ public class AudioData implements Serializable {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
+    @Transient
     public String getMediaPath() {
         return (isVideo() ? "video" : "audio") + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + recordingFormat.name();
     }
