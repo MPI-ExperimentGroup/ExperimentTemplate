@@ -122,7 +122,7 @@ public class AudioData implements Serializable {
     public boolean isVideo() {
         return recordingFormat == AudioType.ogv;
     }
-    
+
     public AudioType getRecordingFormat() {
         return recordingFormat;
     }
@@ -155,5 +155,9 @@ public class AudioData implements Serializable {
 
     public void setDownloadPermittedWindowMs(long downloadPermittedWindowMs) {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+    }
+
+    public String getMediaPath() {
+        return (isVideo() ? "video" : "audio") + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + recordingFormat.name();
     }
 }
