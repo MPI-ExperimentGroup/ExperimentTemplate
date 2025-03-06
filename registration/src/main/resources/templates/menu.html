@@ -77,6 +77,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             All connections will require authentication via the same credentials as the normal admin pages.<br/>
         </section>
         <section>
+            <h3>Python3 Authentication Example</h3>
+            <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
+                <!--
+                For OSx use:
+                python3 -m venv path/to/venv
+                source path/to/venv/bin/activate
+                python3 -m pip install requests
+                python3
+                -->
+                import requests<br/>
+                <br/>
+                loginUrl = "<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>login"<br/>
+                participantsUrl = "<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants?page=1&size=20"<br/>
+                authenticationData = {'username': '###############', 'password': '###############'}<br/>
+                <br/>
+                with requests.Session() as frinexSession:<br/>
+                &nbsp;&nbsp;&nbsp;loginResponse = frinexSession.post(loginUrl, data=authenticationData)<br/>
+                &nbsp;&nbsp;&nbsp;print(loginResponse.text)<br/>
+                &nbsp;&nbsp;&nbsp;participantsResponse = frinexSession.get(participantsUrl)<br/>
+                &nbsp;&nbsp;&nbsp;print(participantsResponse.text)<br/>
+            </div>
             <h3>R Authentication Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
                 # Note that keys.json is a file with the password and username in it.<br/>
