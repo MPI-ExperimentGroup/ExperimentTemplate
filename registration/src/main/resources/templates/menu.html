@@ -79,19 +79,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <section>
             <h3>R Authentication Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
-                # Note that keys.json is a file with the password and username in it.
-                # user account data
-                pars = read_json("keys.json")
-                # set cookies
-                curl = getCurlHandle()
-                curlSetOpt(cookiejar="cookies.txt", followlocation = T, curl = curl)
-                # post login form and retrieve main data
-                login = postForm("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>login", .params = pars, curl= curl)
-                pp = getURL("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants?page=0&size=1000", curl = curl)
-                sr = getURL("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>stimulusresponses?page=0&size=1000", curl= curl)
-                # transform JSON file
-                participants <- fromJSON(pp)
-                stimulusresponses <- fromJSON(sr)
+                # Note that keys.json is a file with the password and username in it.<br/>
+                # user account data<br/>
+                pars = read_json("keys.json")<br/>
+                # set cookies<br/>
+                curl = getCurlHandle()<br/>
+                curlSetOpt(cookiejar="cookies.txt", followlocation = T, curl = curl)<br/>
+                # post login form and retrieve main data<br/>
+                login = postForm("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>login", .params = pars, curl= curl)<br/>
+                pp = getURL("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants?page=0&size=1000", curl = curl)<br/>
+                sr = getURL("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>stimulusresponses?page=0&size=1000", curl= curl)<br/>
+                # transform JSON file<br/>
+                participants &lt;- fromJSON(pp)<br/>
+                stimulusresponses &lt;- fromJSON(sr)<br/>
             </div>
             <h3>R Simple Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
