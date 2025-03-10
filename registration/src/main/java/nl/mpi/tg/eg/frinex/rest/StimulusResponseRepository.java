@@ -54,12 +54,12 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
     @Query("SELECT p FROM StimulusResponse p WHERE " +
-           "(:userId = '%' OR p.userId like :userId) AND " +
-           "(:screenName = '%' OR p.screenName like :screenName) AND " +
-           "(:scoreGroup = '%' OR p.scoreGroup like :scoreGroup) AND " +
-           "(:responseGroup = '%' OR p.responseGroup like :responseGroup) AND " +
-           "(:stimulusId = '%' OR p.stimulusId like :stimulusId) AND " +
-           "(:response = '%' OR p.response like :response)")
+           "(:userId IS NULL OR p.userId like :userId) AND " +
+           "(:screenName IS NULL OR p.screenName like :screenName) AND " +
+           "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND " +
+           "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND " +
+           "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND " +
+           "(:response IS NULL OR p.response like :response)")
     Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("screenName") String screenName,
