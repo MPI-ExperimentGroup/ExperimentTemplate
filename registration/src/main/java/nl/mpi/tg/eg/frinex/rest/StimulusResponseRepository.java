@@ -53,6 +53,13 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     List<StimulusResponse> findAllByOrderByTagDateAsc();
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
+    @Query("SELECT p FROM StimulusResponse p WHERE " +
+           "(:userId = '%' OR p.userId like :userId) AND " +
+           "(:screenName = '%' OR p.screenName like :screenName) AND " +
+           "(:scoreGroup = '%' OR p.scoreGroup like :scoreGroup) AND " +
+           "(:responseGroup = '%' OR p.responseGroup like :responseGroup) AND " +
+           "(:stimulusId = '%' OR p.stimulusId like :stimulusId) AND " +
+           "(:response = '%' OR p.response like :response)")
     Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("screenName") String screenName,
