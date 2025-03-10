@@ -43,9 +43,10 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId and eventTag = :eventTag order by tagDate asc, eventMs asc")
     List<TimeStamp> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
     
-    Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, 
-        @Param("userId") String userId,
-        @Param("eventTag") String eventTag);
+    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
+    // Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, 
+    //     @Param("userId") String userId,
+    //     @Param("eventTag") String eventTag);
     
     @Query("select distinct eventTag from TimeStamp order by eventTag")
     List<String> findDistinctEventTag();

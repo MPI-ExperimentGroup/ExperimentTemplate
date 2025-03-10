@@ -64,11 +64,12 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
 
     Page<TagPairData> findBydataChannel(Pageable pageable, Integer dataChannel);
 
-    Page<TagPairData> findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like(Pageable pageable, 
-            @Param("screenName") String screenName,
-            @Param("eventTag") String eventTag,
-            @Param("tagValue1") String tagValue1,
-            @Param("tagValue2") String tagValue2);
+    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
+    // Page<TagPairData> findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like(Pageable pageable, 
+    //         @Param("screenName") String screenName,
+    //         @Param("eventTag") String eventTag,
+    //         @Param("tagValue1") String tagValue1,
+    //         @Param("tagValue2") String tagValue2);
 
     @Override
     @RestResource(exported = false)

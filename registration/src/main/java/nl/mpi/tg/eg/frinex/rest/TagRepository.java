@@ -71,15 +71,17 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query(value = "select max(submitDate) from TagData where userId = :userId")
     Date findLastSessionAccess(@Param("userId") String userId);
     
-    long countByScreenNameLikeAndEventTagLikeAndTagValueLike(
-        @Param("screenName") String screenName,
-        @Param("eventTag") String eventTag,
-        @Param("tagValue") String tagValue);
+    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
+    // long countByScreenNameLikeAndEventTagLikeAndTagValueLike(
+    //     @Param("screenName") String screenName,
+    //     @Param("eventTag") String eventTag,
+    //     @Param("tagValue") String tagValue);
 
-    Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
-        @Param("screenName") String screenName,
-        @Param("eventTag") String eventTag,
-        @Param("tagValue") String tagValue);
+    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
+    // Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
+    //     @Param("screenName") String screenName,
+    //     @Param("eventTag") String eventTag,
+    //     @Param("tagValue") String tagValue);
 
 //    AssignedValue(int assignedCount, int completedCount, Date lastChange, String value)
 //    assignedValue

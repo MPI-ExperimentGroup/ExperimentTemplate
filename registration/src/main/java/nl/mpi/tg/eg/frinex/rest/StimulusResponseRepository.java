@@ -70,15 +70,16 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
         @Param("stimulusId") String stimulusId,
         @Param("response") String response);
     
-    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable, 
-        @Param("userId") String userId,
-        @Param("screenName") String screenName,
-//            @Param("dataChannel") Integer dataChannel,
-        @Param("scoreGroup") String scoreGroup,
-        @Param("responseGroup") String responseGroup,
-        @Param("stimulusId") String stimulusId,
-        @Param("response") String response,
-        @Param("isCorrect") Boolean isCorrect);
+        //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
+    // Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable, 
+//         @Param("userId") String userId,
+//         @Param("screenName") String screenName,
+// //            @Param("dataChannel") Integer dataChannel,
+//         @Param("scoreGroup") String scoreGroup,
+//         @Param("responseGroup") String responseGroup,
+//         @Param("stimulusId") String stimulusId,
+//         @Param("response") String response,
+//         @Param("isCorrect") Boolean isCorrect);
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(
