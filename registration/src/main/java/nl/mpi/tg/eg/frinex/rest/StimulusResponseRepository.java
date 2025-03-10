@@ -53,7 +53,8 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     List<StimulusResponse> findAllByOrderByTagDateAsc();
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
-    Page<StimulusResponse> findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, 
+    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, 
+        @Param("userId") String userId,
         @Param("screenName") String screenName,
 //            @Param("dataChannel") Integer dataChannel,
 //            @Param("isCorrect") Boolean isCorrect,
@@ -62,7 +63,8 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
         @Param("stimulusId") String stimulusId,
         @Param("response") String response);
     
-    Page<StimulusResponse> findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable, 
+    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable, 
+        @Param("userId") String userId,
         @Param("screenName") String screenName,
 //            @Param("dataChannel") Integer dataChannel,
         @Param("scoreGroup") String scoreGroup,

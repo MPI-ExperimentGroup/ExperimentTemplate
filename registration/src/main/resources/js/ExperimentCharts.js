@@ -234,9 +234,10 @@ function generateTable(tableData) {
         + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
         // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
         ) : (tableData.source === "stimulusResponse") ? (
-        'stimulusresponses/search/findByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
+        'stimulusresponses/search/findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
         + ((tableData.isCorrect)? 'AndIsCorrect?isCorrect=' + ((tableData.isCorrect !== 'Null')? encodeURIComponent(tableData.isCorrect) : '') + '&screenName=' : '?screenName=')
         + encodeURIComponent(tableData.screenName)
+        + '&userId=' + encodeURIComponent(tableData.userId)
         + '&scoreGroup=' + encodeURIComponent(tableData.scoreGroup)
         + '&responseGroup=' + encodeURIComponent(tableData.responseGroup)
         + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
