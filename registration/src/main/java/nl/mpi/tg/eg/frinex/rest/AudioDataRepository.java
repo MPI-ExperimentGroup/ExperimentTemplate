@@ -76,7 +76,7 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Query("SELECT p FROM AudioData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId))
+        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId)")
     @Transactional
     Page<AudioData> findByUserIdLikeAndScreenNameLikeAndStimulusIdLike(Pageable pageable, 
     @Param("userId") String userId,
