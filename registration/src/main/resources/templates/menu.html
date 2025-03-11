@@ -88,8 +88,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 -->
                 import requests<br/>
                 <br/>
-                loginUrl = "<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>login"<br/>
-                participantsUrl = "<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants?page=1&size=20"<br/>
+                loginUrl = "<span th:text="${requestUrl}"></span>login"<br/>
+                participantsUrl = "<span th:text="${requestUrl}"></span>participants?page=1&size=20"<br/>
                 authenticationData = {'username': '###############', 'password': '###############'}<br/>
                 <br/>
                 with requests.Session() as frinexSession:<br/>
@@ -107,9 +107,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 curl = getCurlHandle()<br/>
                 curlSetOpt(cookiejar="cookies.txt", followlocation = T, curl = curl)<br/>
                 # post login form and retrieve main data<br/>
-                login = postForm("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>login", .params = pars, curl= curl)<br/>
-                pp = getURL("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants?page=0&size=1000", curl = curl)<br/>
-                sr = getURL("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>stimulusresponses?page=0&size=1000", curl= curl)<br/>
+                login = postForm("<span th:text="${requestUrl}"></span>login", .params = pars, curl= curl)<br/>
+                pp = getURL("<span th:text="${requestUrl}"></span>participants?page=0&size=1000", curl = curl)<br/>
+                sr = getURL("<span th:text="${requestUrl}"></span>stimulusresponses?page=0&size=1000", curl= curl)<br/>
                 # transform JSON file<br/>
                 participants &lt;- fromJSON(pp)<br/>
                 stimulusresponses &lt;- fromJSON(sr)<br/>
@@ -117,16 +117,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <h3>R Simple Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
                 library(jsonlite)<br/>
-                participants &lt;- fromJSON("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants")<br/>
+                participants &lt;- fromJSON("<span th:text="${requestUrl}"></span>participants")<br/>
                 paste(participants$_embedded$participants$userId, ":", participants$_embedded$participants$userAgent)<br/>
             </div>
             <h3>CURL Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
                 # login and store the requred JSESSIONID in a file called cookies.txt<br/>
-                curl -i -X POST -d username=############### -d password=############### -c cookies.txt <span th:text="@{__${#httpServletRequest.requestURL}__}"></span>login<br/>
+                curl -i -X POST -d username=############### -d password=############### -c cookies.txt <span th:text="${requestUrl}"></span>login<br/>
                 <br/>
                 # select data from the REST service, authenticated with the required JSESSIONID from the file cookies.txt<br/>
-                curl -i --header "Accept:application/json" -X GET -b cookies.txt <span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants<br/>
+                curl -i --header "Accept:application/json" -X GET -b cookies.txt <span th:text="${requestUrl}"></span>participants<br/>
                 <br/>
             </div>
         </section>

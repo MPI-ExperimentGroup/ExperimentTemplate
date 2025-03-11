@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +35,13 @@ public class MenuController {
 
     @RequestMapping({"/", "/menu"})
     public String menu(Model model,
+            HttpServletRequest request,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
         // model.addAttribute("audioDates", this.audioDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
+        model.addAttribute("requestUrl", request.getRequestURL().toString().replaceFirst("^http:", "https:"));
         return "menu";
     }
 }
