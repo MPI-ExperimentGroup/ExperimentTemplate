@@ -85,10 +85,14 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(tagData.colour + '20');
             data.datasets[0].borderColor.push(tagData.colour + 'ff');
+            for (let [key, value] of Object.entries(tagData)) {
+                if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label' && key != 'colour') {
+                    parametersString += (parametersString.length == 0) ? "?" : "&";
+                    parametersString += key + "=" + encodeURIComponent(value);
+                }
+            }
             $.getJSON('tagevents/search/countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike'
-                    + '?screenName=' + encodeURIComponent(tagData.screenName)
-                    + '&eventTag=' + encodeURIComponent(tagData.eventTag)
-                    + '&tagValue=' + encodeURIComponent(tagData.tagValue),
+                    + parametersString,
                     function (responseData) {
                         // console.log(responseData);
                         data.datasets[0].data[tagDataIndex] = responseData;
@@ -101,13 +105,14 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(stimulusResponse.matching);
             data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
             data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
-            $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-                    + ((stimulusResponse.isCorrect) ? 'AndIsCorrect?isCorrect=' + ((stimulusResponse.isCorrect !== 'Null') ? encodeURIComponent(stimulusResponse.isCorrect) : '') + '&screenName=' : '?screenName=')
-                    + encodeURIComponent(stimulusResponse.screenName)
-                    + '&scoreGroup=' + encodeURIComponent(stimulusResponse.scoreGroup)
-                    + '&responseGroup=' + encodeURIComponent(stimulusResponse.responseGroup)
-                    + '&stimulusId=' + encodeURIComponent(stimulusResponse.stimulusId)
-                    + '&response=' + encodeURIComponent(stimulusResponse.response), function (responseData) {
+            for (let [key, value] of Object.entries(stimulusResponse)) {
+                if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label' && key != 'colour') {
+                    parametersString += (parametersString.length == 0) ? "?" : "&";
+                    parametersString += key + "=" + encodeURIComponent(value);
+                }
+            }
+            $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect' 
+                + parametersString, function (responseData) {
                 // console.log(responseData);
                 data.datasets[0].data[responseIndex] = responseData;
                 adminChart.update();
