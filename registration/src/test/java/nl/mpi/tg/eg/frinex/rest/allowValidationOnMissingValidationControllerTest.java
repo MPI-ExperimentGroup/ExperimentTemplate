@@ -403,12 +403,12 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
-            public long countByScreenNameLikeAndEventTagLikeAndTagValueLike(String screenName, String eventTag, String tagValue) {
+            public long countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike(String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, String screenName, String eventTag, String tagValue) {
+            public Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 

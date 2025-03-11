@@ -73,12 +73,15 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     
-    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
-    // @Transactional
-    // Page<AudioData> findByUserIdLikeAndScreenNameLikeAndStimulusIdLike(Pageable pageable, 
-    // @Param("userId") String userId,
-    // @Param("screenName") String screenName,
-    // @Param("stimulusId") String stimulusId);
+    @Query("SELECT p FROM AudioData p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId))
+    @Transactional
+    Page<AudioData> findByUserIdLikeAndScreenNameLikeAndStimulusIdLike(Pageable pageable, 
+    @Param("userId") String userId,
+    @Param("screenName") String screenName,
+    @Param("stimulusId") String stimulusId);
 
     @Transactional
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})

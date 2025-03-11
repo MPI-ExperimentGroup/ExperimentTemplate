@@ -71,17 +71,31 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query(value = "select max(submitDate) from TagData where userId = :userId")
     Date findLastSessionAccess(@Param("userId") String userId);
     
-    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
-    // long countByScreenNameLikeAndEventTagLikeAndTagValueLike(
-    //     @Param("screenName") String screenName,
-    //     @Param("eventTag") String eventTag,
-    //     @Param("tagValue") String tagValue);
+    @Query("SELECT count(p) FROM TagData p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+        + "(:eventTag IS NULL OR p.eventTag like :eventTag) AND "
+        + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
+        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
+        + "(:response IS NULL OR p.response like :response)")
+    long countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike(
+        @Param("userId") String userId,
+        @Param("screenName") String screenName,
+        @Param("eventTag") String eventTag,
+        @Param("tagValue") String tagValue);
 
-    //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
-    // Page<TagData> findByScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
-    //     @Param("screenName") String screenName,
-    //     @Param("eventTag") String eventTag,
-    //     @Param("tagValue") String tagValue);
+    @Query("SELECT p FROM TagData p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+        + "(:eventTag IS NULL OR p.eventTag like :eventTag) AND "
+        + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
+        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
+        + "(:response IS NULL OR p.response like :response)")
+    Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
+        @Param("userId") String userId,
+        @Param("screenName") String screenName,
+        @Param("eventTag") String eventTag,
+        @Param("tagValue") String tagValue);
 
 //    AssignedValue(int assignedCount, int completedCount, Date lastChange, String value)
 //    assignedValue

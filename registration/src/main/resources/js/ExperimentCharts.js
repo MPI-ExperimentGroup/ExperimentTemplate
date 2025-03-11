@@ -85,7 +85,7 @@ function generateChart(chartData) {
             //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(tagData.colour + '20');
             data.datasets[0].borderColor.push(tagData.colour + 'ff');
-            $.getJSON('tagevents/search/countByScreenNameLikeAndEventTagLikeAndTagValueLike'
+            $.getJSON('tagevents/search/countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike'
                     + '?screenName=' + encodeURIComponent(tagData.screenName)
                     + '&eventTag=' + encodeURIComponent(tagData.eventTag)
                     + '&tagValue=' + encodeURIComponent(tagData.tagValue),
@@ -212,36 +212,30 @@ function loadMore(tableId) {
 function generateTable(tableData) {
     const tableId = tableData.divId + "Table";
     const columnCount = tableData.columnNames.split(",").length;
+    var parametersString = "";
+    for (let [key, value] of Object.entries(tableData)) {
+        if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label') {
+            parametersString += (parametersString.length == 0) ? "?" : "&";
+            parametersString += key + "=" + encodeURIComponent(value);
+        }
+    }
     const dataUrl = (tableData.source === "tagpair") ? (
-        'tagpairevents/search/findByScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
-        + '?screenName=' + encodeURIComponent(tableData.screenName)
-        + '&eventTag=' + encodeURIComponent(tableData.eventTag)
-        + '&tagValue1=' + encodeURIComponent(tableData.tagValue1)
-        + '&tagValue2=' + encodeURIComponent(tableData.tagValue2)
+        'tagpairevents/search/findByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
+        + parametersString
         ) : (tableData.source === "tagdata") ? (
-        'tagevents/search/findByScreenNameLikeAndEventTagLikeAndTagValueLike'
-        + '?screenName=' + encodeURIComponent(tableData.screenName)
-        + '&eventTag=' + encodeURIComponent(tableData.eventTag)
-        + '&tagValue=' + encodeURIComponent(tableData.tagValue1)
+        'tagevents/search/findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike'
+        + parametersString
         ) : (tableData.source === "timestamp") ? (
         'timestamps/search/findByUserIdLikeAndEventTagLike'
-        + '?userId=' + encodeURIComponent(tableData.userId)
-        + '&eventTag=' + encodeURIComponent(tableData.eventTag)
+        + parametersString
         ) : (tableData.source === "mediaResponse") ? (
         'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLike'
-        + '?userId=' + encodeURIComponent(tableData.userId)
-        + '&screenName=' + encodeURIComponent(tableData.screenName)
-        + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
+        + parametersString
         // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
         ) : (tableData.source === "stimulusResponse") ? (
         'stimulusresponses/search/findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-        + ((tableData.isCorrect)? 'AndIsCorrect?isCorrect=' + ((tableData.isCorrect !== 'Null')? encodeURIComponent(tableData.isCorrect) : '') + '&screenName=' : '?screenName=')
-        + encodeURIComponent(tableData.screenName)
-        + '&userId=' + encodeURIComponent(tableData.userId)
-        + '&scoreGroup=' + encodeURIComponent(tableData.scoreGroup)
-        + '&responseGroup=' + encodeURIComponent(tableData.responseGroup)
-        + '&stimulusId=' + encodeURIComponent(tableData.stimulusId)
-        + '&response=' + encodeURIComponent(tableData.response)
+        + ((tableData.isCorrect)? 'AndIsCorrect' : '')
+        + parametersString
     ) : "";
     $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
     $("#" + tableData.divId).append("<a href=\"" + dataUrl + "\">raw data</a>");

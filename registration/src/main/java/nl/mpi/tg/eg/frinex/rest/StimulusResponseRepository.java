@@ -53,53 +53,60 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     List<StimulusResponse> findAllByOrderByTagDateAsc();
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
-    @Query("SELECT p FROM StimulusResponse p WHERE " +
-           "(:userId IS NULL OR p.userId like :userId) AND " +
-           "(:screenName IS NULL OR p.screenName like :screenName) AND " +
-           "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND " +
-           "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND " +
-           "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND " +
-           "(:response IS NULL OR p.response like :response)")
-    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, 
-        @Param("userId") String userId,
-        @Param("screenName") String screenName,
-//            @Param("dataChannel") Integer dataChannel,
-//            @Param("isCorrect") Boolean isCorrect,
-        @Param("scoreGroup") String scoreGroup,
-        @Param("responseGroup") String responseGroup,
-        @Param("stimulusId") String stimulusId,
-        @Param("response") String response);
-    
-        //TODO: fix this query to handle NULL records eg with "(:userId IS NULL OR p.userId like :userId) AND " +
-    // Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable, 
-//         @Param("userId") String userId,
-//         @Param("screenName") String screenName,
-// //            @Param("dataChannel") Integer dataChannel,
-//         @Param("scoreGroup") String scoreGroup,
-//         @Param("responseGroup") String responseGroup,
-//         @Param("stimulusId") String stimulusId,
-//         @Param("response") String response,
-//         @Param("isCorrect") Boolean isCorrect);
+    @Query("SELECT p FROM StimulusResponse p WHERE "
+            + "(:userId IS NULL OR p.userId like :userId) AND "
+            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+            + "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND "
+            + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
+            + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
+            + "(:response IS NULL OR p.response like :response)")
+    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable,
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            //            @Param("dataChannel") Integer dataChannel,
+            //            @Param("isCorrect") Boolean isCorrect,
+            @Param("scoreGroup") String scoreGroup,
+            @Param("responseGroup") String responseGroup,
+            @Param("stimulusId") String stimulusId,
+            @Param("response") String response);
+
+    @Query("SELECT p FROM StimulusResponse p WHERE "
+            + "(:userId IS NULL OR p.userId like :userId) AND "
+            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+            + "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND "
+            + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
+            + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
+            + "(:response IS NULL OR p.response like :response)"
+            + "(:isCorrect IS NULL OR p.isCorrect = :isCorrect)")
+    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable,
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            //            @Param("dataChannel") Integer dataChannel,
+            @Param("scoreGroup") String scoreGroup,
+            @Param("responseGroup") String responseGroup,
+            @Param("stimulusId") String stimulusId,
+            @Param("response") String response,
+            @Param("isCorrect") Boolean isCorrect);
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(
-        @Param("screenName") String screenName,
-//            @Param("dataChannel") Integer dataChannel,
-//            @Param("isCorrect") Boolean isCorrect,
-        @Param("scoreGroup") String scoreGroup,
-        @Param("responseGroup") String responseGroup,
-        @Param("stimulusId") String stimulusId,
-        @Param("response") String response);
+            @Param("screenName") String screenName,
+            //            @Param("dataChannel") Integer dataChannel,
+            //            @Param("isCorrect") Boolean isCorrect,
+            @Param("scoreGroup") String scoreGroup,
+            @Param("responseGroup") String responseGroup,
+            @Param("stimulusId") String stimulusId,
+            @Param("response") String response);
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(
-        @Param("screenName") String screenName,
-//            @Param("dataChannel") Integer dataChannel,
-        @Param("scoreGroup") String scoreGroup,
-        @Param("responseGroup") String responseGroup,
-        @Param("stimulusId") String stimulusId,
-        @Param("response") String response,
-        @Param("isCorrect") Boolean isCorrect);
+            @Param("screenName") String screenName,
+            //            @Param("dataChannel") Integer dataChannel,
+            @Param("scoreGroup") String scoreGroup,
+            @Param("responseGroup") String responseGroup,
+            @Param("stimulusId") String stimulusId,
+            @Param("response") String response,
+            @Param("isCorrect") Boolean isCorrect);
 
 //     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
 //     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectFalse(
@@ -120,20 +127,23 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
 //         @Param("responseGroup") String responseGroup,
 //         @Param("stimulusId") String stimulusId,
 //         @Param("response") String response);
-
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse")
     long countDistinctRecords();
-    
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where userId = :userId")
     long countDistinctUserIdRecords(@Param("userId") String userId);
 
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where response like :matchingLike")
-    public long countByResponseLike(@Param("matchingLike") String matchingLike);    
+    public long countByResponseLike(@Param("matchingLike") String matchingLike);
 
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where screenName like :matchingLike")
     public long countByScreenNameLike(@Param("matchingLike") String matchingLike);
 
