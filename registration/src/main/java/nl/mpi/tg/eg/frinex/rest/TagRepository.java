@@ -74,10 +74,8 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("SELECT count(p) FROM TagData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-        + "(:eventTag IS NULL OR p.eventTag like :eventTag) AND "
-        + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
-        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
-        + "(:response IS NULL OR p.response like :response)")
+        + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
+        + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
     long countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike(
         @Param("userId") String userId,
         @Param("screenName") String screenName,
@@ -87,10 +85,8 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("SELECT p FROM TagData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-        + "(:eventTag IS NULL OR p.eventTag like :eventTag) AND "
-        + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
-        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
-        + "(:response IS NULL OR p.response like :response)")
+        + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
+        + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
     Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("screenName") String screenName,
