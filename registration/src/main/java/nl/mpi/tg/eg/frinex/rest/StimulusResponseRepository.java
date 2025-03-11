@@ -76,7 +76,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
             + "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND "
             + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
             + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
-            + "(:response IS NULL OR p.response like :response)"
+            + "(:response IS NULL OR p.response like :response) AND "
             + "(:isCorrect IS NULL OR p.isCorrect = :isCorrect)")
     Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable,
             @Param("userId") String userId,
