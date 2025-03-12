@@ -192,7 +192,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "stimulustable", label: "Stimulus Responses", source: "stimulusResponse", columnNames: "ScreenName,DataChannel,ResponseGroup,ScoreGroup,StimulusId,Response,isCorrect,GP,TS,TPS,CS,CSt,ESt,PS,MS,ME,MCSt,MESt,MPS,Events,EventMs,TagDate", userId: paramId, screenName: "%", scoreGroup: "%", responseGroup: "%", stimulusId: "%", response: "%"});
+                generateTable({divId: "stimulustable", label: "Stimulus Responses", source: "stimulusResponse", columnNames: "screenName,dataChannel,responseGroup,scoreGroup,stimulusId,response,isCorrect,gamesPlayed,totalScore,totalPotentialScore,currentScore,correctStreak,errorStreak,potentialScore,maxScore,maxErrors,maxCorrectStreak,maxErrorStreak,maxPotentialScore,eventMs,tagDate", userId: paramId});
                 /*]]>*/
             </script>
         </span>
@@ -288,7 +288,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "mediatable", label: "Media Responses", source: "mediaResponse", columnNames: "ScreenName,StimulusID,RecordingFormat,SubmitDate,MediaFile", userId: paramId, screenName: "%", stimulusId: "%"});
+                generateTable({divId: "mediatable", label: "Media Responses", source: "mediaResponse", columnNames: "screenName,stimulusId,recordingFormat,submitDate,mediaFile", userId: paramId});
                 /*]]>*/
             </script>
         </span>
@@ -296,7 +296,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "timestamptable", label: "Time Stamp Data", source: "timestamp", columnNames: "TagDate,EventTag,EventMs", userId: paramId, eventTag: "%"});
+                generateTable({divId: "timestamptable", label: "Time Stamp Data", source: "timestamp", columnNames: "tagDate,eventTag,eventMs", userId: paramId});
                 /*]]>*/
             </script>
         </span>
