@@ -192,7 +192,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "stimulustable", label: "Stimulus Responses", source: "stimulusResponse", columnNames: "screenName,dataChannel,responseGroup,scoreGroup,stimulusId,response,isCorrect,gamesPlayed,totalScore,totalPotentialScore,currentScore,correctStreak,errorStreak,potentialScore,maxScore,maxErrors,maxCorrectStreak,maxErrorStreak,maxPotentialScore,eventMs,tagDate", userId: paramId});
+                generateTable({divId: "stimulustable", label: "Stimulus Responses", source: "stimulusResponse", columnNames: "screenName,dataChannel,responseGroup,scoreGroup,stimulusId,response,isCorrect,gamesPlayed,totalScore,totalPotentialScore,currentScore,correctStreak,errorStreak,potentialScore,maxScore,maxErrors,maxCorrectStreak,maxErrorStreak,maxPotentialScore,eventTimes,eventMs,tagDate", userId: paramId});
                 /*]]>*/
             </script>
         </span>

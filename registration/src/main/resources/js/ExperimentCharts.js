@@ -92,12 +92,12 @@ function generateChart(chartData) {
                 }
             }
             $.getJSON('tagevents/search/countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike'
-                    + parametersString,
-                    function (responseData) {
-                        // console.log(responseData);
-                        data.datasets[0].data[tagDataIndex] = responseData;
-                        adminChart.update();
-                    });
+                + parametersString,
+                function (responseData) {
+                    // console.log(responseData);
+                    data.datasets[0].data[tagDataIndex] = responseData;
+                    adminChart.update();
+                });
         }
         for (const stimulusResponse of chartData.stimulusResponse) {
             data.labels.push(stimulusResponse.label);
@@ -111,12 +111,12 @@ function generateChart(chartData) {
                     parametersString += key + "=" + encodeURIComponent(value);
                 }
             }
-            $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect' 
+            $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect'
                 + parametersString, function (responseData) {
-                // console.log(responseData);
-                data.datasets[0].data[responseIndex] = responseData;
-                adminChart.update();
-            });
+                    // console.log(responseData);
+                    data.datasets[0].data[responseIndex] = responseData;
+                    adminChart.update();
+                });
 
             // $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.columnName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {
             //     // console.log(responseData);
@@ -180,7 +180,7 @@ function loadMore(tableId) {
             var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
             for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
-                const columnId =  columnHeader.id;
+                const columnId = columnHeader.id;
                 if (columnId === "mediaFile") {
                     dataRow += "<td>";
                     if (recordData.video) {
@@ -227,19 +227,19 @@ function generateTable(tableData) {
     const dataUrl = (tableData.source === "tagpair") ? (
         'tagpairevents/search/findByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
         + parametersString
-        ) : (tableData.source === "tagdata") ? (
+    ) : (tableData.source === "tagdata") ? (
         'tagevents/search/findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike'
         + parametersString
-        ) : (tableData.source === "timestamp") ? (
+    ) : (tableData.source === "timestamp") ? (
         'timestamps/search/findByUserIdLikeAndEventTagLike'
         + parametersString
-        ) : (tableData.source === "mediaResponse") ? (
+    ) : (tableData.source === "mediaResponse") ? (
         'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLike'
         + parametersString
         // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
-        ) : (tableData.source === "stimulusResponse") ? (
+    ) : (tableData.source === "stimulusResponse") ? (
         'stimulusresponses/search/findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
-        + ((tableData.isCorrect)? 'AndIsCorrect' : '')
+        + ((tableData.isCorrect) ? 'AndIsCorrect' : '')
         + parametersString
     ) : "";
     $("#" + tableData.divId).append("<h3>" + tableData.label + "</h3>");
@@ -249,66 +249,67 @@ function generateTable(tableData) {
     } else {
         $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
-            // TODO: add the hover column details text
             // TODO: maybe add column filter textbox
             var columnId = columnName;
             var columnLabel;
             var columnHint;
-            switch(columnName){
+            switch (columnName) {
                 case 'gamesPlayed':
                     columnLabel = 'GP';
-                    columnHint = '';
+                    columnHint = 'Games Played';
                     break;
                 case 'totalScore':
                     columnLabel = 'TS';
-                    columnHint = '';
+                    columnHint = 'Total Score';
                     break;
                 case 'totalPotentialScore':
                     columnLabel = 'TPS';
-                    columnHint = '';
+                    columnHint = 'Total Potential Score';
                     break;
                 case 'currentScore':
                     columnLabel = 'CS';
-                    columnHint = '';
+                    columnHint = 'Current Score';
                     break;
                 case 'correctStreak':
                     columnLabel = 'CS';
-                    columnHint = '';
+                    columnHint = 'Correct Streak';
                     break;
                 case 'errorStreak':
                     columnLabel = 'ES';
-                    columnHint = '';
+                    columnHint = 'Error Streak';
                     break;
                 case 'potentialScore':
                     copotentialScorelumnLabel = 'PS';
-                    columnHint = '';
+                    columnHint = 'Potential Score';
                     break;
                 case 'maxScore':
                     columnLabel = 'MS';
-                    columnHint = '';
+                    columnHint = 'Maximum Score';
                     break;
                 case 'maxErrors':
                     columnLabel = 'ME';
-                    columnHint = '';
+                    columnHint = 'Maximum Errors';
                     break;
                 case 'maxCorrectStreak':
                     columnLabel = 'MCS';
-                    columnHint = '';
+                    columnHint = 'Maximum Correct Streak';
                     break;
                 case 'maxErrorStreak':
                     columnLabel = 'MES';
-                    columnHint = '';
+                    columnHint = 'Maximum Error Streak';
                     break;
                 case 'maxPotentialScore':
                     columnLabel = 'MPS';
-                    columnHint = '';
+                    columnHint = 'Maximum Potential Score';
+                case 'eventTimes':
+                    columnLabel = 'Events';
+                    columnHint = 'Stimulus Events';
                     break;
                 default:
                     columnLabel = (columnName.charAt(0).toUpperCase() + columnName.slice(1)).replace(/Id$/, "ID");
                     columnHint = '';
             }
-            // TODO: add the columnHint
-            $("#" + tableId + " thead tr").append("<th id='" + columnId + "'><a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnLabel + "</a></th>");
+            $("#" + tableId + " thead tr").append("<th id='" + columnId + "'>" + ((columnHint.length == 0) ? '' : "<span class='balloontext'>" + columnHint + "</span>") + "<a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnLabel + "</a></th>");
         }
         loadMore(tableId);
     }
