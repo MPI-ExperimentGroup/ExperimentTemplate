@@ -301,6 +301,7 @@ function generateTable(tableData) {
                 case 'maxPotentialScore':
                     columnLabel = 'MPS';
                     columnHint = 'Maximum Potential Score';
+                    break;
                 case 'eventTimes':
                     columnLabel = 'Events';
                     columnHint = 'Stimulus Events';
