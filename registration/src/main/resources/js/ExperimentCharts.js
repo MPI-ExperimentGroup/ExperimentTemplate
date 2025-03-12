@@ -180,8 +180,8 @@ function loadMore(tableId) {
             var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
             for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
-                const columnName =  columnHeader.id;
-                if (columnName === "mediaFile") {
+                const columnId =  columnHeader.id;
+                if (columnId === "mediaFile") {
                     dataRow += "<td>";
                     if (recordData.video) {
                         dataRow += "<video controls='true' preload='none' width='320' height='240'><source src='" + recordData.mediaPath + "' type='video/" + recordData.recordingFormat + "' /></video>";
@@ -189,7 +189,7 @@ function loadMore(tableId) {
                         dataRow += "<audio controls='true' preload='none'><source src='" + recordData.mediaPath + "' type='audio/" + recordData.recordingFormat + "' /></audio>";
                     }
                     dataRow += "</td>";
-                } else if (columnName === "tagValue2" && recordData.eventTag === "touchInputReport") {
+                } else if (columnId === "tagValue2" && recordData.eventTag === "touchInputReport") {
                     touchInputReport = true;
                     touchInputReportCounter++;
                     dataRow += "<td class='popupOuter'>";
@@ -197,7 +197,7 @@ function loadMore(tableId) {
                     dataRow += "<table id='table_" + tableId + '_' + touchInputReportCounter + "' class='popupTable'><tr><td>ms</td><td>X</td><td>Y</td><td>Interaction</td></tr></table>";
                     dataRow += "</td>";
                 } else {
-                    dataRow += "<td>" + recordData[columnName] + "</td>";
+                    dataRow += "<td>" + recordData[columnId] + "</td>";
                 }
             }
             dataRow += "</tr>";
@@ -251,48 +251,64 @@ function generateTable(tableData) {
         for (const columnName of tableData.columnNames.split(",")) {
             // TODO: add the hover column details text
             // TODO: maybe add column filter textbox
-            var columnId;
+            var columnId = columnName;
+            var columnLabel;
+            var columnHint;
             switch(columnName){
-                case 'GP':
-                    columnId = 'gamesPlayed';
+                case 'gamesPlayed':
+                    columnLabel = 'GP';
+                    columnHint = '';
                     break;
-                case 'TS':
-                    columnId = 'totalScore';
+                case 'totalScore':
+                    columnLabel = 'TS';
+                    columnHint = '';
                     break;
-                case 'TPS':
-                    columnId = 'totalPotentialScore';
+                case 'totalPotentialScore':
+                    columnLabel = 'TPS';
+                    columnHint = '';
                     break;
-                case 'CS':
-                    columnId = 'currentScore';
+                case 'currentScore':
+                    columnLabel = 'CS';
+                    columnHint = '';
                     break;
-                case 'CSt':
-                    columnId = 'correctStreak';
+                case 'correctStreak':
+                    columnLabel = 'CS';
+                    columnHint = '';
                     break;
-                case 'ESt':
-                    columnId = 'errorStreak';
+                case 'errorStreak':
+                    columnLabel = 'ES';
+                    columnHint = '';
                     break;
-                case 'PS':
-                    columnId = 'potentialScore';
+                case 'potentialScore':
+                    copotentialScorelumnLabel = 'PS';
+                    columnHint = '';
                     break;
-                case 'MS':
-                    columnId = 'maxScore';
+                case 'maxScore':
+                    columnLabel = 'MS';
+                    columnHint = '';
                     break;
-                case 'ME':
-                    columnId = 'maxErrors';
+                case 'maxErrors':
+                    columnLabel = 'ME';
+                    columnHint = '';
                     break;
-                case 'MCSt':
-                    columnId = 'maxCorrectStreak';
+                case 'maxCorrectStreak':
+                    columnLabel = 'MCS';
+                    columnHint = '';
                     break;
-                case 'MESt':
-                    columnId = 'maxErrorStreak';
+                case 'maxErrorStreak':
+                    columnLabel = 'MES';
+                    columnHint = '';
                     break;
-                case 'MPS':
-                    columnId = 'maxPotentialScore';
+                case 'maxPotentialScore':
+                    columnLabel = 'MPS';
+                    columnHint = '';
                     break;
                 default:
-                    columnId = (columnName.charAt(0).toLowerCase() + columnName.slice(1)).replace(/ID$/, "Id");
+                    columnLabel = (columnName.charAt(0).toUpperCase() + columnName.slice(1)).replace(/Id$/, "ID");
+                    columnHint = '';
             }
-            $("#" + tableId + " thead tr").append("<th id='" + columnId + "'><a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
+            // TODO: add the columnHint
+            $("#" + tableId + " thead tr").append("<th id='" + columnId + "'><a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnLabel + "</a></th>");
         }
         loadMore(tableId);
     }
