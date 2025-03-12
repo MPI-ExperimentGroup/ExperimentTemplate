@@ -180,7 +180,7 @@ function loadMore(tableId) {
             var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
             for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
-                const columnName = (columnLabel.charAt(0).toLowerCase() + columnLabel.slice(1)).replace(/ID$/, "Id");
+                const columnName =  columnHeader.id;
                 if (columnName === "mediaFile") {
                     dataRow += "<td>";
                     if (recordData.video) {
@@ -249,7 +249,50 @@ function generateTable(tableData) {
     } else {
         $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
-            $("#" + tableId + " thead tr").append("<th><a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
+            // TODO: add the hover column details text
+            // TODO: maybe add column filter textbox
+            var columnId;
+            switch(columnName){
+                case 'GP':
+                    columnId = 'gamesPlayed';
+                    break;
+                case 'TS':
+                    columnId = 'totalScore';
+                    break;
+                case 'TPS':
+                    columnId = 'totalPotentialScore';
+                    break;
+                case 'CS':
+                    columnId = 'currentScore';
+                    break;
+                case 'CSt':
+                    columnId = 'correctStreak';
+                    break;
+                case 'ESt':
+                    columnId = 'errorStreak';
+                    break;
+                case 'PS':
+                    columnId = 'potentialScore';
+                    break;
+                case 'MS':
+                    columnId = 'maxScore';
+                    break;
+                case 'ME':
+                    columnId = 'maxErrors';
+                    break;
+                case 'MCSt':
+                    columnId = 'maxCorrectStreak';
+                    break;
+                case 'MESt':
+                    columnId = 'maxErrorStreak';
+                    break;
+                case 'MPS':
+                    columnId = 'maxPotentialScore';
+                    break;
+                default:
+                    columnId = (columnName.charAt(0).toLowerCase() + columnName.slice(1)).replace(/ID$/, "Id");
+            }
+            $("#" + tableId + " thead tr").append("<th id='" + columnId + "'><a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnName + "</a></th>");
         }
         loadMore(tableId);
     }
