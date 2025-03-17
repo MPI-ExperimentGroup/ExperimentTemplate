@@ -357,7 +357,8 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>momentjs</artifactId>
-            <version>2.30.1</version>
+            <!--the later versions of moment eg 2.30.1 are module based so we are keeping the older version here -->
+            <version>2.29.4</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
