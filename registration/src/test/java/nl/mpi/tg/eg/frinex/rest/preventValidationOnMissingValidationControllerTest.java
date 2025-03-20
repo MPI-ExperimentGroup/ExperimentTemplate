@@ -165,7 +165,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public long countByUserIdLikeAndEventTagLike(Pageable pageable, String userId, String eventTag) {
+            public long countByUserIdLikeAndEventTagLike(String userId, String eventTag) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
