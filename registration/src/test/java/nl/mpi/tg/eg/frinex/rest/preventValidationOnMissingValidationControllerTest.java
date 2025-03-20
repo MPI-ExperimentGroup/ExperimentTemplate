@@ -163,6 +163,11 @@ public class preventValidationOnMissingValidationControllerTest {
             public Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, String userId, String eventTag) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
+
+            @Override
+            public long countByUserIdLikeAndEventTagLike(Pageable pageable, String userId, String eventTag) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
             
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
