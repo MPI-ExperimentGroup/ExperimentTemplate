@@ -46,6 +46,13 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     @Query("SELECT count(p) FROM TimeStamp p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
+    long countByUserIdLikeAndEventTagLike(Pageable pageable, 
+        @Param("userId") String userId,
+        @Param("eventTag") String eventTag);
+
+    @Query("SELECT p FROM TimeStamp p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
     Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("eventTag") String eventTag);
