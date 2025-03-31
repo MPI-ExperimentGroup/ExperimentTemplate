@@ -206,7 +206,7 @@ function loadMore(tableId) {
                     dataRow += "</td>";
                 } else if (columnId === "tagDate" || columnId === "submitDate") {
                     const tagDate = moment(recordData[columnId]);
-                    dataRow += "<td><div class='balloontext'>" + recordData[columnId] + "</div>" + tagDate.format("YYYY-MM-DD HH:mm:ss.SSS") + "</td>";
+                    dataRow += "<td>" + tagDate.format("YYYY-MM-DD HH:mm:ss.SSS") + "<div class='balloontext'>" + recordData[columnId] + "</div></td>";
                 } else {
                     dataRow += "<td>" + recordData[columnId] + "</td>";
                 }
