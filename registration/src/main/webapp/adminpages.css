@@ -78,11 +78,11 @@ th {
     position: relative;
 }
 
-th:hover .balloontext {
+th:hover .balloontext, td:hover .balloontext {
     visibility: visible;
 }
 
-th .balloontext {
+th .balloontext, td .balloontext {
     visibility: hidden;
     border-radius: 5px;
     position: absolute;
@@ -91,7 +91,7 @@ th .balloontext {
     margin-left: -20px;
 }
 
-th .balloontext::after {
+th .balloontext::after, td .balloontext::after {
     position: absolute;
     content: "";
     bottom: 100%;
