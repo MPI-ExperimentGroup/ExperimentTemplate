@@ -82,13 +82,16 @@ th:hover .balloontext, td:hover .balloontext {
     visibility: visible;
 }
 
+th .balloontext {
+    top: 150%;
+    margin-left: -20px;
+}
+
 th .balloontext, td .balloontext {
     visibility: hidden;
     border-radius: 5px;
     position: absolute;
     z-index: 1;
-    top: 150%;
-    margin-left: -20px;
 }
 
 th .balloontext::after, td .balloontext::after {
