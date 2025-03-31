@@ -87,6 +87,10 @@ th .balloontext {
     margin-left: -20px;
 }
 
+td .balloontext {
+    transform: translate(0px, 25px);
+}
+
 th .balloontext, td .balloontext {
     visibility: hidden;
     border-radius: 5px;
