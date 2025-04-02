@@ -160,6 +160,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
+        <span class="table-container" id="tagtable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "tagtable", label: "Tag Data", source: "dagData", columnNames: "screenName,tagDate,eventTag,tagValue,eventMs", userId: paramId});
+                /*]]>*/
+            </script>
+        </span>
         <h3 th:if="${!simpleMode}">Tag Data</h3>
         <table th:if="${!simpleMode}" id="datatable">
             <thead>
