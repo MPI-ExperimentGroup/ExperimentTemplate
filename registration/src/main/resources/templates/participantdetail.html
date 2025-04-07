@@ -92,6 +92,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
+        <span class="table-container" id="screentable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "screentable", label: "Screen Sequence", source: "screendata", columnNames: "screenName,viewDate", userId: paramId});
+                /*]]>*/
+            </script>
+        </span>
         <h3>Screen Sequence</h3>
         <table id="datatable">
             <thead>
