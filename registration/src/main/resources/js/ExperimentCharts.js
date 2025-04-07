@@ -244,6 +244,9 @@ function generateTable(tableData) {
     ) : (tableData.source === "timestamp") ? (
         'timestamps/search/findByUserIdLikeAndEventTagLike'
         + parametersString
+    ) : (tableData.source === "screendata") ? (
+        'screenviews/search/findByUserIdLikeScreenNameLike'
+        + parametersString
     ) : (tableData.source === "mediaResponse") ? (
         'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLike'
         + parametersString

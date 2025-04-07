@@ -46,6 +46,16 @@ public class allowValidationOnMissingValidationControllerTest {
 
         return new allowValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
+            public long countByUserIdLikeAndScreenNameLike(String userId, String screenName) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Page<ScreenData> findByUserIdLikeScreenNameLike(Pageable pageable, String userId, String screenName) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public long countAllDistinctRecords() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }

@@ -20,6 +20,8 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.List;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -54,6 +56,20 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     ScreenData findTop1ByOrderBySubmitDateDesc();
+    
+    @Query("SELECT count(p) FROM TagData p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:screenName IS NULL OR p.screenName like :screenName)")
+    long countByUserIdLikeAndScreenNameLike(
+        @Param("userId") String userId,
+        @Param("screenName") String screenName);
+
+    @Query("SELECT p FROM TagData p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:screenName IS NULL OR p.screenName like :screenName)")
+    Page<ScreenData> findByUserIdLikeScreenNameLike(Pageable pageable, 
+        @Param("userId") String userId,
+        @Param("screenName") String screenName);
 
     @Override
     @RestResource(exported = false)
