@@ -77,6 +77,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
+        <span class="table-container" id="completiontable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "completiontable", label: "Completion Events", source: "tagpair", columnNames: "tagValue2,tagDate", userId: paramId, eventTag: "DataSubmission", tagValue1: "CompletionCode"});
+                /*]]>*/
+            </script>
+        </span>
         <h3>Completion Events</h3>
         <table id="datatable">       
             <thead>
