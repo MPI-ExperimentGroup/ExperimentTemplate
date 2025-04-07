@@ -119,7 +119,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "tagpairtable", label: "Tag Pair Data", source: "tagpairdata", columnNames: "screenName,tagDate,eventTag,tagValue1,tagValue2,eventMs", userId: paramId});
+                generateTable({divId: "tagpairtable", label: "Tag Pair Data", source: "tagpair", columnNames: "screenName,tagDate,eventTag,tagValue1,tagValue2,eventMs", userId: paramId});
                 /*]]>*/
             </script>
         </span>
@@ -148,7 +148,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <!--<td th:text="${tagPairData.submitDate}">submitDate</td>-->
                     <!--<td th:text="${tagPairData.experimentName}">experimentName</td>-->
                     <td th:text="${tagPairData.eventTag}">eventTag</td>
-                    <td th:text="${tagPairData.tagValue1}">tagValue1</td>
+                    <td th:text="${tagPairData.tagValue1}">tagValue1</td>                    
                     <td th:if="${tagPairData.eventTag ne 'touchInputReport'}" th:text="${tagPairData.tagValue2}">tagValue2</td>
                     <td th:id="${'outer_'+prodIndex.index}" class="popupOuter" th:if="${tagPairData.eventTag eq 'touchInputReport'}">
                         <!--<span th:text="${tagPairData.tagValue2.length()}"></span>-->
