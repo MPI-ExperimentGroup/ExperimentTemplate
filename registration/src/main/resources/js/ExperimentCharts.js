@@ -321,10 +321,10 @@ function generateTable(tableData) {
                     columnHint = 'Stimulus Events';
                     break;
                 default:
-                    if (tableData.eventTag === "DataSubmission" && tableData.tagValue1 === "CompletionCode" && columnName === "TagValue2") {
+                    if (tableData.eventTag === "DataSubmission" && tableData.tagValue1 === "CompletionCode" && columnName === "tagValue2") {
                         columnLabel = "Completion Code";
                     }
-                    if (tableData.eventTag === "DataSubmission" && tableData.tagValue1 === "CompletionCode" && columnName === "TagDate") {
+                    if (tableData.eventTag === "DataSubmission" && tableData.tagValue1 === "CompletionCode" && columnName === "tagDate") {
                         columnLabel = "Code	Allocation";
                     } else {
                         columnLabel = (columnName.charAt(0).toUpperCase() + columnName.slice(1)).replace(/Id$/, "ID");

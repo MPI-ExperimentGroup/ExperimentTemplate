@@ -57,14 +57,14 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     ScreenData findTop1ByOrderBySubmitDateDesc();
     
-    @Query("SELECT count(p) FROM TagData p WHERE "
+    @Query("SELECT count(p) FROM ScreenData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName)")
     long countByUserIdLikeAndScreenNameLike(
         @Param("userId") String userId,
         @Param("screenName") String screenName);
 
-    @Query("SELECT p FROM TagData p WHERE "
+    @Query("SELECT p FROM ScreenData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName)")
     Page<ScreenData> findByUserIdLikeScreenNameLike(Pageable pageable, 
