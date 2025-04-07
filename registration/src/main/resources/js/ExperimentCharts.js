@@ -321,7 +321,14 @@ function generateTable(tableData) {
                     columnHint = 'Stimulus Events';
                     break;
                 default:
-                    columnLabel = (columnName.charAt(0).toUpperCase() + columnName.slice(1)).replace(/Id$/, "ID");
+                    if (tableData.eventTag === "DataSubmission" && tableData.tagValue1 === "CompletionCode" && columnName === "TagValue2") {
+                        columnLabel = "Completion Code";
+                    }
+                    if (tableData.eventTag === "DataSubmission" && tableData.tagValue1 === "CompletionCode" && columnName === "TagDate") {
+                        columnLabel = "Code	Allocation";
+                    } else {
+                        columnLabel = (columnName.charAt(0).toUpperCase() + columnName.slice(1)).replace(/Id$/, "ID");
+                    }
                     columnHint = '';
             }
             $("#" + tableId + " thead tr").append("<th id='" + columnId + "'>" + ((columnHint.length == 0) ? '' : "<span class='balloontext'>" + columnHint + "</span>") + "<a href='#' onclick=\"sortBy('" + tableId + "', '" + encodeURIComponent(columnName) + "');return false;\">" + columnLabel + "</a></th>");
