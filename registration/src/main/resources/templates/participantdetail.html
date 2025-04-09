@@ -60,7 +60,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "startedtable", label: "Application Started", source: "startedtable", columnNames: "screenName,viewDate", userId: paramId, screenName: "ApplicationStarted"});
+                generateTable({divId: "startedtable", label: "Application Started", source: "screendata", columnNames: "screenName,viewDate", userId: paramId, screenName: "ApplicationStarted"});
                 /*]]>*/
             </script>
         </span>
@@ -68,7 +68,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "focustable", label: "Window Focus", source: "startedtable", columnNames: "screenName,viewDate", userId: paramId, screenName: "WindowFocus%"});
+                generateTable({divId: "focustable", label: "Window Focus", source: "screendata", columnNames: "screenName,viewDate", userId: paramId, screenName: "WindowFocus%"});
                 /*]]>*/
             </script>
         </span>
@@ -76,7 +76,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
-                generateTable({divId: "closedtable", label: "Browser Window Closed", source: "startedtable", columnNames: "screenName,viewDate", userId: paramId, screenName: "BrowserWindowClosed"});
+                generateTable({divId: "closedtable", label: "Browser Window Closed", source: "screendata", columnNames: "screenName,viewDate", userId: paramId, screenName: "BrowserWindowClosed"});
                 /*]]>*/
             </script>
         </span>

@@ -23,17 +23,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <title>Tagged Events Page</title>
+        <title>Screen Sequence</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
         <script src="webjars/jquery/jquery.min.js"></script>
+        <script src="webjars/momentjs/moment.js"></script>
         <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
+        <script src="js/ExperimentCharts.js"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
-        <p th:text="'Screen Events Count, ' + ${count}" />
         <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
+        <span class="table-container" id="screentable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "screentable", label: "Screen Sequence", source: "screendata", columnNames: "userId,screenName,viewDate"});
+                /*]]>*/
+            </script>
+        </span>
         <table id="datatable">
             <thead>
                 <tr id='tableFloatingHeader'>
