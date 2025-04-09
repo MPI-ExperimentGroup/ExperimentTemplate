@@ -169,9 +169,10 @@ function sortBy(tableId, sortColumn) {
 
 function loadMore(tableId) {
     const dataUrl = $("#" + tableId + "LoadMoreRow").attr('dataUrl');
+    const parametersString = $("#" + tableId + "LoadMoreRow").attr('parametersString');
     const pageNumber = $("#" + tableId + "LoadMoreRow").attr('pageNumber');
     const sortColumn = $("#" + tableId + "LoadMoreRow").attr('sortColumn');
-    $.getJSON(dataUrl + '&page=' + pageNumber + '&sort=' + sortColumn, function (responseData) {
+    $.getJSON(dataUrl + ((parametersString.length == 0) ? "?" : "&") + 'page=' + pageNumber + '&sort=' + sortColumn, function (responseData) {
         // console.log(responseData);
         // todo: impliment or remove simple mode parameter
         var touchInputReportCounter = $("#" + tableId + " tbody tr:last").index();
@@ -261,7 +262,7 @@ function generateTable(tableData) {
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
-        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
+        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
             // TODO: maybe add column filter textbox
             var columnId = columnName;
