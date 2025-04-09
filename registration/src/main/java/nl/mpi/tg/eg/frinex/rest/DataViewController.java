@@ -46,9 +46,6 @@ public class DataViewController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        final long distinctRecords = this.screenDataRepository.countAllDistinctRecords();
-        model.addAttribute("count", distinctRecords);
-//        model.addAttribute("allScreenData", distinctRecords);
         final Page<ScreenData> pageData = this.screenDataRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<ScreenData> content = pageData.getContent();
         final List<ScreenData> contentDistinct = new ArrayList<>();
