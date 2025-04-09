@@ -83,22 +83,7 @@ public class ParticipantDetailController {
         } else {
             model.addAttribute("insertUserData", freshCopyUserData.get(0));
         }
-        model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
-        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.findByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED).size());
-        model.addAttribute("countOfApplicationStarted", this.screenDataRepository.findByUserIdAndScreenName(id, APPLICATION_STARTED).size());
         model.addAttribute("allowDelete", this.allowDelete);
-        model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserIdOrderByTagDateAsc(id));
-        model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
-        model.addAttribute("participantCompletionCode", this.tagPairRepository.findByUserIdAndEventTagAndTagValue1OrderByTagDateAsc(id, DATA_SUBMISSION, COMPLETION_CODE));
-        model.addAttribute("participantAudioTestCount", this.tagRepository.countDistinctTagDateByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG)); // todo: this can go or be updated
-        model.addAttribute("participantTagData", this.tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(id));
-//        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findByUserIdDistinctOrderByTagDateAsc(id));
-        final List<StimulusResponse> contentDistinct = new ArrayList<>();
-        for (StimulusResponse stimulusResponse : this.stimulusResponseRepository.findByUserIdOrderByTagDateAsc(id)) {
-            if (!contentDistinct.contains(stimulusResponse)) {
-                contentDistinct.add(stimulusResponse);
-            }
-        }
         return "participantdetail";
     }
 
