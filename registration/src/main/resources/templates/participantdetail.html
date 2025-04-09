@@ -60,7 +60,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <p th:text="'Application Started Event Count, ' + ${countOfApplicationStarted}" />
         <h3 th:if="${!simpleMode}">Browser Window Closed</h3>
         <p th:if="${!simpleMode}" th:text="'Browser Window Closed Event Count, ' + ${countOfBrowserWindowClosed}" />
-        <p th:if="${!simpleMode}" th:text="'Test Audio Event Count, ' + ${participantAudioTestCount}" />
         <table th:if="${!simpleMode}" id="datatable">       
             <thead>
                 <tr>
@@ -109,21 +108,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*]]>*/
             </script>
         </span>
-        <h3>Completion Events</h3>
-        <table id="datatable">       
-            <thead>
-                <tr>
-                    <th>Completion Code</th>
-                    <th>Allocation Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="clickablerow" th:each="tagPairData : ${participantCompletionCode}">
-                    <td th:text="${tagPairData.tagValue2}">tagValue2</td>
-                    <td th:text="${tagPairData.tagDate}">tagDate</td>
-                </tr>
-            </tbody>
-        </table>
         <span class="table-container" id="screentable">
             <script th:inline="javascript">
                 /*<![CDATA[*/
