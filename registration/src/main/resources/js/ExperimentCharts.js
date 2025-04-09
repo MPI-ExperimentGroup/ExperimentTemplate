@@ -208,7 +208,7 @@ function loadMore(tableId) {
                 } else if (columnId === "tagDate" || columnId === "submitDate" || columnId === "viewDate") {
                     const tagDate = moment(recordData[columnId]);
                     dataRow += "<td>" + tagDate.format("YYYY-MM-DD HH:mm:ss.SSS") + "<div class='balloontext'>" + recordData[columnId] + "</div></td>";
-                } else {
+                } else if (columnId.length > 0) {
                     dataRow += "<td>" + ((recordData[columnId] !== null) ? recordData[columnId] : "<div class='balloontext'>" + recordData[columnId] + "</div>") + "</td>";
                 }
             }
