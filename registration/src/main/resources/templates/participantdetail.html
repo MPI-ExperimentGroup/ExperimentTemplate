@@ -77,6 +77,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
+        <span class="table-container" id="startedtable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "startedtable", label: "Application Started", source: "startedtable", columnNames: "screenName,viewDate", userId: paramId, screenName: "ApplicationStarted"});
+                /*]]>*/
+            </script>
+        </span>
+        <span class="table-container" id="focustable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "focustable", label: "Window Focus", source: "startedtable", columnNames: "screenName,viewDate", userId: paramId, screenName: "WindowFocus%"});
+                /*]]>*/
+            </script>
+        </span>
+        <span class="table-container" id="closedtable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                generateTable({divId: "closedtable", label: "Browser Window Closed", source: "startedtable", columnNames: "screenName,viewDate", userId: paramId, screenName: "BrowserWindowClosed"});
+                /*]]>*/
+            </script>
+        </span>
         <span class="table-container" id="completiontable">
             <script th:inline="javascript">
                 /*<![CDATA[*/
