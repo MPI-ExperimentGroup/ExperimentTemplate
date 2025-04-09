@@ -56,26 +56,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <input type="submit" value="View Delete Options" id ="deleteSubmit" hidden="hidden" />
             </form>
         </th:block>
-        <h3>Application Started</h3>
-        <p th:text="'Application Started Event Count, ' + ${countOfApplicationStarted}" />
-        <h3 th:if="${!simpleMode}">Browser Window Closed</h3>
-        <p th:if="${!simpleMode}" th:text="'Browser Window Closed Event Count, ' + ${countOfBrowserWindowClosed}" />
-        <table th:if="${!simpleMode}" id="datatable">       
-            <thead>
-                <tr>
-                    <th>Condition</th>
-                    <th>Similarity</th>
-                    <th>Allocation Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="clickablerow" th:each="tagPairData : ${participantSubsetStimulus}">
-                    <td th:text="${tagPairData.tagValue1}">tagValue1</td>
-                    <td th:text="${tagPairData.tagValue2}">tagValue2</td>
-                    <td th:text="${tagPairData.tagDate}">tagDate</td>
-                </tr>
-            </tbody>
-        </table>
         <span class="table-container" id="startedtable">
             <script th:inline="javascript">
                 /*<![CDATA[*/
