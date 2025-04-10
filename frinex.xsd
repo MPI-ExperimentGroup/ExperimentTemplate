@@ -2301,6 +2301,9 @@
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
 <xs:complexType name="ratingButtonType">
+<xs:annotation>
+<xs:documentation>Adds rating buttons based on the ratingLabels provided. If the rating label contains the numbers 0 to 9 then those number keys will be available as hotkeys. If there are exactly two rating labels then the keys z and . will be available as hotkeys. If groupId contains tokens they will be replaced with the respective values.</xs:documentation>
+</xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
@@ -2493,7 +2496,7 @@
 </xs:complexType>
 <xs:complexType name="stimulusRatingButtonType">
 <xs:annotation>
-<xs:documentation>Adds rating buttons for the current stimulus based on the ratingLabels of the stimulus.</xs:documentation>
+<xs:documentation>Adds rating buttons for the current stimulus based on the ratingLabels of the stimulus. If the rating label contains the numbers 0 to 9 then those number keys will be available as hotkeys. If there are exactly two rating labels then the keys z and . will be available as hotkeys. If groupId contains tokens they will be replaced with the respective values.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventTag" type="xs:string">
@@ -2713,6 +2716,9 @@
 </xs:attribute>
 </xs:complexType>
 <xs:complexType name="ratingFooterButtonType">
+<xs:annotation>
+<xs:documentation>Adds rating buttons in the footer based on the ratingLabels provided. If the rating label contains the numbers 0 to 9 then those number keys will be available as hotkeys. If there are exactly two rating labels then the keys z and . will be available as hotkeys. If groupId contains tokens they will be replaced with the respective values.</xs:documentation>
+</xs:annotation>
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="eventTag" type="xs:string">
 <xs:annotation>
