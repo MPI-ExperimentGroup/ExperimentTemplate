@@ -250,6 +250,9 @@ function generateTable(tableData) {
     ) : (tableData.source === "screendata") ? (
         'screenviews/search/findByUserIdLikeScreenNameLike'
         + parametersString
+    ) : (tableData.source === "participantdata") ? (
+        'participants/search/findByCustomDataLike'
+        + parametersString
     ) : (tableData.source === "mediaResponse") ? (
         'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLike'
         + parametersString

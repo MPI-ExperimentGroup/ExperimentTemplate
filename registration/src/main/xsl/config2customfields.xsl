@@ -170,6 +170,8 @@
                     import java.util.List;
                     import javax.persistence.QueryHint;
                     import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
+                    import org.springframework.data.domain.Page;
+                    import org.springframework.data.domain.Pageable;
                     import org.springframework.data.jpa.repository.Query;
                     import org.springframework.data.jpa.repository.QueryHints;
                     import org.springframework.data.repository.NoRepositoryBean;
@@ -177,6 +179,56 @@
 
                     @NoRepositoryBean
                     public interface <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->ParticipantColumnsRepository {
+                </xsl:text>
+                <xsl:text>
+                    @Query("SELECT p FROM Participant p WHERE "
+                        + "(:userId IS NULL OR p.userId like :userId)"
+                        + " AND (:remoteAddr IS NULL OR p.remoteAddr like :remoteAddr)"
+                        + " AND (:acceptLang IS NULL OR p.acceptLang like :acceptLang)"
+                        + " AND (:userAgent; IS NULL OR p.userAgent; like :userAgent)"
+                        + " AND (:staleCopy IS NULL OR p.staleCopy is :staleCopy)"
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>+ " AND (:</xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>; IS NULL OR p.</xsl:text>
+                    <xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat(', name = &quot;field_', @postName, '&quot;') else ''" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>; like :</xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>)"&#10;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>)</xsl:text>
+                <xsl:text>
+                    Page&lt;Participant&gt; findByCustomDataLike(Pageable pageable,
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>@Param("</xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>") String </xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>,&#10;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    @Param("userId") String userId,
+                    @Param("remoteAddr") String remoteAddr,
+                    @Param("acceptLang") String acceptLang,
+                    @Param("userAgent") String userAgent,
+                    @Param("staleCopy")  Boolean staleCopy);
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                 <!--xsl:if test="not(contains(@postName, '_'))"-->
