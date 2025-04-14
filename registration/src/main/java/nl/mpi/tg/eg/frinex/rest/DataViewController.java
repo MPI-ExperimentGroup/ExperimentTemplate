@@ -36,9 +36,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DataViewController {
 
-    @Autowired
-    private ScreenDataRepository screenDataRepository;
-
     @RequestMapping("dataviewer")
     public String dataViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "viewDate") String sortColumn,
@@ -46,25 +43,8 @@ public class DataViewController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        final Page<ScreenData> pageData = this.screenDataRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
-        final List<ScreenData> content = pageData.getContent();
-        final List<ScreenData> contentDistinct = new ArrayList<>();
-        for (ScreenData tagData : content) {
-            if (!contentDistinct.contains(tagData)) {
-                contentDistinct.add(tagData);
-            }
-        }
-        model.addAttribute("allScreenData", contentDistinct);
-        model.addAttribute("pageData", pageData);
-        model.addAttribute("sortColumn", sortColumn);
-        model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
         return "dataviewer";
     }
-
-//    @ModelAttribute("allScreenData")
-//    public List<ScreenData> findAll() {
-//        return this.screenDataRepository.findAll();
-//    }
 }
