@@ -39,15 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var tableFloatingHeaderTop = $('#tableFloatingHeader').offset().top;
                 $("<tr id=\"tablePaddingHeader\" style=\"position: static; top: 0px; left: 0px;\"><th>&nbsp;</th></tr>").insertBefore("#tableFloatingHeader");
                 $('#tablePaddingHeader').hide();
-                for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
-                    var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').outerWidth();
-                    // set the computed header cell width from the row
-                    $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('min-width', cellWidth);
-                    $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('max-width', cellWidth);
-                    // also set the first row cell width from the row for cases where the cell width was determined by the cell header
-                    $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('min-width', cellWidth);
-                    $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('max-width', cellWidth);
-                }
+                setColumnWidths();
                 $(window).scroll(function () {
                     if ($(window).scrollTop() > tableFloatingHeaderTop) {
                         $('#tablePaddingHeader').height($('#tableFloatingHeader').height());
@@ -60,6 +52,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     //                    $('#headerDiv').css({marginLeft: $('window').scrollLeft() + 'px', width: '100%'});
                 });
             });
+            function setColumnWidths(){
+                for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
+                    var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').outerWidth();
+                    // set the computed header cell width from the row
+                    $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('min-width', cellWidth);
+                    $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('max-width', cellWidth);
+                    // also set the first row cell width from the row for cases where the cell width was determined by the cell header
+                    $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('min-width', cellWidth);
+                    $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('max-width', cellWidth);
+                }                
+            }
             /*]]>*/
         </script>
     </head>

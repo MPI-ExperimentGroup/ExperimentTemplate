@@ -223,6 +223,8 @@ function loadMore(tableId) {
         }
         $("#" + tableId + "LoadMoreRow > td > span").text($("#" + tableId + " tbody tr:last").index() + ' of ' + responseData.page.totalElements);
         $("#" + tableId + "LoadMoreRow").attr('pageNumber', responseData.page.number + 1);
+        // update the floating table header column widths
+        if (setColumnWidths) setColumnWidths();
     });
 }
 
