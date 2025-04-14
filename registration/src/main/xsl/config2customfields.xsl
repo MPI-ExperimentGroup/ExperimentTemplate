@@ -185,7 +185,7 @@
                         + "(:userId IS NULL OR p.userId like :userId)"
                         + " AND (:remoteAddr IS NULL OR p.remoteAddr like :remoteAddr)"
                         + " AND (:acceptLang IS NULL OR p.acceptLang like :acceptLang)"
-                        + " AND (:userAgent; IS NULL OR p.userAgent; like :userAgent)"
+                        + " AND (:userAgent IS NULL OR p.userAgent like :userAgent)"
                         + " AND (:staleCopy IS NULL OR p.staleCopy is :staleCopy)"
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
@@ -194,12 +194,12 @@
 <!--                    <xsl:for-each select="tokenize(@postName,'_')">
                         <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                     </xsl:for-each>-->
-                    <xsl:text>; IS NULL OR p.</xsl:text>
-                    <xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat(', name = &quot;field_', @postName, '&quot;') else ''" />
+                    <xsl:text> IS NULL OR p.</xsl:text>
+                    <xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat(', name = &quot;field_', @postName, '&quot;') else @postName" />
 <!--                    <xsl:for-each select="tokenize(@postName,'_')">
                         <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                     </xsl:for-each>-->
-                    <xsl:text>; like :</xsl:text>
+                    <xsl:text> like :</xsl:text>
                     <xsl:value-of select="@postName" />
 <!--                    <xsl:for-each select="tokenize(@postName,'_')">
                         <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
