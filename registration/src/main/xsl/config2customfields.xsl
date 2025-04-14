@@ -720,6 +720,22 @@
                 &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"&gt;
                     &lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
     &lt;body&gt;
+        &lt;span th:fragment="participanttable" class="table-container" id="participanttable"&gt;
+            &lt;script th:inline="javascript"&gt;
+                /*&lt;![CDATA[*/
+                var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
+                generateTable({divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: "</xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:value-of select="@postName" />
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>", userId: paramId});
+                /*]]&gt;*/
+            &lt;/script&gt;
+        &lt;/span&gt;
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
