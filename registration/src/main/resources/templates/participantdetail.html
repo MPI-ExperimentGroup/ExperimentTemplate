@@ -60,6 +60,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "startedtable", label: "Application Started", source: "screendata", columnNames: "screenName,viewDate", userId: paramId, screenName: "ApplicationStarted"});
                 /*]]>*/
             </script>
@@ -68,6 +69,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "focustable", label: "Window Focus", source: "screendata", columnNames: "screenName,viewDate", userId: paramId, screenName: "WindowFocus%"});
                 /*]]>*/
             </script>
@@ -76,6 +78,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "closedtable", label: "Browser Window Closed", source: "screendata", columnNames: "screenName,viewDate", userId: paramId, screenName: "BrowserWindowClosed"});
                 /*]]>*/
             </script>
@@ -84,6 +87,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "completiontable", label: "Completion Events", source: "tagpair", columnNames: "tagValue2,tagDate", userId: paramId, eventTag: "DataSubmission", tagValue1: "CompletionCode"});
                 /*]]>*/
             </script>
@@ -92,6 +96,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "screentable", label: "Screen Sequence", source: "screendata", columnNames: "screenName,viewDate", userId: paramId});
                 /*]]>*/
             </script>
@@ -100,6 +105,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "tagpairtable", label: "Tag Pair Data", source: "tagpair", columnNames: "screenName,tagDate,eventTag,tagValue1,tagValue2,eventMs", userId: paramId});
                 /*]]>*/
             </script>
@@ -108,6 +114,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "tagtable", label: "Tag Data", source: "tagdata", columnNames: "screenName,tagDate,eventTag,tagValue,eventMs", userId: paramId});
                 /*]]>*/
             </script>
@@ -116,6 +123,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "stimulustable", label: "Stimulus Responses", source: "stimulusResponse", columnNames: "screenName,dataChannel,responseGroup,scoreGroup,stimulusId,response,isCorrect,gamesPlayed,totalScore,totalPotentialScore,currentScore,correctStreak,errorStreak,potentialScore,maxScore,maxErrors,maxCorrectStreak,maxErrorStreak,maxPotentialScore,eventTimes,eventMs,tagDate", userId: paramId});
                 /*]]>*/
             </script>
@@ -124,6 +132,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "mediatable", label: "Media Responses", source: "mediaResponse", columnNames: "screenName,stimulusId,recordingFormat,submitDate,mediaFile", userId: paramId});
                 /*]]>*/
             </script>
@@ -132,6 +141,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <script th:inline="javascript">
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
+                var simpleMode = /*[[${simpleMode}]]*/ '';
                 generateTable({divId: "timestamptable", label: "Time Stamp Data", source: "timestamp", columnNames: "tagDate,eventTag,eventMs", userId: paramId});
                 /*]]>*/
             </script>
