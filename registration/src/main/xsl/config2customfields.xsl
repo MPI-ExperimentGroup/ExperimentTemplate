@@ -268,8 +268,30 @@
 
                     import java.util.List;
                     import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
+                    import org.springframework.data.domain.Page;
+                    import org.springframework.data.domain.Pageable;
 
                     public abstract class MockParticipantColumnsRepository implements ParticipantRepository {
+                    
+                    @Override
+                    public Page&lt;Participant&gt; findByCustomDataLike(Pageable pageable,
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>String </xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>,&#10;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    String userId,
+                    String remoteAddr,
+                    String acceptLang,
+                    String userAgent,
+                    Boolean staleCopy) {
+                        throw new UnsupportedOperationException("Not required for this test class.");
+                    }
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                 <!--xsl:if test="not(contains(@postName, '_'))"-->

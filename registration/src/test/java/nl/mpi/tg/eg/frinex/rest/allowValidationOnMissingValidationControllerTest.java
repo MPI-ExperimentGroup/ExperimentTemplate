@@ -278,11 +278,6 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new MockParticipantColumnsRepository() {
             @Override
-            public Page<Participant> findByCustomDataLike(Pageable pageable, String workerId, String age, String gender, String education, String educationOther, String item, String userId, String remoteAddr, String acceptLang, String userAgent, Boolean staleCopy) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
-
-            @Override
             public Participant findTop1ByUserIdOrderBySubmitDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
