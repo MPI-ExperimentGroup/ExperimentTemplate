@@ -54,7 +54,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             });
             function setColumnWidths(){
                 for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
-                    var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').innerWidth();
+                    var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').width();
                     // set the computed header cell width from the row
                     $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('min-width', cellWidth);
                     $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('max-width', cellWidth);
