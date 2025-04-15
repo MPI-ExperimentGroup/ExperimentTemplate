@@ -757,7 +757,7 @@
                 </xsl:for-each>
                 <xsl:text>,submitDate";
                 generateTable({divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: columnFields, userId: paramId
-                    /*[[${simpleMode} ? ', staleCopy: false' : '']]*/
+                    /*[[${simpleMode} ? ', staleCopy: false' : '']]*/;
                     });
                 /*]]&gt;*/
             &lt;/script&gt;
