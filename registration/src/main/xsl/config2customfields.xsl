@@ -748,14 +748,16 @@
                 /*&lt;![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
                 var simpleMode = /*[[${simpleMode}]]*/ '';
-                generateTable({divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: (simpleMode)?"":"id,staleCopy,userId,userAgent,acceptLang,") + "</xsl:text>
+                generateTable({divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: ((simpleMode)?"":"id,staleCopy,userId,userAgent,acceptLang,") + "</xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:value-of select="@postName" />
                     <xsl:if test="position() != last()">
                         <xsl:text>,</xsl:text>
                     </xsl:if>
                 </xsl:for-each>
-                <xsl:text>,submitDate", userId: paramId, staleCopy: (simpleMode)?false:null});
+                <xsl:text>,submitDate", userId: paramId
+                    /*[[${simpleMode} ? ', staleCopy: false' : '']]*/
+                    });
                 /*]]&gt;*/
             &lt;/script&gt;
         &lt;/span&gt;
