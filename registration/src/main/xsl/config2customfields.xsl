@@ -195,7 +195,7 @@
                         <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                     </xsl:for-each>-->
                     <xsl:text> IS NULL OR p.</xsl:text>
-                    <xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat(', name = &quot;field_', @postName, '&quot;') else @postName" />
+                    <xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat('field_', @postName) else @postName" />
 <!--                    <xsl:for-each select="tokenize(@postName,'_')">
                         <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                     </xsl:for-each>-->
