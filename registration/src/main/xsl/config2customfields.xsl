@@ -756,9 +756,9 @@
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:text>,submitDate";
-                generateTable({divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: columnFields, userId: paramId
-                    /*[[${simpleMode} ? ', staleCopy: false' : '']]*/;
-                    });
+                var tableData = {divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: columnFields, userId: paramId};
+                if (simpleMode) { tableData.staleCopy = false'; }
+                generateTable(tableData);
                 /*]]&gt;*/
             &lt;/script&gt;
         &lt;/span&gt;
