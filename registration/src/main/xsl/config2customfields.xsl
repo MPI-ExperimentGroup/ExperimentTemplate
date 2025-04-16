@@ -748,7 +748,7 @@
                 /*&lt;![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
                 var simpleMode = /*[[${simpleMode}]]*/ '';
-                var columnFields = ((simpleMode) ? "" : "id,staleCopy,userId,userAgent,acceptLang,") + "</xsl:text>
+                var columnFields = ((simpleMode) ? "" : "staleCopy,userId,userAgent,acceptLang,") + "</xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:value-of select="@postName" />
                     <xsl:if test="position() != last()">
@@ -764,7 +764,7 @@
         &lt;/span&gt;
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
-                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
+                    <!--&lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;-->
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=staleCopy'"&gt;Stale&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userId'"&gt;Participant ID&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
@@ -783,13 +783,14 @@
                 <xsl:text>
                 &lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=submitDate'"&gt;Date&lt;/a&gt;&lt;/th&gt;
                 &lt;/tr&gt;
-                    &lt;tr th:fragment="participantrows"&gt;
+                </xsl:text>
+<!--                    &lt;tr th:fragment="participantrows"&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.id}"&gt;id&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.staleCopy}"&gt;staleCopy&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.userId}"&gt;userId&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.userAgent}"&gt;userAgent&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.acceptLang}"&gt;acceptLang&lt;/td&gt;
-                    <!--&lt;td th:text="${participant.remoteAddr}"&gt;remoteAddr&lt;/td&gt;-->
+                    &lt;td th:text="${participant.remoteAddr}"&gt;remoteAddr&lt;/td&gt;
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>
@@ -799,7 +800,8 @@
                 </xsl:for-each>
                 <xsl:text>    
                 &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
-                &lt;/tr&gt;
+                &lt;/tr&gt;-->
+                <xsl:text> 
                 &lt;tr th:fragment="participantinputfields(buttonLabel)"&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
