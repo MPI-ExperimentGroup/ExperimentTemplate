@@ -757,7 +757,7 @@
                 </xsl:for-each>
                 <xsl:text>,submitDate";
                 var tableData = {divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: columnFields, userId: paramId};
-                if (simpleMode) { tableData.staleCopy = false'; }
+                if (simpleMode) { tableData.staleCopy = false; }
                 generateTable(tableData);
                 /*]]&gt;*/
             &lt;/script&gt;
