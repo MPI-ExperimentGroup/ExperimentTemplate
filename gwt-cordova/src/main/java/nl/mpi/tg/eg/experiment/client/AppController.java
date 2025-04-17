@@ -88,6 +88,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             userResults = new UserResults(new UserData());
             // we save the results here so that the newly created user id is preserved even if the user refreshes
             localStorage.storeData(userResults, metadataFieldProvider);
+            hasNewMetadata = true;
         } else {
             userResults = new UserResults(localStorage.getStoredData(lastUserId, metadataFieldProvider));
         }
@@ -110,8 +111,17 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             }
         }
         if (hasNewMetadata) {
-            // todo: should we transmit this change here
             localStorage.storeData(userResults, metadataFieldProvider);
+            // submit the newly created or changed user metadata
+            submissionService.submitMetadata(userResults, new DataSubmissionListener() {
+                @Override
+                public void scoreSubmissionFailed(DataSubmissionException exception) {
+                }
+
+                @Override
+                public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                }
+            });
         }
         if (isDebugMode) {
             try {
