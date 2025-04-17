@@ -91,6 +91,9 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             localStorage.storeData(userResults, metadataFieldProvider);
             hasNewMetadata = true;
         } else {
+            if (localStorage.getAppState(lastUserId) == null) {
+                hasNewMetadata = true;
+            }
             userResults = new UserResults(localStorage.getStoredData(lastUserId, metadataFieldProvider));
         }
         if (hasCordova()) {
