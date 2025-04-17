@@ -83,6 +83,7 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
             localStorage.disableObfuscation();
             obfuscationDisabled = true;
         }
+        boolean hasNewMetadata = false;
         final UserId lastUserId = localStorage.getLastUserId(userIdGetParam);
         if (lastUserId == null) {
             userResults = new UserResults(new UserData());
@@ -101,7 +102,6 @@ public abstract class AppController implements AppEventListener/*, AudioExceptio
         if (isDebugMode) {
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "isDebugMode");
         }
-        boolean hasNewMetadata = false;
         for (MetadataField metadataField : metadataFieldProvider.getMetadataFieldArray()) {
             final String postName = metadataField.getPostName();
             String value = Window.Location.getParameter(postName);
