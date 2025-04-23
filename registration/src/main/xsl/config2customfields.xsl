@@ -766,10 +766,10 @@
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
                     <!--&lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;-->
-                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=staleCopy'"&gt;Stale&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userId'"&gt;Participant ID&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=acceptLang'"&gt;Browser Language&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=staleCopy'"&gt;StaleCopy&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userId'"&gt;UserId&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=userAgent'"&gt;UserAgent&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${!simpleMode}"&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=acceptLang'"&gt;AcceptLang&lt;/a&gt;&lt;/th&gt;
                     <!--&lt;th&gt;&lt;a th:attr="href='?sort=remoteAddr'"&gt;remoteAddr&lt;/a&gt;&lt;/th&gt;-->
                 </xsl:text>
                 <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
@@ -777,12 +777,12 @@
                     <xsl:text>&lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=</xsl:text>
                     <xsl:value-of select="replace(@postName,'_','\\_')" />
                     <xsl:text>'"&gt;</xsl:text>
-                    <xsl:value-of select="@registrationField" />
+                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                     <xsl:text>&lt;/a&gt;&lt;/th&gt;
                     </xsl:text>
                 </xsl:for-each>
                 <xsl:text>
-                &lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=submitDate'"&gt;Date&lt;/a&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=submitDate'"&gt;SubmitDate&lt;/a&gt;&lt;/th&gt;
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.id}"&gt;id&lt;/td&gt;
