@@ -748,7 +748,7 @@
                 /*&lt;![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
                 var simpleMode = /*[[${simpleMode}]]*/ '';
-                var columnFields = ((simpleMode) ? "" : "staleCopy,userId,userAgent,acceptLang,") + "</xsl:text>
+                var columnFields = ((simpleMode) ? ((paramId !== null)? "" : "userId,") : "staleCopy,userId,userAgent,acceptLang,") + "</xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:value-of select="@postName" />
                     <xsl:if test="position() != last()">
