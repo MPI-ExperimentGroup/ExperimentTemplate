@@ -70,13 +70,7 @@ public class ParticipantDetailController {
         model.addAttribute("paramId", paramId);
 
 //        Map<String, String[]> paramMap = request.getParameterMap();
-        boolean showStale = !simpleMode;
         final List<Participant> freshCopyUserData = this.participantRepository.findByStaleCopyAndUserId(false, id);
-        if (showStale) {
-            model.addAttribute("participantData", this.participantRepository.findByUserId(id));
-        } else {
-            model.addAttribute("participantData", freshCopyUserData);
-        }
         if (freshCopyUserData.isEmpty()) {
             final Participant insertUserData = new Participant(id);
             model.addAttribute("insertUserData", insertUserData);
