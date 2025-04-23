@@ -758,7 +758,7 @@
                 <xsl:text>,submitDate";
                 var tableData = {divId: "participanttable", label: "Participant Data", source: "participantdata", columnNames: columnFields, paramId};
                 if (simpleMode) { tableData.staleCopy = false; }
-                if (userId !== null) { tableData.userId = paramId; }
+                if (paramId !== null) { tableData.userId = paramId; }
                 generateTable(tableData);
                 /*]]&gt;*/
             &lt;/script&gt;
