@@ -785,7 +785,6 @@
                 &lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=submitDate'"&gt;SubmitDate&lt;/a&gt;&lt;/th&gt;
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
-                    &lt;td th:if="${!simpleMode}" th:text="${participant.id}"&gt;id&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.staleCopy}"&gt;staleCopy&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.userId}"&gt;userId&lt;/td&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.userAgent}"&gt;userAgent&lt;/td&gt;
@@ -802,7 +801,6 @@
                 &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr th:fragment="participantinputfields(buttonLabel)"&gt;
-                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;input id="userIdInput" th:value="${insertUserData.userId}" /&gt;&lt;/td&gt;
                 &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
