@@ -37,9 +37,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ParticipantListingController {
 
-    @Autowired
-    private ParticipantRepository participantRepository;
-
     @RequestMapping("participantlisting")
     public String participantListing(Model model,
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
@@ -48,19 +45,19 @@ public class ParticipantListingController {
             @RequestParam(value = "size", defaultValue = "500", required = false) Integer size,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        model.addAttribute("count", this.participantRepository.countDistinctUserId());
-        final Page<Participant> pageData = this.participantRepository.findByStaleCopy(false, PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
-        final List<Participant> content = pageData.getContent();
-        final List<Participant> contentDistinct = new ArrayList<>();
-        for (Participant participant : content) {
-            if (!contentDistinct.contains(participant)) {
-                contentDistinct.add(participant);
-            }
-        }
-        model.addAttribute("allParticipantData", contentDistinct);
+//        model.addAttribute("count", this.participantRepository.countDistinctUserId());
+//        final Page<Participant> pageData = this.participantRepository.findByStaleCopy(false, PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+//        final List<Participant> content = pageData.getContent();
+//        final List<Participant> contentDistinct = new ArrayList<>();
+//        for (Participant participant : content) {
+//            if (!contentDistinct.contains(participant)) {
+//                contentDistinct.add(participant);
+//            }
+//        }
+//        model.addAttribute("allParticipantData", contentDistinct);
         final Participant insertUserData = new Participant(UUID.randomUUID().toString());
         model.addAttribute("insertUserData", insertUserData);
-        model.addAttribute("pageData", pageData);
+//        model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
