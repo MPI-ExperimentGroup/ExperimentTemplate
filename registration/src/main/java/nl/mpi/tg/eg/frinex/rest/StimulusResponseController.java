@@ -49,18 +49,18 @@ public class StimulusResponseController {
             @RequestParam(value = "id", required = false) String paramId) {//, Pageable pageable
         // final long count = this.stimulusResponseRepository.count();
         // model.addAttribute("count", count);
-        final Page<StimulusResponse> pageData = (dataChannel == null)
-                ? this.stimulusResponseRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
-                : this.stimulusResponseRepository.findBydataChannel(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
-        final List<StimulusResponse> content = pageData.getContent();
-        final List<StimulusResponse> contentDistinct = new ArrayList<>();
-        for (StimulusResponse stimulusResponse : content) {
-            if (!contentDistinct.contains(stimulusResponse)) {
-                contentDistinct.add(stimulusResponse);
-            }
-        }
-        model.addAttribute("allStimulusResponses", contentDistinct);
-        model.addAttribute("pageData", pageData);
+        // final Page<StimulusResponse> pageData = (dataChannel == null)
+        //         ? this.stimulusResponseRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
+        //         : this.stimulusResponseRepository.findBydataChannel(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
+        // final List<StimulusResponse> content = pageData.getContent();
+        // final List<StimulusResponse> contentDistinct = new ArrayList<>();
+        // for (StimulusResponse stimulusResponse : content) {
+        //     if (!contentDistinct.contains(stimulusResponse)) {
+        //         contentDistinct.add(stimulusResponse);
+        //     }
+        // }
+        // model.addAttribute("allStimulusResponses", contentDistinct);
+        // model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("dataChannel", dataChannel);
