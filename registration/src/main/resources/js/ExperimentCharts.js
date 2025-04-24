@@ -258,7 +258,7 @@ function generateTable(tableData) {
         + parametersString
         // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
     ) : (tableData.source === "stimulusResponse") ? (
-        'stimulusresponses/search/findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike'
+        'stimulusresponses/search/findByLike'
         + ((tableData.isCorrect) ? 'AndIsCorrect' : '')
         + parametersString
     ) : "";

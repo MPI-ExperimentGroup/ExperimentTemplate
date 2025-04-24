@@ -592,13 +592,9 @@ public class preventValidationOnMissingValidationControllerTest {
             // public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrectIsNull(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
             //     throw new UnsupportedOperationException("Not required for this test class.");
             // }
+            
             @Override
-            public Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable, String userId, String screenName, String scoreGroup, String responseGroup, String stimulusId, String response) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
-
-            @Override
-            public Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable, String userId, String screenName, String scoreGroup, String responseGroup, String stimulusId, String response, Boolean isCorrect) {
+            public Page<StimulusResponse> findByLike(Pageable pageable, String userId, String screenName, Integer dataChannel, Boolean isCorrect, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 

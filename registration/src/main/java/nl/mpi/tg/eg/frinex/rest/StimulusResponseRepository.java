@@ -59,34 +59,37 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
             + "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND "
             + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
             + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
-            + "(:response IS NULL OR p.response like :response)")
-    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(Pageable pageable,
+            + "(:dataChannel IS NULL OR p.dataChannel = :dataChannel) AND "
+            + "(:response IS NULL OR p.response like :response) AND "
+            + "(:isCorrect IS NULL OR p.isCorrect = :isCorrect)")
+    Page<StimulusResponse> findByLike(Pageable pageable,
             @Param("userId") String userId,
             @Param("screenName") String screenName,
-            //            @Param("dataChannel") Integer dataChannel,
-            //            @Param("isCorrect") Boolean isCorrect,
+            @Param("dataChannel") Integer dataChannel,
+            @Param("isCorrect") Boolean isCorrect,
             @Param("scoreGroup") String scoreGroup,
             @Param("responseGroup") String responseGroup,
             @Param("stimulusId") String stimulusId,
             @Param("response") String response);
 
-    @Query("SELECT p FROM StimulusResponse p WHERE "
-            + "(:userId IS NULL OR p.userId like :userId) AND "
-            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-            + "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND "
-            + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
-            + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
-            + "(:response IS NULL OR p.response like :response) AND "
-            + "(:isCorrect IS NULL OR p.isCorrect = :isCorrect)")
-    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable,
-            @Param("userId") String userId,
-            @Param("screenName") String screenName,
-            //            @Param("dataChannel") Integer dataChannel,
-            @Param("scoreGroup") String scoreGroup,
-            @Param("responseGroup") String responseGroup,
-            @Param("stimulusId") String stimulusId,
-            @Param("response") String response,
-            @Param("isCorrect") Boolean isCorrect);
+//    @Query("SELECT p FROM StimulusResponse p WHERE "
+//            + "(:userId IS NULL OR p.userId like :userId) AND "
+//            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+//            + "(:scoreGroup IS NULL OR p.scoreGroup like :scoreGroup) AND "
+//            + "(:responseGroup IS NULL OR p.responseGroup like :responseGroup) AND "
+//            + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
+//            + "(:dataChannel IS NULL OR p.dataChannel = :dataChannel) AND "
+//            + "(:response IS NULL OR p.response like :response) AND "
+//            + "(:isCorrect IS NULL OR p.isCorrect = :isCorrect)")
+//    Page<StimulusResponse> findByUserIdLikeAndScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(Pageable pageable,
+//            @Param("userId") String userId,
+//            @Param("screenName") String screenName,
+//            @Param("dataChannel") Integer dataChannel,
+//            @Param("scoreGroup") String scoreGroup,
+//            @Param("responseGroup") String responseGroup,
+//            @Param("stimulusId") String stimulusId,
+//            @Param("response") String response,
+//            @Param("isCorrect") Boolean isCorrect);
 
     // TODO: these methods might need to include distinct concat(tagDate, userId, eventMs)
     long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLike(
