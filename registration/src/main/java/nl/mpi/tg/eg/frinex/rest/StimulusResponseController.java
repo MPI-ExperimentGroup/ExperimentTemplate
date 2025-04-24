@@ -47,8 +47,8 @@ public class StimulusResponseController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {//, Pageable pageable
-        final long count = this.stimulusResponseRepository.count();
-        model.addAttribute("count", count);
+        // final long count = this.stimulusResponseRepository.count();
+        // model.addAttribute("count", count);
         final Page<StimulusResponse> pageData = (dataChannel == null)
                 ? this.stimulusResponseRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
                 : this.stimulusResponseRepository.findBydataChannel(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
