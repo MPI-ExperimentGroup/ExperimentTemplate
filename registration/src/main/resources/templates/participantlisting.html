@@ -38,6 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!--<div th:replace="fragments/adminpagelayout :: pagemenu"></div>-->
         <p th:text="'Participant Count, ' + ${count}" />
         <span th:replace="participanttable :: participanttable"></span>
+        <br/>
         <table id="datatable">
             <thead>
                 <tr th:replace="participanttable :: participantheader"></tr>
