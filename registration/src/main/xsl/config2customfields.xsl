@@ -815,7 +815,7 @@
                     <xsl:text>}" /&gt;&lt;/td&gt;</xsl:text>
                 </xsl:for-each>
                 <xsl:text>    
-                &lt;td&gt;
+                &lt;td style="border:none;" &gt;
                 &lt;input th:if="${simpleMode}" id="userIdInput" th:value="${insertUserData.userId}" type="hidden" /&gt;
                 &lt;button id="addParticipantButton" class="tableButton" th:text="${buttonLabel}" &gt;Add Record&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
                 &lt;/table&gt;
