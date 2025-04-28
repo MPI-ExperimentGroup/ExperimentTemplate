@@ -783,7 +783,7 @@
                 </xsl:for-each>
                 <xsl:text>
                 <!--&lt;th&gt;&lt;a th:attr="href='?simple=' + ${simpleMode} + ${(paramId != null)? '&amp;id='+paramId : ''} + '&amp;amp;sort=submitDate'"&gt;SubmitDate&lt;/a&gt;&lt;/th&gt;-->
-                &lt;th&gt;&lt;/th&gt;
+                <!--&lt;th&gt;&lt;/th&gt;-->
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
                     &lt;td th:if="${!simpleMode}" th:text="${participant.staleCopy}"&gt;staleCopy&lt;/td&gt;
@@ -802,10 +802,10 @@
                 &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr th:fragment="participantinputfields(buttonLabel)"&gt;
-                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
+                <!--&lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;-->
                 &lt;td th:if="${!simpleMode}"&gt;&lt;input id="userIdInput" th:value="${insertUserData.userId}" /&gt;&lt;/td&gt;
-                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
-                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
+<!--                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;
+                &lt;td th:if="${!simpleMode}"&gt;&lt;/td&gt;-->
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
