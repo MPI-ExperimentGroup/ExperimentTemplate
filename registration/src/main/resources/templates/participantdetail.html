@@ -107,7 +107,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
                 var simpleMode = /*[[${simpleMode}]]*/ '';
-                generateTable({divId: "tagpairtable", label: "Tag Pair Data", source: "tagpair", columnNames: "screenName,tagDate,eventTag,tagValue1,tagValue2,eventMs", userId: paramId});
+                generateTable({divId: "tagpairtable", label: "Tag Pair Data", source: "tagpair", columnNames: "screenName,eventTag,tagValue1,tagValue2,eventMs,tagDate", userId: paramId});
                 /*]]>*/
             </script>
         </span>
@@ -116,7 +116,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*<![CDATA[*/
                 var paramId = /*[[${paramId}]]*/ '';
                 var simpleMode = /*[[${simpleMode}]]*/ '';
-                generateTable({divId: "tagtable", label: "Tag Data", source: "tagdata", columnNames: "screenName,tagDate,eventTag,tagValue,eventMs", userId: paramId});
+                generateTable({divId: "tagtable", label: "Tag Data", source: "tagdata", columnNames: "screenName,eventTag,tagValue,eventMs,tagDate", userId: paramId});
                 /*]]>*/
             </script>
         </span>
