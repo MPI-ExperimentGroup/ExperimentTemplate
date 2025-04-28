@@ -164,10 +164,10 @@ function sortBy(tableId, sortColumn) {
     $("#" + tableId + "LoadMoreRow").siblings().remove();
     $("#" + tableId + "LoadMoreRow").attr('pageNumber', 0)
     if (sortColumn === $("#" + tableId + "LoadMoreRow").attr('sortColumn')
-    && ("a" === $("#" + tableId + "LoadMoreRow").attr('sortDirection'))) {
-        $("#" + tableId + "LoadMoreRow").attr('sortDirection', "b");
+    && ("asc" === $("#" + tableId + "LoadMoreRow").attr('sortDirection'))) {
+        $("#" + tableId + "LoadMoreRow").attr('sortDirection', "dec");
     } else {
-        $("#" + tableId + "LoadMoreRow").attr('sortDirection', "a");
+        $("#" + tableId + "LoadMoreRow").attr('sortDirection', "asc");
     }
     $("#" + tableId + "LoadMoreRow").attr('sortColumn', sortColumn);
     loadMore(tableId);
@@ -179,7 +179,7 @@ function loadMore(tableId) {
     const pageNumber = $("#" + tableId + "LoadMoreRow").attr('pageNumber');
     const sortColumn = $("#" + tableId + "LoadMoreRow").attr('sortColumn');
     const sortDirection = $("#" + tableId + "LoadMoreRow").attr('sortDirection');
-    $.getJSON(dataUrl + ((parametersString.length == 0) ? "?" : "&") + 'page=' + pageNumber + '&sort=' + sortColumn + '&dir=' + sortDirection , function (responseData) {
+    $.getJSON(dataUrl + ((parametersString.length == 0) ? "?" : "&") + 'page=' + pageNumber + '&sort=' + sortColumn + ',' + sortDirection , function (responseData) {
         // console.log(responseData);
         // todo: impliment or remove simple mode parameter
         var touchInputReportCounter = $("#" + tableId + " tbody tr:last").index();
@@ -274,7 +274,7 @@ function generateTable(tableData) {
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
-        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr id='tableFloatingHeader'></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='tagDate' sortDirection='a'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
+        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr id='tableFloatingHeader'></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
             // TODO: maybe add column filter textbox
             var columnId = columnName;
