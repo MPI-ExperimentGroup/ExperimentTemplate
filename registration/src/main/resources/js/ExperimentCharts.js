@@ -165,7 +165,7 @@ function sortBy(tableId, sortColumn) {
     $("#" + tableId + "LoadMoreRow").attr('pageNumber', 0)
     if (sortColumn === $("#" + tableId + "LoadMoreRow").attr('sortColumn')
     && ("asc" === $("#" + tableId + "LoadMoreRow").attr('sortDirection'))) {
-        $("#" + tableId + "LoadMoreRow").attr('sortDirection', "dec");
+        $("#" + tableId + "LoadMoreRow").attr('sortDirection', "desc");
     } else {
         $("#" + tableId + "LoadMoreRow").attr('sortDirection', "asc");
     }
