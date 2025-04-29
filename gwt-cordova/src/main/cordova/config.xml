@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         version="@application.majorVersion@.@application.minorVersion@.@application.buildVersion@" 
         xmlns="http://www.w3.org/ns/widgets" 
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>@experiment.configuration.displayName@</name>
+    <name>@experiment.configuration.name@</name>
 
     <description>
         Frinex: Framework for Interactive Experiments.

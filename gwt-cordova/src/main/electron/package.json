@@ -1,5 +1,5 @@
 {
-  "name": "@experiment.configuration.displayName@",
+  "name": "@experiment.configuration.name@",
   "productName": "Frinex: Framework for Interactive Experiments",
   "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
   "description": "https://doi.org/10.5281/zenodo.3522910",
