@@ -2,10 +2,10 @@
 pwd
 cd "$(dirname "$0")"
 pwd
-# appname=@experiment.configuration.name@-@project.artifactId@-@project.version@
+zipname=@experiment.configuration.name@-@project.artifactId@-@project.version@
 appname=@experiment.configuration.name@
 rm -rf $appname-electron
-unzip $appname-electron.zip -d $appname-electron
+unzip $zipname-electron.zip -d $appname-electron
 cd $appname-electron
 pwd
 ls
