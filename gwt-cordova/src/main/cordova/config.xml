@@ -27,7 +27,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <name>@experiment.configuration.displayName@</name>
 
     <description>
-        A mobile application wrapper for FRINEX experiment framework.
+        Frinex: Framework for Interactive Experiments.
+        Mobile application wrapper for FRINEX experiment framework.
+        https://doi.org/10.5281/zenodo.3522910
     </description>
     <author email="peter.withers@mpi.nl" href="http://www.mpi.nl">
         Peter Withers, Max Planck Institute for Psycholinguistics
@@ -90,4 +92,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <access origin="https://frinexstaging.mpi.nl"/>
     <access origin="https://frinexproduction.mpi.nl"/>
     <access origin="http://corpus1.mpi.nl"/>
+<!--    <platform name="android">
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/uses-permission" xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+        </edit-config>
+    </platform>-->
 </widget>
