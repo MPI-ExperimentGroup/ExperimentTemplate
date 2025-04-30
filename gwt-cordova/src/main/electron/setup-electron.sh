@@ -62,7 +62,8 @@ yarn dist --mac dmg --dir -c.compression=store -c.mac.identity=null
 yarn dist --linux snap
 
 cd dist
-zip -r ../../@experiment.configuration.name@-win32-x64.zip ./@experiment.configuration.name@*.exe
+ls -l
+zip -r ../../@experiment.configuration.name@-win32-x64.zip ./@experiment.configuration.name@.exe
 cp @experiment.configuration.name@*.dmg ../../@experiment.configuration.name@-mac.dmg
 cp @experiment.configuration.name@*-mac.zip ../../@experiment.configuration.name@-darwin-x64.zip
 cd ..
@@ -99,7 +100,8 @@ yarn dist --mac dmg --dir -c.compression=store -c.mac.identity=null
 yarn dist --linux snap
 
 cd dist
-zip -r ../../@experiment.configuration.name@-win32-x64-lt.zip ./@experiment.configuration.name@*.exe
+ls -l
+zip -r ../../@experiment.configuration.name@-win32-x64-lt.zip ./@experiment.configuration.name@.exe
 ls -l @experiment.configuration.name@*.*
 cp @experiment.configuration.name@*.dmg ../../@experiment.configuration.name@-mac.dmg
 cp @experiment.configuration.name@*-mac.zip ../../@experiment.configuration.name@-darwin-x64-lt.zip
