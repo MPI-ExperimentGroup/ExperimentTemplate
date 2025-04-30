@@ -34,14 +34,13 @@ if (!isDebugMode) {
     var template = [{
         label: "Application",
         submenu: [
-            isMac
-            ? { role: 'about' }
-            : {
+            // isMac ? { role: 'about' } : 
+            {
                 label: 'About',
                 click: () => {
                     dialog.showMessageBox({
                     type: 'info',
-                    title: 'About Frinex',
+                    title: 'About @experiment.configuration.displayName@',
                     message: 'Built with Frinex @application.majorVersion@.@application.minorVersion@.@application.buildVersion@',
                     detail: 'Withers, P. Frinex: Framework for Interactive Experiments. https://doi.org/10.5281/zenodo.3522910',
                     buttons: ['OK']
