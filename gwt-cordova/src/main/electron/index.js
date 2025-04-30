@@ -5,7 +5,7 @@
 //     outAppPath: 'path/to/App_universal.app',
 //   });
   
-const {app, BrowserWindow, Menu, systemPreferences} = require('electron')
+const {app, BrowserWindow, Menu, systemPreferences, dialog} = require('electron')
 
 //ONLINE_OPTION /*
 const express = require('express');
@@ -43,7 +43,7 @@ if (!isDebugMode) {
                     type: 'info',
                     title: 'About @experiment.configuration.displayName@',
                     message: 'Built with Frinex @application.majorVersion@.@application.minorVersion@.@application.buildVersion@',
-                    detail: 'Peter Withers, Max Planck Institute for Psycholinguistics, https://doi.org/10.5281/zenodo.3522910',
+                    detail: 'Withers, P. Frinex: Framework for Interactive Experiments. https://doi.org/10.5281/zenodo.3522910',
                     buttons: ['OK']
                     });
                 }
