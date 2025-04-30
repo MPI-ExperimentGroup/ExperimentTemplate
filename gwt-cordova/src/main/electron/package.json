@@ -1,8 +1,8 @@
 {
-  "name": "@experiment.configuration.name@",
-  "productName": "Frinex: Framework for Interactive Experiments",
+  "name": "@experiment.configuration.displayName@",
+  "productName": "@experiment.configuration.name@",
   "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
-  "description": "https://doi.org/10.5281/zenodo.3522910",
+  "description": "Frinex: Framework for Interactive Experiments https://doi.org/10.5281/zenodo.3522910",
   "main": "src/main/index.js",
   "scripts": {
     "start": "electron .",
