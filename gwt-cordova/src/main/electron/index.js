@@ -17,6 +17,7 @@ let mainWindow;
 const dataSubmitUrl = '@experiment.destinationServerUrl@/@experiment.configuration.name@-admin/';
 
 const isDebugMode = (dataSubmitUrl.includes('staging.mpi.nl')) && app.commandLine.hasSwitch('debug-mode');
+const isMac = process.platform === 'darwin';
 
 if (systemPreferences.askForMediaAccess) {
     // TODO: based on the experiment XML request microphone and or camera permissions
@@ -33,7 +34,20 @@ if (!isDebugMode) {
     var template = [{
         label: "Application",
         submenu: [
-            { label: "About Application", selector: "orderFrontStandardAboutPanel:" },
+            isMac
+            ? { role: 'about' }
+            : {
+                label: 'About',
+                click: () => {
+                    dialog.showMessageBox({
+                    type: 'info',
+                    title: 'About @experiment.configuration.displayName@',
+                    message: 'Built with Frinex @application.majorVersion@.@application.minorVersion@.@application.buildVersion@',
+                    detail: 'Peter Withers, Max Planck Institute for Psycholinguistics, https://doi.org/10.5281/zenodo.3522910',
+                    buttons: ['OK']
+                    });
+                }
+                },
             { type: "separator" },
             { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
         ]}, {
