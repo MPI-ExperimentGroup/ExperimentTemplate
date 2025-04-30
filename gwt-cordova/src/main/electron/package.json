@@ -2,7 +2,7 @@
   "name": "@experiment.configuration.displayName@",
   "productName": "@experiment.configuration.name@",
   "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
-  "description": "Frinex: Framework for Interactive Experiments https://doi.org/10.5281/zenodo.3522910",
+  "description": "Frinex",
   "main": "src/main/index.js",
   "scripts": {
     "start": "electron .",
@@ -12,7 +12,7 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "keywords": [],
-  "author": "Peter Withers, Max Planck Institute for Psycholinguistics",
+  "author": "Peter Withers, Max Planck Institute for Psycholinguistics, https://doi.org/10.5281/zenodo.3522910",
   "license": "GPL-2.0-only",
   "config": {
     "forge": {
