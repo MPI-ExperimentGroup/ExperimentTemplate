@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -79,7 +80,7 @@ public class CsvController {
         response.setContentType("application/zip");
         response.addHeader("Content-Disposition", "attachment; filename=\"results.zip\"");
         response.addHeader("Content-Transfer-Encoding", "binary");
-        try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             compressResults(outputStream);
             response.getOutputStream().write(outputStream.toByteArray());
             response.getOutputStream().flush();
@@ -107,10 +108,14 @@ public class CsvController {
         response.setHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
         response.setHeader("Content-Transfer-Encoding", "binary");
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream())) {
-                zipOutputStream.setLevel(ZipOutputStream.STORED);
-                for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
-                    addToZipArchive(zipOutputStream, audioData.getUserId() + "_" + audioData.getScreenName() + "_" + audioData.getStimulusId() + "_" + audioData.getId() + "." + audioData.getRecordingFormat().name(), audioData.getDataBlob());
-                }
+            zipOutputStream.setMethod(ZipOutputStream.DEFLATED);
+            for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
+                InputStream audioStream = audioDataRepository.getStreamForBlob(audioData.getId());
+                final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
+                        + audioData.getStimulusId() + "_" + audioData.getId() + "."
+                        + audioData.getRecordingFormat().name();
+                addToZipArchive(zipOutputStream, filename, audioStream);
+            }
             zipOutputStream.finish();
         }
     }
@@ -208,6 +213,18 @@ public class CsvController {
         ZipEntry zipEntry = new ZipEntry(fileName);
         zipStream.putNextEntry(zipEntry);
         zipStream.write(content);
+        zipStream.closeEntry();
+    }
+
+    private void addToZipArchive(final ZipOutputStream zipStream, final String fileName, final InputStream dataStream) throws IOException {
+        ZipEntry zipEntry = new ZipEntry(fileName);
+        zipStream.putNextEntry(zipEntry);
+        byte[] buffer = new byte[8192];
+        int bytesRead;
+        while ((bytesRead = dataStream.read(buffer)) != -1) {
+            zipStream.write(buffer, 0, bytesRead);
+        }
+        dataStream.close();
         zipStream.closeEntry();
     }
 

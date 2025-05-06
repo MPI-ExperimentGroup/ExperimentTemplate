@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -105,4 +106,7 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
 
     @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
+    
+    @Query("SELECT dataBlob FROM AudioData p WHERE p.id = :id")
+    public InputStream getStreamForBlob(Long id);
 }
