@@ -38,7 +38,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "audiodata", path = "audiodata")
-public interface AudioDataRepository extends PagingAndSortingRepository<AudioData, Long> {
+public interface AudioDataRepository extends PagingAndSortingRepository<AudioData, Long>, AudioDataStreamer {
 
     @Override
     @RestResource(exported = false)
@@ -107,7 +107,4 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
     
-    @Transactional(readOnly = true)
-    @Query("SELECT dataBlob FROM AudioData p WHERE p.id = :id")
-    public InputStream getStreamForBlob(Long id);
 }
