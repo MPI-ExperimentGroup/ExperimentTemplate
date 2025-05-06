@@ -104,17 +104,14 @@ public class CsvController {
         calendar.set(Calendar.DAY_OF_MONTH, selectedDay + 1);
         Date selectedEndDate = calendar.getTime();
         String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
-        response.addHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
-        response.addHeader("Content-Transfer-Encoding", "binary");
-        try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-            try ( ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
+        response.setHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
+        response.setHeader("Content-Transfer-Encoding", "binary");
+        try (ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream())) {
                 zipOutputStream.setLevel(ZipOutputStream.STORED);
                 for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
                     addToZipArchive(zipOutputStream, audioData.getUserId() + "_" + audioData.getScreenName() + "_" + audioData.getStimulusId() + "_" + audioData.getId() + "." + audioData.getRecordingFormat().name(), audioData.getDataBlob());
                 }
-            }
-            response.getOutputStream().write(outputStream.toByteArray());
-            response.getOutputStream().flush();
+            zipOutputStream.finish();
         }
     }
 
@@ -215,7 +212,7 @@ public class CsvController {
     }
 
     void compressResults(final OutputStream out) throws IOException {
-        try ( ZipOutputStream zipOutputStream = new ZipOutputStream(out)) {
+        try (ZipOutputStream zipOutputStream = new ZipOutputStream(out)) {
             zipOutputStream.setLevel(ZipOutputStream.STORED);
             addToZipArchive(zipOutputStream, "participants.csv", getParticipantsCsv());
             addToZipArchive(zipOutputStream, "screenviews.csv", getScreenDataCsv());
