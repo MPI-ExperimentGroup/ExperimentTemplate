@@ -124,6 +124,8 @@ public class CsvController {
                 addToZipArchive(zipOutputStream, filename, audioData.getDataBlob());
                 zipOutputStream.flush();
                 outputStream.flush();
+                // TODO: remove after debugging
+                break;
             }
             zipOutputStream.finish();
         }
