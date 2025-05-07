@@ -45,6 +45,8 @@ public class AudioDataStreamerImpl implements AudioDataStreamer {
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
             stmt.setLong(1, id);
+            // TODO: remove after debugging
+            System.out.println(id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getBinaryStream("data_blob");

@@ -114,12 +114,12 @@ public class CsvController {
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
             zipOutputStream.setMethod(ZipOutputStream.DEFLATED);
             for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
-                InputStream audioStream = audioDataRepository.getMediaStream(audioData.getId());
                 final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
                         + audioData.getStimulusId() + "_" + audioData.getId() + "."
                         + audioData.getRecordingFormat().name();
                 // TODO: remove after debugging
                 System.out.println(filename);
+                InputStream audioStream = audioDataRepository.getMediaStream(audioData.getId());
                 addToZipArchive(zipOutputStream, filename, audioStream);
                 zipOutputStream.flush();
                 outputStream.flush();
