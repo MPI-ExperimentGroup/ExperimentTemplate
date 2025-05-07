@@ -107,7 +107,6 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
     
-    @Transactional
     @Query("SELECT p.dataBlob FROM AudioData p WHERE p.id = :id")
     Stream<byte[]> streamDataBlob(long id);
 
