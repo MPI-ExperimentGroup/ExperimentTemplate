@@ -107,6 +107,8 @@ public class CsvController {
         Date selectedEndDate = calendar.getTime();
         String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
         response.setHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
+        // TODO: remove after debugging
+        System.out.println(selectedDateString);
         response.setHeader("Content-Transfer-Encoding", "binary");
         final ServletOutputStream outputStream = response.getOutputStream();
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
@@ -116,6 +118,8 @@ public class CsvController {
                 final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
                         + audioData.getStimulusId() + "_" + audioData.getId() + "."
                         + audioData.getRecordingFormat().name();
+                // TODO: remove after debugging
+                System.out.println(filename);
                 addToZipArchive(zipOutputStream, filename, audioStream);
                 zipOutputStream.flush();
                 outputStream.flush();
@@ -227,6 +231,9 @@ public class CsvController {
         int bytesRead;
         while ((bytesRead = dataStream.read(buffer)) != -1) {
             zipStream.write(buffer, 0, bytesRead);
+            // TODO: remove after debugging
+            System.out.println(bytesRead);
+            zipStream.flush();
         }
         dataStream.close();
         zipStream.closeEntry();
