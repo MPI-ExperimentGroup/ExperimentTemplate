@@ -19,13 +19,13 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -261,17 +261,19 @@ public class CsvController {
     }
 
     @Transactional(readOnly = true)
-    private void addToZipArchive(final ZipOutputStream zipOut, String fileName, AudioData audioData) throws IOException {
-        ZipEntry zipEntry = new ZipEntry(fileName);
-        zipOut.putNextEntry(zipEntry);
-        audioDataRepository.streamDataBlob(audioData.getId()).forEach(chunk -> {
-            try {
-                zipOut.write(chunk);
-            } catch (IOException e) {
-                throw new RuntimeException("Error writing blob chunk to ZIP", e);
-            }
-        });
-        zipOut.closeEntry();
+    private void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
+        try (Stream<byte[]> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
+            ZipEntry zipEntry = new ZipEntry(fileName);
+            zipStream.putNextEntry(zipEntry);
+            stream.forEach(chunk -> {
+                try {
+                    zipStream.write(chunk);
+                } catch (IOException e) {
+                    throw new RuntimeException("Error writing blob chunk to ZIP", e);
+                }                });
+            zipStream.closeEntry();
+            zipStream.flush();
+        }
     }
 
     private void addToZipArchive(final ZipOutputStream zipStream, String fileName, byte[] content) throws IOException {
