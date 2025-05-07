@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -47,7 +46,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -78,6 +76,8 @@ public class CsvController {
     private StimulusResponseRepository stimulusResponseRepository;
     @Autowired
     private AudioDataRepository audioDataRepository;
+    @Autowired
+    private AudioDataService audioDataService;
 
     @RequestMapping(value = "/csv.zip", method = RequestMethod.GET)
     @ResponseBody
@@ -117,7 +117,7 @@ public class CsvController {
                             + audioData.getRecordingFormat().name();
                     // TODO: remove after debugging
                     System.out.println(fileName);
-                    addToZipArchive(zipOut, fileName, audioData);
+                    audioDataService.addToZipArchive(zipOut, fileName, audioData);
                 }
             }
         };
@@ -258,22 +258,6 @@ public class CsvController {
             printer.printRecord(rowList);
         }
         printer.close();
-    }
-
-    @Transactional(readOnly = true)
-    private void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
-        try (Stream<byte[]> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
-            ZipEntry zipEntry = new ZipEntry(fileName);
-            zipStream.putNextEntry(zipEntry);
-            stream.forEach(chunk -> {
-                try {
-                    zipStream.write(chunk);
-                } catch (IOException e) {
-                    throw new RuntimeException("Error writing blob chunk to ZIP", e);
-                }                });
-            zipStream.closeEntry();
-            zipStream.flush();
-        }
     }
 
     private void addToZipArchive(final ZipOutputStream zipStream, String fileName, byte[] content) throws IOException {
