@@ -28,7 +28,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.EventTime;
@@ -48,6 +47,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,21 +112,12 @@ public class CsvController {
         StreamingResponseBody stream = outputStream -> {
             try ( ZipOutputStream zipOut = new ZipOutputStream(outputStream)) {
                 for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
-                    final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
+                    final String fileName = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
                             + audioData.getStimulusId() + "_" + audioData.getId() + "."
                             + audioData.getRecordingFormat().name();
                     // TODO: remove after debugging
-                    System.out.println(filename);
-                    ZipEntry zipEntry = new ZipEntry(filename);
-                    zipOut.putNextEntry(zipEntry);
-                    audioDataRepository.streamDataBlob(audioData.getId()).forEach(chunk -> {
-                        try {
-                            zipOut.write(chunk);
-                        } catch (IOException e) {
-                            throw new RuntimeException("Error writing blob chunk to ZIP", e);
-                        }
-                    });
-                    zipOut.closeEntry();
+                    System.out.println(fileName);
+                    addToZipArchive(zipOut, fileName, audioData);
                 }
             }
         };
@@ -179,7 +170,7 @@ public class CsvController {
 //            zipOutputStream.finish();
 //        }
 //    }
-
+    
     @RequestMapping(value = "/aggregate", method = RequestMethod.GET)
     @ResponseBody
     public void getAggregate(HttpServletResponse response) throws IOException, CsvExportException {
@@ -269,6 +260,20 @@ public class CsvController {
         printer.close();
     }
 
+    @Transactional(readOnly = true)
+    private void addToZipArchive(final ZipOutputStream zipOut, String fileName, AudioData audioData) throws IOException {
+        ZipEntry zipEntry = new ZipEntry(fileName);
+        zipOut.putNextEntry(zipEntry);
+        audioDataRepository.streamDataBlob(audioData.getId()).forEach(chunk -> {
+            try {
+                zipOut.write(chunk);
+            } catch (IOException e) {
+                throw new RuntimeException("Error writing blob chunk to ZIP", e);
+            }
+        });
+        zipOut.closeEntry();
+    }
+
     private void addToZipArchive(final ZipOutputStream zipStream, String fileName, byte[] content) throws IOException {
         ZipEntry zipEntry = new ZipEntry(fileName);
         zipStream.putNextEntry(zipEntry);
@@ -276,20 +281,20 @@ public class CsvController {
         zipStream.closeEntry();
     }
 
-    private void addToZipArchive(final ZipOutputStream zipStream, final String fileName, final InputStream dataStream) throws IOException {
-        ZipEntry zipEntry = new ZipEntry(fileName);
-        zipStream.putNextEntry(zipEntry);
-        byte[] buffer = new byte[8192];
-        int bytesRead;
-        while ((bytesRead = dataStream.read(buffer)) != -1) {
-            zipStream.write(buffer, 0, bytesRead);
-            // TODO: remove after debugging
-            System.out.println(bytesRead);
-            zipStream.flush();
-        }
-        dataStream.close();
-        zipStream.closeEntry();
-    }
+    // private void addToZipArchive(final ZipOutputStream zipStream, final String fileName, final InputStream dataStream) throws IOException {
+    //     ZipEntry zipEntry = new ZipEntry(fileName);
+    //     zipStream.putNextEntry(zipEntry);
+    //     byte[] buffer = new byte[8192];
+    //     int bytesRead;
+    //     while ((bytesRead = dataStream.read(buffer)) != -1) {
+    //         zipStream.write(buffer, 0, bytesRead);
+    //         // TODO: remove after debugging
+    //         System.out.println(bytesRead);
+    //         zipStream.flush();
+    //     }
+    //     dataStream.close();
+    //     zipStream.closeEntry();
+    // }
 
     void compressResults(final OutputStream out) throws IOException {
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(out)) {
