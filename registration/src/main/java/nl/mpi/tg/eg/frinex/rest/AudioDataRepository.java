@@ -17,10 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.data.domain.Page;
@@ -107,4 +107,8 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
     
+    @Transactional
+    @Query("SELECT p.dataBlob FROM AudioData p WHERE p.id = :id")
+    Stream<byte[]> streamDataBlob(long id);
+
 }

@@ -45,11 +45,15 @@ import nl.mpi.tg.eg.frinex.util.StimuliTagExpander;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 /**
  * @since Aug 10, 2015 3:21:52 PM (creation date)
@@ -89,12 +93,9 @@ public class CsvController {
     }
 
     @RequestMapping(value = "/audio_{yearString}-{monthString}-{dayString}.zip", method = RequestMethod.GET)
-    @ResponseBody
-    public void getAudioZip(HttpServletResponse response,
-            @PathVariable(value = "yearString", required = true) int selectedYear,
+    public ResponseEntity<StreamingResponseBody> downloadAudioZip(@PathVariable(value = "yearString", required = true) int selectedYear,
             @PathVariable(value = "monthString", required = true) int selectedMonth,
-            @PathVariable(value = "dayString", required = true) int selectedDay) throws IOException {
-        response.setContentType("application/zip");
+            @PathVariable(value = "dayString", required = true) int selectedDay) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, selectedYear);
         calendar.set(Calendar.MONTH, selectedMonth - 1);
@@ -106,30 +107,78 @@ public class CsvController {
         calendar.set(Calendar.DAY_OF_MONTH, selectedDay + 1);
         Date selectedEndDate = calendar.getTime();
         String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
-        response.setHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
         // TODO: remove after debugging
         System.out.println(selectedDateString);
-        response.setHeader("Content-Transfer-Encoding", "binary");
-        final ServletOutputStream outputStream = response.getOutputStream();
-        try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
-            zipOutputStream.setMethod(ZipOutputStream.DEFLATED);
-            for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
-                final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
-                        + audioData.getStimulusId() + "_" + audioData.getId() + "."
-                        + audioData.getRecordingFormat().name();
-                // TODO: remove after debugging
-                System.out.println(filename);
+        StreamingResponseBody stream = outputStream -> {
+            try ( ZipOutputStream zipOut = new ZipOutputStream(outputStream)) {
+                for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
+                    final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
+                            + audioData.getStimulusId() + "_" + audioData.getId() + "."
+                            + audioData.getRecordingFormat().name();
+                    // TODO: remove after debugging
+                    System.out.println(filename);
+                    ZipEntry zipEntry = new ZipEntry(filename);
+                    zipOut.putNextEntry(zipEntry);
+                    audioDataRepository.streamDataBlob(audioData.getId()).forEach(chunk -> {
+                        try {
+                            zipOut.write(chunk);
+                        } catch (IOException e) {
+                            throw new RuntimeException("Error writing blob chunk to ZIP", e);
+                        }
+                    });
+                    zipOut.closeEntry();
+                }
+            }
+        };
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"audio_" + selectedDateString + ".zip\"")
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(stream);
+    }
+
+//    @RequestMapping(value = "/audio_{yearString}-{monthString}-{dayString}.zip", method = RequestMethod.GET)
+//    @ResponseBody
+//    public void getAudioZip(HttpServletResponse response,
+//            @PathVariable(value = "yearString", required = true) int selectedYear,
+//            @PathVariable(value = "monthString", required = true) int selectedMonth,
+//            @PathVariable(value = "dayString", required = true) int selectedDay) throws IOException {
+//        response.setContentType("application/zip");
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.YEAR, selectedYear);
+//        calendar.set(Calendar.MONTH, selectedMonth - 1);
+//        calendar.set(Calendar.DAY_OF_MONTH, selectedDay);
+//        calendar.set(Calendar.HOUR_OF_DAY, 0);
+//        calendar.set(Calendar.MINUTE, 0);
+//        calendar.set(Calendar.SECOND, 0);
+//        Date selectedDate = calendar.getTime();
+//        calendar.set(Calendar.DAY_OF_MONTH, selectedDay + 1);
+//        Date selectedEndDate = calendar.getTime();
+//        String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
+//        response.setHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
+//        // TODO: remove after debugging
+//        System.out.println(selectedDateString);
+//        response.setHeader("Content-Transfer-Encoding", "binary");
+//        final ServletOutputStream outputStream = response.getOutputStream();
+//        try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
+//            zipOutputStream.setMethod(ZipOutputStream.DEFLATED);
+//            for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
+//                final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
+//                        + audioData.getStimulusId() + "_" + audioData.getId() + "."
+//                        + audioData.getRecordingFormat().name();
+//                // TODO: remove after debugging
+//                System.out.println(filename);
 //                InputStream audioStream = audioDataRepository.getMediaStream(audioData.getId());
 //                addToZipArchive(zipOutputStream, filename, audioStream);
-                addToZipArchive(zipOutputStream, filename, audioData.getDataBlob());
-                zipOutputStream.flush();
-                outputStream.flush();
-                // TODO: remove after debugging
-                break;
-            }
-            zipOutputStream.finish();
-        }
-    }
+////                addToZipArchive(zipOutputStream, filename, audioData.getDataBlob());
+//                zipOutputStream.flush();
+//                outputStream.flush();
+//                // TODO: remove after debugging
+//                break;
+//            }
+//            zipOutputStream.finish();
+//        }
+//    }
 
     @RequestMapping(value = "/aggregate", method = RequestMethod.GET)
     @ResponseBody
