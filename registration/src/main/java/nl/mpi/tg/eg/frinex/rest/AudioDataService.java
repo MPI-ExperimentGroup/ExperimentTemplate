@@ -18,13 +18,15 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
-import java.util.stream.Stream;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @since 07 May, 2025 16:58 PM (creation date)
@@ -35,22 +37,53 @@ import org.springframework.transaction.annotation.Transactional;
 public class AudioDataService {
 
     @Autowired
-    private AudioDataRepository audioDataRepository;
+    private JdbcTemplate jdbcTemplate;
+//    @Autowired
+//    private AudioDataRepository audioDataRepository;
 
-    @Transactional(readOnly = true)
-    public void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
-        try ( Stream<Byte> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
-            ZipEntry zipEntry = new ZipEntry(fileName);
-            zipStream.putNextEntry(zipEntry);
-            stream.forEach(chunk -> {
-                try {
-                    zipStream.write(chunk);
-                } catch (IOException e) {
-                    throw new RuntimeException("Error writing blob chunk to ZIP", e);
+//    @Transactional(readOnly = true)
+//    public void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
+//        try ( Stream<Byte> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
+//            ZipEntry zipEntry = new ZipEntry(fileName);
+//            zipStream.putNextEntry(zipEntry);
+//            stream.forEach(chunk -> {
+//                try {
+//                    zipStream.write(chunk);
+//                } catch (IOException e) {
+//                    throw new RuntimeException("Error writing blob chunk to ZIP", e);
+//                }
+//            });
+//            zipStream.closeEntry();
+//            zipStream.flush();
+//        }
+//    }
+
+    public void streamToZip(final ZipOutputStream zipStream, String fileName, AudioData audioData) {
+        jdbcTemplate.query(
+                con -> {
+                    PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
+                    ps.setLong(1, audioData.getId());
+                    return ps;
+                },
+                (ResultSetExtractor<Void>) rs -> {
+                    if (rs.next()) {
+                        try (
+                         InputStream blobStream = rs.getBinaryStream("data_blob");  ZipOutputStream zipOut = new ZipOutputStream(zipStream)) {
+                            ZipEntry entry = new ZipEntry(fileName);
+                            zipOut.putNextEntry(entry);
+                            byte[] buffer = new byte[8192];
+                            int bytesRead;
+                            while ((bytesRead = blobStream.read(buffer)) != -1) {
+                                zipOut.write(buffer, 0, bytesRead);
+                            }
+                            zipOut.closeEntry();
+                            zipOut.finish();
+                        } catch (IOException e) {
+                            throw new RuntimeException("Error writing blob chunk to ZIP", e);
+                        }
+                    }
+                    return null;
                 }
-            });
-            zipStream.closeEntry();
-            zipStream.flush();
-        }
+        );
     }
 }

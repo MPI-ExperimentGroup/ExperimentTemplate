@@ -117,7 +117,7 @@ public class CsvController {
                             + audioData.getRecordingFormat().name();
                     // TODO: remove after debugging
                     System.out.println(fileName);
-                    audioDataService.addToZipArchive(zipOut, fileName, audioData);
+                    audioDataService.streamToZip(zipOut, fileName, audioData);
                 }
             }
         };
