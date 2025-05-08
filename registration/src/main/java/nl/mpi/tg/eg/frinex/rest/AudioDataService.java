@@ -67,17 +67,15 @@ public class AudioDataService {
                 },
                 (ResultSetExtractor<Void>) rs -> {
                     if (rs.next()) {
-                        try (
-                         InputStream blobStream = rs.getBinaryStream("data_blob");  ZipOutputStream zipOut = new ZipOutputStream(zipStream)) {
+                        try (InputStream blobStream = rs.getBinaryStream("data_blob")) {
                             ZipEntry entry = new ZipEntry(fileName);
-                            zipOut.putNextEntry(entry);
+                            zipStream.putNextEntry(entry);
                             byte[] buffer = new byte[8192];
                             int bytesRead;
                             while ((bytesRead = blobStream.read(buffer)) != -1) {
-                                zipOut.write(buffer, 0, bytesRead);
+                                zipStream.write(buffer, 0, bytesRead);
                             }
-                            zipOut.closeEntry();
-                            zipOut.finish();
+                            zipStream.closeEntry();
                         } catch (IOException e) {
                             throw new RuntimeException("Error writing blob chunk to ZIP", e);
                         }
