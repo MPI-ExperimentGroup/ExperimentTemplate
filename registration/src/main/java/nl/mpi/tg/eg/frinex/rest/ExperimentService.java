@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.AudioType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
@@ -32,8 +33,6 @@ import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -70,6 +69,8 @@ public class ExperimentService {
     GroupDataRepository groupDataRepository;
     @Autowired
     AudioDataRepository audioDataRepository;
+    @Autowired
+    private AudioDataService audioDataService;
 
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
@@ -116,19 +117,21 @@ public class ExperimentService {
     }
 
     @RequestMapping(value = "/replayAudio/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
-    public HttpEntity<byte[]> participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId) {
-        HttpHeaders header = new HttpHeaders();
+    public void participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId, HttpServletResponse response) throws IOException {
         final List<AudioData> audioDataRecords = this.audioDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
         if (audioDataRecords.size() == 1) {
             AudioData audioData = audioDataRecords.get(0);
-            header.setContentType(new MediaType("audio", audioData.getRecordingFormat().name()));
             if (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
-                final byte[] dataBlob = audioData.getDataBlob();
-                header.setContentLength(dataBlob.length);
-                return new HttpEntity<>(dataBlob, header);
+                String extension = audioData.getRecordingFormat().name().toLowerCase();
+                String mediaType = audioData.isVideo() ? "video" : "audio";
+                response.setContentType(mediaType + "/" + extension);
+                audioDataService.streamToResponse(response.getOutputStream(), audioData);
+            } else {
+                response.sendError(HttpStatus.UNAUTHORIZED.value());
             }
+        } else {
+            response.sendError(HttpStatus.NOT_FOUND.value());
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @RequestMapping(value = "/screenChange", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
