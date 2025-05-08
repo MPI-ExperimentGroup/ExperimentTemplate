@@ -95,8 +95,10 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from AudioData order by resultString asc")
     public String[] findSubmitDateDistinctByOrderBySubmitDateAsc();
 
-    @Transactional
-    List<AudioData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
+//    @Transactional
+//    List<AudioData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
+    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId) FROM AudioData a WHERE a.submitDate BETWEEN :start AND :end")
+    List<AudioData> findMetadataBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
 
     @Transactional
     public List<AudioData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
