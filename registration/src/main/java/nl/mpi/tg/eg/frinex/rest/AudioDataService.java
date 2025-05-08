@@ -39,7 +39,7 @@ public class AudioDataService {
 
     @Transactional(readOnly = true)
     public void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
-        try ( Stream<byte[]> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
+        try ( Stream<Byte> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
             ZipEntry zipEntry = new ZipEntry(fileName);
             zipStream.putNextEntry(zipEntry);
             stream.forEach(chunk -> {
