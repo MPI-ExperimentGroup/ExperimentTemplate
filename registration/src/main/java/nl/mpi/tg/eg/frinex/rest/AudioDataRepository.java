@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.data.domain.Page;
@@ -74,10 +73,10 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     
-    @Query("SELECT p FROM AudioData p WHERE "
-        + "(:userId IS NULL OR p.userId like :userId) AND "
-        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId)")
+    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId) FROM AudioData a WHERE "
+        + "(:userId IS NULL OR a.userId like :userId) AND "
+        + "(:screenName IS NULL OR a.screenName like :screenName) AND "
+        + "(:stimulusId IS NULL OR a.stimulusId like :stimulusId)")
     @Transactional
     Page<AudioData> findByUserIdLikeAndScreenNameLikeAndStimulusIdLike(Pageable pageable, 
     @Param("userId") String userId,
@@ -95,16 +94,17 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from AudioData order by resultString asc")
     public String[] findSubmitDateDistinctByOrderBySubmitDateAsc();
 
-//    @Transactional
+    @Transactional
 //    List<AudioData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
     @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId) FROM AudioData a WHERE a.submitDate BETWEEN :start AND :end")
-    List<AudioData> findMetadataBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
+    List<AudioData> findBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
 
+    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId) FROM AudioData a WHERE a.userId = :userId ORDER BY a.submitDate ASC")
     @Transactional
     public List<AudioData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
-    @Transactional
-    public List<AudioData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
+//    @Transactional
+//    public List<AudioData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 
     @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);

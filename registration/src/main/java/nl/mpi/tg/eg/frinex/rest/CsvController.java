@@ -111,7 +111,7 @@ public class CsvController {
         System.out.println(selectedDateString);
         StreamingResponseBody stream = outputStream -> {
             try ( ZipOutputStream zipOut = new ZipOutputStream(outputStream)) {
-                for (AudioData audioData : audioDataRepository.findMetadataBySubmitDateBetween(selectedDate, selectedEndDate)) {
+                for (AudioData audioData : audioDataRepository.findBySubmitDateBetween(selectedDate, selectedEndDate)) {
                     final String fileName = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
                             + audioData.getStimulusId() + "_" + audioData.getId() + "."
                             + audioData.getRecordingFormat().name();
