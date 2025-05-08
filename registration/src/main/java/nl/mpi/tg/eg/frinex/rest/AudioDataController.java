@@ -17,14 +17,15 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  * @since Aug 13, 2018 5:16:42 PM (creation date)
@@ -42,22 +44,26 @@ public class AudioDataController {
 
     @Autowired
     private AudioDataRepository audioDataRepository;
+    @Autowired
+    private AudioDataService audioDataService;
 
     @RequestMapping(value = "audio/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
-    public HttpEntity<byte[]> getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
-        return getMedia(userId, screenName, stimulusId, id);
+    public void getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
+            HttpServletResponse response) throws IOException {
+        getMedia(userId, screenName, stimulusId, id, response);
     }
 
     @RequestMapping(value = "media/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
-    public HttpEntity<byte[]> getMedia(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id) {
-        HttpHeaders header = new HttpHeaders();
-        final AudioData audioData = this.audioDataRepository.findById(id).get();
+    public void getMedia(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
+            HttpServletResponse response) throws IOException {
+        final AudioData audioData = this.audioDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Audio not found"));
         // TODO: video/ogv is not quite correct and should be video/ogg
-        header.setContentDispositionFormData("Content-Disposition", (audioData.isVideo() ? "video" : "audio") + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + audioData.getRecordingFormat().name());
-        header.setContentType(new MediaType((audioData.isVideo() ? "video" : "audio"), audioData.getRecordingFormat().name()));
-        final byte[] dataBlob = audioData.getDataBlob();
-        header.setContentLength(dataBlob.length);
-        return new HttpEntity<>(dataBlob, header);
+        String extension = audioData.getRecordingFormat().name().toLowerCase();
+        String mediaType = audioData.isVideo() ? "video" : "audio";
+        String filename = mediaType + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + extension;
+        response.setContentType(mediaType + "/" + extension);
+        response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
+        audioDataService.streamToResponse(response.getOutputStream(), audioData);
     }
 
     @RequestMapping("audiolisting")

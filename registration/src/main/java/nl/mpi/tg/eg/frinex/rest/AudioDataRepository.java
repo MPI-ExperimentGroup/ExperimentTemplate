@@ -107,6 +107,7 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
 //    public List<AudioData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 
     @Transactional
+    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId) FROM AudioData a WHERE a.shortLivedToken = :shortLivedToken AND a.userId = :userId")
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
     
 //    @Query("SELECT p.dataBlob FROM AudioData p WHERE p.id = :id")
