@@ -1,5 +1,5 @@
 {
-  "name": "@experiment.configuration.displayName@",
+  "name": "@experiment.configuration.name@",
   "productName": "@experiment.configuration.name@",
   "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
   "description": "Frinex",
