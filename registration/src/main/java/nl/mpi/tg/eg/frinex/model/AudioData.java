@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -143,6 +144,8 @@ public class AudioData implements Serializable {
     }
 
     @Lob
+    // migrating from OID to BYTEA because of the need to stream up and down
+    @Column(columnDefinition = "BYTEA")
     @JsonIgnore
     @Basic(fetch = FetchType.LAZY)
     public byte[] getDataBlob() {
