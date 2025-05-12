@@ -22,14 +22,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.sql.DataSource;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
@@ -46,25 +45,28 @@ public class AudioDataService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private DataSource dataSource;
     @PersistenceContext
     private EntityManager entityManager;
 
     @Transactional
-    public void saveAudioData(AudioData audioData, MultipartFile dataBlob) throws SQLException {
+    public void saveAudioData(AudioData audioData, MultipartFile dataBlob) {
         entityManager.persist(audioData);
-        // storing the audio data via JPA @Lob so that it gets streamed and not all loaded into memory
-        try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE audio_data SET data_blob = ? WHERE id = ?")) {
-            ps.setBlob(1, dataBlob.getInputStream());
-            ps.setLong(2, audioData.getId());
-            ps.executeUpdate();
-        }
+        jdbcTemplate.update(
+                (Connection conn) -> {
+                    try {
+                        PreparedStatement ps = conn.prepareStatement("UPDATE audio_data SET data_blob = ? WHERE id = ?");
+                        ps.setBinaryStream(1, dataBlob.getInputStream(), dataBlob.getSize());
+                        ps.setLong(2, audioData.getId());
+                        return ps;
+                    } catch (IOException e) {
+                        throw new RuntimeException("Error storing audio", e);
+                    }
+                }
+        );
     }
 
 //    @Autowired
 //    private AudioDataRepository audioDataRepository;
-    
 //    @Transactional(readOnly = true)
 //    public void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
 //        try ( Stream<Byte> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
@@ -81,7 +83,6 @@ public class AudioDataService {
 //            zipStream.flush();
 //        }
 //    }
-    
     public void streamToZip(final ZipOutputStream zipStream, String fileName, AudioData audioData) {
         jdbcTemplate.query(
                 con -> {
