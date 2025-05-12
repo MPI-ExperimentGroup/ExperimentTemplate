@@ -18,15 +18,11 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
-import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.AudioType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
@@ -76,10 +72,6 @@ public class ExperimentService {
     AudioDataRepository audioDataRepository;
     @Autowired
     private AudioDataService audioDataService;
-    @Autowired
-    private EntityManager entityManager;
-    @Autowired
-    private DataSource dataSource;
 
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
@@ -120,13 +112,7 @@ public class ExperimentService {
     @ResponseBody
     public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("audioType") AudioType audioType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
         AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, audioType, null, UUID.randomUUID(), downloadPermittedWindowMs);
-        entityManager.persist(audioData);
-        // storing the audio data via JPA @Lob so that it gets streamed and not all loaded into memory
-        try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE audio_data SET data_blob = ? WHERE id = ?")) {
-            ps.setBlob(1, dataBlob.getInputStream());
-            ps.setLong(2, audioData.getId());
-            ps.executeUpdate();
-        }
+        audioDataService.saveAudioData(audioData, dataBlob);
         // return the short lived token for the user to replay their recorded audio
         return new ResponseEntity<>(audioData.getShortLivedToken().toString(), HttpStatus.OK);
     }
