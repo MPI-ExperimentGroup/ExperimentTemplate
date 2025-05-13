@@ -27,7 +27,6 @@ import javax.persistence.PersistenceContext;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,6 +36,8 @@ import org.postgresql.largeobject.LargeObjectManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import org.springframework.jdbc.core.ConnectionCallback;
 
 /**
  * @since 07 May, 2025 16:58 PM (creation date)
@@ -107,55 +108,109 @@ public class AudioDataService {
 //        }
 //    }
     public void streamToZip(final ZipOutputStream zipStream, String fileName, AudioData audioData) {
-        jdbcTemplate.query(
-                con -> {
-                    PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-                    ps.setLong(1, audioData.getId());
-                    return ps;
-                },
-                (ResultSetExtractor<Void>) rs -> {
-                    if (rs.next()) {
-                        try (InputStream blobStream = rs.getBinaryStream("data_blob")) {
-                            ZipEntry entry = new ZipEntry(fileName);
-                            zipStream.putNextEntry(entry);
-                            byte[] buffer = new byte[8192];
-                            int bytesRead;
-                            while ((bytesRead = blobStream.read(buffer)) != -1) {
-                                zipStream.write(buffer, 0, bytesRead);
-                            }
-                            zipStream.closeEntry();
-                        } catch (IOException e) {
-                            throw new RuntimeException("Error writing blob chunk to ZIP", e);
-                        }
+        // for OID use:
+        jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
+            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
+            ps.setLong(1, audioData.getId());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                long oid = rs.getLong("data_blob");
+                PGConnection pgCon = con.unwrap(PGConnection.class);
+                LargeObjectManager lobj = pgCon.getLargeObjectAPI();
+                LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
+                try (InputStream blobStream = obj.getInputStream()) {
+                    ZipEntry entry = new ZipEntry(fileName);
+                    zipStream.putNextEntry(entry);
+                    byte[] buffer = new byte[8192];
+                    int bytesRead;
+                    while ((bytesRead = blobStream.read(buffer)) != -1) {
+                        zipStream.write(buffer, 0, bytesRead);
                     }
-                    return null;
+                    zipStream.closeEntry();
+                } catch (IOException e) {
+                    throw new RuntimeException("Error writing blob chunk to ZIP", e);
+                } finally {
+                    obj.close();
                 }
-        );
+            }
+            return null;
+        });
+        // for BYTEA use:
+        //jdbcTemplate.query(
+        //con -> {
+        //    PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
+        //    ps.setLong(1, audioData.getId());
+        //    return ps;
+        //},
+        //(ResultSetExtractor<Void>) rs -> {
+        //    if (rs.next()) {
+        //        try (InputStream blobStream = rs.getBinaryStream("data_blob")) {
+        //            ZipEntry entry = new ZipEntry(fileName);
+        //            zipStream.putNextEntry(entry);
+        //            byte[] buffer = new byte[8192];
+        //            int bytesRead;
+        //            while ((bytesRead = blobStream.read(buffer)) != -1) {
+        //                zipStream.write(buffer, 0, bytesRead);
+        //            }
+        //            zipStream.closeEntry();
+        //        } catch (IOException e) {
+        //            throw new RuntimeException("Error writing blob chunk to ZIP", e);
+        //        }
+        //    }
+        //    return null;
+        //}
+        //);
     }
 
     public void streamToResponse(final OutputStream outputStream, AudioData audioData) {
-        jdbcTemplate.query(
-                con -> {
-                    PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-                    ps.setLong(1, audioData.getId());
-                    return ps;
-                },
-                (ResultSetExtractor<Void>) rs -> {
-                    if (rs.next()) {
-                        try (InputStream blobStream = rs.getBinaryStream("data_blob");) {
-
-                            byte[] buffer = new byte[8192];
-                            int bytesRead;
-                            while ((bytesRead = blobStream.read(buffer)) != -1) {
-                                outputStream.write(buffer, 0, bytesRead);
-                            }
-                            outputStream.flush();
-                        } catch (IOException e) {
-                            throw new RuntimeException("Error streaming media data", e);
-                        }
+        // for OID use:
+        jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
+            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
+            ps.setLong(1, audioData.getId());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                long oid = rs.getLong("data_blob");
+                PGConnection pgConn = con.unwrap(PGConnection.class);
+                LargeObjectManager lobj = pgConn.getLargeObjectAPI();
+                LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
+                try (InputStream blobStream = obj.getInputStream()) {
+                    byte[] buffer = new byte[8192];
+                    int bytesRead;
+                    while ((bytesRead = blobStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
                     }
-                    return null;
+                    outputStream.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException("Error streaming media data", e);
+                } finally {
+                    obj.close();
                 }
-        );
+            }
+            return null;
+        });
+        //for BYTEA use:
+        //jdbcTemplate.query(
+        //        con -> {
+        //            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
+        //            ps.setLong(1, audioData.getId());
+        //            return ps;
+        //        },
+        //        (ResultSetExtractor<Void>) rs -> {
+        //            if (rs.next()) {
+        //                try (InputStream blobStream = rs.getBinaryStream("data_blob");) {
+        //
+        //                    byte[] buffer = new byte[8192];
+        //                    int bytesRead;
+        //                    while ((bytesRead = blobStream.read(buffer)) != -1) {
+        //                        outputStream.write(buffer, 0, bytesRead);
+        //                    }
+        //                    outputStream.flush();
+        //                } catch (IOException e) {
+        //                    throw new RuntimeException("Error streaming media data", e);
+        //                }
+        //            }
+        //            return null;
+        //        }
+        //);
     }
 }
