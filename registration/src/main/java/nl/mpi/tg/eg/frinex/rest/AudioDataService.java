@@ -117,22 +117,26 @@ public class AudioDataService {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 long oid = rs.getLong("data_blob");
-                PGConnection pgCon = con.unwrap(PGConnection.class);
-                LargeObjectManager lobj = pgCon.getLargeObjectAPI();
-                LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
-                try (InputStream blobStream = obj.getInputStream()) {
-                    ZipEntry entry = new ZipEntry(fileName);
-                    zipStream.putNextEntry(entry);
-                    byte[] buffer = new byte[8192];
-                    int bytesRead;
-                    while ((bytesRead = blobStream.read(buffer)) != -1) {
-                        zipStream.write(buffer, 0, bytesRead);
+                if (rs.wasNull() || oid == 0) {
+                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + audioData.getId());
+                } else {
+                    PGConnection pgCon = con.unwrap(PGConnection.class);
+                    LargeObjectManager lobj = pgCon.getLargeObjectAPI();
+                    LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
+                    try (InputStream blobStream = obj.getInputStream()) {
+                        ZipEntry entry = new ZipEntry(fileName);
+                        zipStream.putNextEntry(entry);
+                        byte[] buffer = new byte[8192];
+                        int bytesRead;
+                        while ((bytesRead = blobStream.read(buffer)) != -1) {
+                            zipStream.write(buffer, 0, bytesRead);
+                        }
+                        zipStream.closeEntry();
+                    } catch (IOException e) {
+                        throw new RuntimeException("Error writing blob chunk to ZIP", e);
+                    } finally {
+                        obj.close();
                     }
-                    zipStream.closeEntry();
-                } catch (IOException e) {
-                    throw new RuntimeException("Error writing blob chunk to ZIP", e);
-                } finally {
-                    obj.close();
                 }
             }
             return null;
@@ -173,20 +177,24 @@ public class AudioDataService {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 long oid = rs.getLong("data_blob");
-                PGConnection pgConn = con.unwrap(PGConnection.class);
-                LargeObjectManager lobj = pgConn.getLargeObjectAPI();
-                LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
-                try (InputStream blobStream = obj.getInputStream()) {
-                    byte[] buffer = new byte[8192];
-                    int bytesRead;
-                    while ((bytesRead = blobStream.read(buffer)) != -1) {
-                        outputStream.write(buffer, 0, bytesRead);
+                if (rs.wasNull() || oid == 0) {
+                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + audioData.getId());
+                } else {
+                    PGConnection pgConn = con.unwrap(PGConnection.class);
+                    LargeObjectManager lobj = pgConn.getLargeObjectAPI();
+                    LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
+                    try (InputStream blobStream = obj.getInputStream()) {
+                        byte[] buffer = new byte[8192];
+                        int bytesRead;
+                        while ((bytesRead = blobStream.read(buffer)) != -1) {
+                            outputStream.write(buffer, 0, bytesRead);
+                        }
+                        outputStream.flush();
+                    } catch (IOException e) {
+                        throw new RuntimeException("Error streaming media data", e);
+                    } finally {
+                        obj.close();
                     }
-                    outputStream.flush();
-                } catch (IOException e) {
-                    throw new RuntimeException("Error streaming media data", e);
-                } finally {
-                    obj.close();
                 }
             }
             return null;
