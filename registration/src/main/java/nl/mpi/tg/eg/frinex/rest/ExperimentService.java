@@ -119,6 +119,7 @@ public class ExperimentService {
 
     @RequestMapping(value = "/replayAudio/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId, HttpServletResponse response) throws IOException {
+        System.out.println("shortLivedToken: " + shortLivedToken + " for userId: " + userId);
         final List<AudioData> audioDataRecords = this.audioDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
         if (audioDataRecords.size() == 1) {
             AudioData audioData = audioDataRecords.get(0);
@@ -128,9 +129,11 @@ public class ExperimentService {
                 response.setContentType(mediaType + "/" + extension);
                 audioDataService.streamToResponse(response.getOutputStream(), audioData);
             } else {
+                System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
                 response.sendError(HttpStatus.UNAUTHORIZED.value(), "[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
             }
         } else {
+            System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + audioDataRecords.size());
             response.sendError(HttpStatus.NOT_FOUND.value(), "[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + audioDataRecords.size());
         }
     }
