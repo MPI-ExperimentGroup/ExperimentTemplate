@@ -128,10 +128,10 @@ public class ExperimentService {
                 response.setContentType(mediaType + "/" + extension);
                 audioDataService.streamToResponse(response.getOutputStream(), audioData);
             } else {
-                response.sendError(HttpStatus.UNAUTHORIZED.value());
+                response.sendError(HttpStatus.UNAUTHORIZED.value(), "[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
             }
         } else {
-            response.sendError(HttpStatus.NOT_FOUND.value());
+            response.sendError(HttpStatus.NOT_FOUND.value(), "[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + audioDataRecords.size());
         }
     }
 
