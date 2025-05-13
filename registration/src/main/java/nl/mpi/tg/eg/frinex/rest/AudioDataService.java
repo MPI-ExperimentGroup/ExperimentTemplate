@@ -55,23 +55,31 @@ public class AudioDataService {
     @Transactional
     public void saveAudioData(AudioData audioData, MultipartFile dataBlob) {
         entityManager.persist(audioData);
+        entityManager.flush();
         // for OID use:
+        Long generatedId = audioData.getId();
+        if (generatedId == null) {
+            throw new IllegalStateException("AudioData ID was not generated");
+        }
         jdbcTemplate.execute((Connection conn) -> {
             PGConnection pgConn = conn.unwrap(PGConnection.class);
             LargeObjectManager lobj = pgConn.getLargeObjectAPI();
             long oid = lobj.createLO(LargeObjectManager.WRITE);
             try (LargeObject obj = lobj.open(oid, LargeObjectManager.WRITE); OutputStream os = obj.getOutputStream(); InputStream is = dataBlob.getInputStream()) {
                 is.transferTo(os);
-                try (PreparedStatement ps = conn.prepareStatement(
-                        "UPDATE audio_data SET data_blob = ? WHERE id = ?")) {
-                    ps.setLong(1, oid);
-                    ps.setLong(2, audioData.getId());
-                    ps.executeUpdate();
-                }
-
             } catch (IOException e) {
                 throw new RuntimeException("Failed to store audio blob", e);
             }
+            try (PreparedStatement ps = conn.prepareStatement(
+                    "UPDATE audio_data SET data_blob = ? WHERE id = ?")) {
+                ps.setLong(1, oid);
+                ps.setLong(2, generatedId);
+                int rows = ps.executeUpdate();
+                if (rows != 1) {
+                    throw new IllegalStateException("Failed to update data_blob for ID " + generatedId);
+                }
+            }
+
             return null;
         });
         // for BYTEA use:
