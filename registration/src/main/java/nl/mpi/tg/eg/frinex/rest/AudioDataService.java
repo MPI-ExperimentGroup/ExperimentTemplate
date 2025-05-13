@@ -20,20 +20,23 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.postgresql.PGConnection;
+import org.postgresql.largeobject.LargeObject;
+import org.postgresql.largeobject.LargeObjectManager;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  * @since 07 May, 2025 16:58 PM (creation date)
@@ -51,18 +54,38 @@ public class AudioDataService {
     @Transactional
     public void saveAudioData(AudioData audioData, MultipartFile dataBlob) {
         entityManager.persist(audioData);
-        jdbcTemplate.update(
-                (Connection conn) -> {
-                    try {
-                        PreparedStatement ps = conn.prepareStatement("UPDATE audio_data SET data_blob = ? WHERE id = ?");
-                        ps.setBinaryStream(1, dataBlob.getInputStream(), dataBlob.getSize());
-                        ps.setLong(2, audioData.getId());
-                        return ps;
-                    } catch (IOException e) {
-                        throw new RuntimeException("Error storing audio", e);
-                    }
+        // for OID use:
+        jdbcTemplate.execute((Connection conn) -> {
+            PGConnection pgConn = conn.unwrap(PGConnection.class);
+            LargeObjectManager lobj = pgConn.getLargeObjectAPI();
+            long oid = lobj.createLO(LargeObjectManager.WRITE);
+            try (LargeObject obj = lobj.open(oid, LargeObjectManager.WRITE); OutputStream os = obj.getOutputStream(); InputStream is = dataBlob.getInputStream()) {
+                is.transferTo(os);
+                try (PreparedStatement ps = conn.prepareStatement(
+                        "UPDATE audio_data SET data_blob = ? WHERE id = ?")) {
+                    ps.setLong(1, oid);
+                    ps.setLong(2, audioData.getId());
+                    ps.executeUpdate();
                 }
-        );
+
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to store audio blob", e);
+            }
+            return null;
+        });
+        // for BYTEA use:
+        // jdbcTemplate.update(
+        //         (Connection conn) -> {
+        //             try {
+        //                 PreparedStatement ps = conn.prepareStatement("UPDATE audio_data SET data_blob = ? WHERE id = ?");
+        //                 ps.setBinaryStream(1, dataBlob.getInputStream(), dataBlob.getSize());
+        //                 ps.setLong(2, audioData.getId());
+        //                 return ps;
+        //             } catch (IOException e) {
+        //                 throw new RuntimeException("Error storing audio", e);
+        //             }
+        //         }
+        // );
     }
 
 //    @Autowired

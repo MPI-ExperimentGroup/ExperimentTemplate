@@ -145,7 +145,7 @@ public class AudioData implements Serializable {
 
     @Lob
     // migrating from OID to BYTEA because of the need to stream up and down
-    @Column(columnDefinition = "BYTEA")
+    //    @Column(columnDefinition = "BYTEA")
     @JsonIgnore
     @Basic(fetch = FetchType.LAZY)
     public byte[] getDataBlob() {
