@@ -107,6 +107,8 @@ public class AudioDataService {
 //            zipStream.flush();
 //        }
 //    }
+    
+    @Transactional
     public void streamToZip(final ZipOutputStream zipStream, String fileName, AudioData audioData) {
         // for OID use:
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
@@ -162,6 +164,7 @@ public class AudioDataService {
         //);
     }
 
+    @Transactional
     public void streamToResponse(final OutputStream outputStream, AudioData audioData) {
         // for OID use:
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
