@@ -58,13 +58,15 @@ public class AudioData implements Serializable {
         this.submitDate = submitDate;
     }
 
-    public AudioData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId) {
+    public AudioData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, AudioType recordingFormat, long downloadPermittedWindowMs) {
         this.id = id;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
         this.userId = userId;
         this.stimulusId = stimulusId;
+        this.recordingFormat = recordingFormat;
+        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
     public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, AudioType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final long downloadPermittedWindowMs) {
