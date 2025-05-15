@@ -29,11 +29,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
         <link type="text/css" rel="stylesheet" href="webjars/font-awesome/css/fontawesome.min.css"/>
         <script src="webjars/jquery/jquery.min.js"></script>
+        <script src="webjars/momentjs/moment.js"></script>
+        <script src="js/ExperimentCharts.js"></script>
         <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
-        <p th:text="'Activity Count, ' + ${count}" />
+        <span class="table-container" id="mediatable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var simpleMode = /*[[${simpleMode}]]*/ '';
+                generateTable({divId: "mediatable", label: "Media Responses", source: "mediaResponse", columnNames: "userId,screenName,stimulusId,recordingFormat,submitDate,mediaFile,mediaLink"});
+                /*]]>*/
+            </script>
+        </span>
         <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
