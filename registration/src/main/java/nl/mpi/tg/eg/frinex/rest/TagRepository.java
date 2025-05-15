@@ -42,10 +42,10 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
     List<TagData> findAllDistinctRecords();
 
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct tagValue) from TagData where eventTag = :eventTag")
     long countDistinctTagValueByEventTag(String eventTag);
-    
+
     @Query("select count(distinct tagValue) from TagData where userId = :userId and eventTag = :eventTag")
     long countDistinctUserIdAndTagValueByEventTag(@Param("userId") String userId, String eventTag);
 
@@ -61,37 +61,46 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from TagData group by userId order by firstAccess asc")
     Date[][] findFirstAndLastSessionAccess();
-    
+
     @Query(value = "select min(submitDate) from TagData where userId = :userId")
     Date findFirstSessionAccess(@Param("userId") String userId);
-    
+
     @Query(value = "select max(submitDate) from TagData where userId = :userId")
     Date findLastSessionAccess(@Param("userId") String userId);
-    
+
+    @Query(value = "SELECT * FROM tag_data td "
+            + "WHERE (td.event_ms, td.event_tag, td.tag_value, td.user_id, td.tag_date, td.screen_name) IN ("
+            + "  SELECT event_ms, event_tag, tag_value, user_id, tag_date, screen_name "
+            + "  FROM tag_data "
+            + "  GROUP BY event_ms, event_tag, tag_value, user_id, tag_date, screen_name "
+            + "  HAVING COUNT(*) > 1"
+            + ")", nativeQuery = true)
+    List<TagData> findNonUniqueCombinations();
+
     @Query("SELECT count(p) FROM TagData p WHERE "
-        + "(:userId IS NULL OR p.userId like :userId) AND "
-        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-        + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
-        + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
+            + "(:userId IS NULL OR p.userId like :userId) AND "
+            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+            + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
+            + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
     long countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike(
-        @Param("userId") String userId,
-        @Param("screenName") String screenName,
-        @Param("eventTag") String eventTag,
-        @Param("tagValue") String tagValue);
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            @Param("eventTag") String eventTag,
+            @Param("tagValue") String tagValue);
 
     @Query("SELECT p FROM TagData p WHERE "
-        + "(:userId IS NULL OR p.userId like :userId) AND "
-        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-        + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
-        + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
-    Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, 
-        @Param("userId") String userId,
-        @Param("screenName") String screenName,
-        @Param("eventTag") String eventTag,
-        @Param("tagValue") String tagValue);
+            + "(:userId IS NULL OR p.userId like :userId) AND "
+            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+            + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
+            + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
+    Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable,
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            @Param("eventTag") String eventTag,
+            @Param("tagValue") String tagValue);
 
 //    AssignedValue(int assignedCount, int completedCount, Date lastChange, String value)
 //    assignedValue
@@ -99,14 +108,14 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 //    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
 //    @Query(value = "select new AssignedValue(min(submitDate)) from TagData group by to_char(submitDate,'YYYY-MM-DD')")
 //    AssignedValue findAssignedValues(String[] valueOptions);
-          
+
 //    @Query("select new nl.mpi.tg.eg.frinex.model.AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where TagValue in :valueOptions and eventTag = :eventTag group by TagValue")
 //    List<AssignedValue> countAssignedValues(@Param("eventTag") String eventTag, @Param("valueOptions") Set<String> valueOptions);
-    
-    List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
-    
+
+List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
+
     List<TagData> findFirstByUserIdAndEventTagInOrderByTagDateDesc(@Param("userId") String userId, @Param("eventTags") Set<String> eventTags);
-    
+
     @Query("select new nl.mpi.tg.eg.frinex.model.AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where tagValue in :tagValues and eventTag = :eventTag and screenName = :screenName group by tagValue")
     List<AssignedValue> countByDistinctByEventTagAndScreenNameAndTagValueIn(@Param("eventTag") String eventTag, @Param("screenName") String screenName, @Param("tagValues") Set<String> tagValues);
 
