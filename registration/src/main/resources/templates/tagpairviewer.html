@@ -47,7 +47,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*<![CDATA[*/
                 var simpleMode = /*[[${simpleMode}]]*/ '';
                 var dataChannel = /*[[${dataChannel}]]*/ '';
-                var columnFields = "userId,screenName,eventTag,tagValue1,tagValue2,eventMs,tagDate";
+                var columnFields = "userId,screenName,dataChannel,eventTag,tagValue1,tagValue2,eventMs,tagDate";
                 var tableData = {divId: "tagpairtable", label: "Tag Pair Data", source: "tagpair", columnNames: columnFields};
                 if (dataChannel !== null) { tableData.dataChannel = dataChannel; }
                 generateTable(tableData);
