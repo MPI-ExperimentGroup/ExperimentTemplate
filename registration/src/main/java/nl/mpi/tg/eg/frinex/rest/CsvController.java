@@ -108,7 +108,7 @@ public class CsvController {
         Date selectedEndDate = calendar.getTime();
         String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
         // TODO: remove after debugging
-        System.out.println(selectedDateString);
+//        System.out.println(selectedDateString);
         StreamingResponseBody stream = outputStream -> {
             try ( ZipOutputStream zipOut = new ZipOutputStream(outputStream)) {
                 for (AudioData audioData : audioDataRepository.findBySubmitDateBetween(selectedDate, selectedEndDate)) {
@@ -116,7 +116,7 @@ public class CsvController {
                             + audioData.getStimulusId() + "_" + audioData.getId() + "."
                             + audioData.getRecordingFormat().name();
                     // TODO: remove after debugging
-                    System.out.println(fileName);
+//                    System.out.println(fileName);
                     audioDataService.streamToZip(zipOut, fileName, audioData);
                 }
             }
