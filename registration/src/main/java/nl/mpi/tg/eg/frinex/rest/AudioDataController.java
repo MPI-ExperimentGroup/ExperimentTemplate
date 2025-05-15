@@ -66,7 +66,7 @@ public class AudioDataController {
         audioDataService.streamToResponse(response.getOutputStream(), audioData);
     }
 
-    @RequestMapping("audiolisting")
+    @RequestMapping("medialisting")
     public String participantListing(Model model,
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
@@ -83,6 +83,6 @@ public class AudioDataController {
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
-        return "audiolisting";
+        return "medialisting";
     }
 }

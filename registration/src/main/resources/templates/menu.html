@@ -45,7 +45,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <a th:href="'groupdataviewer?simple=' + ${simpleMode}">Group Data Viewer</a><br/>
             <a th:if="${!simpleMode}" th:href="'eventchart?simple=' + ${simpleMode}">Event Chart</a><br th:if="${!simpleMode}"/>
             <a th:if="${!simpleMode}" th:href="'timestampviewer?simple=' + ${simpleMode}">Time Stamp Viewer</a><br th:if="${!simpleMode}"/>
-            <a th:if="${!simpleMode}" th:href="'audiolisting?simple=' + ${simpleMode}">Audio Listing</a><br th:if="${!simpleMode}"/>
+            <a th:href="'medialisting?simple=' + ${simpleMode}">Media Listing</a><br/>
         </section>
         <section>
             <h3>Download Data</h3>
