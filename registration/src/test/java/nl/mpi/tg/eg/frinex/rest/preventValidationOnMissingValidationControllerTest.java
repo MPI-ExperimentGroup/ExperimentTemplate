@@ -420,6 +420,11 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
+            public List<TagData> findNonUniqueCombinations() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public long countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike(String userId, String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }

@@ -91,7 +91,7 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
             @Param("eventTag") String eventTag,
             @Param("tagValue") String tagValue);
 
-    @Query("SELECT p FROM TagData p WHERE "
+    @Query("SELECT distinct new TagData(p.userId, p.screenName, p.eventTag, p.tagValue, p.eventMs, p.tagDate) FROM TagData p WHERE "
             + "(:userId IS NULL OR p.userId like :userId) AND "
             + "(:screenName IS NULL OR p.screenName like :screenName) AND "
             + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "

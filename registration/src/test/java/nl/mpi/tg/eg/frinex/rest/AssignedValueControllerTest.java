@@ -53,6 +53,11 @@ public class AssignedValueControllerTest {
         HashMap<String, Integer> countsMap = new HashMap<>();
         instance.tagRepository = new TagRepository() {
             @Override
+            public List<TagData> findNonUniqueCombinations() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public List<TagData> findAllDistinctRecords() {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
