@@ -47,17 +47,6 @@ public class TimeStampController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        model.addAttribute("count", this.timeStampRepository.count());
-        final Page<TimeStamp> pageData = this.timeStampRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
-        final List<TimeStamp> content = pageData.getContent();
-        final List<TimeStamp> contentDistinct = new ArrayList<>();
-        for (TimeStamp tagData : content) {
-            if (!contentDistinct.contains(tagData)) {
-                contentDistinct.add(tagData);
-            }
-        }
-        model.addAttribute("allTimeStampData", contentDistinct);
-        model.addAttribute("pageData", pageData);
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
         model.addAttribute("sortColumn", sortColumn);
