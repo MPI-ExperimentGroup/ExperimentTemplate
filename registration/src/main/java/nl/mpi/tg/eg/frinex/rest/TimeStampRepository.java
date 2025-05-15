@@ -50,12 +50,21 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
         @Param("userId") String userId,
         @Param("eventTag") String eventTag);
 
-    @Query("SELECT p FROM TimeStamp p WHERE "
+    @Query("SELECT distinct new TimeStamp(p.userId, p.eventTag, p.eventMs, p.tagDate) FROM TimeStamp p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
     Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("eventTag") String eventTag);
+    
+    @Query(value = "SELECT * FROM time_stamp td "
+            + "WHERE (td.event_ms, td.event_tag, td.user_id, td.tag_date) IN ("
+            + "  SELECT event_ms, event_tag, user_id, tag_date "
+            + "  FROM tag_data "
+            + "  GROUP BY event_ms, event_tag, user_id, tag_date "
+            + "  HAVING COUNT(*) > 1"
+            + ")", nativeQuery = true)
+    List<TimeStamp> findNonUniqueCombinations();
     
     @Query("select distinct eventTag from TimeStamp order by eventTag")
     List<String> findDistinctEventTag();

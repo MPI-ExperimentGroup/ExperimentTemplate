@@ -168,6 +168,10 @@ public class allowValidationOnMissingValidationControllerTest {
 
         }, new TimeStampRepository() {
             @Override
+            public List<TimeStamp> findNonUniqueCombinations() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            @Override
             public Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, String userId, String eventTag) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
