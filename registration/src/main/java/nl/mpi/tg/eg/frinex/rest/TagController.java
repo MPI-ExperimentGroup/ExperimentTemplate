@@ -17,13 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-import nl.mpi.tg.eg.frinex.model.TagData;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,9 +29,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TagController {
 
-    @Autowired
-    private TagRepository tagRepository;
-
     @RequestMapping("tagviewer")
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
@@ -46,18 +36,6 @@ public class TagController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {//, Pageable pageable
-        final long count = this.tagRepository.count();
-        model.addAttribute("count", count);
-        final Page<TagData> pageData = this.tagRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
-        final List<TagData> content = pageData.getContent();
-        final List<TagData> contentDistinct = new ArrayList<>();
-        for (TagData tagData : content) {
-            if (!contentDistinct.contains(tagData)) {
-                contentDistinct.add(tagData);
-            }
-        }
-        model.addAttribute("allTagData", contentDistinct);
-        model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
