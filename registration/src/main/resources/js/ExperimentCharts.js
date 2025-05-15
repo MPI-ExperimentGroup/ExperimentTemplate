@@ -185,7 +185,7 @@ function loadMore(tableId) {
         var touchInputReportCounter = $("#" + tableId + " tbody tr:last").index();
         for (const recordData of responseData._embedded[Object.keys(responseData._embedded)[0]]) {
             var touchInputReport = false;
-            var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=true';\">";
+            var dataRow = "<tr id='clickablerow' userid='" + recordData.userId + "' onclick=\"window.location = 'participantdetail?id=' + this.getAttribute('userId') + '&amp;simple=" + simpleMode + "';\">";
             for (const columnHeader of $("#" + tableId + " thead tr th")) {
                 const columnLabel = columnHeader.innerText;
                 const columnId = columnHeader.id;
