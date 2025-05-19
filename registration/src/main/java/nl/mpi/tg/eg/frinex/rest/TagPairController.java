@@ -36,9 +36,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TagPairController {
 
-    @Autowired
-    private TagPairRepository tagPairRepository;
-
     @RequestMapping("tagpairviewer")
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
@@ -47,20 +44,6 @@ public class TagPairController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {//, Pageable pageable
-        final long count = this.tagPairRepository.count();
-        model.addAttribute("count", count);
-        final Page<TagPairData> pageData = (dataChannel == null)
-                ? this.tagPairRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
-                : this.tagPairRepository.findBydataChannel(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
-        final List<TagPairData> content = pageData.getContent();
-        final List<TagPairData> contentDistinct = new ArrayList<>();
-        for (TagPairData tagData : content) {
-            if (!contentDistinct.contains(tagData)) {
-                contentDistinct.add(tagData);
-            }
-        }
-        model.addAttribute("allTagPairData", contentDistinct);
-        model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("dataChannel", dataChannel);
