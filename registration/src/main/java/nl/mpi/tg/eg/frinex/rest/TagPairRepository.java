@@ -67,12 +67,14 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
     @Query("SELECT distinct new TagPairData(p.userId, p.screenName, p.dataChannel, p.eventTag, p.tagValue1, p.tagValue2, p.eventMs, p.tagDate) FROM TagPairData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+        + "(:dataChannel IS NULL OR p.dataChannel = :dataChannel) AND "
         + "(:eventTag IS NULL OR p.eventTag like :eventTag) AND "
         + "(:tagValue1 IS NULL OR p.tagValue1 like :tagValue1) AND "
         + "(:tagValue2 IS NULL OR p.tagValue2 like :tagValue2)")
     Page<TagPairData> findByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like(Pageable pageable, 
             @Param("userId") String userId,
             @Param("screenName") String screenName,
+            @Param("dataChannel") Integer dataChannel,
             @Param("eventTag") String eventTag,
             @Param("tagValue1") String tagValue1,
             @Param("tagValue2") String tagValue2);
