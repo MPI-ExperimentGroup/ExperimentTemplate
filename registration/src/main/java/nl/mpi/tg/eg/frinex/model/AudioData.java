@@ -22,7 +22,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -170,7 +169,7 @@ public class AudioData implements Serializable {
         return (downloadPermittedWindowMs != null) ? downloadPermittedWindowMs : 0;
     }
 
-    public void setDownloadPermittedWindowMs(long downloadPermittedWindowMs) {
+    public void setDownloadPermittedWindowMs(Long downloadPermittedWindowMs) {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
