@@ -17,13 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-import nl.mpi.tg.eg.frinex.model.StimulusResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class StimulusResponseController {
 
-    @Autowired
-    private StimulusResponseRepository stimulusResponseRepository;
+//    @Autowired
+//    private StimulusResponseRepository stimulusResponseRepository;
 
     @RequestMapping("stimulusresponseviewer")
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
