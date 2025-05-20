@@ -199,7 +199,7 @@ function loadMore(tableId) {
                     dataRow += "</td>";
                 } else if (columnId === "mediaLink") {
                     dataRow += "<td>";
-                    dataRow += "<a class=\"downloadLink\" href='media/" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id +"><i class=\"fa fa-download\"></i></a>";
+                    dataRow += "<a class=\"downloadLink\" href=\"media/" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id + "\"><i class=\"fa fa-download\"></i></a>";
                     dataRow += "</td>";
                 } else if (columnId === "tagValue2" && recordData.eventTag === "touchInputReport") {
                     touchInputReport = true;
