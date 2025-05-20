@@ -278,7 +278,8 @@ function generateTable(tableData) {
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
-        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr id='tableFloatingHeader'></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='tagDate'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
+        sortColumn = tableData.columnNames.split(",").includes('tagDate')? 'tagDate' : 'submitDate';
+        $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr id='tableFloatingHeader'></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='" + sortColumn + "'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
             // TODO: maybe add column filter textbox
             var columnId = columnName;
