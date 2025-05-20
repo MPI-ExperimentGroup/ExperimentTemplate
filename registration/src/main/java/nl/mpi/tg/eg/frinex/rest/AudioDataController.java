@@ -18,13 +18,9 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -74,11 +70,6 @@ public class AudioDataController {
             @RequestParam(value = "size", defaultValue = "100", required = false) Integer size,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        model.addAttribute("count", this.audioDataRepository.count());
-        final Page<AudioData> pageData = this.audioDataRepository.findAll(PageRequest.of(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
-        final List<AudioData> content = pageData.getContent();
-        model.addAttribute("allAudioData", content);
-        model.addAttribute("pageData", pageData);
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
