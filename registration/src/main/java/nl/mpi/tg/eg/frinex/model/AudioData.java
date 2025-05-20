@@ -44,7 +44,7 @@ public class AudioData implements Serializable {
     private String screenName;
     private String userId;
     private String stimulusId;
-    private AudioType recordingFormat = AudioType.ogg;
+    private AudioType recordingFormat = null;
     private UUID shortLivedToken;
     private Long downloadPermittedWindowMs = null;
     private byte[] dataBlob;
@@ -137,7 +137,7 @@ public class AudioData implements Serializable {
     }
 
     public AudioType getRecordingFormat() {
-        return recordingFormat;
+        return (recordingFormat != null) ? recordingFormat : AudioType.ogg;
     }
 
     public void setRecordingFormat(AudioType recordingFormat) {
