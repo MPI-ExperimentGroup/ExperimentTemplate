@@ -197,6 +197,10 @@ function loadMore(tableId) {
                         dataRow += "<audio controls='true' preload='none'><source src='" + recordData.mediaPath + "' type='audio/" + recordData.recordingFormat + "' /></audio>";
                     }
                     dataRow += "</td>";
+                } else if (columnId === "mediaLink") {
+                    dataRow += "<td>";
+                    dataRow += "<a class=\"downloadLink\" href='media/" + recordData.userId + "_" + recordData.screenName + "_" + recordData.stimulusId + "_" + recordData.id +"><i class=\"fa fa-download\"></i></a>";
+                    dataRow += "</td>";
                 } else if (columnId === "tagValue2" && recordData.eventTag === "touchInputReport") {
                     touchInputReport = true;
                     touchInputReportCounter++;
