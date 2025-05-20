@@ -96,7 +96,7 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
             + "(:screenName IS NULL OR p.screenName like :screenName) AND "
             + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
             + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
-    Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable,
+    Page<TagData> findByLike(Pageable pageable,
             @Param("userId") String userId,
             @Param("screenName") String screenName,
             @Param("eventTag") String eventTag,

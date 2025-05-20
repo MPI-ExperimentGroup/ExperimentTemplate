@@ -250,22 +250,22 @@ function generateTable(tableData) {
         }
     }
     const dataUrl = (tableData.source === "tagpair") ? (
-        'tagpairevents/search/findByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValue1LikeAndTagValue2Like'
+        'tagpairevents/search/findByLike'
         + parametersString
     ) : (tableData.source === "tagdata") ? (
-        'tagevents/search/findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike'
+        'tagevents/search/findByLike'
         + parametersString
     ) : (tableData.source === "timestamp") ? (
-        'timestamps/search/findByUserIdLikeAndEventTagLike'
+        'timestamps/search/findByLike'
         + parametersString
     ) : (tableData.source === "screendata") ? (
-        'screenviews/search/findByUserIdLikeScreenNameLike'
+        'screenviews/search/findByLike'
         + parametersString
     ) : (tableData.source === "participantdata") ? (
-        'participants/search/findByCustomDataLike'
+        'participants/search/findByLike'
         + parametersString
     ) : (tableData.source === "mediaResponse") ? (
-        'audiodata/search/findByUserIdLikeAndScreenNameLikeAndStimulusIdLike'
+        'audiodata/search/findByLike'
         + parametersString
         // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
     ) : (tableData.source === "stimulusResponse") ? (

@@ -113,7 +113,7 @@ public class AssignedValueControllerTest {
             }
 
             @Override
-            public Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, String userId, String screenName, String eventTag, String tagValue) {
+            public Page<TagData> findByLike(Pageable pageable, String userId, String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 

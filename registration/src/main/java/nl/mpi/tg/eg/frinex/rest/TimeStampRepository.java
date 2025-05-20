@@ -53,7 +53,7 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     @Query("SELECT distinct new TimeStamp(p.userId, p.eventTag, p.eventMs, p.tagDate) FROM TimeStamp p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
-    Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, 
+    Page<TimeStamp> findByLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("eventTag") String eventTag);
     

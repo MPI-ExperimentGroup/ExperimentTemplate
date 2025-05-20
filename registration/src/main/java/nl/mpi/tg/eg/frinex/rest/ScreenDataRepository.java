@@ -67,7 +67,7 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
     @Query("SELECT p FROM ScreenData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName)")
-    Page<ScreenData> findByUserIdLikeScreenNameLike(Pageable pageable, 
+    Page<ScreenData> findByLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("screenName") String screenName);
 

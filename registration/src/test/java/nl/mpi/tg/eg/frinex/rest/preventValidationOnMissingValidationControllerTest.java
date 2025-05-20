@@ -54,7 +54,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Page<ScreenData> findByUserIdLikeScreenNameLike(Pageable pageable, String userId, String screenName) {
+            public Page<ScreenData> findByLike(Pageable pageable, String userId, String screenName) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -175,7 +175,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
             
             @Override
-            public Page<TimeStamp> findByUserIdLikeAndEventTagLike(Pageable pageable, String userId, String eventTag) {
+            public Page<TimeStamp> findByLike(Pageable pageable, String userId, String eventTag) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -435,7 +435,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Page<TagData> findByUserIdLikeScreenNameLikeAndEventTagLikeAndTagValueLike(Pageable pageable, String userId, String screenName, String eventTag, String tagValue) {
+            public Page<TagData> findByLike(Pageable pageable, String userId, String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 

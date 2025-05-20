@@ -209,7 +209,7 @@
                 </xsl:for-each>
                 <xsl:text>)</xsl:text>
                 <xsl:text>
-                    Page&lt;Participant&gt; findByCustomDataLike(Pageable pageable,
+                    Page&lt;Participant&gt; findByLike(Pageable pageable,
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>@Param("</xsl:text>
@@ -275,7 +275,7 @@
                     public abstract class MockParticipantColumnsRepository implements ParticipantRepository {
                     
                     @Override
-                    public Page&lt;Participant&gt; findByCustomDataLike(Pageable pageable,
+                    public Page&lt;Participant&gt; findByLike(Pageable pageable,
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>String </xsl:text>
