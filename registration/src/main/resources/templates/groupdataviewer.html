@@ -29,10 +29,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
         <script src="webjars/jquery/jquery.min.js"></script>
         <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
+        <script src="webjars/momentjs/moment.js"></script>
+        <script src="js/ExperimentCharts.js"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <!--<p th:text="'Activity Count, ' + ${count}" />-->
+        <span class="table-container" id="grouptable">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var simpleMode = /*[[${simpleMode}]]*/ '';
+                var columnFields = "eventDate,submitDate,experimentName,groupUUID,groupName,screenName,messageRespondentId,allMemberCodes,groupCommunicationChannels,senderMemberCode,respondentMemberCode,stimulusId,stimulusIndex,responseStimulusId,stimulusOptionIds,messageSenderId,messageString,eventMs";
+                var tableData = {divId: "grouptable", label: "Group Responses", source: "groupResponse", columnNames: columnFields};
+                generateTable(tableData);
+                /*]]>*/
+            </script>
+        </span>
         <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
