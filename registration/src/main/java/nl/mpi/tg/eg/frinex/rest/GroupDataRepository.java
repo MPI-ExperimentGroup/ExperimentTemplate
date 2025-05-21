@@ -60,7 +60,7 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     Page<GroupData> findByLike(Pageable pageable, 
             @Param("groupUUID") String groupUUID,
             @Param("screenName") String screenName,
-            @Param("groupName") Integer groupName,
+            @Param("groupName") String groupName,
             @Param("messageRespondentId") String messageRespondentId,
             @Param("allMemberCodes") String allMemberCodes,
             @Param("groupCommunicationChannels") String groupCommunicationChannels,
