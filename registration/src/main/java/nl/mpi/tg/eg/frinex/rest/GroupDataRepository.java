@@ -41,6 +41,37 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
 
     @Query("select distinct new GroupData(eventDate, submitDate, experimentName, groupUUID, groupName, screenName, messageRespondentId, allMemberCodes, groupCommunicationChannels, senderMemberCode, respondentMemberCode, stimulusId, stimulusIndex, responseStimulusId, stimulusOptionIds, messageString, eventMs) from GroupData order by eventDate asc")
     List<GroupData> findAllDistinctRecords();
+    
+    @Query("SELECT distinct new GroupData(p.eventDate, p.submitDate, p.experimentName, p.groupUUID, p.groupName, p.screenName, p.messageRespondentId, p.allMemberCodes, p.groupCommunicationChannels, p.senderMemberCode, p.respondentMemberCode, p.stimulusId, p.stimulusIndex, p.responseStimulusId, p.stimulusOptionIds, p.messageString, p.eventMs) FROM GroupData p WHERE "
+        + "(:groupUUID IS NULL OR p.groupUUID like :groupUUID) AND "
+        + "(:screenName IS NULL OR p.screenName like :screenName) AND "
+        + "(:groupName IS NULL OR p.groupName = :groupName) AND "
+        + "(:messageRespondentId IS NULL OR p.messageRespondentId like :messageRespondentId) AND "
+        + "(:allMemberCodes IS NULL OR p.allMemberCodes like :allMemberCodes) AND "
+        + "(:groupCommunicationChannels IS NULL OR p.groupCommunicationChannels like :groupCommunicationChannels) AND "
+        + "(:senderMemberCode IS NULL OR p.senderMemberCode like :senderMemberCode) AND "
+        + "(:respondentMemberCode IS NULL OR p.respondentMemberCode like :respondentMemberCode) AND "
+        + "(:stimulusId IS NULL OR p.stimulusId like :stimulusId) AND "
+        + "(:stimulusIndex IS NULL OR p.stimulusIndex like :stimulusIndex) AND "
+        + "(:responseStimulusId IS NULL OR p.responseStimulusId like :responseStimulusId) AND "
+        + "(:stimulusOptionIds IS NULL OR p.stimulusOptionIds like :stimulusOptionIds) AND "
+        + "(:messageSenderId IS NULL OR p.messageSenderId like :messageSenderId) AND "
+        + "(:messageString IS NULL OR p.messageString like :messageString)")
+    Page<GroupData> findByLike(Pageable pageable, 
+            @Param("groupUUID") String groupUUID,
+            @Param("screenName") String screenName,
+            @Param("groupName") Integer groupName,
+            @Param("messageRespondentId") String messageRespondentId,
+            @Param("allMemberCodes") String allMemberCodes,
+            @Param("groupCommunicationChannels") String groupCommunicationChannels,
+            @Param("senderMemberCode") String senderMemberCode,
+            @Param("respondentMemberCode") String respondentMemberCode,
+            @Param("stimulusId") String stimulusId,
+            @Param("stimulusIndex") String stimulusIndex,
+            @Param("responseStimulusId") String responseStimulusId,
+            @Param("stimulusOptionIds") String stimulusOptionIds,
+            @Param("messageSenderId") String messageSenderId,
+            @Param("messageString") String messageString);
 
     @Override
     @RestResource(exported = false)
