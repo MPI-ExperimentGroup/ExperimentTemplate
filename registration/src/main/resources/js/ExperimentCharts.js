@@ -261,6 +261,9 @@ function generateTable(tableData) {
     ) : (tableData.source === "screendata") ? (
         'screenviews/search/findByLike'
         + parametersString
+    ) : (tableData.source === "groupdata") ? (
+        'groupdata/search/findByLike'
+        + parametersString
     ) : (tableData.source === "participantdata") ? (
         'participants/search/findByLike'
         + parametersString
