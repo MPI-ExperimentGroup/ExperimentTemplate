@@ -3,7 +3,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
             userIdGetParam="uuid"
-            appNameDisplay="With Stimulus Example" 
+            appNameDisplay="With Stimulus Example"
             preserveLastState="false"
             obfuscateBrowserStorage="false"
             availableLocales="en,es,de,fr,nl" defaultLocale="nl"
