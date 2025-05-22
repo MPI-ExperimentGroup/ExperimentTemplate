@@ -21,7 +21,7 @@
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 
-$(document).ready(function () {
+$(window).on('load', function () {
     var tableFloatingHeaderTop = $('#tableFloatingHeader').offset().top;
     $("<tr id=\"tablePaddingHeader\" style=\"position: static; top: 0px; left: 0px;\"><th>&nbsp;</th></tr>").insertBefore("#tableFloatingHeader");
     $('#tablePaddingHeader').hide();
@@ -38,6 +38,7 @@ $(document).ready(function () {
         //                    $('#headerDiv').css({marginLeft: $('window').scrollLeft() + 'px', width: '100%'});
     });
 });
+
 function setColumnWidths() {
     for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
         var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').width();
