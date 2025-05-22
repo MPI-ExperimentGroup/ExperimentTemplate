@@ -29,10 +29,10 @@ $(window).on('load', function () {
     $(window).scroll(function () {
         if ($(window).scrollTop() > tableFloatingHeaderTop) {
             $('#tablePaddingHeader').height($('#tableFloatingHeader').height());
-            $('#tableFloatingHeader').css({position: 'fixed', top: '0px', left: (-$(window).scrollLeft()) + $('#tableFloatingHeader').parents("table").find("td:first").offset().left + 'px'});
+            $('#tableFloatingHeader').css({ position: 'fixed', top: '0px', left: (-$(window).scrollLeft()) + $('#tableFloatingHeader').parents("table").find("td:first").offset().left + 'px' });
             $('#tablePaddingHeader').show();
         } else {
-            $('#tableFloatingHeader').css({position: 'static', top: '0px', left: '0px'});
+            $('#tableFloatingHeader').css({ position: 'static', top: '0px', left: '0px' });
             $('#tablePaddingHeader').hide();
         }
         //                    $('#headerDiv').css({marginLeft: $('window').scrollLeft() + 'px', width: '100%'});
@@ -40,13 +40,15 @@ $(window).on('load', function () {
 });
 
 function setColumnWidths() {
-    for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
-        var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').width();
-        // set the computed header cell width from the row
-        $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('min-width', cellWidth);
-        $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('max-width', cellWidth);
-        // also set the first row cell width from the row for cases where the cell width was determined by the cell header
-        $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('min-width', cellWidth);
-        $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('max-width', cellWidth);
+    if ($('#tableFloatingHeader').parents("table").find('tr').length > 3) {
+        for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
+            var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').width();
+            // set the computed header cell width from the row
+            $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('min-width', cellWidth);
+            $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('max-width', cellWidth);
+            // also set the first row cell width from the row for cases where the cell width was determined by the cell header
+            $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('min-width', cellWidth);
+            $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('max-width', cellWidth);
+        }
     }
 }
