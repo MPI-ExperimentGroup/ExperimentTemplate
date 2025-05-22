@@ -712,6 +712,7 @@
                             &lt;script&gt;</xsl:text>
                         <xsl:text>
                             <!-- $(document).on('loaded', -->
+                            var simpleMode = /*[[${simpleMode}]]*/ '';
                             generateTable({divId:"</xsl:text>
                         <xsl:value-of select="generate-id(.)" />
                         <!-- <xsl:text>", recordingFormat: "</xsl:text>
