@@ -17,14 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-import nl.mpi.tg.eg.frinex.model.GroupData;
-import nl.mpi.tg.eg.frinex.util.StimuliTagExpander;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GroupDataController {
 
-    @Autowired
-    private GroupDataRepository groupDataRepository;
+    // @Autowired
+    // private GroupDataRepository groupDataRepository;
 
     @RequestMapping("groupdataviewer")
     public String groupDataViewer(Model model,
@@ -49,23 +41,23 @@ public class GroupDataController {
             @RequestParam(value = "groupUUID", required = false) String groupUUID,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        model.addAttribute("count", this.groupDataRepository.count());
-        final Page<GroupData> pageData;
-        if (groupUUID != null) {
-            pageData = this.groupDataRepository.findByGroupUUID(groupUUID, PageRequest.of(page, size, Sort.Direction.ASC, sortColumn));
-        } else {
-            pageData = this.groupDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.ASC, sortColumn));
-        }
-        final List<GroupData> content = pageData.getContent();
-        final List<GroupData> contentDistinct = new ArrayList<>();
-        for (GroupData groupData : content) {
-            if (!contentDistinct.contains(groupData)) {
-                contentDistinct.add(groupData);
-            }
-        }
-        model.addAttribute("allGroupData", contentDistinct);
-        model.addAttribute("pageData", pageData);
-        model.addAttribute("stimuliTagExpander", new StimuliTagExpander());
+        // model.addAttribute("count", this.groupDataRepository.count());
+        // final Page<GroupData> pageData;
+        // if (groupUUID != null) {
+        //     pageData = this.groupDataRepository.findByGroupUUID(groupUUID, PageRequest.of(page, size, Sort.Direction.ASC, sortColumn));
+        // } else {
+        //     pageData = this.groupDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.ASC, sortColumn));
+        // }
+        // final List<GroupData> content = pageData.getContent();
+        // final List<GroupData> contentDistinct = new ArrayList<>();
+        // for (GroupData groupData : content) {
+        //     if (!contentDistinct.contains(groupData)) {
+        //         contentDistinct.add(groupData);
+        //     }
+        // }
+//        model.addAttribute("allGroupData", contentDistinct);
+        // model.addAttribute("pageData", pageData);
+//        model.addAttribute("stimuliTagExpander", new StimuliTagExpander());
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
