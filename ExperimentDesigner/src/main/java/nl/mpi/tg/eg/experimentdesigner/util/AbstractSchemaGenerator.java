@@ -40,30 +40,33 @@ public class AbstractSchemaGenerator {
     }
 
     public enum AttributeType {
-        xsString("xs:string", "String"),
-        presenterName("presenterName", "PresenterName"),
-        xsInteger("xs:integer", "Integer"),
-        xsDecimal("xs:decimal", "Decimal"),
-        xsBoolean("xs:boolean", "Boolean"),
-        xsBooleanToggle("booleanToggle", "false, true, invert"),
-        rgbHexValue("rgbHexValue", "RGB Hex Value"),
-        dateValue("dateValue", "Date Value YYYY-MM-DD"),
-        stimulusIdentifier("stimulusIdentifier", "Stimulus Identifier"),
-        stimulusTags("stimulusTags", "Stimulus Tags"),
-        stimulusTag("stimulusTag", "Stimulus Tag"),
-        integerList("integerList", "Integer List"),
-        groupMembers("groupMembers", "Group Members"),
-        groupChannels("groupChannels", "Group Channels"),
-        groupPhases("groupPhases", "Group Phases"),
-        lowercaseValue("lowercaseValue", "Lowercase Value"),
-        postName("postName", "Post Name String");
+        xsString("xs:string", "String", null),
+        presenterName("presenterName", "PresenterName", null),
+        xsInteger("xs:integer", "Integer", null),
+        xsDecimal("xs:decimal", "Decimal", null),
+        xsBoolean("xs:boolean", "Boolean", null),
+        xsBooleanToggle("booleanToggle", "false, true, invert", null),
+        adminTableColumns("adminTableColumns", "Column name list", "allMemberCodes,correctStreak,currentScore,dataChannel,errorStreak,eventDate,eventMs,eventTag,eventTimes,experimentName,gamesPlayed,groupCommunicationChannels,groupName,groupUUID,isCorrect,maxCorrectStreak,maxErrors,maxErrorStreak,maxPotentialScore,maxScore,mediaFile,mediaLink,messageRespondentId,messageSenderId,messageString,potentialScore,recordingFormat,respondentMemberCode,response,responseGroup,responseStimulusId,scoreGroup,screenName,senderMemberCode,stimulusId,stimulusIndex,stimulusOptionIds,submitDate,tagDate,tagValue,tagValue1,tagValue2,totalPotentialScore,totalScore,userId,viewDate,[a-zA-Z_0-9]+"),
+        rgbHexValue("rgbHexValue", "RGB Hex Value", null),
+        dateValue("dateValue", "Date Value YYYY-MM-DD", null),
+        stimulusIdentifier("stimulusIdentifier", "Stimulus Identifier", null),
+        stimulusTags("stimulusTags", "Stimulus Tags", null),
+        stimulusTag("stimulusTag", "Stimulus Tag", null),
+        integerList("integerList", "Integer List", null),
+        groupMembers("groupMembers", "Group Members", null),
+        groupChannels("groupChannels", "Group Channels", null),
+        groupPhases("groupPhases", "Group Phases", null),
+        lowercaseValue("lowercaseValue", "Lowercase Value", null),
+        postName("postName", "Post Name String", null);
 //        presenterKind("type", "Presenter Type");
         public final String typeName;
         public final String typeLabel;
+        public final String typeValues;
 
-        private AttributeType(String typeName, String typeLabel) {
+        private AttributeType(String typeName, String typeLabel, String typeValues) {
             this.typeName = typeName;
             this.typeLabel = typeLabel;
+            this.typeValues = typeValues;
         }
     }
 
@@ -485,7 +488,7 @@ public class AbstractSchemaGenerator {
                                         //                                                .documentedAttribute("matching", AttributeType.xsString, "Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false),
                                     .stringAttribute("label", false)
                                     .restrictedAttribute("source", null, "The source data for chart to be displayed in the table.", false, "stimulusResponse", "tagpair", "tagdata", "metadata", "timestamp", "mediaResponse")
-                                    .stringAttribute("columnNames", false)                                                
+                                    .documentedAttribute("columnNames", AttributeType.adminTableColumns, "Comma separated list of columns that will be shown in the data table. Tables of metadata can use the fieldNames from the XML. Not all columns exist for all sources.", false)   
                                     .documentedAttribute("userId", AttributeType.xsString, "Only records matching this userId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
                                     .documentedAttribute("screenName", AttributeType.xsString, "Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", true)
 //                                    .documentedAttribute("dataChannel", AttributeType.xsDecimal, "Only records matching this dataChannel will be included for this dataset.", true)

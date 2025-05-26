@@ -51,6 +51,14 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:enumeration value=\"invert\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"adminTableColumns\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:pattern value=\"(");
+        writer.append(AttributeType.adminTableColumns.typeValues);
+        writer.append(")(,(");
+        writer.append(AttributeType.adminTableColumns.typeValues + "))*\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>");
         writer.append("<xs:simpleType name=\"rangesValue\">\n");
         writer.append("<xs:restriction base=\"xs:token\">\n");
         writer.append("<xs:pattern value=\"[0-9]*((..|,)[0-9]+)*\"/>\n");
