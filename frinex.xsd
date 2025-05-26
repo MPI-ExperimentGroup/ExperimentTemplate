@@ -12,7 +12,11 @@
 <xs:enumeration value="invert"/>
 </xs:restriction>
 </xs:simpleType>
-<xs:simpleType name="rangesValue">
+<xs:simpleType name="adminTableColumns">
+<xs:restriction base="xs:string">
+<xs:pattern value="(allMemberCodes|correctStreak|currentScore|dataChannel|errorStreak|eventDate|eventMs|eventTag|eventTimes|experimentName|gamesPlayed|groupCommunicationChannels|groupName|groupUUID|isCorrect|maxCorrectStreak|maxErrors|maxErrorStreak|maxPotentialScore|maxScore|mediaFile|mediaLink|messageRespondentId|messageSenderId|messageString|potentialScore|recordingFormat|respondentMemberCode|response|responseGroup|responseStimulusId|scoreGroup|screenName|senderMemberCode|stimulusId|stimulusIndex|stimulusOptionIds|submitDate|tagDate|tagValue|tagValue1|tagValue2|totalPotentialScore|totalScore|userId|viewDate|[a-zA-Z_0-9]+)(,(allMemberCodes|correctStreak|currentScore|dataChannel|errorStreak|eventDate|eventMs|eventTag|eventTimes|experimentName|gamesPlayed|groupCommunicationChannels|groupName|groupUUID|isCorrect|maxCorrectStreak|maxErrors|maxErrorStreak|maxPotentialScore|maxScore|mediaFile|mediaLink|messageRespondentId|messageSenderId|messageString|potentialScore|recordingFormat|respondentMemberCode|response|responseGroup|responseStimulusId|scoreGroup|screenName|senderMemberCode|stimulusId|stimulusIndex|stimulusOptionIds|submitDate|tagDate|tagValue|tagValue1|tagValue2|totalPotentialScore|totalScore|userId|viewDate|[a-zA-Z_0-9]+))*"/>
+</xs:restriction>
+</xs:simpleType><xs:simpleType name="rangesValue">
 <xs:restriction base="xs:token">
 <xs:pattern value="[0-9]*((..|,)[0-9]+)*"/>
 </xs:restriction>
@@ -760,9 +764,9 @@
 </xs:restriction>
 </xs:simpleType>
 </xs:attribute>
-<xs:attribute name="columnNames" type="xs:string" use="required">
+<xs:attribute name="columnNames" type="adminTableColumns" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Comma separated list of columns that will be shown in the data table. Tables of metadata can use the fieldNames from the XML. Not all columns exist for all sources.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="userId" type="xs:string">
@@ -1016,9 +1020,9 @@
 </xs:restriction>
 </xs:simpleType>
 </xs:attribute>
-<xs:attribute name="columnNames" type="xs:string" use="required">
+<xs:attribute name="columnNames" type="adminTableColumns" use="required">
 <xs:annotation>
-<xs:documentation>String</xs:documentation>
+<xs:documentation>Comma separated list of columns that will be shown in the data table. Tables of metadata can use the fieldNames from the XML. Not all columns exist for all sources.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="userId" type="xs:string">
