@@ -31,7 +31,6 @@ public class GroupDataController {
 
     // @Autowired
     // private GroupDataRepository groupDataRepository;
-
     @RequestMapping("groupdataviewer")
     public String groupDataViewer(Model model,
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
@@ -58,6 +57,9 @@ public class GroupDataController {
 //        model.addAttribute("allGroupData", contentDistinct);
         // model.addAttribute("pageData", pageData);
 //        model.addAttribute("stimuliTagExpander", new StimuliTagExpander());
+        if (groupUUID != null) {
+            model.addAttribute("groupUUID", groupUUID);
+        }
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
