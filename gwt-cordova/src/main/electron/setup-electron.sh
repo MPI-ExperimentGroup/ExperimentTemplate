@@ -60,6 +60,7 @@ yarn dist --win portable
 yarn dist --mac zip --dir -c.compression=store -c.mac.identity=null
 yarn dist --mac dmg --dir -c.compression=store -c.mac.identity=null
 yarn dist --linux snap
+yarn dist --linux appimage
 
 cd dist
 ls -l
@@ -98,6 +99,7 @@ yarn dist --win portable
 yarn dist --mac zip --dir -c.compression=store -c.mac.identity=null
 yarn dist --mac dmg --dir -c.compression=store -c.mac.identity=null
 yarn dist --linux snap
+yarn dist --linux appimage
 
 cd dist
 ls -l
