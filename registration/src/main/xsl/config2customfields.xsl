@@ -720,18 +720,19 @@
                         <xsl:value-of select="if (@label) then concat('&quot;, label: &quot;', @label) else ''" />
                         <xsl:value-of select="if (@source) then concat('&quot;, source: &quot;', @source) else ''" />
                         <xsl:value-of select="if (@columnNames) then concat('&quot;, columnNames: &quot;', @columnNames) else ''" />
-                        <xsl:value-of select="if (@userId) then concat('&quot;, userId: &quot;', @userId) else ''" />
-                        <xsl:value-of select="if (@screenName) then concat('&quot;, screenName: &quot;', @screenName) else ''" />
-                        <xsl:value-of select="if (@eventTag) then concat('&quot;, eventTag: &quot;', @eventTag) else ''" />
-                        <xsl:value-of select="if (@tagValue) then concat('&quot;, tagValue: &quot;', @tagValue) else ''" />
-                        <xsl:value-of select="if (@tagValue1) then concat('&quot;, tagValue1: &quot;', @tagValue1) else ''" />
-                        <xsl:value-of select="if (@tagValue2) then concat('&quot;, tagValue2: &quot;', @tagValue2) else ''" />
-                        <xsl:value-of select="if (@dataChannel) then concat('&quot;, dataChannel: &quot;', @dataChannel) else ''" />
-                        <xsl:value-of select="if (@responseGroup) then concat('&quot;, responseGroup: &quot;', @responseGroup) else ''" />
-                        <xsl:value-of select="if (@scoreGroup) then concat('&quot;, scoreGroup: &quot;', @scoreGroup) else ''" />
-                        <xsl:value-of select="if (@stimulusId) then concat('&quot;, stimulusId: &quot;', @stimulusId) else ''" />
-                        <xsl:value-of select="if (@response) then concat('&quot;, response: &quot;', @response) else ''" />
-                        <xsl:value-of select="if (@isCorrect) then concat('&quot;, isCorrect: &quot;', @isCorrect) else ''" />
+                        <!-- <xsl:value-of select="if (@userId) then concat('&quot;, userId: &quot;', @userId) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@screenName) then concat('&quot;, screenName: &quot;', @screenName) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@eventTag) then concat('&quot;, eventTag: &quot;', @eventTag) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@tagValue) then concat('&quot;, tagValue: &quot;', @tagValue) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@tagValue1) then concat('&quot;, tagValue1: &quot;', @tagValue1) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@tagValue2) then concat('&quot;, tagValue2: &quot;', @tagValue2) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@dataChannel) then concat('&quot;, dataChannel: &quot;', @dataChannel) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@responseGroup) then concat('&quot;, responseGroup: &quot;', @responseGroup) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@scoreGroup) then concat('&quot;, scoreGroup: &quot;', @scoreGroup) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@stimulusId) then concat('&quot;, stimulusId: &quot;', @stimulusId) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@response) then concat('&quot;, response: &quot;', @response) else ''" /> -->
+                        <!-- <xsl:value-of select="if (@isCorrect) then concat('&quot;, isCorrect: &quot;', @isCorrect) else ''" /> -->
+                        <xsl:value-of select="if (@matching) then concat('&quot;, matching: &quot;', @matching) else ''" />
                         <xsl:text>"});
                             &lt;/script&gt;
                         </xsl:text>
