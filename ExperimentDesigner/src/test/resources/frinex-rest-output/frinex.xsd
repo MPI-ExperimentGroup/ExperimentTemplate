@@ -899,7 +899,7 @@
 <xs:documentation>Comma separated list of columns that will be shown in the data table. Tables of metadata can use the fieldNames from the XML. Not all columns exist for all sources.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="matching" type="xs:string" use="required">
+<xs:attribute name="matching" type="xs:string">
 <xs:annotation>
 <xs:documentation>Only records matching this query will be counted for this dataset. The query consists of a column name or fieldName followed by = and the search string. Multiple colums or fieldNames can be queried when separated by ;. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</xs:documentation>
 </xs:annotation>
