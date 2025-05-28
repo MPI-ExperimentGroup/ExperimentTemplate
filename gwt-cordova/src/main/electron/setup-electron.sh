@@ -67,6 +67,8 @@ ls -l
 zip -r ../../@experiment.configuration.name@-win32-x64.zip ./@experiment.configuration.name@*.exe
 cp @experiment.configuration.name@*.dmg ../../@experiment.configuration.name@-mac.dmg
 cp @experiment.configuration.name@*-mac.zip ../../@experiment.configuration.name@-darwin-x64.zip
+cp @experiment.configuration.name@*.snap ../../@experiment.configuration.name@.snap
+cp @experiment.configuration.name@*.AppImage ../../@experiment.configuration.name@.AppImage
 cd ..
 
 #electron-forge make --platform=linux --arch=x64
