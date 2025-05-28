@@ -631,7 +631,23 @@
                         <xsl:value-of select="@label" />
                         <xsl:text>", type: "</xsl:text>
                         <xsl:value-of select="@type" />
-                        <xsl:text>", metadata: [</xsl:text>
+                        <xsl:text>", datasets: [</xsl:text>
+                        <xsl:for-each select="dataset">
+                            <xsl:text>
+                                {label: "</xsl:text>
+                            <xsl:value-of select="@label" />
+                            <xsl:text>", source: "</xsl:text>
+                            <xsl:value-of select="@source" />
+                            <xsl:text>", matching: "</xsl:text>
+                            <xsl:value-of select="@matching" />
+                            <xsl:text>", colour: "</xsl:text>
+                            <xsl:value-of select="@colour" />
+                            <xsl:text>"}</xsl:text>
+                            <xsl:if test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:if>
+                        </xsl:for-each>
+                        <!-- <xsl:text>", metadata: [</xsl:text>
                         <xsl:for-each select="metadata">
                             <xsl:text>
                                 {label: "</xsl:text>
@@ -669,10 +685,10 @@
                             <xsl:text>
                                 {label: "</xsl:text>
                             <xsl:value-of select="@label" />
-                            <!-- <xsl:text>", columnName: "</xsl:text>
+                            /* <xsl:text>", columnName: "</xsl:text>
                             <xsl:value-of select="concat(upper-case(substring(@columnName,1,1)), substring(@columnName, 2))" />
                             <xsl:text>", matching: "</xsl:text>
-                            <xsl:value-of select="@matching" /> -->
+                            <xsl:value-of select="@matching" /> */
                             <xsl:value-of select="if (@label) then concat('&quot;, label: &quot;', @label) else ''" />
                             <xsl:value-of select="if (@source) then concat('&quot;, source: &quot;', @source) else ''" />
                             <xsl:value-of select="if (@columnNames) then concat('&quot;, columnNames: &quot;', @columnNames) else ''" />
@@ -694,7 +710,7 @@
                             <xsl:if test="position() != last()">
                                 <xsl:text>, </xsl:text>
                             </xsl:if>
-                        </xsl:for-each>
+                        </xsl:for-each> -->
                         <xsl:text>]});
                             &lt;/script&gt;
                         </xsl:text>
