@@ -213,18 +213,6 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message3": "metadataType %1",
-      "args3": [
-        {
-          "type": "input_statement",
-          "name": "metadataType",
-          "check": [
-            "frinex_metadataType",
-            "frinex_tagDataType",
-            "frinex_stimulusResponseType",
-          ]
-        }
-      ],
       "previousStatement": [
         "frinex_validationType",
         "frinex_adminUserType",
@@ -11840,9 +11828,6 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_adminChartType'] = function(block, generator) {
     var childData = '';
-     childData += '<metadataType>\n';
-     childData += generator.statementToCode(block, 'metadataType');
-     childData += '</metadataType>\n';
     return '<adminChart block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</adminChart>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_dataTableType'] = function(block, generator) {

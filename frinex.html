@@ -443,28 +443,12 @@ The type of chart to be displayed.</span><br/>
 <tr><td>
 <a href="#dataTableType"><span style="color:purple">&lt;</span><span style="color:blue">dataTable</span></a></td><td><span style="color:green">columnNames</span><span style="color:grey">=&quot;Column name list&quot;</span><span>
 Comma separated list of columns that will be shown in the data table. Tables of metadata can use the fieldNames from the XML. Not all columns exist for all sources.</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">isCorrect</span><span style="color:grey">=&quot;[True, False, Null] (optional)&quot;</span><span>
-Only records matching this isCorrect value will be included for this dataset.</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">responseGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">scoreGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">matching</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this query will be counted for this dataset. The query consists of a column name or fieldName followed by = and the search string. Multiple colums or fieldNames can be queried when separated by ;. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
 <span style="color:green">source</span><span style="color:grey">=&quot;[stimulusResponse, tagpair, tagdata, metadata, timestamp, mediaResponse]&quot;</span><span>
-The source data for chart to be displayed in the table.</span><br/>
-<span style="color:green">stimulusId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">tagValue1</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">tagValue2</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">userId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this userId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+The data source for the table.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 </table>
@@ -554,46 +538,14 @@ The type of chart to be displayed.</span><br/>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#metadataType"><span style="color:purple">&lt;</span><span style="color:blue">metadata</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+<a href="#datasetType"><span style="color:purple">&lt;</span><span style="color:blue">dataset</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
-Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-</td><td><span style="color:purple">&gt;</span>
-</td></tr>
-<tr><td>
-<a href="#tagDataType"><span style="color:purple">&lt;</span><span style="color:blue">tagData</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
-RGB Hex Value</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">tagValue</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this tagValue will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-</td><td><span style="color:purple">&gt;</span>
-</td></tr>
-<tr><td>
-<a href="#stimulusResponseType"><span style="color:purple">&lt;</span><span style="color:blue">stimulusResponse</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
-RGB Hex Value</span><br/>
-<span style="color:green">isCorrect</span><span style="color:grey">=&quot;[True, False, Null] (optional)&quot;</span><span>
-Only records matching this isCorrect value will be included for this dataset.</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">response</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">responseGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">scoreGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">stimulusId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+Only records matching this query will be counted for this dataset. The query consists of a column name or fieldName followed by = and the search string. Multiple colums or fieldNames can be queried when separated by ;. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">source</span><span style="color:grey">=&quot;[stimulusResponse, tagpair, tagdata, metadata, timestamp, mediaResponse]&quot;</span><span>
+The data source for chart.</span><br/>
 </td><td><span style="color:purple">&gt;</span>
 </td></tr>
 </table>
@@ -609,86 +561,28 @@ Only records matching this stimulusId will be included for this dataset. The per
 <button onclick="getExample('chart', 'chartTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3 id="metadataType" style="text-transform: uppercase;">
-metadata
+<h3 id="datasetType" style="text-transform: uppercase;">
+dataset
 </h3>
-Adds matching metadata as a dataset to the graph.
+Adds dataset to the graph.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">metadata</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+<span style="color:purple">&lt;</span><span style="color:blue">dataset</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
-<span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
-Only records matching this string will be counted for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+Only records matching this query will be counted for this dataset. The query consists of a column name or fieldName followed by = and the search string. Multiple colums or fieldNames can be queried when separated by ;. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">source</span><span style="color:grey">=&quot;[stimulusResponse, tagpair, tagdata, metadata, timestamp, mediaResponse]&quot;</span><span>
+The data source for chart.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
 </table>
 <table style="width: 100%;">
 <tr>
-<td colspan='2' id='metadataTarget'>
-<button onclick="getExample('metadata', 'metadataTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="tagDataType" style="text-transform: uppercase;">
-tagData
-</h3>
-Adds matching tag data as a dataset to the graph.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">tagData</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
-RGB Hex Value</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">tagValue</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this tagValue will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='tagDataTarget'>
-<button onclick="getExample('tagData', 'tagDataTarget');">search for examples</button>
-</td></tr>
-</table>
-<h3 id="stimulusResponseType" style="text-transform: uppercase;">
-stimulusResponse
-</h3>
-Adds matching stimuli responses as a dataset to the graph.
-<br/><br/><table>
-<tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusResponse</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
-RGB Hex Value</span><br/>
-<span style="color:green">isCorrect</span><span style="color:grey">=&quot;[True, False, Null] (optional)&quot;</span><span>
-Only records matching this isCorrect value will be included for this dataset.</span><br/>
-<span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
-String</span><br/>
-<span style="color:green">response</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">responseGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">scoreGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">stimulusId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
-</td>
-</tr>
-</table>
-<table style="width: 100%;">
-<tr>
-<td colspan='2' id='stimulusResponseTarget'>
-<button onclick="getExample('stimulusResponse', 'stimulusResponseTarget');">search for examples</button>
+<td colspan='2' id='datasetTarget'>
+<button onclick="getExample('dataset', 'datasetTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="dataTableType" style="text-transform: uppercase;">
@@ -699,28 +593,12 @@ When present defines a table that will be displayed on the main page of the expe
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">dataTable</span></td><td><span style="color:green">columnNames</span><span style="color:grey">=&quot;Column name list&quot;</span><span>
 Comma separated list of columns that will be shown in the data table. Tables of metadata can use the fieldNames from the XML. Not all columns exist for all sources.</span><br/>
-<span style="color:green">eventTag</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this eventTag will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">isCorrect</span><span style="color:grey">=&quot;[True, False, Null] (optional)&quot;</span><span>
-Only records matching this isCorrect value will be included for this dataset.</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
-<span style="color:green">responseGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this responseGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">scoreGroup</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this scoreGroup will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">screenName</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this screenName will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+<span style="color:green">matching</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
+Only records matching this query will be counted for this dataset. The query consists of a column name or fieldName followed by = and the search string. Multiple colums or fieldNames can be queried when separated by ;. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
 <span style="color:green">source</span><span style="color:grey">=&quot;[stimulusResponse, tagpair, tagdata, metadata, timestamp, mediaResponse]&quot;</span><span>
-The source data for chart to be displayed in the table.</span><br/>
-<span style="color:green">stimulusId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this stimulusId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">tagValue1</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this TagValue1 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">tagValue2</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this TagValue2 will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
-<span style="color:green">userId</span><span style="color:grey">=&quot;String (optional)&quot;</span><span>
-Only records matching this userId will be included for this dataset. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.</span><br/>
+The data source for the table.</span><br/>
 </td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
