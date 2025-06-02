@@ -608,7 +608,7 @@
             <xsl:result-document href="{$targetTemplateDirectory}/{$outputPrefix}charts.html" method="text">
                 <xsl:text>&lt;div th:fragment="charts"&gt;</xsl:text>
                 <xsl:if test="experiment/administration[chart|dataTable]">
-                    <xsl:text>&lt;script src="webjars/chartjs/dist/chart.min.js"&gt;&lt;/script&gt;</xsl:text>
+                    <xsl:text>&lt;script src="webjars/chartjs/Chart.min.js"&gt;&lt;/script&gt;</xsl:text>
                     <xsl:text>&lt;script src="webjars/momentjs/moment.js"&gt;&lt;/script&gt;</xsl:text>
                     <xsl:text>&lt;script src="js/ExperimentCharts.js"&gt;&lt;/script&gt;</xsl:text>
                 </xsl:if>
