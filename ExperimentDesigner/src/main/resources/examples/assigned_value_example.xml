@@ -4,79 +4,79 @@
     <deployment state="staging" />
     <administration allowDataDeletion="true"> 
         <chart label="Total Events (Assignment_Before_Completion)" type="pie">
-            <tagData label="assigned" screenName="Assignment_Before_Completion" colour="#880000" eventTag="assignedValue" /> 
-            <tagData label="completed" screenName="Assignment_Before_Completion" colour="#000088" eventTag="completedValue" /> 
+            <dataset source="tagdata" label="assigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue" colour="#880000" /> 
+            <dataset source="tagdata" label="completed" matching="screenName=Assignment_Before_Completion;eventTag=completedValue" colour="#000088" /> 
         </chart> 
         <chart label="Total Events (Assignment_Or_Completion)" type="pie">
-            <tagData label="assigned" screenName="Assignment_Or_Completion" colour="#880000" eventTag="assignedValue" /> 
-            <tagData label="completed" screenName="Assignment_Or_Completion" colour="#000088" eventTag="completedValue" /> 
+            <dataset source="tagdata" label="assigned"  matching="screenName=Assignment_Or_Completion;eventTag=assignedValue" colour="#880000" /> 
+            <dataset source="tagdata" label="completed"  matching="screenName=Assignment_Or_Completion;eventTag=completedValue" colour="#000088" /> 
         </chart> 
         <chart label="Total Events (Assignment_Or_Completion_Or_Clear)" type="pie">
-            <tagData label="assigned" screenName="Assignment_Or_Completion_Or_Clear" colour="#880000" eventTag="assignedValue" /> 
-            <tagData label="completed" screenName="Assignment_Or_Completion_Or_Clear" colour="#000088" eventTag="completedValue" /> 
+            <dataset source="tagdata" label="assigned"  matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue" colour="#880000" /> 
+            <dataset source="tagdata" label="completed" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue" colour="#000088" /> 
         </chart>
         <chart label="Event Counts (Assignment_Before_Completion)" type="bar">
-            <tagData label="LophocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
-            <tagData label="LophocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
-            <tagData label="CollencytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
-            <tagData label="CollencytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
-            <tagData label="RhabdiferousAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
-            <tagData label="RhabdiferousCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
-            <tagData label="OocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
-            <tagData label="OocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
-            <tagData label="SclerocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
-            <tagData label="SclerocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
-            <tagData label="MyocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
-            <tagData label="MyocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
-            <tagData label="ArchaeocytesAssigned" screenName="Assignment_Before_Completion" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
-            <tagData label="ArchaeocytesCompleted" screenName="Assignment_Before_Completion" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
+            <dataset source="tagdata" label="LophocytesAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Lophocytes" colour="#880000" />
+            <dataset source="tagdata" label="LophocytesCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Lophocytes" colour="#000088" />
+            <dataset source="tagdata" label="CollencytesAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Collencytes" colour="#880000" />
+            <dataset source="tagdata" label="CollencytesCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Collencytes" colour="#000088" />
+            <dataset source="tagdata" label="RhabdiferousAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Rhabdiferous" colour="#880000" />
+            <dataset source="tagdata" label="RhabdiferousCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Rhabdiferous" colour="#000088" />
+            <dataset source="tagdata" label="OocytesAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Oocytes" colour="#880000" />
+            <dataset source="tagdata" label="OocytesCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Oocytes" colour="#000088" />
+            <dataset source="tagdata" label="SclerocytesAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Sclerocytes" colour="#880000" />
+            <dataset source="tagdata" label="SclerocytesCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Sclerocytes" colour="#000088" />
+            <dataset source="tagdata" label="MyocytesAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Myocytes" colour="#880000" />
+            <dataset source="tagdata" label="MyocytesCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Myocytes" colour="#000088" />
+            <dataset source="tagdata" label="ArchaeocytesAssigned" matching="screenName=Assignment_Before_Completion;eventTag=assignedValue;tagValue=Archaeocytes" colour="#880000" />
+            <dataset source="tagdata" label="ArchaeocytesCompleted" matching="screenName=Assignment_Before_Completion;eventTag=completedValue;tagValue=Archaeocytes" colour="#000088" />
         </chart>
         <chart label="Event Counts (Assignment_Or_Completion)" type="bar">
-            <tagData label="LophocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
-            <tagData label="LophocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
-            <tagData label="CollencytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
-            <tagData label="CollencytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
-            <tagData label="RhabdiferousAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
-            <tagData label="RhabdiferousCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
-            <tagData label="OocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
-            <tagData label="OocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
-            <tagData label="SclerocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
-            <tagData label="SclerocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
-            <tagData label="MyocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
-            <tagData label="MyocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
-            <tagData label="ArchaeocytesAssigned" screenName="Assignment_Or_Completion" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
-            <tagData label="ArchaeocytesCompleted" screenName="Assignment_Or_Completion" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
+            <dataset source="tagdata" label="LophocytesAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Lophocytes" colour="#880000" />
+            <dataset source="tagdata" label="LophocytesCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Lophocytes" colour="#000088" />
+            <dataset source="tagdata" label="CollencytesAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Collencytes" colour="#880000" />
+            <dataset source="tagdata" label="CollencytesCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Collencytes" colour="#000088" />
+            <dataset source="tagdata" label="RhabdiferousAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Rhabdiferous" colour="#880000" />
+            <dataset source="tagdata" label="RhabdiferousCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Rhabdiferous" colour="#000088" />
+            <dataset source="tagdata" label="OocytesAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Oocytes" colour="#880000" />
+            <dataset source="tagdata" label="OocytesCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Oocytes" colour="#000088" />
+            <dataset source="tagdata" label="SclerocytesAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Sclerocytes" colour="#880000" />
+            <dataset source="tagdata" label="SclerocytesCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Sclerocytes" colour="#000088" />
+            <dataset source="tagdata" label="MyocytesAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Myocytes" colour="#880000" />
+            <dataset source="tagdata" label="MyocytesCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Myocytes" colour="#000088" />
+            <dataset source="tagdata" label="ArchaeocytesAssigned" matching="screenName=Assignment_Or_Completion;eventTag=assignedValue;tagValue=Archaeocytes" colour="#880000" />
+            <dataset source="tagdata" label="ArchaeocytesCompleted" matching="screenName=Assignment_Or_Completion;eventTag=completedValue;tagValue=Archaeocytes" colour="#000088" />
         </chart>
         <chart label="Event Counts (Assignment_Or_Completion_Or_Clear)" type="bar">
-            <tagData label="LophocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Lophocytes" colour="#880000" />
-            <tagData label="LophocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Lophocytes" colour="#000088" />
-            <tagData label="CollencytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Collencytes" colour="#880000" />
-            <tagData label="CollencytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Collencytes" colour="#000088" />
-            <tagData label="RhabdiferousAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Rhabdiferous" colour="#880000" />
-            <tagData label="RhabdiferousCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Rhabdiferous" colour="#000088" />
-            <tagData label="OocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Oocytes" colour="#880000" />
-            <tagData label="OocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Oocytes" colour="#000088" />
-            <tagData label="SclerocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Sclerocytes" colour="#880000" />
-            <tagData label="SclerocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Sclerocytes" colour="#000088" />
-            <tagData label="MyocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Myocytes" colour="#880000" />
-            <tagData label="MyocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Myocytes" colour="#000088" />
-            <tagData label="ArchaeocytesAssigned" screenName="Assignment_Or_Completion_Or_Clear" eventTag="assignedValue" tagValue="Archaeocytes" colour="#880000" />
-            <tagData label="ArchaeocytesCompleted" screenName="Assignment_Or_Completion_Or_Clear" eventTag="completedValue" tagValue="Archaeocytes" colour="#000088" />
+            <dataset source="tagdata" label="LophocytesAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Lophocytes" colour="#880000" />
+            <dataset source="tagdata" label="LophocytesCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Lophocytes" colour="#000088" />
+            <dataset source="tagdata" label="CollencytesAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Collencytes" colour="#880000" />
+            <dataset source="tagdata" label="CollencytesCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Collencytes" colour="#000088" />
+            <dataset source="tagdata" label="RhabdiferousAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Rhabdiferous" colour="#880000" />
+            <dataset source="tagdata" label="RhabdiferousCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Rhabdiferous" colour="#000088" />
+            <dataset source="tagdata" label="OocytesAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Oocytes" colour="#880000" />
+            <dataset source="tagdata" label="OocytesCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Oocytes" colour="#000088" />
+            <dataset source="tagdata" label="SclerocytesAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Sclerocytes" colour="#880000" />
+            <dataset source="tagdata" label="SclerocytesCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Sclerocytes" colour="#000088" />
+            <dataset source="tagdata" label="MyocytesAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Myocytes" colour="#880000" />
+            <dataset source="tagdata" label="MyocytesCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Myocytes" colour="#000088" />
+            <dataset source="tagdata" label="ArchaeocytesAssigned" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=assignedValue;tagValue=Archaeocytes" colour="#880000" />
+            <dataset source="tagdata" label="ArchaeocytesCompleted" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=completedValue;tagValue=Archaeocytes" colour="#000088" />
         </chart> 
         <chart label="Metadata Assigned Value (can be overwritten by clearing and reassigning)" type="bar">
-            <metadata label="Lophocytes" fieldName="assigned_value" matching="Lophocytes" colour="#880000" />
-            <metadata label="Collencytes" fieldName="assigned_value" matching="Collencytes" colour="#880000" />
-            <metadata label="Rhabdiferous" fieldName="assigned_value" matching="Rhabdiferous" colour="#880000" />
-            <metadata label="Oocytes" fieldName="assigned_value" matching="Oocytes" colour="#880000" />
-            <metadata label="Sclerocytes" fieldName="assigned_value" matching="Sclerocytes" colour="#880000" />
-            <metadata label="Myocytes" fieldName="assigned_value" matching="Myocytes" colour="#880000" />
-            <metadata label="Archaeocytes" fieldName="assigned_value" matching="Archaeocytes" colour="#880000" />
+            <dataset source="metadata" label="Lophocytes" matching="assigned_value=Lophocytes" colour="#880000" />
+            <dataset source="metadata" label="Collencytes" matching="assigned_value=Collencytes" colour="#880000" />
+            <dataset source="metadata" label="Rhabdiferous" matching="assigned_value=Rhabdiferous" colour="#880000" />
+            <dataset source="metadata" label="Oocytes" matching="assigned_value=Oocytes" colour="#880000" />
+            <dataset source="metadata" label="Sclerocytes" matching="assigned_value=Sclerocytes" colour="#880000" />
+            <dataset source="metadata" label="Myocytes" matching="assigned_value=Myocytes" colour="#880000" />
+            <dataset source="metadata" label="Archaeocytes" matching="assigned_value=Archaeocytes" colour="#880000" />
         </chart>
-        <!-- <dataTable label="Events Assigned" source="tagdata" eventTag="assignedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" /> -->
-        <!-- <dataTable label="Events Completed" source="tagdata" eventTag="completedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" /> -->
-        <dataTable label="Events Assigned / Completed (Assignment_Before_Completion)" source="tagdata" screenName="Assignment_Before_Completion" eventTag="%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
-        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion)" source="tagdata" screenName="Assignment_Or_Completion" eventTag="%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
-        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion_Or_Clear)" source="tagdata" screenName="Assignment_Or_Completion_Or_Clear" eventTag="%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
+        <!-- <dataTable label="Events Assigned" source="tagdata;eventTag=assignedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" /> -->
+        <!-- <dataTable label="Events Completed" source="tagdata;eventTag=completedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" /> -->
+        <dataTable label="Events Assigned / Completed (Assignment_Before_Completion)" source="tagdata" matching="screenName=Assignment_Before_Completion;eventTag=%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
+        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion)" source="tagdata" matching="screenName=Assignment_Or_Completion;eventTag=%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
+        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion_Or_Clear)" source="tagdata" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
     </administration>
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
