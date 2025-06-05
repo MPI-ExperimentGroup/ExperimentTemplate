@@ -345,7 +345,7 @@
                         throw new UnsupportedOperationException("Not required for this test class.");
                     }
                     @Override
-                    public int countByLike(Pageable pageable,
+                    public int countByLike(
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>String </xsl:text>
