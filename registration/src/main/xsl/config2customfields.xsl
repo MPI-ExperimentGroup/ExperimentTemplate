@@ -345,17 +345,17 @@
                         throw new UnsupportedOperationException("Not required for this test class.");
                     }
                 </xsl:text>
-                <xsl:for-each select="experiment/metadata/field">
-                <!--xsl:if test="not(contains(@postName, '_'))"-->
+                <!-- <xsl:for-each select="experiment/metadata/field">
+                <!-xsl:if test="not(contains(@postName, '_'))"->
                     <xsl:text>
                         @Override                    
-                        public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
+                        public List&lt;<!-/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text->Participant&gt; findByStaleCopyAnd</xsl:text>
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                         </xsl:for-each>
-                    <!--xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /--> <!-- replace(@postName,'_','__') -->
+                    <!-xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /-> <!- replace(@postName,'_','__') ->
                     <xsl:text>(boolean staleCopy, String </xsl:text>
-                    <xsl:value-of select="@postName" /> <!-- replace(@postName,'_','__') -->
+                    <xsl:value-of select="@postName" /> <!- replace(@postName,'_','__') ->
                     <xsl:text>) {
                         throw new UnsupportedOperationException("This is a test only class.");
                         }
@@ -367,12 +367,12 @@
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                         </xsl:for-each>
                     <xsl:text>Like(boolean staleCopy, String matchingLike) {
-                    <!-- <xsl:text>Regex(boolean staleCopy, String matchingRegex) { -->
+                    <!- <xsl:text>Regex(boolean staleCopy, String matchingRegex) { ->
                         throw new UnsupportedOperationException("This is a test only class.");
                         }
                     </xsl:text>
-                <!--/xsl:if-->
-                </xsl:for-each>
+                <!-/xsl:if->
+                </xsl:for-each> -->
                 <xsl:text>
                     }
                 </xsl:text>
