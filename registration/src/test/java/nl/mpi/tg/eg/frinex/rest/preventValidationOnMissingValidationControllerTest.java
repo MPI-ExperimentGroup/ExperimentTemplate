@@ -285,11 +285,6 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new MockParticipantColumnsRepository() {
             @Override
-            public int  countByLike(String workerId, String age, String enabledVisibleOptions, String gender, String education, String educationOther, String connection, String connections, String responseListLeft, String responseListRight, String dateOfBirth, String ageGroup, String item, String uuid, String validated_uuid, String validation_error, String session_id, String step_done, String session_steps, String session_step, String session_next_step, String invitation_code, String currentScore, String currentPotential, String totalScore, String totalPotential, String progressIndicator_steps, String progressIndicator_step, String stimuliSequentialDisplayExample, String storedDate, String storedTime, String resultTime, String customCompletionNumber, String notificationMinutesSettings, String notificationRangeSettings, String notificationRangeSnoozed, String notificationWeekdaySettings, String notificationWeekendSettings, String notificationWeekdayFromSettings, String notificationWeekdayUntilSettings, String notificationCountWeekdaySettings, String notificationWeekendFromSettings, String notificationWeekendUntilSettings, String notificationCountWeekendSettings, String notificationMinutes, String displayedOrder, String displayedTopic1, String displayedTopic234, String userId, String remoteAddr, String acceptLang, String userAgent, Boolean staleCopy) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
-            
-            @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
