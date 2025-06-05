@@ -6,7 +6,7 @@
             appNameDisplay="With Stimulus Example"
             preserveLastState="false"
             obfuscateBrowserStorage="false"
-            availableLocales="en,es,de,fr,nl" defaultLocale="nl"
+            availableLocales="en,es,de,fr,nl" defaultLocale="nl" 
 >
     <deployment state="staging" isAndroid="false"/>     
     <validationService stagingUrl="/with_stimulus_example-admin/validate" productionUrl="/with_stimulus_example-admin/mock-nph-read_bq_exp_data.pl"/>
