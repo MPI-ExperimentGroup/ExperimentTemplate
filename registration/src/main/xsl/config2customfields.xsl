@@ -260,7 +260,7 @@
                 </xsl:for-each>
                 <xsl:text>)</xsl:text>
                 <xsl:text>
-                    Page&lt;Participant&gt; countByLike(Pageable pageable,
+                    public int countByLike(
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>@Param("</xsl:text>
