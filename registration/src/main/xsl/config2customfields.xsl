@@ -231,35 +231,86 @@
                     @Param("userAgent") String userAgent,
                     @Param("staleCopy")  Boolean staleCopy);
                 </xsl:text>
+                <xsl:text>
+                    @Query("SELECT COUNT(p) FROM Participant p WHERE "
+                        + "(:userId IS NULL OR p.userId like :userId)"
+                        + " AND (:remoteAddr IS NULL OR p.remoteAddr like :remoteAddr)"
+                        + " AND (:acceptLang IS NULL OR p.acceptLang like :acceptLang)"
+                        + " AND (:userAgent IS NULL OR p.userAgent like :userAgent)"
+                        + " AND ((:staleCopy IS NULL AND NOT p.staleCopy) OR p.staleCopy is :staleCopy)"
+                </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
-                <!--xsl:if test="not(contains(@postName, '_'))"-->
+                    <xsl:text>+ " AND (:</xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text> IS NULL OR 'p.</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <!--<xsl:value-of select="if (contains($reservedWordsSQL, concat('|', upper-case(@postName), '|'))) then concat('field_', @postName) else @postName" />-->
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>' like :</xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>)"&#10;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>)</xsl:text>
+                <xsl:text>
+                    Page&lt;Participant&gt; countByLike(Pageable pageable,
+                </xsl:text>
+                <xsl:for-each select="experiment/metadata/field">
+                    <xsl:text>@Param("</xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>") String </xsl:text>
+                    <xsl:value-of select="@postName" />
+<!--                    <xsl:for-each select="tokenize(@postName,'_')">
+                        <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
+                    </xsl:for-each>-->
+                    <xsl:text>,&#10;</xsl:text>
+                </xsl:for-each>
+                <xsl:text>
+                    @Param("userId") String userId,
+                    @Param("remoteAddr") String remoteAddr,
+                    @Param("acceptLang") String acceptLang,
+                    @Param("userAgent") String userAgent,
+                    @Param("staleCopy")  Boolean staleCopy);
+                </xsl:text>
+                <!-- <xsl:for-each select="experiment/metadata/field">
+                <!-xsl:if test="not(contains(@postName, '_'))"->
                     <xsl:text>
-                        <!-- the use of the field name from the XML into the query here is not without risk, so it is important that any characters not matching 0-9a-zA-Z_ are removed from the postName -->
+                        <!- the use of the field name from the XML into the query here is not without risk, so it is important that any characters not matching 0-9a-zA-Z_ are removed from the postName ->
                         @Query("select p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> = :</xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text>")
-                        public List&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; findByStaleCopyAnd</xsl:text>
+                        public List&lt;<!-/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text->Participant&gt; findByStaleCopyAnd</xsl:text>
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                         </xsl:for-each>
-                    <!--xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /--><!-- replace(@postName,'_','__') -->
+                    <!-xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" /-><!- replace(@postName,'_','__') ->
                     <xsl:text>(@Param("staleCopy") boolean staleCopy, @Param("</xsl:text>
                     <xsl:value-of select="@postName" />
                     <xsl:text>") String </xsl:text>
                     <xsl:value-of select="@postName" />
                     <xsl:text>);
                     </xsl:text>
-                <!--/xsl:if-->
+                <!-/xsl:if->
                     <xsl:text>
                         @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
                         @Query("select count(p.id) from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> like :matchingLike")
-                        <!-- @Query("select count p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex") -->
+                        <!- @Query("select count p from Participant p where staleCopy = :staleCopy and </xsl:text><xsl:value-of select="replace(@postName,'[^0-9a-zA-Z_]+','')" /><xsl:text> regexp :matchingRegex") ->
                         public int countByStaleCopyAnd</xsl:text>
                         <xsl:for-each select="tokenize(@postName,'_')">
                             <xsl:value-of select="concat(upper-case(substring(.,1,1)), substring(., 2))" />
                         </xsl:for-each>
                     <xsl:text>Like(@Param("staleCopy") boolean staleCopy, @Param("matchingLike") String matchingLike);
-                    <!-- <xsl:text>Regex(@Param("staleCopy") boolean staleCopy, @Param("matchingRegex") String matchingRegex); -->
+                    <!- <xsl:text>Regex(@Param("staleCopy") boolean staleCopy, @Param("matchingRegex") String matchingRegex); ->
                     </xsl:text>
-                </xsl:for-each>
+                </xsl:for-each> -->
                 <xsl:text>
                     }
                 </xsl:text>
