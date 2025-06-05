@@ -67,88 +67,89 @@ function generateChart(chartData) {
             borderColor: [],
             borderWidth: 1
         });
-        for (const metadata of chartData.metadata) {
-            data.labels.push(metadata.label);
-            const metadataIndex = data.labels.length - 1;
+        for (const dataset of chartData.datasets) {
+            data.labels.push(dataset.label);
+            const dataKey = data.labels.length - 1;
             //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(metadata.colour + '20');
             data.datasets[0].borderColor.push(metadata.colour + 'ff');
-            $.getJSON('participants/search/countByStaleCopyAnd' + metadata.fieldname + 'Like?staleCopy=false&matchingLike=' + encodeURIComponent(metadata.matching), function (responseData) {
+            const queryTable = (data.source === 'metadata') ? 'participants' : data.source;
+            $.getJSON(queryTable + '/search/countByLike?' + data.matching, function (responseData) {
                 // console.log(responseData);
-                data.datasets[0].data[metadataIndex] = responseData;
+                data.datasets[0].data[dataKey] = responseData;
                 adminChart.update();
             });
         }
-        for (const tagData of chartData.tagData) {
-            data.labels.push(tagData.label);
-            const tagDataIndex = data.labels.length - 1;
-            //data.datasets[0].data.push(metadata.matching);
-            data.datasets[0].backgroundColor.push(tagData.colour + '20');
-            data.datasets[0].borderColor.push(tagData.colour + 'ff');
-            for (let [key, value] of Object.entries(tagData)) {
-                if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label' && key != 'colour') {
-                    parametersString += (parametersString.length == 0) ? "?" : "&";
-                    parametersString += key + "=" + encodeURIComponent(value);
-                }
-            }
-            $.getJSON('tagevents/search/countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike'
-                + parametersString,
-                function (responseData) {
-                    // console.log(responseData);
-                    data.datasets[0].data[tagDataIndex] = responseData;
-                    adminChart.update();
-                });
-        }
-        for (const stimulusResponse of chartData.stimulusResponse) {
-            data.labels.push(stimulusResponse.label);
-            const responseIndex = data.labels.length - 1;
-            //data.datasets[0].data.push(stimulusResponse.matching);
-            data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
-            data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
-            for (let [key, value] of Object.entries(stimulusResponse)) {
-                if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label' && key != 'colour') {
-                    parametersString += (parametersString.length == 0) ? "?" : "&";
-                    parametersString += key + "=" + encodeURIComponent(value);
-                }
-            }
-            $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect'
-                + parametersString, function (responseData) {
-                    // console.log(responseData);
-                    data.datasets[0].data[responseIndex] = responseData;
-                    adminChart.update();
-                });
+        // for (const tagData of chartData.tagData) {
+        //     data.labels.push(tagData.label);
+        //     const tagDataIndex = data.labels.length - 1;
+        //     //data.datasets[0].data.push(metadata.matching);
+        //     data.datasets[0].backgroundColor.push(tagData.colour + '20');
+        //     data.datasets[0].borderColor.push(tagData.colour + 'ff');
+        //     for (let [key, value] of Object.entries(tagData)) {
+        //         if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label' && key != 'colour') {
+        //             parametersString += (parametersString.length == 0) ? "?" : "&";
+        //             parametersString += key + "=" + encodeURIComponent(value);
+        //         }
+        //     }
+        //     $.getJSON('tagevents/search/countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike'
+        //         + parametersString,
+        //         function (responseData) {
+        //             // console.log(responseData);
+        //             data.datasets[0].data[tagDataIndex] = responseData;
+        //             adminChart.update();
+        //         });
+        // }
+        // for (const stimulusResponse of chartData.stimulusResponse) {
+        //     data.labels.push(stimulusResponse.label);
+        //     const responseIndex = data.labels.length - 1;
+        //     //data.datasets[0].data.push(stimulusResponse.matching);
+        //     data.datasets[0].backgroundColor.push(stimulusResponse.colour + '20');
+        //     data.datasets[0].borderColor.push(stimulusResponse.colour + 'ff');
+        //     for (let [key, value] of Object.entries(stimulusResponse)) {
+        //         if (key != 'source' && key != 'divId' && key != 'columnNames' && key != 'label' && key != 'colour') {
+        //             parametersString += (parametersString.length == 0) ? "?" : "&";
+        //             parametersString += key + "=" + encodeURIComponent(value);
+        //         }
+        //     }
+        //     $.getJSON('stimulusresponses/search/countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect'
+        //         + parametersString, function (responseData) {
+        //             // console.log(responseData);
+        //             data.datasets[0].data[responseIndex] = responseData;
+        //             adminChart.update();
+        //         });
 
-            // $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.columnName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {
-            //     // console.log(responseData);
-            //     data.datasets[0].data[responseIndex] = responseData;
-            //     adminChart.update();
-            // });
-        }
-    } else {
-        for (const metadata of chartData.metadata) {
-            dataset = {
-                label: metadata.label,
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: metadata.colour + '20',
-                borderColor: metadata.colour + 'ff',
-                borderWidth: 1
-            };
-            //dataset.data.push(metadata.matching);
-            data.datasets.push(dataset);
-        }
-        for (const stimulusResponse of chartData.stimulusResponse) {
-            dataset = {
-                label: stimulusResponse.label,
-                data: [12, 19, 3, 5, 2, 3],
-                fill: false,
-                borderColor: stimulusResponse.colour + 'ff',
-                borderWidth: 1,
-                tension: 0.1
-            };
-            data.labels = [12, 19, 3, 5, 2, 3];
-            //dataset.data.push(stimulusResponse.matching);
-            data.datasets.push(dataset);
-        }
+        //     // $.getJSON('stimulusresponses/search/countBy' + stimulusResponse.columnName + 'Like?matchingLike=' + stimulusResponse.matching, function (responseData) {
+        //     //     // console.log(responseData);
+        //     //     data.datasets[0].data[responseIndex] = responseData;
+        //     //     adminChart.update();
+        //     // });
+        // }
+        // } else {
+        //     for (const metadata of chartData.metadata) {
+        //         dataset = {
+        //             label: metadata.label,
+        //             data: [12, 19, 3, 5, 2, 3],
+        //             backgroundColor: metadata.colour + '20',
+        //             borderColor: metadata.colour + 'ff',
+        //             borderWidth: 1
+        //         };
+        //         //dataset.data.push(metadata.matching);
+        //         data.datasets.push(dataset);
+        //     }
+        //     for (const stimulusResponse of chartData.stimulusResponse) {
+        //         dataset = {
+        //             label: stimulusResponse.label,
+        //             data: [12, 19, 3, 5, 2, 3],
+        //             fill: false,
+        //             borderColor: stimulusResponse.colour + 'ff',
+        //             borderWidth: 1,
+        //             tension: 0.1
+        //         };
+        //         data.labels = [12, 19, 3, 5, 2, 3];
+        //         //dataset.data.push(stimulusResponse.matching);
+        //         data.datasets.push(dataset);
+        //     }
     }
 }
 
@@ -164,7 +165,7 @@ function sortBy(tableId, sortColumn) {
     $("#" + tableId + "LoadMoreRow").siblings().remove();
     $("#" + tableId + "LoadMoreRow").attr('pageNumber', 0)
     if (sortColumn === $("#" + tableId + "LoadMoreRow").attr('sortColumn')
-    && ("asc" === $("#" + tableId + "LoadMoreRow").attr('sortDirection'))) {
+        && ("asc" === $("#" + tableId + "LoadMoreRow").attr('sortDirection'))) {
         $("#" + tableId + "LoadMoreRow").attr('sortDirection', "desc");
     } else {
         $("#" + tableId + "LoadMoreRow").attr('sortDirection', "asc");
@@ -179,7 +180,7 @@ function loadMore(tableId) {
     const pageNumber = $("#" + tableId + "LoadMoreRow").attr('pageNumber');
     const sortColumn = $("#" + tableId + "LoadMoreRow").attr('sortColumn');
     const sortDirection = $("#" + tableId + "LoadMoreRow").attr('sortDirection');
-    $.getJSON(dataUrl + ((parametersString.length == 0) ? "?" : "&") + 'page=' + pageNumber + '&sort=' + sortColumn + ',' + sortDirection , function (responseData) {
+    $.getJSON(dataUrl + ((parametersString.length == 0) ? "?" : "&") + 'page=' + pageNumber + '&sort=' + sortColumn + ',' + sortDirection, function (responseData) {
         // console.log(responseData);
         // todo: impliment or remove simple mode parameter
         var touchInputReportCounter = $("#" + tableId + " tbody tr:last").index();
@@ -281,7 +282,7 @@ function generateTable(tableData) {
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
-        sortColumn = tableData.columnNames.split(",").includes('tagDate')? 'tagDate' : tableData.columnNames.split(",").includes('viewDate')? 'viewDate' : 'submitDate';
+        sortColumn = tableData.columnNames.split(",").includes('tagDate') ? 'tagDate' : tableData.columnNames.split(",").includes('viewDate') ? 'viewDate' : 'submitDate';
         $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr id='tableFloatingHeader'></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='" + sortColumn + "' sortDirection='asc'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
             // TODO: maybe add column filter textbox
