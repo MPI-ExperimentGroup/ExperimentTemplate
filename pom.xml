@@ -261,7 +261,7 @@
         </pluginRepository>
     </pluginRepositories>
     <repositories>
-        <repository>
+        <!--<repository>
             <id>AdaptiveVocabularyAssessmentModule</id>
             <name>AdaptiveVocabularyAssessmentModule Repository</name>
             <url>https://mpi-experimentgroup.github.io/AdaptiveVocabularyAssessmentModule/</url>
@@ -271,7 +271,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-        </repository>  
+        </repository>-->  
         <repository>
             <id>KinOathKinshipArchiver</id>
             <name>KinOathKinshipArchiver Repository</name>
