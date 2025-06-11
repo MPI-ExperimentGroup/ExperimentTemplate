@@ -5,7 +5,7 @@
             userIdGetParam="uuid"
             appNameDisplay="With Stimulus Example"
             preserveLastState="false"
-            obfuscateBrowserStorage="false" 
+            obfuscateBrowserStorage="false"
             availableLocales="en,es,de,fr,nl" defaultLocale="nl" 
 >
     <deployment state="staging" isAndroid="true" isDesktop="true"/>     
