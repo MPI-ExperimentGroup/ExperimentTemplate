@@ -23,6 +23,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URI;
 import org.junit.Test;
+import org.junit.Ignore;
 import static org.junit.Assert.*;
 
 /**
