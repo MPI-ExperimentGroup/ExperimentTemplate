@@ -186,7 +186,7 @@
                         + " AND (:remoteAddr IS NULL OR p.remoteAddr like :remoteAddr)"
                         + " AND (:acceptLang IS NULL OR p.acceptLang like :acceptLang)"
                         + " AND (:userAgent IS NULL OR p.userAgent like :userAgent)"
-                        + " AND ((:staleCopy IS NULL AND NOT p.staleCopy) OR p.staleCopy = :staleCopy)"
+                        + " AND (COALESCE(:staleCopy, false) = p.staleCopy)"
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>+ " AND (:</xsl:text>
@@ -237,7 +237,7 @@
                         + " AND (:remoteAddr IS NULL OR p.remoteAddr like :remoteAddr)"
                         + " AND (:acceptLang IS NULL OR p.acceptLang like :acceptLang)"
                         + " AND (:userAgent IS NULL OR p.userAgent like :userAgent)"
-                        + " AND ((:staleCopy IS NULL AND NOT p.staleCopy) OR p.staleCopy = :staleCopy)"
+                        + " AND (COALESCE(:staleCopy, false) = p.staleCopy)"
                 </xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
                     <xsl:text>+ " AND (:</xsl:text>
