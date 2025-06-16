@@ -102,6 +102,18 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
             @Param("eventTag") String eventTag,
             @Param("tagValue") String tagValue);
 
+    @Query(value = "SELECT COUNT(*) FROM (SELECT DISTINCT user_id, screen_name, event_tag, tag_value, event_ms, tag_date FROM tag_data WHERE "
+        + "(:userId IS NULL OR user_id LIKE :userId) AND "
+        + "(:screenName IS NULL OR screen_name LIKE :screenName) AND "
+        + "(:tagValue IS NULL OR tag_value LIKE :tagValue) AND "
+        + "(:eventTag IS NULL OR event_tag LIKE :eventTag)) AS distinct_rows", 
+       nativeQuery = true)
+    long countByLike(
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            @Param("eventTag") String eventTag,
+            @Param("tagValue") String tagValue);
+
 //    AssignedValue(int assignedCount, int completedCount, Date lastChange, String value)
 //    assignedValue
 //    completedValue
