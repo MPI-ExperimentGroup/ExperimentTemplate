@@ -282,7 +282,23 @@ function generateTable(tableData) {
     if (dataUrl === "") {
         $("#" + tableData.divId).append("unsupported source: " + tableData.source);
     } else {
-        sortColumn = tableData.columnNames.split(",").includes('tagDate') ? 'tagDate' : tableData.columnNames.split(",").includes('viewDate') ? 'viewDate' : 'submitDate';
+        sortColumn = (tableData.source === "tagpair") ? (
+            'tagDate'
+        ) : (tableData.source === "tagdata") ? (
+            'tagDate'
+        ) : (tableData.source === "timestamp") ? (
+            'tagDate'
+        ) : (tableData.source === "screendata") ? (
+            'viewDate'
+        ) : (tableData.source === "groupdata") ? (
+            'eventDate'
+        ) : (tableData.source === "participantdata") ? (
+            'submitDate'
+        ) : (tableData.source === "mediaResponse") ? (
+            'submitDate'
+        ) : (tableData.source === "stimulusResponse") ? (
+            'tagDate'
+        ) : "";
         $("#" + tableData.divId).append("<table id=\"" + tableId + "\" class='datatable'><thead><tr id='tableFloatingHeader'></tr></thead><tbody><tr id=\"" + tableId + "LoadMoreRow\" dataUrl='" + dataUrl + "' parametersString='" + parametersString + "' pageNumber='0' sortColumn='" + sortColumn + "' sortDirection='asc'><td colspan='" + columnCount + "'><span></span>&nbsp;<button onclick=\"loadMore('" + tableId + "');\">Load More</button></td></tr></tbody></table>");
         for (const columnName of tableData.columnNames.split(",")) {
             // TODO: maybe add column filter textbox
