@@ -71,8 +71,8 @@ function generateChart(chartData) {
             data.labels.push(dataset.label);
             const dataKey = data.labels.length - 1;
             //data.datasets[0].data.push(metadata.matching);
-            data.datasets[0].backgroundColor.push(metadata.colour + '20');
-            data.datasets[0].borderColor.push(metadata.colour + 'ff');
+            data.datasets[0].backgroundColor.push(dataset.colour + '20');
+            data.datasets[0].borderColor.push(dataset.colour + 'ff');
             const queryTable = (data.source === 'metadata') ? 'participants' : data.source;
             $.getJSON(queryTable + '/search/countByLike?' + data.matching, function (responseData) {
                 // console.log(responseData);
