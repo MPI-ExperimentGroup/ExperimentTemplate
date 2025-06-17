@@ -72,11 +72,11 @@
             <dataset source="metadata" label="Myocytes" matching="assigned_value=Myocytes" colour="#880000" />
             <dataset source="metadata" label="Archaeocytes" matching="assigned_value=Archaeocytes" colour="#880000" />
         </chart>
-        <!-- <dataTable label="Events Assigned" source="tagdata;eventTag=assignedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" /> -->
-        <!-- <dataTable label="Events Completed" source="tagdata;eventTag=completedValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" /> -->
-        <dataTable label="Events Assigned / Completed (Assignment_Before_Completion)" source="tagdata" matching="screenName=Assignment_Before_Completion;eventTag=%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
-        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion)" source="tagdata" matching="screenName=Assignment_Or_Completion;eventTag=%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
-        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion_Or_Clear)" source="tagdata" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=%edValue" columnNames="UserId,ScreenName,EventTag,TagValue,TagDate" />
+        <!-- <dataTable label="Events Assigned" source="tagdata;eventTag=assignedValue" columnNames="userId,screenName,eventTag,tagValue,tagDate" /> -->
+        <!-- <dataTable label="Events Completed" source="tagdata;eventTag=completedValue" columnNames="userId,screenName,eventTag,tagValue,tagDate" /> -->
+        <dataTable label="Events Assigned / Completed (Assignment_Before_Completion)" source="tagdata" matching="screenName=Assignment_Before_Completion;eventTag=%edValue" columnNames="userId,screenName,eventTag,tagValue,tagDate" />
+        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion)" source="tagdata" matching="screenName=Assignment_Or_Completion;eventTag=%edValue" columnNames="userId,screenName,eventTag,tagValue,tagDate" />
+        <dataTable label="Events Assigned / Completed (Assignment_Or_Completion_Or_Clear)" source="tagdata" matching="screenName=Assignment_Or_Completion_Or_Clear;eventTag=%edValue" columnNames="userId,screenName,eventTag,tagValue,tagDate" />
     </administration>
     <metadata>
         <field controlledMessage="Assigned Value" controlledRegex="." postName="assigned_value" registrationField="assigned_value"/>
