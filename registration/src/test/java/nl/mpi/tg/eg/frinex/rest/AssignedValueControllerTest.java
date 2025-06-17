@@ -53,6 +53,11 @@ public class AssignedValueControllerTest {
         HashMap<String, Integer> countsMap = new HashMap<>();
         instance.tagRepository = new TagRepository() {
             @Override
+            public long countByLike(String userId, String screenName, String eventTag, String tagValue) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public List<TagData> findNonUniqueCombinations() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
