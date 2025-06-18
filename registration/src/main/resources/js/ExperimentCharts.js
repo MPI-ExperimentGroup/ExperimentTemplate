@@ -78,7 +78,7 @@ function generateChart(chartData) {
                 // console.log(responseData);
                 data.datasets[0].data[dataKey] = responseData;
                 adminChart.update();
-            });
+            }));
         }
         // for (const tagData of chartData.tagData) {
         //     data.labels.push(tagData.label);
