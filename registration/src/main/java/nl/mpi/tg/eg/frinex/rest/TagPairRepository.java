@@ -79,13 +79,15 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
             @Param("tagValue1") String tagValue1,
             @Param("tagValue2") String tagValue2);
 
-    @Query("SELECT count(distinct new TagPairData(p.userId, p.screenName, p.dataChannel, p.eventTag, p.tagValue1, p.tagValue2, p.eventMs, p.tagDate)) FROM TagPairData p WHERE "
+    @Query("SELECT count(*) "
+        + "FROM (SELECT distinct p.userId, p.screenName, p.dataChannel, p.eventTag, p.tagValue1, p.tagValue2, p.eventMs, p.tagDate FROM TagPairData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName) AND "
         + "(:dataChannel IS NULL OR p.dataChannel = :dataChannel) AND "
         + "(:eventTag IS NULL OR p.eventTag like :eventTag) AND "
         + "(:tagValue1 IS NULL OR p.tagValue1 like :tagValue1) AND "
-        + "(:tagValue2 IS NULL OR p.tagValue2 like :tagValue2)")
+        + "(:tagValue2 IS NULL OR p.tagValue2 like :tagValue2)"
+        + ") AS distinct_rows")
     long countByLike(
             @Param("userId") String userId,
             @Param("screenName") String screenName,
