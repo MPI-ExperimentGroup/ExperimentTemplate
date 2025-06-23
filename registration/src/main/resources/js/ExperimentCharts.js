@@ -54,11 +54,6 @@ function generateChart(chartData) {
         labels: [],
         datasets: []
     };
-    const adminChart = new Chart(ctx, {
-        type: chartData.type,
-        options: options,
-        data: data
-    });
     if (chartData.type === "bar" || chartData.type === "pie") {
         data.datasets.push({
             label: chartData.label,
@@ -81,6 +76,11 @@ function generateChart(chartData) {
             promises.push(requestPromis);
         });
         Promise.all(promises).then(() => {
+            const adminChart = new Chart(ctx, {
+                type: chartData.type,
+                options: options,
+                data: data
+            });
             adminChart.update();
         });
         // for (const tagData of chartData.tagData) {
