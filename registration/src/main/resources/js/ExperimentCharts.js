@@ -67,19 +67,22 @@ function generateChart(chartData) {
             borderColor: [],
             borderWidth: 1
         });
-        for (const dataset of chartData.datasets) {
+        const promises = [];
+        chartData.datasets.forEach((dataset, index) => {
             data.labels.push(dataset.label);
-            const dataKey = data.labels.length - 1;
-            //data.datasets[0].data.push(metadata.matching);
             data.datasets[0].backgroundColor.push(dataset.colour + '20');
             data.datasets[0].borderColor.push(dataset.colour + 'ff');
-            const queryTable = (dataset.source === 'metadata') ? 'participants' : (dataset.source === 'tagdata') ? 'tagevents' : dataset.source;
-            $.getJSON(queryTable + '/search/countByLike?' + dataset.matching.replace(/;/g, '&'), function (responseData) {
-                // console.log(responseData);
-                data.datasets[0].data[dataKey] = responseData;
-                adminChart.update();
+            data.datasets[0].data.push(0);
+            const queryTable = dataset.source === 'metadata' ? 'participants' : dataset.source === 'tagdata' ? 'tagevents' : dataset.source;
+            const queryURL = `${queryTable}/search/countByLike?${dataset.matching.replace(/;/g, '&')}`;
+            const requestPromis = $.getJSON(queryURL).then(responseData => {
+                data.datasets[0].data[index] = responseData;
             });
-        }
+            promises.push(requestPromis);
+        });
+        Promise.all(promises).then(() => {
+            adminChart.update();
+        });
         // for (const tagData of chartData.tagData) {
         //     data.labels.push(tagData.label);
         //     const tagDataIndex = data.labels.length - 1;
