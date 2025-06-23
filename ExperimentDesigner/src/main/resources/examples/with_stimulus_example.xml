@@ -43,7 +43,7 @@
         <chart label="isCorrect" type="pie">
             <dataset source="stimulusResponse" label="Correct" matching="isCorrect=True" colour="#990000" />
             <dataset source="stimulusResponse" label="Incorrect" matching="isCorrect=False" colour="#009900" />
-            <dataset source="stimulusResponse" label="NoResponse" matching="isCorrect=Null" colour="#000099" />
+            <!-- <dataset source="stimulusResponse" label="NoResponse" matching="isCorrect=Null" colour="#000099" /> -->
         </chart>   
         <!-- <chart label="DataChannelThree" type="pie">
             <stimulusResponse label="Correct" dataChannel="3" isCorrect="True" colour="#990000" />
