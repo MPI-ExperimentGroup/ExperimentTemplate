@@ -1,5 +1,5 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/beta.xsd"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="sixty_lists_example">  
     <deployment isWebApp="true" state="staging" /> 
     <metadata>   
