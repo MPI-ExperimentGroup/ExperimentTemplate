@@ -77,11 +77,11 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
         + "(:userId IS NULL OR user_id LIKE :userId) AND "
         + "(:screenName IS NULL OR screen_name LIKE :screenName) AND "
         + "(:dataChannel IS NULL OR data_channel = :dataChannel) AND "
-        + "(:scoreGroup IS NULL OR p.score_group like :scoreGroup) AND "
-        + "(:responseGroup IS NULL OR p.response_group like :responseGroup) AND "
-        + "(:stimulusId IS NULL OR p.stimulus_id like :stimulusId) AND "
-        + "(:response IS NULL OR p.response like :response) AND "
-        + "(:isCorrect IS NULL OR p.is_correct = :isCorrect)"
+        + "(:scoreGroup IS NULL OR score_group like :scoreGroup) AND "
+        + "(:responseGroup IS NULL OR response_group like :responseGroup) AND "
+        + "(:stimulusId IS NULL OR stimulus_id like :stimulusId) AND "
+        + "(:response IS NULL OR response like :response) AND "
+        + "(:isCorrect IS NULL OR is_correct = :isCorrect)"
         + ") AS distinct_rows",
         nativeQuery = true)
     long countByLike(
