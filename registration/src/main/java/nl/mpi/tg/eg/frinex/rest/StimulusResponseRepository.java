@@ -72,6 +72,28 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
             @Param("stimulusId") String stimulusId,
             @Param("response") String response);
 
+        @Query(value = "SELECT COUNT(*) "
+        + "FROM (SELECT DISTINCT user_id, screen_name, tag_date, event_ms, data_channel, is_correct, score_group, response_group, stimulus_id, response FROM stimulus_response WHERE "
+        + "(:userId IS NULL OR user_id LIKE :userId) AND "
+        + "(:screenName IS NULL OR screen_name LIKE :screenName) AND "
+        + "(:dataChannel IS NULL OR data_channel = :dataChannel) AND "
+        + "(:scoreGroup IS NULL OR p.score_group like :scoreGroup) AND "
+        + "(:responseGroup IS NULL OR p.response_group like :responseGroup) AND "
+        + "(:stimulusId IS NULL OR p.stimulus_id like :stimulusId) AND "
+        + "(:response IS NULL OR p.response like :response) AND "
+        + "(:isCorrect IS NULL OR p.is_correct = :isCorrect)"
+        + ") AS distinct_rows",
+        nativeQuery = true)
+    long countByLike(
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            @Param("dataChannel") Integer dataChannel,
+            @Param("isCorrect") Boolean isCorrect,
+            @Param("scoreGroup") String scoreGroup,
+            @Param("responseGroup") String responseGroup,
+            @Param("stimulusId") String stimulusId,
+            @Param("response") String response);
+    
 //    @Query("SELECT p FROM StimulusResponse p WHERE "
 //            + "(:userId IS NULL OR p.userId like :userId) AND "
 //            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
