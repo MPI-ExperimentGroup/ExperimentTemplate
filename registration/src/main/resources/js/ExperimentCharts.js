@@ -73,7 +73,7 @@ function generateChart(chartData) {
             data.datasets[0].backgroundColor.push(dataset.colour + '20');
             data.datasets[0].borderColor.push(dataset.colour + 'ff');
             data.datasets[0].data.push(0);
-            const queryTable = dataset.source === 'metadata' ? 'participants' : dataset.source === 'tagdata' ? 'tagevents' : dataset.source;
+            const queryTable = dataset.source === 'metadata' ? 'participants' : dataset.source === 'tagdata' ? 'tagevents' : dataset.source === 'stimulusResponse' ? 'stimulusresponses' : dataset.source;
             const queryURL = `${queryTable}/search/countByLike?${dataset.matching.replace(/;/g, '&')}`;
             const requestPromis = $.getJSON(queryURL).then(responseData => {
                 data.datasets[0].data[index] = responseData;
