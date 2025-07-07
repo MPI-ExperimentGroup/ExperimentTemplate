@@ -89,6 +89,17 @@
                                     </onError>
                                 </streamGroupCanvas>
                             </actionButton>
+                            <actionButton featureText="Canvas A,B|B,A" groupId="streamButtonGroup">
+                                <streamGroupCanvas streamChannels="A,B|B,A">
+                                    <onSuccess>
+                                        <plainText featureText="streamGroupCanvas onSuccess A,B|B,A"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamGroupCanvas onError A,B|B,A"/>
+                                        <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
+                                    </onError>
+                                </streamGroupCanvas>
+                            </actionButton>
                             <addPadding/>
                             <actionButton featureText="Canvas A,B,C" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="A,B,C">
@@ -119,6 +130,17 @@
                                     </onSuccess>
                                     <onError>
                                         <plainText featureText="streamGroupCamera onErrorA,B|B,C"/>
+                                        <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
+                                    </onError>
+                                </streamGroupCamera>
+                            </actionButton>
+                            <actionButton featureText="Camera A,B|B,A">
+                                <streamGroupCamera streamChannels="A,B|B,A">
+                                    <onSuccess>
+                                        <plainText featureText="streamGroupCamera onSuccess A,B|B,A"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamGroupCamera onErrorA,B|B,A"/>
                                         <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
                                     </onError>
                                 </streamGroupCamera>
