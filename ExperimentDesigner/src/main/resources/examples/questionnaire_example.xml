@@ -152,29 +152,37 @@
         <addPadding />
         <regionClear regionId="consentStatus"></regionClear>
         <metadataField fieldName="consentOption" />
-        <saveMetadataButton featureText="Agree and continue" sendData="true"
-            networkErrorMessage="No connection to the server. Check your internet connection.">
+        <saveMetadataButton featureText="Agree and continue" sendData="true">
             <onSuccess>
                 <regionReplace regionId="consentStatus" styleName="metadataOK">
                     <plainText featureText="Agreement registered and data sent to the server" />
                 </regionReplace>
                 <!-- <eraseUsersDataButton featureText="Clear Local Data (if second person whats to fill in this questionnaire)" target="questionnaire"/> -->
             </onSuccess>
-            <onError>
-                <plainText featureText="Sending data error" />
-                <hasMetadataValue fieldName="consentOption" matchingRegex="true">
-                    <conditionTrue>
+            <onValidationError>
+                <regionReplace regionId="consentStatus">
+                    <plainText featureText="Not all metadatafields are filled." />
+                </regionReplace>
+            </onValidationError>
+            <onNetworkError>
+                <!-- <hasMetadataValue fieldName="consentOption" matchingRegex="true">
+                    <conditionTrue> -->
                         <regionReplace regionId="consentStatus" styleName="metadataError">
-                            <plainText featureText="Sending data failed" />
+                            <plainText featureText="No connection to the server. Check your internet connection." />
                         </regionReplace>
-                    </conditionTrue>
+                    <!-- </conditionTrue>
                     <conditionFalse>
                         <regionReplace regionId="consentStatus" styleName="metadataError">
                             <plainText featureText="Cannot proceed without your agreement via the last checkbox in this form" />
                         </regionReplace>
-                    </conditionFalse>
+                    </conditionFalse> -->
                 </hasMetadataValue>
-            </onError>
+            </onNetworkError>
+            <dataAgreementError>
+                <regionReplace regionId="consentStatus" styleName="metadataError">
+                    <plainText featureText="Cannot proceed without your agreement via the last checkbox in this form" />
+                </regionReplace>
+            </dataAgreementError>
         </saveMetadataButton>
         <!-- <addPadding /> -->
     </presenter>
