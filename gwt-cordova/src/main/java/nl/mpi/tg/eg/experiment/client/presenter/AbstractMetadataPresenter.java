@@ -61,7 +61,15 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
         this.nextState = nextState;
     }
 
-    protected void saveMetadataButton(final String buttonLabel, final String styleName, final boolean sendData, final String buttonGroup, final String networkErrorMessage, final TimedStimulusListener errorEventListener, final TimedStimulusListener successEventListener) {
+    protected void saveMetadataButton(
+        final String buttonLabel, 
+        final String styleName, 
+        final boolean sendData, 
+        final String buttonGroup, 
+        final TimedStimulusListener onValidationError, 
+        final TimedStimulusListener onNetworkError, 
+        final TimedStimulusListener dataAgreementError, 
+        final TimedStimulusListener successEventListener) {
         final HTML errorHtmlText = ((MetadataView) simpleView).addHtmlText("", null);
         PresenterEventListener saveEventListener = new PresenterEventListener() {
 
@@ -78,14 +86,18 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                             @Override
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
                                 if (exception.getErrorType() == DataSubmissionException.ErrorType.dataAgreementError) {
-                                    errorEventListener.postLoadTimerFired();
+                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                                    dataAgreementError.postLoadTimerFired();
+                                    submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.dataAgreementError");
                                 } else if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
                                     ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                                    onValidationError.postLoadTimerFired();
+                                    submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.validationError");
                                 } else {
-                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, networkErrorMessage);
-                                    errorEventListener.postLoadTimerFired();
+                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                                    onNetworkError.postLoadTimerFired();
+                                    submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.networkError");
                                 }
-                                submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
                             }
 
                             @Override
