@@ -801,11 +801,14 @@ or local-name() eq 'submitGroupEvent'
         <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot; /* replacementRegex */') else ''" />
         <xsl:value-of select="if(not(@replacementRegex) and local-name() eq 'setMetadataValue') then ', null' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
-        <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
+        <!-- <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" /> -->
         <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
         <xsl:apply-templates select="actionButton" />
         <xsl:apply-templates select="conditionTrue" />
         <xsl:apply-templates select="conditionFalse" />
+        <xsl:apply-templates select="onValidationError" />
+        <xsl:apply-templates select="onNetworkError" />
+        <xsl:apply-templates select="dataAgreementError" /> 
         <xsl:apply-templates select="onError" />        
         <xsl:apply-templates select="onSuccess" />
         <xsl:apply-templates select="onTimer" />
@@ -1059,7 +1062,7 @@ or local-name() eq 'ratingCheckbox'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="ondragstart|ondragover|ondrop|captureStart|touchEnd|onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
+    <xsl:template match="ondragstart|ondragover|ondrop|captureStart|touchEnd|onKeyUp|onKeyDown|onActivate|mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onValidationError|onNetworkError|dataAgreementError|onError|onSuccess|onTimer|onTime|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold|groupFindingMembers|groupNetworkConnecting|groupNetworkSynchronising|groupPhaseListeners|groupInitialisationError">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext, '/* msToNext */') else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers' or parent::element()/local-name() eq 'startFrameRateTimer') then '' else ', '" />
         <xsl:text>&#xa;new </xsl:text>
