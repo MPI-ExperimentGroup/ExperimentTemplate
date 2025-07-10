@@ -1,6 +1,7 @@
 name: repository-sync
-on: 
-  push
+#on: 
+#  push
+# this push fails due to changes on the upstream authentication
 jobs:
   build:
     runs-on: ubuntu-latest
