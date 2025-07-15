@@ -176,7 +176,7 @@
                             <plainText featureText="Cannot proceed without your agreement via the last checkbox in this form" />
                         </regionReplace>
                     </conditionFalse> -->
-                </hasMetadataValue>
+                <!-- </hasMetadataValue> -->
             </onNetworkError>
             <dataAgreementError>
                 <regionReplace regionId="consentStatus" styleName="metadataError">
