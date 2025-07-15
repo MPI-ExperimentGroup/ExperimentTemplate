@@ -248,13 +248,19 @@
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
         <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
         <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
-        <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage" groupId="groupId" styleName="styleName">
+        <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" groupId="groupId" styleName="styleName">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="plainText in onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="plainText in onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="plainText in dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <createUserButton featureText="createUserButton" groupId="groupId" styleName="styleName" target="target"/>
         <switchUserIdButton featureText="switchUserIdButton" fieldName="workerId" groupId="groupId" styleName="styleName" validationRegex="validationRegex">
@@ -3122,13 +3128,19 @@
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
         <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" visibleRegex="" enabledRegex=""/>
         <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000" visibleRegex="" enabledRegex=""/>
-        <saveMetadataButton featureText="" sendData="" networkErrorMessage="">
+        <saveMetadataButton featureText="" sendData="">
             <onSuccess>
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="plainText in onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="plainText in onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="plainText in dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <createUserButton featureText="" target="target"/>
         <switchUserIdButton featureText="" fieldName="workerId" validationRegex="">
