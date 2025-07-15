@@ -483,6 +483,15 @@ public class DefaultExperiments {
                     presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+            case hasMetadataErrorSuccess:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onSuccess, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onValidationError, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onNetworkError, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.dataAgreementError, presenterFeatureRepository, addOptionalAttributes));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.saveAll(presenterFeature.getPresenterFeatureList());
+                }
+                break;
             case hasErrorTimer:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onTimer, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
