@@ -2832,7 +2832,7 @@
 </xs:attribute>
 </xs:complexType>
 </xs:element>
-<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
+<xs:group ref="sequenceOnceOrdered_hasMetadataErrorSuccessType" />
 </xs:sequence>
 <xs:attribute name="featureText" type="xs:string" use="required">
 <xs:annotation>
@@ -2840,11 +2840,6 @@
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="sendData" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-<xs:attribute name="networkErrorMessage" type="xs:string" use="required">
 <xs:annotation>
 <xs:documentation>String</xs:documentation>
 </xs:annotation>
@@ -5351,6 +5346,15 @@
 <xs:complexType name="onErrorType">
 <xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:complexType>
+<xs:complexType name="onValidationErrorType">
+<xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:complexType>
+<xs:complexType name="onNetworkErrorType">
+<xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:complexType>
+<xs:complexType name="dataAgreementErrorType">
+<xs:group ref="choiceAnyCount_anyType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:complexType>
 <xs:complexType name="randomGroupingType">
 <xs:annotation>
 <xs:documentation>List of stimuli tag names one of which will be randomly selected, unless the selection has been predetermined by a metadata field value or by URL GET parameters.</xs:documentation>
@@ -5407,6 +5411,13 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
+<xs:group name="sequenceOnceOrdered_hasMetadataErrorSuccessType">
+<xs:sequence>
+<xs:element name="onValidationError" type="onValidationErrorType"/>
+<xs:element name="onNetworkError" type="onNetworkErrorType"/>
+<xs:element name="dataAgreementError" type="dataAgreementErrorType"/>
+</xs:sequence>
+</xs:group>
 <xs:group name="sequenceOnceOrdered_hasKeyInputsConditionType">
 <xs:sequence>
 <xs:element name="onKeyUp" type="onKeyUpType"/>
