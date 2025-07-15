@@ -336,6 +336,7 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(exampleDirectoryUri), "minimal_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "hello_world_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "generic_example.xml"));
+        instance.validateDocument(new File(new File(exampleDirectoryUri), "questionnaire_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "with_stimulus_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "group_example.xml"));
         instance.validateDocument(new File(new File(exampleDirectoryUri), "group_streaming_example.xml"));
