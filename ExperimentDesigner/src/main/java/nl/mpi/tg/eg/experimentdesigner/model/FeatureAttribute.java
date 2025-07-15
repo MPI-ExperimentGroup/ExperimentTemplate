@@ -78,7 +78,7 @@ public enum FeatureAttribute {
     ratingLabelLeft(true),
     ratingLabelRight(true),
     sendData,
-    networkErrorMessage, // TODO: networkErrorMessage= could be replaced with onError which is a lot more flexible
+    // networkErrorMessage, // TODO: networkErrorMessage= could be replaced with onError which is a lot more flexible
     inputErrorMessage,
     randomise("When true the items will be randomised once before any repeats are calculated, when false the items will not be randomised. If the selected items were 1234, the result of randomise true might be 3214 for example.", true, AttributeType.xsBoolean),
     repeatCount("When greater than zero the list will be repeated the selected items by the number of times specified without changing the order of the items. For example if repeat count was 3 then the result might be 321432143214 for example.", true, AttributeType.xsInteger),
