@@ -352,6 +352,7 @@ public enum FeatureType {
         groupStimulus(false),
         stimulusAction(true),
         hasErrorSuccess(false),
+        hasMetadataErrorSuccess(false),
         hasErrorTimer(false),
         hasErrorTimeCritical(false),
         hasUserCount(false),
