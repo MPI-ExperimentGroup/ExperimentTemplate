@@ -23,11 +23,13 @@
         <metadataField fieldName="lastName"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Volgende" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
