@@ -3939,7 +3939,7 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "on[Success %1",
+      "message4": "onSuccess %1",
       "args4": [
          {
            "type": "input_statement",

@@ -28,11 +28,7 @@
                 <gotoNextPresenter/>
             </onSuccess>
             <onValidationError/>
-            <onNetworkError>
-                <regionReplace regionId="consentStatus" styleName="metadataError">
-                    <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw." />
-                </regionReplace>
-            </onNetworkError>
+            <onNetworkError/>
             <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
