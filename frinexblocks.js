@@ -3923,32 +3923,24 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message2": 'networkErrorMessage %1',
+      "message2": 'styleName %1',
       "args2": [
-        {
-          "type": "field_input",
-          "name": "networkErrorMessage",
-          "check": "String"
-        }
-      ],
-      "message3": 'styleName %1',
-      "args3": [
         {
           "type": "field_input",
           "name": "styleName",
           "check": "String"
         }
       ],
-      "message4": 'groupId %1',
-      "args4": [
+      "message3": 'groupId %1',
+      "args3": [
         {
           "type": "field_input",
           "name": "groupId",
           "check": "String"
         }
       ],
-      "message5": "onSuccess %1",
-      "args5": [
+      "message4": "onSuccess %1",
+      "args4": [
         {
           "type": "input_statement",
           "name": "onSuccess",
@@ -3957,11 +3949,31 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message6": "onError %1",
+      "message5": "onValidationError %1",
+      "args5": [
+        {
+          "type": "input_statement",
+          "name": "onValidationError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message6": "onNetworkError %1",
       "args6": [
         {
           "type": "input_statement",
-          "name": "onError",
+          "name": "onNetworkError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message7": "dataAgreementError %1",
+      "args7": [
+        {
+          "type": "input_statement",
+          "name": "dataAgreementError",
           "check": [
             "frinex_anyType",
           ]
@@ -11757,6 +11769,84 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
+      "type": "frinex_onValidationErrorType",
+      "message0": 'onValidationError %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": "any %1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_hasMetadataErrorSuccessType",
+      ],
+      "nextStatement": [
+        "frinex_hasMetadataErrorSuccessType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_onNetworkErrorType",
+      "message0": 'onNetworkError %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": "any %1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_hasMetadataErrorSuccessType",
+      ],
+      "nextStatement": [
+        "frinex_hasMetadataErrorSuccessType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_dataAgreementErrorType",
+      "message0": 'dataAgreementError %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": "any %1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "DO",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_hasMetadataErrorSuccessType",
+      ],
+      "nextStatement": [
+        "frinex_hasMetadataErrorSuccessType",
+      ],
+      "colour": 140,
+      },
+    {
       "type": "frinex_randomGroupingType",
       "message0": 'randomGrouping %1',
       "args0": [
@@ -12275,10 +12365,16 @@ function getFeatureBlocks() {
      childData += '<onSuccess>\n';
      childData += generator.statementToCode(block, 'onSuccess');
      childData += '</onSuccess>\n';
-     childData += '<onError>\n';
-     childData += generator.statementToCode(block, 'onError');
-     childData += '</onError>\n';
-    return '<saveMetadataButton block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" sendData="' + block.getFieldValue('sendData') +'" networkErrorMessage="' + block.getFieldValue('networkErrorMessage') +'" styleName="' + block.getFieldValue('styleName') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</saveMetadataButton>\n');
+     childData += '<onValidationError>\n';
+     childData += generator.statementToCode(block, 'onValidationError');
+     childData += '</onValidationError>\n';
+     childData += '<onNetworkError>\n';
+     childData += generator.statementToCode(block, 'onNetworkError');
+     childData += '</onNetworkError>\n';
+     childData += '<dataAgreementError>\n';
+     childData += generator.statementToCode(block, 'dataAgreementError');
+     childData += '</dataAgreementError>\n';
+    return '<saveMetadataButton block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" sendData="' + block.getFieldValue('sendData') +'" styleName="' + block.getFieldValue('styleName') +'" groupId="' + block.getFieldValue('groupId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</saveMetadataButton>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_createUserButtonType'] = function(block, generator) {
     var childData = '';
@@ -13567,6 +13663,21 @@ function getFeatureBlocks() {
      childData += '</onError>\n';
     return '<transmitResults block_id="' + block.id + '" receivingRegex="' + block.getFieldValue('receivingRegex') +'" sendingRegex="' + block.getFieldValue('sendingRegex') +'" dataLogFormat="' + block.getFieldValue('dataLogFormat') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</transmitResults>\n');
   };
+  javascript.javascriptGenerator.forBlock['frinex_onValidationErrorType'] = function(block, generator) {
+    var childData = '';
+     childData += generator.statementToCode(block, 'DO');
+    return '<onValidationError block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onValidationError>\n');
+  };
+  javascript.javascriptGenerator.forBlock['frinex_onNetworkErrorType'] = function(block, generator) {
+    var childData = '';
+     childData += generator.statementToCode(block, 'DO');
+    return '<onNetworkError block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</onNetworkError>\n');
+  };
+  javascript.javascriptGenerator.forBlock['frinex_dataAgreementErrorType'] = function(block, generator) {
+    var childData = '';
+     childData += generator.statementToCode(block, 'DO');
+    return '<dataAgreementError block_id="' + block.id + '" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</dataAgreementError>\n');
+  };
   return {
     "kind": "categoryToolbox",
     "contents": [
@@ -14513,6 +14624,18 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_transmitResultsType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_onValidationErrorType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_onNetworkErrorType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_dataAgreementErrorType"
       },
             ]}, {
         "kind":"category",
