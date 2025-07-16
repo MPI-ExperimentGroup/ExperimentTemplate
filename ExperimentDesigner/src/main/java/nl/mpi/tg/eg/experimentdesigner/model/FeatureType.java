@@ -220,7 +220,7 @@ public enum FeatureType {
     onTimer(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorTimer),
     conditionTrue(false, null, false, false, false, Contitionals.any, Contitionals.hasTrueFalseCondition, Contitionals.hasTrueFalseErrorCondition),
     conditionFalse(false, null, false, false, false, Contitionals.any, Contitionals.hasTrueFalseCondition, Contitionals.hasTrueFalseErrorCondition),
-    onSuccess(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess),
+    onSuccess(false, null, false, false, false, Contitionals.any, Contitionals.hasErrorSuccess, Contitionals.hasMetadataErrorSuccess),
     onActivate(false, null, false, false, false, Contitionals.any, Contitionals.hasMediaLoadingButton),
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),
     loadKinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
