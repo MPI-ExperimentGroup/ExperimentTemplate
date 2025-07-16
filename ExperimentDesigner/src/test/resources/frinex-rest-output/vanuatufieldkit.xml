@@ -28,11 +28,17 @@
     </presenter>
     <presenter back="Welkam" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Savem infomesen" sendData="false">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError>
+                <regionReplace regionId="consentStatus" styleName="metadataError">
+                    <plainText featureText="Could not contact the server, please check your internet connection and try again." />
+                </regionReplace>
+            </onNetworkError>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="Welkam" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
