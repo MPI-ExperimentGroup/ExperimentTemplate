@@ -88,7 +88,7 @@
         <addPadding/>
         <metadataField fieldName="invitation_id"/>
         <addPadding/>
-        <saveMetadataButton featureText="Save Invitation ID" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Save Invitation ID" sendData="true">
             <onSuccess>
                 <hasMetadataValue fieldName="invitation_id" matchingRegex="...*">
                     <conditionTrue>
@@ -121,9 +121,15 @@
                     </conditionFalse>
                 </hasMetadataValue>
             </onSuccess>
-            <onError>
-                <htmlText featureText="Save metadata failed"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <addPadding/>
         <addPadding/>
@@ -273,22 +279,34 @@
         <setMetadataValue fieldName="session_copepods" dataLogFormat="Copepod_Antrisocopia prehensilis_Karllangia pulchra_Misophrioida_Monstrilloida_Mormonillidae_Platycopiidae_Poecilostomatoida_Siphonostomatoida_Speleophria bivexilla_Speleophria scottodicarloi_Speleophriidae_Tigriopus brevicornis"/>
         <setMetadataValue fieldName="session_next_copepod" replacementRegex="&lt;metadataField_session_copepod&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_copepods&gt;"/>
         <!--// if the response invitation_id does not exist then transmit-->
-        <saveMetadataButton featureText="Save Metadata and transmitResults" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Save Metadata and transmitResults" sendData="true">
             <onSuccess>
                 <gotoPresenter target="InvitationValidationExample"/>
             </onSuccess>
-            <onError>
-                <htmlText featureText="Save metadata failed"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <addPadding/>
-        <saveMetadataButton featureText="Save Metadata and validateMetadata" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Save Metadata and validateMetadata" sendData="true">
             <onSuccess>
                 <gotoPresenter target="InvitationValidateMetadataExample"/>
             </onSuccess>
-            <onError>
-                <htmlText featureText="Save metadata failed"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <addPadding/>
         <addPadding/>
