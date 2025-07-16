@@ -164,11 +164,15 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.gotoNextPresenter, null);
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
-        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
+        final PresenterFeature onValidationError = new PresenterFeature(FeatureType.onValidationError, null);
+        final PresenterFeature onNetworkError = new PresenterFeature(FeatureType.onNetworkError, null);
+        final PresenterFeature dataAgreementError = new PresenterFeature(FeatureType.dataAgreementError, null);
         if (storedWizardScreenData.getScreenBoolean(1)) {
-            onErrorFeature.addFeature(FeatureType.gotoPresenter, null, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
+            onNetworkError.addFeature(FeatureType.gotoPresenter, null, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         }
-        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
+        saveMetadataButton.getPresenterFeatureList().add(onValidationError);
+        saveMetadataButton.getPresenterFeatureList().add(onNetworkError);
+        saveMetadataButton.getPresenterFeatureList().add(dataAgreementError);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
         if (storedWizardScreenData.getScreenText(1) != null && storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
