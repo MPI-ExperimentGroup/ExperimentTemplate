@@ -204,11 +204,13 @@
     <presenter menuLabel="EditUser" next="Fini" type="metadata" self="EditUser" title="EditUser">
         <htmlText featureText="D'après vous, quel est le thème/but de cette expérience?"/>
         <metadataField fieldName="feedBack"/>
-        <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
+        <saveMetadataButton featureText="Suivant" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Fini" type="transmission" self="Fini" title="Fini">

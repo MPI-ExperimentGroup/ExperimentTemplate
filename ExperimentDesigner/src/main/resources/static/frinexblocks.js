@@ -3945,7 +3945,7 @@ function getFeatureBlocks() {
           "type": "input_statement",
           "name": "onSuccess",
           "check": [
-          "frinex_anyType",
+            "frinex_anyType",
          ]
         }
       ],
