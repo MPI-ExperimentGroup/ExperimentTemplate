@@ -3946,7 +3946,7 @@ function getFeatureBlocks() {
           "name": "onSuccess",
           "check": [
             "frinex_anyType",
-         ]
+          ]
         }
       ],
       "message5": "onValidationError %1",
