@@ -411,11 +411,19 @@
         <addPadding/>
         <htmlText featureText="When Opleidingsniveau is equal to anders the extra field educationOther will be shown."/>
         <addPadding/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Volgende" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
     </presenter>
     <presenter back="Gegevens" menuLabel="Metadata Jump Test" type="stimulus" self="Metadata_Jump_Test" title="Metadata Jump Test">
@@ -751,7 +759,7 @@
         <plainText featureText="This example is for Android and iOS apps and demonstrates how to request notifications at given times in the future."/>
         <metadataField fieldName="notificationMinutes"/>
         <addPadding/>
-        <saveMetadataButton featureText="Request Minutes Notification" sendData="false" networkErrorMessage=".">
+        <saveMetadataButton featureText="Request Minutes Notification" sendData="false">
             <onSuccess>
                 <setMetadataValue fieldName="notificationMinutesSettings" replacementRegex="" dataLogFormat="in_minutes:::metadataField_notificationMinutes::"/>
                 <htmlTokenText featureText="notificationSettings: ::metadataField_notificationMinutesSettings::&lt;br/&gt;"/>
@@ -764,9 +772,15 @@
                     </onError>
                 </requestNotification>
             </onSuccess>
-            <onError>
-                <plainText featureText="Save metadata failed"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <addPadding/>
         <metadataField fieldName="notificationWeekdaySettings"/>
@@ -785,7 +799,7 @@
                     <plainText featureText="Request Notification Done"/>
                 </regionAppend>
         </actionButton>-->
-        <saveMetadataButton featureText="Request Range Notifications" sendData="false" networkErrorMessage=".">
+        <saveMetadataButton featureText="Request Range Notifications" sendData="false">
             <onSuccess>
                 <setMetadataValue fieldName="notificationRangeSettings" replacementRegex="" dataLogFormat="weekdays:::metadataField_notificationWeekdaySettings:: weekends:::metadataField_notificationWeekendSettings:: weekdays_between:::metadataField_notificationWeekdayFromSettings:::::metadataField_notificationWeekdayUntilSettings:::::metadataField_notificationCountWeekdaySettings:: weekends_between:::metadataField_notificationWeekendFromSettings:::::metadataField_notificationWeekendUntilSettings:::::metadataField_notificationCountWeekendSettings::"/>
                 <htmlTokenText featureText="notificationSettings: ::metadataField_notificationRangeSettings::&lt;br/&gt;"/>
@@ -798,9 +812,15 @@
                     </onError>
                 </requestNotification>
             </onSuccess>
-            <onError>
-                <plainText featureText="Save metadata failed"/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
@@ -2769,11 +2789,19 @@
         <metadataField fieldName="dateOfBirth"/>
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000" visibleRegex=".*" enabledRegex="nevermatches"/>
         <addPadding/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Volgende" sendData="true">
             <onSuccess>
                 <gotoPresenter target="Metadata_Enable_Visible"/>
             </onSuccess>
-            <onError/> 
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
     </presenter> 
     <presenter back="Menu" menuLabel="Metadata Current Date" type="stimulus" self="Metadata_Current_Date" title="Metadata Current Date">
@@ -3387,7 +3415,7 @@
         <addPadding/>
         <htmlTokenText featureText="The current date is: ::currentDateDDMMYYYY::"/>
         <addPadding/>
-        <saveMetadataButton featureText="update" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="update" sendData="true">
             <onSuccess>
                 <!--<clearPage/>-->
                 <addPadding/>
@@ -3410,7 +3438,15 @@
                 </setMetadataEvalTokens>
                 <!--<targetButton featureText="edit values" target="currentDate_daysBetween_and_length"/>-->
             </onSuccess>
-            <onError/>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="Add Times Example" type="metadata" self="add_times_example" title="Add Times Example">
@@ -3419,13 +3455,19 @@
         <metadataField fieldName="notificationWeekendUntilSettings"/>
         <metadataField fieldName="storedTime"/>
         <addPadding/>
-        <saveMetadataButton featureText="update" styleName="minimalWidth" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="update" styleName="minimalWidth" sendData="true">
             <onSuccess>
                 <gotoPresenter target="add_times_example" />
             </onSuccess>
-            <onError>
-                <htmlTokenText featureText="Failed to update."/>
-            </onError>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <addPadding/>
         <htmlTokenText featureText="The from time is: ::metadataField_notificationWeekendFromSettings::"/>
@@ -3648,11 +3690,19 @@
             </onError>
         </progressIndicator>
         <addPadding />
-        <saveMetadataButton featureText="Update" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Update" sendData="false">
             <onSuccess>
                 <gotoPresenter target="progressIndicator_example" />
             </onSuccess>
-            <onError />
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
@@ -9034,11 +9084,19 @@
     <presenter back="Menu" menuLabel="Deelnemer" type="metadata" self="EditParticipant" next="ListParticipants" title="Deelnemer">
         <metadataField fieldName="workerId"/>
         <addPadding/>
-        <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+        <saveMetadataButton featureText="Volgende" sendData="false">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError>
+                <plainText featureText="Save metadata failed: onValidationError"/>
+            </onValidationError>
+            <onNetworkError>
+                <plainText featureText="Save metadata failed: onNetworkError"/>
+            </onNetworkError>
+            <dataAgreementError>
+                <plainText featureText="Save metadata failed: dataAgreementError"/>
+            </dataAgreementError>
         </saveMetadataButton>
         <addPadding/>
     </presenter>
