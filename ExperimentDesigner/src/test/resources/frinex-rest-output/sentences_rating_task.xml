@@ -35,11 +35,13 @@
         <metadataField fieldName="language"/>
         <metadataField fieldName="languageOthers"/>
         <metadataField fieldName="nationality"/>
-        <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Next" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Back" type="text" self="Instruction4" title="Instruction4">

@@ -154,15 +154,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onValidationError>
-                <plainText featureText="Save metadata failed: onValidationError"/>
-            </onValidationError>
-            <onNetworkError>
-                <plainText featureText="Save metadata failed: onNetworkError"/>
-            </onNetworkError>
-            <dataAgreementError>
-                <plainText featureText="Save metadata failed: dataAgreementError"/>
-            </dataAgreementError>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="GroupSizeMenu" type="menu" self="GroupSizeMenu" title="GroupSizeMenu">
