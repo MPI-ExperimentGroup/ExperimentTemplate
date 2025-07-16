@@ -159,7 +159,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 //        }
         final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, storedWizardScreenData.getNextButton()[0]);
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(storedWizardScreenData.getScreenBoolean(0)));
-        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, storedWizardScreenData.getOn_Error_Text());
+        // saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, storedWizardScreenData.getOn_Error_Text());
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.gotoNextPresenter, null);
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
