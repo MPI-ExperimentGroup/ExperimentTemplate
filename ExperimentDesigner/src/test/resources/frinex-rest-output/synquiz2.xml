@@ -285,6 +285,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -318,6 +321,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -351,6 +357,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -380,6 +389,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -413,6 +425,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -424,6 +439,9 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
