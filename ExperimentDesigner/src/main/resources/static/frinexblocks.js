@@ -3941,14 +3941,14 @@ function getFeatureBlocks() {
       ],
       "message4": "onSuccess %1",
       "args4": [
-         {
-           "type": "input_statement",
-           "name": "onSuccess",
-           "check": [
-             "frinex_anyType",
-           ]
-         }
-       ],
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+          "frinex_anyType",
+         ]
+        }
+      ],
       "message5": "onValidationError %1",
       "args5": [
         {

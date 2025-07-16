@@ -33,11 +33,7 @@
                 <gotoNextPresenter/>
             </onSuccess>
             <onValidationError/>
-            <onNetworkError>
-                <regionReplace regionId="consentStatus" styleName="metadataError">
-                    <plainText featureText="Could not contact the server, please check your internet connection and try again." />
-                </regionReplace>
-            </onNetworkError>
+            <onNetworkError/>
             <dataAgreementError/>
         </saveMetadataButton>
     </presenter>

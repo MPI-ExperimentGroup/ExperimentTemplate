@@ -9,11 +9,13 @@
     <presenter menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
         <htmlText featureText="Entrez votre code identifiant ici:"/>
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
+        <saveMetadataButton featureText="Suivant" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Accord" next="AudioTest" type="metadata" self="Accord" title="Accord">
