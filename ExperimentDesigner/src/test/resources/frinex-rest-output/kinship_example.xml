@@ -33,11 +33,13 @@
         <metadataField fieldName="lastName"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
-        <saveMetadataButton featureText="Save Details" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Save Details" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
     </presenter>
     <presenter back="AutoMenu" menuLabel="VideoAudioOption" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
