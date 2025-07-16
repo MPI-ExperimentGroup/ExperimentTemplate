@@ -177,13 +177,15 @@ fieldValues-ethnicity=Afrikaner, Kaukase, Asiat, Lateinamerika,\u00a0Indianer,\u
                 </htmlText>
                 <metadataField fieldName="firstName"/>
                 <addPadding/>
-                <saveMetadataButton featureText="Continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
+                <saveMetadataButton featureText="Continue" sendData="false" styleName="synquizButton">
                     <translation featureText="Verder" locale="nl"/>
                     <translation featureText="Weiter" locale="de"/>
                     <onSuccess>
                         <gotoPresenter target="quizmenu"/>
                     </onSuccess>
-                    <onError/>
+                    <onValidationError/>
+                    <onNetworkError/>
+                    <dataAgreementError/>
                 </saveMetadataButton>
                 <htmlText featureText="&amp;nbsp;" styleName="keyboardPadding"/>
             </conditionFalse>
@@ -354,13 +356,15 @@ socialMediaPostSubject=Onderwerp bericht sociale media
         <metadataField fieldName="gender"/>
         <metadataField fieldName="emailAddress"/>
         <addPadding/>
-        <saveMetadataButton featureText="Continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again." styleName="synquizButton">
+        <saveMetadataButton featureText="Continue" sendData="false" styleName="synquizButton">
             <translation featureText="Verder" locale="nl"/>
             <translation featureText="Weiter" locale="de"/>
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
         <htmlText featureText="&amp;nbsp;" styleName="keyboardPadding"/>
     </presenter>

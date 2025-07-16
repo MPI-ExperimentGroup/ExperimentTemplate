@@ -165,14 +165,16 @@
         <metadataField fieldName="emailAddress"/>
         <metadataField fieldName="optionCheckBox1"/>
         <metadataField fieldName="mandatoryCheckBox"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <!--<networkErrorMessage>Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->
             <!--<networkErrorMessage locale="nl">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->
             <!--<networkErrorMessage locale="ru">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->    
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--<translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -189,11 +191,13 @@
         <metadataField fieldName="Dyslexia"/>
         <metadataField fieldName="BrainSurgery"/>
         <metadataField fieldName="AnyOtherConditions"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -205,11 +209,13 @@
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Наше исследование в Институте Макса Планка фокусируется на синестезии, при которой цифры, буквы, дни недели, месяцы связаны у людей с ощущением цвета. Например, у кого-то буква &quot;А&quot; может &quot;означать&quot; красный или число &quot;5&quot; может восприниматься окрашенной в зеленый цвет. Пожалуйста, сообщите нам, есть ли у вас ещё какие-либо другие типы синестезии, отметив поля на последующих страницах. Мы свяжемся с Вами в будущем по вопросам исследований, связанных с этими типами. " locale="ru"/>-->
         </htmlText>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -239,11 +245,13 @@
         <metadataField fieldName="Sound__Colour"/>
         <metadataField fieldName="American_Sign____Colour"/>
         <metadataField fieldName="British_Sign____Colour"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--            <translation featureText="" locale="de"/>-->
             <!--            <translation featureText="Продолжать" locale="ru"/>-->
@@ -273,11 +281,10 @@
         <metadataField fieldName="Sound__Smell"/>
         <metadataField fieldName="American_Sign__Smell"/>
         <metadataField fieldName="British_Sign__Smell"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -307,11 +314,10 @@
         <metadataField fieldName="Sound__Sound"/>
         <metadataField fieldName="American_Sign__Sound"/>
         <metadataField fieldName="British_Sign__Sound"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -341,11 +347,10 @@
         <metadataField fieldName="Sound__Spatial"/>
         <metadataField fieldName="American_Sign__Spatial"/>
         <metadataField fieldName="British_Sign__Spatial"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -371,11 +376,10 @@
         <metadataField fieldName="Sound__Taste"/>
         <metadataField fieldName="American_Sign__Taste"/>
         <metadataField fieldName="British_Sign__Taste"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -405,11 +409,10 @@
         <metadataField fieldName="Sound__Touch"/>
         <metadataField fieldName="American_Sign__Touch"/>
         <metadataField fieldName="British_Sign__Touch"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
@@ -417,11 +420,10 @@
     </presenter>
     <presenter back="Touch" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
         <metadataField fieldName="AnyOtherTypes"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
             <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
