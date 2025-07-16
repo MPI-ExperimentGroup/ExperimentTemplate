@@ -3939,8 +3939,18 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "onValidationError %1",
+      "message4": "on[Success %1",
       "args4": [
+         {
+           "type": "input_statement",
+           "name": "onSuccess",
+           "check": [
+             "frinex_anyType",
+           ]
+         }
+       ],
+      "message5": "onValidationError %1",
+      "args5": [
         {
           "type": "input_statement",
           "name": "onValidationError",
@@ -3949,8 +3959,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message5": "onNetworkError %1",
-      "args5": [
+      "message6": "onNetworkError %1",
+      "args6": [
         {
           "type": "input_statement",
           "name": "onNetworkError",
@@ -3959,8 +3969,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message6": "dataAgreementError %1",
-      "args6": [
+      "message7": "dataAgreementError %1",
+      "args7": [
         {
           "type": "input_statement",
           "name": "dataAgreementError",
@@ -12352,6 +12362,9 @@ function getFeatureBlocks() {
   };
   javascript.javascriptGenerator.forBlock['frinex_saveMetadataButtonType'] = function(block, generator) {
     var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
      childData += '<onValidationError>\n';
      childData += generator.statementToCode(block, 'onValidationError');
      childData += '</onValidationError>\n';
