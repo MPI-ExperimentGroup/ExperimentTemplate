@@ -44,11 +44,13 @@
     </presenter>
     <presenter back="Accord" menuLabel="screenTitle" next="Set1" type="metadata" self="screenTag" title="screenTitle">
         <htmlText featureText="dispalyText"/>
-        <saveMetadataButton featureText="saveButtonLabel" sendData="true" networkErrorMessage="on_Error_Text">
+        <saveMetadataButton featureText="saveButtonLabel" sendData="true">
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-            <onError/>
+            <onValidationError/>
+            <onNetworkError/>
+            <dataAgreementError/>
         </saveMetadataButton>
         <addPadding/>
         <htmlText featureText="postText"/>
