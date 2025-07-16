@@ -160,7 +160,7 @@
                 <!-- <eraseUsersDataButton featureText="Clear Local Data (if second person whats to fill in this questionnaire)" target="questionnaire"/> -->
             </onSuccess>
             <onValidationError>
-                <regionReplace regionId="consentStatus">
+                <regionReplace regionId="consentStatus" styleName="metadataError">
                     <plainText featureText="Not all metadatafields are filled." />
                 </regionReplace>
             </onValidationError>
