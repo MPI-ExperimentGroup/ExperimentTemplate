@@ -90,6 +90,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                                     dataAgreementError.postLoadTimerFired();
                                     submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.dataAgreementError");
                                 } else if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
+                                    // TODO: this dataRejected is not the same as onValidationError
                                     ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
                                     onValidationError.postLoadTimerFired();
                                     submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.validationError");
@@ -108,6 +109,10 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                     } else {
                         successEventListener.postLoadTimerFired();
                     }
+                } else {
+                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                    onValidationError.postLoadTimerFired();
+                    submissionService.submitScreenChange(userResults.getUserData().getUserId(), "validateFields.validationError");
                 }
             }
 
