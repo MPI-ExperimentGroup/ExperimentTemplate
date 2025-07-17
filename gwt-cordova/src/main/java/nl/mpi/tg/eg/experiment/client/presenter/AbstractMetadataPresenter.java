@@ -110,7 +110,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                         successEventListener.postLoadTimerFired();
                     }
                 } else {
-                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, null);
                     onValidationError.postLoadTimerFired();
                     submissionService.submitScreenChange(userResults.getUserData().getUserId(), "validateFields.validationError");
                 }
