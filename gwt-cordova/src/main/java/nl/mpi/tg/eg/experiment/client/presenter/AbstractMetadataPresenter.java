@@ -86,7 +86,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                             @Override
                             public void scoreSubmissionFailed(DataSubmissionException exception) {
                                 if (exception.getErrorType() == DataSubmissionException.ErrorType.dataAgreementError) {
-                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, null);
                                     dataAgreementError.postLoadTimerFired();
                                     submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.dataAgreementError");
                                 } else if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
