@@ -92,10 +92,10 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                                 } else if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
                                     // TODO: this dataRejected is not the same as onValidationError
                                     ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
-                                    onValidationError.postLoadTimerFired();
+                                    onNetworkError.postLoadTimerFired();
                                     submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.validationError");
                                 } else {
-                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, exception.getMessage());
+                                    ((MetadataView) simpleView).setButtonError(true, button, errorHtmlText, null);
                                     onNetworkError.postLoadTimerFired();
                                     submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed.networkError");
                                 }
