@@ -144,10 +144,12 @@
         <!--<experiment.configuration.name>group_streaming_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>cielke_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>very_large_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>questionnaire_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>hbquestionnairehealth</experiment.configuration.name>-->
         <!--<experiment.configuration.name>autoprediction</experiment.configuration.name>-->
         <!--<experiment.configuration.name>digitspanbackward</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentenceplausibility</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>assigned_value_example</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>
         <experiment.configuration.db.host>localhost:5432</experiment.configuration.db.host>
