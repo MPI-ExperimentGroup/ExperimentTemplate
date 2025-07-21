@@ -148,14 +148,23 @@ public class ComplexView extends SimpleView {
 
     public void setRegionStyle(final String regionId, final String styleName) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
-        if (regionTemp != null) {
-            regionTemp.setStyleName(styleName);
+        if (regionTemp == null) {
+            regionTemp = new VerticalPanel();
+            regionPanels.put(regionId, regionTemp);
+            regionTemp.getElement().setId(regionId);
+            getActivePanel().add(regionTemp);
         }
+        regionTemp.setStyleName(styleName);
     }
 
     public void clearRegion(final String regionId) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
-        if (regionTemp != null) {
+        if (regionTemp == null) {
+            regionTemp = new VerticalPanel();
+            regionPanels.put(regionId, regionTemp);
+            regionTemp.getElement().setId(regionId);
+            getActivePanel().add(regionTemp);
+        } else {
             regionTemp.clear();
         }
     }
