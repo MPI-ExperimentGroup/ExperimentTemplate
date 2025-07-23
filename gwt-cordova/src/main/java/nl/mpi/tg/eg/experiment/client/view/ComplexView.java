@@ -148,23 +148,14 @@ public class ComplexView extends SimpleView {
 
     public void setRegionStyle(final String regionId, final String styleName) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
-        if (regionTemp == null) {
-            regionTemp = new VerticalPanel();
-            regionPanels.put(regionId, regionTemp);
-            regionTemp.getElement().setId(regionId);
-            getActivePanel().add(regionTemp);
+        if (regionTemp != null) {
+            regionTemp.setStyleName(styleName);
         }
-        regionTemp.setStyleName(styleName);
     }
 
     public void clearRegion(final String regionId) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
-        if (regionTemp == null) {
-            regionTemp = new VerticalPanel();
-            regionPanels.put(regionId, regionTemp);
-            regionTemp.getElement().setId(regionId);
-            getActivePanel().add(regionTemp);
-        } else {
+        if (regionTemp != null) {
             regionTemp.clear();
         }
     }
@@ -672,6 +663,7 @@ public class ComplexView extends SimpleView {
     }
 
     public StimulusButton addImageButton(final PresenterEventListener presenterListener, final SafeUri imagePath, final boolean isTouchZone) {
+        // TODO: how do we do onloaded here?
         final Image image = new Image(imagePath);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
