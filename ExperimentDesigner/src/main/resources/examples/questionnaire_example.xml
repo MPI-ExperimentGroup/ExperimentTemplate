@@ -150,7 +150,7 @@
             </row>
         </table> 
         <addPadding />
-        <regionClear regionId="consentStatus"></regionClear>
+        <regionReplace regionId="consentStatus"></regionReplace>
         <metadataField fieldName="consentOption" />
         <saveMetadataButton featureText="Agree and continue" sendData="true">
             <onSuccess>
