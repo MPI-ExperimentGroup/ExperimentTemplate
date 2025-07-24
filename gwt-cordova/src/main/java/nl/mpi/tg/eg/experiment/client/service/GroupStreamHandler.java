@@ -108,6 +108,16 @@ public abstract class GroupStreamHandler {
             // $wnd.handleAnswer($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode], answer)
             console.log(selfMemberCode + ": " + remoteMemberCode + " <==setRemoteDescription answer== " + selfMemberCode);
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].setRemoteDescription(answer);
+            var queued = $wnd.pendingCandidates[memberCode + "-Camera>" + remoteMemberCode] || [];
+            while (queued.length) {
+                peerConnection.addIceCandidate(queued.shift()).then(function () {
+                    console.log("addIceCandidateSuccess");
+                }).catch(function (err) {
+                    console.log("addIceCandidateFail:", err);
+                    // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                    // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+                });
+            }
         } else {
             console.log(remoteMemberCode + " <==no peer connection== " + selfMemberCode);
         }
@@ -116,24 +126,39 @@ public abstract class GroupStreamHandler {
     private native void handleCandidate(final String messageData, final String stunServer, Integer originPhase, String userId, String groupId, String groupUUID, String selfMemberCode, String remoteMemberCode, String streamType, String screenId) /*-{
         var groupStreamHandler = this;
         // console.log("candidate: " + messageData);
-        candidate = JSON.parse(messageData);
-        if ($wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode]) {
-            if (candidate === "null" || !candidate.candidate) {
-                console.log(selfMemberCode + ": " + remoteMemberCode + " <==doneCandidate== " + selfMemberCode);
-                // the terminal null is sent inside the candidate object
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(null);
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+        var key = selfMemberCode + "-" + streamType + '>' + remoteMemberCode;
+        var candidate = JSON.parse(messageData);
+        if (!$wnd.pendingCandidates) {
+            $wnd.pendingCandidates = {};
+        }
+        if (candidate === "null" || !candidate.candidate) {
+            console.log(selfMemberCode + ": " + remoteMemberCode + " <==doneCandidate== " + selfMemberCode);
+            // Only send null when remoteDescription is set
+            if ($wnd.groupConnections[key] && $wnd.groupConnections[key].remoteDescription) {
+                $wnd.groupConnections[key].addIceCandidate(null);
             } else {
-                console.log(selfMemberCode + ": " + remoteMemberCode + " <==handleCandidate== " + selfMemberCode);
-                $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addIceCandidate(candidate,
-                    function (event) {
-                        console.log("addIceCandidateSuccess: " + event);
-                    },
-                    function (event) {
-                        console.log("addIceCandidateFail: " + event);
-                        // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
-                        // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
-                    });
+                // Save a marker if needed or ignore
+            }
+            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(
+                "refresh", streamType, "", originPhase,
+                userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+        } else if ($wnd.groupConnections[key]) {
+            var peer = $wnd.groupConnections[key];
+            if (peer.remoteDescription && peer.remoteDescription.type) {
+                console.log(selfMemberCode + ": " + remoteMemberCode + " <==addIceCandidate== " + selfMemberCode);
+                peer.addIceCandidate(candidate).then(function () {
+                    console.log("addIceCandidateSuccess");
+                }).catch(function (err) {
+                    console.log("addIceCandidateFail:", err);
+                    // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
+                    // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("failed", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
+                });
+            } else {
+                console.log(selfMemberCode + ": " + remoteMemberCode + " <==queueingCandidate== " + selfMemberCode);
+                if (!$wnd.pendingCandidates[key]) {
+                    $wnd.pendingCandidates[key] = [];
+                }
+                $wnd.pendingCandidates[key].push(candidate);
             }
         } else {
             console.log(remoteMemberCode + " <==no peer connection== " + selfMemberCode);
@@ -390,6 +415,8 @@ public abstract class GroupStreamHandler {
                 function(captureStream) {
                     $wnd.localStream['Camera_' + remoteMemberCode] = captureStream;
                     $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream['Camera_' + remoteMemberCode];
+                    if (!$wnd.pendingCandidates) $wnd.pendingCandidates = {};
+                    $wnd.pendingCandidates[memberCode + "-Camera>" + remoteMemberCode] = [];
                     // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
                     groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Camera", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
                 }, function(error) {
