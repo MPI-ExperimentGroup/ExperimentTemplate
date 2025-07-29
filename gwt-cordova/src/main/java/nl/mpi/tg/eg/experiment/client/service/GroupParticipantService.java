@@ -362,6 +362,8 @@ public abstract class GroupParticipantService implements GroupScoreService {
         groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::groupNetworkConnecting()();
         var socket = new $wnd.SockJS(groupServerUrl + 'gs-guide-websocket');
         $wnd.stompClient = $wnd.Stomp.over(socket);
+        // Disable STOMP debug logging
+        $wnd.stompClient.debug = null;
         $wnd.stompClient.connect(
             {
 //            withCredentials: false,
