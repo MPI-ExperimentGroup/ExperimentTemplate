@@ -1942,7 +1942,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         if (levelIndicatorStyle != null) {
             simpleView.clearRegion("AudioThresholdIndicator");
             final InsertPanel.ForIsWidget levelIndicatorRegion = simpleView.startRegion("AudioThresholdIndicator", null);
-            thresholdIndicatorListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
+            thresholdIndicatorListener = timedStimulusView.addBarGraphElement(0, 100, "recordingLevelIndicator", levelIndicatorStyle);
             simpleView.endRegion(levelIndicatorRegion);
         } else {
             thresholdIndicatorListener = null;
@@ -1991,7 +1991,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             // the levelIndicator is added separately so that it does not get added more than once when the (audioContextCurrentMS > 100) triggers a restart of the recorder
             simpleView.clearRegion("AudioRecorderWebLevelIndicator");
             final InsertPanel.ForIsWidget levelIndicatorRegion = simpleView.startRegion("AudioRecorderWebLevelIndicator", null);
-            changeListener = timedStimulusView.addBarGraphElement(0, 100, levelIndicatorStyle);
+            changeListener = timedStimulusView.addBarGraphElement(0, 100, "recordingLevelIndicator", levelIndicatorStyle);
             simpleView.endRegion(levelIndicatorRegion);
         } else {
             changeListener = null;

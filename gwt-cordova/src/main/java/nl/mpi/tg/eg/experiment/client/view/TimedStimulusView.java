@@ -143,6 +143,10 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public ValueChangeListener<Double> addBarGraphElement(final int initialValue, final int range, final String styleName) {
+        return addBarGraphElement(initialValue, range, styleName, null);
+    }
+
+    public ValueChangeListener<Double> addBarGraphElement(final int initialValue, final int range, final String styleName, final String styleName2) {
         final HorizontalPanel bargraphOuter = new HorizontalPanel();
         final HorizontalPanel bargraphInner = new HorizontalPanel();
         if (styleName != null && !styleName.isEmpty()) {
@@ -156,6 +160,10 @@ public class TimedStimulusView extends ComplexView {
         if (styleName != null && !styleName.isEmpty()) {
             bargraphOuter.addStyleName(styleName);
             bargraphInner.addStyleName(styleName);
+        }
+        if (styleName2 != null && !styleName2.isEmpty()) {
+            bargraphOuter.addStyleName(styleName2);
+            bargraphInner.addStyleName(styleName2);
         }
         bargraphOuter.add(bargraphInner);
         getActivePanel().add(bargraphOuter);

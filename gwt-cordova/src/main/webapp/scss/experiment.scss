@@ -345,6 +345,16 @@ table.stimulusContainerTab {
     border-style: solid;
 }
 
+
+.recordingLevelIndicator {
+        height: 5px;
+        width: 25vw;
+}
+.bargraphInner.recordingLevelIndicator {
+        min-height: 5px;
+        background: blue;
+}
+
 canvas {
     outline: none;
     border: grey;
