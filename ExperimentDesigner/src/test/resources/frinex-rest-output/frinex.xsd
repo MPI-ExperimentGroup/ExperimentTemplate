@@ -4203,7 +4203,7 @@
 </xs:complexType>
 <xs:complexType name="regionStyleType">
 <xs:annotation>
-<xs:documentation>The region matching the regionId will have the style applied. If no region matching the regionId exists then a new region is created in the current location.</xs:documentation>
+<xs:documentation>If a region matching the regionId exists then it will have the style applied. If no matching region exists then nothing will be done.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="regionId" type="xs:string" use="required">
@@ -4219,7 +4219,7 @@
 </xs:complexType>
 <xs:complexType name="regionCodeStyleType">
 <xs:annotation>
-<xs:documentation>Applies the style to the region matching the regionId, the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no region matching the regionId exists then a new region is created in the current location.</xs:documentation>
+<xs:documentation>If a region matching the regionId exists then the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no matching region exists then nothing will be done.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="regionId" type="xs:string" use="required">
@@ -4251,7 +4251,7 @@
 </xs:complexType>
 <xs:complexType name="regionClearType">
 <xs:annotation>
-<xs:documentation>If a region matching the regionId exists then it will cleared. If no region matching the regionId exists then a new region is created in the current location. Unlike clearPage clearing a region only removes the visual components, so any media that has been placed in the region should be stopped first.</xs:documentation>
+<xs:documentation>If a region matching the regionId exists then it will cleared. Unlike clearPage clearing a region only removes the visual components, so any media that has been placed in the region should be stopped first. If no matching region exists then nothing will be done.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
 <xs:attribute name="regionId" type="xs:string" use="required">

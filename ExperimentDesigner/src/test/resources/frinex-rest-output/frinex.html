@@ -12595,7 +12595,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="regionClearType" style="text-transform: uppercase;">
 regionClear
 </h3>
-If a region matching the regionId exists then it will cleared. If no region matching the regionId exists then a new region is created in the current location. Unlike clearPage clearing a region only removes the visual components, so any media that has been placed in the region should be stopped first.
+If a region matching the regionId exists then it will cleared. Unlike clearPage clearing a region only removes the visual components, so any media that has been placed in the region should be stopped first. If no matching region exists then nothing will be done.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionClear</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -13259,7 +13259,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="regionStyleType" style="text-transform: uppercase;">
 regionStyle
 </h3>
-The region matching the regionId will have the style applied. If no region matching the regionId exists then a new region is created in the current location.
+If a region matching the regionId exists then it will have the style applied. If no matching region exists then nothing will be done.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionStyle</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -21738,7 +21738,7 @@ One or more CSS stylenames to apply to the feature. These can be the built in st
 <h3 id="regionCodeStyleType" style="text-transform: uppercase;">
 regionCodeStyle
 </h3>
-Applies the style to the region matching the regionId, the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no region matching the regionId exists then a new region is created in the current location.
+If a region matching the regionId exists then the styleName will have any tokens evaluated before the resulting style name is applied to the region. If no matching region exists then nothing will be done.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionCodeStyle</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><span>
