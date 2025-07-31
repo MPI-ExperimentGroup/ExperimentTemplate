@@ -114,6 +114,37 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 participants &lt;- fromJSON(pp)<br/>
                 stimulusresponses &lt;- fromJSON(sr)<br/>
             </div>
+            <h3>R httr2 and jsonlite Example</h3>
+            <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
+                library(httr2)<br/>
+                library(jsonlite)<br/>
+                req &lt;- request("<span th:text="${requestUrl}"></span>login") |><br/>
+                req_body_form(list(<br/>
+                    username = "your_username",<br/>
+                    password = "your_password"<br/>
+                )) |><br/>
+                req_cookie_preserve() |><br/>
+                    req_method("POST")<br/>
+                    resp &lt;- req_perform(req)<br/>
+                <br/>
+                if (resp_status(resp) != 200) stop("Login failed!")<br/>
+                <br/>
+                # Get participants<br/>
+                req_participants &lt;- req |><br/>
+                    req_url("<span th:text="${requestUrl}"></span>participants") |><br/>
+                    req_url_query(page = 0, size = 1000)<br/>
+                <br/>
+                participants_resp &lt;- req_perform(req_participants)<br/>
+                participants &lt;- resp_body_json(participants_resp)<br/>
+                <br/>
+                # Get stimulus responses<br/>
+                req_stimuli &lt;- req |><br/>
+                    req_url("<span th:text="${requestUrl}"></span>stimulusresponses") |><br/>
+                    req_url_query(page = 0, size = 1000)<brreq_participants/>
+                <br/>
+                stimulus_resp &lt;- req_perform(req_stimuli)<br/>
+                stimulusresponses &lt;- resp_body_json(stimulus_resp)<br/>
+            </div>
             <h3>R Simple Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
                 library(jsonlite)<br/>
