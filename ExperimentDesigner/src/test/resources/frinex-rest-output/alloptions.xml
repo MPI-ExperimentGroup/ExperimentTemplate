@@ -166,6 +166,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -422,6 +430,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -623,6 +639,14 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </audioInputSelectWeb>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2209,6 +2233,14 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </audioInputSelectWeb>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2249,6 +2281,10 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess/>
+            <onError/>
+        </videoInputSelectWeb>
         <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -2347,6 +2383,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2450,6 +2494,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2615,6 +2667,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2694,6 +2754,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2816,6 +2884,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -2892,6 +2968,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <videoInputSelectWeb deviceRegex="deviceRegex" styleName="styleName">
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="showHtmlPopup">
             <actionButton featureText="actionButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
                 <plainText featureText="plainText in actionButton"/>
@@ -3046,6 +3130,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -3302,6 +3394,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -3503,6 +3603,14 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </audioInputSelectWeb>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5013,6 +5121,14 @@
                 <plainText featureText="plainText in onError"/>
             </onError>
         </audioInputSelectWeb>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5053,6 +5169,10 @@
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <htmlTokenText featureText=""/>
         <actionButton featureText=""/>
+        <videoInputSelectWeb>
+            <onSuccess/>
+            <onError/>
+        </videoInputSelectWeb>
         <helpDialogue featureText="" closeButtonLabel=""/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -5151,6 +5271,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5254,6 +5382,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5419,6 +5555,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5498,6 +5642,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5620,6 +5772,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
@@ -5696,6 +5856,14 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId=""/>
+        <videoInputSelectWeb>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+        </videoInputSelectWeb>
         <showHtmlPopup featureText="">
             <actionButton featureText="">
                 <plainText featureText="plainText in actionButton"/>
