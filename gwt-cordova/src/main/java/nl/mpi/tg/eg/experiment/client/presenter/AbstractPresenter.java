@@ -647,7 +647,7 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
-    protected native void listDevicesWeb(final deviceType, final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
+    protected native void listDevicesWeb(final String deviceType, final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
         // first we trigger the request to record because when permission is not given then the list is always empty
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             $wnd.requestPermissions(false, true, null,
