@@ -1909,7 +1909,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         deviceInputSelectWeb("videoinput", deviceRegexL, styleName, onError, onSuccess);
     }
 
-    protected void deviceInputSelectWeb(final deviceType, final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    protected void deviceInputSelectWeb(final String deviceType, final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String deviceRegex = (deviceRegexL == null) ? ".*" : deviceRegexL;
         final String selectedDevice = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), deviceType + "RecorderDeviceId");
         final ValueChangeListener itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener<String>() {
