@@ -1457,7 +1457,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@idListField) then concat(', metadataFieldProvider.', @idListField, 'MetadataField /* idListField */') else ',null /* idListField */'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|groupStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists|audioInputSelectWeb|loadStimulusPlugin"> <!-- this loadStimulusPlugin might be changed to *[@class] when more plugins are used -->
+    <xsl:template match="compareTimer|clearStimulusResponses|preloadAllStimuli|triggerMatching|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorderApp|startAudioRecorderWeb|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|groupStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|logMediaTimeStamp|stimulusExists|audioInputSelectWeb|videoInputSelectWeb|loadStimulusPlugin"> <!-- this loadStimulusPlugin might be changed to *[@class] when more plugins are used -->
         <xsl:if test="local-name() eq 'preloadAllStimuli' 
                    or local-name() eq 'withStimuli'
                    or local-name() eq 'groupStimuli'
@@ -1510,6 +1510,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@target) then concat('ApplicationState.xml_', @target, '.selfName') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'audioInputSelectWeb') then if(@deviceRegex) then concat('&quot;', @deviceRegex, '&quot;') else 'null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'videoInputSelectWeb') then if(@deviceRegex) then concat('&quot;', @deviceRegex, '&quot;') else 'null' else ''" />
         <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@deviceRegex) then concat(',&quot;', @deviceRegex, '&quot;') else ',null' else ''" />
         <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(@eventTier, ', ') else ''" />
@@ -1530,6 +1531,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else 'null'" />
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'audioInputSelectWeb') then if(@styleName) then ', ' else ', null' else ''" />
+        <xsl:value-of select="if(local-name() eq 'videoInputSelectWeb') then if(@styleName) then ', ' else ', null' else ''" />
         <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@levelIndicatorStyle) then concat(', &quot;', @levelIndicatorStyle, '&quot; /*levelIndicatorStyle*/') else ', null /*levelIndicatorStyle*/' else ''" />
         <xsl:if test="local-name() eq 'startAudioRecorderWeb'">
             <xsl:value-of select="if(@noiseSuppression eq 'true') then ',true /* noiseSuppression */' else ', false /* noiseSuppression */'" />
