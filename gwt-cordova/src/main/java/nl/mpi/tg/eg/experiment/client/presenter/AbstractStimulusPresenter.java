@@ -1902,15 +1902,23 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void audioInputSelectWeb(final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        deviceInputSelectWeb("audioinput", deviceRegexL, styleName, onError, onSuccess);
+    }
+    
+    protected void videoInputSelectWeb(final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        deviceInputSelectWeb("videoinput", deviceRegexL, styleName, onError, onSuccess);
+    }
+
+    protected void deviceInputSelectWeb(final deviceType, final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String deviceRegex = (deviceRegexL == null) ? ".*" : deviceRegexL;
-        final String selectedDevice = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId");
+        final String selectedDevice = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), deviceType + "RecorderDeviceId");
         final ValueChangeListener itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener<String>() {
             @Override
             public void onValueChange(String value) {
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", value);
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), deviceType + "RecorderDeviceId", value);
             }
         });
-        listAudioDevicesWeb(deviceRegex, new DeviceListingListener() {
+        listDevicesWeb(deviceType, deviceRegex, new DeviceListingListener() {
             boolean hasDeviceNames = false;
 
             @Override

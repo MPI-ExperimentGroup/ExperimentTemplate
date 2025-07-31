@@ -647,7 +647,7 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
-    protected native void listAudioDevicesWeb(final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
+    protected native void listDevicesWeb(final deviceType, final String deviceRegex, final DeviceListingListener deviceListingListener) /*-{
         // first we trigger the request to record because when permission is not given then the list is always empty
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             $wnd.requestPermissions(false, true, null,
@@ -656,7 +656,7 @@ public abstract class AbstractPresenter implements Presenter {
                 for (var index = 0; (index < deviceInfos.length); index++) {
                     var deviceInfo = deviceInfos[index];
                     console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
-                    if (deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                    if (deviceInfo.kind === deviceType && deviceInfo.label.search(deviceRegex) >= 0){
                         deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)(deviceInfo.label);
                     }
                 }
