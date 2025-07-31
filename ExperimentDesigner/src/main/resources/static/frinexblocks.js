@@ -10065,6 +10065,60 @@ function getFeatureBlocks() {
       "colour": 140,
       },
     {
+      "type": "frinex_videoInputSelectWebType",
+      "message0": 'videoInputSelectWeb %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'deviceRegex %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "deviceRegex",
+          "check": "String"
+        }
+      ],
+      "message2": 'styleName %1',
+      "args2": [
+        {
+          "type": "field_input",
+          "name": "styleName",
+          "check": "String"
+        }
+      ],
+      "message3": "onSuccess %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message4": "onError %1",
+      "args4": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
       "type": "frinex_startAudioRecorderWebType",
       "message0": 'startAudioRecorderWeb %1',
       "args0": [
@@ -13391,6 +13445,16 @@ function getFeatureBlocks() {
      childData += '</onError>\n';
     return '<audioInputSelectWeb block_id="' + block.id + '" deviceRegex="' + block.getFieldValue('deviceRegex') +'" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</audioInputSelectWeb>\n');
   };
+  javascript.javascriptGenerator.forBlock['frinex_videoInputSelectWebType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<videoInputSelectWeb block_id="' + block.id + '" deviceRegex="' + block.getFieldValue('deviceRegex') +'" styleName="' + block.getFieldValue('styleName') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</videoInputSelectWeb>\n');
+  };
   javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderWebType'] = function(block, generator) {
     var childData = '';
      childData += '<mediaLoaded>\n';
@@ -14487,6 +14551,10 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_videoInputSelectWebType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_startAudioRecorderWebType"
       },
       {
@@ -15264,6 +15332,10 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_audioInputSelectWebType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_videoInputSelectWebType"
       },
       {
         "kind": "block",
