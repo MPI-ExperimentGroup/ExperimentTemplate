@@ -4703,6 +4703,22 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
+<xs:complexType name="videoInputSelectWebType">
+<xs:annotation>
+<xs:documentation>Shows a select box of the available video input devices for use with streamGroupCamera. When an device is selected it will be used as the first preference when the next stream is started.</xs:documentation>
+</xs:annotation>
+<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
+<xs:attribute name="deviceRegex" type="xs:string">
+<xs:annotation>
+<xs:documentation>String</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="styleName" type="xs:string">
+<xs:annotation>
+<xs:documentation>One or more CSS stylenames to apply to the feature. These can be the built in styles or custom styles defined in the SCSS section.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
 <xs:complexType name="startAudioRecorderWebType">
 <xs:annotation>
 <xs:documentation>Starts the HTML5 audio recorder which will send the recorded audio to the admin database. If downloadPermittedWindowMs is a positive number then the uploaded audio can be downloaded from the server for playback within that period of time for user verification, otherwise playback will not be possible. The onSuccess will be triggered when the recording has started. The onError will be triggered if the recorder cannot start. If the upload or playback fails then mediaLoadFailed will be triggered. Upload failure will also result in a subsequent upload attempt. When the recorded audio data has been submitted the mediaLoaded will be triggered even if playback is not enabled by downloadPermittedWindowMs, this allows upload verification before proceeding. The featureText is shown in the recording label. When the featureText is 00:00:00 the recording time will be shown in the recording label. When the featureText is &quot;hidden&quot; the recording label will not be shown (never record without explicit consent). The name of the audio input device used for the recording will be stored in the admin system. If the levelIndicatorStyle is set then a recording level indicator will be shown. If levelIndicatorStyle is set and a region with the ID of AudioRecorderWebLevelIndicator exists then that region will be used to position the recording level indicator. The recording indicator can be customised by redefining the .recordingLabel style, however it must be clear to the user that audio is being recorded, otherwise your mobile apps might get banned by iOS and PlayStore.</xs:documentation>
@@ -5596,6 +5612,7 @@
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
 <xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
+<xs:element name="videoInputSelectWeb" type="videoInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -5796,6 +5813,7 @@
 <xs:element name="userInfo" type="userInfoType"/>
 <xs:element name="validateMetadata" type="validateMetadataType"/>
 <xs:element name="versionData" type="versionDataType"/>
+<xs:element name="videoInputSelectWeb" type="videoInputSelectWebType"/>
 <xs:element name="withStimuli" type="withStimuliType"/>
 <xs:element name="zeroStimulusStopwatch" type="zeroStimulusStopwatchType"/>
 </xs:choice>
@@ -5946,6 +5964,7 @@
 <xs:element name="pauseMedia" type="pauseMediaType"/>
 <xs:element name="logMediaTimeStamp" type="logMediaTimeStampType"/>
 <xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
+<xs:element name="videoInputSelectWeb" type="videoInputSelectWebType"/>
 <xs:element name="showHtmlPopup" type="showHtmlPopupType"/>
 <xs:element name="helpDialogue" type="helpDialogueType"/>
 <xs:element name="userInfo" type="userInfoType"/>
@@ -6134,6 +6153,7 @@
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
 <xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
+<xs:element name="videoInputSelectWeb" type="videoInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -6363,6 +6383,7 @@
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
 <xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
+<xs:element name="videoInputSelectWeb" type="videoInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
@@ -6606,6 +6627,7 @@
 <xs:element name="VideoPanel" type="VideoPanelType"/>
 <xs:element name="AnnotationTimelinePanel" type="AnnotationTimelinePanelType"/>
 <xs:element name="audioInputSelectWeb" type="audioInputSelectWebType"/>
+<xs:element name="videoInputSelectWeb" type="videoInputSelectWebType"/>
 <xs:element name="startAudioRecorderWeb" type="startAudioRecorderWebType"/>
 <xs:element name="startAudioRecorderApp" type="startAudioRecorderAppType"/>
 <xs:element name="stopAudioRecorder" type="stopAudioRecorderType"/>
