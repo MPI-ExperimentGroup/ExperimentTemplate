@@ -67,10 +67,18 @@ function handleOffer(connection, offer, successHandler, errorHandler) {
 //     await connection.setRemoteDescription(answer);
 // }
 
-function requestPermissions(wantsVideo, wantsAudio, exactDeviceId, successHandler, errorHandler) {
-    constraints = (exactDeviceId !== undefined && exactDeviceId !== null) ?
-        { video: wantsVideo, audio: wantsAudio, deviceId: { exact: exactDeviceId } }
-        : { video: wantsVideo, audio: wantsAudio };
+function requestPermissions(wantsVideo, wantsAudio, videoDeviceId, audioDeviceId, successHandler, errorHandler) {
+    const constraints = {};
+    if (audioDeviceId) {
+        constraints.audio = { deviceId: { exact: audioDeviceId } };
+    } else {
+        constraints.audio = wantsAudio;
+    }
+    if (videoDeviceId) {
+        constraints.video = { deviceId: { exact: videoDeviceId } };
+    } else {
+        constraints.video = wantsVideo;
+    }
     navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
         successHandler(stream);
     }).catch(function (e) {

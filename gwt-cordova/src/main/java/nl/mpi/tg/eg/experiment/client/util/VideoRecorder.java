@@ -69,7 +69,7 @@ public class VideoRecorder extends AbstractRecorder {
         }
     }-*/;
 
-    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String deviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String videoDeviceRegex, final String audioDeviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             console.log("isVideoSupported");
             $wnd.recordingVideoLabelString = recordingVideoLabelString;
@@ -86,7 +86,7 @@ public class VideoRecorder extends AbstractRecorder {
                     videoElement.autoplay = 'true';
                     videoPreviewElement.appendChild(videoElement);
                 }
-                $wnd.requestPermissions(true, true, null,
+                $wnd.requestPermissions(true, true, videoDeviceRegex, audioDeviceRegex,
                     function(recordingStream) {
                         // TODO: to prevent audio feedback we preview without audio and will record via this separate stream that has audio
                         $wnd.mediaRecorder = new MediaRecorder(recordingStream);
