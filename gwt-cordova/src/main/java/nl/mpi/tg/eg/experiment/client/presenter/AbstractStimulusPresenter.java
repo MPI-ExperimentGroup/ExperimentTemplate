@@ -2014,8 +2014,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         // todo: when the wasm is not in the server mime types the recorder silently fails leaving the record indicator running
         final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.getMetadataFieldArray(), simpleView.getMediaLengths()).formatString(mediaId);
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
-
-        final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId") : deviceRegexL;
+        final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "audioinput" + "RecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             boolean recordingAborted = false;
@@ -2049,7 +2048,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         onError.postLoadTimerFired();
                     }
                 } else {
-                    localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "AudioRecorderDeviceId", targetDeviceId);
+                    localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "audioinput" + "RecorderDeviceId", targetDeviceId);
                     submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorderDeviceId", targetDeviceId, duration.elapsedMillis());
                     if (changeListener != null) {
                         AbstractStimulusPresenter.super.addRecorderLevelIndicatorWeb(changeListener);
