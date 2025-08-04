@@ -86,6 +86,14 @@
                                     <plainText featureText="videoInputSelectWeb onError"/>
                                 </onError>
                             </videoInputSelectWeb>
+                            <audioInputSelectWeb>
+                                <onSuccess>
+                                    <plainText featureText="audioInputSelectWeb onSuccess"/>
+                                </onSuccess>
+                                <onError>
+                                    <plainText featureText="audioInputSelectWeb onError"/>
+                                </onError>
+                            </audioInputSelectWeb>
                             <actionButton featureText="Canvas A,B|B,C" groupId="streamButtonGroup">
                                 <streamGroupCanvas streamChannels="A,B|B,C">
                                     <onSuccess>
