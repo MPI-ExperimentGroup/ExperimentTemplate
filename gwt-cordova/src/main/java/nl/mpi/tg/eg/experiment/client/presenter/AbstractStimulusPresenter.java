@@ -2102,7 +2102,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             // TODO: this could be more elegant in relation to the termination of the preceding recording type
             mediaRecorder = new AudioRecorder();
         }
-        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, null, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void stopAudioRecorder() {
