@@ -382,11 +382,11 @@ public abstract class GroupStreamHandler {
     // TODO: Canvas ABBA reliably works but Camera ABBA connects for one but fails for the other and it is random which one fails
     // TODO: the on success is triggered a bit to easily and the on error is not triggered for both when the receiver fails to connect
 
-    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId, TimedStimulusListener onError) /*-{
+    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId, final String deviceRegex, TimedStimulusListener onError) /*-{
         var groupStreamHandler = this;
         // TODO: add device filtering so a specified camera can be used
         if (!$wnd.localStream["Camera_" + remoteMemberCode]) {
-            $wnd.requestPermissions(true, true, null,
+            $wnd.requestPermissions(true, true, deviceRegex,
                 function(captureStream) {
                     $wnd.localStream['Camera_' + remoteMemberCode] = captureStream;
                     $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream['Camera_' + remoteMemberCode];
@@ -555,7 +555,7 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+    public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, final String deviceRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
             final boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
@@ -566,7 +566,7 @@ public abstract class GroupStreamHandler {
                         // set up the elements and connection based on communication channels
                         if (!member.equals(memberCode)) {
                             addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, screenId, onError);
+                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, screenId, deviceRegex, onError);
                         }
                     }
                 } else {

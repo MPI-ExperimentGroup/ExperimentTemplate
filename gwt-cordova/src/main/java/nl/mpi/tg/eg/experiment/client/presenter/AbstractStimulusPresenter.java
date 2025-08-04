@@ -2563,7 +2563,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
-        groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), onError, onSuccess);
+        final String deviceRegex = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "videoinput" + "RecorderDeviceId");
+        groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), deviceRegex, onError, onSuccess);
 //        groupStreamHandler.updateDebugRegion("streamGroupCamera");
     }
 
