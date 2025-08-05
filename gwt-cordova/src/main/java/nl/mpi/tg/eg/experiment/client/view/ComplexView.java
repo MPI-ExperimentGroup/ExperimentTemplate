@@ -835,7 +835,7 @@ public class ComplexView extends SimpleView {
         getActivePanel().add(textBox);
     }
 
-    public ValueChangeListener addListBox(final String selectedItem, final String[] initialItems, final String styleName, final ValueChangeListener changeListener) {
+    public ValueChangeListener<String> addListBox(final String selectedItem, final String[] initialItems, final String styleName, final ValueChangeListener<String> changeListener) {
         final ListBox listBox = new ListBox();
         if (styleName != null && !styleName.isEmpty()) {
             listBox.setStylePrimaryName(styleName);
@@ -856,7 +856,7 @@ public class ComplexView extends SimpleView {
                 changeListener.onValueChange(listBox.getSelectedValue());
             }
         });
-        final ValueChangeListener itemAddedListener = new ValueChangeListener<String>() {
+        final ValueChangeListener<String> itemAddedListener = new ValueChangeListener<String>() {
             @Override
             public void onValueChange(String value) {
                 listBox.addItem(value);

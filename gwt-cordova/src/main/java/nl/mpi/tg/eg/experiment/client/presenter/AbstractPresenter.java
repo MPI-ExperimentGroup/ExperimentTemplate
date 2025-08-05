@@ -657,7 +657,7 @@ public abstract class AbstractPresenter implements Presenter {
                     var deviceInfo = deviceInfos[index];
                     console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
                     if (deviceInfo.kind === deviceType && deviceInfo.label.search(deviceRegex) >= 0){
-                        deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;)(deviceInfo.label);
+                        deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::deviceFound(Ljava/lang/String;Ljava/lang/String;)(deviceInfo.deviceId, deviceInfo.label);
                     }
                 }
                 deviceListingListener.@nl.mpi.tg.eg.experiment.client.listener.DeviceListingListener::listingComplete()();

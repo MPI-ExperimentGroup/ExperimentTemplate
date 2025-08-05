@@ -1911,11 +1911,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void deviceInputSelectWeb(final String deviceType, final String deviceRegexL, final String styleName, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String deviceRegex = (deviceRegexL == null) ? ".*" : deviceRegexL;
+        final HashMap<String,String> deviceIdMap = new HashMap<>();
         final String selectedDevice = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), deviceType + "RecorderDeviceId");
-        final ValueChangeListener itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener<String>() {
+        final ValueChangeListener<String> itemAddedListener = timedStimulusView.addListBox(selectedDevice, null, styleName, new ValueChangeListener<String>() {
             @Override
             public void onValueChange(String value) {
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), deviceType + "RecorderDeviceId", value);
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), deviceType + "RecorderDeviceId", deviceIdMap.get(value));
             }
         });
         listDevicesWeb(deviceType, deviceRegex, new DeviceListingListener() {
@@ -1936,11 +1937,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void deviceFound(String targetDeviceId) {
+            public void deviceFound(String targetDeviceId, final String targetDeviceLabel) {
                 if (targetDeviceId != null && !targetDeviceId.isEmpty()) {
                     hasDeviceNames = true;
                 }
-                itemAddedListener.onValueChange(targetDeviceId);
+                String displayLabel = targetDeviceLabel + "(" + targetDeviceId + ")";
+                deviceIdMap.put(displayLabel, targetDeviceId);
+                itemAddedListener.onValueChange(displayLabel);
             }
         });
     }

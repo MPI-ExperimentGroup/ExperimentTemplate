@@ -27,6 +27,6 @@ public interface DeviceListingListener {
 
     void listingComplete();
 
-    void deviceFound(final String targetDeviceId);
+    void deviceFound(final String targetDeviceId, final String targetDeviceLabel);
 
 }
