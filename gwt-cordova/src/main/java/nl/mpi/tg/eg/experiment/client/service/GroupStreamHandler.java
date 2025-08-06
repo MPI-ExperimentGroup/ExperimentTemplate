@@ -369,6 +369,8 @@ public abstract class GroupStreamHandler {
                     console.log(selfMemberCode + " ==addTrack " + trackCount + " ==> " + remoteMemberCode);
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].addTrack(localTracks[trackCount], $wnd.localStream[streamType + '_' + remoteMemberCode]);
                 }
+            } else {
+                console.log(selfMemberCode + " ==!localStream== " + remoteMemberCode);
             }
         }
     }-*/;
@@ -389,6 +391,7 @@ public abstract class GroupStreamHandler {
         if (!$wnd.localStream["Camera_" + remoteMemberCode]) {
             $wnd.requestPermissions(true, true, videoDeviceRegex, audioDeviceRegex,
                 function(captureStream) {
+                    console.log(memberCode + " ==localStreamCamera== " + remoteMemberCode);
                     $wnd.localStream['Camera_' + remoteMemberCode] = captureStream;
                     $wnd.$("#groupLocalCamera")[0].srcObject = $wnd.localStream['Camera_' + remoteMemberCode];
                     // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
@@ -405,7 +408,7 @@ public abstract class GroupStreamHandler {
     private native void offerCanvas(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         if (!$wnd.localStream["Canvas_" + remoteMemberCode]) {
-            // TODO: handle both video and canvas streams
+            console.log(memberCode + " ==localStreamCanvas== " + remoteMemberCode);
             $wnd.localStream["Canvas_" + remoteMemberCode] = $wnd.$("#groupLocalCanvas")[0].captureStream(15); // 15 FPS
         }
         // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
