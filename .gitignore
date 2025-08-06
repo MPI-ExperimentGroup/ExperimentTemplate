@@ -54,3 +54,5 @@
 /ExperimentDesigner/src/test/resources/frinex-rest-output/antonyms.xml
 /ExperimentDesigner/src/test/resources/frinex-rest-output/digitspanforward.xml
 /ExperimentDesigner/src/test/resources/frinex-rest-output/flanker.xml
+/WebRTC_testing_tools/*.wav
+/WebRTC_testing_tools/*.y4m
