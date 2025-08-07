@@ -146,6 +146,7 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections = [];
             $wnd.readyConnections = [];
             $wnd.localStream = [];
+            $wnd.mediaStream = [];
         }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
@@ -325,8 +326,11 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].ontrack = function (event) {
                 console.log(selfMemberCode + " <==ontrack== " + remoteMemberCode);
                 if (event.streams.length > 0 && $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode).length > 0) {
-                    $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = event.streams[0];
-                    // $wnd.$("#groupRemoteStream")[0].attr('src', event.streams[0]);
+                    if (!$wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
+                        $wnd.remoteStream[streamType + '_' + remoteMemberCode] =  new MediaStream();
+                        $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = $wnd.remoteStream[streamType + '_' + remoteMemberCode];
+                    }
+                    $wnd.remoteStream[streamType + '_' + remoteMemberCode].addTrack(event.track);
                 }
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
             };
@@ -499,6 +503,8 @@ public abstract class GroupStreamHandler {
         $wnd.$("#groupLocalCamera").remove();
         $wnd.$("#groupLocalCanvas").remove();
         $wnd.localStream[streamType + '_' + remoteMemberCode] = null;
+        if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) $wnd.remoteStream[streamType + '_' + remoteMemberCode].getTracks().forEach(track => track.stop());
+        $wnd.remoteStream[streamType + '_' + remoteMemberCode] = null;
         // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
 
