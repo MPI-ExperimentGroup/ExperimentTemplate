@@ -326,7 +326,7 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].ontrack = function (event) {
                 console.log(selfMemberCode + " <==ontrack== " + remoteMemberCode);
                 if (event.streams.length > 0 && $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode).length > 0) {
-                    if (!$wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
+                    if (! streamType + '_' + remoteMemberCode in $wnd.remoteStream) {
                         $wnd.remoteStream[streamType + '_' + remoteMemberCode] =  new MediaStream();
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = $wnd.remoteStream[streamType + '_' + remoteMemberCode];
                     }
