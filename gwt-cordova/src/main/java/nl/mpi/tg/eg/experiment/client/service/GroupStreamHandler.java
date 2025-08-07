@@ -503,7 +503,12 @@ public abstract class GroupStreamHandler {
         $wnd.$("#groupLocalCamera").remove();
         $wnd.$("#groupLocalCanvas").remove();
         $wnd.localStream[streamType + '_' + remoteMemberCode] = null;
-        if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) $wnd.remoteStream[streamType + '_' + remoteMemberCode].getTracks().forEach(track => track.stop());
+        if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
+            var tracks = $wnd.remoteStream[streamType + '_' + remoteMemberCode].getTracks();
+            for (var i = 0; i < tracks.length; i++) {
+               tracks[i].stop();
+            }
+        }
         $wnd.remoteStream[streamType + '_' + remoteMemberCode] = null;
         // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
