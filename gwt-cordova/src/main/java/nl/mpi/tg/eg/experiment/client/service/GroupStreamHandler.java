@@ -146,7 +146,7 @@ public abstract class GroupStreamHandler {
             $wnd.groupConnections = [];
             $wnd.readyConnections = [];
             $wnd.localStream = [];
-            $wnd.mediaStream = [];
+            $wnd.remoteStream = [];
         }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
