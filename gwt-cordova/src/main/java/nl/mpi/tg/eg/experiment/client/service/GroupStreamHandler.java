@@ -598,7 +598,10 @@ public abstract class GroupStreamHandler {
                         connectionListeners.put(connectionKey, onSuccess);
                         errorListeners.put(connectionKey, onError);
                     }
-                    sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Camera", screenId);
+                    // when two members share to each other we must not send a ready if we are not first 
+                    // TODO: but there might be complications with this
+                    // TODO: the array of ready needs to also consider the direction of the connection
+                    // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Camera", screenId);
                 }
             }
         }
