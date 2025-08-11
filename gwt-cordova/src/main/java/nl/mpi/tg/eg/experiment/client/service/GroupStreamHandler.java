@@ -249,6 +249,10 @@ public abstract class GroupStreamHandler {
             $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidateerror = function (event) {
                 console.log("icecandidateerror: " + event);
+                console.error("Host candidate:", event.hostCandidate);
+                console.error("URL:", event.url);
+                console.error("Error code:", event.errorCode);
+                console.error("Error text:", event.errorText);
                 // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::triggerErrorHanlder(Ljava/lang/String;)(selfMemberCode + "-" + streamType + '>' + remoteMemberCode);
             };
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicecandidate = function (event) {
