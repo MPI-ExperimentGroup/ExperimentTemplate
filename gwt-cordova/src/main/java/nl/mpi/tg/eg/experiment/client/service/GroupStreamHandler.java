@@ -312,7 +312,7 @@ public abstract class GroupStreamHandler {
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onicegatheringstatechange = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].onnegotiationneeded = null;
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].close();
-                    $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = null;
+                    delete $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode];
                     $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
                 }
                 // When the connection is broken close and clean up the remote tracks for a reconnection to occur
@@ -322,7 +322,7 @@ public abstract class GroupStreamHandler {
                         tracks[i].stop();
                     }
                 }
-                $wnd.remoteStream[streamType + '_' + remoteMemberCode] = null;
+                delete $wnd.remoteStream[streamType + '_' + remoteMemberCode];
                 // TODO: prepair for a reconnect eg set up  new RTCPeerConnection
             };
 
@@ -505,7 +505,7 @@ public abstract class GroupStreamHandler {
             // }
             // TODO: should we be cleaning up the the local canvas srcObject.getTracks here also?
             $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode].close();
-            $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode] = null;
+            delete $wnd.groupConnections[memberCode + "-" + streamType + '>' + remoteMemberCode];
             $wnd.readyConnections[memberCode + "-" + streamType + '>' + remoteMemberCode] = false;
         }
 
@@ -514,14 +514,14 @@ public abstract class GroupStreamHandler {
         // remove local elements
         $wnd.$("#groupLocalCamera").remove();
         $wnd.$("#groupLocalCanvas").remove();
-        $wnd.localStream[streamType + '_' + remoteMemberCode] = null;
+        delete $wnd.localStream[streamType + '_' + remoteMemberCode];
         if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
             var tracks = $wnd.remoteStream[streamType + '_' + remoteMemberCode].getTracks();
             for (var i = 0; i < tracks.length; i++) {
                tracks[i].stop();
             }
         }
-        $wnd.remoteStream[streamType + '_' + remoteMemberCode] = null;
+        delete $wnd.remoteStream[streamType + '_' + remoteMemberCode];
         // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = false;
     }-*/;
 
