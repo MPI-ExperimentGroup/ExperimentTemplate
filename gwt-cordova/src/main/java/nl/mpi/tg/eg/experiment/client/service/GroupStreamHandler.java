@@ -315,6 +315,14 @@ public abstract class GroupStreamHandler {
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = null;
                     $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
                 }
+                // When the connection is broken close and clean up the remote tracks for a reconnection to occur
+                if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
+                    var tracks = $wnd.remoteStream[streamType + '_' + remoteMemberCode].getTracks();
+                    for (var i = 0; i < tracks.length; i++) {
+                        tracks[i].stop();
+                    }
+                }
+                $wnd.remoteStream[streamType + '_' + remoteMemberCode] = null;
                 // TODO: prepair for a reconnect eg set up  new RTCPeerConnection
             };
 
