@@ -4,7 +4,7 @@
     appNameDisplay="group_webcam_example">
     <deployment 
         state="debug"
-        stunServer="stun.l.google.com:19302"
+        stunServer="coturn.mpi.nl"
     />  
     <!-- stun.l.google.com:19302 is a public STUN server for testing but for production coturn.mpi.nl should be used -->
     <!-- stunServer="coturn.mpi.nl"        -->
