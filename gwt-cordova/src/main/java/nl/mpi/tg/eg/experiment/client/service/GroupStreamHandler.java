@@ -566,7 +566,8 @@ public abstract class GroupStreamHandler {
                         connectionListeners.put(connectionKey, onSuccess);
                         errorListeners.put(connectionKey, onError);
                     }
-                    sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Canvas", screenId);
+                    final boolean hasFirst = streamChannels.matches("^(.*|)*" + memberCode + ",(^|)*" + member + ".*");
+                    if (!hasFirst) sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Canvas", screenId);
                 }
             }
         }
@@ -598,10 +599,9 @@ public abstract class GroupStreamHandler {
                         connectionListeners.put(connectionKey, onSuccess);
                         errorListeners.put(connectionKey, onError);
                     }
-                    // when two members share to each other we must not send a ready if we are not first 
-                    // TODO: but there might be complications with this
-                    // TODO: the array of ready needs to also consider the direction of the connection
-                    // sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Camera", screenId);
+                    // when two members have bidirectional sharing then we must not send ready here but only when the camera is ready
+                    final boolean hasFirst = streamChannels.matches("^(.*|)*" + memberCode + ",(^|)*" + member + ".*");
+                    if (!hasFirst) sendReady(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, "Camera", screenId);
                 }
             }
         }
