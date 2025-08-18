@@ -337,12 +337,13 @@ public abstract class GroupStreamHandler {
 
             $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].ontrack = function (event) {
                 console.log(selfMemberCode + " <==ontrack== " + remoteMemberCode);
-                if (event.streams.length > 0 && $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode).length > 0) {
+                if ($wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode).length > 0) {
                     if (!(streamType + '_' + remoteMemberCode in $wnd.remoteStream)) {
                         $wnd.remoteStream[streamType + '_' + remoteMemberCode] =  new MediaStream();
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = $wnd.remoteStream[streamType + '_' + remoteMemberCode];
                     }
                     $wnd.remoteStream[streamType + '_' + remoteMemberCode].addTrack(event.track);
+                    $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].play();
                 }
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
             };
