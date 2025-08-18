@@ -283,6 +283,7 @@ public enum FeatureAttribute {
 //    streamState(null, false, new String[]{"start", "stop", "pause", "hide", "show", "mute", "unmute"}),
 //    streamType(null, false, new String[]{"microphone", "camera", "canvas"}),
     streamChannels("List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.", false, AttributeType.groupChannels),
+    resolution(640x480)
     incrementPhase("Increments the current group phase and triggers the relevant group activities for all members of the group.", false, AttributeType.xsInteger),
     //    incrementStimulus,
     phasesPerStimulus("The number of phases per round in the group. When current phase reaches this value the next stimulus will be triggered.", false, AttributeType.xsInteger),
