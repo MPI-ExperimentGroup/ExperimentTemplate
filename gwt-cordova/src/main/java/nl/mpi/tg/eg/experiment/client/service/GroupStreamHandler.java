@@ -345,6 +345,7 @@ public abstract class GroupStreamHandler {
                     if ($wnd.remoteStream[streamType + '_' + remoteMemberCode].getAudioTracks().length > 0 && $wnd.remoteStream[streamType + '_' + remoteMemberCode].getVideoTracks().length > 0) {
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = $wnd.remoteStream[streamType + '_' + remoteMemberCode];
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].play();
+                        $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].muted = false;
                     }
                 }
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
