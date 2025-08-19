@@ -392,6 +392,9 @@ public class DefaultExperiments {
                             case streamChannels:
                                 presenterFeature.addFeatureAttributes(attribute, "A,B|B,C");
                                 break;
+                            case resolution:
+                                presenterFeature.addFeatureAttributes(attribute, "640x480");
+                                break;
 //                            case streamType:
 //                                presenterFeature.addFeatureAttributes(attribute, "camera");
 //                                break;

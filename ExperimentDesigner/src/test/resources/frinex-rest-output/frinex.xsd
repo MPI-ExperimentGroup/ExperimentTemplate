@@ -5159,7 +5159,7 @@
 <xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="resolution" type="widthAndHeight" use="required">
+<xs:attribute name="resolution" type="widthAndHeight">
 <xs:annotation>
 <xs:documentation>Width and height separated by x, eg 640x480</xs:documentation>
 </xs:annotation>
@@ -5185,7 +5185,7 @@
 <xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
-<xs:attribute name="resolution" type="widthAndHeight" use="required">
+<xs:attribute name="resolution" type="widthAndHeight">
 <xs:annotation>
 <xs:documentation>Width and height separated by x, eg 640x480</xs:documentation>
 </xs:annotation>
