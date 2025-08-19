@@ -51,6 +51,11 @@
 <xs:pattern value="[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"/>
 </xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="widthAndHeight">
+<xs:restriction base="xs:string">
+<xs:pattern value="[0-9]+x[0-9]+"/>
+</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="presenterName">
 <xs:restriction base="xs:string">
 <xs:pattern value="[a-zA-Z_0-9]{3,}"/>
@@ -5154,6 +5159,11 @@
 <xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="resolution" type="widthAndHeight" use="required">
+<xs:annotation>
+<xs:documentation>Width and height separated by x, eg 640x480</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 <xs:complexType name="streamGroupCameraType">
 <xs:annotation>
@@ -5173,6 +5183,11 @@
 <xs:attribute name="streamChannels" type="groupChannels" use="required">
 <xs:annotation>
 <xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+<xs:attribute name="resolution" type="widthAndHeight" use="required">
+<xs:annotation>
+<xs:documentation>Width and height separated by x, eg 640x480</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>

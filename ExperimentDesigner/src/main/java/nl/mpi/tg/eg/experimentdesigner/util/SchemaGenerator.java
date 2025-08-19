@@ -94,6 +94,11 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:pattern value=\"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"widthAndHeight\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:pattern value=\"[0-9]+x[0-9]+\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"presenterName\">\n");
         writer.append("<xs:restriction base=\"xs:string\">\n");
         writer.append("<xs:pattern value=\"[a-zA-Z_0-9]{3,}\"/>\n");

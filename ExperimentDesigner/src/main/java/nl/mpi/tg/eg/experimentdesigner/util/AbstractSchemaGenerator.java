@@ -49,6 +49,7 @@ public class AbstractSchemaGenerator {
         adminTableColumns("adminTableColumns", "Column name list", "allMemberCodes|correctStreak|currentScore|dataChannel|errorStreak|eventDate|eventMs|eventTag|eventTimes|experimentName|gamesPlayed|groupCommunicationChannels|groupName|groupUUID|isCorrect|maxCorrectStreak|maxErrors|maxErrorStreak|maxPotentialScore|maxScore|mediaFile|mediaLink|messageRespondentId|messageSenderId|messageString|potentialScore|recordingFormat|respondentMemberCode|response|responseGroup|responseStimulusId|scoreGroup|screenName|senderMemberCode|stimulusId|stimulusIndex|stimulusOptionIds|submitDate|tagDate|tagValue|tagValue1|tagValue2|totalPotentialScore|totalScore|userId|viewDate|metadata_[a-zA-Z_0-9]+"),
         rgbHexValue("rgbHexValue", "RGB Hex Value", null),
         dateValue("dateValue", "Date Value YYYY-MM-DD", null),
+        widthAndHeight("widthAndHeight", "Width and height", null),
         stimulusIdentifier("stimulusIdentifier", "Stimulus Identifier", null),
         stimulusTags("stimulusTags", "Stimulus Tags", null),
         stimulusTag("stimulusTag", "Stimulus Tag", null),

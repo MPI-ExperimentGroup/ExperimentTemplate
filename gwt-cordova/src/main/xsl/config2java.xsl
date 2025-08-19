@@ -941,6 +941,9 @@ or local-name() eq 'sendGroupMessageButton'
 ">
             <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
         </xsl:if>    
+        <xsl:if test="local-name() eq 'streamGroupCanvas' or local-name() eq 'streamGroupCamera'">
+            <xsl:value-of select="if(@resolution) then concat(', ', substring-before($resolution, 'x'), ', 'substring-after($resolution, 'x')) else ', null, null'" />
+        </xsl:if>    
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
         <xsl:value-of select="if(@repeatIncorrect) then if(@repeatIncorrect eq 'true') then ', true' else ', false' else ''" />
