@@ -4265,28 +4265,6 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
-<xs:complexType name="regionRecordStartType">
-<xs:annotation>
-<xs:documentation>If a region matching the regionId exists then its contents will be recorded and stored on the server simular to audio recordings. Recordings will be 15fps and stored in 5-10 second long sections. If no matching region exists then nothing will be done.</xs:documentation>
-</xs:annotation>
-<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
-<xs:attribute name="regionId" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
-<xs:complexType name="regionRecordStopType">
-<xs:annotation>
-<xs:documentation>If a region matching the regionId exists and is being recorded then that recording will be stopped. If no matching region exists then nothing will be done.</xs:documentation>
-</xs:annotation>
-<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
-<xs:attribute name="regionId" type="xs:string" use="required">
-<xs:annotation>
-<xs:documentation>String</xs:documentation>
-</xs:annotation>
-</xs:attribute>
-</xs:complexType>
 <xs:complexType name="regionDragDropType">
 <xs:annotation>
 <xs:documentation>If a region matching the regionId exists then the options of draggable and droppable will be applied making the region draggable or a drop target or both. The codeFormat of both the dragged item and the drop target will be set as the stimulus response for the drag action. If no matching region exists then nothing will be done.</xs:documentation>
@@ -5213,6 +5191,28 @@
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
+<xs:complexType name="streamRecordStartType">
+<xs:annotation>
+<xs:documentation>If a matching group stream exists then its contents will be recorded by the receiver and stored on the server simular to audio recordings. Recordings will be stored in 5-10 second sections. If no matching stream exists then nothing will be done.</xs:documentation>
+</xs:annotation>
+<xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
+<xs:attribute name="streamChannels" type="groupChannels" use="required">
+<xs:annotation>
+<xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
+<xs:complexType name="streamRecordStopType">
+<xs:annotation>
+<xs:documentation>If a matching group stream exists and is being recorded then that recording will be stopped. If no matching stream exists then nothing will be done.</xs:documentation>
+</xs:annotation>
+<xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:attribute name="streamChannels" type="groupChannels" use="required">
+<xs:annotation>
+<xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
+</xs:complexType>
 <xs:complexType name="sendGroupTokenMessageType">
 <xs:annotation>
 <xs:documentation>Sends a message to the group members that are in the current member's communication channel. The contents of the message is the value of dataLogFormat after any string tokens have been replaced.</xs:documentation>
@@ -5632,8 +5632,6 @@
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
 <xs:element name="regionClear" type="regionClearType"/>
-<xs:element name="regionRecordStart" type="regionRecordStartType"/>
-<xs:element name="regionRecordStop" type="regionRecordStopType"/>
 <xs:element name="regionDragDrop" type="regionDragDropType"/>
 <xs:element name="stimulusPresent" type="stimulusPresentType"/>
 <xs:element name="stimulusImage" type="stimulusImageType"/>
@@ -5676,6 +5674,8 @@
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
 <xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
 <xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
+<xs:element name="streamRecordStart" type="streamRecordStartType"/>
+<xs:element name="streamRecordStop" type="streamRecordStopType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -6175,8 +6175,6 @@
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
 <xs:element name="regionClear" type="regionClearType"/>
-<xs:element name="regionRecordStart" type="regionRecordStartType"/>
-<xs:element name="regionRecordStop" type="regionRecordStopType"/>
 <xs:element name="regionDragDrop" type="regionDragDropType"/>
 <xs:element name="stimulusPresent" type="stimulusPresentType"/>
 <xs:element name="stimulusImage" type="stimulusImageType"/>
@@ -6219,6 +6217,8 @@
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
 <xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
 <xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
+<xs:element name="streamRecordStart" type="streamRecordStartType"/>
+<xs:element name="streamRecordStop" type="streamRecordStopType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -6407,8 +6407,6 @@
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
 <xs:element name="regionClear" type="regionClearType"/>
-<xs:element name="regionRecordStart" type="regionRecordStartType"/>
-<xs:element name="regionRecordStop" type="regionRecordStopType"/>
 <xs:element name="regionDragDrop" type="regionDragDropType"/>
 <xs:element name="stimulusPresent" type="stimulusPresentType"/>
 <xs:element name="stimulusImage" type="stimulusImageType"/>
@@ -6451,6 +6449,8 @@
 <xs:element name="sendGroupStoredMessage" type="sendGroupStoredMessageType"/>
 <xs:element name="streamGroupCanvas" type="streamGroupCanvasType"/>
 <xs:element name="streamGroupCamera" type="streamGroupCameraType"/>
+<xs:element name="streamRecordStart" type="streamRecordStartType"/>
+<xs:element name="streamRecordStop" type="streamRecordStopType"/>
 <xs:element name="sendGroupTokenMessage" type="sendGroupTokenMessageType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
@@ -6653,8 +6653,6 @@
 <xs:element name="regionCodeStyle" type="regionCodeStyleType"/>
 <xs:element name="regionReplace" type="regionReplaceType"/>
 <xs:element name="regionClear" type="regionClearType"/>
-<xs:element name="regionRecordStart" type="regionRecordStartType"/>
-<xs:element name="regionRecordStop" type="regionRecordStopType"/>
 <xs:element name="regionDragDrop" type="regionDragDropType"/>
 <xs:element name="stimulusPresent" type="stimulusPresentType"/>
 <xs:element name="stimulusImage" type="stimulusImageType"/>
@@ -6684,6 +6682,8 @@
 <xs:element name="versionData" type="versionDataType"/>
 <xs:element name="showColourReport" type="showColourReportType"/>
 <xs:element name="scoreLabel" type="scoreLabelType"/>
+<xs:element name="streamRecordStart" type="streamRecordStartType"/>
+<xs:element name="streamRecordStop" type="streamRecordStopType"/>
 <xs:element name="clearCurrentScore" type="clearCurrentScoreType"/>
 <xs:element name="scoreIncrement" type="scoreIncrementType"/>
 <xs:element name="bestScoreAboveThreshold" type="bestScoreAboveThresholdType"/>

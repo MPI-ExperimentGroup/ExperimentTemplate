@@ -1165,7 +1165,7 @@ or local-name() eq 'ratingCheckbox'
             </xsl:text>
         </xsl:if>
     </xsl:template>
-    <xsl:template match="serverValueAssign|serverValueComplete|addFrameTimeTrigger|clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|regionRecordStart|regionRecordStop|regionDragDrop|logTimerValue|startTimer|clearTimer|dtmfTone|addMediaTrigger|addRecorderDtmfTrigger|addRecorderLevelTrigger|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|doLater|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
+    <xsl:template match="serverValueAssign|serverValueComplete|addFrameTimeTrigger|clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|streamRecordStart|streamRecordStop|regionDragDrop|logTimerValue|startTimer|clearTimer|dtmfTone|addMediaTrigger|addRecorderDtmfTrigger|addRecorderLevelTrigger|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|doLater|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
