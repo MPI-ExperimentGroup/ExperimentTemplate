@@ -942,7 +942,7 @@ or local-name() eq 'sendGroupMessageButton'
             <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
         </xsl:if>    
         <xsl:if test="local-name() eq 'streamGroupCanvas' or local-name() eq 'streamGroupCamera'">
-            <xsl:value-of select="if(@resolution) then concat(', ', substring-before($resolution, 'x'), ', 'substring-after($resolution, 'x')) else ', null, null'" />
+            <xsl:value-of select="if(@resolution) then concat(', ', substring-before(@resolution, 'x'), '/* width */, ', substring-after(@resolution, 'x'), '/* height */') else ', null /* width */, null /* height */'" />
         </xsl:if>    
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
@@ -1165,7 +1165,7 @@ or local-name() eq 'ratingCheckbox'
             </xsl:text>
         </xsl:if>
     </xsl:template>
-    <xsl:template match="serverValueAssign|serverValueComplete|addFrameTimeTrigger|clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|regionDragDrop|logTimerValue|startTimer|clearTimer|dtmfTone|addMediaTrigger|addRecorderDtmfTrigger|addRecorderLevelTrigger|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|doLater|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
+    <xsl:template match="serverValueAssign|serverValueComplete|addFrameTimeTrigger|clearStimulusResponse|setStimulusCodeResponse|regionAppend|regionClear|regionReplace|regionStyle|regionCodeStyle|regionRecordStart|regionRecordStop|regionDragDrop|logTimerValue|startTimer|clearTimer|dtmfTone|addMediaTrigger|addRecorderDtmfTrigger|addRecorderLevelTrigger|triggerDefinition|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|evaluatePause|addTimerTrigger|pause|doLater|triggerRandom|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeImageButton|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupMemberActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>

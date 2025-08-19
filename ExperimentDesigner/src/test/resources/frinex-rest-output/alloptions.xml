@@ -1034,7 +1034,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C" resolution="640x480">
                             <onSuccess>
                                 <plainText featureText="plainText in onSuccess"/>
                             </onSuccess>
@@ -1042,7 +1042,7 @@
                                 <plainText featureText="plainText in onError"/>
                             </onError>
                         </streamGroupCanvas>
-                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C" resolution="640x480">
                             <onSuccess>
                                 <plainText featureText="plainText in onSuccess"/>
                             </onSuccess>
@@ -1085,7 +1085,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C" resolution="640x480">
                             <onSuccess>
                                 <plainText featureText="plainText in onSuccess"/>
                             </onSuccess>
@@ -1093,7 +1093,7 @@
                                 <plainText featureText="plainText in onError"/>
                             </onError>
                         </streamGroupCanvas>
-                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C" resolution="640x480">
                             <onSuccess>
                                 <plainText featureText="plainText in onSuccess"/>
                             </onSuccess>
@@ -1136,7 +1136,7 @@
                         <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3" groupId="groupId"/>
-                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                        <streamGroupCanvas eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C" resolution="640x480">
                             <onSuccess>
                                 <plainText featureText="plainText in onSuccess"/>
                             </onSuccess>
@@ -1144,7 +1144,7 @@
                                 <plainText featureText="plainText in onError"/>
                             </onError>
                         </streamGroupCanvas>
-                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C">
+                        <streamGroupCamera eventTag="eventTag" dataChannel="2" streamChannels="A,B|B,C" resolution="640x480">
                             <onSuccess>
                                 <plainText featureText="plainText in onSuccess"/>
                             </onSuccess>

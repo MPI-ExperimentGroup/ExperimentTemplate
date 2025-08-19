@@ -34,7 +34,7 @@ public abstract class AbstractRecorder {
 
     public abstract void startRecorderTriggersWeb(final MediaTriggerListener recorderMediaTriggerListenerL);
 
-    public abstract void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String videoDeviceRegex, final String audioDeviceRegex, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat);
+    public abstract void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String videoDeviceRegex, final String audioDeviceRegex, final Integer videoWidth, final Integer videoHeight, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat);
 
     public abstract void stopRecorder(final AbstractPresenter abstractPresenter);
 

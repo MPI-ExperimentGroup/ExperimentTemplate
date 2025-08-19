@@ -2105,7 +2105,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             // TODO: this could be more elegant in relation to the termination of the preceding recording type
             mediaRecorder = new AudioRecorder();
         }
-        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, null, deviceRegex, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, null, deviceRegex, null, null, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
     }
 
     protected void stopAudioRecorder() {
@@ -2555,19 +2555,19 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.stopMedia(formattedMediaId);
     }
 
-    protected void streamGroupCanvas(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+    protected void streamGroupCanvas(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final Integer width, final Integer height, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // Creates a canvas that is streamed to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
-        groupStreamHandler.negotiateCanvas(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), onError, onSuccess);
+        groupStreamHandler.negotiateCanvas(streamChannels, width, height, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), onError, onSuccess);
 //        groupStreamHandler.updateDebugRegion("streamGroupCanvas");
     }
 
-    protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+    protected void streamGroupCamera(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final Integer width, final Integer height, final String streamChannels, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // Shares a camera stream to other members of the group based on the stream communication channels. The stream is terminated when the containing region or page is cleared or when the group network ends.
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamChannels, duration.elapsedMillis());
         final String videoDeviceRegex = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "videoinput" + "RecorderDeviceId");
         final String audioDeviceRegex = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "audioinput" + "RecorderDeviceId");
-        groupStreamHandler.negotiateCamera(streamChannels, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), videoDeviceRegex, audioDeviceRegex, onError, onSuccess);
+        groupStreamHandler.negotiateCamera(streamChannels, width, height, groupParticipantService.getRequestedPhase(), userResults.getUserData().getUserId(), groupParticipantService.getGroupId(), groupParticipantService.getGroupUUID(), groupParticipantService.getMemberCode(), getSelfTag(), videoDeviceRegex, audioDeviceRegex, onError, onSuccess);
 //        groupStreamHandler.updateDebugRegion("streamGroupCamera");
     }
 

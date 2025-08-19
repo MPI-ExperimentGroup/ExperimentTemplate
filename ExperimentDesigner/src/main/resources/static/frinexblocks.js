@@ -8251,8 +8251,30 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message40": "regionDragDrop %1",
+      "message40": "regionRecordStart %1",
       "args40": [
+        {
+          "type": "input_statement",
+          "name": "regionRecordStart",
+          "check": [
+            "frinex_eachStimulusType",
+            "frinex_hasErrorSuccessType",
+          ]
+        }
+      ],
+      "message41": "regionRecordStop %1",
+      "args41": [
+        {
+          "type": "input_statement",
+          "name": "regionRecordStop",
+          "check": [
+            "frinex_eachStimulusType",
+            "frinex_noneType",
+          ]
+        }
+      ],
+      "message42": "regionDragDrop %1",
+      "args42": [
         {
           "type": "input_statement",
           "name": "regionDragDrop",
@@ -8262,8 +8284,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message41": "stimulusPresent %1",
-      "args41": [
+      "message43": "stimulusPresent %1",
+      "args43": [
         {
           "type": "input_statement",
           "name": "stimulusPresent",
@@ -8273,8 +8295,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message42": "stimulusImage %1",
-      "args42": [
+      "message44": "stimulusImage %1",
+      "args44": [
         {
           "type": "input_statement",
           "name": "stimulusImage",
@@ -8284,8 +8306,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message43": "stimulusCodeImage %1",
-      "args43": [
+      "message45": "stimulusCodeImage %1",
+      "args45": [
         {
           "type": "input_statement",
           "name": "stimulusCodeImage",
@@ -8295,8 +8317,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message44": "stimulusCodeImageButton %1",
-      "args44": [
+      "message46": "stimulusCodeImageButton %1",
+      "args46": [
         {
           "type": "input_statement",
           "name": "stimulusCodeImageButton",
@@ -8306,8 +8328,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message45": "stimulusCodeVideo %1",
-      "args45": [
+      "message47": "stimulusCodeVideo %1",
+      "args47": [
         {
           "type": "input_statement",
           "name": "stimulusCodeVideo",
@@ -8317,8 +8339,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message46": "stimulusVideo %1",
-      "args46": [
+      "message48": "stimulusVideo %1",
+      "args48": [
         {
           "type": "input_statement",
           "name": "stimulusVideo",
@@ -8328,8 +8350,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message47": "stimulusCodeAudio %1",
-      "args47": [
+      "message49": "stimulusCodeAudio %1",
+      "args49": [
         {
           "type": "input_statement",
           "name": "stimulusCodeAudio",
@@ -8339,8 +8361,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message48": "stimulusAudio %1",
-      "args48": [
+      "message50": "stimulusAudio %1",
+      "args50": [
         {
           "type": "input_statement",
           "name": "stimulusAudio",
@@ -8350,8 +8372,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message49": "stimulusImageCapture %1",
-      "args49": [
+      "message51": "stimulusImageCapture %1",
+      "args51": [
         {
           "type": "input_statement",
           "name": "stimulusImageCapture",
@@ -8361,8 +8383,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message50": "VideoPanel %1",
-      "args50": [
+      "message52": "VideoPanel %1",
+      "args52": [
         {
           "type": "input_statement",
           "name": "VideoPanel",
@@ -8372,8 +8394,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message51": "AnnotationTimelinePanel %1",
-      "args51": [
+      "message53": "AnnotationTimelinePanel %1",
+      "args53": [
         {
           "type": "input_statement",
           "name": "AnnotationTimelinePanel",
@@ -8383,8 +8405,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message52": "startAudioRecorderWeb %1",
-      "args52": [
+      "message54": "startAudioRecorderWeb %1",
+      "args54": [
         {
           "type": "input_statement",
           "name": "startAudioRecorderWeb",
@@ -8394,8 +8416,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message53": "startAudioRecorderApp %1",
-      "args53": [
+      "message55": "startAudioRecorderApp %1",
+      "args55": [
         {
           "type": "input_statement",
           "name": "startAudioRecorderApp",
@@ -8405,8 +8427,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message54": "stopAudioRecorder %1",
-      "args54": [
+      "message56": "stopAudioRecorder %1",
+      "args56": [
         {
           "type": "input_statement",
           "name": "stopAudioRecorder",
@@ -8416,8 +8438,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message55": "startAudioRecorderTag %1",
-      "args55": [
+      "message57": "startAudioRecorderTag %1",
+      "args57": [
         {
           "type": "input_statement",
           "name": "startAudioRecorderTag",
@@ -8427,8 +8449,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message56": "endAudioRecorderTag %1",
-      "args56": [
+      "message58": "endAudioRecorderTag %1",
+      "args58": [
         {
           "type": "input_statement",
           "name": "endAudioRecorderTag",
@@ -8438,8 +8460,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message57": "clearCurrentScore %1",
-      "args57": [
+      "message59": "clearCurrentScore %1",
+      "args59": [
         {
           "type": "input_statement",
           "name": "clearCurrentScore",
@@ -8449,8 +8471,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message58": "scoreIncrement %1",
-      "args58": [
+      "message60": "scoreIncrement %1",
+      "args60": [
         {
           "type": "input_statement",
           "name": "scoreIncrement",
@@ -8878,6 +8900,80 @@ function getFeatureBlocks() {
       ],
       "nextStatement": [
         "frinex_noneType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_regionRecordStartType",
+      "message0": 'regionRecordStart %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'regionId %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "regionId",
+          "check": "String"
+        }
+      ],
+      "message2": "onSuccess %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "onSuccess",
+          "check": [
+            "frinex_stimulusActionType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "message3": "onError %1",
+      "args3": [
+        {
+          "type": "input_statement",
+          "name": "onError",
+          "check": [
+            "frinex_stimulusActionType",
+            "frinex_anyType",
+          ]
+        }
+      ],
+      "previousStatement": [
+        "frinex_stimulusActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_stimulusActionType",
+        "frinex_anyType",
+      ],
+      "colour": 140,
+      },
+    {
+      "type": "frinex_regionRecordStopType",
+      "message0": 'regionRecordStop %1',
+      "args0": [
+        {
+          "type": "input_dummy",
+        }
+      ],
+      "message1": 'regionId %1',
+      "args1": [
+        {
+          "type": "field_input",
+          "name": "regionId",
+          "check": "String"
+        }
+      ],
+      "previousStatement": [
+        "frinex_stimulusActionType",
+        "frinex_anyType",
+      ],
+      "nextStatement": [
+        "frinex_stimulusActionType",
         "frinex_anyType",
       ],
       "colour": 140,
@@ -11208,8 +11304,16 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "onSuccess %1",
+      "message4": 'resolution %1',
       "args4": [
+        {
+          "type": "field_input",
+          "name": "resolution",
+          "check": "String"
+        }
+      ],
+      "message5": "onSuccess %1",
+      "args5": [
         {
           "type": "input_statement",
           "name": "onSuccess",
@@ -11219,8 +11323,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message5": "onError %1",
-      "args5": [
+      "message6": "onError %1",
+      "args6": [
         {
           "type": "input_statement",
           "name": "onError",
@@ -11272,8 +11376,16 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message4": "onSuccess %1",
+      "message4": 'resolution %1',
       "args4": [
+        {
+          "type": "field_input",
+          "name": "resolution",
+          "check": "String"
+        }
+      ],
+      "message5": "onSuccess %1",
+      "args5": [
         {
           "type": "input_statement",
           "name": "onSuccess",
@@ -11283,8 +11395,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message5": "onError %1",
-      "args5": [
+      "message6": "onError %1",
+      "args6": [
         {
           "type": "input_statement",
           "name": "onError",
@@ -13179,6 +13291,12 @@ function getFeatureBlocks() {
      childData += '<regionCodeStyle>\n';
      childData += generator.statementToCode(block, 'regionCodeStyle');
      childData += '</regionCodeStyle>\n';
+     childData += '<regionRecordStart>\n';
+     childData += generator.statementToCode(block, 'regionRecordStart');
+     childData += '</regionRecordStart>\n';
+     childData += '<regionRecordStop>\n';
+     childData += generator.statementToCode(block, 'regionRecordStop');
+     childData += '</regionRecordStop>\n';
      childData += '<regionDragDrop>\n';
      childData += generator.statementToCode(block, 'regionDragDrop');
      childData += '</regionDragDrop>\n';
@@ -13299,6 +13417,20 @@ function getFeatureBlocks() {
   javascript.javascriptGenerator.forBlock['frinex_regionClearType'] = function(block, generator) {
     var childData = '';
     return '<regionClear block_id="' + block.id + '" regionId="' + block.getFieldValue('regionId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</regionClear>\n');
+  };
+  javascript.javascriptGenerator.forBlock['frinex_regionRecordStartType'] = function(block, generator) {
+    var childData = '';
+     childData += '<onSuccess>\n';
+     childData += generator.statementToCode(block, 'onSuccess');
+     childData += '</onSuccess>\n';
+     childData += '<onError>\n';
+     childData += generator.statementToCode(block, 'onError');
+     childData += '</onError>\n';
+    return '<regionRecordStart block_id="' + block.id + '" regionId="' + block.getFieldValue('regionId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</regionRecordStart>\n');
+  };
+  javascript.javascriptGenerator.forBlock['frinex_regionRecordStopType'] = function(block, generator) {
+    var childData = '';
+    return '<regionRecordStop block_id="' + block.id + '" regionId="' + block.getFieldValue('regionId') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</regionRecordStop>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_regionDragDropType'] = function(block, generator) {
     var childData = '';
@@ -13639,7 +13771,7 @@ function getFeatureBlocks() {
      childData += '<onError>\n';
      childData += generator.statementToCode(block, 'onError');
      childData += '</onError>\n';
-    return '<streamGroupCanvas block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCanvas>\n');
+    return '<streamGroupCanvas block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" resolution="' + block.getFieldValue('resolution') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCanvas>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_streamGroupCameraType'] = function(block, generator) {
     var childData = '';
@@ -13649,7 +13781,7 @@ function getFeatureBlocks() {
      childData += '<onError>\n';
      childData += generator.statementToCode(block, 'onError');
      childData += '</onError>\n';
-    return '<streamGroupCamera block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCamera>\n');
+    return '<streamGroupCamera block_id="' + block.id + '" eventTag="' + block.getFieldValue('eventTag') +'" dataChannel="' + block.getFieldValue('dataChannel') +'" streamChannels="' + block.getFieldValue('streamChannels') +'" resolution="' + block.getFieldValue('resolution') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamGroupCamera>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block, generator) {
     var childData = '';
@@ -14471,6 +14603,14 @@ function getFeatureBlocks() {
       },
       {
         "kind": "block",
+        "type": "frinex_regionRecordStartType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionRecordStopType"
+      },
+      {
+        "kind": "block",
         "type": "frinex_regionDragDropType"
       },
       {
@@ -15020,6 +15160,14 @@ function getFeatureBlocks() {
       {
         "kind": "block",
         "type": "frinex_regionClearType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionRecordStartType"
+      },
+      {
+        "kind": "block",
+        "type": "frinex_regionRecordStopType"
       },
       {
         "kind": "block",

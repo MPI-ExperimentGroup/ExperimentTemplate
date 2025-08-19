@@ -67,7 +67,7 @@ function handleOffer(connection, offer, successHandler, errorHandler) {
 //     await connection.setRemoteDescription(answer);
 // }
 
-function requestPermissions(wantsVideo, wantsAudio, videoDeviceId, audioDeviceId, successHandler, errorHandler) {
+function requestPermissions(wantsVideo, wantsAudio, videoDeviceId, audioDeviceId, videoWidth, videoHeight, successHandler, errorHandler) {
     const constraints = {};
     if (audioDeviceId) {
         constraints.audio = { deviceId: { exact: audioDeviceId } };
@@ -78,6 +78,14 @@ function requestPermissions(wantsVideo, wantsAudio, videoDeviceId, audioDeviceId
         constraints.video = { deviceId: { exact: videoDeviceId } };
     } else {
         constraints.video = wantsVideo;
+    }
+    if (wantsVideo) {
+        if (videoWidth) {
+            constraints.video.width = { ideal: videoWidth };
+        }
+        if (videoHeight) {
+            constraints.video.height = { ideal: videoHeight };
+        }
     }
     navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
         successHandler(stream);

@@ -405,11 +405,11 @@ public abstract class GroupStreamHandler {
     // TODO: Canvas ABBA reliably works but Camera ABBA connects for one but fails for the other and it is random which one fails
     // TODO: the on success is triggered a bit to easily and the on error is not triggered for both when the receiver fails to connect
 
-    private native void offerVideo(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId, final String videoDeviceRegex, final String audioDeviceRegex, TimedStimulusListener onError) /*-{
+    private native void offerVideo(int originPhase, final Integer width, final Integer height, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId, final String videoDeviceRegex, final String audioDeviceRegex, TimedStimulusListener onError) /*-{
         var groupStreamHandler = this;
         // TODO: add device filtering so a specified camera can be used
         if (!$wnd.localStream["Camera_" + remoteMemberCode]) {
-            $wnd.requestPermissions(true, true, videoDeviceRegex, audioDeviceRegex,
+            $wnd.requestPermissions(true, true, videoDeviceRegex, audioDeviceRegex, width, height,
                 function(captureStream) {
                     console.log(memberCode + " ==localStreamCamera== " + remoteMemberCode);
                     $wnd.localStream['Camera_' + remoteMemberCode] = captureStream;
@@ -425,7 +425,7 @@ public abstract class GroupStreamHandler {
         }
     }-*/;
 
-    private native void offerCanvas(int originPhase, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
+    private native void offerCanvas(int originPhase, final Integer width, final Integer height, String userId, String groupId, String groupUUID, String memberCode, String remoteMemberCode, String screenId) /*-{
         var groupStreamHandler = this;
         if (!$wnd.localStream["Canvas_" + remoteMemberCode]) {
             console.log(memberCode + " ==localStreamCanvas== " + remoteMemberCode);
@@ -434,6 +434,14 @@ public abstract class GroupStreamHandler {
         // groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::isReady = true;
         groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("ready", "Canvas", "", originPhase, userId, groupId, groupUUID, memberCode, remoteMemberCode, screenId);
         localCanvas = $wnd.$("#groupLocalCanvas")[0];
+        if (width) {
+            localCanvas.width = width;
+            localCanvas.style.width = width + "px";
+        }
+        if (height) {
+            localCanvas.height = height;
+            localCanvas.style.height = height + "px";
+        }
         $wnd.localCanvasContext = localCanvas.getContext("2d");
 
         // $wnd.localCanvasContext.clearRect(0, 0, localCanvas.width, localCanvas.height);
@@ -554,7 +562,7 @@ public abstract class GroupStreamHandler {
         return stringBuilder.toString();
     }
 
-    public void negotiateCanvas(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+    public void negotiateCanvas(final String streamChannels, final Integer width, final Integer height, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
             final boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
@@ -565,7 +573,7 @@ public abstract class GroupStreamHandler {
                         // set up the elements and connection based on communication channels
                         if (!member.equals(memberCode)) {
                             addCanvasElement("groupLocalCanvas", groupId, groupUUID, memberCode, member);
-                            offerCanvas(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, screenId);
+                            offerCanvas(originPhase, width, height, userId.toString(), groupId, groupUUID, memberCode, member, screenId);
                         }
                     }
                 } else {
@@ -587,7 +595,7 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    public void negotiateCamera(final String streamChannels, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, final String videoDeviceRegex, final String audioDeviceRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+    public void negotiateCamera(final String streamChannels, final Integer width, final Integer height, Integer originPhase, final UserId userId, final String groupId, final String groupUUID, final String memberCode, final String screenId, final String videoDeviceRegex, final String audioDeviceRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         // TODO: utilise TimedStimulusListener onError and TimedStimulusListener onSuccess
         for (String channel : streamChannels.split("\\|")) {
             final boolean isRelevant = channel.matches("(.*,)?" + memberCode + "(,.*)?");
@@ -598,7 +606,7 @@ public abstract class GroupStreamHandler {
                         // set up the elements and connection based on communication channels
                         if (!member.equals(memberCode)) {
                             addVideoElement("groupLocalCamera", groupId, groupUUID, memberCode, member);
-                            offerVideo(originPhase, userId.toString(), groupId, groupUUID, memberCode, member, screenId, videoDeviceRegex, audioDeviceRegex, onError);
+                            offerVideo(originPhase, width, height, userId.toString(), groupId, groupUUID, memberCode, member, screenId, videoDeviceRegex, audioDeviceRegex, onError);
                         }
                     }
                 } else {
