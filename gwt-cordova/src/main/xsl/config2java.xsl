@@ -1189,6 +1189,7 @@ or local-name() eq 'stimulusPause'
 or local-name() eq 'stimulusImageCapture'
 or local-name() eq 'setStimulusCodeResponse'
 or local-name() eq 'clearStimulusResponse'
+or local-name() eq 'streamRecordStart'
 ">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:text>currentStimulus, </xsl:text>
