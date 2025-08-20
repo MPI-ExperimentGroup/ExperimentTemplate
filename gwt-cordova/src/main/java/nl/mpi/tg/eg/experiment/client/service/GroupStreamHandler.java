@@ -659,7 +659,7 @@ public abstract class GroupStreamHandler {
                     };
                     // start recording in 10 second intervals
                     $wnd.mediaRecorder[key].start(10000);
-                    mediaSubmissionListener.recorderStarted(null, 0)
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(null, 0);
                 }
             }
         }
