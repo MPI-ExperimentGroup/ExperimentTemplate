@@ -1290,7 +1290,8 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />
         <xsl:value-of select="if(@evaluateTokens) then concat('&quot;', replace(@evaluateTokens,'&quot;','\\&quot;'), '&quot; ') else ''" />
-        <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@matchingRegex) then if (local-name() ne 'streamRecordStart' and local-name() ne 'streamRecordStop') then ', ' else ' ' else ''" />
         <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot; /* replacementRegex */') else ''" />
         <xsl:value-of select="if(@replacement) then concat(', &quot;', @replacement, '&quot; /* replacement */') else ''" />
         <xsl:value-of select="if(@msLabelFormat) then concat('&quot;', @msLabelFormat, '&quot;') else ''" />
