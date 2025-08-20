@@ -11350,11 +11350,11 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": 'streamChannels %1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
-          "name": "streamChannels",
+          "name": "matchingRegex",
           "check": "String"
         }
       ],
@@ -11398,11 +11398,11 @@ function getFeatureBlocks() {
           "type": "input_dummy",
         }
       ],
-      "message1": 'streamChannels %1',
+      "message1": 'matchingRegex %1',
       "args1": [
         {
           "type": "field_input",
-          "name": "streamChannels",
+          "name": "matchingRegex",
           "check": "String"
         }
       ],
@@ -13777,11 +13777,11 @@ function getFeatureBlocks() {
      childData += '<onError>\n';
      childData += generator.statementToCode(block, 'onError');
      childData += '</onError>\n';
-    return '<streamRecordStart block_id="' + block.id + '" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamRecordStart>\n');
+    return '<streamRecordStart block_id="' + block.id + '" matchingRegex="' + block.getFieldValue('matchingRegex') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamRecordStart>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_streamRecordStopType'] = function(block, generator) {
     var childData = '';
-    return '<streamRecordStop block_id="' + block.id + '" streamChannels="' + block.getFieldValue('streamChannels') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamRecordStop>\n');
+    return '<streamRecordStop block_id="' + block.id + '" matchingRegex="' + block.getFieldValue('matchingRegex') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</streamRecordStop>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_sendGroupTokenMessageType'] = function(block, generator) {
     var childData = '';
