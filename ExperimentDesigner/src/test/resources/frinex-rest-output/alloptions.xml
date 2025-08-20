@@ -957,7 +957,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <streamRecordStart streamChannels="A,B|B,C">
+                <streamRecordStart matchingRegex="matchingRegex">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -965,7 +965,7 @@
                         <plainText featureText="plainText in onError"/>
                     </onError>
                 </streamRecordStart>
-                <streamRecordStop streamChannels="A,B|B,C"/>
+                <streamRecordStop matchingRegex="matchingRegex"/>
                 <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in eachStimulus"/>
@@ -1486,7 +1486,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <streamRecordStart streamChannels="A,B|B,C">
+                <streamRecordStart matchingRegex="matchingRegex">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -1494,7 +1494,7 @@
                         <plainText featureText="plainText in onError"/>
                     </onError>
                 </streamRecordStart>
-                <streamRecordStop streamChannels="A,B|B,C"/>
+                <streamRecordStop matchingRegex="matchingRegex"/>
                 <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
@@ -1819,7 +1819,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                <streamRecordStart streamChannels="A,B|B,C">
+                <streamRecordStart matchingRegex="matchingRegex">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -1827,7 +1827,7 @@
                         <plainText featureText="plainText in onError"/>
                     </onError>
                 </streamRecordStart>
-                <streamRecordStop streamChannels="A,B|B,C"/>
+                <streamRecordStop matchingRegex="matchingRegex"/>
                 <clearCurrentScore evaluateTokens="evaluateTokens" dataChannel="2"/>
                 <scoreIncrement dataChannel="2" scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
@@ -3880,7 +3880,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <streamRecordStart streamChannels="A,B|B,C">
+                <streamRecordStart matchingRegex="">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -3888,7 +3888,7 @@
                         <plainText featureText="plainText in onError"/>
                     </onError>
                 </streamRecordStart>
-                <streamRecordStop streamChannels="A,B|B,C"/>
+                <streamRecordStop matchingRegex=""/>
                 <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in eachStimulus"/>
@@ -4397,7 +4397,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <streamRecordStart streamChannels="A,B|B,C">
+                <streamRecordStart matchingRegex="">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -4405,7 +4405,7 @@
                         <plainText featureText="plainText in onError"/>
                     </onError>
                 </streamRecordStart>
-                <streamRecordStop streamChannels="A,B|B,C"/>
+                <streamRecordStop matchingRegex=""/>
                 <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
@@ -4724,7 +4724,7 @@
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8"/>
-                <streamRecordStart streamChannels="A,B|B,C">
+                <streamRecordStart matchingRegex="">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -4732,7 +4732,7 @@
                         <plainText featureText="plainText in onError"/>
                     </onError>
                 </streamRecordStart>
-                <streamRecordStop streamChannels="A,B|B,C"/>
+                <streamRecordStop matchingRegex=""/>
                 <clearCurrentScore evaluateTokens=""/>
                 <scoreIncrement scoreValue="8"/>
                 <plainText featureText="plainText in hasMoreStimulus"/>
