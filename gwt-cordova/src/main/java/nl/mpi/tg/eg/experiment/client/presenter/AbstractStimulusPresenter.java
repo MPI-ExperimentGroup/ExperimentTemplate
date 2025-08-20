@@ -2571,6 +2571,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        groupStreamHandler.updateDebugRegion("streamGroupCamera");
     }
 
+    protected void streamRecordStart(final String matchingRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+        groupStreamHandler.streamRecordStart(matchingRegex, onError, onSuccess);
+    }
+    
+    protected void streamRecordStop(final String matchingRegex) {
+        groupStreamHandler.streamRecordStop(matchingRegex);
+    }
+    
     /* protected void updateGroupStream(final Stimulus currentStimulus, final String eventTag, final int dataChannel, final StreamState streamState, final StreamTypes streamType) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, currentStimulus.getUniqueId(), streamType.name() + "" + streamState.name(), duration.elapsedMillis());
 
