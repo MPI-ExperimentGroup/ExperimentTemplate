@@ -163,6 +163,7 @@
                                     </onError>
                                 </streamGroupCamera>
                             </actionButton>
+                            <addPadding/>
                             <actionButton featureText="Record Camera">
                                 <streamRecordStart matchingRegex="Camera.*">
                                     <onSuccess>
