@@ -650,7 +650,7 @@ public abstract class GroupStreamHandler {
                     });
                     $wnd.mediaRecorder[key].ondataavailable = function (event) {
                         if (event.data && event.data.size > 0) {
-                            var dataBlob = new Blob(event.data, { type: 'video/' + recordingFormat });
+                            var dataBlob = new Blob([event.data], { type: 'video/' + recordingFormat });
                             dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, dataBlob, mediaSubmissionListener, 0, recordingFormat);
                         }
                     }
