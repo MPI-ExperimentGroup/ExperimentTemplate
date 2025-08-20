@@ -97,7 +97,7 @@
                                 </onError>
                             </audioInputSelectWeb>
                             <actionButton featureText="Canvas A,B|B,C" groupId="streamButtonGroup">
-                                <streamGroupCanvas streamChannels="A,B|B,C">
+                                <streamGroupCanvas streamChannels="A,B|B,C" resolution="640x480">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCanvas onSuccess A,B|B,C"/>
                                     </onSuccess>
@@ -108,7 +108,7 @@
                                 </streamGroupCanvas>
                             </actionButton>
                             <actionButton featureText="Canvas A,B|B,A" groupId="streamButtonGroup">
-                                <streamGroupCanvas streamChannels="A,B|B,A">
+                                <streamGroupCanvas streamChannels="A,B|B,A" resolution="640x480">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCanvas onSuccess A,B|B,A"/>
                                     </onSuccess>
@@ -120,7 +120,7 @@
                             </actionButton>
                             <addPadding/>
                             <actionButton featureText="Canvas A,B,C" groupId="streamButtonGroup">
-                                <streamGroupCanvas streamChannels="A,B,C">
+                                <streamGroupCanvas streamChannels="A,B,C" resolution="640x480">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCanvas onSuccess A,B,C"/>
                                     </onSuccess>
@@ -142,7 +142,7 @@
                                 </streamGroupCanvas>
                             </actionButton> -->
                             <actionButton featureText="Camera A,B|B,C">
-                                <streamGroupCamera streamChannels="A,B|B,C">
+                                <streamGroupCamera streamChannels="A,B|B,C" resolution="320x240">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCamera onSuccess A,B|B,C"/>
                                     </onSuccess>
@@ -153,7 +153,7 @@
                                 </streamGroupCamera>
                             </actionButton>
                             <actionButton featureText="Camera A,B|B,A">
-                                <streamGroupCamera streamChannels="A,B|B,A">
+                                <streamGroupCamera streamChannels="A,B|B,A" resolution="320x240">
                                     <onSuccess>
                                         <plainText featureText="streamGroupCamera onSuccess A,B|B,A"/>
                                     </onSuccess>
@@ -162,6 +162,29 @@
                                         <plainText featureText="Please note that the STUN server used by this example currently only works in the institute network due to the network configuration."/>
                                     </onError>
                                 </streamGroupCamera>
+                            </actionButton>
+                            <actionButton featureText="Record Camera">
+                                <streamRecordStart matchingRegex="Camera.*">
+                                    <onSuccess>
+                                        <plainText featureText="streamRecordStart onSuccess"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamRecordStart onError"/>
+                                    </onError>
+                                </streamRecordStart>
+                            </actionButton>
+                            <actionButton featureText="Record Canvas">
+                                <streamRecordStart matchingRegex="Canvas.*">
+                                    <onSuccess>
+                                        <plainText featureText="streamRecordStart onSuccess"/>
+                                    </onSuccess>
+                                    <onError>
+                                        <plainText featureText="streamRecordStart onError"/>
+                                    </onError>
+                                </streamRecordStart>
+                            </actionButton>
+                            <actionButton featureText="Stop All Recordings">
+                                <streamRecordStop matchingRegex=".*"/>
                             </actionButton>
                         </regionReplace>
                     </groupMemberActivity>
