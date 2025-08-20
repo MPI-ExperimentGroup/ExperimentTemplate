@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
@@ -147,6 +148,7 @@ public abstract class GroupStreamHandler {
             $wnd.readyConnections = [];
             $wnd.localStream = [];
             $wnd.remoteStream = [];
+            $wnd.mediaRecorder = [];
         }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
@@ -314,6 +316,10 @@ public abstract class GroupStreamHandler {
                     $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode].close();
                     delete $wnd.groupConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode];
                     $wnd.readyConnections[selfMemberCode + "-" + streamType + '>' + remoteMemberCode] = false;
+                }
+                if ($wnd.mediaRecorder[streamType + '_' + remoteMemberCode] && $wnd.mediaRecorder[streamType + '_' + remoteMemberCode].state !== 'inactive') {
+                  // stop triggers ondataavailable and onstop which deletes the mediaRecorder entry
+                  $wnd.mediaRecorder[streamType + '_' + remoteMemberCode].stop();
                 }
                 // When the connection is broken close and clean up the remote tracks for a reconnection to occur
                 if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
@@ -526,7 +532,11 @@ public abstract class GroupStreamHandler {
         // remove local elements
         $wnd.$("#groupLocalCamera").remove();
         $wnd.$("#groupLocalCanvas").remove();
-        delete $wnd.localStream[streamType + '_' + remoteMemberCode];
+        delete $wnd.localStream[streamType + '_' + remoteMemberCode];   
+        if ($wnd.mediaRecorder[streamType + '_' + remoteMemberCode] && $wnd.mediaRecorder[streamType + '_' + remoteMemberCode].state !== 'inactive') {
+          // stop triggers ondataavailable and onstop which deletes the mediaRecorder entry
+          $wnd.mediaRecorder[streamType + '_' + remoteMemberCode].stop();
+        }
         if ($wnd.remoteStream[streamType + '_' + remoteMemberCode]) {
             var tracks = $wnd.remoteStream[streamType + '_' + remoteMemberCode].getTracks();
             for (var i = 0; i < tracks.length; i++) {
@@ -629,6 +639,45 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
+    public native void streamRecordStart(final DataSubmissionService dataSubmissionService, final String matchingRegex, final String stimulusIdString, final String userIdString, final String screenName, final String recordingFormat, final MediaSubmissionListener mediaSubmissionListener) /*-{
+        var regex = new RegExp(matchingRegex);
+        for (var key in $wnd.remoteStream) {
+            if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
+                // if there is an existing recorder then skip it
+                if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
+                    $wnd.mediaRecorder[key] = new MediaRecorder($wnd.remoteStream[key], {
+                        mimeType: 'video/' + recordingFormat + '; codecs=vp8'
+                    });
+                    $wnd.mediaRecorder[key].ondataavailable = function (event) {
+                        if (event.data && event.data.size > 0) {
+                            var dataBlob = new Blob(event.data, { type: 'video/' + recordingFormat });
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, dataBlob, mediaSubmissionListener, 0, recordingFormat);
+                        }
+                    }
+                    $wnd.mediaRecorder[key].onstop = function () {
+                      delete $wnd.mediaRecorder[streamType + '_' + remoteMemberCode];
+                    };
+                    // start recording in 10 second intervals
+                    $wnd.mediaRecorder[key].start(10000);
+                    mediaSubmissionListener.recorderStarted(null, 0)
+                }
+            }
+        }
+    }-*/;
+    
+    public native int streamRecordStop(final String matchingRegex) /*-{
+        var regex = new RegExp(matchingRegex);
+        for (var key in $wnd.mediaRecorder) {
+            if ($wnd.mediaRecorder.hasOwnProperty(key) && regex.test(key)) {
+                if ($wnd.mediaRecorder[key] && $wnd.mediaRecorder[key].state !== 'inactive') {
+                  // stop triggers ondataavailable and onstop which deletes the mediaRecorder entry
+                  $wnd.mediaRecorder[key].stop();
+                }
+            }
+        }
+        return $wnd.mediaRecorder.length;
+    }-*/;
+    
     private native void messageGroup(String streamState, String streamType, String messageData, Integer originPhase, String userId, String groupId, String groupUUID, String originMemberCode, String targetMemberCode, String screenId) /*-{
     var groupParticipantService = this;
     $wnd.stompClient.send("/app/stream", {}, JSON.stringify({
