@@ -5196,9 +5196,9 @@
 <xs:documentation>If a matching group stream exists then its contents will be recorded by the receiver and stored on the server simular to audio recordings. Recordings will be stored in 5-10 second sections. If no matching stream exists then nothing will be done.</xs:documentation>
 </xs:annotation>
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
-<xs:attribute name="streamChannels" type="groupChannels" use="required">
+<xs:attribute name="matchingRegex" type="xs:string" use="required">
 <xs:annotation>
-<xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
+<xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
@@ -5207,9 +5207,9 @@
 <xs:documentation>If a matching group stream exists and is being recorded then that recording will be stopped. If no matching stream exists then nothing will be done.</xs:documentation>
 </xs:annotation>
 <xs:group ref="choiceAnyCount_noneType" minOccurs="0" maxOccurs="unbounded"/>
-<xs:attribute name="streamChannels" type="groupChannels" use="required">
+<xs:attribute name="matchingRegex" type="xs:string" use="required">
 <xs:annotation>
-<xs:documentation>List of directional communication channels separated by | for the given streaming media. The members are separated by , in each channel. Only the first member in each channel will transmit into the stream while the remaining members in each channel will receive the stream.</xs:documentation>
+<xs:documentation>Regular expression that will be used to determin a match.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 </xs:complexType>
