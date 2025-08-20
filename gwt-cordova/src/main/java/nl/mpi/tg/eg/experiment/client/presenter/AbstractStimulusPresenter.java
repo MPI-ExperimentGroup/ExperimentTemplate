@@ -2571,8 +2571,46 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        groupStreamHandler.updateDebugRegion("streamGroupCamera");
     }
 
-    protected void streamRecordStart(final String matchingRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
-        groupStreamHandler.streamRecordStart(matchingRegex, onError, onSuccess);
+    protected void streamRecordStart(final Stimulus currentStimulus, final String matchingRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
+        final String recordingFormat = "webm";
+        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
+            @Override
+            public void recorderNotReady() {
+            }
+
+            @Override
+            public void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS) {
+//                AbstractStimulusPresenter.super.addRecorderLevelIndicatorWeb(new ValueChangeListener<Double>() {
+//                    @Override
+//                    public void onValueChange(Double value) {
+//                    }
+//                });
+                onSuccess.postLoadTimerFired();
+            }
+
+            @Override
+            public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
+                    onError.postLoadTimerFired();
+                    final MediaSubmissionListener mediaSubmissionListener = this;
+                    Timer timer = new Timer() {
+                        @Override
+                        public void run() {
+                            submissionService.submitMediaData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, 0, recordingFormat);
+                        }
+                    };
+                    timer.schedule(1000);
+                }
+
+            @Override
+            public void recorderFailed(final String message) {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void submissionComplete(String message, String urlAudioData) {
+            }
+        };
+        groupStreamHandler.streamRecordStart(submissionService, matchingRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), recordingFormat, mediaSubmissionListener);
     }
     
     protected void streamRecordStop(final String matchingRegex) {
