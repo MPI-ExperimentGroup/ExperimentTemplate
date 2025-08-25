@@ -108,7 +108,7 @@ public class ExperimentService {
 //        return new ResponseEntity<>(screenDataRepository.findAll(), HttpStatus.OK);
 //    }
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
-    @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/mediaBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
     public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
         MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, UUID.randomUUID(), downloadPermittedWindowMs);

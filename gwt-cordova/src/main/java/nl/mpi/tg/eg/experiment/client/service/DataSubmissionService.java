@@ -139,7 +139,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     private String getMediaSubmitPath() {
-        return serviceLocations.dataSubmitUrl() + "audioBlob";
+        return serviceLocations.dataSubmitUrl() + "mediaBlob";
     }
 
     public native void submitMediaData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener, final Integer downloadPermittedWindowMs, final String mediaType) /*-{
