@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
-import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.MediaData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,12 +36,12 @@ import org.springframework.web.server.ResponseStatusException;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Controller
-public class AudioDataController {
+public class MediaDataController {
 
     @Autowired
-    private AudioDataRepository audioDataRepository;
+    private MediaDataRepository audioDataRepository;
     @Autowired
-    private AudioDataService audioDataService;
+    private MediaDataService audioDataService;
 
     @RequestMapping(value = "audio/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
@@ -52,7 +52,7 @@ public class AudioDataController {
     @RequestMapping(value = "media/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void getMedia(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
             HttpServletResponse response) throws IOException {
-        final AudioData audioData = this.audioDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Audio not found"));
+        final MediaData audioData = this.audioDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Audio not found"));
         // TODO: video/ogv is not quite correct and should be video/ogg
         String extension = audioData.getRecordingFormat().name().toLowerCase();
         String mediaType = audioData.isVideo() ? "video" : "audio";
