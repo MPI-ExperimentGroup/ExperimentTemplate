@@ -117,7 +117,7 @@ public class ExperimentService {
         return new ResponseEntity<>(mediaData.getShortLivedToken().toString(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/replayAudio/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
+    @RequestMapping(value = "/replayMedia/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId, HttpServletResponse response) throws IOException {
 //        System.out.println("shortLivedToken: " + shortLivedToken + " for userId: " + userId);
         final List<MediaData> mediaDataRecords = this.mediaDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
