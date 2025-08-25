@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.MediaData;
 import nl.mpi.tg.eg.frinex.model.MediaType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.GroupData;
@@ -69,9 +69,9 @@ public class ExperimentService {
     @Autowired
     GroupDataRepository groupDataRepository;
     @Autowired
-    AudioDataRepository audioDataRepository;
+    MediaDataRepository mediaDataRepository;
     @Autowired
-    private AudioDataService audioDataService;
+    private MediaDataService mediaDataService;
 
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
@@ -110,30 +110,30 @@ public class ExperimentService {
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
-        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, UUID.randomUUID(), downloadPermittedWindowMs);
-        audioDataService.saveAudioData(audioData, dataBlob);
+    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
+        MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, UUID.randomUUID(), downloadPermittedWindowMs);
+        mediaDataService.saveMediaData(mediaData, dataBlob);
         // return the short lived token for the user to replay their recorded audio
-        return new ResponseEntity<>(audioData.getShortLivedToken().toString(), HttpStatus.OK);
+        return new ResponseEntity<>(mediaData.getShortLivedToken().toString(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/replayAudio/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId, HttpServletResponse response) throws IOException {
 //        System.out.println("shortLivedToken: " + shortLivedToken + " for userId: " + userId);
-        final List<AudioData> audioDataRecords = this.audioDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
-        if (audioDataRecords.size() == 1) {
-            AudioData audioData = audioDataRecords.get(0);
-            if (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
-                String extension = audioData.getRecordingFormat().name().toLowerCase();
-                String mediaType = audioData.isVideo() ? "video" : "audio";
+        final List<MediaData> mediaDataRecords = this.mediaDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
+        if (mediaDataRecords.size() == 1) {
+            MediaData mediaData = mediaDataRecords.get(0);
+            if (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
+                String extension = mediaData.getRecordingFormat().name().toLowerCase();
+                String mediaType = mediaData.isVideo() ? "video" : "audio";
                 response.setContentType(mediaType + "/" + extension);
-                audioDataService.streamToResponse(response.getOutputStream(), audioData);
+                mediaDataService.streamToResponse(response.getOutputStream(), mediaData);
             } else {
-//                System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + audioData.getSubmitDate().getTime() + ", " + audioData.getDownloadPermittedWindowMs() + ", " + System.currentTimeMillis() + ", " + (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
+//                System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + mediaData.getSubmitDate().getTime() + ", " + mediaData.getDownloadPermittedWindowMs() + ", " + System.currentTimeMillis() + ", " + (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
                 response.sendError(HttpStatus.UNAUTHORIZED.value());
             }
         } else {
-//            System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + audioDataRecords.size());
+//            System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + mediaDataRecords.size());
             response.sendError(HttpStatus.NOT_FOUND.value());
         }
     }
