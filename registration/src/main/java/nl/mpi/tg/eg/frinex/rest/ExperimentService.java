@@ -24,7 +24,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.AudioData;
-import nl.mpi.tg.eg.frinex.model.AudioType;
+import nl.mpi.tg.eg.frinex.model.MediaType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -110,8 +110,8 @@ public class ExperimentService {
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("audioType") AudioType audioType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
-        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, audioType, null, UUID.randomUUID(), downloadPermittedWindowMs);
+    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
+        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, UUID.randomUUID(), downloadPermittedWindowMs);
         audioDataService.saveAudioData(audioData, dataBlob);
         // return the short lived token for the user to replay their recorded audio
         return new ResponseEntity<>(audioData.getShortLivedToken().toString(), HttpStatus.OK);
