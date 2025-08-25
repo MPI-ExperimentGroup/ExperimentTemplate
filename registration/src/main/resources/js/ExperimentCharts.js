@@ -272,7 +272,7 @@ function generateTable(tableData) {
         'participants/search/findByLike'
         + parametersString
     ) : (tableData.source === "mediaResponse") ? (
-        'audiodata/search/findByLike'
+        'mediadata/search/findByLike'
         + parametersString
         // + '&recordingFormat=' + encodeURIComponent(tableData.recordingFormat)
     ) : (tableData.source === "stimulusResponse") ? (
