@@ -31,14 +31,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MenuController {
 
 //    @Autowired
-//    private AudioDataRepository audioDataRepository;
+//    private MediaDataRepository mediaDataRepository;
 
     @RequestMapping({"/", "/menu"})
     public String menu(Model model,
             HttpServletRequest request,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
             @RequestParam(value = "id", required = false) String paramId) {
-        // model.addAttribute("audioDates", this.audioDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
+        // model.addAttribute("audioDates", this.mediaDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
         model.addAttribute("requestUrl", request.getRequestURL().toString().replaceFirst("^http:", "https:"));

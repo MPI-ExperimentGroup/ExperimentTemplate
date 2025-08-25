@@ -47,7 +47,7 @@ public class UsageStatsService {
     @Autowired
     StimulusResponseRepository stimulusResponseRepository;
     @Autowired
-    private AudioDataRepository audioDataRepository;
+    private MediaDataRepository mediaDataRepository;
     @Autowired
     private DataDeletionLogRepository dataDeletionLogRepository;
 
@@ -67,7 +67,7 @@ public class UsageStatsService {
         usageStats.lastParticipantSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
         usageStats.participantsFirstAndLastSeen = participantRepository.findFirstAndLastUsersAccess();
         usageStats.sessionFirstAndLastSeen = tagRepository.findFirstAndLastSessionAccess();
-        usageStats.totalMediaResponses = audioDataRepository.count();
+        usageStats.totalMediaResponses = mediaDataRepository.count();
         usageStats.totalDeletionEvents = dataDeletionLogRepository.count();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
     }
@@ -86,7 +86,7 @@ public class UsageStatsService {
         usageStats.lastParticipantSeen = null;
         usageStats.participantsFirstAndLastSeen = null;
         usageStats.sessionFirstAndLastSeen = null;
-        usageStats.totalMediaResponses = audioDataRepository.count();
+        usageStats.totalMediaResponses = mediaDataRepository.count();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
     }
 }

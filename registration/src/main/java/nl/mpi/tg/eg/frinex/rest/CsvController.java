@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.MediaData;
 import nl.mpi.tg.eg.frinex.model.EventTime;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -75,9 +75,9 @@ public class CsvController {
     @Autowired
     private StimulusResponseRepository stimulusResponseRepository;
     @Autowired
-    private AudioDataRepository audioDataRepository;
+    private MediaDataRepository mediaDataRepository;
     @Autowired
-    private AudioDataService audioDataService;
+    private MediaDataService mediaDataService;
 
     @RequestMapping(value = "/csv.zip", method = RequestMethod.GET)
     @ResponseBody
@@ -111,13 +111,13 @@ public class CsvController {
 //        System.out.println(selectedDateString);
         StreamingResponseBody stream = outputStream -> {
             try ( ZipOutputStream zipOut = new ZipOutputStream(outputStream)) {
-                for (AudioData audioData : audioDataRepository.findBySubmitDateBetween(selectedDate, selectedEndDate)) {
-                    final String fileName = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
-                            + audioData.getStimulusId() + "_" + audioData.getId() + "."
-                            + audioData.getRecordingFormat().name();
+                for (MediaData mediaData : mediaDataRepository.findBySubmitDateBetween(selectedDate, selectedEndDate)) {
+                    final String fileName = mediaData.getUserId() + "_" + mediaData.getScreenName() + "_"
+                            + mediaData.getStimulusId() + "_" + mediaData.getId() + "."
+                            + mediaData.getRecordingFormat().name();
                     // TODO: remove after debugging
 //                    System.out.println(fileName);
-                    audioDataService.streamToZip(zipOut, fileName, audioData);
+                    mediaDataService.streamToZip(zipOut, fileName, mediaData);
                 }
             }
         };
@@ -153,15 +153,15 @@ public class CsvController {
 //        final ServletOutputStream outputStream = response.getOutputStream();
 //        try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
 //            zipOutputStream.setMethod(ZipOutputStream.DEFLATED);
-//            for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
-//                final String filename = audioData.getUserId() + "_" + audioData.getScreenName() + "_"
-//                        + audioData.getStimulusId() + "_" + audioData.getId() + "."
-//                        + audioData.getRecordingFormat().name();
+//            for (MediaData mediaData : mediaDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
+//                final String filename = mediaData.getUserId() + "_" + mediaData.getScreenName() + "_"
+//                        + mediaData.getStimulusId() + "_" + mediaData.getId() + "."
+//                        + mediaData.getRecordingFormat().name();
 //                // TODO: remove after debugging
 //                System.out.println(filename);
-//                InputStream audioStream = audioDataRepository.getMediaStream(audioData.getId());
+//                InputStream audioStream = mediaDataRepository.getMediaStream(mediaData.getId());
 //                addToZipArchive(zipOutputStream, filename, audioStream);
-////                addToZipArchive(zipOutputStream, filename, audioData.getDataBlob());
+////                addToZipArchive(zipOutputStream, filename, mediaData.getDataBlob());
 //                zipOutputStream.flush();
 //                outputStream.flush();
 //                // TODO: remove after debugging
