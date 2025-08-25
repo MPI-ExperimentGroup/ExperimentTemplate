@@ -133,7 +133,7 @@ public class AudioData implements Serializable {
 
     @Transient
     public boolean isVideo() {
-        return recordingFormat == AudioType.ogv;
+        return recordingFormat == AudioType.ogv || recordingFormat == AudioType.webm;
     }
 
     public AudioType getRecordingFormat() {
