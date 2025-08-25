@@ -142,7 +142,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "audioBlob";
     }
 
-    public native void submitMediaData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener, final Integer downloadPermittedWindowMs, final String audioType) /*-{
+    public native void submitMediaData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener, final Integer downloadPermittedWindowMs, final String mediaType) /*-{
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
             if(xhr.readyState === 4) {
@@ -161,7 +161,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         formData.append("userId", userIdString);
         formData.append("screenName", screenName);
         formData.append("stimulusId", stimulusIdString);
-        formData.append("audioType", audioType);
+        formData.append("mediaType", mediaType);
         formData.append("downloadPermittedWindowMs", downloadPermittedWindowMs);
         formData.append("dataBlob", dataBlob);
         xhr.open("POST", this.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::getMediaSubmitPath()(), true);
