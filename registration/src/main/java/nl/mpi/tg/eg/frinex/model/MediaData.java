@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
