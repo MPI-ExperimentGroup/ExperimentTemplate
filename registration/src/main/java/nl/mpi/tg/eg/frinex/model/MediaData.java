@@ -46,7 +46,7 @@ public class MediaData implements Serializable {
     private String screenName;
     private String userId;
     private String stimulusId;
-    private MediaType recordingFormat = null;
+    private MediaDataType recordingFormat = null;
     private UUID shortLivedToken;
     private Long downloadPermittedWindowMs = null;
     private byte[] dataBlob;
@@ -59,7 +59,7 @@ public class MediaData implements Serializable {
         this.submitDate = submitDate;
     }
 
-    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, Long downloadPermittedWindowMs) {
+    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, Long downloadPermittedWindowMs) {
         this.id = id;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -70,7 +70,7 @@ public class MediaData implements Serializable {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
-    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
+    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -135,14 +135,14 @@ public class MediaData implements Serializable {
 
     @Transient
     public boolean isVideo() {
-        return recordingFormat == MediaType.ogv || recordingFormat == MediaType.webm;
+        return recordingFormat == MediaDataType.ogv || recordingFormat == MediaDataType.webm;
     }
 
-    public MediaType getRecordingFormat() {
-        return (recordingFormat != null) ? recordingFormat : MediaType.ogg;
+    public MediaDataType getRecordingFormat() {
+        return (recordingFormat != null) ? recordingFormat : MediaDataType.ogg;
     }
 
-    public void setRecordingFormat(MediaType recordingFormat) {
+    public void setRecordingFormat(MediaDataType recordingFormat) {
         this.recordingFormat = recordingFormat;
     }
 
