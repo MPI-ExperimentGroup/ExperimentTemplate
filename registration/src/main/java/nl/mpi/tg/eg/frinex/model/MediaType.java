@@ -21,6 +21,6 @@ package nl.mpi.tg.eg.frinex.model;
  * @since 19 May 2020 10:28:40 (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public enum AudioType {
+public enum MediaType {
     ogg, wav, ogv, webm
 }
