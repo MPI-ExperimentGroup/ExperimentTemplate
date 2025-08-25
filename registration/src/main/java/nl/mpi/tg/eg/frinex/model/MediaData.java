@@ -36,6 +36,7 @@ import javax.persistence.Transient;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
+@Table(name = "audioData")
 public class AudioData implements Serializable {
 
     private long id;
@@ -44,7 +45,7 @@ public class AudioData implements Serializable {
     private String screenName;
     private String userId;
     private String stimulusId;
-    private AudioType recordingFormat = null;
+    private MediaType recordingFormat = null;
     private UUID shortLivedToken;
     private Long downloadPermittedWindowMs = null;
     private byte[] dataBlob;
@@ -57,7 +58,7 @@ public class AudioData implements Serializable {
         this.submitDate = submitDate;
     }
 
-    public AudioData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, AudioType recordingFormat, Long downloadPermittedWindowMs) {
+    public AudioData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, Long downloadPermittedWindowMs) {
         this.id = id;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -68,7 +69,7 @@ public class AudioData implements Serializable {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
-    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, AudioType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
+    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -133,14 +134,14 @@ public class AudioData implements Serializable {
 
     @Transient
     public boolean isVideo() {
-        return recordingFormat == AudioType.ogv || recordingFormat == AudioType.webm;
+        return recordingFormat == MediaType.ogv || recordingFormat == MediaType.webm;
     }
 
-    public AudioType getRecordingFormat() {
-        return (recordingFormat != null) ? recordingFormat : AudioType.ogg;
+    public MediaType getRecordingFormat() {
+        return (recordingFormat != null) ? recordingFormat : MediaType.ogg;
     }
 
-    public void setRecordingFormat(AudioType recordingFormat) {
+    public void setRecordingFormat(MediaType recordingFormat) {
         this.recordingFormat = recordingFormat;
     }
 
