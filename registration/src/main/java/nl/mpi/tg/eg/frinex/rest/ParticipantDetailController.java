@@ -54,7 +54,7 @@ public class ParticipantDetailController {
     @Autowired
     private StimulusResponseRepository stimulusResponseRepository;
     @Autowired
-    private AudioDataRepository audioDataRepository;
+    private MediaDataRepository mediaDataRepository;
     @Autowired
     private DataDeletionLogRepository dataDeletionLogRepository;
 
@@ -113,7 +113,7 @@ public class ParticipantDetailController {
         pendingDeleteInfo.participantsLastSeen = (participantLast != null) ? participantLast.getSubmitDate() : null;
         pendingDeleteInfo.sessionFirstSeen = tagRepository.findFirstSessionAccess(id);
         pendingDeleteInfo.sessionLastSeen = tagRepository.findLastSessionAccess(id);
-        pendingDeleteInfo.totalMediaResponses = audioDataRepository.countByUserId(id);
+        pendingDeleteInfo.totalMediaResponses = mediaDataRepository.countByUserId(id);
         model.addAttribute("pendingDeleteInfo", pendingDeleteInfo);
 
         if (allowDelete) {
@@ -134,7 +134,7 @@ public class ParticipantDetailController {
                 dataDeletionLog.setDeletionAddr(deletionAddr);
 
                 // delete the audio
-                this.audioDataRepository.deleteByUserId(id);
+                this.mediaDataRepository.deleteByUserId(id);
                 dataDeletionLog.totalMediaResponses = pendingDeleteInfo.totalMediaResponses;
                 if (deleteAudio) {
                     model.addAttribute("deletionSuccess", true);
@@ -169,7 +169,7 @@ public class ParticipantDetailController {
         model.addAttribute("countOfTagPair", tagPairRepository.countByUserId(id));
         model.addAttribute("countOfTags", tagRepository.countByUserId(id));
         model.addAttribute("countOfTimestamps", timeStampRepository.countByUserId(id));
-        model.addAttribute("countOfAudio", audioDataRepository.countByUserId(id));
+        model.addAttribute("countOfAudio", mediaDataRepository.countByUserId(id));
         model.addAttribute("countOfStimulusResponse", stimulusResponseRepository.countByUserId(id));
         return "participantdelete";
     }
