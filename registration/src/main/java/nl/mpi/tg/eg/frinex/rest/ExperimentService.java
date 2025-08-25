@@ -24,7 +24,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.MediaData;
-import nl.mpi.tg.eg.frinex.model.MediaType;
+import nl.mpi.tg.eg.frinex.model.MediaDataType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -110,7 +110,7 @@ public class ExperimentService {
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = "/mediaBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
+    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
         MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, UUID.randomUUID(), downloadPermittedWindowMs);
         mediaDataService.saveMediaData(mediaData, dataBlob);
         // return the short lived token for the user to replay their recorded audio
