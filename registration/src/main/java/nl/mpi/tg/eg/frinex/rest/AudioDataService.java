@@ -24,7 +24,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.MediaData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -45,7 +45,7 @@ import org.springframework.jdbc.core.ConnectionCallback;
  */
 @Service
 
-public class AudioDataService {
+public class MediaDataService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -53,13 +53,13 @@ public class AudioDataService {
     private EntityManager entityManager;
 
     @Transactional
-    public void saveAudioData(AudioData audioData, MultipartFile dataBlob) {
-        entityManager.persist(audioData);
+    public void saveMediaData(MediaData mediaData, MultipartFile dataBlob) {
+        entityManager.persist(mediaData);
         entityManager.flush();
         // for OID use:
-        Long generatedId = audioData.getId();
+        Long generatedId = mediaData.getId();
         if (generatedId == null) {
-            throw new IllegalStateException("AudioData ID was not generated");
+            throw new IllegalStateException("MediaData ID was not generated");
         }
         jdbcTemplate.execute((Connection conn) -> {
             PGConnection pgConn = conn.unwrap(PGConnection.class);
@@ -88,7 +88,7 @@ public class AudioDataService {
         //             try {
         //                 PreparedStatement ps = conn.prepareStatement("UPDATE audio_data SET data_blob = ? WHERE id = ?");
         //                 ps.setBinaryStream(1, dataBlob.getInputStream(), dataBlob.getSize());
-        //                 ps.setLong(2, audioData.getId());
+        //                 ps.setLong(2, mediaData.getId());
         //                 return ps;
         //             } catch (IOException e) {
         //                 throw new RuntimeException("Error storing audio", e);
@@ -98,10 +98,10 @@ public class AudioDataService {
     }
 
 //    @Autowired
-//    private AudioDataRepository audioDataRepository;
+//    private MediaDataRepository mediaDataRepository;
 //    @Transactional(readOnly = true)
-//    public void addToZipArchive(final ZipOutputStream zipStream, String fileName, AudioData audioData) throws IOException {
-//        try ( Stream<Byte> stream = audioDataRepository.streamDataBlob(audioData.getId())) {
+//    public void addToZipArchive(final ZipOutputStream zipStream, String fileName, MediaData mediaData) throws IOException {
+//        try ( Stream<Byte> stream = mediaDataRepository.streamDataBlob(mediaData.getId())) {
 //            ZipEntry zipEntry = new ZipEntry(fileName);
 //            zipStream.putNextEntry(zipEntry);
 //            stream.forEach(chunk -> {
@@ -117,16 +117,16 @@ public class AudioDataService {
 //    }
     
     @Transactional
-    public void streamToZip(final ZipOutputStream zipStream, String fileName, AudioData audioData) {
+    public void streamToZip(final ZipOutputStream zipStream, String fileName, MediaData mediaData) {
         // for OID use:
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
             PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-            ps.setLong(1, audioData.getId());
+            ps.setLong(1, mediaData.getId());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 long oid = rs.getLong("data_blob");
                 if (rs.wasNull() || oid == 0) {
-                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + audioData.getId());
+                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getId());
                 } else {
                     PGConnection pgCon = con.unwrap(PGConnection.class);
                     LargeObjectManager lobj = pgCon.getLargeObjectAPI();
@@ -153,7 +153,7 @@ public class AudioDataService {
         //jdbcTemplate.query(
         //con -> {
         //    PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-        //    ps.setLong(1, audioData.getId());
+        //    ps.setLong(1, mediaData.getId());
         //    return ps;
         //},
         //(ResultSetExtractor<Void>) rs -> {
@@ -177,16 +177,16 @@ public class AudioDataService {
     }
 
     @Transactional
-    public void streamToResponse(final OutputStream outputStream, AudioData audioData) {
+    public void streamToResponse(final OutputStream outputStream, MediaData mediaData) {
         // for OID use:
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
             PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-            ps.setLong(1, audioData.getId());
+            ps.setLong(1, mediaData.getId());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 long oid = rs.getLong("data_blob");
                 if (rs.wasNull() || oid == 0) {
-                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + audioData.getId());
+                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getId());
                 } else {
                     PGConnection pgConn = con.unwrap(PGConnection.class);
                     LargeObjectManager lobj = pgConn.getLargeObjectAPI();
@@ -211,7 +211,7 @@ public class AudioDataService {
         //jdbcTemplate.query(
         //        con -> {
         //            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-        //            ps.setLong(1, audioData.getId());
+        //            ps.setLong(1, mediaData.getId());
         //            return ps;
         //        },
         //        (ResultSetExtractor<Void>) rs -> {

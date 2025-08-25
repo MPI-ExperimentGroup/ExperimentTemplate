@@ -23,6 +23,6 @@ import java.io.InputStream;
  * @since 06 May, 2025 4:34:41 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface AudioDataStreamer {
+public interface MediaDataStreamer {
     public InputStream getMediaStream(Long id);
 }

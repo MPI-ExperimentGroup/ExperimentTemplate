@@ -34,7 +34,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional(readOnly = true)
-public class AudioDataStreamerImpl implements AudioDataStreamer {
+public class MediaDataStreamerImpl implements MediaDataStreamer {
 
     @PersistenceContext
     private EntityManager entityManager;
