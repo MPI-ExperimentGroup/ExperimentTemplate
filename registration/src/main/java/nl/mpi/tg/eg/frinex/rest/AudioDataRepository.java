@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.QueryHint;
-import nl.mpi.tg.eg.frinex.model.AudioData;
+import nl.mpi.tg.eg.frinex.model.MediaData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -36,20 +36,20 @@ import org.springframework.transaction.annotation.Transactional;
  * @since Aug 13, 2018 4:34:41 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@RepositoryRestResource(collectionResourceRel = "audiodata", path = "audiodata")
-public interface AudioDataRepository extends PagingAndSortingRepository<AudioData, Long>, AudioDataStreamer {
+@RepositoryRestResource(collectionResourceRel = "mediadata", path = "mediadata")
+public interface MediaDataRepository extends PagingAndSortingRepository<MediaData, Long>, MediaDataStreamer {
 
     @Override
     @RestResource(exported = false)
-    public abstract <S extends AudioData> S save(S entity);
+    public abstract <S extends MediaData> S save(S entity);
 
     @Override
     @RestResource(exported = false)
-    public abstract void delete(AudioData entity);
+    public abstract void delete(MediaData entity);
 
     @Override
     @RestResource(exported = false)
-    public void deleteAll(Iterable<? extends AudioData> arg0);
+    public void deleteAll(Iterable<? extends MediaData> arg0);
 
     @Override
     @RestResource(exported = false)
@@ -63,7 +63,7 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
 
     @Override
     @RestResource(exported = false)
-    public <S extends AudioData> Iterable<S> saveAll(Iterable<S> arg0);
+    public <S extends MediaData> Iterable<S> saveAll(Iterable<S> arg0);
 
     @Override
     @RestResource(exported = false)
@@ -73,44 +73,44 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     
-    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM AudioData a WHERE "
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM MediaData a WHERE "
         + "(:userId IS NULL OR a.userId like :userId) AND "
         + "(:screenName IS NULL OR a.screenName like :screenName) AND "
         + "(:stimulusId IS NULL OR a.stimulusId like :stimulusId)")
     @Transactional
-    Page<AudioData> findByLike(Pageable pageable, 
+    Page<MediaData> findByLike(Pageable pageable, 
     @Param("userId") String userId,
     @Param("screenName") String screenName,
     @Param("stimulusId") String stimulusId);
 
     @Transactional
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    @Query(value = "select new AudioData(min(submitDate)) from AudioData group by to_char(submitDate,'YYYY-MM-DD')")
-    public List<AudioData> findSubmitDateDistinctByGroupBySubmitDay();
+    @Query(value = "select new MediaData(min(submitDate)) from MediaData group by to_char(submitDate,'YYYY-MM-DD')")
+    public List<MediaData> findSubmitDateDistinctByGroupBySubmitDay();
     
     @Transactional
 //    string list is not cachable and the query seems to be fairly quick anyway
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from AudioData order by resultString asc")
+    @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from MediaData order by resultString asc")
     public String[] findSubmitDateDistinctByOrderBySubmitDateAsc();
 
     @Transactional
-//    List<AudioData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
-    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM AudioData a WHERE a.submitDate BETWEEN :start AND :end")
-    List<AudioData> findBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
+//    List<MediaData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM MediaData a WHERE a.submitDate BETWEEN :start AND :end")
+    List<MediaData> findBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
 
-    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM AudioData a WHERE a.userId = :userId ORDER BY a.submitDate ASC")
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM MediaData a WHERE a.userId = :userId ORDER BY a.submitDate ASC")
     @Transactional
-    public List<AudioData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
+    public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
 //    @Transactional
-//    public List<AudioData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
+//    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 
     @Transactional
-    @Query("SELECT new AudioData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM AudioData a WHERE a.shortLivedToken = :shortLivedToken AND a.userId = :userId")
-    public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.downloadPermittedWindowMs) FROM MediaData a WHERE a.shortLivedToken = :shortLivedToken AND a.userId = :userId")
+    public List<MediaData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
     
-//    @Query("SELECT p.dataBlob FROM AudioData p WHERE p.id = :id")
+//    @Query("SELECT p.dataBlob FROM MediaData p WHERE p.id = :id")
 //    Stream<Byte> streamDataBlob(@Param("id") long id);
 
 }
