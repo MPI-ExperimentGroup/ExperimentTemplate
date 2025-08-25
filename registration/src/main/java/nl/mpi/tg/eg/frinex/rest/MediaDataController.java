@@ -39,9 +39,9 @@ import org.springframework.web.server.ResponseStatusException;
 public class MediaDataController {
 
     @Autowired
-    private MediaDataRepository audioDataRepository;
+    private MediaDataRepository mediaDataRepository;
     @Autowired
-    private MediaDataService audioDataService;
+    private MediaDataService mediaDataService;
 
     @RequestMapping(value = "audio/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void getAudio(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
@@ -52,14 +52,14 @@ public class MediaDataController {
     @RequestMapping(value = "media/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void getMedia(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
             HttpServletResponse response) throws IOException {
-        final MediaData audioData = this.audioDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Audio not found"));
+        final MediaData mediaData = this.mediaDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Audio not found"));
         // TODO: video/ogv is not quite correct and should be video/ogg
-        String extension = audioData.getRecordingFormat().name().toLowerCase();
-        String mediaType = audioData.isVideo() ? "video" : "audio";
+        String extension = mediaData.getRecordingFormat().name().toLowerCase();
+        String mediaType = mediaData.isVideo() ? "video" : "audio";
         String filename = mediaType + "/" + userId + "_" + screenName + "_" + stimulusId + "_" + id + "." + extension;
         response.setContentType(mediaType + "/" + extension);
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
-        audioDataService.streamToResponse(response.getOutputStream(), audioData);
+        mediaDataService.streamToResponse(response.getOutputStream(), mediaData);
     }
 
     @RequestMapping("medialisting")
