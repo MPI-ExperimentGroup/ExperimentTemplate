@@ -33,5 +33,5 @@ public interface MediaSubmissionListener {
 
     void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray);
 
-    void submissionComplete(String message, String urlAudioData);
+    void submissionComplete(String message, String urlMediaData);
 }
