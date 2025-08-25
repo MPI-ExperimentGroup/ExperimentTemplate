@@ -37,7 +37,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "audioData")
-public class AudioData implements Serializable {
+public class MediaData implements Serializable {
 
     private long id;
     private Date submitDate;
@@ -50,15 +50,15 @@ public class AudioData implements Serializable {
     private Long downloadPermittedWindowMs = null;
     private byte[] dataBlob;
 
-    public AudioData() {
+    public MediaData() {
     }
 
-    public AudioData(Date submitDate) {
+    public MediaData(Date submitDate) {
         // This constructor is only needed for caching the list of days with audio recordings
         this.submitDate = submitDate;
     }
 
-    public AudioData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, Long downloadPermittedWindowMs) {
+    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, Long downloadPermittedWindowMs) {
         this.id = id;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -69,7 +69,7 @@ public class AudioData implements Serializable {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
-    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
+    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
