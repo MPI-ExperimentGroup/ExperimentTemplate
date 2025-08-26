@@ -23,15 +23,30 @@ import com.google.gwt.typedarrays.shared.Uint8Array;
  * @since Aug 13, 2018 18:28:24 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface MediaSubmissionListener {
+public abstract class MediaSubmissionListener {
 
-    void recorderNotReady();
+    public final String userIdString;
+    public final String screenName;
+    public final String stimulusIdString;
+    public final Integer downloadPermittedWindowMs;
+    public final String mediaType;
+    private int partNumber = 0;
 
-    void recorderFailed(final String message);
+    public MediaSubmissionListener(String userIdString, String screenName, String stimulusIdString, Integer downloadPermittedWindowMs, String mediaType) {
+        this.userIdString = userIdString;
+        this.screenName = screenName;
+        this.stimulusIdString = stimulusIdString;
+        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+        this.mediaType = mediaType;
+    }
 
-    void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS);
+    public abstract void recorderNotReady();
 
-    void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray);
+    public abstract void recorderFailed(final String message);
 
-    void submissionComplete(String message, String urlMediaData);
+    public abstract void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS);
+
+    public abstract void submissionFailed(final String message, final Uint8Array dataArray);
+
+    public abstract void submissionComplete(String message, String urlMediaData);
 }

@@ -69,7 +69,7 @@ public class VideoRecorder extends AbstractRecorder {
         }
     }-*/;
 
-    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String videoDeviceRegex, final String audioDeviceRegex, final Integer videoWidth, final Integer videoHeight, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingVideoLabelString, final String videoDeviceRegex, final String audioDeviceRegex, final Integer videoWidth, final Integer videoHeight, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final MediaSubmissionListener mediaSubmissionListener) /*-{
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             console.log("isVideoSupported");
             $wnd.recordingVideoLabelString = recordingVideoLabelString;
@@ -108,7 +108,7 @@ public class VideoRecorder extends AbstractRecorder {
                             console.log("stopVideoRecorderOk: " + e);
                             var videoRecorderBlob = new Blob($wnd.videoRecorderChunks, { 'type' : 'video/ogg; codecs=opus' });
                             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;)(@java.lang.Boolean::FALSE, e.typeArg, null);
-                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, videoRecorderBlob, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(videoRecorderBlob, mediaSubmissionListener);
                             $wnd.videoRecorderChunks = [];
                             if (videoElement) {
                                 videoElement.srcObject = null;

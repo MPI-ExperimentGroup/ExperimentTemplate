@@ -142,7 +142,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "mediaBlob";
     }
 
-    public native void submitMediaData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener, final Integer downloadPermittedWindowMs, final String mediaType) /*-{
+    public native void submitMediaData(final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
             if(xhr.readyState === 4) {
@@ -150,19 +150,19 @@ public class DataSubmissionService extends AbstractSubmissionService {
                     var urlMediaData = URL.createObjectURL(dataBlob);
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;Ljava/lang/String;)(xhr.responseText,urlMediaData);
                 } else {
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataBlob);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, dataBlob);
                 }
             }
         };
         xhr.onerror = function() {
-            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataBlob);
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, dataBlob);
         }
         var formData = new FormData();
-        formData.append("userId", userIdString);
-        formData.append("screenName", screenName);
-        formData.append("stimulusId", stimulusIdString);
-        formData.append("mediaType", mediaType);
-        formData.append("downloadPermittedWindowMs", downloadPermittedWindowMs);
+        formData.append("userId", mediaSubmissionListener.userIdString);
+        formData.append("screenName", mediaSubmissionListener.screenName);
+        formData.append("stimulusId", mediaSubmissionListener.stimulusIdString);
+        formData.append("mediaType", mediaSubmissionListener.mediaType);
+        formData.append("downloadPermittedWindowMs", mediaSubmissionListener.downloadPermittedWindowMs);
         formData.append("dataBlob", dataBlob);
         xhr.open("POST", this.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::getMediaSubmitPath()(), true);
         xhr.send(formData);

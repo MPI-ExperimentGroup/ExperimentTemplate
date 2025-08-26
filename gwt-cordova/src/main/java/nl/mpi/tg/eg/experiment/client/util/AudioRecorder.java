@@ -232,7 +232,7 @@ public class AudioRecorder extends AbstractRecorder {
         //console.log(frameMs + "ms" + "," + finalMs + "ms");
     }-*/;
 
-    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String videoDeviceRegex, final String deviceRegex, final Integer videoWidth, final Integer videoHeight, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener, final int downloadPermittedWindowMs, final String recordingFormat) /*-{
+    public native void startRecorderWeb(final AbstractPresenter abstractPresenter, final DataSubmissionService dataSubmissionService, final String recordingLabelString, final String videoDeviceRegex, final String deviceRegex, final Integer videoWidth, final Integer videoHeight, final boolean noiseSuppressionL, final boolean echoCancellationL, final boolean autoGainControlL, final MediaSubmissionListener mediaSubmissionListener) /*-{
         if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
             $wnd.recordingLabelString = recordingLabelString;
@@ -296,7 +296,7 @@ public class AudioRecorder extends AbstractRecorder {
                     } else {
                         // $wnd.audioAnalyser = null;
                         if (!$wnd.recorderInstance){
-                            if (recordingFormat === 'wav') {
+                            if (mediaSubmissionListener.mediaType === 'wav') {
                                 $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, wavBitDepth: 16, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
                             } else {
                                 $wnd.recorderInstance = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId, echoCancellation: echoCancellationL, noiseSuppression: noiseSuppressionL, autoGainControl: autoGainControlL}, bufferLength: 1024});
@@ -305,8 +305,8 @@ public class AudioRecorder extends AbstractRecorder {
                         $wnd.recorder = $wnd.recorderInstance;
                         $wnd.recorder.ondataavailable = function( typedArray ){
                             console.log("ondataavailable: " + typedArray.length);
-                            var dataBlob = new Blob([typedArray], {type: 'audio/' + recordingFormat});
-                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, dataBlob, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                            var dataBlob = new Blob([typedArray], {type: 'audio/' + mediaSubmissionListener.mediaType});
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
                         };
                         try {
                             $wnd.startRecorder(function(){$wnd.recorderStartOffset = $wnd.recorder.audioContext.currentTime; mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});

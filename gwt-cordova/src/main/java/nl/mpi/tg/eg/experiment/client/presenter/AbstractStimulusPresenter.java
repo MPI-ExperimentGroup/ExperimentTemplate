@@ -2019,7 +2019,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
         final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "audioinput" + "RecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
-        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
+        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener(userResults.getUserData().getUserId().toString(), getSelfTag(), currentStimulus.getUniqueId(), downloadPermittedWindowMs, recordingFormat) {
             boolean recordingAborted = false;
 
             @Override
@@ -2061,7 +2061,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
+            public void submissionFailed(final String message, final Uint8Array dataArray) {
                 if (!recordingAborted) {
                     // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
 //                timedStimulusView.addText("(debug) Media Submission Failed (retry not implemented): " + message);
@@ -2070,7 +2070,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     Timer timer = new Timer() {
                         @Override
                         public void run() {
-                            submissionService.submitMediaData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+                            submissionService.submitMediaData(dataArray, mediaSubmissionListener);
                         }
                     };
                     timer.schedule(1000);
@@ -2105,7 +2105,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             // TODO: this could be more elegant in relation to the termination of the preceding recording type
             mediaRecorder = new AudioRecorder();
         }
-        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, null, deviceRegex, null, null, noiseSuppression, echoCancellation, autoGainControl, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs, recordingFormat);
+        mediaRecorder.startRecorderWeb(this, submissionService, recordingLabel, null, deviceRegex, null, null, noiseSuppression, echoCancellation, autoGainControl, mediaSubmissionListener);
     }
 
     protected void stopAudioRecorder() {
@@ -2573,7 +2573,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void streamRecordStart(final Stimulus currentStimulus, final String matchingRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         final String recordingFormat = "webm";
-        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
+        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener(userResults.getUserData().getUserId().toString(), getSelfTag(), currentStimulus.getUniqueId(), 0, recordingFormat) {
             @Override
             public void recorderNotReady() {
             }
@@ -2589,13 +2589,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
+            public void submissionFailed(final String message, final Uint8Array dataArray) {
                     onError.postLoadTimerFired();
                     final MediaSubmissionListener mediaSubmissionListener = this;
                     Timer timer = new Timer() {
                         @Override
                         public void run() {
-                            submissionService.submitMediaData(userIdString, screenName, stimulusIdString, dataArray, mediaSubmissionListener, 0, recordingFormat);
+                            submissionService.submitMediaData(dataArray, mediaSubmissionListener);
                         }
                     };
                     timer.schedule(1000);
@@ -2610,7 +2610,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void submissionComplete(String message, String urlAudioData) {
             }
         };
-        groupStreamHandler.streamRecordStart(submissionService, matchingRegex, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), recordingFormat, mediaSubmissionListener);
+        groupStreamHandler.streamRecordStart(submissionService, matchingRegex, mediaSubmissionListener);
     }
     
     protected void streamRecordStop(final String matchingRegex) {

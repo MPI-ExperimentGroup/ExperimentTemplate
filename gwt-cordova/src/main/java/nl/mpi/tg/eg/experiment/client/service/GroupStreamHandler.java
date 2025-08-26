@@ -639,19 +639,19 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    public native void streamRecordStart(final DataSubmissionService dataSubmissionService, final String matchingRegex, final String stimulusIdString, final String userIdString, final String screenName, final String recordingFormat, final MediaSubmissionListener mediaSubmissionListener) /*-{
+    public native void streamRecordStart(final DataSubmissionService dataSubmissionService, final String matchingRegex, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var regex = new RegExp(matchingRegex);
         for (var key in $wnd.remoteStream) {
             if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
                 // if there is an existing recorder then skip it
                 if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
                     $wnd.mediaRecorder[key] = new MediaRecorder($wnd.remoteStream[key], {
-                        mimeType: 'video/' + recordingFormat + '; codecs=vp8'
+                        mimeType: 'video/' + mediaSubmissionListener.mediaType + '; codecs=vp8'
                     });
                     $wnd.mediaRecorder[key].ondataavailable = function (event) {
                         if (event.data && event.data.size > 0) {
-                            var dataBlob = new Blob([event.data], { type: 'video/' + recordingFormat });
-                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;Ljava/lang/String;)(userIdString, screenName, stimulusIdString, dataBlob, mediaSubmissionListener, 0, recordingFormat);
+                            var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.mediaType });
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
                         }
                     }
                     $wnd.mediaRecorder[key].onstop = function () {
