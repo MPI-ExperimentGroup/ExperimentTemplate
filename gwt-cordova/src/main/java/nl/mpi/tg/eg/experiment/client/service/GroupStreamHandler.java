@@ -659,8 +659,10 @@ public abstract class GroupStreamHandler {
             $wnd.mediaRecorder[key].onstop = function () {
                 delete $wnd.mediaRecorder[key];
             };
+            // TODO: at some point add back the time slicing, when the reassembly logic has been written in the admin
             // start recording in 10 second intervals
-            $wnd.mediaRecorder[key].start(10000);
+            // $wnd.mediaRecorder[key].start(10000);
+            $wnd.mediaRecorder[key].start();
             mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(null, 0);
         }
     }-*/;
