@@ -354,7 +354,7 @@ public abstract class GroupStreamHandler {
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].play();
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].muted = false;
                         if ($wnd.submissionListener.hasOwnProperty(streamType + '_' + remoteMemberCode)) {
-                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Ljava/lang/String;)(streamType + '_' + remoteMemberCode);
+                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/String;)($wnd.submissionListener[streamType + '_' + remoteMemberCode], streamType + '_' + remoteMemberCode);
                         }
                     }
                 }
@@ -643,7 +643,7 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    protected native void streamRecord(final String key) /*-{
+    protected native void streamRecord(final MediaSubmissionListener mediaSubmissionListener, final String key) /*-{
         // if there is an existing recorder then skip it
         if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
             $wnd.submissionListener[key] = mediaSubmissionListener;
@@ -671,7 +671,7 @@ public abstract class GroupStreamHandler {
         var regex = new RegExp(matchingRegex);
         for (var key in $wnd.remoteStream) {
             if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Ljava/lang/String;)(key);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/String;)(mediaSubmissionListener, key);
             }
         }
     }-*/;
