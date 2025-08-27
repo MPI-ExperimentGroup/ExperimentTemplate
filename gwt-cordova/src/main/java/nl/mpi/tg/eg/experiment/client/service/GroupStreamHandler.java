@@ -666,7 +666,7 @@ public abstract class GroupStreamHandler {
         var regex = new RegExp(matchingRegex);
         for (var key in $wnd.remoteStream) {
             if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Ljava/lang/String;Lnl/mpi/tg/eg/experiment/client/service/DataSubmissionService;)(key, dataSubmissionService);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Lnl/mpi/tg/eg/experiment/client/service/DataSubmissionService;Ljava/lang/String;)(dataSubmissionService, key);
             }
         }
     }-*/;
