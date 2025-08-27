@@ -353,6 +353,9 @@ public abstract class GroupStreamHandler {
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = $wnd.remoteStream[streamType + '_' + remoteMemberCode];
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].play();
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].muted = false;
+                        if ($wnd.submissionListener.hasOwnProperty(streamType + '_' + remoteMemberCode)) {
+                            groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Ljava/lang/String;)(streamType + '_' + remoteMemberCode);
+                        }
                     }
                 }
                 groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::messageGroup(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)("refresh", streamType, "", originPhase, userId, groupId, groupUUID, selfMemberCode, remoteMemberCode, screenId);
@@ -640,7 +643,7 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
-    protected native void streamRecord(final DataSubmissionService dataSubmissionService, final String key) /*-{
+    protected native void streamRecord(final String key) /*-{
         // if there is an existing recorder then skip it
         if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
             $wnd.submissionListener[key] = mediaSubmissionListener;
@@ -650,7 +653,7 @@ public abstract class GroupStreamHandler {
             $wnd.mediaRecorder[key].ondataavailable = function (event) {
                 if (event.data && event.data.size > 0) {
                     var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.mediaType });
-                    dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
+                    $wnd.dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
                 }
             }
             $wnd.mediaRecorder[key].onstop = function () {
@@ -663,10 +666,11 @@ public abstract class GroupStreamHandler {
     }-*/;
     
     public native void streamRecordStart(final DataSubmissionService dataSubmissionService, final String matchingRegex, final MediaSubmissionListener mediaSubmissionListener) /*-{
+        $wnd.dataSubmissionService = dataSubmissionService;
         var regex = new RegExp(matchingRegex);
         for (var key in $wnd.remoteStream) {
             if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
-                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Lnl/mpi/tg/eg/experiment/client/service/DataSubmissionService;Ljava/lang/String;)(dataSubmissionService, key);
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Ljava/lang/String;)(key);
             }
         }
     }-*/;
