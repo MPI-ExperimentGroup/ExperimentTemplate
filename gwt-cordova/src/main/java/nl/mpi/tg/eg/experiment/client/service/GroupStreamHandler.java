@@ -149,6 +149,7 @@ public abstract class GroupStreamHandler {
             $wnd.localStream = [];
             $wnd.remoteStream = [];
             $wnd.mediaRecorder = [];
+            $wnd.submissionListener = [];
         }
         // onError.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
         // onSuccess.@nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener::postLoadTimerFired()();
@@ -639,28 +640,33 @@ public abstract class GroupStreamHandler {
         // disconnectStreams(originPhase, userId.toString(), groupId, groupUUID.toString(), memberCode, screenId);
     }
 
+    protected native void streamRecord(final DataSubmissionService dataSubmissionService, final String key) /*-{
+        // if there is an existing recorder then skip it
+        if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
+            $wnd.submissionListener[key] = mediaSubmissionListener;
+            $wnd.mediaRecorder[key] = new MediaRecorder($wnd.remoteStream[key], {
+                mimeType: 'video/' + mediaSubmissionListener.mediaType + '; codecs=vp8'
+            });
+            $wnd.mediaRecorder[key].ondataavailable = function (event) {
+                if (event.data && event.data.size > 0) {
+                    var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.mediaType });
+                    dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
+                }
+            }
+            $wnd.mediaRecorder[key].onstop = function () {
+                delete $wnd.mediaRecorder[key];
+            };
+            // start recording in 10 second intervals
+            $wnd.mediaRecorder[key].start(10000);
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(null, 0);
+        }
+    }-*/;
+    
     public native void streamRecordStart(final DataSubmissionService dataSubmissionService, final String matchingRegex, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var regex = new RegExp(matchingRegex);
         for (var key in $wnd.remoteStream) {
             if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
-                // if there is an existing recorder then skip it
-                if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
-                    $wnd.mediaRecorder[key] = new MediaRecorder($wnd.remoteStream[key], {
-                        mimeType: 'video/' + mediaSubmissionListener.mediaType + '; codecs=vp8'
-                    });
-                    $wnd.mediaRecorder[key].ondataavailable = function (event) {
-                        if (event.data && event.data.size > 0) {
-                            var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.mediaType });
-                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
-                        }
-                    }
-                    $wnd.mediaRecorder[key].onstop = function () {
-                      delete $wnd.mediaRecorder[streamType + '_' + remoteMemberCode];
-                    };
-                    // start recording in 10 second intervals
-                    $wnd.mediaRecorder[key].start(10000);
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(null, 0);
-                }
+                groupStreamHandler.@nl.mpi.tg.eg.experiment.client.service.GroupStreamHandler::streamRecord(Ljava/lang/String;Lnl/mpi/tg/eg/experiment/client/service/DataSubmissionService;)(key, dataSubmissionService);
             }
         }
     }-*/;
@@ -673,6 +679,7 @@ public abstract class GroupStreamHandler {
                   // stop triggers ondataavailable and onstop which deletes the mediaRecorder entry
                   $wnd.mediaRecorder[key].stop();
                 }
+                delete $wnd.submissionListener[key];
             }
         }
         return $wnd.mediaRecorder.length;
