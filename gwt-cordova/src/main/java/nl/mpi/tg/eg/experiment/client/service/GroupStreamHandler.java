@@ -667,6 +667,7 @@ public abstract class GroupStreamHandler {
     
     public native void streamRecordStart(final DataSubmissionService dataSubmissionService, final String matchingRegex, final MediaSubmissionListener mediaSubmissionListener) /*-{
         $wnd.dataSubmissionService = dataSubmissionService;
+        var groupStreamHandler = this;
         var regex = new RegExp(matchingRegex);
         for (var key in $wnd.remoteStream) {
             if ($wnd.remoteStream.hasOwnProperty(key) && regex.test(key)) {
