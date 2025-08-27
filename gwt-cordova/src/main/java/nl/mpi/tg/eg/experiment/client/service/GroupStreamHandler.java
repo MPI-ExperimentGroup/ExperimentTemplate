@@ -648,11 +648,11 @@ public abstract class GroupStreamHandler {
         if (!$wnd.mediaRecorder.hasOwnProperty(key)) {
             $wnd.submissionListener[key] = mediaSubmissionListener;
             $wnd.mediaRecorder[key] = new MediaRecorder($wnd.remoteStream[key], {
-                mimeType: 'video/' + mediaSubmissionListener.mediaType + '; codecs=vp8'
+                mimeType: 'video/' + mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType + '; codecs=vp8'
             });
             $wnd.mediaRecorder[key].ondataavailable = function (event) {
                 if (event.data && event.data.size > 0) {
-                    var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.mediaType });
+                    var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType });
                     $wnd.dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(dataBlob, mediaSubmissionListener);
                 }
             }

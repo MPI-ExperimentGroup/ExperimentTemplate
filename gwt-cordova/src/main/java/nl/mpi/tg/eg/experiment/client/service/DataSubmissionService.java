@@ -158,11 +158,11 @@ public class DataSubmissionService extends AbstractSubmissionService {
             mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, dataBlob);
         }
         var formData = new FormData();
-        formData.append("userId", mediaSubmissionListener.userIdString);
-        formData.append("screenName", mediaSubmissionListener.screenName);
-        formData.append("stimulusId", mediaSubmissionListener.stimulusIdString);
-        formData.append("mediaType", mediaSubmissionListener.mediaType);
-        formData.append("downloadPermittedWindowMs", mediaSubmissionListener.downloadPermittedWindowMs);
+        formData.append("userId", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::userIdString);
+        formData.append("screenName", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::screenName);
+        formData.append("stimulusId", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::stimulusIdString);
+        formData.append("mediaType", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType);
+        formData.append("downloadPermittedWindowMs", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::downloadPermittedWindowMs);
         formData.append("dataBlob", dataBlob);
         xhr.open("POST", this.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::getMediaSubmitPath()(), true);
         xhr.send(formData);
