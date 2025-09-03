@@ -110,11 +110,18 @@ public class ExperimentService {
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = "/mediaBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
-        MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, UUID.randomUUID(), downloadPermittedWindowMs);
-        mediaDataService.saveMediaData(mediaData, dataBlob);
-        // return the short lived token for the user to replay their recorded audio
-        return new ResponseEntity<>(mediaData.getShortLivedToken().toString(), HttpStatus.OK);
+    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs, @RequestParam("partNumber") Integer partNumber, @RequestParam("mediaUUID") UUID mediaUUID) throws IOException, SQLException {
+        if (mediaUUID == null && partNumber != 0) {
+            return new ResponseEntity<>("mediaUUID must be supplied for the subsequent parts", HttpStatus.NOT_ACCEPTABLE);
+        } else if (mediaUUID != null && partNumber == 0) {
+            return new ResponseEntity<>("mediaUUID cannot be supplied for the first part", HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            mediaUUID = (mediaUUID != null) ? mediaUUID : UUID.randomUUID();
+            MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, mediaUUID, downloadPermittedWindowMs, partNumber);
+            mediaDataService.saveMediaData(mediaData, dataBlob);
+            // return the short lived token for the user to replay their recorded audio
+            return new ResponseEntity<>(mediaData.getShortLivedToken().toString(), HttpStatus.OK);
+        }
     }
 
     @RequestMapping(value = "/replayMedia/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
