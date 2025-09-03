@@ -18,11 +18,12 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.InputStream;
+import java.util.UUID;
 
 /**
  * @since 06 May, 2025 4:34:41 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public interface MediaDataStreamer {
-    public InputStream getMediaStream(Long id);
+    public InputStream getMediaStream(UUID mediaUUID);
 }

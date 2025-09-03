@@ -18,9 +18,15 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.InputStream;
+import java.io.SequenceInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
@@ -40,18 +46,25 @@ public class MediaDataStreamerImpl implements MediaDataStreamer {
     private EntityManager entityManager;
 
     @Override
-    public InputStream getMediaStream(Long id) {
+    public InputStream getMediaStream(UUID mediaUUID) {
         return entityManager.unwrap(Session.class).doReturningWork(connection -> {
             connection.setAutoCommit(false);
-            PreparedStatement stmt = connection.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-            stmt.setLong(1, id);
-            // TODO: remove after debugging
-            System.out.println(id);
+            PreparedStatement stmt = connection.prepareStatement(
+                "SELECT data_blob FROM audio_data WHERE media_uuid = ? ORDER BY part_number ASC"
+            );
+            stmt.setObject(1, mediaUUID);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return rs.getBinaryStream("data_blob");
+            List<InputStream> streams = new ArrayList<>();
+            while (rs.next()) {
+                InputStream partStream = rs.getBinaryStream("data_blob");
+                if (partStream != null) {
+                    streams.add(partStream);
+                }
             }
-            throw new SQLException("No BLOB found for ID: " + id);
+            if (streams.isEmpty()) {
+                throw new SQLException("No media parts found for UUID: " + mediaUUID);
+            }
+            return new SequenceInputStream(Collections.enumeration(streams));
         });
     }
 }
