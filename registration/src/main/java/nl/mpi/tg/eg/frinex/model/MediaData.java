@@ -48,6 +48,8 @@ public class MediaData implements Serializable {
     private String stimulusId;
     private MediaDataType recordingFormat = null;
     private UUID shortLivedToken;
+    private Integer partNumber = 0;
+//    private UUID mediaUUID = null;
     private Long downloadPermittedWindowMs = null;
     private byte[] dataBlob;
 
@@ -59,18 +61,18 @@ public class MediaData implements Serializable {
         this.submitDate = submitDate;
     }
 
-    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, Long downloadPermittedWindowMs) {
-        this.id = id;
-        this.submitDate = submitDate;
-        this.experimentName = experimentName;
-        this.screenName = screenName;
-        this.userId = userId;
-        this.stimulusId = stimulusId;
-        this.recordingFormat = recordingFormat;
-        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
-    }
-
-    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs) {
+//    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, Long downloadPermittedWindowMs, Integer partNumber) {
+//        this.id = id;
+//        this.submitDate = submitDate;
+//        this.experimentName = experimentName;
+//        this.screenName = screenName;
+//        this.userId = userId;
+//        this.stimulusId = stimulusId;
+//        this.recordingFormat = recordingFormat;
+//        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+//        this.partNumber = partNumber;
+//    }
+    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs, Integer partNumber) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -80,6 +82,7 @@ public class MediaData implements Serializable {
         this.dataBlob = dataBlob;
         this.shortLivedToken = shortLivedToken;
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+        this.partNumber = partNumber;
     }
 
     @Id
@@ -173,6 +176,11 @@ public class MediaData implements Serializable {
 
     public void setDownloadPermittedWindowMs(Long downloadPermittedWindowMs) {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+    }
+
+    @JsonIgnore
+    public Integer getPartNumber() {
+        return partNumber;
     }
 
     @Transient
