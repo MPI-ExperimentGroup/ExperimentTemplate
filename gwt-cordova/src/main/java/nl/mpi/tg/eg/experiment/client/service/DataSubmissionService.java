@@ -142,15 +142,16 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "mediaBlob";
     }
 
-    public native void submitMediaData(final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener) /*-{
+    public native void submitMediaData(final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener, final int partNumber) /*-{
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 200) {
                     var urlMediaData = URL.createObjectURL(dataBlob);
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;Ljava/lang/String;)(xhr.responseText,urlMediaData);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::setMediaUUID(Ljava/lang/String;)(mediaUUID);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(xhr.responseText);
                 } else {
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, dataBlob);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Ljava/lang/String;Ljava/lang/Integer;)(xhr.status + ' ' + xhr.statusText, dataBlob, partNumber);
                 }
             }
         };
@@ -162,7 +163,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         formData.append("screenName", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::screenName);
         formData.append("stimulusId", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::stimulusIdString);
         formData.append("mediaType", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType);
-        formData.append("partNumber", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::partNumber);
+        formData.append("partNumber", partNumber);
         formData.append("mediaUUID", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaUUID);
         formData.append("downloadPermittedWindowMs", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::downloadPermittedWindowMs);
         formData.append("dataBlob", dataBlob);
