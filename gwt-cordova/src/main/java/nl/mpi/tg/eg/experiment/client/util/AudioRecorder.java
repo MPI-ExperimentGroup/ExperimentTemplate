@@ -306,7 +306,7 @@ public class AudioRecorder extends AbstractRecorder {
                         $wnd.recorder.ondataavailable = function( typedArray ){
                             console.log("ondataavailable: " + typedArray.length);
                             var dataBlob = new Blob([typedArray], {type: 'audio/' + mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType});
-                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/String;Ljava/lang/Integer;)(dataBlob, mediaSubmissionListener, 0);
+                            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitMediaData(Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/String;Ljava/lang/Double;)(dataBlob, mediaSubmissionListener, 0);
                         };
                         try {
                             $wnd.startRecorder(function(){$wnd.recorderStartOffset = $wnd.recorder.audioContext.currentTime; mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted(Ljava/lang/String;Ljava/lang/Double;)(targetDeviceLabel, ($wnd.recorder.audioContext.currentTime - $wnd.recorderStartOffset) * 1000)}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});

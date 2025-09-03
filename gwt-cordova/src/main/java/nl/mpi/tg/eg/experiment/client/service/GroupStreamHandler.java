@@ -650,7 +650,7 @@ public abstract class GroupStreamHandler {
             $wnd.mediaRecorder[key] = new MediaRecorder($wnd.remoteStream[key], {
                 mimeType: 'video/' + mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType + '; codecs=vp8'
             });
-            let partNumber = 0;
+            var partNumber = 0;
             $wnd.mediaRecorder[key].ondataavailable = function (event) {
                 if (event.data && event.data.size > 0) {
                     var dataBlob = new Blob([event.data], { type: 'video/' + mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaType });

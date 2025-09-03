@@ -2061,7 +2061,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionFailed(final String message, final Uint8Array dataArray, final Integer partNumber) {
+            public void submissionFailed(final String message, final Uint8Array dataArray, final Double partNumber) {
                 if (!recordingAborted) {
                     // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
 //                timedStimulusView.addText("(debug) Media Submission Failed (retry not implemented): " + message);
@@ -2589,7 +2589,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionFailed(final String message, final Uint8Array dataArray, final Integer partNumber) {
+            public void submissionFailed(final String message, final Uint8Array dataArray, final Double partNumber) {
                     onError.postLoadTimerFired();
                     final MediaSubmissionListener mediaSubmissionListener = this;
                     Timer timer = new Timer() {
