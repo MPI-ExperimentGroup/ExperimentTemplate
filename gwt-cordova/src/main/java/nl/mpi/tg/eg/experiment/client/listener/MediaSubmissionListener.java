@@ -30,7 +30,7 @@ public abstract class MediaSubmissionListener {
     public final String stimulusIdString;
     public final Integer downloadPermittedWindowMs;
     public final String mediaType;
-    private int partNumber = 0;
+    public String mediaUUID = null;
 
     public MediaSubmissionListener(String userIdString, String screenName, String stimulusIdString, Integer downloadPermittedWindowMs, String mediaType) {
         this.userIdString = userIdString;
@@ -46,7 +46,15 @@ public abstract class MediaSubmissionListener {
 
     public abstract void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS);
 
-    public abstract void submissionFailed(final String message, final Uint8Array dataArray);
+    public abstract void submissionFailed(final String message, final Uint8Array dataArray, final int partNumber);
 
-    public abstract void submissionComplete(String message, String urlMediaData);
+    public abstract void submissionComplete(String message);
+
+    public String getMediaUUID() {
+        return mediaUUID;
+    }
+
+    public void setMediaUUID(String mediaUUID) {
+        this.mediaUUID = mediaUUID;
+    }
 }
