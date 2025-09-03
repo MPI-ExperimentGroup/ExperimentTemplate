@@ -2061,7 +2061,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionFailed(final String message, final Uint8Array dataArray) {
+            public void submissionFailed(final String message, final Uint8Array dataArray, final int partNumber) {
                 if (!recordingAborted) {
                     // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
 //                timedStimulusView.addText("(debug) Media Submission Failed (retry not implemented): " + message);
@@ -2070,7 +2070,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     Timer timer = new Timer() {
                         @Override
                         public void run() {
-                            submissionService.submitMediaData(dataArray, mediaSubmissionListener);
+                            submissionService.submitMediaData(dataArray, mediaSubmissionListener, partNumber);
                         }
                     };
                     timer.schedule(1000);
@@ -2084,14 +2084,14 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionComplete(String message, String urlAudioData) {
+            public void submissionComplete(String message) {
                 if (!recordingAborted) {
                     if (downloadPermittedWindowMs > 0) {
                         String replayMediaUrl = serviceLocations.dataSubmitUrl() + "replayMedia/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
                         // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayMediaUrl)
                         // TODO: this callback loadedStimulusListener might be able to traverse the nextStimulus and then trigger another nextStimulus in mskonopka
-                        timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                        timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(mediaUUID) : UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
                     } else {
                         loadedStimulusListener.postLoadTimerFired();
                     }
@@ -2589,13 +2589,13 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionFailed(final String message, final Uint8Array dataArray) {
+            public void submissionFailed(final String message, final Uint8Array dataArray, final int partNumber) {
                     onError.postLoadTimerFired();
                     final MediaSubmissionListener mediaSubmissionListener = this;
                     Timer timer = new Timer() {
                         @Override
                         public void run() {
-                            submissionService.submitMediaData(dataArray, mediaSubmissionListener);
+                            submissionService.submitMediaData(dataArray, mediaSubmissionListener, partNumber);
                         }
                     };
                     timer.schedule(1000);
@@ -2607,7 +2607,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionComplete(String message, String urlAudioData) {
+            public void submissionComplete(String message) {
             }
         };
         groupStreamHandler.streamRecordStart(submissionService, matchingRegex, mediaSubmissionListener);
