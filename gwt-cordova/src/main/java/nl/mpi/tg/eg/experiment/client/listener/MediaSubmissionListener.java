@@ -46,7 +46,7 @@ public abstract class MediaSubmissionListener {
 
     public abstract void recorderStarted(final String targetDeviceId, final Double audioContextCurrentMS);
 
-    public abstract void submissionFailed(final String message, final Uint8Array dataArray, final Integer partNumber);
+    public abstract void submissionFailed(final String message, final Uint8Array dataArray, final Double partNumber);
 
     public abstract void submissionComplete(String message);
 
