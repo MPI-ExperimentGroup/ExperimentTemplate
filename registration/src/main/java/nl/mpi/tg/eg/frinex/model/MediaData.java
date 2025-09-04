@@ -185,6 +185,10 @@ public class MediaData implements Serializable {
         return partNumber;
     }
 
+    public void setPartNumber(Integer partNumber) {
+        this.partNumber = partNumber;
+    }
+
     @Transient
     public String getMediaPath() {
         return "media/" + userId + "_" + screenName + "_" + stimulusId + "_" + id;
