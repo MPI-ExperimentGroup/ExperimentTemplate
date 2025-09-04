@@ -206,7 +206,11 @@ public class MediaDataService {
                     }
                 }
             }
-            outputStream.flush();
+            try {
+                outputStream.flush();
+            } catch (IOException exception) {
+                System.err.println("[ERROR] error flushing streamToResponse: " + exception.getMessage());
+            }
             return null;
         });
         //for BYTEA use:
