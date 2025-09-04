@@ -73,7 +73,7 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     
-    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.shortLivedToken, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE "
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE "
         + "(:userId IS NULL OR a.userId like :userId) AND "
         + "(:screenName IS NULL OR a.screenName like :screenName) AND "
         + "(:stimulusId IS NULL OR a.stimulusId like :stimulusId) AND "
@@ -97,10 +97,10 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
 
     @Transactional
 //    List<MediaData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
-    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.shortLivedToken, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.partNumber = 0 AND a.submitDate BETWEEN :start AND :end")
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.partNumber = 0 AND a.submitDate BETWEEN :start AND :end")
     List<MediaData> findBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
 
-    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.shortLivedToken, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.userId = :userId AND a.partNumber = 0 ORDER BY a.submitDate ASC")
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.userId = :userId AND a.partNumber = 0 ORDER BY a.submitDate ASC")
     @Transactional
     public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
@@ -108,8 +108,8 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
 //    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 
     @Transactional
-    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.shortLivedToken, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.shortLivedToken = :shortLivedToken AND a.userId = :userId AND a.partNumber = 0")
-    public List<MediaData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
+    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.mediaUUID = :mediaUUID AND a.userId = :userId AND a.partNumber = 0")
+    public List<MediaData> findByShortLivedTokenAndUserId(@Param("mediaUUID") UUID mediaUUID, @Param("userId") String userId);
     
 //    @Query("SELECT p.dataBlob FROM MediaData p WHERE p.id = :id")
 //    Stream<Byte> streamDataBlob(@Param("id") long id);
