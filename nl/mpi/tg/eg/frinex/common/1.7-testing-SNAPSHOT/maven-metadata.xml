@@ -3,27 +3,27 @@
   <groupId>nl.mpi.tg.eg.frinex</groupId>
   <artifactId>common</artifactId>
   <versioning>
-    <lastUpdated>20250904144537</lastUpdated>
+    <lastUpdated>20250904150030</lastUpdated>
     <snapshot>
-      <timestamp>20250904.144537</timestamp>
+      <timestamp>20250904.150030</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>1.7-testing-20250904.144537-1</value>
-        <updated>20250904144537</updated>
+        <value>1.7-testing-20250904.150030-1</value>
+        <updated>20250904150030</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.7-testing-20250904.144537-1</value>
-        <updated>20250904144537</updated>
+        <value>1.7-testing-20250904.150030-1</value>
+        <updated>20250904150030</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>sources</classifier>
         <extension>jar</extension>
-        <value>1.7-testing-20250904.144537-1</value>
-        <updated>20250904144537</updated>
+        <value>1.7-testing-20250904.150030-1</value>
+        <updated>20250904150030</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
