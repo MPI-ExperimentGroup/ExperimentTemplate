@@ -182,31 +182,31 @@ public class MediaDataService {
     public void streamToResponse(final OutputStream outputStream, MediaData mediaData) {
         // for OID use:
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
-            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-            ps.setLong(1, mediaData.getId());
+            PGConnection pgConn = con.unwrap(PGConnection.class);
+            LargeObjectManager lobj = pgConn.getLargeObjectAPI();
+            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
+            ps.setObject(1, mediaData.getShortLivedToken());
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            byte[] buffer = new byte[8192];
+            while (rs.next()) {
                 long oid = rs.getLong("data_blob");
                 if (rs.wasNull() || oid == 0) {
-                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getId());
+                    System.err.println("[ERROR] data_blob OID is null or 0 for part of short_lived_token: " + mediaData.getShortLivedToken());
                 } else {
-                    PGConnection pgConn = con.unwrap(PGConnection.class);
-                    LargeObjectManager lobj = pgConn.getLargeObjectAPI();
                     LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
                     try (InputStream blobStream = obj.getInputStream()) {
-                        byte[] buffer = new byte[8192];
                         int bytesRead;
                         while ((bytesRead = blobStream.read(buffer)) != -1) {
                             outputStream.write(buffer, 0, bytesRead);
                         }
-                        outputStream.flush();
                     } catch (IOException e) {
-                        throw new RuntimeException("Error streaming media data", e);
+                        throw new RuntimeException("Error streaming media chunk", e);
                     } finally {
                         obj.close();
                     }
                 }
             }
+            outputStream.flush();
             return null;
         });
         //for BYTEA use:
