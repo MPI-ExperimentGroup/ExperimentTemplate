@@ -120,32 +120,34 @@ public class MediaDataService {
     public void streamToZip(final ZipOutputStream zipStream, String fileName, MediaData mediaData) {
         // for OID use:
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
-            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ?");
-            ps.setLong(1, mediaData.getId());
+            PGConnection pgCon = con.unwrap(PGConnection.class);
+            LargeObjectManager lobj = pgCon.getLargeObjectAPI();
+            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
+            ps.setObject(1, mediaData.getShortLivedToken());
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                long oid = rs.getLong("data_blob");
-                if (rs.wasNull() || oid == 0) {
-                    System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getId());
-                } else {
-                    PGConnection pgCon = con.unwrap(PGConnection.class);
-                    LargeObjectManager lobj = pgCon.getLargeObjectAPI();
-                    LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
-                    try (InputStream blobStream = obj.getInputStream()) {
-                        ZipEntry entry = new ZipEntry(fileName);
-                        zipStream.putNextEntry(entry);
-                        byte[] buffer = new byte[8192];
-                        int bytesRead;
-                        while ((bytesRead = blobStream.read(buffer)) != -1) {
-                            zipStream.write(buffer, 0, bytesRead);
+            ZipEntry entry = new ZipEntry(fileName);
+            try {
+                zipStream.putNextEntry(entry);
+                byte[] buffer = new byte[8192];
+                while (rs.next()) {
+                    long oid = rs.getLong("data_blob");
+                    if (rs.wasNull() || oid == 0) {
+                        System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getShortLivedToken());
+                    } else {
+                        LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
+                        try (InputStream blobStream = obj.getInputStream()) {
+                            int bytesRead;
+                            while ((bytesRead = blobStream.read(buffer)) != -1) {
+                                zipStream.write(buffer, 0, bytesRead);
+                            }
+                        } finally {
+                            obj.close();
                         }
-                        zipStream.closeEntry();
-                    } catch (IOException e) {
-                        throw new RuntimeException("Error writing blob chunk to ZIP", e);
-                    } finally {
-                        obj.close();
                     }
                 }
+                zipStream.closeEntry();
+            } catch (IOException e) {
+                throw new RuntimeException("Error writing blob chunk to ZIP", e);
             }
             return null;
         });
