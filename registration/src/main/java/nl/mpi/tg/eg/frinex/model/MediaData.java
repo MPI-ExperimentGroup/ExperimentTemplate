@@ -63,17 +63,19 @@ public class MediaData implements Serializable {
         this.submitDate = submitDate;
     }
 
-//    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, Long downloadPermittedWindowMs, Integer partNumber) {
-//        this.id = id;
-//        this.submitDate = submitDate;
-//        this.experimentName = experimentName;
-//        this.screenName = screenName;
-//        this.userId = userId;
-//        this.stimulusId = stimulusId;
-//        this.recordingFormat = recordingFormat;
-//        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
-//        this.partNumber = partNumber;
-//    }
+    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, final UUID mediaUUID, Long downloadPermittedWindowMs, Integer partNumber) {
+        this.id = id;
+        this.submitDate = submitDate;
+        this.experimentName = experimentName;
+        this.screenName = screenName;
+        this.userId = userId;
+        this.stimulusId = stimulusId;
+        this.recordingFormat = recordingFormat;
+        this.mediaUUID = mediaUUID;
+        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+        this.partNumber = partNumber;
+    }
+    
     public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID mediaUUID, final Long downloadPermittedWindowMs, final Integer partNumber) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
