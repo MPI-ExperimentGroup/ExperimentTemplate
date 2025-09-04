@@ -110,7 +110,7 @@ public class ExperimentService {
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = "/mediaBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs, @RequestParam("partNumber") Integer partNumber, @RequestParam("mediaUUID") UUID mediaUUID) throws IOException, SQLException {
+    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs, @RequestParam("partNumber") Integer partNumber, @RequestParam(value = "mediaUUID", required = false) UUID mediaUUID) throws IOException, SQLException {
         if (mediaUUID == null && partNumber != 0) {
             return new ResponseEntity<>("mediaUUID must be supplied for the subsequent parts", HttpStatus.NOT_ACCEPTABLE);
         } else if (mediaUUID != null && partNumber == 0) {
