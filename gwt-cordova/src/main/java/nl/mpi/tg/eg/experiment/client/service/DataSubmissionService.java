@@ -151,12 +151,12 @@ public class DataSubmissionService extends AbstractSubmissionService {
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::setMediaUUID(Ljava/lang/String;)(mediaUUID);
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(xhr.responseText);
                 } else {
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Ljava/lang/String;Ljava/lang/Double;)(xhr.status + ' ' + xhr.statusText, dataBlob, partNumber);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Ljava/lang/Double;)(xhr.status + ' ' + xhr.statusText, dataBlob, partNumber);
                 }
             }
         };
         xhr.onerror = function() {
-            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Ljava/lang/String;Ljava/lang/Double;)(xhr.status + ' ' + xhr.statusText, dataBlob, partNumber);
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Ljava/lang/Double;)(xhr.status + ' ' + xhr.statusText, dataBlob, partNumber);
         }
         var formData = new FormData();
         formData.append("userId", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::userIdString);
