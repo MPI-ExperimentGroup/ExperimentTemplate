@@ -120,7 +120,7 @@ public class ExperimentService {
             MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, mediaUUID, downloadPermittedWindowMs, partNumber);
             mediaDataService.saveMediaData(mediaData, dataBlob);
             // return the short lived token for the user to replay their recorded audio
-            return new ResponseEntity<>(mediaData.getShortLivedToken().toString(), HttpStatus.OK);
+            return new ResponseEntity<>(mediaData.getMediaUUID().toString(), HttpStatus.OK);
         }
     }
 

@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
@@ -47,7 +48,8 @@ public class MediaData implements Serializable {
     private String userId;
     private String stimulusId;
     private MediaDataType recordingFormat = null;
-    private UUID shortLivedToken;
+    @Column(name = "short_lived_token")
+    private UUID mediaUUID;
     private Integer partNumber = 0;
 //    private UUID mediaUUID = null;
     private Long downloadPermittedWindowMs = null;
@@ -72,7 +74,7 @@ public class MediaData implements Serializable {
 //        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
 //        this.partNumber = partNumber;
 //    }
-    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs, Integer partNumber) {
+    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID shortLivedToken, final Long downloadPermittedWindowMs, final UUID mediaUUID, final Integer partNumber) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -80,8 +82,9 @@ public class MediaData implements Serializable {
         this.stimulusId = stimulusId;
         this.recordingFormat = recordingFormat;
         this.dataBlob = dataBlob;
-        this.shortLivedToken = shortLivedToken;
+        this.mediaUUID = shortLivedToken;
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+        this.mediaUUID = mediaUUID;
         this.partNumber = partNumber;
     }
 
@@ -162,12 +165,12 @@ public class MediaData implements Serializable {
         this.dataBlob = dataBlob;
     }
 
-    public UUID getShortLivedToken() {
-        return shortLivedToken;
+    public UUID getMediaUUID() {
+        return mediaUUID;
     }
 
-    public void setShortLivedToken(UUID shortLivedToken) {
-        this.shortLivedToken = shortLivedToken;
+    public void setMediaUUID(UUID shortLivedToken) {
+        this.mediaUUID = shortLivedToken;
     }
 
     public long getDownloadPermittedWindowMs() {

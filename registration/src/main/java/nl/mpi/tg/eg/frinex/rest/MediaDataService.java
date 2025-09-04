@@ -123,7 +123,7 @@ public class MediaDataService {
             PGConnection pgCon = con.unwrap(PGConnection.class);
             LargeObjectManager lobj = pgCon.getLargeObjectAPI();
             PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
-            ps.setObject(1, mediaData.getShortLivedToken());
+            ps.setObject(1, mediaData.getMediaUUID());
             ResultSet rs = ps.executeQuery();
             ZipEntry entry = new ZipEntry(fileName);
             try {
@@ -132,7 +132,7 @@ public class MediaDataService {
                 while (rs.next()) {
                     long oid = rs.getLong("data_blob");
                     if (rs.wasNull() || oid == 0) {
-                        System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getShortLivedToken());
+                        System.err.println("[ERROR] data_blob OID is null or 0 for id: " + mediaData.getMediaUUID());
                     } else {
                         LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
                         try (InputStream blobStream = obj.getInputStream()) {
@@ -185,13 +185,13 @@ public class MediaDataService {
             PGConnection pgConn = con.unwrap(PGConnection.class);
             LargeObjectManager lobj = pgConn.getLargeObjectAPI();
             PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
-            ps.setObject(1, mediaData.getShortLivedToken());
+            ps.setObject(1, mediaData.getMediaUUID());
             ResultSet rs = ps.executeQuery();
             byte[] buffer = new byte[8192];
             while (rs.next()) {
                 long oid = rs.getLong("data_blob");
                 if (rs.wasNull() || oid == 0) {
-                    System.err.println("[ERROR] data_blob OID is null or 0 for part of short_lived_token: " + mediaData.getShortLivedToken());
+                    System.err.println("[ERROR] data_blob OID is null or 0 for part of short_lived_token: " + mediaData.getMediaUUID());
                 } else {
                     LargeObject obj = lobj.open(oid, LargeObjectManager.READ);
                     try (InputStream blobStream = obj.getInputStream()) {
