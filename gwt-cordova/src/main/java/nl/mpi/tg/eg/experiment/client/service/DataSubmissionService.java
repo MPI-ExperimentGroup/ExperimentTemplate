@@ -147,8 +147,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
         xhr.onload = function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 200) {
-                    var urlMediaData = URL.createObjectURL(dataBlob);
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::setMediaUUID(Ljava/lang/String;)(mediaUUID);
+//                    var urlMediaData = URL.createObjectURL(dataBlob);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::setMediaUUID(Ljava/lang/String;)(xhr.responseText);
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(xhr.responseText);
                 } else {
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Ljava/lang/Double;)(xhr.status + ' ' + xhr.statusText, dataBlob, partNumber);

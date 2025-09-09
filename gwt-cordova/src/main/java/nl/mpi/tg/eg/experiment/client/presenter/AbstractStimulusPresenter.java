@@ -2087,11 +2087,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void submissionComplete(String message) {
                 if (!recordingAborted) {
                     if (downloadPermittedWindowMs > 0) {
-                        String replayMediaUrl = serviceLocations.dataSubmitUrl() + "replayMedia/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
+                        String replayMediaUrl = serviceLocations.dataSubmitUrl() + "replayMedia/" + mediaUUID.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
                         // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayMediaUrl)
                         // TODO: this callback loadedStimulusListener might be able to traverse the nextStimulus and then trigger another nextStimulus in mskonopka
-                        timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(mediaUUID) : UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                        timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
                     } else {
                         loadedStimulusListener.postLoadTimerFired();
                     }
