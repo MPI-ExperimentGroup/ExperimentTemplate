@@ -52,7 +52,7 @@ public class MediaDataController {
     @RequestMapping(value = "media/{userId}_{screenName}_{stimulusId}_{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public void getMedia(@PathVariable("userId") String userId, @PathVariable("screenName") String screenName, @PathVariable("stimulusId") String stimulusId, @PathVariable("id") long id,
             HttpServletResponse response) throws IOException {
-        final MediaData mediaData = this.mediaDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Audio not found"));
+        final MediaData mediaData = this.mediaDataRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Media not found"));
         // TODO: video/ogv is not quite correct and should be video/ogg
         String extension = mediaData.getRecordingFormat().name().toLowerCase();
         String mediaType = mediaData.isVideo() ? "video" : "audio";
