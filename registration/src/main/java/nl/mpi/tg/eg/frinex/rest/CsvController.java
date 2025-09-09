@@ -92,8 +92,8 @@ public class CsvController {
         }
     }
 
-    @RequestMapping(value = "/audio_{yearString}-{monthString}-{dayString}.zip", method = RequestMethod.GET)
-    public ResponseEntity<StreamingResponseBody> downloadAudioZip(@PathVariable(value = "yearString", required = true) int selectedYear,
+    @RequestMapping(value = "/media_{yearString}-{monthString}-{dayString}.zip", method = RequestMethod.GET)
+    public ResponseEntity<StreamingResponseBody> downloadMediaZip(@PathVariable(value = "yearString", required = true) int selectedYear,
             @PathVariable(value = "monthString", required = true) int selectedMonth,
             @PathVariable(value = "dayString", required = true) int selectedDay) {
         Calendar calendar = Calendar.getInstance();
@@ -123,7 +123,7 @@ public class CsvController {
         };
 
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"audio_" + selectedDateString + ".zip\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"media_" + selectedDateString + ".zip\"")
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(stream);
     }
