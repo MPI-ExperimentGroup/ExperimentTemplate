@@ -127,6 +127,9 @@ public class MediaDataService {
             System.out.println("mediaData.getId: " + mediaData.getId());
             System.out.println("mediaData.getMediaUUID: " + mediaData.getMediaUUID());
             ResultSet rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.err.println("[ERROR] No data_blob rows returned for MediaUUID: " + mediaData.getMediaUUID());
+            }
             ZipEntry entry = new ZipEntry(fileName);
             try {
                 zipStream.putNextEntry(entry);
