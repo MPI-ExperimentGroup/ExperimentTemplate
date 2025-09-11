@@ -349,7 +349,8 @@ public abstract class GroupStreamHandler {
                         $wnd.remoteStream[streamType + '_' + remoteMemberCode] =  new MediaStream();
                     }
                     $wnd.remoteStream[streamType + '_' + remoteMemberCode].addTrack(event.track);
-                    if ($wnd.remoteStream[streamType + '_' + remoteMemberCode].getAudioTracks().length > 0 && $wnd.remoteStream[streamType + '_' + remoteMemberCode].getVideoTracks().length > 0) {
+                    if (($wnd.remoteStream[streamType + '_' + remoteMemberCode].getAudioTracks().length > 0 && $wnd.remoteStream[streamType + '_' + remoteMemberCode].getVideoTracks().length > 0)
+                        or (streamType === "Canvas")) {
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].srcObject = $wnd.remoteStream[streamType + '_' + remoteMemberCode];
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].play();
                         $wnd.$("#groupRemote" + streamType + "_" + remoteMemberCode)[0].muted = false;

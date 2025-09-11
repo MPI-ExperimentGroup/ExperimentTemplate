@@ -130,8 +130,8 @@ public class MediaDataService {
                 ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ? ORDER BY part_number ASC");
                 ps.setObject(1, mediaData.getId());
             }
-            System.out.println("mediaData.getId: " + mediaData.getId());
-            System.out.println("mediaData.getMediaUUID: " + mediaData.getMediaUUID());
+//            System.out.println("mediaData.getId: " + mediaData.getId());
+//            System.out.println("mediaData.getMediaUUID: " + mediaData.getMediaUUID());
             ResultSet rs = ps.executeQuery();
             if (!rs.isBeforeFirst()) {
                 System.err.println("[ERROR] No data_blob rows returned for MediaUUID: " + mediaData.getMediaUUID());
