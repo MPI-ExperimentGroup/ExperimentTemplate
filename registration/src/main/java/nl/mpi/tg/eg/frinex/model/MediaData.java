@@ -48,7 +48,6 @@ public class MediaData implements Serializable {
     private String userId;
     private String stimulusId;
     private MediaDataType recordingFormat = null;
-    @Column(name = "short_lived_token")
     private UUID mediaUUID;
     private Integer partNumber = 0;
 //    private UUID mediaUUID = null;
@@ -75,7 +74,7 @@ public class MediaData implements Serializable {
         this.downloadPermittedWindowMs = downloadPermittedWindowMs;
         this.partNumber = partNumber;
     }
-    
+
     public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID mediaUUID, final Long downloadPermittedWindowMs, final Integer partNumber) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -166,6 +165,7 @@ public class MediaData implements Serializable {
         this.dataBlob = dataBlob;
     }
 
+    @Column(name = "short_lived_token")
     public UUID getMediaUUID() {
         return mediaUUID;
     }
