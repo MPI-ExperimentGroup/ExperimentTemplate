@@ -122,8 +122,14 @@ public class MediaDataService {
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
             PGConnection pgCon = con.unwrap(PGConnection.class);
             LargeObjectManager lobj = pgCon.getLargeObjectAPI();
-            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
-            ps.setObject(1, mediaData.getMediaUUID());
+            final PreparedStatement ps;
+            if (mediaData.getMediaUUID() != null) {
+                ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
+                ps.setObject(1, mediaData.getMediaUUID());
+            } else {
+                ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ? ORDER BY part_number ASC");
+                ps.setObject(1, mediaData.getId());
+            }
             System.out.println("mediaData.getId: " + mediaData.getId());
             System.out.println("mediaData.getMediaUUID: " + mediaData.getMediaUUID());
             ResultSet rs = ps.executeQuery();
@@ -189,8 +195,14 @@ public class MediaDataService {
         jdbcTemplate.execute((ConnectionCallback<Void>) con -> {
             PGConnection pgConn = con.unwrap(PGConnection.class);
             LargeObjectManager lobj = pgConn.getLargeObjectAPI();
-            PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
-            ps.setObject(1, mediaData.getMediaUUID());
+            final PreparedStatement ps;
+            if (mediaData.getMediaUUID() != null) {
+                ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
+                ps.setObject(1, mediaData.getMediaUUID());
+            } else {
+                ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE id = ? ORDER BY part_number ASC");
+                ps.setObject(1, mediaData.getId());
+            }
             ResultSet rs = ps.executeQuery();
             byte[] buffer = new byte[8192];
             while (rs.next()) {
