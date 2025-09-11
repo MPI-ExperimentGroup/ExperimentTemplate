@@ -124,6 +124,8 @@ public class MediaDataService {
             LargeObjectManager lobj = pgCon.getLargeObjectAPI();
             PreparedStatement ps = con.prepareStatement("SELECT data_blob FROM audio_data WHERE short_lived_token = ? ORDER BY part_number ASC");
             ps.setObject(1, mediaData.getMediaUUID());
+            System.out.println("mediaData.getId: " + mediaData.getId());
+            System.out.println("mediaData.getMediaUUID: " + mediaData.getMediaUUID());
             ResultSet rs = ps.executeQuery();
             ZipEntry entry = new ZipEntry(fileName);
             try {
