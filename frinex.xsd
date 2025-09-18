@@ -1022,7 +1022,7 @@
 </xs:attribute>
 <xs:attribute name="next" type="presenterName">
 <xs:annotation>
-<xs:documentation>The value of this attribute must exist in one presenter self attributes. The value of this attribute is used as the target for gotoNextPresenter etc..</xs:documentation>
+<xs:documentation>The value of this attribute must exist in one presenter self attributes. If the next attribute is provided the next button will be shown. This attribute is also used as the target for gotoNextPresenter, selectUserMenu and activateRandomItem.</xs:documentation>
 </xs:annotation>
 </xs:attribute>
 <xs:attribute name="type">
