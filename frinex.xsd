@@ -782,6 +782,11 @@
 </xs:complexType>
 </xs:element>
 </xs:sequence>
+<xs:attribute name="securityGroup" type="xs:string">
+<xs:annotation>
+<xs:documentation>This determines who can access to the production administration system. You will have been given an ActiveDirectory group name by system admin and only users in this group can log in to the administration system for this experiment.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 <xs:attribute name="allowDataDeletion" type="xs:boolean">
 <xs:annotation>
 <xs:documentation>Participant data cannot be deleted when this is omitted or false. Participant data can be deleted via the administration system when this is set to true.</xs:documentation>
