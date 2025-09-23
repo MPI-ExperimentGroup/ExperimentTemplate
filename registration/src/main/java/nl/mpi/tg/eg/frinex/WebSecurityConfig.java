@@ -36,6 +36,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @NotNull
+    @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup}")
+    protected String securityGroup;
+    @NotNull
     @Value("${nl.mpi.tg.eg.frinex.admin.user}")
     protected String USER;
     @NotNull
