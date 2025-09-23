@@ -57,6 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // @todo: the disabling of httpStrictTransportSecuritygroup is only for testpage.html and can be safely removed (.antMatchers("grouptestpage.html"))
         http.headers().frameOptions().sameOrigin().httpStrictTransportSecurity().disable();
+        System.out.println("securityGroup: " + securityGroup);
     }
 
     @Autowired
