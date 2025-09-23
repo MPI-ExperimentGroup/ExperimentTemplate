@@ -20,5 +20,5 @@
         productionServer="production"                                                               
     />    
     <validationService stagingUrl="/listing_json_example-admin/validate" productionUrl="/listing_json_example-admin/mock-nph-read_bq_exp_data.pl"/>
-    <administration allowDataDeletion="true"/>
+    <administration allowDataDeletion="true" securityGroup="Security_Group"/>
 </experiment>

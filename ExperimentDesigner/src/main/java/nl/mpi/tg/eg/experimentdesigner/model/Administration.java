@@ -42,6 +42,7 @@ public class Administration implements Serializable {
     private long id;
     //    @XmlElementWrapper(name = "dataManagement")
     private Boolean allowDataDeletion = false;
+    private String securityGroup = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<DataChannel> dataChannels = new ArrayList<>();
 
@@ -66,4 +67,13 @@ public class Administration implements Serializable {
     public void setAllowDataDeletion(Boolean allowDataDeletionL) {
         this.allowDataDeletion = allowDataDeletionL;
     }
+
+    @XmlAttribute(name = "securityGroup")
+    public String getSecurityGroup() {
+        return securityGroup;
+    }
+
+    public void setSecurityGroup(String securityGroup) {
+        this.securityGroup = securityGroup;
+    }   
 }

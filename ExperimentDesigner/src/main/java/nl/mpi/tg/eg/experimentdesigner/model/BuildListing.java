@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * @since 04-03-2020 11:27 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@JsonPropertyOrder({"publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "isUnity", "isVirtualReality", "buildName", "registrationUrlStaging", "registrationUrlProduction", "state", "stagingServer", "productionServer", "frinexVersion", "defaultScale", "isScalable", "isRotatable", "allowDelete", "experimentInternalName", "experimentDisplayName", "defaultLocale", "availableLocales"})
+@JsonPropertyOrder({"publishDate", "expiryDate", "isWebApp", "isDesktop", "isiOS", "isAndroid", "isUnity", "isVirtualReality", "buildName", "securityGroup", "registrationUrlStaging", "registrationUrlProduction", "state", "stagingServer", "productionServer", "frinexVersion", "defaultScale", "isScalable", "isRotatable", "allowDelete", "experimentInternalName", "experimentDisplayName", "defaultLocale", "availableLocales"})
 public class BuildListing {
 
     final private Experiment experiment;
@@ -126,5 +126,9 @@ public class BuildListing {
         } else {
             return experiment.getAdministration().getAllowDataDeletion();
         }
+    }
+
+    public String getSecurityGroup() {
+        return experiment.getAdministration().getSecurityGroup();
     }
 }

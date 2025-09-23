@@ -74,6 +74,7 @@ public class ExperimentListingJsonExtractorTest {
             + "  \"allowDelete\" : true,\n"
             + "  \"experimentInternalName\" : \"listing_json_example\",\n"
             + "  \"experimentDisplayName\" : \"Listing Json Example\",\n"
+            + "  \"securityGroup\" : \"Security_Group\",\n"
             + "  \"defaultLocale\" : \"nl\",\n"
             + "  \"availableLocales\" : \"en,es,de,fr,nl\"\n"
             + "}",
