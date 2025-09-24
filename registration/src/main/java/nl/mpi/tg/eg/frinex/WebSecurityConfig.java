@@ -32,6 +32,7 @@ import org.springframework.ldap.filter.Filter;
 import javax.naming.directory.Attributes;
 import javax.naming.Name;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationManager;
 
 
 /**
