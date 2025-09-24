@@ -104,8 +104,8 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(LdapTemplate ldapTemplate) {
         if (securityGroup == null || securityGroup.isBlank()) {
-            UserDetails userDetails = User.withUsername(fallbackUser)
-                                  .password("{noop}" + fallbackPassword)
+            UserDetails userDetails = User.withUsername(USER)
+                                  .password("{noop}" + PASSWORD)
                                   .roles("ADMIN")
                                   .build();
             return new ProviderManager(new InMemoryUserDetailsManager(userDetails));
