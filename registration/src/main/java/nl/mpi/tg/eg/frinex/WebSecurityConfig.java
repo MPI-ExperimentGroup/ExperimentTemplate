@@ -22,6 +22,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 
 /**
@@ -44,11 +46,33 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+            final String[] publicPaths = {
+                "/actuator/health", 
+                "/assignValue", 
+                "completeValue", 
+                "/validate", 
+                "/mock_validate", 
+                "/mediaBlob", 
+                "/screenChange", 
+                "/timeStamp", 
+                "/metadata", 
+                "/tagEvent", 
+                "/tagPairEvent", 
+                "/stimulusResponse", 
+                "/groupEvent", 
+                "/adminpages.css", 
+                "/public_usage_stats", 
+                "/public_quick_stats"
+                // "/replayMedia/*/*",
+            };
+
+        RequestMatcher[] publicMatchers = Arrays.stream(publicPaths)
+            .map(AntPathRequestMatcher::new)
+            .toArray(RequestMatcher[]::new);
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/actuator/health", "/assignValue", "completeValue", "/validate", "/mock_validate", "/mediaBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css", "/public_usage_stats", "/public_quick_stats").permitAll()
-                // "/replayMedia/*/*", 
-                .anyRequest().authenticated()
+            .requestMatchers(publicMatchers).permitAll()
+            .anyRequest().authenticated()
             )
             .formLogin(form -> form.loginPage("/login").permitAll())
             .logout(logout -> logout.permitAll())
