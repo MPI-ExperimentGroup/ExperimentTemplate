@@ -17,23 +17,30 @@
  */
 package nl.mpi.tg.eg.frinex;
 
-import javax.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @since Aug 3, 2015 4:01:19 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
     @NotNull
     @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup}")
@@ -45,27 +52,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${nl.mpi.tg.eg.frinex.admin.password}")
     protected String PASSWORD;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/actuator/health", "/assignValue", "completeValue", "/validate", "/mock_validate", "/replayMedia/*/*", "/mediaBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css", "/public_usage_stats", "/public_quick_stats").permitAll()
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/actuator/health", "/assignValue", "completeValue", "/validate", "/mock_validate", "/replayMedia/*/*", "/mediaBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css", "/public_usage_stats", "/public_quick_stats").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and().logout().permitAll();
-        http.csrf().disable();
-
-        // @todo: the disabling of httpStrictTransportSecuritygroup is only for testpage.html and can be safely removed (.antMatchers("grouptestpage.html"))
-        http.headers().frameOptions().sameOrigin().httpStrictTransportSecurity().disable();
-        System.out.println("securityGroup: " + securityGroup);
+            )
+            .formLogin(form -> form.loginPage("/login").permitAll()
+            )
+            .logout(logout -> logout.permitAll())
+            .csrf(csrf -> csrf.disable());
+        return http.build();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        final UserDetailsManagerConfigurer userDetailsManagerConfigurer = auth.inMemoryAuthentication();
-        userDetailsManagerConfigurer.withUser(USER).password("{noop}" + PASSWORD).roles("ADMIN");
-        for (String userEntry[] : new AdminUserList().getAdminUserList()) {
-            userDetailsManagerConfigurer.withUser(userEntry[0]).password("{noop}" + userEntry[1]).roles("ADMIN");
+    @Bean
+    public UserDetailsService userDetailsService() {
+        List<UserDetails> users = new ArrayList<>();
+
+        users.add(User.withUsername(USER)
+                .password("{noop}" + PASSWORD)
+                .roles("ADMIN")
+                .build());
+
+        for (String[] userEntry : new AdminUserList().getAdminUserList()) {
+            users.add(User.withUsername(userEntry[0])
+                    .password("{noop}" + userEntry[1])
+                    .roles("ADMIN")
+                    .build());
         }
+
+        return new InMemoryUserDetailsManager(users);
     }
 }
