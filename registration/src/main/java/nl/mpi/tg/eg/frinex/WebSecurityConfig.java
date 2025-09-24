@@ -104,24 +104,24 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(LdapTemplate ldapTemplate) {
         if (securityGroup == null || securityGroup.isBlank()) {
-            var userDetails = User.withUsername(fallbackUser)
+            UserDetails userDetails = User.withUsername(fallbackUser)
                                   .password("{noop}" + fallbackPassword)
                                   .roles("ADMIN")
                                   .build();
             return new ProviderManager(new InMemoryUserDetailsManager(userDetails));
         } else {
-            var adProvider = new ActiveDirectoryLdapAuthenticationProvider(adDomain, ldapUrl);
+            ActiveDirectoryLdapAuthenticationProvider adProvider = new ActiveDirectoryLdapAuthenticationProvider(adDomain, ldapUrl);
             adProvider.setConvertSubErrorCodesToExceptions(true);
             adProvider.setUseAuthenticationRequestCredentials(true);
 
-            var groupEnforcingProvider = new GroupMembershipCheckingProvider(adProvider, ldapTemplate, securityGroup);
+            GroupMembershipCheckingProvider groupEnforcingProvider = new GroupMembershipCheckingProvider(adProvider, ldapTemplate, securityGroup);
             return new ProviderManager(groupEnforcingProvider);
         }
     }
     
     @Bean
     public LdapTemplate ldapTemplate() {
-        var contextSource = new LdapContextSource();
+        LdapContextSource contextSource = new LdapContextSource();
         contextSource.setUrl(ldapUrl);
         contextSource.setBase(groupSearchBase);
         contextSource.setUserDn(managerDn);
