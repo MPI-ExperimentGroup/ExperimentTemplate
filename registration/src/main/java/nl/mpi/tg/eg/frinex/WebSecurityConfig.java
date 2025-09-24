@@ -17,23 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex;
 
-import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @since Aug 3, 2015 4:01:19 PM (creation date)
@@ -53,35 +41,16 @@ public class WebSecurityConfig {
     protected String PASSWORD;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/actuator/health", "/assignValue", "completeValue", "/validate", "/mock_validate", "/replayMedia/*/*", "/mediaBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css", "/public_usage_stats", "/public_quick_stats").permitAll()
+                .requestMatchers("/actuator/health", "/assignValue", "completeValue", "/validate", "/mock_validate", "/mediaBlob", "/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/stimulusResponse", "/groupEvent", "/adminpages.css", "/public_usage_stats", "/public_quick_stats").permitAll()
+                // "/replayMedia/*/*", 
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form.loginPage("/login").permitAll()
-            )
+            .formLogin(form -> form.loginPage("/login").permitAll())
             .logout(logout -> logout.permitAll())
             .csrf(csrf -> csrf.disable());
         return http.build();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        List<UserDetails> users = new ArrayList<>();
-
-        users.add(User.withUsername(USER)
-                .password("{noop}" + PASSWORD)
-                .roles("ADMIN")
-                .build());
-
-        for (String[] userEntry : new AdminUserList().getAdminUserList()) {
-            users.add(User.withUsername(userEntry[0])
-                    .password("{noop}" + userEntry[1])
-                    .roles("ADMIN")
-                    .build());
-        }
-
-        return new InMemoryUserDetailsManager(users);
     }
 }
