@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex;
 
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,13 +31,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class WebSecurityConfig {
 
-    @NotNull
+    // @NotNull
+    // fails if not found
     @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup}")
     protected String securityGroup;
-    @NotNull
+    // @NotNull
     @Value("${nl.mpi.tg.eg.frinex.admin.user}")
     protected String USER;
-    @NotNull
+    // @NotNull
     @Value("${nl.mpi.tg.eg.frinex.admin.password}")
     protected String PASSWORD;
 
