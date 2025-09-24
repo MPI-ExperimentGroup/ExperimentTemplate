@@ -34,9 +34,21 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 @Configuration
 public class WebSecurityConfig {
 
+    @Value("${ldap.userSearchFilter}")
+    private String userSearchFilter;
+    @Value("${ldap.groupSearchBase}")
+    private String groupSearchBase;
+    @Value("${ldap.url}")
+    private String ldapUrl;
+    @Value("${ldap.managerDn}")
+    private String managerDn;
+    @Value("${ldap.managerPassword}")
+    private String managerPassword;
+    @Value("${ldap.passwordAttribute}")
+    private String passwordAttribute;
     // @NotNull
     // fails if not found
-    @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup}")
+    @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup:}")
     protected String securityGroup;
     // @NotNull
     @Value("${nl.mpi.tg.eg.frinex.admin.user}")
@@ -79,5 +91,34 @@ public class WebSecurityConfig {
             .logout(logout -> logout.permitAll())
             .csrf(csrf -> csrf.disable());
         return http.build();
+    }
+    
+    @Bean
+    public AuthenticationManager authenticationManager(LdapTemplate ldapTemplate) {
+        if (securityGroup == null || securityGroup.isBlank()) {
+            var userDetails = User.withUsername(fallbackUser)
+                                  .password("{noop}" + fallbackPassword)
+                                  .roles("ADMIN")
+                                  .build();
+            return new ProviderManager(new InMemoryUserDetailsManager(userDetails));
+        } else {
+            var adProvider = new ActiveDirectoryLdapAuthenticationProvider(adDomain, ldapUrl);
+            adProvider.setConvertSubErrorCodesToExceptions(true);
+            adProvider.setUseAuthenticationRequestCredentials(true);
+
+            var groupEnforcingProvider = new GroupMembershipCheckingProvider(adProvider, ldapTemplate, securityGroup);
+            return new ProviderManager(groupEnforcingProvider);
+        }
+    }
+    
+    @Bean
+    public LdapTemplate ldapTemplate() {
+        var contextSource = new LdapContextSource();
+        contextSource.setUrl(ldapUrl);
+        contextSource.setBase(groupSearchBase);
+        contextSource.setUserDn(managerDn);
+        contextSource.setPassword(managerPassword);
+        contextSource.afterPropertiesSet();
+        return new LdapTemplate(contextSource);
     }
 }
