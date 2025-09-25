@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex;
 
 import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,15 +26,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.ldap.core.LdapTemplate;
-import org.springframework.ldap.core.support.LdapContextSource;
-import org.springframework.ldap.filter.EqualsFilter;
-import org.springframework.ldap.filter.Filter;
-import javax.naming.directory.Attributes;
-import javax.naming.Name;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationManager;
-
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.util.StringUtils;
 
 /**
  * @since Aug 3, 2015 4:01:19 PM (creation date)
@@ -42,18 +44,20 @@ import org.springframework.security.authentication.AuthenticationManager;
 @Configuration
 public class WebSecurityConfig {
 
-    @Value("${ldap.userSearchFilter}")
-    private String userSearchFilter;
-    @Value("${ldap.groupSearchBase}")
-    private String groupSearchBase;
+//    @Value("${ldap.userSearchFilter}")
+//    private String userSearchFilter;
+//    @Value("${ldap.groupSearchBase}")
+//    private String groupSearchBase;
     @Value("${ldap.url}")
     private String ldapUrl;
-    @Value("${ldap.managerDn}")
-    private String managerDn;
-    @Value("${ldap.managerPassword}")
-    private String managerPassword;
-    @Value("${ldap.passwordAttribute}")
-    private String passwordAttribute;
+    @Value("${ldap.adDomain}")
+    private String adDomain;
+//    @Value("${ldap.managerDn}")
+//    private String managerDn;
+//    @Value("${ldap.managerPassword}")
+//    private String managerPassword;
+//    @Value("${ldap.passwordAttribute}")
+//    private String passwordAttribute;
     // @NotNull
     // fails if not found
     @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup:}")
@@ -67,66 +71,64 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-            final String[] publicPaths = {
-                "/actuator/health", 
-                "/assignValue", 
-                "completeValue", 
-                "/validate", 
-                "/mock_validate", 
-                "/mediaBlob", 
-                "/screenChange", 
-                "/timeStamp", 
-                "/metadata", 
-                "/tagEvent", 
-                "/tagPairEvent", 
-                "/stimulusResponse", 
-                "/groupEvent", 
-                "/adminpages.css", 
-                "/public_usage_stats", 
-                "/public_quick_stats"
-                // "/replayMedia/*/*",
-            };
+        final String[] publicPaths = {
+            "/actuator/health",
+            "/assignValue",
+            "completeValue",
+            "/validate",
+            "/mock_validate",
+            "/mediaBlob",
+            "/screenChange",
+            "/timeStamp",
+            "/metadata",
+            "/tagEvent",
+            "/tagPairEvent",
+            "/stimulusResponse",
+            "/groupEvent",
+            "/adminpages.css",
+            "/public_usage_stats",
+            "/public_quick_stats"
+        // "/replayMedia/*/*",
+        };
 
         RequestMatcher[] publicMatchers = Arrays.stream(publicPaths)
-            .map(AntPathRequestMatcher::new)
-            .toArray(RequestMatcher[]::new);
+                .map(AntPathRequestMatcher::new)
+                .toArray(RequestMatcher[]::new);
         http
-            .authorizeHttpRequests(auth -> auth
-            .requestMatchers(publicMatchers).permitAll()
-            .anyRequest().authenticated()
-            )
-            .formLogin(form -> form.loginPage("/login").permitAll())
-            .logout(logout -> logout.permitAll())
-            .csrf(csrf -> csrf.disable());
+                .authorizeHttpRequests(auth -> auth
+                .requestMatchers(publicMatchers).permitAll()
+                .anyRequest().hasRole(StringUtils.hasText(securityGroup) ? securityGroup : "ADMIN")
+                )
+                .formLogin(form -> form.loginPage("/login").permitAll())
+                .logout(logout -> logout.permitAll())
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
-    
+
     @Bean
-    public AuthenticationManager authenticationManager(LdapTemplate ldapTemplate) {
+    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+        ActiveDirectoryLdapAuthenticationProvider provider
+                = new ActiveDirectoryLdapAuthenticationProvider(adDomain, ldapUrl);
+        provider.setConvertSubErrorCodesToExceptions(true);
+        provider.setUseAuthenticationRequestCredentials(true);
+        return provider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         if (securityGroup == null || securityGroup.isBlank()) {
             UserDetails userDetails = User.withUsername(USER)
-                                  .password("{noop}" + PASSWORD)
-                                  .roles("ADMIN")
-                                  .build();
-            return new ProviderManager(new InMemoryUserDetailsManager(userDetails));
+                    .password("{noop}" + PASSWORD)
+                    .roles("ADMIN")
+                    .build();
+            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+            provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
+            return new ProviderManager(List.of(provider));
         } else {
-            ActiveDirectoryLdapAuthenticationProvider adProvider = new ActiveDirectoryLdapAuthenticationProvider(adDomain, ldapUrl);
-            adProvider.setConvertSubErrorCodesToExceptions(true);
-            adProvider.setUseAuthenticationRequestCredentials(true);
-
-            GroupMembershipCheckingProvider groupEnforcingProvider = new GroupMembershipCheckingProvider(adProvider, ldapTemplate, securityGroup);
-            return new ProviderManager(groupEnforcingProvider);
+            AuthenticationManagerBuilder authBuilder
+                    = http.getSharedObject(AuthenticationManagerBuilder.class);
+            authBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
+            return authBuilder.build();
         }
-    }
-    
-    @Bean
-    public LdapTemplate ldapTemplate() {
-        LdapContextSource contextSource = new LdapContextSource();
-        contextSource.setUrl(ldapUrl);
-        contextSource.setBase(groupSearchBase);
-        contextSource.setUserDn(managerDn);
-        contextSource.setPassword(managerPassword);
-        contextSource.afterPropertiesSet();
-        return new LdapTemplate(contextSource);
     }
 }
