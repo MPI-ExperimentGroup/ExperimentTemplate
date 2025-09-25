@@ -44,20 +44,22 @@ import org.springframework.util.StringUtils;
 @Configuration
 public class WebSecurityConfig {
 
-//    @Value("${ldap.userSearchFilter}")
-//    private String userSearchFilter;
-//    @Value("${ldap.groupSearchBase}")
-//    private String groupSearchBase;
-    @Value("${ldap.url}")
-    private String ldapUrl;
+    @Value("${ldap.adUrl}")
+    private String adUrl;
     @Value("${ldap.adDomain}")
     private String adDomain;
-//    @Value("${ldap.managerDn}")
-//    private String managerDn;
-//    @Value("${ldap.managerPassword}")
-//    private String managerPassword;
-//    @Value("${ldap.passwordAttribute}")
-//    private String passwordAttribute;
+    @Value("${ldap.userSearchFilter}")
+    private String userSearchFilter;
+    @Value("${ldap.groupSearchBase}")
+    private String groupSearchBase;
+    @Value("${ldap.url}")
+    private String ldapUrl;
+    @Value("${ldap.managerDn}")
+    private String managerDn;
+    @Value("${ldap.managerPassword}")
+    private String managerPassword;
+    @Value("${ldap.passwordAttribute}")
+    private String passwordAttribute;
     // @NotNull
     // fails if not found
     @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup:}")
@@ -108,7 +110,7 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
         ActiveDirectoryLdapAuthenticationProvider provider
-                = new ActiveDirectoryLdapAuthenticationProvider(adDomain, ldapUrl);
+            = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
         provider.setConvertSubErrorCodesToExceptions(true);
         provider.setUseAuthenticationRequestCredentials(true);
         return provider;
