@@ -71,7 +71,7 @@ public class WebSecurityConfig {
     protected String PASSWORD;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, BaseLdapPathContextSource contextSource) throws Exception {
         final String[] publicPaths = {
             "/actuator/health",
             "/assignValue",
