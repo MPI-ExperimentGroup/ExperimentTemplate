@@ -107,14 +107,14 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-        ActiveDirectoryLdapAuthenticationProvider provider
-            = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
-        provider.setConvertSubErrorCodesToExceptions(true);
-        provider.setUseAuthenticationRequestCredentials(true);
-        return provider;
-    }
+    // @Bean
+    // public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+    //     ActiveDirectoryLdapAuthenticationProvider provider
+    //         = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
+    //     provider.setConvertSubErrorCodesToExceptions(true);
+    //     provider.setUseAuthenticationRequestCredentials(true);
+    //     return provider;
+    // }
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
