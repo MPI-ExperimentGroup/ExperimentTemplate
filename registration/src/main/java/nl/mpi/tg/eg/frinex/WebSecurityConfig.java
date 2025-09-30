@@ -138,21 +138,21 @@ public class WebSecurityConfig {
         return contextSource;
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        if (securityGroup == null || securityGroup.isBlank()) {
-            UserDetails userDetails = User.withUsername(USER)
-                    .password("{noop}" + PASSWORD)
-                    .roles("ADMIN")
-                    .build();
-            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-            provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
-            return new ProviderManager(List.of(provider));
-        } else {
-            AuthenticationManagerBuilder authBuilder
-                    = http.getSharedObject(AuthenticationManagerBuilder.class);
-            authBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
-            return authBuilder.build();
-        }
-    }
+    // @Bean
+    // public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+    //     if (securityGroup == null || securityGroup.isBlank()) {
+    //         UserDetails userDetails = User.withUsername(USER)
+    //                 .password("{noop}" + PASSWORD)
+    //                 .roles("ADMIN")
+    //                 .build();
+    //         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+    //         provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
+    //         return new ProviderManager(List.of(provider));
+    //     } else {
+    //         AuthenticationManagerBuilder authBuilder
+    //                 = http.getSharedObject(AuthenticationManagerBuilder.class);
+    //         authBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
+    //         return authBuilder.build();
+    //     }
+    // }
 }
