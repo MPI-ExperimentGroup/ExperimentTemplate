@@ -35,6 +35,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.ldap.authentication.BindAuthenticator;
+import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
+import org.springframework.security.ldap.DefaultSpringSecurityContextSource;
+import org.springframework.security.ldap.authentication.LdapAuthoritiesPopulator;
+import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.util.StringUtils;
 
 /**
@@ -46,20 +52,12 @@ public class WebSecurityConfig {
 
     @Value("${ldap.adUrl}")
     private String adUrl;
-    @Value("${ldap.adDomain}")
-    private String adDomain;
-    @Value("${ldap.userSearchFilter}")
-    private String userSearchFilter;
-    @Value("${ldap.groupSearchBase}")
-    private String groupSearchBase;
-    @Value("${ldap.url}")
-    private String ldapUrl;
+    @Value("${ldap.adBase}")
+    private String adBase;
     @Value("${ldap.managerDn}")
     private String managerDn;
     @Value("${ldap.managerPassword}")
     private String managerPassword;
-    @Value("${ldap.passwordAttribute}")
-    private String passwordAttribute;
     // @NotNull
     // fails if not found
     @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup:}")
@@ -97,6 +95,7 @@ public class WebSecurityConfig {
                 .map(AntPathRequestMatcher::new)
                 .toArray(RequestMatcher[]::new);
         http
+                .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers(publicMatchers).permitAll()
                 .anyRequest().hasRole(StringUtils.hasText(securityGroup) ? securityGroup : "ADMIN")
@@ -115,6 +114,27 @@ public class WebSecurityConfig {
     //     provider.setUseAuthenticationRequestCredentials(true);
     //     return provider;
     // }
+
+    @Bean
+    public AuthenticationManager authenticationManager(BaseLdapPathContextSource contextSource) {
+        BindAuthenticator bindAuthenticator = new BindAuthenticator(contextSource);
+        bindAuthenticator.setUserDnPatterns(new String[] { "uid={0},OU=Users" });
+
+        LdapAuthenticationProvider provider = new LdapAuthenticationProvider(bindAuthenticator);
+        return new ProviderManager(provider);
+    }
+
+    @Bean
+    public BaseLdapPathContextSource contextSource() {
+        LdapContextSource contextSource = new LdapContextSource();
+        contextSource.setUrl(adUrl);
+        contextSource.setBase(adBase);
+        contextSource.setUserDn(managerDn);
+        contextSource.setPassword(managerPassword);
+
+        // contextSource.setPooled(false);
+        return contextSource;
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
