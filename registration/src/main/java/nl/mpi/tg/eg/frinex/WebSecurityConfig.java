@@ -54,12 +54,14 @@ public class WebSecurityConfig {
 
     @Value("${ldap.adUrl}")
     private String adUrl;
-    @Value("${ldap.adBase}")
-    private String adBase;
-    @Value("${ldap.managerDn}")
-    private String managerDn;
-    @Value("${ldap.managerPassword}")
-    private String managerPassword;
+    @Value("${ldap.adDomain}")
+    private String adDomain;
+    // @Value("${ldap.adBase}")
+    // private String adBase;
+    // @Value("${ldap.managerDn}")
+    // private String managerDn;
+    // @Value("${ldap.managerPassword}")
+    // private String managerPassword;
     // @NotNull
     // fails if not found
     @Value("${nl.mpi.tg.eg.frinex.admin.securityGroup:}")
@@ -109,51 +111,51 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    // @Bean
-    // public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-    //     ActiveDirectoryLdapAuthenticationProvider provider
-    //         = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
-    //     provider.setConvertSubErrorCodesToExceptions(true);
-    //     provider.setUseAuthenticationRequestCredentials(true);
-    //     return provider;
-    // }
-
     @Bean
-    public AuthenticationManager authenticationManager(BaseLdapPathContextSource contextSource) {
-        BindAuthenticator bindAuthenticator = new BindAuthenticator(contextSource);
-        bindAuthenticator.setUserDnPatterns(new String[] { "uid={0},OU=Users" });
-
-        LdapAuthenticationProvider provider = new LdapAuthenticationProvider(bindAuthenticator);
-        return new ProviderManager(provider);
-    }
-
-    @Bean
-    public BaseLdapPathContextSource contextSource() {
-        LdapContextSource contextSource = new LdapContextSource();
-        contextSource.setUrl(adUrl);
-        contextSource.setBase(adBase);
-        contextSource.setUserDn(managerDn);
-        contextSource.setPassword(managerPassword);
-
-        // contextSource.setPooled(false);
-        return contextSource;
+    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+        ActiveDirectoryLdapAuthenticationProvider provider
+            = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
+        provider.setConvertSubErrorCodesToExceptions(true);
+        provider.setUseAuthenticationRequestCredentials(true);
+        return provider;
     }
 
     // @Bean
-    // public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-    //     if (securityGroup == null || securityGroup.isBlank()) {
-    //         UserDetails userDetails = User.withUsername(USER)
-    //                 .password("{noop}" + PASSWORD)
-    //                 .roles("ADMIN")
-    //                 .build();
-    //         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-    //         provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
-    //         return new ProviderManager(List.of(provider));
-    //     } else {
-    //         AuthenticationManagerBuilder authBuilder
-    //                 = http.getSharedObject(AuthenticationManagerBuilder.class);
-    //         authBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
-    //         return authBuilder.build();
-    //     }
+    // public AuthenticationManager authenticationManager(BaseLdapPathContextSource contextSource) {
+    //     BindAuthenticator bindAuthenticator = new BindAuthenticator(contextSource);
+    //     bindAuthenticator.setUserDnPatterns(new String[] { "uid={0},OU=Users" });
+
+    //     LdapAuthenticationProvider provider = new LdapAuthenticationProvider(bindAuthenticator);
+    //     return new ProviderManager(provider);
     // }
+
+    // @Bean
+    // public BaseLdapPathContextSource contextSource() {
+    //     LdapContextSource contextSource = new LdapContextSource();
+    //     contextSource.setUrl(adUrl);
+    //     contextSource.setBase(adBase);
+    //     contextSource.setUserDn(managerDn);
+    //     contextSource.setPassword(managerPassword);
+
+    //     // contextSource.setPooled(false);
+    //     return contextSource;
+    // }
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        if (securityGroup == null || securityGroup.isBlank()) {
+            UserDetails userDetails = User.withUsername(USER)
+                    .password("{noop}" + PASSWORD)
+                    .roles("ADMIN")
+                    .build();
+            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+            provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
+            return new ProviderManager(List.of(provider));
+        } else {
+            AuthenticationManagerBuilder authBuilder
+                    = http.getSharedObject(AuthenticationManagerBuilder.class);
+            authBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
+            return authBuilder.build();
+        }
+    }
 }
