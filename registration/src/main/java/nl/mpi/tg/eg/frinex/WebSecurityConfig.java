@@ -74,7 +74,7 @@ public class WebSecurityConfig {
     protected String PASSWORD;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, BaseLdapPathContextSource contextSource) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
         final String[] publicPaths = {
             "/actuator/health",
             "/assignValue",
@@ -99,7 +99,8 @@ public class WebSecurityConfig {
                 .map(AntPathRequestMatcher::new)
                 .toArray(RequestMatcher[]::new);
         http
-                .authenticationManager(authenticationManager(contextSource))
+                .authenticationManager(authManager)
+                // .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers(publicMatchers).permitAll()
                 .anyRequest().authenticated()
@@ -111,14 +112,14 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-        ActiveDirectoryLdapAuthenticationProvider provider
-            = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
-        provider.setConvertSubErrorCodesToExceptions(true);
-        provider.setUseAuthenticationRequestCredentials(true);
-        return provider;
-    }
+    // @Bean
+    // public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+    //     ActiveDirectoryLdapAuthenticationProvider provider
+    //         = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
+    //     provider.setConvertSubErrorCodesToExceptions(true);
+    //     provider.setUseAuthenticationRequestCredentials(true);
+    //     return provider;
+    // }
 
     // @Bean
     // public AuthenticationManager authenticationManager(BaseLdapPathContextSource contextSource) {
@@ -152,9 +153,14 @@ public class WebSecurityConfig {
             provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
             return new ProviderManager(List.of(provider));
         } else {
+            ActiveDirectoryLdapAuthenticationProvider provider 
+                    = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
+            provider.setConvertSubErrorCodesToExceptions(true);
+            provider.setUseAuthenticationRequestCredentials(true);
+        
             AuthenticationManagerBuilder authBuilder
                     = http.getSharedObject(AuthenticationManagerBuilder.class);
-            authBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
+            authBuilder.authenticationProvider(provider);
             return authBuilder.build();
         }
     }
