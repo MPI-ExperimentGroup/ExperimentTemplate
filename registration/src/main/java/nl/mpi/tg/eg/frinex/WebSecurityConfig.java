@@ -145,7 +145,9 @@ public class WebSecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        System.out.println("securityGroup: " + securityGroup);
         if (securityGroup == null || securityGroup.isBlank()) {
+            System.out.println("DaoAuthenticationProvider");
             UserDetails userDetails = User.withUsername(USER)
                     .password("{noop}" + PASSWORD)
                     .roles("ADMIN")
@@ -154,6 +156,7 @@ public class WebSecurityConfig {
             provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
             return new ProviderManager(List.of(provider));
         } else {
+            System.out.println("ActiveDirectoryLdapAuthenticationProvider");
             ActiveDirectoryLdapAuthenticationProvider provider 
                     = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
             provider.setConvertSubErrorCodesToExceptions(true);
