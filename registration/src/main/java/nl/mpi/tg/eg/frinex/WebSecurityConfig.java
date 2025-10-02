@@ -104,7 +104,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers(publicMatchers).permitAll()
                 .anyRequest().authenticated()
-                // .anyRequest().hasRole(StringUtils.hasText(securityGroup) ? securityGroup : "ADMIN")
+                // .hasAuthority("ROLE_AD_GROUP")
+                .anyRequest().hasRole(StringUtils.hasText(securityGroup) ? securityGroup : "ADMIN")
                 )
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(logout -> logout.permitAll())
