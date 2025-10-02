@@ -103,7 +103,7 @@ public class WebSecurityConfig {
                 // .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers(publicMatchers).permitAll()
-                .anyRequest().authenticated()
+//                .anyRequest().authenticated()
                 // .hasAuthority("ROLE_AD_GROUP")
                 .anyRequest().hasRole(StringUtils.hasText(securityGroup) ? securityGroup : "ADMIN")
                 )
