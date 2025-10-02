@@ -3084,6 +3084,9 @@
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
 </xs:complexType>
 <xs:complexType name="sendAllDataType">
+<xs:annotation>
+<xs:documentation>Sends the currently stored timeStamp, screenChange, tagEvent, tagPairEvent, metadata, groupEvent and stimulusResponse to the admin system. For use in transmission type presenters.</xs:documentation>
+</xs:annotation>
 <xs:group ref="sequenceOnceOrdered_hasErrorSuccessType" />
 </xs:complexType>
 <xs:complexType name="sendMetadataType">
