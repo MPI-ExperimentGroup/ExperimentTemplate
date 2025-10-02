@@ -144,7 +144,7 @@ public enum FeatureType {
     //    showStimulusButtons(false, false, null),
     displayCompletionCode(false, false, null),
     generateCompletionCode(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    sendAllData(false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    sendAllData(false, null, "Sends the currently stored timeStamp, screenChange, tagEvent, tagPairEvent, metadata, groupEvent and stimulusResponse to the admin system. For use in transmission type presenters.", Contitionals.hasErrorSuccess, Contitionals.none),
     sendMetadata(false, null, "Sends the currently stored metadata field values to the admin system. For use in transmission type presenters.", Contitionals.hasErrorSuccess, Contitionals.none),
     // The <redirectToUrl> does not have  <onError> and <onSuccess> because the calling page has gone out scope by the time the error has occurred.
     redirectToUrl(false, false, new FeatureAttribute[]{src}, "Redirects the experiment to the URL specified in src. This feature cannot do error checking and therefore does not have onError or onSuccess because the experiment (calling page) has gone out scope by the time any error might occur."),
