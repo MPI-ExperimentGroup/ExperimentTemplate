@@ -28,8 +28,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div id="loginform">
-            <div th:if="${param.error}">
-                Invalid username and password.
+            <div th:if="${param.error == 'accessDenied'}">
+                Permission not granted.
+            </div>
+            <div th:if="${param.error == 'true'}">
+                Invalid username or password.
             </div>
             <div th:if="${param.logout}">
                 You have been logged out.

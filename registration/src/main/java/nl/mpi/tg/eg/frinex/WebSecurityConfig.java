@@ -24,6 +24,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
@@ -111,6 +113,10 @@ public class WebSecurityConfig {
                 )
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(logout -> logout.permitAll())
+                .exceptionHandling(ex -> ex
+                        .accessDeniedHandler(customAccessDeniedHandler())
+                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
+                )
                 .csrf(csrf -> csrf.disable());
         return http.build();
     }
@@ -149,6 +155,13 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
         return username -> {
             throw new UsernameNotFoundException("No fallback permitted");
+        };
+    }
+
+    @Bean
+    public AccessDeniedHandler customAccessDeniedHandler() {
+        return (request, response, accessDeniedException) -> {
+            response.sendRedirect("/login?error=accessDenied");
         };
     }
 
