@@ -146,6 +146,8 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         System.out.println("securityGroup: " + securityGroup);
+        System.out.println("adUrl: " + adUrl);
+        System.out.println("adDomain: " + adDomain);
         if (securityGroup == null || securityGroup.isBlank()) {
             System.out.println("DaoAuthenticationProvider");
             UserDetails userDetails = User.withUsername(USER)
