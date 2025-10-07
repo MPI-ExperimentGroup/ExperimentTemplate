@@ -25,6 +25,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -47,7 +48,7 @@ import org.springframework.util.StringUtils;
 @Configuration
 public class WebSecurityConfig {
 
-   @Value("${nl.mpi.tg.eg.frinex.ldap.adUrl}")
+    @Value("${nl.mpi.tg.eg.frinex.ldap.adUrl}")
     private String adUrl;
     @Value("${nl.mpi.tg.eg.frinex.ldap.adDomain}")
     private String adDomain;
@@ -97,50 +98,18 @@ public class WebSecurityConfig {
                 .authenticationManager(authManager)
                 // .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers(publicMatchers).permitAll()
-//                .anyRequest().authenticated()
-                // .hasRole("ROLE_AD_GROUP")
-                .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN")
-                )
+                        .requestMatchers(publicMatchers).permitAll()
+                        // .anyRequest().authenticated()
+                        // .hasRole("ROLE_AD_GROUP")
+                        .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN"))
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(logout -> logout.permitAll())
                 .exceptionHandling(ex -> ex
-                        .accessDeniedHandler(customAccessDeniedHandler())
-                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
-                )
+                        .accessDeniedHandler(accessDeniedHandler())
+                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")))
                 .csrf(csrf -> csrf.disable());
         return http.build();
     }
-
-    // @Bean
-    // public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-    //     ActiveDirectoryLdapAuthenticationProvider provider
-    //         = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
-    //     provider.setConvertSubErrorCodesToExceptions(true);
-    //     provider.setUseAuthenticationRequestCredentials(true);
-    //     return provider;
-    // }
-
-    // @Bean
-    // public AuthenticationManager authenticationManager(BaseLdapPathContextSource contextSource) {
-    //     BindAuthenticator bindAuthenticator = new BindAuthenticator(contextSource);
-    //     bindAuthenticator.setUserDnPatterns(new String[] { "uid={0},OU=Users" });
-
-    //     LdapAuthenticationProvider provider = new LdapAuthenticationProvider(bindAuthenticator);
-    //     return new ProviderManager(provider);
-    // }
-
-    // @Bean
-    // public BaseLdapPathContextSource contextSource() {
-    //     LdapContextSource contextSource = new LdapContextSource();
-    //     contextSource.setUrl(adUrl);
-    //     contextSource.setBase(adBase);
-    //     contextSource.setUserDn(managerDn);
-    //     contextSource.setPassword(managerPassword);
-
-    //     // contextSource.setPooled(false);
-    //     return contextSource;
-    // }
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -150,10 +119,10 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public AccessDeniedHandler customAccessDeniedHandler() {
-        return (request, response, accessDeniedException) -> {
-            response.sendRedirect(request.getContextPath() + "/login?error=accessDenied");
-        };
+    public AccessDeniedHandler accessDeniedHandler() {
+        AccessDeniedHandlerImpl handler = new AccessDeniedHandlerImpl();
+        handler.setErrorPage("/login?error=accessDenied");
+        return handler;
     }
 
     @Bean
