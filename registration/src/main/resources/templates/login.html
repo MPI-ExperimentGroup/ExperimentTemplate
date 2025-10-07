@@ -28,9 +28,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div id="loginform">
-            <div th:if="${param.accessDenied}">
+            <!-- <div th:if="${param.accessDenied}">
                 Permission not granted for <span th:text="@environment.getProperty('nl.mpi.tg.eg.frinex.experiment.name')"></span>.
                 Please contact helpdesk to request access.
+            </div> -->
+            <div th:if="${param.accessDenied}">
+                Permission not granted.
             </div>
             <div th:if="${param.error}">
                 Invalid username or password.
