@@ -30,7 +30,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -39,14 +38,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.ldap.authentication.BindAuthenticator;
-import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
-import org.springframework.ldap.core.support.BaseLdapPathContextSource;
-import org.springframework.ldap.core.support.LdapContextSource;
-import org.springframework.security.ldap.DefaultSpringSecurityContextSource;
-import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
-import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.util.StringUtils;
 
 /**
@@ -56,9 +47,9 @@ import org.springframework.util.StringUtils;
 @Configuration
 public class WebSecurityConfig {
 
-    @Value("${ldap.adUrl}")
+   @Value("${nl.mpi.tg.eg.frinex.ldap.adUrl}")
     private String adUrl;
-    @Value("${ldap.adDomain}")
+    @Value("${nl.mpi.tg.eg.frinex.ldap.adDomain}")
     private String adDomain;
     // @Value("${ldap.adBase}")
     // private String adBase;
