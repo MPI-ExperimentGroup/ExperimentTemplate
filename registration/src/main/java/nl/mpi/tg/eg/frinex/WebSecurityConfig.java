@@ -23,10 +23,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.access.AccessDeniedHandlerImpl;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
@@ -72,6 +71,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
         final String[] publicPaths = {
+            "/login",
             "/actuator/health",
             "/assignValue",
             "completeValue",
@@ -88,7 +88,7 @@ public class WebSecurityConfig {
             "/adminpages.css",
             "/public_usage_stats",
             "/public_quick_stats"
-        // "/replayMedia/*/*",
+            // "/replayMedia/*/*",
         };
 
         RequestMatcher[] publicMatchers = Arrays.stream(publicPaths)
@@ -106,7 +106,7 @@ public class WebSecurityConfig {
                 .logout(logout -> logout.permitAll())
                 .exceptionHandling(ex -> ex
                         .accessDeniedHandler(accessDeniedHandler())
-                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")))
+                        .authenticationEntryPoint(authenticationEntryPoint()))
                 .csrf(csrf -> csrf.disable());
         return http.build();
     }
@@ -120,9 +120,16 @@ public class WebSecurityConfig {
 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
-        AccessDeniedHandlerImpl handler = new AccessDeniedHandlerImpl();
-        handler.setErrorPage("/login?error=accessDenied");
-        return handler;
+        return (request, response, accessDeniedException) -> {
+            response.sendRedirect(request.getContextPath() + "/login?error=accessDenied");
+        };
+    }
+
+    @Bean
+    public AuthenticationEntryPoint authenticationEntryPoint() {
+        return (request, response, authException) -> {
+            response.sendRedirect(request.getContextPath() + "/login?error");
+        };
     }
 
     @Bean
@@ -141,13 +148,10 @@ public class WebSecurityConfig {
             return new ProviderManager(List.of(provider));
         } else {
             System.out.println("ActiveDirectoryLdapAuthenticationProvider");
-            ActiveDirectoryLdapAuthenticationProvider provider 
-                    = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
+            ActiveDirectoryLdapAuthenticationProvider provider = new ActiveDirectoryLdapAuthenticationProvider(adDomain, adUrl);
             provider.setConvertSubErrorCodesToExceptions(true);
             provider.setUseAuthenticationRequestCredentials(true);
-        
-            AuthenticationManagerBuilder authBuilder
-                    = http.getSharedObject(AuthenticationManagerBuilder.class);
+            AuthenticationManagerBuilder authBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
             authBuilder.authenticationProvider(provider);
             return authBuilder.build();
         }
