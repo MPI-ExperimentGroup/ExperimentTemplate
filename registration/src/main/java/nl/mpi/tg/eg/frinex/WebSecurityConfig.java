@@ -121,7 +121,7 @@ public class WebSecurityConfig {
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         return (request, response, accessDeniedException) -> {
-            response.sendRedirect(request.getContextPath() + "/login?error=accessDenied");
+            response.sendRedirect(request.getContextPath() + "/login?accessDenied");
         };
     }
 
