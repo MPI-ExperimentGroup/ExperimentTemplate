@@ -124,26 +124,26 @@ public class ExperimentService {
         }
     }
 
-    @RequestMapping(value = "/replayMedia/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
-    public void participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId, HttpServletResponse response) throws IOException {
-//        System.out.println("shortLivedToken: " + shortLivedToken + " for userId: " + userId);
-        final List<MediaData> mediaDataRecords = this.mediaDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
-        if (mediaDataRecords.size() == 1) {
-            MediaData mediaData = mediaDataRecords.get(0);
-            if (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
-                String extension = mediaData.getRecordingFormat().name().toLowerCase();
-                String mediaType = mediaData.isVideo() ? "video" : "audio";
-                response.setContentType(mediaType + "/" + extension);
-                mediaDataService.streamToResponse(response.getOutputStream(), mediaData);
-            } else {
-//                System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + mediaData.getSubmitDate().getTime() + ", " + mediaData.getDownloadPermittedWindowMs() + ", " + System.currentTimeMillis() + ", " + (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
-                response.sendError(HttpStatus.UNAUTHORIZED.value());
-            }
-        } else {
-//            System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + mediaDataRecords.size());
-            response.sendError(HttpStatus.NOT_FOUND.value());
-        }
-    }
+//     @RequestMapping(value = "/replayMedia/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
+//     public void participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId, HttpServletResponse response) throws IOException {
+// //        System.out.println("shortLivedToken: " + shortLivedToken + " for userId: " + userId);
+//         final List<MediaData> mediaDataRecords = this.mediaDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
+//         if (mediaDataRecords.size() == 1) {
+//             MediaData mediaData = mediaDataRecords.get(0);
+//             if (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
+//                 String extension = mediaData.getRecordingFormat().name().toLowerCase();
+//                 String mediaType = mediaData.isVideo() ? "video" : "audio";
+//                 response.setContentType(mediaType + "/" + extension);
+//                 mediaDataService.streamToResponse(response.getOutputStream(), mediaData);
+//             } else {
+// //                System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " timeout: " + mediaData.getSubmitDate().getTime() + ", " + mediaData.getDownloadPermittedWindowMs() + ", " + System.currentTimeMillis() + ", " + (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) - System.currentTimeMillis()));
+//                 response.sendError(HttpStatus.UNAUTHORIZED.value());
+//             }
+//         } else {
+// //            System.err.println("[ERROR] shortLivedToken: " + shortLivedToken + " for userId: " + userId + " returned: " + mediaDataRecords.size());
+//             response.sendError(HttpStatus.NOT_FOUND.value());
+//         }
+//     }
 
     @RequestMapping(value = "/screenChange", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
