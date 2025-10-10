@@ -107,9 +107,9 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
 //    @Transactional
 //    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 
-    @Transactional
-    @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.mediaUUID = :mediaUUID AND a.userId = :userId AND (a.partNumber = 0 OR a.partNumber IS NULL)")
-    public List<MediaData> findByShortLivedTokenAndUserId(@Param("mediaUUID") UUID mediaUUID, @Param("userId") String userId);
+    // @Transactional
+    // @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.mediaUUID = :mediaUUID AND a.userId = :userId AND (a.partNumber = 0 OR a.partNumber IS NULL)")
+    // public List<MediaData> findByMediaUuidTokenAndUserId(@Param("mediaUUID") UUID mediaUUID, @Param("userId") String userId);
     
 //    @Query("SELECT p.dataBlob FROM MediaData p WHERE p.id = :id")
 //    Stream<Byte> streamDataBlob(@Param("id") long id);
