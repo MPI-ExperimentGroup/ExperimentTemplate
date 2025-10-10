@@ -170,8 +170,8 @@ public class MediaData implements Serializable {
         return mediaUUID;
     }
 
-    public void setMediaUUID(UUID shortLivedToken) {
-        this.mediaUUID = shortLivedToken;
+    public void setMediaUUID(UUID mediaUUID) {
+        this.mediaUUID = mediaUUID;
     }
 
     public long getDownloadPermittedWindowMs() {
