@@ -167,7 +167,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         if (mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaUUID !== null) {
             formData.append("mediaUUID", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::mediaUUID);
         }
-        formData.append("downloadPermittedWindowMs", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::downloadPermittedWindowMs);
+        // formData.append("downloadPermittedWindowMs", mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::downloadPermittedWindowMs);
         formData.append("dataBlob", dataBlob);
         xhr.open("POST", this.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::getMediaSubmitPath()(), true);
         xhr.send(formData);
