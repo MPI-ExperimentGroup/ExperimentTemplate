@@ -926,7 +926,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -1455,7 +1455,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -1788,7 +1788,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="startAudioRecorderWeb" downloadPermittedWindowMs="30000" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
+                <startAudioRecorderWeb featureText="startAudioRecorderWeb" recordingFormat="ogg" levelIndicatorStyle="levelIndicatorStyle" echoCancellation="true" autoGainControl="true" noiseSuppression="true" deviceRegex="deviceRegex" mediaId="mediaId">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -3849,7 +3849,7 @@
                 <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="" downloadPermittedWindowMs="30000" mediaId="">
+                <startAudioRecorderWeb featureText="" mediaId="">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -4366,7 +4366,7 @@
                 <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="" downloadPermittedWindowMs="30000" mediaId="">
+                <startAudioRecorderWeb featureText="" mediaId="">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
@@ -4693,7 +4693,7 @@
                 <stimulusImageCapture featureText="" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorderWeb featureText="" downloadPermittedWindowMs="30000" mediaId="">
+                <startAudioRecorderWeb featureText="" mediaId="">
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
