@@ -1995,7 +1995,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     // TODO: replace all AudioRecorderWeb methods with startMediaRecorderWeb type="ogg" / type="ogv" etc.
-    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, /* final int downloadPermittedWindowMs */, final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, /* final int downloadPermittedWindowMs, */ final String mediaId, final String deviceRegexL, final String levelIndicatorStyle, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         super.clearRecorderTriggersWeb();
         final ValueChangeListener<Double> changeListener;
         if (levelIndicatorStyle != null) {
@@ -2007,10 +2007,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             changeListener = null;
         }
-        startAudioRecorderWeb(recordingLabel, recordingFormatL, /* downloadPermittedWindowMs */, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 15);
+        startAudioRecorderWeb(recordingLabel, recordingFormatL, /* downloadPermittedWindowMs, */ mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, 15);
     }
 
-    private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, /* final int downloadPermittedWindowMs */, final String mediaId, final String deviceRegexL, final ValueChangeListener<Double> changeListener, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
+    private void startAudioRecorderWeb(final String recordingLabel, final String recordingFormatL, /* final int downloadPermittedWindowMs, */ final String mediaId, final String deviceRegexL, final ValueChangeListener<Double> changeListener, final boolean noiseSuppression, final boolean echoCancellation, final boolean autoGainControl, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, int retryCount) {
         bumpAudioTicker(); // this has been added here because the recording indicator was not showing on the first recording
         ((ComplexView) simpleView).storeMediaLength(mediaId, -1d);
         // it is important that this mediaId is claimed at this point to prevent later issues in playback or with existing media of the same id.
@@ -2019,7 +2019,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.setWebRecorderMediaId(formattedMediaId);
         final String deviceRegex = (deviceRegexL == null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "audioinput" + "RecorderDeviceId") : deviceRegexL;
         final String recordingFormat = (recordingFormatL == null) ? "ogg" : recordingFormatL;
-        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener(userResults.getUserData().getUserId().toString(), getSelfTag(), currentStimulus.getUniqueId(), /* downloadPermittedWindowMs */, recordingFormat) {
+        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener(userResults.getUserData().getUserId().toString(), getSelfTag(), currentStimulus.getUniqueId(), /* downloadPermittedWindowMs, */ recordingFormat) {
             boolean recordingAborted = false;
 
             @Override
@@ -2027,7 +2027,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 Timer pauseTimer = new Timer() {
                     public void run() {
                         if (retryCount > 0) {
-                            startAudioRecorderWeb(recordingLabel, recordingFormatL, /* downloadPermittedWindowMs */, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
+                            startAudioRecorderWeb(recordingLabel, recordingFormatL, /* downloadPermittedWindowMs, */ mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
                         } else {
                             onError.postLoadTimerFired();
                         }
@@ -2046,7 +2046,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     GWT.log("stimulusPath: " + errorMessage);
                     stopAudioRecorder();
                     if (retryCount > 0) {
-                        startAudioRecorderWeb(recordingLabel, recordingFormatL, /* downloadPermittedWindowMs */, mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
+                        startAudioRecorderWeb(recordingLabel, recordingFormatL, /* downloadPermittedWindowMs, */ mediaId, deviceRegexL, changeListener, noiseSuppression, echoCancellation, autoGainControl, currentStimulus, onError, onSuccess, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, retryCount - 1);
                     } else {
                         onError.postLoadTimerFired();
                     }
@@ -2573,7 +2573,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void streamRecordStart(final Stimulus currentStimulus, final String matchingRegex, TimedStimulusListener onError, TimedStimulusListener onSuccess) {
         final String recordingFormat = "webm";
-        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener(userResults.getUserData().getUserId().toString(), getSelfTag(), currentStimulus.getUniqueId(), 0, recordingFormat) {
+        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener(userResults.getUserData().getUserId().toString(), getSelfTag(), currentStimulus.getUniqueId(), recordingFormat) {
             @Override
             public void recorderNotReady() {
             }
