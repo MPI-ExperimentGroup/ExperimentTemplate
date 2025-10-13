@@ -34,7 +34,7 @@
                     <clearCurrentScore evaluateTokens="" />
                     <regionReplace regionId="recordedMediaMessages" />
                     <startAudioRecorderWeb featureText="00:00:00"
-                        downloadPermittedWindowMs="0" deviceRegex=""
+                        deviceRegex=""
                         mediaId="recordedMedia" levelIndicatorStyle="recordingLevelIndicator">
                         <onSuccess>
                         </onSuccess>

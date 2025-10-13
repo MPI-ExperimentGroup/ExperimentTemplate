@@ -21,7 +21,7 @@
             <hasMoreStimulus>
                 <clearPage />
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder"
-                    downloadPermittedWindowMs="10000" deviceRegex="(046d:0a45)"
+                    deviceRegex="(046d:0a45)"
                     featureText="00:00:00">
                     <onSuccess>
                         <stimulusLabel styleName="stimuliLabel" />
@@ -97,7 +97,7 @@
             <hasMoreStimulus>
                 <clearPage />
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder"
-                    downloadPermittedWindowMs="10000" deviceRegex="" featureText="00:00:00">
+                    deviceRegex="" featureText="00:00:00">
                     <onSuccess>
                         <stimulusLabel styleName="stimuliLabel" />
                         <addPadding />
