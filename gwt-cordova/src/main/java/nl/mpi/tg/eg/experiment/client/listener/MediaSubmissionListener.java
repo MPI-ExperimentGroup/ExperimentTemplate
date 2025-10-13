@@ -28,15 +28,15 @@ public abstract class MediaSubmissionListener {
     public final String userIdString;
     public final String screenName;
     public final String stimulusIdString;
-    public final Integer downloadPermittedWindowMs;
+    // public final Integer downloadPermittedWindowMs;
     public final String mediaType;
     public String mediaUUID = null;
 
-    public MediaSubmissionListener(String userIdString, String screenName, String stimulusIdString, Integer downloadPermittedWindowMs, String mediaType) {
+    public MediaSubmissionListener(String userIdString, String screenName, String stimulusIdString, /* Integer downloadPermittedWindowMs, */ String mediaType) {
         this.userIdString = userIdString;
         this.screenName = screenName;
         this.stimulusIdString = stimulusIdString;
-        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
+        // this.downloadPermittedWindowMs = downloadPermittedWindowMs;
         this.mediaType = mediaType;
     }
 
