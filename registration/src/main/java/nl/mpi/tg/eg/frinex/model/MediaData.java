@@ -174,6 +174,7 @@ public class MediaData implements Serializable {
         this.mediaUUID = mediaUUID;
     }
 
+    @JsonIgnore
     public long getDownloadPermittedWindowMs() {
         return (downloadPermittedWindowMs != null) ? downloadPermittedWindowMs : 0;
     }
