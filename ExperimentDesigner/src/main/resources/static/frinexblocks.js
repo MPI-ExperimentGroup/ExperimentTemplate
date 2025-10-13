@@ -10150,72 +10150,64 @@ function getFeatureBlocks() {
           "check": "String"
         }
       ],
-      "message1": 'downloadPermittedWindowMs %1',
+      "message1": 'deviceRegex %1',
       "args1": [
-        {
-          "type": "field_input",
-          "name": "downloadPermittedWindowMs",
-          "check": "String"
-        }
-      ],
-      "message2": 'deviceRegex %1',
-      "args2": [
         {
           "type": "field_input",
           "name": "deviceRegex",
           "check": "String"
         }
       ],
-      "message3": 'mediaId %1',
-      "args3": [
+      "message2": 'mediaId %1',
+      "args2": [
         {
           "type": "field_input",
           "name": "mediaId",
           "check": "String"
         }
       ],
-      "message4": 'recordingFormat %1',
-      "args4": [
+      "message3": 'recordingFormat %1',
+      "args3": [
         {
           "type": "field_input",
           "name": "recordingFormat",
           "check": "String"
         }
       ],
-      "message5": 'levelIndicatorStyle %1',
-      "args5": [
+      "message4": 'levelIndicatorStyle %1',
+      "args4": [
         {
           "type": "field_input",
           "name": "levelIndicatorStyle",
           "check": "String"
         }
       ],
-      "message6": 'echoCancellation %1',
-      "args6": [
+      "message5": 'echoCancellation %1',
+      "args5": [
         {
           "type": "field_input",
           "name": "echoCancellation",
           "check": "String"
         }
       ],
-      "message7": 'noiseSuppression %1',
-      "args7": [
+      "message6": 'noiseSuppression %1',
+      "args6": [
         {
           "type": "field_input",
           "name": "noiseSuppression",
           "check": "String"
         }
       ],
-      "message8": 'autoGainControl %1',
-      "args8": [
+      "message7": 'autoGainControl %1',
+      "args7": [
         {
           "type": "field_input",
           "name": "autoGainControl",
           "check": "String"
         }
       ],
-      "message9": "mediaLoaded %1",
-      "args9": [
+      "message8": "mediaLoaded %1",
+      "args8": [
         {
           "type": "input_statement",
           "name": "mediaLoaded",
@@ -10225,8 +10217,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message10": "mediaLoadFailed %1",
-      "args10": [
+      "message9": "mediaLoadFailed %1",
+      "args9": [
         {
           "type": "input_statement",
           "name": "mediaLoadFailed",
@@ -10236,8 +10228,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message11": "mediaPlaybackStarted %1",
-      "args11": [
+      "message10": "mediaPlaybackStarted %1",
+      "args10": [
         {
           "type": "input_statement",
           "name": "mediaPlaybackStarted",
@@ -10247,8 +10239,8 @@ function getFeatureBlocks() {
           ]
         }
       ],
-      "message12": "mediaPlaybackComplete %1",
-      "args12": [
+      "message11": "mediaPlaybackComplete %1",
+      "args11": [
         {
           "type": "input_statement",
           "name": "mediaPlaybackComplete",
@@ -13587,7 +13579,7 @@ function getFeatureBlocks() {
      childData += '<mediaPlaybackComplete>\n';
      childData += generator.statementToCode(block, 'mediaPlaybackComplete');
      childData += '</mediaPlaybackComplete>\n';
-    return '<startAudioRecorderWeb block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" downloadPermittedWindowMs="' + block.getFieldValue('downloadPermittedWindowMs') +'" deviceRegex="' + block.getFieldValue('deviceRegex') +'" mediaId="' + block.getFieldValue('mediaId') +'" recordingFormat="' + block.getFieldValue('recordingFormat') +'" levelIndicatorStyle="' + block.getFieldValue('levelIndicatorStyle') +'" echoCancellation="' + block.getFieldValue('echoCancellation') +'" noiseSuppression="' + block.getFieldValue('noiseSuppression') +'" autoGainControl="' + block.getFieldValue('autoGainControl') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</startAudioRecorderWeb>\n');
+    return '<startAudioRecorderWeb block_id="' + block.id + '" featureText="' + block.getFieldValue('featureText') +'" deviceRegex="' + block.getFieldValue('deviceRegex') +'" mediaId="' + block.getFieldValue('mediaId') +'" recordingFormat="' + block.getFieldValue('recordingFormat') +'" levelIndicatorStyle="' + block.getFieldValue('levelIndicatorStyle') +'" echoCancellation="' + block.getFieldValue('echoCancellation') +'" noiseSuppression="' + block.getFieldValue('noiseSuppression') +'" autoGainControl="' + block.getFieldValue('autoGainControl') +'" ' + ((childData === '')? '/>\n' : '>\n' + childData + '</startAudioRecorderWeb>\n');
   };
   javascript.javascriptGenerator.forBlock['frinex_startAudioRecorderAppType'] = function(block, generator) {
     var childData = '';
