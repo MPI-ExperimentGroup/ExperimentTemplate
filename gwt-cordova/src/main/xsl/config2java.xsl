@@ -1506,7 +1506,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
                                                                                                                ) then 'currentStimulus' else 'null /* currentStimulus */' else ''" />
         <xsl:value-of select="if(local-name() eq 'startAudioRecorderWeb') then if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ')  else 'null, 'else ''" />
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField, ') else ''" />
-        <xsl:value-of select="if(@downloadPermittedWindowMs) then concat(@downloadPermittedWindowMs, ', ') else ''" />
+        <!-- <xsl:value-of select="if(@downloadPermittedWindowMs) then concat(@downloadPermittedWindowMs, ', ') else ''" /> -->
         <xsl:value-of select="if(local-name() eq 'logMediaTimeStamp') then ', ' else ''" />
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'playMedia' and @loop) then concat(', ', @loop, ' /* loop */') else ''" />
