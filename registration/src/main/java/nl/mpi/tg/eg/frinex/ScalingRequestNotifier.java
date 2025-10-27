@@ -43,9 +43,9 @@ public class ScalingRequestNotifier {
             final long cooldownMs = 60000;
             if (System.currentTimeMillis() - lastScaleTime > cooldownMs) {
                 if (avg > 800) {
-                    requestScaling("up", avgMs);
+                    requestScaling("up", avg);
                 } else if (avg < 300) {
-                    requestScaling("down", avgMs);
+                    requestScaling("down", avg);
                 }
             }
         }
