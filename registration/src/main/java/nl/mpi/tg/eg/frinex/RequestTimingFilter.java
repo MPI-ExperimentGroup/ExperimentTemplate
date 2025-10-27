@@ -40,6 +40,6 @@ public class RequestTimingFilter implements Filter {
         long start = System.currentTimeMillis();
         chain.doFilter(request, response);
         long duration = System.currentTimeMillis() - start;
-        // ScalingRequestNotifier.recordRequestTime(duration);
+        ScalingRequestNotifier.recordRequestTime(duration);
     }
 }
