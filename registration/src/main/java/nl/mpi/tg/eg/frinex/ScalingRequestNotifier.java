@@ -28,9 +28,9 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class ScalingRequestNotifier {
     @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
-    protected String requestScalingUrl;
+    protected static String requestScalingUrl;
     @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
-    protected String serviceName;
+    protected static String serviceName;
 
     private static final AtomicReference<Double> avgLatency = new AtomicReference<>(0.0);
     private static volatile long lastScaleTime = 0;
