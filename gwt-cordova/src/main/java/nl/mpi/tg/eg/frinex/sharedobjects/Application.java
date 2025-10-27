@@ -36,7 +36,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
-    @Value("${nl.mpi.tg.eg.frinex.informReadyUrl}")
+    @Value("${nl.mpi.tg.eg.frinex.informReadyUrl:#{null}}")
     protected String informReadyUrl;
 
     public static void main(String[] args) {
