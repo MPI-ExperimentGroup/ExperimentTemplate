@@ -46,6 +46,8 @@ public class ScalingRequestNotifier {
                     requestScaling("up", avg);
                 } else if (avg < 300) {
                     requestScaling("down", avg);
+                } else {
+                    requestScaling("ping", avg);
                 }
             }
         }
