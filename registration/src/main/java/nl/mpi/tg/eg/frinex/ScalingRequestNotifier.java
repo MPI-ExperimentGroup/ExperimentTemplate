@@ -17,7 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex;
 
-import java.net.HttpURLConnection;
+import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicReference;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +28,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class ScalingRequestNotifier {
+
     @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
     protected static String requestScalingUrl;
     @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
@@ -54,17 +56,19 @@ public class ScalingRequestNotifier {
     }
 
     private static void requestScaling(String status, double avgMs) {
-        try {
-            String url = requestScalingUrl + "?service=" + serviceName + "&status=" + status + "&avgMs=" + avgMs;
-            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-            conn.setRequestMethod("POST");
-            int responseCode = conn.getResponseCode();
-            System.out.println("requestScaling: " + responseCode);
-            conn.disconnect();
-            lastScaleTime = System.currentTimeMillis();
-        } catch (Exception e) {
+        String url = requestScalingUrl + "?service=" + serviceName + "&status=" + status + "&avgMs=" + avgMs;
+        try (BufferedInputStream inStream = new BufferedInputStream(new URL(url).openStream())) {
+            byte dataBuffer[] = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
+                System.out.write(dataBuffer, 0, bytesRead);
+            }
+            System.out.println("requestScaling done");
+        } catch (IOException e) {
             System.err.println("requestScaling failed: ");
-            e.printStackTrace();
+            System.err.println(requestScalingUrl);
+            System.err.println(e.getMessage());
         }
+        lastScaleTime = System.currentTimeMillis();
     }
 }
