@@ -24,6 +24,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -33,10 +34,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class RequestTimingFilter implements Filter {
 
+    @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
+    protected String requestScalingUrl;
+    @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
+    protected String serviceName;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("requestScalingFilter initialized");
-        ScalingRequestNotifier.showSettings();
+        ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName);
     }
 
     @Override
@@ -45,7 +51,7 @@ public class RequestTimingFilter implements Filter {
         long start = System.currentTimeMillis();
         chain.doFilter(request, response);
         long duration = System.currentTimeMillis() - start;
-        ScalingRequestNotifier.recordRequestTime(duration);
+        ScalingRequestNotifier.recordRequestTime(duration, requestScalingUrl, serviceName);
     }
 
     @Override
