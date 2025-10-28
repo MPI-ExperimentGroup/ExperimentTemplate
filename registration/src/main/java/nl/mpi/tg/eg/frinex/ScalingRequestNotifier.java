@@ -37,6 +37,13 @@ public class ScalingRequestNotifier {
     private static final AtomicReference<Double> avgLatency = new AtomicReference<>(0.0);
     private static volatile long lastScaleTime = 0;
 
+    public static void showSettings() {
+        System.out.print("requestScaling requestScalingUrl: ");
+        System.out.println(requestScalingUrl);
+        System.out.print("requestScaling serviceName: ");
+        System.out.println(serviceName);
+    }
+
     public static void recordRequestTime(long durationMs) {
         if (requestScalingUrl != null) {
             final double alpha = 0.2;
@@ -66,7 +73,7 @@ public class ScalingRequestNotifier {
             System.out.println("requestScaling done");
         } catch (IOException e) {
             System.err.println("requestScaling failed: ");
-            System.err.println(requestScalingUrl);
+            System.err.println(url);
             System.err.println(e.getMessage());
         }
         lastScaleTime = System.currentTimeMillis();

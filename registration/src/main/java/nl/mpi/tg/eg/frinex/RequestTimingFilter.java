@@ -36,6 +36,7 @@ public class RequestTimingFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("requestScalingFilter initialized");
+        ScalingRequestNotifier.showSettings();
     }
 
     @Override
