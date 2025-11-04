@@ -110,14 +110,14 @@ public class ExperimentService {
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = "/mediaBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs, @RequestParam("partNumber") Integer partNumber, @RequestParam(value = "mediaUUID", required = false) UUID mediaUUID) throws IOException, SQLException {
+    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("partNumber") Integer partNumber, @RequestParam(value = "mediaUUID", required = false) UUID mediaUUID) throws IOException, SQLException {
         if (mediaUUID == null && partNumber != 0) {
             return new ResponseEntity<>("mediaUUID must be supplied for the subsequent parts", HttpStatus.NOT_ACCEPTABLE);
         } else if (mediaUUID != null && partNumber == 0) {
             return new ResponseEntity<>("mediaUUID cannot be supplied for the first part", HttpStatus.NOT_ACCEPTABLE);
         } else {
             mediaUUID = (mediaUUID != null) ? mediaUUID : UUID.randomUUID();
-            MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, mediaUUID, downloadPermittedWindowMs, partNumber);
+            MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, mediaUUID, null, partNumber);
             mediaDataService.saveMediaData(mediaData, dataBlob);
             // return the short lived token for the user to replay their recorded audio
             return new ResponseEntity<>(mediaData.getMediaUUID().toString(), HttpStatus.OK);
