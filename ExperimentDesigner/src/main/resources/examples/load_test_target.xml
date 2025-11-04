@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="Load Test Target">
+    <administration allowDataDeletion="true" />
+    <metadata>
+        <field controlledMessage="" controlledRegex="" postName="MediaData" registrationField="MediaData: 12 rows, 4 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="Participant" registrationField="Participant: 20 rows, 16 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="ScreenData" registrationField="ScreenData: 27 rows, 14 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="StimulusResponse" registrationField="StimulusResponse: 12 rows, 4 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="TagData" registrationField="TagData: 35 rows, 27 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="TagPairData" registrationField="TagPairData: 25 rows, 5 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="TimeStamp" registrationField="TimeStamp: 276 rows, 36 rows"></field>
+        <field controlledMessage="" controlledRegex="" postName="EventTime" registrationField="EventTime: No information given"></field>
+        <field controlledMessage="" controlledRegex="" postName="GroupData" registrationField="GroupData: No information given"></field>
+    </metadata>
+    <presenter>
+        <plainText featureText="This experiment is used to load test the server. This test includes 10 minutes of recordings for each participant." />
+    </presenter>
+    <stimuli />
+</experiment>
