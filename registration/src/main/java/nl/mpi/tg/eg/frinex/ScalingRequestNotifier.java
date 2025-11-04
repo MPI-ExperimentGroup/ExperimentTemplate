@@ -21,6 +21,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @since 27 Oct 2025 10:32 AM (creation date)
@@ -29,6 +30,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ScalingRequestNotifier {
 
     private static final AtomicReference<Double> avgLatency = new AtomicReference<>(0.0);
+    private static final AtomicLong totalRequests = new AtomicLong(0);
     private static volatile long lastScaleTime = 0;
 
     public static void showSettings(final String requestScalingUrl, final String serviceName) {
@@ -41,6 +43,7 @@ public class ScalingRequestNotifier {
     public static void recordRequestTime(long durationMs, final String requestScalingUrl, final String serviceName) {
         if (requestScalingUrl != null) {
             final double alpha = 0.2;
+            totalRequests.incrementAndGet();
             avgLatency.updateAndGet(avg -> (1 - alpha) * avg + alpha * durationMs);
             double avg = avgLatency.get();
             final long cooldownMs = 60000;
@@ -57,7 +60,7 @@ public class ScalingRequestNotifier {
     }
 
     private static void requestScaling(String status, double avgMs, final String requestScalingUrl, final String serviceName) {
-        String url = requestScalingUrl + "?service=" + serviceName + "&status=" + status + "&avgMs=" + avgMs;
+        String url = requestScalingUrl + "?service=" + serviceName + "&status=" + status + "&avgMs=" + avgMs + "&total=" + totalRequests.get();
         try (BufferedInputStream inStream = new BufferedInputStream(new URL(url).openStream())) {
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
