@@ -2,6 +2,7 @@
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Load Test Target">
+    <deployment state="staging" />
     <administration allowDataDeletion="true" />
     <metadata>
         <field controlledMessage="" controlledRegex="" postName="MediaData" registrationField="MediaData: 12 rows, 4 rows"></field>
