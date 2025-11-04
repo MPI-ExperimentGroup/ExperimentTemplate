@@ -15772,6 +15772,11 @@ function getFeatureBlocks() {
       },
       {
         "kind": "button",
+        "text": "load_test_target",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
         "text": "local_storage_full",
         "callbackKey": "loadExampleCallback"
       },
