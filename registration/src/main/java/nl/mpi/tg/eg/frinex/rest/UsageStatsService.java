@@ -109,39 +109,39 @@ public class UsageStatsService {
         List<Map<String, Object>> result = new ArrayList<>();
         result.add(Map.of(
                 "target", "screenDataRepository",
-                "datapoints", List.of(List.of(screenDataRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(screenDataRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "timestampRepository",
-                "datapoints", List.of(List.of(timestampRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(timestampRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "tagRepository",
-                "datapoints", List.of(List.of(tagRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(tagRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "tagPairRepository",
-                "datapoints", List.of(List.of(tagPairRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(tagPairRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "participantRepository",
-                "datapoints", List.of(List.of(participantRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(participantRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "stimulusResponseRepository",
-                "datapoints", List.of(List.of(stimulusResponseRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(stimulusResponseRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "mediaDataRepository",
-                "datapoints", List.of(List.of(mediaDataRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(mediaDataRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "screenDataRepository",
-                "datapoints", List.of(List.of(screenDataRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(screenDataRepository.countBySubmitDateBetween(from, to), to))
         ));
         result.add(Map.of(
                 "target", "groupDataRepository",
-                "datapoints", List.of(List.of(groupDataRepository.countByTimestampBetween(from, to), to))
+                "datapoints", List.of(List.of(groupDataRepository.countBySubmitDateBetween(from, to), to))
         ));
 
         return result;

@@ -104,7 +104,7 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
     @Transactional
     public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
 //    @Transactional
 //    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);

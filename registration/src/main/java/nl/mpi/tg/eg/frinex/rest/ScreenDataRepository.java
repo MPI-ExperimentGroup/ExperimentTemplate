@@ -72,7 +72,7 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
         @Param("userId") String userId,
         @Param("screenName") String screenName);
 
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @Override
     @RestResource(exported = false)

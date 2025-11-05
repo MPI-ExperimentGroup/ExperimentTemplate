@@ -50,7 +50,7 @@ public class preventValidationOnMissingValidationControllerTest {
 
         return new preventValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
-            public long countByTimestampBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
             
@@ -176,7 +176,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new TimeStampRepository() {
             @Override
-            public long countByTimestampBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -296,7 +296,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new MockParticipantColumnsRepository() {
             @Override
-            public long countByTimestampBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -441,7 +441,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
-            public long countByTimestampBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -616,7 +616,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
-            public long countByTimestampBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             

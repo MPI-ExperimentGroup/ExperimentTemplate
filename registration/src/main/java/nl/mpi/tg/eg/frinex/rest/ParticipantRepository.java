@@ -78,7 +78,7 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
     @Query("update Participant set staleCopy = true where userId = :userId")
     void setAsStaleByUserId(@Param("userId") String userId);
 
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @Override
     @RestResource(exported = false)

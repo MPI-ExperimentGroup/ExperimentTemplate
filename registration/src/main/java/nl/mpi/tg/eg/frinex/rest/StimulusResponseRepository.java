@@ -173,7 +173,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where screenName like :matchingLike")
     public long countByScreenNameLike(@Param("matchingLike") String matchingLike);
 
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @Override
     @RestResource(exported = false)

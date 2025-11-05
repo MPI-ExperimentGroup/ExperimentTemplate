@@ -74,7 +74,7 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
             @Param("messageSenderId") String messageSenderId,
             @Param("messageString") String messageString);
 
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @Override
     @RestResource(exported = false)

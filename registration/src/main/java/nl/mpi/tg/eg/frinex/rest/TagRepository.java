@@ -136,7 +136,7 @@ List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") St
 
     int countByUserId(@Param("userId") String userId);
     
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
 
     @Override
     @RestResource(exported = false)

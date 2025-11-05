@@ -103,5 +103,5 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
 
     public int countByUserId(@Param("userId") String userId);
     
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
 }

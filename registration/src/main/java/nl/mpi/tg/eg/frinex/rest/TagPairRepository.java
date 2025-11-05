@@ -98,7 +98,7 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
             @Param("tagValue1") String tagValue1,
             @Param("tagValue2") String tagValue2);
 
-    long countByTimestampBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @Override
     @RestResource(exported = false)
