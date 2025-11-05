@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import org.springframework.data.domain.Page;
@@ -73,6 +74,8 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
             @Param("messageSenderId") String messageSenderId,
             @Param("messageString") String messageString);
 
+    long countByTimestampBetween(Instant from, Instant to);
+    
     @Override
     @RestResource(exported = false)
     public abstract <S extends GroupData> S save(S entity);

@@ -87,7 +87,8 @@ public class WebSecurityConfig {
             "/groupEvent",
             "/adminpages.css",
             "/public_usage_stats",
-            "/public_quick_stats"
+            "/public_quick_stats",
+            "/public_count_stats"
             // "/replayMedia/*/*",
         };
 

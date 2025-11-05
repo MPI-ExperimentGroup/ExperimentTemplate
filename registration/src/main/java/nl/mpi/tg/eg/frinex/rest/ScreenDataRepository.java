@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.List;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -71,6 +72,8 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
         @Param("userId") String userId,
         @Param("screenName") String screenName);
 
+    long countByTimestampBetween(Instant from, Instant to);
+    
     @Override
     @RestResource(exported = false)
     public abstract <S extends ScreenData> S save(S entity);

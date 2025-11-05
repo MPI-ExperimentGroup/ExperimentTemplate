@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.MediaData;
 import org.springframework.data.domain.Page;
@@ -104,6 +104,8 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
     @Transactional
     public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
+    long countByTimestampBetween(Instant from, Instant to);
+    
 //    @Transactional
 //    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 

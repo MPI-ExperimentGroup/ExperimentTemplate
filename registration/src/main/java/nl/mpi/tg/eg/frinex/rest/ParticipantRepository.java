@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.QueryHint;
@@ -77,6 +78,8 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
     @Query("update Participant set staleCopy = true where userId = :userId")
     void setAsStaleByUserId(@Param("userId") String userId);
 
+    long countByTimestampBetween(Instant from, Instant to);
+    
     @Override
     @RestResource(exported = false)
     public abstract <S extends Participant> S save(S entity);

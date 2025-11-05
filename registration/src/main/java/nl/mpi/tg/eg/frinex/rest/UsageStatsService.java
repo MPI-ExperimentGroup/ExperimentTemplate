@@ -19,6 +19,10 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.PublicStatistics;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -26,8 +30,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,9 +47,15 @@ public class UsageStatsService {
     @Autowired
     ScreenDataRepository screenDataRepository;
     @Autowired
+    TimeStampRepository timestampRepository;
+    @Autowired
     TagRepository tagRepository;
     @Autowired
+    TagPairRepository tagPairRepository;
+    @Autowired
     ParticipantRepository participantRepository;
+    @Autowired
+    GroupDataRepository groupDataRepository;
     @Autowired
     StimulusResponseRepository stimulusResponseRepository;
     @Autowired
@@ -88,5 +100,50 @@ public class UsageStatsService {
         usageStats.sessionFirstAndLastSeen = null;
         usageStats.totalMediaResponses = mediaDataRepository.count();
         return new ResponseEntity<>(usageStats, HttpStatus.OK);
+    }
+
+    @GetMapping("/public_count_stats")
+    public List<Map<String, Object>> getCountsForRepos(
+            @RequestParam Instant from,
+            @RequestParam Instant to) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        result.add(Map.of(
+                "target", "screenDataRepository",
+                "datapoints", List.of(List.of(screenDataRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "timestampRepository",
+                "datapoints", List.of(List.of(timestampRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "tagRepository",
+                "datapoints", List.of(List.of(tagRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "tagPairRepository",
+                "datapoints", List.of(List.of(tagPairRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "participantRepository",
+                "datapoints", List.of(List.of(participantRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "stimulusResponseRepository",
+                "datapoints", List.of(List.of(stimulusResponseRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "mediaDataRepository",
+                "datapoints", List.of(List.of(mediaDataRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "screenDataRepository",
+                "datapoints", List.of(List.of(screenDataRepository.countByTimestampBetween(from, to), to))
+        ));
+        result.add(Map.of(
+                "target", "groupDataRepository",
+                "datapoints", List.of(List.of(groupDataRepository.countByTimestampBetween(from, to), to))
+        ));
+
+        return result;
     }
 }

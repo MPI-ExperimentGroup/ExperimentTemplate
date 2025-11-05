@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.data.domain.Page;
@@ -101,4 +102,6 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     public void deleteByUserId(@Param("userId") String userId);
 
     public int countByUserId(@Param("userId") String userId);
+    
+    long countByTimestampBetween(Instant from, Instant to);
 }
