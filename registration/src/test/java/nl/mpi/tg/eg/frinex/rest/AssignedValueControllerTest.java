@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -52,6 +53,11 @@ public class AssignedValueControllerTest {
         ArrayList<TagData> mockRecords = new ArrayList<>();
         HashMap<String, Integer> countsMap = new HashMap<>();
         instance.tagRepository = new TagRepository() {
+            @Override
+            public long countByTimestampBetween(Instant from, Instant to) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }            
+            
             @Override
             public long countByLike(String userId, String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not required for this test class.");

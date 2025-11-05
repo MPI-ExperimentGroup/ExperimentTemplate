@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,6 +49,11 @@ public class preventValidationOnMissingValidationControllerTest {
     private preventValidationOnMissingValidationController getInstance(final List<Participant> list) {
 
         return new preventValidationOnMissingValidationController(new ScreenDataRepository() {
+            @Override
+            public long countByTimestampBetween(Instant from, Instant to) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }            
+            
             @Override
             public long countByUserIdLikeAndScreenNameLike(String userId, String screenName) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -170,6 +176,11 @@ public class preventValidationOnMissingValidationControllerTest {
             }
         }, new TimeStampRepository() {
             @Override
+            public long countByTimestampBetween(Instant from, Instant to) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public List<TimeStamp> findNonUniqueCombinations() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -284,6 +295,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new MockParticipantColumnsRepository() {
+            @Override
+            public long countByTimestampBetween(Instant from, Instant to) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -424,6 +440,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new TagRepository() {
+            @Override
+            public long countByTimestampBetween(Instant from, Instant to) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public long countByLike(String userId, String screenName, String eventTag, String tagValue) {
                 throw new UnsupportedOperationException("Not required for this test class.");
@@ -594,6 +615,11 @@ public class preventValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new StimulusResponseRepository() {
+            @Override
+            public long countByTimestampBetween(Instant from, Instant to) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public long countByLike(String userId, String screenName, Integer dataChannel, Boolean isCorrect, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
