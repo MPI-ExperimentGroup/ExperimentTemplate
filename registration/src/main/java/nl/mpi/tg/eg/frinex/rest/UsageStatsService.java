@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -106,6 +107,10 @@ public class UsageStatsService {
     public List<Map<String, Object>> getCountsForRepos(
             @RequestParam Instant from,
             @RequestParam Instant to) {
+        
+//    Date fromDate = Date.from(from);
+//    Date toDate = Date.from(to);
+    
         List<Map<String, Object>> result = new ArrayList<>();
         result.add(Map.of(
                 "target", "screenDataRepository",
