@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +46,7 @@ public class allowValidationOnMissingValidationControllerTest {
 
         return new allowValidationOnMissingValidationController(new ScreenDataRepository() {
             @Override
-            public long countBySubmitDateBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
 
@@ -174,7 +173,7 @@ public class allowValidationOnMissingValidationControllerTest {
 
         }, new TimeStampRepository() {
             @Override
-            public long countBySubmitDateBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
 
@@ -293,7 +292,7 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new MockParticipantColumnsRepository() {
             @Override
-            public long countBySubmitDateBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -438,7 +437,7 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new TagRepository() {
             @Override
-            public long countBySubmitDateBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -613,7 +612,7 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new StimulusResponseRepository() {
             @Override
-            public long countBySubmitDateBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             

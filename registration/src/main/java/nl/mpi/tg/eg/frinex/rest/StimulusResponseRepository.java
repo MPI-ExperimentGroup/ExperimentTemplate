@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
@@ -173,7 +173,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where screenName like :matchingLike")
     public long countByScreenNameLike(@Param("matchingLike") String matchingLike);
 
-    long countBySubmitDateBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Date from, Date to);
     
     @Override
     @RestResource(exported = false)

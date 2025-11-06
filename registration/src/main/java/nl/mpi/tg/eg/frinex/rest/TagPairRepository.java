@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.data.domain.Page;
@@ -98,7 +98,7 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
             @Param("tagValue1") String tagValue1,
             @Param("tagValue2") String tagValue2);
 
-    long countBySubmitDateBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Date from, Date to);
     
     @Override
     @RestResource(exported = false)

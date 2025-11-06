@@ -54,7 +54,7 @@ public class AssignedValueControllerTest {
         HashMap<String, Integer> countsMap = new HashMap<>();
         instance.tagRepository = new TagRepository() {
             @Override
-            public long countBySubmitDateBetween(Instant from, Instant to) {
+            public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
             

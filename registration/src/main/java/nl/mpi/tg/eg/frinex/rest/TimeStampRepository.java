@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.data.domain.Page;
@@ -103,5 +103,5 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
 
     public int countByUserId(@Param("userId") String userId);
     
-    long countBySubmitDateBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Date from, Date to);
 }

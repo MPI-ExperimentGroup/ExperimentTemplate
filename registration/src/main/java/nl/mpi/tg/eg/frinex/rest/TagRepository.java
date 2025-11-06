@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -136,7 +135,7 @@ List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") St
 
     int countByUserId(@Param("userId") String userId);
     
-    long countBySubmitDateBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Date from, Date to);
 
     @Override
     @RestResource(exported = false)

@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.QueryHint;
@@ -104,7 +103,7 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
     @Transactional
     public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
-    long countBySubmitDateBetween(Instant from, Instant to);
+    long countBySubmitDateBetween(Date from, Date to);
     
 //    @Transactional
 //    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
