@@ -74,7 +74,7 @@ public class WebSecurityConfig {
             "/login",
             "/actuator/health",
             "/assignValue",
-            "completeValue",
+            "/completeValue",
             "/validate",
             "/mock_validate",
             "/mediaBlob",
