@@ -131,27 +131,27 @@ public class UsageStatsService {
 
         List<Map<String, Object>> result = new ArrayList<>();
 
-        List<List<Object>> screenDataList = new ArrayList<>();
-        List<List<Object>> timestampList = new ArrayList<>();
-        List<List<Object>> tagList = new ArrayList<>();
-        List<List<Object>> tagPairList = new ArrayList<>();
-        List<List<Object>> participantList = new ArrayList<>();
-        List<List<Object>> stimulusResponseList = new ArrayList<>();
-        List<List<Object>> mediaDataList = new ArrayList<>();
-        List<List<Object>> groupDataList = new ArrayList<>();
+        List<List<Long>> screenDataList = new ArrayList<>();
+        List<List<Long>> timestampList = new ArrayList<>();
+        List<List<Long>> tagList = new ArrayList<>();
+        List<List<Long>> tagPairList = new ArrayList<>();
+        List<List<Long>> participantList = new ArrayList<>();
+        List<List<Long>> stimulusResponseList = new ArrayList<>();
+        List<List<Long>> mediaDataList = new ArrayList<>();
+        List<List<Long>> groupDataList = new ArrayList<>();
 
         Instant current = from;
 
         while (!current.isAfter(to)) {
             Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
-            screenDataList.add(List.of(screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            timestampList.add(List.of(timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            tagList.add(List.of(tagRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            tagPairList.add(List.of(tagPairRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            participantList.add(List.of(participantRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            stimulusResponseList.add(List.of(stimulusResponseRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            mediaDataList.add(List.of(mediaDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
-            groupDataList.add(List.of(groupDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            screenDataList.add(List.of(screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            timestampList.add(List.of(timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            tagList.add(List.of(tagRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            tagPairList.add(List.of(tagPairRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            participantList.add(List.of(participantRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            stimulusResponseList.add(List.of(stimulusResponseRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            mediaDataList.add(List.of(mediaDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            groupDataList.add(List.of(groupDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
             current = next;
         }
 
