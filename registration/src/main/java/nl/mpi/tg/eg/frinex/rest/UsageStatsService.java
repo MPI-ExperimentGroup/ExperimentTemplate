@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.rest;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -105,49 +106,63 @@ public class UsageStatsService {
 
     @GetMapping("/public_count_stats")
     public List<Map<String, Object>> getCountsForRepos(
-            @RequestParam Instant from,
-            @RequestParam Instant to) {
+            @RequestParam(required = false) Instant from,
+            @RequestParam(required = false) Instant to) {
 
-        Date fromDate = Date.from(from);
-        Date toDate = Date.from(to);
+        if (to == null) {
+            to = Instant.now();
+        }
+        if (from == null) {
+            from = to.minus(1, ChronoUnit.DAYS);
+        }
+
+        long durationMinutes = ChronoUnit.MINUTES.between(from, to);
+
+        long stepMinutes;
+        if (durationMinutes <= 120) {
+            stepMinutes = 5;
+        } else if (durationMinutes <= 24 * 60) {
+            stepMinutes = 60;
+        } else if (durationMinutes <= 7 * 24 * 60) {
+            stepMinutes = 360;
+        } else {
+            stepMinutes = 1440;
+        }
 
         List<Map<String, Object>> result = new ArrayList<>();
-        result.add(Map.of(
-                "target", "screenDataRepository",
-                "datapoints", List.of(List.of(screenDataRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "timestampRepository",
-                "datapoints", List.of(List.of(timestampRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "tagRepository",
-                "datapoints", List.of(List.of(tagRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "tagPairRepository",
-                "datapoints", List.of(List.of(tagPairRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "participantRepository",
-                "datapoints", List.of(List.of(participantRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "stimulusResponseRepository",
-                "datapoints", List.of(List.of(stimulusResponseRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "mediaDataRepository",
-                "datapoints", List.of(List.of(mediaDataRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "screenDataRepository",
-                "datapoints", List.of(List.of(screenDataRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
-        result.add(Map.of(
-                "target", "groupDataRepository",
-                "datapoints", List.of(List.of(groupDataRepository.countBySubmitDateBetween(fromDate, toDate), to))
-        ));
+
+        List<List<Object>> screenDataList = new ArrayList<>();
+        List<List<Object>> timestampList = new ArrayList<>();
+        List<List<Object>> tagList = new ArrayList<>();
+        List<List<Object>> tagPairList = new ArrayList<>();
+        List<List<Object>> participantList = new ArrayList<>();
+        List<List<Object>> stimulusResponseList = new ArrayList<>();
+        List<List<Object>> mediaDataList = new ArrayList<>();
+        List<List<Object>> groupDataList = new ArrayList<>();
+
+        Instant current = from;
+
+        while (!current.isAfter(to)) {
+            Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
+            screenDataList.add(List.of(screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            timestampList.add(List.of(timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            tagList.add(List.of(tagRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            tagPairList.add(List.of(tagPairRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            participantList.add(List.of(participantRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            stimulusResponseList.add(List.of(stimulusResponseRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            mediaDataList.add(List.of(mediaDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            groupDataList.add(List.of(groupDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toString()));
+            current = next;
+        }
+
+        result.add(Map.of("target", "screenDataRepository", "datapoints", screenDataList));
+        result.add(Map.of("target", "timestampRepository", "datapoints", timestampList));
+        result.add(Map.of("target", "tagRepository", "datapoints", tagList));
+        result.add(Map.of("target", "tagPairRepository", "datapoints", tagPairList));
+        result.add(Map.of("target", "participantRepository", "datapoints", participantList));
+        result.add(Map.of("target", "stimulusResponseRepository", "datapoints", stimulusResponseList));
+        result.add(Map.of("target", "mediaDataRepository", "datapoints", mediaDataList));
+        result.add(Map.of("target", "groupDataRepository", "datapoints", groupDataList));
 
         return result;
     }
