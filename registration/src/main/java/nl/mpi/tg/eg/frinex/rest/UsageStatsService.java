@@ -38,6 +38,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @since 26 Feb 2021 15:02:08 (creation date)
@@ -165,5 +168,48 @@ public class UsageStatsService {
         result.add(Map.of("target", "groupDataRepository", "datapoints", groupDataList));
 
         return result;
+    }
+    
+    @GetMapping(value = "/public_count_csv", produces = "text/csv")
+    public StreamingResponseBody getCountsCsv(
+            @RequestParam(required = false) Instant from,
+            @RequestParam(required = false) Instant to) {
+
+        if (to == null) {
+            to = Instant.now();
+        }
+        if (from == null) {
+            from = to.minus(1, ChronoUnit.DAYS);
+        }
+
+        long durationMinutes = ChronoUnit.MINUTES.between(from, to);
+
+        long stepMinutes;
+        if (durationMinutes <= 120) {
+            stepMinutes = 5;
+        } else if (durationMinutes <= 24 * 60) {
+            stepMinutes = 60;
+        } else if (durationMinutes <= 7 * 24 * 60) {
+            stepMinutes = 360;
+        } else {
+            stepMinutes = 1440;
+        }
+        return outputStream -> {
+            outputStream.write("time,target,value".getBytes(StandardCharsets.UTF_8));
+            Instant current = from;
+            while (!current.isAfter(to)) {
+                Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
+                outputStream.write((current.toEpochMilli() + ",ScreenData," + screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",Timestamp," + timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",Tag," + tagRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",TagPair," + tagPairRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",Participant," + participantRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",StimulusResponse," + stimulusResponseRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",MediaData," + mediaDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",GroupData," + groupDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.flush();
+                current = next;
+            }
+        };
     }
 }

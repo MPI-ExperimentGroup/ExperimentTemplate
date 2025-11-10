@@ -88,7 +88,8 @@ public class WebSecurityConfig {
             "/adminpages.css",
             "/public_usage_stats",
             "/public_quick_stats",
-            "/public_count_stats"
+            "/public_count_stats",
+            "/public_count_csv"
             // "/replayMedia/*/*",
         };
 
