@@ -175,16 +175,12 @@ public class UsageStatsService {
             @RequestParam(required = false) Instant from,
             @RequestParam(required = false) Instant to) {
 
-        if (to == null) {
-            to = Instant.now();
-        }
-        if (from == null) {
-            from = to.minus(1, ChronoUnit.DAYS);
-        }
+        final Instant toF = (to == null)? Instant.now() : to;
+        final Instant fromF = (from == null)? to.minus(1, ChronoUnit.DAYS) : from;
 
         long durationMinutes = ChronoUnit.MINUTES.between(from, to);
 
-        long stepMinutes;
+        final long stepMinutes;
         if (durationMinutes <= 120) {
             stepMinutes = 5;
         } else if (durationMinutes <= 24 * 60) {
@@ -196,8 +192,8 @@ public class UsageStatsService {
         }
         return outputStream -> {
             outputStream.write("time,target,value".getBytes(StandardCharsets.UTF_8));
-            Instant current = from;
-            while (!current.isAfter(to)) {
+            Instant current = fromF;
+            while (!current.isAfter(toF)) {
                 Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
                 outputStream.write((current.toEpochMilli() + ",ScreenData," + screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
                 outputStream.write((current.toEpochMilli() + ",Timestamp," + timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
