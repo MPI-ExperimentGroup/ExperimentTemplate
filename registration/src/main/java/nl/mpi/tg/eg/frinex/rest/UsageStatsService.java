@@ -191,7 +191,7 @@ public class UsageStatsService {
             stepMinutes = 1440;
         }
         return outputStream -> {
-            outputStream.write("time,target,value".getBytes(StandardCharsets.UTF_8));
+            outputStream.write("time,table,count\n".getBytes(StandardCharsets.UTF_8));
             Instant current = fromF;
             while (!current.isAfter(toF)) {
                 Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
