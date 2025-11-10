@@ -176,9 +176,9 @@ public class UsageStatsService {
             @RequestParam(required = false) Instant to) {
 
         final Instant toF = (to == null)? Instant.now() : to;
-        final Instant fromF = (from == null)? to.minus(1, ChronoUnit.DAYS) : from;
+        final Instant fromF = (from == null)? toF.minus(1, ChronoUnit.DAYS) : from;
 
-        long durationMinutes = ChronoUnit.MINUTES.between(from, to);
+        long durationMinutes = ChronoUnit.MINUTES.between(fromF, toF);
 
         final long stepMinutes;
         if (durationMinutes <= 120) {
