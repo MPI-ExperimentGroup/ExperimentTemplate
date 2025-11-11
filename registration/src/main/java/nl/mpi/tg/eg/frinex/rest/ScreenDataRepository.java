@@ -72,6 +72,7 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
         @Param("userId") String userId,
         @Param("screenName") String screenName);
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
     @Override

@@ -19,10 +19,12 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -103,5 +105,6 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
 
     public int countByUserId(@Param("userId") String userId);
     
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
 }

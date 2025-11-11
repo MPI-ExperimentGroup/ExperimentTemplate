@@ -103,6 +103,7 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
     @Transactional
     public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
 //    @Transactional

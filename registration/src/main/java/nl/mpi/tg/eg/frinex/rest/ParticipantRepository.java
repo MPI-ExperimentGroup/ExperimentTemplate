@@ -78,6 +78,7 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
     @Query("update Participant set staleCopy = true where userId = :userId")
     void setAsStaleByUserId(@Param("userId") String userId);
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
     @Override

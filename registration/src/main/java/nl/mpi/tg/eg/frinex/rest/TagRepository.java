@@ -135,6 +135,7 @@ List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") St
 
     int countByUserId(@Param("userId") String userId);
     
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
 
     @Override

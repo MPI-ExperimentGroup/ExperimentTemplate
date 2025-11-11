@@ -173,6 +173,7 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @Query("select count(distinct concat(tagDate, userId, eventMs)) from StimulusResponse where screenName like :matchingLike")
     public long countByScreenNameLike(@Param("matchingLike") String matchingLike);
 
+    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
     @Override
