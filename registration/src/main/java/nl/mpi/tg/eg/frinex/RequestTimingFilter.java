@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -51,7 +52,9 @@ public class RequestTimingFilter implements Filter {
         long start = System.currentTimeMillis();
         chain.doFilter(request, response);
         long duration = System.currentTimeMillis() - start;
-        ScalingRequestNotifier.recordRequestTime(duration, requestScalingUrl, serviceName);
+        CompletableFuture.runAsync(() -> {
+            ScalingRequestNotifier.recordRequestTime(duration, requestScalingUrl, serviceName);
+        });
     }
 
     @Override
