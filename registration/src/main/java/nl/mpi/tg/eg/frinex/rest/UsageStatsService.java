@@ -181,14 +181,20 @@ public class UsageStatsService {
         long durationMinutes = ChronoUnit.MINUTES.between(fromF, toF);
 
         final long stepMinutes;
-        if (durationMinutes <= 120) {
+        if (durationMinutes <= 30) {
             stepMinutes = 5;
-        } else if (durationMinutes <= 24 * 60) {
+        } else if (durationMinutes <= 60) {
+            stepMinutes = 10;
+        } else if (durationMinutes <= 5 * 60) {
             stepMinutes = 60;
+        } else if (durationMinutes <= 12 * 60) {
+            stepMinutes = 60 * 2;
+        } else if (durationMinutes <= 24 * 60) {
+            stepMinutes = 60 * 5;
         } else if (durationMinutes <= 7 * 24 * 60) {
-            stepMinutes = 360;
+            stepMinutes = 60 * 24;
         } else {
-            stepMinutes = 1440;
+            stepMinutes = Math.max(1, (long) Math.ceil((double) durationMinutes / 5.0));
         }
         return outputStream -> {
             outputStream.write("time,table,count\n".getBytes(StandardCharsets.UTF_8));
