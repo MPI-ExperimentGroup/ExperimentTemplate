@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="background: black; color: white;" onload="readSettings()">
+    <body onload="readSettings()">
         <script language="javascript" type="text/javascript">
             function rotate() {
                 var frameToRotate = document.getElementById("testingFrame");
@@ -148,7 +148,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
             }
         </script>
-        <div style="color: white;" id="robot_messages"></div>
+        <div id="robot_messages"></div>
         <table>
             <tr><td></td><td>
                 Robot Speed: <input type="number" id="robotSpeed" value="1000" max="10000" min="100">&nbsp;
