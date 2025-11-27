@@ -228,10 +228,11 @@ public class ExperimentService {
                 participant.setAcceptLang(acceptLang);
                 participant.setUserAgent(userAgent);
                 // this is in a synchronized block because it is possible for two requests to occur at the same time resulting in two non stale records
-                synchronized (this) {
+                // because there can now be multiple instances of this application running there is no point using a synchronized block
+//                synchronized (this) {
                     participantRepository.setAsStaleByUserId(participant.getUserId());
                     participantRepository.save(participant);
-                }
+//                }
 //                }
             }
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), "", true), HttpStatus.OK);
