@@ -75,7 +75,7 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
 
     @Transactional
     @Modifying
-    @Query("update Participant set staleCopy = true where userId = :userId")
+    @Query("update Participant set staleCopy = true where userId = :userId and staleCopy != true")
     void setAsStaleByUserId(@Param("userId") String userId);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
