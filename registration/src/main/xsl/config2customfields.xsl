@@ -99,7 +99,7 @@
                 }
 
                 public boolean getStaleCopy() {
-                return (staleCopy == null) ? false : staleCopy;
+                return staleCopy;
                 }
             
                 public String getUserId() {
