@@ -56,6 +56,8 @@ public class Application extends SpringBootServletInitializer {
     @EventListener(ApplicationReadyEvent.class)
     public void informNginxProxy() {
         if (informReadyUrl != null) {
+            System.out.print("informNginxProxy: ");
+            System.out.println(informReadyUrl);
             try ( BufferedInputStream inStream = new BufferedInputStream(new URL(informReadyUrl).openStream())) {
                 byte dataBuffer[] = new byte[1024];
                 int bytesRead;
