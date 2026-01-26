@@ -73,6 +73,7 @@ public class WebSecurityConfig {
         final String[] publicPaths = {
             "/login",
             "/actuator/health",
+            "/actuator/metrics",
             "/assignValue",
             "/completeValue",
             "/validate",
