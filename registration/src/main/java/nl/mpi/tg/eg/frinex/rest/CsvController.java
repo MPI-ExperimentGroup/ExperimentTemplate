@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.MediaData;
 import nl.mpi.tg.eg.frinex.model.EventTime;
 import nl.mpi.tg.eg.frinex.model.GroupData;

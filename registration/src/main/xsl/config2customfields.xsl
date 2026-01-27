@@ -50,12 +50,12 @@
 
                 import java.io.Serializable;
                 import java.util.Date;
-                import javax.persistence.Column;
-                import javax.persistence.Entity;
-                import javax.persistence.GeneratedValue;
-                import javax.persistence.GenerationType;
-                import javax.persistence.Id;
-                import javax.persistence.Temporal;
+                import jakarta.persistence.Column;
+                import jakarta.persistence.Entity;
+                import jakarta.persistence.GeneratedValue;
+                import jakarta.persistence.GenerationType;
+                import jakarta.persistence.Id;
+                import jakarta.persistence.Temporal;
 
                 @Entity                     
                 public class <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant implements Serializable, Comparable&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; {
@@ -67,7 +67,7 @@
                 @GeneratedValue(strategy = GenerationType.AUTO)
                 private long id;
 
-                @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+                @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
                 private Date submitDate;
                 private String userId;
                 private String remoteAddr;
@@ -168,7 +168,7 @@
                 <xsl:text>package nl.mpi.tg.eg.frinex.rest;
             
                     import java.util.List;
-                    import javax.persistence.QueryHint;
+                    import jakarta.persistence.QueryHint;
                     import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
                     import org.springframework.data.domain.Page;
                     import org.springframework.data.domain.Pageable;
@@ -956,7 +956,7 @@
                 import java.util.Date;
                 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
                 import java.util.List;
-                import javax.servlet.http.HttpServletRequest;
+                import jakarta.servlet.http.HttpServletRequest;
                 import nl.mpi.tg.eg.frinex.model.<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant;
                 import nl.mpi.tg.eg.frinex.model.TagData;
                 import org.springframework.beans.factory.annotation.Autowired;

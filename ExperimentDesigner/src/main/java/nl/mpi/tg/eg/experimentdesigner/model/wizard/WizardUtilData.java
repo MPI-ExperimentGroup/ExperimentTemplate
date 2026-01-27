@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
  * @since Mar 1, 2018 10:43:43 AM (creation date)

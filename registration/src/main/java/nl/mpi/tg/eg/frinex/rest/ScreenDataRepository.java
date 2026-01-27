@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.Date;
 import java.util.List;
-import javax.persistence.QueryHint;
+import jakarta.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

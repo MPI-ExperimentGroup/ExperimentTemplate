@@ -20,7 +20,7 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.QueryHint;
+import jakarta.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.domain.Page;

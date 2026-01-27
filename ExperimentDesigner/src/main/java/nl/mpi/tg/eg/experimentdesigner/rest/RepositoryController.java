@@ -29,7 +29,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.experimentdesigner.controller.StimulusController;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;

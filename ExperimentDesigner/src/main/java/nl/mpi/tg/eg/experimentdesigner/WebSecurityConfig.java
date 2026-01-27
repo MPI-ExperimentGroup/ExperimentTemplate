@@ -18,19 +18,21 @@
 package nl.mpi.tg.eg.experimentdesigner;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.ldap.DefaultSpringSecurityContextSource;
+import org.springframework.security.web.SecurityFilterChain;
+import java.util.Collections;
 
 /**
  * @since Nov 16, 2015 11:57:18 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
     @Value("${ldap.userSearchFilter}")
     private String userSearchFilter;
@@ -45,43 +47,45 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${ldap.passwordAttribute}")
     private String passwordAttribute;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//               .authorizeRequests()
-//               // todo: consider adding localhost limit to the configuration/**
-//               .antMatchers("/configuration/**", "/listing/**").permitAll()
-//               .anyRequest().authenticated()
-//               .and()
-//               .formLogin()
-//               .loginPage("/login")
-//               .permitAll()
-//               .and()
-//               .logout()
-//               .permitAll();
-        http.headers().frameOptions().sameOrigin()
-                .and().authorizeRequests()
-                .antMatchers("/designer.css").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin()
-                .loginPage("/login").permitAll()
-                .and().logout().logoutSuccessUrl("/");
+    @Bean
+    public DefaultSpringSecurityContextSource contextSource() {
+        DefaultSpringSecurityContextSource contextSource
+                = new DefaultSpringSecurityContextSource(
+                        Collections.singletonList(ldapUrl),
+                        null // base DN if needed
+                );
+        contextSource.setUserDn(managerDn);
+        contextSource.setPassword(managerPassword);
+        contextSource.afterPropertiesSet();
+        return contextSource;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+                .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/designer.css").permitAll()
+                .anyRequest().authenticated())
+                .formLogin(form -> form.loginPage("/login").permitAll())
+                .logout(logout -> logout.logoutSuccessUrl("/"));
+
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        AuthenticationManagerBuilder authBuilder
+                = http.getSharedObject(AuthenticationManagerBuilder.class);
+
+        authBuilder
                 .ldapAuthentication()
                 .userSearchFilter(userSearchFilter)
                 // .groupSearchBase(groupSearchBase)
-                .contextSource()
-                .url(ldapUrl)
-                .managerDn(managerDn)
-                .managerPassword(managerPassword)
-//                .and()
-//                .passwordCompare()
-//                .passwordEncoder(new BCryptPasswordEncoder())
-//                .passwordAttribute(passwordAttribute)
-                ;
+                .contextSource(contextSource())
+                .passwordCompare()
+                .passwordAttribute(passwordAttribute);
+
+        return authBuilder.build();
     }
 }

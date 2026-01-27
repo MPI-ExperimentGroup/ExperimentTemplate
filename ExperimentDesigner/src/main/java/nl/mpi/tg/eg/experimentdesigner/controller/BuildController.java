@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import java.io.IOException;
 import java.security.Principal;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

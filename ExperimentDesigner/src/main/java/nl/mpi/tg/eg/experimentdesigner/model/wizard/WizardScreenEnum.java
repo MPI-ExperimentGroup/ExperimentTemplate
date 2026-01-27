@@ -17,8 +17,8 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlType;
 import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScreen.ExampleType.EditableEntitesDiagram;
 import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScreen.ExampleType.PredefinedKinDiagram;
 import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScreen.ExampleType.SavedKinDiagram;

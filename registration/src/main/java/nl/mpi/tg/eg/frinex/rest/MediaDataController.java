@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.MediaData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

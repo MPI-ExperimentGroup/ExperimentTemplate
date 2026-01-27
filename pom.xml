@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-parent</artifactId>
     <name>Frinex Parent</name>
-    <version>1.7-testing-SNAPSHOT</version>
+    <version>1.8-testing-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
@@ -15,22 +15,20 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.4</version>
+        <version>3.5.0</version>
     </parent>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
         <url>https://www.mpi.nl</url>
     </organization>    
     <properties>        
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version> 
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
         <application.majorVersion>1</application.majorVersion> 
-        <application.minorVersion>7</application.minorVersion> 
+        <application.minorVersion>8</application.minorVersion> 
         <application.branch>pretesting</application.branch> 
         <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
         <versionCheck.buildType>testing</versionCheck.buildType> 
@@ -185,7 +183,7 @@
                     <vcsType>git</vcsType>
                     <allowSnapshots>${versionCheck.allowSnapshots}</allowSnapshots>
                     <majorVersion>1</majorVersion>
-                    <minorVersion>7</minorVersion>
+                    <minorVersion>8</minorVersion>
                     <buildType>${versionCheck.buildType}</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule/>
