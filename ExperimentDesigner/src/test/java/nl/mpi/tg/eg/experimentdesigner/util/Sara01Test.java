@@ -42,7 +42,7 @@ public class Sara01Test {
     /**
      * Test of getExperiment method, of class Sara01.
      *
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.io.IOException
      * @throws java.net.URISyntaxException
      */

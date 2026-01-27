@@ -48,7 +48,7 @@ public class KinOathExampleTest {
      * Test of getExperiment method, of class KinOathExample.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      */
     @Ignore
     @Test

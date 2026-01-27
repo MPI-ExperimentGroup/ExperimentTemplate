@@ -45,7 +45,7 @@ public class FactOrFictionTest {
     /**
      * Test of getExperiment method, of class FactOrFiction.
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Ignore

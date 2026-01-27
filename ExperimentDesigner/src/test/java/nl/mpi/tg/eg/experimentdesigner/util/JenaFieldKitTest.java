@@ -48,7 +48,7 @@ public class JenaFieldKitTest {
      * Test of getJenaExperiment method, of class JenaFieldKit.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Ignore

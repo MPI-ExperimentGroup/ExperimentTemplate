@@ -48,7 +48,7 @@ public class RosselFieldKitTest {
      * Test of getExperiment method, of class RosselFieldKit.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      */
     @Ignore
     @Test

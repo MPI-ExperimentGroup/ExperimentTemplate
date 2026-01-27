@@ -144,7 +144,7 @@ public class AllWizardDataTest {
      * Test of getWizardData method, of multiple wizard classes.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Test
@@ -187,7 +187,7 @@ public class AllWizardDataTest {
      * Test of testAllSerialiseWizardData method, of multiple wizard classes.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Test
@@ -230,7 +230,7 @@ public class AllWizardDataTest {
      * Test of testAllSerialiseWizardUtil method, of multiple wizard classes.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Test
@@ -245,7 +245,7 @@ public class AllWizardDataTest {
      * Test of JsonOnly wizard experiments
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Ignore

@@ -48,7 +48,7 @@ public class HRExperiment01Test {
      * Test of getWizardData method, of class HRExperiment01.
      *
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Test

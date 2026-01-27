@@ -44,7 +44,7 @@ public class ManipulatedContoursTest {
     /**
      * Test of getWizardData method, of class HRPretest.
      * @throws java.io.IOException
-     * @throws javax.xml.bind.JAXBException
+     * @throws jakarta.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Ignore
