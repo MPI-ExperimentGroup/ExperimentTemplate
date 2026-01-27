@@ -455,6 +455,111 @@ public class allowValidationOnMissingValidationControllerTest {
             }
         }, new MockParticipantColumnsRepository() {
             @Override
+            public void flush() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> S saveAndFlush(S entity) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> List<S> saveAllAndFlush(Iterable<S> entities) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllInBatch(Iterable<Participant> entities) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllByIdInBatch(Iterable<Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllInBatch() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Participant getOne(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Participant getById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Participant getReferenceById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> List<S> findAll(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> List<S> findAll(Example<S> example, Sort sort) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public List<Participant> findAll() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public List<Participant> findAllById(Iterable<Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public Optional<Participant> findById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public boolean existsById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public long count() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> Optional<S> findOne(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> Page<S> findAll(Example<S> example, Pageable pageable) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> long count(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant> boolean exists(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends Participant, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
@@ -834,6 +939,86 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
         }, new StimulusResponseRepository() {
+            @Override
+            public void flush() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> S saveAndFlush(S entity) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> List<S> saveAllAndFlush(Iterable<S> entities) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllInBatch(Iterable<StimulusResponse> entities) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllByIdInBatch(Iterable<Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllInBatch() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public StimulusResponse getOne(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public StimulusResponse getById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public StimulusResponse getReferenceById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> List<S> findAll(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> List<S> findAll(Example<S> example, Sort sort) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> Optional<S> findOne(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> Page<S> findAll(Example<S> example, Pageable pageable) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> long count(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse> boolean exists(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends StimulusResponse, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
             @Override
             public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
