@@ -25,9 +25,9 @@ import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -37,7 +37,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
-public interface TagRepository extends PagingAndSortingRepository<TagData, Long> {
+public interface TagRepository extends JpaRepository<TagData, Long> {
 
     @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
     List<TagData> findAllDistinctRecords();
@@ -151,7 +151,7 @@ List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") St
     public void deleteById(Long arg0);
 
     @RestResource(exported = false)
-    public <S extends TagData> Iterable<S> saveAll(Iterable<S> arg0);
+    public <S extends TagData> List<S> saveAll(Iterable<S> arg0);
 
     @RestResource(exported = false)
     public abstract void deleteAll();

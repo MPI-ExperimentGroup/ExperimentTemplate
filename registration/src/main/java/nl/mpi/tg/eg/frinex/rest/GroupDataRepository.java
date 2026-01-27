@@ -23,9 +23,9 @@ import jakarta.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -35,7 +35,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "groupdata", path = "groupdata")
-public interface GroupDataRepository extends PagingAndSortingRepository<GroupData, Long> {
+public interface GroupDataRepository extends JpaRepository<GroupData, Long> {
 
 //    @Override
 //    List<GroupData> findAll();
@@ -92,7 +92,7 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     public void deleteById(Long arg0);
 
     @RestResource(exported = false)
-    public <S extends GroupData> Iterable<S> saveAll(Iterable<S> arg0);
+    public <S extends GroupData> List<S> saveAll(Iterable<S> arg0);
 
     @RestResource(exported = false)
     public void deleteAll();

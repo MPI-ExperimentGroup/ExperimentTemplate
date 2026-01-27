@@ -75,7 +75,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public void deleteAllById(Iterable<? extends Long> ids) {
+            public void deleteAllById(List<? extends Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -132,7 +132,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public <S extends ScreenData> Iterable<S> saveAll(Iterable<S> arg0) {
+            public <S extends ScreenData> List<S> saveAll(Iterable<S> arg0) {
                 return null;
             }
 
@@ -141,7 +141,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Iterable<ScreenData> findAll(Sort sort) {
+            public List<ScreenData> findAll(Sort sort) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -161,12 +161,12 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Iterable<ScreenData> findAll() {
+            public List<ScreenData> findAll() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public Iterable<ScreenData> findAllById(Iterable<Long> ids) {
+            public List<ScreenData> findAllById(Iterable<Long> ids) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -246,7 +246,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public <S extends TimeStamp> Iterable<S> saveAll(Iterable<S> arg0) {
+            public <S extends TimeStamp> List<S> saveAll(Iterable<S> arg0) {
                 return null;
             }
 
@@ -256,7 +256,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Iterable<TimeStamp> findAll(Sort sort) {
+            public List<TimeStamp> findAll(Sort sort) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -391,7 +391,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public <S extends Participant> Iterable<S> saveAll(Iterable<S> arg0) {
+            public <S extends Participant> List<S> saveAll(Iterable<S> arg0) {
                 return null;
             }
 
@@ -401,7 +401,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Iterable<Participant> findAll(Sort sort) {
+            public List<Participant> findAll(Sort sort) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -731,7 +731,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public <S extends StimulusResponse> Iterable<S> saveAll(Iterable<S> arg0) {
+            public <S extends StimulusResponse> List<S> saveAll(Iterable<S> arg0) {
                 return null;
             }
 
@@ -741,7 +741,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Iterable<StimulusResponse> findAll(Sort sort) {
+            public List<StimulusResponse> findAll(Sort sort) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 

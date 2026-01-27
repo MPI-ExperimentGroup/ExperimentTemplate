@@ -24,10 +24,10 @@ import jakarta.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -38,7 +38,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "participants", path = "participants")
-public interface ParticipantRepository extends ParticipantColumnsRepository, PagingAndSortingRepository<Participant, Long> {
+public interface ParticipantRepository extends ParticipantColumnsRepository, JpaRepository<Participant, Long> {
 
 //    Participant findById(@Param("id") long id);
     Page<Participant> findByStaleCopy(@Param("staleCopy") boolean staleCopy, Pageable pageable);
@@ -94,7 +94,7 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
     public void deleteById(Long arg0);
 
     @RestResource(exported = false)
-    public <S extends Participant> Iterable<S> saveAll(Iterable<S> arg0);
+    public <S extends Participant> List<S> saveAll(Iterable<S> arg0);
 
     @RestResource(exported = false)
     public abstract void deleteAll();

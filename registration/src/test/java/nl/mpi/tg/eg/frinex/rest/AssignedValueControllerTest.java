@@ -176,7 +176,7 @@ public class AssignedValueControllerTest {
             }
 
             @Override
-            public <S extends TagData> Iterable<S> saveAll(Iterable<S> arg0) {
+            public <S extends TagData> List<S> saveAll(Iterable<S> arg0) {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 
@@ -196,7 +196,7 @@ public class AssignedValueControllerTest {
             }
 
             @Override
-            public Iterable<TagData> findAll(Sort sort) {
+            public List<TagData> findAll(Sort sort) {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 
@@ -216,12 +216,12 @@ public class AssignedValueControllerTest {
             }
 
             @Override
-            public Iterable<TagData> findAll() {
+            public List<TagData> findAll() {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 
             @Override
-            public Iterable<TagData> findAllById(Iterable<Long> ids) {
+            public List<TagData> findAllById(Iterable<Long> ids) {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 

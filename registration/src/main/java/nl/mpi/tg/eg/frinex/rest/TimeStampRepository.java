@@ -23,9 +23,9 @@ import jakarta.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -35,7 +35,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "timestamps", path = "timestamps")
-public interface TimeStampRepository extends PagingAndSortingRepository<TimeStamp, Long> {
+public interface TimeStampRepository extends JpaRepository<TimeStamp, Long> {
 
     @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp order by tagDate asc, eventMs asc")
     List<TimeStamp> findAllDistinctRecords();
@@ -85,7 +85,7 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     public void deleteById(Long arg0);
 
     @RestResource(exported = false)
-    public <S extends TimeStamp> Iterable<S> saveAll(Iterable<S> arg0);
+    public <S extends TimeStamp> List<S> saveAll(Iterable<S> arg0);
 
     @RestResource(exported = false)
     public abstract void deleteAll();

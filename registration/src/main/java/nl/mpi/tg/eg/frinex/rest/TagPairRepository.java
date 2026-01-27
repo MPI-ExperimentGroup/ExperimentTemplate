@@ -23,9 +23,9 @@ import jakarta.persistence.QueryHint;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -35,7 +35,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "tagpairevents", path = "tagpairevents")
-public interface TagPairRepository extends PagingAndSortingRepository<TagPairData, Long> {
+public interface TagPairRepository extends JpaRepository<TagPairData, Long> {
 
 //    List<TagPairData> findByUserId(@Param("userId") String userId);
 //    List<TagPairData> findByEventTag(@Param("eventTag") String eventTag);
@@ -116,7 +116,7 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
     public void deleteById(Long arg0);
 
     @RestResource(exported = false)
-    public <S extends TagPairData> Iterable<S> saveAll(Iterable<S> arg0);
+    public <S extends TagPairData> List<S> saveAll(Iterable<S> arg0);
 
     @RestResource(exported = false)
     public abstract void deleteAll();
