@@ -81,31 +81,24 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Pag
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends Participant> S save(S entity);
+    public <S extends Participant> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(Participant entity);
+    public void delete(Participant entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends Participant> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends Participant> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 

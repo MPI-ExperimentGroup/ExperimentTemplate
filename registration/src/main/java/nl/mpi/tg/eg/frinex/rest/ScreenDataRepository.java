@@ -75,31 +75,24 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends ScreenData> S save(S entity);
+    public <S extends ScreenData> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(ScreenData entity);
+    public void delete(ScreenData entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends ScreenData> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends ScreenData> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 

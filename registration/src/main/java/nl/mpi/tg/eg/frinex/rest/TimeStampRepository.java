@@ -72,31 +72,24 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
     @Query("select distinct eventTag from TimeStamp order by eventTag")
     List<String> findDistinctEventTag();
 
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends TimeStamp> S save(S entity);
+    public <S extends TimeStamp> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(TimeStamp entity);
+    public void delete(TimeStamp entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends TimeStamp> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends TimeStamp> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 

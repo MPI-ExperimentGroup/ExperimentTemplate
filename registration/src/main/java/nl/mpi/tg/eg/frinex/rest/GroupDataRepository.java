@@ -37,8 +37,8 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @RepositoryRestResource(collectionResourceRel = "groupdata", path = "groupdata")
 public interface GroupDataRepository extends PagingAndSortingRepository<GroupData, Long> {
 
-    @Override
-    List<GroupData> findAll();
+//    @Override
+//    List<GroupData> findAll();
 
     public Page<GroupData> findByGroupUUID(@Param("groupUUID") String groupUUID, Pageable pageable);
 
@@ -79,31 +79,24 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends GroupData> S save(S entity);
+    public <S extends GroupData> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(GroupData entity);
+    public void delete(GroupData entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends GroupData> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends GroupData> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void deleteAll();
+    public void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 }

@@ -38,19 +38,15 @@ import org.springframework.transaction.annotation.Transactional;
 @RepositoryRestResource(collectionResourceRel = "mediadata", path = "mediadata")
 public interface MediaDataRepository extends PagingAndSortingRepository<MediaData, Long>, MediaDataStreamer {
 
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends MediaData> S save(S entity);
+    public <S extends MediaData> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(MediaData entity);
+    public void delete(MediaData entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends MediaData> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
@@ -60,15 +56,12 @@ public interface MediaDataRepository extends PagingAndSortingRepository<MediaDat
 
     public int countByUserId(@Param("userId") String userId);
 
-    @Override
     @RestResource(exported = false)
     public <S extends MediaData> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     

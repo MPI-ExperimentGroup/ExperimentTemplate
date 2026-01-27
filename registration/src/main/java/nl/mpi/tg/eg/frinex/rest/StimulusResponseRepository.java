@@ -176,31 +176,24 @@ public interface StimulusResponseRepository extends PagingAndSortingRepository<S
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends StimulusResponse> S save(S entity);
+    public <S extends StimulusResponse> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(StimulusResponse entity);
+    public void delete(StimulusResponse entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends StimulusResponse> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends StimulusResponse> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 

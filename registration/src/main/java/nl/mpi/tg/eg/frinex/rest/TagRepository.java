@@ -138,31 +138,24 @@ List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") St
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
 
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends TagData> S save(S entity);
+    public <S extends TagData> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(TagData entity);
+    public void delete(TagData entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends TagData> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends TagData> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 

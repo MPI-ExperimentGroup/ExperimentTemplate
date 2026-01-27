@@ -103,31 +103,24 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
     
-    @Override
     @RestResource(exported = false)
-    public abstract <S extends TagPairData> S save(S entity);
+    public <S extends TagPairData> S save(S entity);
 
-    @Override
     @RestResource(exported = false)
-    public abstract void delete(TagPairData entity);
+    public void delete(TagPairData entity);
 
-    @Override
     @RestResource(exported = false)
     public void deleteAll(Iterable<? extends TagPairData> arg0);
 
-    @Override
     @RestResource(exported = false)
     public void deleteById(Long arg0);
 
-    @Override
     @RestResource(exported = false)
     public <S extends TagPairData> Iterable<S> saveAll(Iterable<S> arg0);
 
-    @Override
     @RestResource(exported = false)
     public abstract void deleteAll();
 
-    @Override
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
 
