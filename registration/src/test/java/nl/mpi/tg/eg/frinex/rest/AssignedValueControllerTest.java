@@ -25,15 +25,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -54,6 +57,86 @@ public class AssignedValueControllerTest {
         HashMap<String, Integer> countsMap = new HashMap<>();
         instance.tagRepository = new TagRepository() {
             @Override
+            public void flush() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> S saveAndFlush(S entity) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> List<S> saveAllAndFlush(Iterable<S> entities) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllInBatch(Iterable<TagData> entities) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllByIdInBatch(Iterable<Long> ids) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public void deleteAllInBatch() {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public TagData getOne(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public TagData getById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public TagData getReferenceById(Long id) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> List<S> findAll(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> List<S> findAll(Example<S> example, Sort sort) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> Optional<S> findOne(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> Page<S> findAll(Example<S> example, Pageable pageable) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> long count(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData> boolean exists(Example<S> example) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+            @Override
+            public <S extends TagData, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+            
+            @Override
             public long countBySubmitDateBetween(Date from, Date to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
@@ -70,67 +153,67 @@ public class AssignedValueControllerTest {
             
             @Override
             public List<TagData> findAllDistinctRecords() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public long countDistinctTagValueByEventTag(String eventTag) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public long countDistinctUserIdAndTagValueByEventTag(String userId, String eventTag) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public long countDistinctDateByEventTag(String eventTag) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public long countDistinctUserIdAndDateByEventTag(String userId, String eventTag) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(String userId) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(String userId, String eventTag) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public Date[][] findFirstAndLastSessionAccess() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public Date findFirstSessionAccess(String userId) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public Date findLastSessionAccess(String userId) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public long countByUserIdLikeAndScreenNameLikeAndEventTagLikeAndTagValueLike(String userId, String screenName, String eventTag, String tagValue) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public Page<TagData> findByLike(Pageable pageable, String userId, String screenName, String eventTag, String tagValue) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(String eventTag, Set<String> tagValues) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
@@ -146,12 +229,12 @@ public class AssignedValueControllerTest {
 
             @Override
             public int countDistinctTagDateByUserIdAndTagValue(String userId, String tagValue) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public int countByUserId(String userId) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
@@ -162,72 +245,72 @@ public class AssignedValueControllerTest {
 
             @Override
             public void delete(TagData entity) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public void deleteAll(Iterable<? extends TagData> arg0) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public void deleteById(Long arg0) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public <S extends TagData> List<S> saveAll(Iterable<S> arg0) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public void deleteAll() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public void deleteAllById(Iterable<? extends Long> ids) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public void deleteByUserId(String userId) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public List<TagData> findAll(Sort sort) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public Page<TagData> findAll(Pageable pageable) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public Optional<TagData> findById(Long id) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public boolean existsById(Long id) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public List<TagData> findAll() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public List<TagData> findAllById(Iterable<Long> ids) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
             public long count() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                throw new UnsupportedOperationException("Not required for this test class.");
             }
         };
         return instance;
