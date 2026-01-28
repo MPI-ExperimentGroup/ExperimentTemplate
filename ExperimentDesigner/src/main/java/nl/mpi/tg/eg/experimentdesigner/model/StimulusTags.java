@@ -34,6 +34,7 @@ import jakarta.xml.bind.annotation.XmlElement;
  */
 @Entity
 public class StimulusTags implements Serializable {
+    // TODO: create a demonstrator that utilises the list field to load stimuli based on the stimuli IDs stored in the named metadata field
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
