@@ -55,24 +55,24 @@ public class Application extends SpringBootServletInitializer {
         return super.run(application);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void informNginxProxy() {
-        if (informReadyUrl != null) {
-            System.out.print("informNginxProxy: ");
-            System.out.println(informReadyUrl);
-            try ( BufferedInputStream inStream = new BufferedInputStream(new URL(informReadyUrl).openStream())) {
-                byte dataBuffer[] = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
-                    System.out.write(dataBuffer, 0, bytesRead);
-                }
-                System.out.println("informNginxProxy done");
-            } catch (IOException e) {
-                System.err.println("informNginxProxy failed: ");
-                System.err.println(e.getMessage());
-            }
-        } else {
-            System.out.println("informNginxProxy skipped");
-        }
-    }
+    // @EventListener(ApplicationReadyEvent.class)
+    // public void informNginxProxy() {
+    //     if (informReadyUrl != null) {
+    //         System.out.print("informNginxProxy: ");
+    //         System.out.println(informReadyUrl);
+    //         try ( BufferedInputStream inStream = new BufferedInputStream(new URL(informReadyUrl).openStream())) {
+    //             byte dataBuffer[] = new byte[1024];
+    //             int bytesRead;
+    //             while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
+    //                 System.out.write(dataBuffer, 0, bytesRead);
+    //             }
+    //             System.out.println("informNginxProxy done");
+    //         } catch (IOException e) {
+    //             System.err.println("informNginxProxy failed: ");
+    //             System.err.println(e.getMessage());
+    //         }
+    //     } else {
+    //         System.out.println("informNginxProxy skipped");
+    //     }
+    // }
 }
