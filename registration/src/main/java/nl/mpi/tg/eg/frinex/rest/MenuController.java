@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * @since Mar 14, 2019 2:49:44 PM (creation date)
@@ -30,10 +31,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MenuController {
 
-//    @Autowired
-//    private MediaDataRepository mediaDataRepository;
+    // @Autowired
+    // private MediaDataRepository mediaDataRepository;
 
-    @RequestMapping({"/", "/menu"})
+    @RequestMapping({ "/", "/menu" })
     public String menu(Model model,
             HttpServletRequest request,
             @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
@@ -41,7 +42,9 @@ public class MenuController {
         // model.addAttribute("audioDates", this.mediaDataRepository.findSubmitDateDistinctByOrderBySubmitDateAsc());
         model.addAttribute("simpleMode", simpleMode);
         model.addAttribute("paramId", paramId);
-        model.addAttribute("requestUrl", request.getRequestURL().toString().replaceFirst("^http:", "https:"));
+        // model.addAttribute("requestUrl", request.getRequestURL().toString().replaceFirst("^http:", "https:"));
+        String requestUrl = ServletUriComponentsBuilder.fromRequest(request).build().toUriString();
+        model.addAttribute("requestUrl", requestUrl);
         return "menu";
     }
 }
