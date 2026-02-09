@@ -70,7 +70,7 @@ public class TagPairData {
         this.dataChannel = dataChannel;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

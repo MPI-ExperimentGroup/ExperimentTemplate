@@ -58,7 +58,7 @@ public class TagData implements Comparable<TagData> {
         this.eventMs = eventMs;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

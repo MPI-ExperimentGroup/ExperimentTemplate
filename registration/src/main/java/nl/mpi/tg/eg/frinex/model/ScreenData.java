@@ -57,7 +57,7 @@ public class ScreenData implements Serializable {
         this.userId = userId;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -94,7 +94,7 @@
                 return (this.userId != null) ? this.userId.compareTo(o.getUserId()) : 1;
                 }
             
-                public long getId() {
+                public Long getId() {
                 return id;
                 }
 

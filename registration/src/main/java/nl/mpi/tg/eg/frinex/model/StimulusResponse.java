@@ -103,7 +103,7 @@ public class StimulusResponse {
         this.eventTimes = eventTimes;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

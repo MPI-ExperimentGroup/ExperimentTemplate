@@ -53,7 +53,7 @@ public class TimeStamp {
         this.eventMs = eventMs;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
