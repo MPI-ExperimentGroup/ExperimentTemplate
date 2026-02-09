@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DefaultController {
 
     @RequestMapping("/")
-    public String redirect(HttpServletResponse response) {
+    public String redirect() {
         return "index.html";
     }
 }
