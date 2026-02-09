@@ -33,8 +33,8 @@ import jakarta.persistence.Temporal;
 public class DataDeletionLog implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
     private Date deletionDate;
     private String deletionAddr;

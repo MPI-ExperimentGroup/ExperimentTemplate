@@ -34,8 +34,8 @@ import jakarta.persistence.Temporal;
 public class GroupData implements Comparable<GroupData> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
     private Date eventDate;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
@@ -81,11 +81,11 @@ public class GroupData implements Comparable<GroupData> {
         this.eventMs = eventMs;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

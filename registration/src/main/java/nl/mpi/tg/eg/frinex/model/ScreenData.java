@@ -38,8 +38,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 public class ScreenData implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
     private Date viewDate;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)

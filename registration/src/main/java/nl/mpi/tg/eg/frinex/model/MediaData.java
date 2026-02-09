@@ -41,7 +41,7 @@ import jakarta.persistence.Transient;
 @Table(name = "audioData")
 public class MediaData implements Serializable {
 
-    private long id;
+    private Long id;
     private Date submitDate;
     private String experimentName;
     private String screenName;
@@ -62,7 +62,7 @@ public class MediaData implements Serializable {
         this.submitDate = submitDate;
     }
 
-    public MediaData(long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, final UUID mediaUUID, Long downloadPermittedWindowMs, Integer partNumber) {
+    public MediaData(Long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, final UUID mediaUUID, Long downloadPermittedWindowMs, Integer partNumber) {
         this.id = id;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -89,12 +89,12 @@ public class MediaData implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
