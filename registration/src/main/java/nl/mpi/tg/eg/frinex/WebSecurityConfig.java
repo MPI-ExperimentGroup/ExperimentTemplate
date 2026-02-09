@@ -98,7 +98,6 @@ public class WebSecurityConfig {
                         "/public_count_csv"
                 // "/replayMedia/*/*",
                 ).permitAll()
-                .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
         return http.build();
