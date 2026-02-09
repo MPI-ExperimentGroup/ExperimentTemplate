@@ -17,17 +17,17 @@
  */
 package nl.mpi.tg.eg.frinex;
 
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -69,48 +69,53 @@ public class WebSecurityConfig {
     protected String PASSWORD;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
-        final String[] publicPaths = {
-            "/login",
+    @Order(1)
+    public SecurityFilterChain apiChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
             "/actuator/health",
-            "/actuator/metrics/*",
-            "/assignValue",
-            "/completeValue",
-            "/validate",
-            "/mock_validate",
-            "/mediaBlob",
-            "/screenChange",
-            "/timeStamp",
-            "/metadata",
-            "/tagEvent",
-            "/tagPairEvent",
-            "/stimulusResponse",
-            "/groupEvent",
-            "/adminpages.css",
-            "/public_usage_stats",
-            "/public_quick_stats",
-            "/public_count_stats",
-            "/public_count_csv"
-            // "/replayMedia/*/*",
-        };
+                        "/actuator/metrics/*",
+                        "/assignValue",
+                        "/completeValue",
+                        "/validate",
+                        "/mock_validate",
+                        "/mediaBlob",
+                        "/screenChange",
+                        "/timeStamp",
+                        "/metadata",
+                        "/tagEvent",
+                        "/tagPairEvent",
+                        "/stimulusResponse",
+                        "/groupEvent",
+                        "/adminpages.css",
+                        "/public_usage_stats",
+                        "/public_quick_stats",
+                        "/public_count_stats",
+                        "/public_count_csv"
+                // "/replayMedia/*/*",
+                ).permitAll()
+                .anyRequest().authenticated())
+                .exceptionHandling(ex -> ex
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
+        return http.build();
+    }
 
-        RequestMatcher[] publicMatchers = Arrays.stream(publicPaths)
-                .map(AntPathRequestMatcher::new)
-                .toArray(RequestMatcher[]::new);
+    @Bean
+    @Order(2)
+    public SecurityFilterChain webChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
         http
                 .authenticationManager(authManager)
                 // .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(publicMatchers).permitAll()
-                        // .anyRequest().authenticated()
-                        // .hasRole("ROLE_AD_GROUP")
-                        .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN"))
+                .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN"))
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(logout -> logout.permitAll())
+                // .csrf(csrf -> csrf.disable())
                 .exceptionHandling(ex -> ex
-                        .accessDeniedHandler(accessDeniedHandler())
-                        .authenticationEntryPoint(authenticationEntryPoint()))
-                .csrf(csrf -> csrf.disable());
+                .accessDeniedHandler(accessDeniedHandler())
+                .authenticationEntryPoint(authenticationEntryPoint()));
         return http.build();
     }
 
