@@ -69,11 +69,47 @@ public class WebSecurityConfig {
     @Value("${nl.mpi.tg.eg.frinex.admin.password}")
     protected String PASSWORD;
 
+//    @Bean
+    // @Order(1)
+//    public SecurityFilterChain apiChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(csrf -> csrf.disable())
+//                .authorizeHttpRequests(auth -> auth
+//                .requestMatchers(HttpMethod.POST,
+//                        "/assignValue",
+//                        "/completeValue",
+//                        "/validate",
+//                        "/mock_validate",
+//                        "/mediaBlob",
+//                        "/screenChange",
+//                        "/timeStamp",
+//                        "/metadata",
+//                        "/tagEvent",
+//                        "/tagPairEvent",
+//                        "/stimulusResponse",
+//                        "/groupEvent"
+//                ).permitAll()
+//                .requestMatchers(HttpMethod.GET,
+//                        "/actuator/health",
+//                        "/actuator/metrics/*",
+//                        "/public_usage_stats",
+//                        "/public_quick_stats",
+//                        "/public_count_stats",
+//                        "/public_count_csv"
+//                // "/replayMedia/*/*",
+//                ).permitAll()
+    //             .anyRequest().authenticated())
+    //             .exceptionHandling(ex -> ex
+    //             .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
+    //     return http.build();
+    // }
     @Bean
-    @Order(1)
-    public SecurityFilterChain apiChain(HttpSecurity http) throws Exception {
+    // // @Order(2)
+    public SecurityFilterChain webChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
         http
+                .authenticationManager(authManager)
                 .csrf(csrf -> csrf.disable())
+                // .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST,
                         "/assignValue",
@@ -98,18 +134,6 @@ public class WebSecurityConfig {
                         "/public_count_csv"
                 // "/replayMedia/*/*",
                 ).permitAll()
-                .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
-        return http.build();
-    }
-
-    @Bean
-    @Order(2)
-    public SecurityFilterChain webChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
-        http
-                .authenticationManager(authManager)
-                // .authenticationManager(authenticationManager(contextSource))
-                .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/adminpages.css").permitAll()
                 .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN"))
                 .formLogin(form -> form.loginPage("/login").permitAll())
