@@ -89,7 +89,6 @@ public class WebSecurityConfig {
                         "/tagPairEvent",
                         "/stimulusResponse",
                         "/groupEvent",
-                        "/adminpages.css",
                         "/public_usage_stats",
                         "/public_quick_stats",
                         "/public_count_stats",
@@ -109,6 +108,7 @@ public class WebSecurityConfig {
                 .authenticationManager(authManager)
                 // .authenticationManager(authenticationManager(contextSource))
                 .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/adminpages.css").permitAll()
                 .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN"))
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(logout -> logout.permitAll())
