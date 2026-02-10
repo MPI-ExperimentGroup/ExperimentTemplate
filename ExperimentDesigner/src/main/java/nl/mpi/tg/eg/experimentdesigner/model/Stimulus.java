@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlTransient;
 public class Stimulus implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private int pauseMs;
 

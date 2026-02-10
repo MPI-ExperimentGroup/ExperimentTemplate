@@ -64,7 +64,7 @@
                 public <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant(final String userId){this.userId = userId;}
 
                 @Id
-                @GeneratedValue(strategy = GenerationType.IDENTITY)
+                @GeneratedValue(strategy = GenerationType.AUTO)
                 private Long id;
 
                 @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)

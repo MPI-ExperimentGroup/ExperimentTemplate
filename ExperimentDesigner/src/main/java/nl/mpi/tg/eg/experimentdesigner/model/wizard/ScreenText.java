@@ -36,7 +36,7 @@ public class ScreenText implements Serializable {
 
     @Id
     @XmlTransient
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     //@Size(max = 6000)

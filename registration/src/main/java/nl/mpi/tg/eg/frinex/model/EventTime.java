@@ -30,7 +30,7 @@ import jakarta.persistence.Id;
 @Entity
 public class EventTime implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     protected String event;
     protected Long ms;

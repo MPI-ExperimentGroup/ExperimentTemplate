@@ -34,7 +34,7 @@ import jakarta.persistence.Temporal;
 public class TagPairData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
     private Date tagDate;

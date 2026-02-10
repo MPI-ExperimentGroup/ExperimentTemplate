@@ -53,7 +53,7 @@ public class WizardScreenData implements Serializable {
     final PresenterScreen presenterScreen = new PresenterScreen();
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private long displayOrder; //@ todo: set and provide a method for the user to change displayOrder
     @Enumerated(EnumType.STRING)

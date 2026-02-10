@@ -32,7 +32,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 public class DataChannel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private int channel;
     private String label;
