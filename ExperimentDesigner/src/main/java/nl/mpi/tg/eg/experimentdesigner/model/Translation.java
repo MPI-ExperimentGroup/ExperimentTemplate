@@ -40,7 +40,7 @@ import jakarta.persistence.Temporal;
 public class Translation implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Temporal(jakarta.persistence.TemporalType.DATE)

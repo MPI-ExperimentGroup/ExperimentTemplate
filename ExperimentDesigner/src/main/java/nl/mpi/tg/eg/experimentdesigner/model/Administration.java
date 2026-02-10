@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 public class Administration implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     //    @XmlElementWrapper(name = "dataManagement")
     private Boolean allowDataDeletion = false;

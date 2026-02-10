@@ -34,7 +34,7 @@ import jakarta.xml.bind.annotation.XmlTransient;
 public class Metadata implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String postName;
     private String registrationField;

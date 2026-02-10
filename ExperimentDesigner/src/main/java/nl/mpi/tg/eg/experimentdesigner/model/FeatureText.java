@@ -38,7 +38,7 @@ public class FeatureText {
 
     @XmlTransient
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Size(max = 6000)

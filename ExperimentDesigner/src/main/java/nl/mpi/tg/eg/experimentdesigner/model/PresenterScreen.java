@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class PresenterScreen extends CanHaveFeatures {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long displayOrder;
     private String title;

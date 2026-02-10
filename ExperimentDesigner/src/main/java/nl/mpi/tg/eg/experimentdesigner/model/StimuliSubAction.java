@@ -31,7 +31,7 @@ import jakarta.persistence.Id;
 public class StimuliSubAction implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String percentOfPage;
     private String label;

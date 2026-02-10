@@ -32,7 +32,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class RandomTag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @XmlAttribute
     private String alias;

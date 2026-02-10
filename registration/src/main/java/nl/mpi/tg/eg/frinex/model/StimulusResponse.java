@@ -39,7 +39,7 @@ import jakarta.persistence.Temporal;
 public class StimulusResponse {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
     private Date tagDate;

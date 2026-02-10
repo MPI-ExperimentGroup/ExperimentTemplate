@@ -47,7 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class Experiment implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String appNameDisplay;
     private boolean showMenuBar = true;

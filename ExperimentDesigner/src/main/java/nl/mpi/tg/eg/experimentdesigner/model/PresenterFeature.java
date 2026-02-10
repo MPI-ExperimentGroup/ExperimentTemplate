@@ -52,7 +52,7 @@ import javax.xml.namespace.QName;
 public class PresenterFeature extends CanHaveFeatures {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long displayOrder;
     static long globalfeatureCounter = 0;

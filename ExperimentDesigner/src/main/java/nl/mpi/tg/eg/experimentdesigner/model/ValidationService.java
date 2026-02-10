@@ -33,7 +33,7 @@ import jakarta.xml.bind.annotation.XmlTransient;
 public class ValidationService implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @XmlAttribute(name = "stagingUrl")
     private String stagingUrl;
