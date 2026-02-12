@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +37,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -1205,7 +1205,7 @@ public class preventValidationOnMissingValidationControllerTest {
 
         preventValidationOnMissingValidationController instance = getInstance(participantList);
         ResponseEntity<String> result1 = instance.validate(requestingUserId, invitation_id, token, applicationversion, datalog, acceptLang, userAgent, request);
-        assertEquals(200, result1.getStatusCodeValue());
+        assertEquals(HttpStatus.OK, result1.getStatusCode());
         assertEquals("<200 OK OK,{\n"
                 + "\"validation_error\":\"No record for this user could be found where the provided invitation_id matches to the stored validated_invitation_id. \"\n"
                 + "},[]>", result1.toString());
@@ -1213,7 +1213,7 @@ public class preventValidationOnMissingValidationControllerTest {
         participant2.setValidated_invitation_id(invitation_id);
         participantList.add(participant2);
         ResponseEntity<String> result2 = instance.validate(requestingUserId, invitation_id, token, applicationversion, datalog, acceptLang, userAgent, request);
-        assertEquals(200, result2.getStatusCodeValue());
+        assertEquals(HttpStatus.OK, result2.getStatusCode());
         assertEquals("<200 OK OK,{\n"
                 + "\"information\": \"validated user data found but the field token does not match the latest validated record in the admin system\",\n"
                 + "\"information\": \"validated user data found but the field session_id does not match the validation regex\",\n"

@@ -177,8 +177,7 @@ public class WebSecurityConfig {
                     .password("{noop}" + PASSWORD)
                     .roles("ADMIN")
                     .build();
-            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-            provider.setUserDetailsService(new InMemoryUserDetailsManager(userDetails));
+            DaoAuthenticationProvider provider = new DaoAuthenticationProvider(new InMemoryUserDetailsManager(userDetails));
             return new ProviderManager(List.of(provider));
         } else {
             System.out.println("ActiveDirectoryLdapAuthenticationProvider");

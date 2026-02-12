@@ -30,8 +30,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.persistence.Temporal;
 import jakarta.persistence.Transient;
+import java.time.Instant;
 
 /**
  * @since Aug 13, 2018 4:01:36 PM (creation date)
@@ -42,7 +42,7 @@ import jakarta.persistence.Transient;
 public class MediaData implements Serializable {
 
     private Long id;
-    private Date submitDate;
+    private Instant submitDate;
     private String experimentName;
     private String screenName;
     private String userId;
@@ -57,12 +57,12 @@ public class MediaData implements Serializable {
     public MediaData() {
     }
 
-    public MediaData(Date submitDate) {
+    public MediaData(Instant submitDate) {
         // This constructor is only needed for caching the list of days with audio recordings
         this.submitDate = submitDate;
     }
 
-    public MediaData(Long id, Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, final UUID mediaUUID, Long downloadPermittedWindowMs, Integer partNumber) {
+    public MediaData(Long id, Instant submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, final UUID mediaUUID, Long downloadPermittedWindowMs, Integer partNumber) {
         this.id = id;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -75,7 +75,7 @@ public class MediaData implements Serializable {
         this.partNumber = partNumber;
     }
 
-    public MediaData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID mediaUUID, final Long downloadPermittedWindowMs, final Integer partNumber) {
+    public MediaData(Instant submitDate, String experimentName, String screenName, String userId, String stimulusId, MediaDataType recordingFormat, byte[] dataBlob, final UUID mediaUUID, final Long downloadPermittedWindowMs, final Integer partNumber) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -98,12 +98,11 @@ public class MediaData implements Serializable {
         this.id = id;
     }
 
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 

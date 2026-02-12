@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.MediaData;
 import nl.mpi.tg.eg.frinex.model.MediaDataType;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
@@ -37,7 +37,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -117,7 +116,7 @@ public class ExperimentService {
             return new ResponseEntity<>("mediaUUID cannot be supplied for the first part", HttpStatus.NOT_ACCEPTABLE);
         } else {
             mediaUUID = (mediaUUID != null) ? mediaUUID : UUID.randomUUID();
-            MediaData mediaData = new MediaData(new java.util.Date(), null, screenName, userId, stimulusId, mediaType, null, mediaUUID, null, partNumber);
+            MediaData mediaData = new MediaData(Instant.now(), null, screenName, userId, stimulusId, mediaType, null, mediaUUID, null, partNumber);
             mediaDataService.saveMediaData(mediaData, dataBlob);
             // return the short lived token for the user to replay their recorded audio
             return new ResponseEntity<>(mediaData.getMediaUUID().toString(), HttpStatus.OK);
