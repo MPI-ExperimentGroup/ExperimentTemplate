@@ -605,10 +605,10 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
-            @Override
-            public Page<Participant> findByStaleCopy(boolean staleCopy, Pageable pageable) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
+//            @Override
+//            public Page<Participant> findByStaleCopy(boolean staleCopy, Pageable pageable) {
+//                throw new UnsupportedOperationException("Not required for this test class.");
+//            }
 
             @Override
             public List<Participant> findByUserId(String userId) {
@@ -616,9 +616,14 @@ public class allowValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<Participant> findByStaleCopyAndUserId(boolean staleCopy, String userId) {
+            public Optional<Participant> findTopByUserIdOrderBySubmitDateDesc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
+
+//            @Override
+//            public List<Participant> findByStaleCopyAndUserId(boolean staleCopy, String userId) {
+//                throw new UnsupportedOperationException("Not required for this test class.");
+//            }
 
             @Override
             public List<Participant> findAllByOrderBySubmitDateDesc() {
@@ -630,10 +635,10 @@ public class allowValidationOnMissingValidationControllerTest {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
-            @Override
-            public void setAsStaleByUserId(String userId) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
+//            @Override
+//            public void setAsStaleByUserId(String userId) {
+//                throw new UnsupportedOperationException("Not required for this test class.");
+//            }
 
             @Override
             public <S extends Participant> S save(S entity) {
