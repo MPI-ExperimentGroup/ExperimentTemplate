@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import jakarta.servlet.ServletRequest;
 import jakarta.validation.constraints.NotNull;
+import java.util.Optional;
 import nl.mpi.tg.eg.frinex.model.DataDeletionLog;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -70,13 +71,18 @@ public class ParticipantDetailController {
         model.addAttribute("paramId", paramId);
 
 //        Map<String, String[]> paramMap = request.getParameterMap();
-        final List<Participant> freshCopyUserData = this.participantRepository.findByStaleCopyAndUserId(false, id);
-        if (freshCopyUserData.isEmpty()) {
+//        final List<Participant> freshCopyUserData = this.participantRepository.findByStaleCopyAndUserId(false, id);
+        final Optional<Participant> participantData = this.participantRepository.findTopByUserIdOrderBySubmitDateDesc(id);
+        participantData.ifPresentOrElse(data -> model.addAttribute("insertUserData", data), () -> {
             final Participant insertUserData = new Participant(id);
             model.addAttribute("insertUserData", insertUserData);
-        } else {
-            model.addAttribute("insertUserData", freshCopyUserData.get(0));
-        }
+        });
+//        if (freshCopyUserData.isEmpty()) {
+//            final Participant insertUserData = new Participant(id);
+//            model.addAttribute("insertUserData", insertUserData);
+//        } else {
+//            model.addAttribute("insertUserData", freshCopyUserData.get(0));
+//        }
         model.addAttribute("allowDelete", this.allowDelete);
         return "participantdetail";
     }

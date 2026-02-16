@@ -21,6 +21,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import jakarta.persistence.QueryHint;
+import java.util.Optional;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,14 +42,16 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ParticipantRepository extends ParticipantColumnsRepository, JpaRepository<Participant, Long> {
 
 //    Participant findById(@Param("id") long id);
-    Page<Participant> findByStaleCopy(@Param("staleCopy") boolean staleCopy, Pageable pageable);
+    // Page<Participant> findByStaleCopy(@Param("staleCopy") boolean staleCopy, Pageable pageable);
 
     List<Participant> findByUserId(@Param("userId") String userId);
 
     int countByUserId(@Param("userId") String userId);
 
-    List<Participant> findByStaleCopyAndUserId(@Param("staleCopy") boolean staleCopy, @Param("userId") String userId);
+    // List<Participant> findByStaleCopyAndUserId(@Param("staleCopy") boolean staleCopy, @Param("userId") String userId);
 
+    Optional<Participant> findTopByUserIdOrderBySubmitDateDesc(String userId);
+    
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from Participant group by userId order by firstAccess asc")
     Date[][] findFirstAndLastUsersAccess();
 
@@ -73,10 +76,11 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Jpa
 
     Participant findTop1ByUserIdOrderBySubmitDateDesc(@Param("userId") String userId);
 
-    @Transactional
-    @Modifying
-    @Query("update Participant set staleCopy = true where userId = :userId and staleCopy != true")
-    void setAsStaleByUserId(@Param("userId") String userId);
+//    @Transactional
+//    does this even need to be transactinal
+//    @Modifying
+//    @Query("update Participant set staleCopy = true where userId = :userId and staleCopy != true")
+//    void setAsStaleByUserId(@Param("userId") String userId);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     long countBySubmitDateBetween(Date from, Date to);
