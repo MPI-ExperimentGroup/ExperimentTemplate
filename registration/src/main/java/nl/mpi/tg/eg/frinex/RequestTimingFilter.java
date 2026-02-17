@@ -32,33 +32,33 @@ import org.springframework.stereotype.Component;
  * @since 27 Oct 2025 10:32 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@Component
-public class RequestTimingFilter implements Filter {
-
-    @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
-    protected String requestScalingUrl;
-    @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
-    protected String serviceName;
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("requestScalingFilter initialized");
-        ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName);
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        long start = System.currentTimeMillis();
-        chain.doFilter(request, response);
-        long duration = System.currentTimeMillis() - start;
-        CompletableFuture.runAsync(() -> {
-            ScalingRequestNotifier.recordRequestTime(duration, requestScalingUrl, serviceName);
-        });
-    }
-
-    @Override
-    public void destroy() {
-        System.out.println("requestScalingFilter destroyed");
-    }
-}
+//@Component
+//public class RequestTimingFilter implements Filter {
+//
+//    @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
+//    protected String requestScalingUrl;
+//    @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
+//    protected String serviceName;
+//
+//    @Override
+//    public void init(FilterConfig filterConfig) throws ServletException {
+//        System.out.println("requestScalingFilter initialized");
+//        ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName);
+//    }
+//
+//    @Override
+//    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+//            throws IOException, ServletException {
+//        long start = System.currentTimeMillis();
+//        chain.doFilter(request, response);
+//        long duration = System.currentTimeMillis() - start;
+//        CompletableFuture.runAsync(() -> {
+//            ScalingRequestNotifier.recordRequestTime(duration, requestScalingUrl, serviceName);
+//        });
+//    }
+//
+//    @Override
+//    public void destroy() {
+//        System.out.println("requestScalingFilter destroyed");
+//    }
+//}
