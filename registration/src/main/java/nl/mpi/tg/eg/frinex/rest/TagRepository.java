@@ -66,7 +66,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
         WHERE user_id = :userId
         ORDER BY user_id, screen_name, event_tag DESC, tag_value, event_ms, tag_date, submit_date DESC
         """, nativeQuery = true)
-    List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserId(
+    List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(
             @Param("userId") String userId
     );
 
