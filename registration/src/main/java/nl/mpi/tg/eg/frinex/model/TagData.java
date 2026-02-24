@@ -23,6 +23,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 
 /**
@@ -30,6 +32,15 @@ import jakarta.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
+@Table(
+    name = "tag_data",
+    indexes = {
+        @Index(
+            name = "idx_tagdata_distinct",
+            columnList = "user_id, screen_name, event_tag, tag_value, event_ms, tag_date"
+        )
+    }
+)
 public class TagData implements Comparable<TagData> {
 
     @Id

@@ -39,10 +39,15 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
 public interface TagRepository extends JpaRepository<TagData, Long> {
 
-    @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
+    @Query(value = """
+        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
+        FROM tag_data
+        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
+        """, nativeQuery = true)
     List<TagData> findAllDistinctRecords();
 
-    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query("select count(distinct tagValue) from TagData where eventTag = :eventTag")
     long countDistinctTagValueByEventTag(String eventTag);
 
@@ -55,13 +60,30 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
     @Query("select count(distinct tagDate) from TagData where userId = :userId and eventTag = :eventTag")
     long countDistinctUserIdAndDateByEventTag(@Param("userId") String userId, String eventTag);
 
-    @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
-    List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    @Query(value = """
+        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
+        FROM tag_data
+        WHERE user_id = :userId
+        ORDER BY user_id, screen_name, event_tag DESC, tag_value, event_ms, tag_date, submit_date DESC
+        """, nativeQuery = true)
+    List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserId(
+            @Param("userId") String userId
+    );
 
-    @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
-    List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
+    @Query(value = """
+        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
+        FROM tag_data
+        WHERE user_id = :userId
+          AND event_tag = :eventTag
+        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
+        """, nativeQuery = true)
+    List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(
+            @Param("userId") String userId,
+            @Param("eventTag") String eventTag
+    );
 
-    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from TagData group by userId order by firstAccess asc")
     Date[][] findFirstAndLastSessionAccess();
 
@@ -91,20 +113,22 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
             @Param("eventTag") String eventTag,
             @Param("tagValue") String tagValue);
 
-    @Query("""
-    SELECT DISTINCT p
-    FROM TagData p
-    WHERE
-        (:userId IS NULL OR p.userId like :userId) AND
-        (:screenName IS NULL OR p.screenName like :screenName) AND
-        (:tagValue IS NULL OR p.tagValue like :tagValue) AND
-        (:eventTag IS NULL OR p.eventTag like :eventTag)
-""")
-    Page<TagData> findByLike(Pageable pageable,
+    @Query(value = """
+        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
+        FROM tag_data
+        WHERE (:userId IS NULL OR user_id LIKE :userId)
+          AND (:screenName IS NULL OR screen_name LIKE :screenName)
+          AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
+          AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
+        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
+        """, nativeQuery = true)
+    Page<TagData> findByLike(
+            Pageable pageable,
             @Param("userId") String userId,
             @Param("screenName") String screenName,
             @Param("eventTag") String eventTag,
-            @Param("tagValue") String tagValue);
+            @Param("tagValue") String tagValue
+    );
 
     @Query(value = "SELECT COUNT(*) FROM (SELECT DISTINCT user_id, screen_name, event_tag, tag_value, event_ms, tag_date FROM tag_data WHERE "
             + "(:userId IS NULL OR user_id LIKE :userId) AND "
@@ -139,7 +163,8 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
 
     int countByUserId(@Param("userId") String userId);
 
-    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
+    @QueryHints({
+        @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     long countBySubmitDateBetween(Date from, Date to);
 
     @RestResource(exported = false)

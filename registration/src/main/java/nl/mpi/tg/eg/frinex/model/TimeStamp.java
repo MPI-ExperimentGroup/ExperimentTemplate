@@ -22,6 +22,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 
 /**
@@ -29,6 +31,15 @@ import jakarta.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
+@Table(
+    name = "time_stamp",
+    indexes = {
+        @Index(
+            name = "idx_ts_distinct",
+            columnList = "user_id, event_tag, event_ms, tag_date, submit_date"
+        )
+    }
+)
 public class TimeStamp {
 
     @Id
