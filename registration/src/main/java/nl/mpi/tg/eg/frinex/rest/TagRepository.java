@@ -91,11 +91,15 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
             @Param("eventTag") String eventTag,
             @Param("tagValue") String tagValue);
 
-    @Query("SELECT distinct new TagData(p.userId, p.screenName, p.eventTag, p.tagValue, p.eventMs, p.tagDate) FROM TagData p WHERE "
-            + "(:userId IS NULL OR p.userId like :userId) AND "
-            + "(:screenName IS NULL OR p.screenName like :screenName) AND "
-            + "(:tagValue IS NULL OR p.tagValue like :tagValue) AND "
-            + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
+    @Query("""
+    SELECT DISTINCT p
+    FROM TagData p
+    WHERE
+        (:userId IS NULL OR p.userId like :userId) AND
+        (:screenName IS NULL OR p.screenName like :screenName) AND
+        (:tagValue IS NULL OR p.tagValue like :tagValue) AND
+        (:eventTag IS NULL OR p.eventTag like :eventTag)
+""")
     Page<TagData> findByLike(Pageable pageable,
             @Param("userId") String userId,
             @Param("screenName") String screenName,
@@ -103,11 +107,11 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
             @Param("tagValue") String tagValue);
 
     @Query(value = "SELECT COUNT(*) FROM (SELECT DISTINCT user_id, screen_name, event_tag, tag_value, event_ms, tag_date FROM tag_data WHERE "
-        + "(:userId IS NULL OR user_id LIKE :userId) AND "
-        + "(:screenName IS NULL OR screen_name LIKE :screenName) AND "
-        + "(:tagValue IS NULL OR tag_value LIKE :tagValue) AND "
-        + "(:eventTag IS NULL OR event_tag LIKE :eventTag)) AS distinct_rows", 
-       nativeQuery = true)
+            + "(:userId IS NULL OR user_id LIKE :userId) AND "
+            + "(:screenName IS NULL OR screen_name LIKE :screenName) AND "
+            + "(:tagValue IS NULL OR tag_value LIKE :tagValue) AND "
+            + "(:eventTag IS NULL OR event_tag LIKE :eventTag)) AS distinct_rows",
+            nativeQuery = true)
     long countByLike(
             @Param("userId") String userId,
             @Param("screenName") String screenName,
@@ -124,7 +128,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
 //    @Query("select new nl.mpi.tg.eg.frinex.model.AssignedValue(count(tagValue), max(submitDate), tagValue) from TagData where TagValue in :valueOptions and eventTag = :eventTag group by TagValue")
 //    List<AssignedValue> countAssignedValues(@Param("eventTag") String eventTag, @Param("valueOptions") Set<String> valueOptions);
 
-List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
+    List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") String eventTag, @Param("tagValues") Set<String> tagValues);
 
     List<TagData> findFirstByUserIdAndEventTagInOrderByTagDateDesc(@Param("userId") String userId, @Param("eventTags") Set<String> eventTags);
 
@@ -134,8 +138,8 @@ List<TagData> findByEventTagAndTagValueInOrderByTagDateAsc(@Param("eventTag") St
     int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 
     int countByUserId(@Param("userId") String userId);
-    
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
+
+    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
     long countBySubmitDateBetween(Date from, Date to);
 
     @RestResource(exported = false)
