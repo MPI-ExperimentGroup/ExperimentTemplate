@@ -113,7 +113,9 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
             @Param("eventTag") String eventTag,
             @Param("tagValue") String tagValue);
 
-    @Query(value = """
+@Query(value = """
+    SELECT *
+    FROM (
         SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
         FROM tag_data
         WHERE (:userId IS NULL OR user_id LIKE :userId)
@@ -121,15 +123,18 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
           AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
           AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
         ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
-        """,
-        countQuery = """
+    ) sub
+    ORDER BY ?#{#pageable}
+    """,
+    countQuery = """
         SELECT COUNT(*) FROM (
-        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) 1
-        FROM tag_data
-        WHERE (:userId IS NULL OR user_id LIKE :userId)
-        AND (:screenName IS NULL OR screen_name LIKE :screenName)
-        AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
-        AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
+            SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) 1
+            FROM tag_data
+            WHERE (:userId IS NULL OR user_id LIKE :userId)
+              AND (:screenName IS NULL OR screen_name LIKE :screenName)
+              AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
+              AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
+            ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
         ) sub
         """,
         nativeQuery = true
