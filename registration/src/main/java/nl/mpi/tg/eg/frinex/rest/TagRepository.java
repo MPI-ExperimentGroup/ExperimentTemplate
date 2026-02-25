@@ -121,7 +121,19 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
           AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
           AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
         ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
-        """, nativeQuery = true)
+        """,
+        countQuery = """
+        SELECT COUNT(*) FROM (
+        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) 1
+        FROM tag_data
+        WHERE (:userId IS NULL OR user_id LIKE :userId)
+        AND (:screenName IS NULL OR screen_name LIKE :screenName)
+        AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
+        AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
+        ) sub
+        """,
+        nativeQuery = true
+    )
     Page<TagData> findByLike(
             Pageable pageable,
             @Param("userId") String userId,
