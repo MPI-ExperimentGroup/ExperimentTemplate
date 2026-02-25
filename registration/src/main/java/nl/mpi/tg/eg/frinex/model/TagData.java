@@ -37,7 +37,7 @@ import jakarta.persistence.Temporal;
     indexes = {
         @Index(
             name = "idx_tagdata_distinct",
-            columnList = "user_id, screen_name, event_tag, tag_value, event_ms, tag_date"
+            columnList = "user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date"
         )
     }
 )
