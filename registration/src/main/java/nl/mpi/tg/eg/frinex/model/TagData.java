@@ -57,6 +57,15 @@ public class TagData implements Comparable<TagData> {
     public TagData() {
     }
 
+    public TagData(String userId, String screenName, String eventTag, String tagValue, int eventMs, Instant tagDate) {
+        this.tagDate = tagDate;
+        this.screenName = screenName;
+        this.eventTag = eventTag;
+        this.tagValue = tagValue;
+        this.userId = userId;
+        this.eventMs = eventMs;
+    }
+    
     public TagData(Long id, String userId, String screenName, String eventTag, String tagValue, int eventMs, Instant tagDate) {
         this.id = id;
         this.tagDate = tagDate;

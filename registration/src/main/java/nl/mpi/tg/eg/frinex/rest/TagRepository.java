@@ -57,7 +57,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
     long countDistinctUserIdAndDateByEventTag(@Param("userId") String userId, String eventTag);
 
     @Query("select distinct new TagData(id, userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
-    List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
 //    @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
 //    List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
