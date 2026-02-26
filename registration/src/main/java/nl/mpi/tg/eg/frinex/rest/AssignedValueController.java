@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -178,7 +178,7 @@ public class AssignedValueController {
 //                    }
 //                }
 //            }
-            final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", selectedValue, 0, new Date());
+            final TagData assignedTagData = new TagData(tagData.getUserId(), tagData.getScreenName(), "assignedValue", selectedValue, 0, Instant.now());
             tagRepository.save(assignedTagData);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(tagData.getUserId(), selectedValue, true), HttpStatus.OK);
         }

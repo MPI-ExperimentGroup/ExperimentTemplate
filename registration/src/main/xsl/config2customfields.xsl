@@ -49,7 +49,7 @@
             <xsl:text>package nl.mpi.tg.eg.frinex.model;
 
                 import java.io.Serializable;
-                import java.util.Date;
+                import java.time.Instant;
                 import jakarta.persistence.Column;
                 import jakarta.persistence.Entity;
                 import jakarta.persistence.GeneratedValue;
@@ -67,8 +67,7 @@
                 @GeneratedValue(strategy = GenerationType.IDENTITY)
                 private Long id;
 
-                @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-                private Date submitDate;
+                private Instant submitDate;
                 private String userId;
                 private String remoteAddr;
                 private String acceptLang;
@@ -106,11 +105,11 @@
                 return userId;
                 }
             
-                public Date getSubmitDate() {
+                public Instant getSubmitDate() {
                 return submitDate;
                 }
 
-                public void setSubmitDate(Date submitDate) {
+                public void setSubmitDate(Instant submitDate) {
                 this.submitDate = submitDate;
                 }
 
@@ -953,7 +952,7 @@
 
                 import java.io.IOException;
                 import java.util.ArrayList;
-                import java.util.Date;
+                import java.time.Instant;
                 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
                 import java.util.List;
                 import jakarta.servlet.http.HttpServletRequest;
@@ -1019,7 +1018,7 @@
                 @RequestHeader("Accept-Language") String acceptLang,
                 @RequestHeader("User-Agent") String userAgent,
                 HttpServletRequest request) throws IOException {
-                final Date tagDate = new java.util.Date();
+                final Instant tagDate = Instant.now();
             </xsl:text>
             <xsl:for-each select="experiment/validationService/validation/*[@postField]">
                 <xsl:text>tagRepository.save(new TagData(requestingUserId, "validate", "</xsl:text>
@@ -1111,10 +1110,10 @@
             </xsl:text>
             <xsl:text>
                 while (foundRecords.size() > 1) {
-                if (foundRecords.get(0).getSubmitDate().before(foundRecords.get(1).getSubmitDate())) {
-                foundRecords.remove(0);
+                if (foundRecords.get(0).getSubmitDate().isBefore(foundRecords.get(1).getSubmitDate())) {
+                    foundRecords.remove(0);
                 } else {
-                foundRecords.remove(1);
+                    foundRecords.remove(1);
                 }
                 }
                 final StringBuilder stringBuilder = new StringBuilder();

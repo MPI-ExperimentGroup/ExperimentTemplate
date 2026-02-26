@@ -25,6 +25,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
+import java.time.Instant;
 
 /**
  * @since Jun 30, 2015 12:13:58 PM (creation date)
@@ -36,10 +37,8 @@ public class TagPairData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date tagDate;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date submitDate;
+    private Instant tagDate;
+    private Instant submitDate;
     private String experimentName;
     private String screenName;
     private Integer dataChannel;
@@ -59,7 +58,7 @@ public class TagPairData {
     public TagPairData() {
     }
 
-    public TagPairData(String userId, String screenName, Integer dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate) {
+    public TagPairData(String userId, String screenName, Integer dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs, Instant tagDate) {
         this.tagDate = tagDate;
         this.screenName = screenName;
         this.eventTag = eventTag;
@@ -74,11 +73,11 @@ public class TagPairData {
         return id;
     }
 
-    public Date getTagDate() {
+    public Instant getTagDate() {
         return tagDate;
     }
 
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
@@ -114,7 +113,7 @@ public class TagPairData {
         return eventMs;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 

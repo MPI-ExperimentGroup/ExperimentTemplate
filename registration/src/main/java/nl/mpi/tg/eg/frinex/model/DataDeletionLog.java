@@ -18,12 +18,12 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
+import java.time.Instant;
 
 /**
  * @since 08 March 2023 15:47 PM (creation date)
@@ -35,29 +35,23 @@ public class DataDeletionLog implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date deletionDate;
+    private Instant deletionDate;
     private String deletionAddr;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    public Date firstDeploymentAccessed;
+    public Instant firstDeploymentAccessed;
     public long totalDeploymentsAccessed;
     public long totalPageLoads;
     public long totalStimulusResponses;
     public long totalMediaResponses;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    public Date participantsFirstSeen;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    public Date participantsLastSeen;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    public Date sessionFirstSeen;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    public Date sessionLastSeen;
+    public Instant participantsFirstSeen;
+    public Instant participantsLastSeen;
+    public Instant sessionFirstSeen;
+    public Instant sessionLastSeen;
 
-    public Date getDeletionDate() {
+    public Instant getDeletionDate() {
         return deletionDate;
     }
 
-    public void setDeletionDate(Date deletionDate) {
+    public void setDeletionDate(Instant deletionDate) {
         this.deletionDate = deletionDate;
     }
 
@@ -69,11 +63,11 @@ public class DataDeletionLog implements Serializable {
         this.deletionAddr = deletionAddr;
     }
 
-    public Date getFirstDeploymentAccessed() {
+    public Instant getFirstDeploymentAccessed() {
         return firstDeploymentAccessed;
     }
 
-    public void setFirstDeploymentAccessed(Date firstDeploymentAccessed) {
+    public void setFirstDeploymentAccessed(Instant firstDeploymentAccessed) {
         this.firstDeploymentAccessed = firstDeploymentAccessed;
     }
 
@@ -109,35 +103,35 @@ public class DataDeletionLog implements Serializable {
         this.totalMediaResponses = totalMediaResponses;
     }
 
-    public Date getParticipantsFirstSeen() {
+    public Instant getParticipantsFirstSeen() {
         return participantsFirstSeen;
     }
 
-    public void setParticipantsFirstSeen(Date participantsFirstSeen) {
+    public void setParticipantsFirstSeen(Instant participantsFirstSeen) {
         this.participantsFirstSeen = participantsFirstSeen;
     }
 
-    public Date getParticipantsLastSeen() {
+    public Instant getParticipantsLastSeen() {
         return participantsLastSeen;
     }
 
-    public void setParticipantsLastSeen(Date participantsLastSeen) {
+    public void setParticipantsLastSeen(Instant participantsLastSeen) {
         this.participantsLastSeen = participantsLastSeen;
     }
 
-    public Date getSessionFirstSeen() {
+    public Instant getSessionFirstSeen() {
         return sessionFirstSeen;
     }
 
-    public void setSessionFirstSeen(Date sessionFirstSeen) {
+    public void setSessionFirstSeen(Instant sessionFirstSeen) {
         this.sessionFirstSeen = sessionFirstSeen;
     }
 
-    public Date getSessionLastSeen() {
+    public Instant getSessionLastSeen() {
         return sessionLastSeen;
     }
 
-    public void setSessionLastSeen(Date sessionLastSeen) {
+    public void setSessionLastSeen(Instant sessionLastSeen) {
         this.sessionLastSeen = sessionLastSeen;
     }
 }

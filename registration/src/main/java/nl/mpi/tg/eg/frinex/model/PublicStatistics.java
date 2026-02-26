@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.util.Date;
+import java.time.Instant;
 
 /**
  * @since 26 Feb 2021 15:06:33 (creation date)
@@ -27,17 +27,17 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PublicStatistics {
 
-    public Date firstDeploymentAccessed;
+    public Instant firstDeploymentAccessed;
     public long totalDeploymentsAccessed;
     public long totalPageLoads;
     public long totalParticipantsSeen;
     public long totalStimulusResponses;
     public long totalMediaResponses;
     public long totalDeletionEvents;
-    public Date firstParticipantSeen;
-    public Date lastParticipantSeen;
-    public Date[][] participantsFirstAndLastSeen;
-    public Date[][] sessionFirstAndLastSeen;
+    public Instant firstParticipantSeen;
+    public Instant lastParticipantSeen;
+    public Instant[][] participantsFirstAndLastSeen;
+    public Instant[][] sessionFirstAndLastSeen;
 
     public PublicStatistics() {
     }

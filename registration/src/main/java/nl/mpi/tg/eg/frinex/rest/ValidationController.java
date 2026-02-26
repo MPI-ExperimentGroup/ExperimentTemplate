@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
-import java.util.Date;
+import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +60,7 @@ public class ValidationController {
             @RequestParam("session_step") String session_step,
             @RequestParam("applicationversion") String applicationversion,
             @RequestParam("datalog") String datalog) throws IOException {
-        final Date tagDate = new java.util.Date();
+        final Instant tagDate = Instant.now();
         tagRepository.save(new TagData(uuid, "mock_validate", "session_steps", (session_steps.length() > 254) ? session_steps.substring(0, 254) : session_steps, 0, tagDate));
         tagRepository.save(new TagData(uuid, "mock_validate", "session_next_step", (session_next_step.length() > 254) ? session_next_step.substring(0, 254) : session_next_step, 0, tagDate));
         tagRepository.save(new TagData(uuid, "mock_validate", "session_id", (session_id.length() > 254) ? session_id.substring(0, 254) : session_id, 0, tagDate));

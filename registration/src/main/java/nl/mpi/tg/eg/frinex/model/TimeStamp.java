@@ -17,14 +17,13 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
-import java.util.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
+import java.time.Instant;
 
 /**
  * @since Jul 8, 2015 5:36:54 PM (creation date)
@@ -36,7 +35,7 @@ import jakarta.persistence.Temporal;
     indexes = {
         @Index(
             name = "idx_ts_distinct",
-            columnList = "user_id, event_tag, event_ms, tag_date, submit_date"
+            columnList = "user_id, event_tag, event_ms, tag_date, id"
         )
     }
 )
@@ -45,10 +44,8 @@ public class TimeStamp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date tagDate;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date submitDate;
+    private Instant tagDate;
+    private Instant submitDate;
     private String experimentName;
     private String eventTag;
     private String userId;
@@ -57,7 +54,7 @@ public class TimeStamp {
     public TimeStamp() {
     }
 
-    public TimeStamp(String userId, String eventTag, int eventMs, Date tagDate) {
+    public TimeStamp(String userId, String eventTag, int eventMs, Instant tagDate) {
         this.tagDate = tagDate;
         this.eventTag = eventTag;
         this.userId = userId;
@@ -68,11 +65,11 @@ public class TimeStamp {
         return id;
     }
 
-    public Date getTagDate() {
+    public Instant getTagDate() {
         return tagDate;
     }
 
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
@@ -92,7 +89,7 @@ public class TimeStamp {
         return eventMs;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 }

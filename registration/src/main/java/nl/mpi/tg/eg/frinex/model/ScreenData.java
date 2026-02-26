@@ -18,14 +18,13 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
+import java.time.Instant;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
@@ -40,10 +39,8 @@ public class ScreenData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date viewDate;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date submitDate;
+    private Instant viewDate;
+    private Instant submitDate;
     private String experimentName;
     private String screenName;
     private String userId;
@@ -51,7 +48,7 @@ public class ScreenData implements Serializable {
     public ScreenData() {
     }
 
-    public ScreenData(String userId, String screenName, Date viewDate) {
+    public ScreenData(String userId, String screenName, Instant viewDate) {
         this.viewDate = viewDate;
         this.screenName = screenName;
         this.userId = userId;
@@ -61,11 +58,11 @@ public class ScreenData implements Serializable {
         return id;
     }
 
-    public Date getViewDate() {
+    public Instant getViewDate() {
         return viewDate;
     }
 
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
@@ -77,7 +74,7 @@ public class ScreenData implements Serializable {
         return screenName;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 

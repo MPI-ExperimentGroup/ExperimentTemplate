@@ -17,10 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import jakarta.persistence.QueryHint;
+import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.domain.Page;
@@ -75,37 +75,31 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
     long countDistinctUserIdAndDateByEventTag(@Param("userId") String userId, String eventTag);
 
     @Query(value = """
+    SELECT *
+    FROM (
         SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
         FROM tag_data
         WHERE user_id = :userId
-        ORDER BY user_id, screen_name, event_tag DESC, tag_value, event_ms, tag_date, submit_date DESC
-        """, nativeQuery = true)
-    List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(
+        ORDER BY user_id, screen_name, event_tag DESC, tag_value, event_ms, tag_date, id
+    ) sub
+    ORDER BY sub.tag_date ASC
+    """, nativeQuery = true)
+    List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserIdOrderByTagDateAsc(
             @Param("userId") String userId
     );
 
-    @Query(value = """
-        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
-        FROM tag_data
-        WHERE user_id = :userId
-          AND event_tag = :eventTag
-        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
-        """, nativeQuery = true)
-    List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(
-            @Param("userId") String userId,
-            @Param("eventTag") String eventTag
-    );
-
+//    @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
+//    List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
     @QueryHints({
         @QueryHint(name = "org.hibernate.cacheable", value = "true")})
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from TagData group by userId order by firstAccess asc")
-    Date[][] findFirstAndLastSessionAccess();
+    Instant[][] findFirstAndLastSessionAccess();
 
     @Query(value = "select min(submitDate) from TagData where userId = :userId")
-    Date findFirstSessionAccess(@Param("userId") String userId);
+    Instant findFirstSessionAccess(@Param("userId") String userId);
 
     @Query(value = "select max(submitDate) from TagData where userId = :userId")
-    Date findLastSessionAccess(@Param("userId") String userId);
+    Instant findLastSessionAccess(@Param("userId") String userId);
 
     @Query(value = "SELECT * FROM tag_data td "
             + "WHERE (td.event_ms, td.event_tag, td.tag_value, td.user_id, td.tag_date, td.screen_name) IN ("
@@ -127,7 +121,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
             @Param("eventTag") String eventTag,
             @Param("tagValue") String tagValue);
 
-@Query(value = """
+    @Query(value = """
     SELECT *
     FROM (
         SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
@@ -136,7 +130,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
           AND (:screenName IS NULL OR screen_name LIKE :screenName)
           AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
           AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
-        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
+        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, id
     ) sub
     ORDER BY ?#{#pageable}
     """,
@@ -148,7 +142,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
               AND (:screenName IS NULL OR screen_name LIKE :screenName)
               AND (:tagValue IS NULL OR tag_value LIKE :tagValue)
               AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
-            ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
+            ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, id
         ) sub
         """,
         nativeQuery = true
@@ -196,7 +190,7 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
 
     @QueryHints({
         @QueryHint(name = "org.hibernate.cacheable", value = "true")})
-    long countBySubmitDateBetween(Date from, Date to);
+    long countBySubmitDateBetween(Instant from, Instant to);
 
     @RestResource(exported = false)
     public <S extends TagData> S save(S entity);

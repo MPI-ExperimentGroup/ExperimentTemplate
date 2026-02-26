@@ -24,7 +24,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
+import java.time.Instant;
 
 /**
  * @since Nov 25, 2016 2:54:02 PM (creation date)
@@ -36,10 +36,8 @@ public class GroupData implements Comparable<GroupData> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date eventDate;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date submitDate;
+    private Instant eventDate;
+    private Instant submitDate;
     private String experimentName;
     private String groupUUID;
     private String groupName;
@@ -61,7 +59,7 @@ public class GroupData implements Comparable<GroupData> {
     public GroupData() {
     }
 
-    public GroupData(Date eventDate, Date submitDate, String experimentName, String groupUUID, String groupName, String screenName, String messageRespondentId, String allMemberCodes, String groupCommunicationChannels, String senderMemberCode, String respondentMemberCode, String stimulusId, String stimulusIndex, String responseStimulusId, String stimulusOptionIds, String messageString, int eventMs) {
+    public GroupData(Instant eventDate, Instant submitDate, String experimentName, String groupUUID, String groupName, String screenName, String messageRespondentId, String allMemberCodes, String groupCommunicationChannels, String senderMemberCode, String respondentMemberCode, String stimulusId, String stimulusIndex, String responseStimulusId, String stimulusOptionIds, String messageString, int eventMs) {
         this.eventDate = eventDate;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
@@ -89,11 +87,11 @@ public class GroupData implements Comparable<GroupData> {
         this.id = id;
     }
 
-    public Date getEventDate() {
+    public Instant getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(Instant eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -129,11 +127,11 @@ public class GroupData implements Comparable<GroupData> {
         this.messageSenderId = messageSenderId;
     }
 
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 

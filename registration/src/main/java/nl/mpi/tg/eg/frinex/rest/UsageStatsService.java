@@ -147,14 +147,14 @@ public class UsageStatsService {
 
         while (!current.isAfter(to)) {
             Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
-            screenDataList.add(List.of(screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            timestampList.add(List.of(timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            tagList.add(List.of(tagRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            tagPairList.add(List.of(tagPairRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            participantList.add(List.of(participantRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            stimulusResponseList.add(List.of(stimulusResponseRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            mediaDataList.add(List.of(mediaDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
-            groupDataList.add(List.of(groupDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)), current.toEpochMilli()));
+            screenDataList.add(List.of(screenDataRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            timestampList.add(List.of(timestampRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            tagList.add(List.of(tagRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            tagPairList.add(List.of(tagPairRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            participantList.add(List.of(participantRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            stimulusResponseList.add(List.of(stimulusResponseRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            mediaDataList.add(List.of(mediaDataRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
+            groupDataList.add(List.of(groupDataRepository.countBySubmitDateBetween(current, next), current.toEpochMilli()));
             current = next;
         }
 
@@ -201,14 +201,14 @@ public class UsageStatsService {
             Instant current = fromF;
             while (!current.isAfter(toF)) {
                 Instant next = current.plus(stepMinutes, ChronoUnit.MINUTES);
-                outputStream.write((current.toEpochMilli() + ",ScreenData," + screenDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",Timestamp," + timestampRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",Tag," + tagRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",TagPair," + tagPairRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",Participant," + participantRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",StimulusResponse," + stimulusResponseRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",MediaData," + mediaDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
-                outputStream.write((current.toEpochMilli() + ",GroupData," + groupDataRepository.countBySubmitDateBetween(Date.from(current), Date.from(next)) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",ScreenData," + screenDataRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",Timestamp," + timestampRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",Tag," + tagRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",TagPair," + tagPairRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",Participant," + participantRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",StimulusResponse," + stimulusResponseRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",MediaData," + mediaDataRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
+                outputStream.write((current.toEpochMilli() + ",GroupData," + groupDataRepository.countBySubmitDateBetween(current, next) + "\n").getBytes(StandardCharsets.UTF_8));
                 outputStream.flush();
                 current = next;
             }

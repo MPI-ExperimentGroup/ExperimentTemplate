@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import jakarta.persistence.CascadeType;
@@ -29,7 +28,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
+import java.time.Instant;
 
 /**
  * @since Sep 26, 2018 2:15:01 PM (creation date)
@@ -41,10 +40,8 @@ public class StimulusResponse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date tagDate;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date submitDate;
+    private Instant tagDate;
+    private Instant submitDate;
     private String experimentName;
     private String screenName;
     private Integer dataChannel;
@@ -76,7 +73,7 @@ public class StimulusResponse {
         eventTimes = new ArrayList<>();
     }
 
-    public StimulusResponse(Date tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore, List<EventTime> eventTimes) {
+    public StimulusResponse(Instant tagDate, String experimentName, String screenName, Integer dataChannel, String responseGroup, String scoreGroup, String stimulusId, String response, Boolean isCorrect, String userId, int eventMs, int gamesPlayed, int totalScore, int totalPotentialScore, int currentScore, int correctStreak, int errorStreak, int potentialScore, double maxScore, int maxErrors, int maxCorrectStreak, int maxErrorStreak, int maxPotentialScore, List<EventTime> eventTimes) {
         this.tagDate = tagDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
@@ -107,11 +104,11 @@ public class StimulusResponse {
         return id;
     }
 
-    public Date getTagDate() {
+    public Instant getTagDate() {
         return tagDate;
     }
 
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
@@ -203,7 +200,7 @@ public class StimulusResponse {
         return maxPotentialScore;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 

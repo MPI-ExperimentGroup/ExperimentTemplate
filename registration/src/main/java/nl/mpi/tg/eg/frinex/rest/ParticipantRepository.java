@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import jakarta.persistence.QueryHint;
 import java.util.Optional;
@@ -53,7 +52,7 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Jpa
     Optional<Participant> findTopByUserIdOrderBySubmitDateDesc(String userId);
     
     @Query(value = "select min(submitDate) as firstAccess, max(submitDate) as lastAccess from Participant group by userId order by firstAccess asc")
-    Date[][] findFirstAndLastUsersAccess();
+    Instant[][] findFirstAndLastUsersAccess();
 
 //    @Query("select distinct new Participant() from Participant order by submitDate desc")
     List<Participant> findAllByOrderBySubmitDateDesc();
@@ -83,7 +82,7 @@ public interface ParticipantRepository extends ParticipantColumnsRepository, Jpa
 //    void setAsStaleByUserId(@Param("userId") String userId);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    long countBySubmitDateBetween(Date from, Date to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @RestResource(exported = false)
     public <S extends Participant> S save(S entity);

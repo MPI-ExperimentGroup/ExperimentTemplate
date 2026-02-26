@@ -18,11 +18,11 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import jakarta.servlet.http.HttpServletRequest;
+import java.time.Instant;
 import java.util.function.Function;
 import nl.mpi.tg.eg.frinex.model.AssignedValue;
 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -138,7 +138,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
             
             @Override
-            public long countBySubmitDateBetween(Date from, Date to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
             
@@ -344,7 +344,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
             
             @Override
-            public long countBySubmitDateBetween(Date from, Date to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -544,7 +544,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
             
             @Override
-            public long countBySubmitDateBetween(Date from, Date to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -569,7 +569,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Date[][] findFirstAndLastUsersAccess() {
+            public Instant[][] findFirstAndLastUsersAccess() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -774,7 +774,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
             
             @Override
-            public long countBySubmitDateBetween(Date from, Date to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             
@@ -829,12 +829,12 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Date findFirstSessionAccess(String userId) {
+            public Instant findFirstSessionAccess(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public Date findLastSessionAccess(String userId) {
+            public Instant findLastSessionAccess(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -849,7 +849,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public Date[][] findFirstAndLastSessionAccess() {
+            public Instant[][] findFirstAndLastSessionAccess() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -864,14 +864,14 @@ public class preventValidationOnMissingValidationControllerTest {
             }
 
             @Override
-            public List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(String userId) {
+            public List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserIdOrderByTagDateAsc(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
-            @Override
-            public List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(String userId, String eventTag) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
+//            @Override
+//            public List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(String userId, String eventTag) {
+//                throw new UnsupportedOperationException("Not required for this test class.");
+//            }
 
             @Override
             public int countDistinctTagDateByUserIdAndTagValue(String userId, String tagValue) {
@@ -1029,7 +1029,7 @@ public class preventValidationOnMissingValidationControllerTest {
             }
             
             @Override
-            public long countBySubmitDateBetween(Date from, Date to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
             

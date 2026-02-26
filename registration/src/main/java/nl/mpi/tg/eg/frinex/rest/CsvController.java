@@ -20,14 +20,15 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import nl.mpi.tg.eg.frinex.model.MediaData;
 import nl.mpi.tg.eg.frinex.model.EventTime;
 import nl.mpi.tg.eg.frinex.model.GroupData;
@@ -94,24 +95,18 @@ public class CsvController {
 
     @RequestMapping(value = "/media_{yearString}-{monthString}-{dayString}.zip", method = RequestMethod.GET)
     public ResponseEntity<StreamingResponseBody> downloadMediaZip(@PathVariable(value = "yearString", required = true) int selectedYear,
-            @PathVariable(value = "monthString", required = true) int selectedMonth,
-            @PathVariable(value = "dayString", required = true) int selectedDay) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, selectedYear);
-        calendar.set(Calendar.MONTH, selectedMonth - 1);
-        calendar.set(Calendar.DAY_OF_MONTH, selectedDay);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        Date selectedDate = calendar.getTime();
-        calendar.set(Calendar.DAY_OF_MONTH, selectedDay + 1);
-        Date selectedEndDate = calendar.getTime();
-        String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
+        @PathVariable(value = "monthString", required = true) int selectedMonth,
+        @PathVariable(value = "dayString", required = true) int selectedDay) {
+        LocalDate localDate = LocalDate.of(selectedYear, selectedMonth, selectedDay);
+        ZoneId zone = ZoneId.systemDefault();
+        Instant selectedStartDate = localDate.atStartOfDay(zone).toInstant();
+        Instant selectedEndDate = localDate.plusDays(1).atStartOfDay(zone).toInstant();
+        String selectedDateString = localDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
         // TODO: remove after debugging
 //        System.out.println(selectedDateString);
         StreamingResponseBody stream = outputStream -> {
             try ( ZipOutputStream zipOut = new ZipOutputStream(outputStream)) {
-                for (MediaData mediaData : mediaDataRepository.findBySubmitDateBetween(selectedDate, selectedEndDate)) {
+                for (MediaData mediaData : mediaDataRepository.findBySubmitDateBetween(selectedStartDate, selectedEndDate)) {
                     final String fileName = mediaData.getUserId() + "_" + mediaData.getScreenName() + "_"
                             + mediaData.getStimulusId() + "_" + mediaData.getId() + "."
                             + mediaData.getRecordingFormat().name();
@@ -187,7 +182,7 @@ public class CsvController {
         for (Participant participant : participantRepository.findAllByOrderBySubmitDateDesc()) {
             if (!insertedUserIds.contains(participant.getUserId())) {
                 // here we are relying on the last user data submission being the most complete because that data is only added to in the experiment GUI
-                participantCsvExporter.appendAggregateCsvRow(printer, participant, tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(participant.getUserId()));
+                participantCsvExporter.appendAggregateCsvRow(printer, participant, tagRepository.findDistinctUserIdEventTagTagValueEventMsTagDateByUserIdOrderByTagDateAsc(participant.getUserId()));
                 insertedUserIds.add(participant.getUserId());
             }
         }

@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import jakarta.servlet.ServletRequest;
 import jakarta.validation.constraints.NotNull;
+import java.time.Instant;
 import java.util.Optional;
 import nl.mpi.tg.eg.frinex.model.DataDeletionLog;
 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -127,7 +128,7 @@ public class ParticipantDetailController {
 //                final String screenName = "administration system";
 //                final String eventTag = (deleteAudio) ? "delete participant audio" : "delete participant data";
 //                final int eventMs = 0;
-                final Date deletionDate = new java.util.Date();
+                final Instant deletionDate = Instant.now();
                 final String remoteAddr = request.getRemoteAddr();
                 final int lastIndexOf = remoteAddr.lastIndexOf(".");
                 final String deletionAddr = (lastIndexOf > 0) ? remoteAddr.substring(0, lastIndexOf) + ".0" : "";

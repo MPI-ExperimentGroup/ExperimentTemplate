@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.Date;
 import java.util.List;
 import jakarta.persistence.QueryHint;
+import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.MediaData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -98,14 +98,14 @@ public interface MediaDataRepository extends JpaRepository<MediaData, Long>, Med
     @Transactional
 //    List<MediaData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
     @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE (a.partNumber = 0 OR a.partNumber IS NULL) AND a.submitDate BETWEEN :start AND :end")
-    List<MediaData> findBySubmitDateBetween(@Param("start") Date start, @Param("end") Date end);
+    List<MediaData> findBySubmitDateBetween(@Param("start") Instant start, @Param("end") Instant end);
 
     @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE a.userId = :userId AND (a.partNumber = 0 OR a.partNumber IS NULL) ORDER BY a.submitDate ASC")
     @Transactional
     public List<MediaData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    long countBySubmitDateBetween(Date from, Date to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
 //    @Transactional
 //    public List<MediaData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);

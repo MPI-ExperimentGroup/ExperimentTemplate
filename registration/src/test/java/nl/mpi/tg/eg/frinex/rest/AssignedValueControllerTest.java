@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -137,7 +136,7 @@ public class AssignedValueControllerTest {
             }
             
             @Override
-            public long countBySubmitDateBetween(Date from, Date to) {
+            public long countBySubmitDateBetween(Instant from, Instant to) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }            
             
@@ -177,27 +176,27 @@ public class AssignedValueControllerTest {
             }
 
             @Override
-            public List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(String userId) {
+            public List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserIdOrderByTagDateAsc(String userId) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
+//            @Override
+//            public List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(String userId, String eventTag) {
+//                throw new UnsupportedOperationException("Not required for this test class.");
+//            }
+
+            @Override
+            public Instant[][] findFirstAndLastSessionAccess() {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(String userId, String eventTag) {
+            public Instant findFirstSessionAccess(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
             @Override
-            public Date[][] findFirstAndLastSessionAccess() {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
-
-            @Override
-            public Date findFirstSessionAccess(String userId) {
-                throw new UnsupportedOperationException("Not required for this test class.");
-            }
-
-            @Override
-            public Date findLastSessionAccess(String userId) {
+            public Instant findLastSessionAccess(String userId) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
 
@@ -323,7 +322,7 @@ public class AssignedValueControllerTest {
     @Test
     public void testCompleteValue() {
         System.out.println("completeValue");
-        TagData completedTagData = new TagData("userId", "screenName", "completeValue", "tagValue", 0, new Date());
+        TagData completedTagData = new TagData("userId", "screenName", "completeValue", "tagValue", 0, Instant.now());
         AssignedValueController instance = getInstance();
         ResponseEntity<DataSubmissionResult> expResult = null;
         ResponseEntity<DataSubmissionResult> result = instance.completeValue(completedTagData);
@@ -338,7 +337,7 @@ public class AssignedValueControllerTest {
     public void testAssignValue() {
         System.out.println("assignValue");
         List<String> expectedValues = Arrays.asList(targetOptionsAnimal.split(","));
-        TagData tagData = new TagData("userId", "screenName", "assignValue", targetOptionsAnimal, 0, new Date());
+        TagData tagData = new TagData("userId", "screenName", "assignValue", targetOptionsAnimal, 0, Instant.now());
         AssignedValueController instance = getInstance();
         final int valuesLength = expectedValues.size();
         for (int item = 0; item < valuesLength; item++) {

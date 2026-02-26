@@ -165,7 +165,7 @@ public class ExperimentService {
                 System.out.println("SubmitDate cannot be provided");
 //                invalidScreenData.add(screenData);
             }
-            screenData.setSubmitDate(new java.util.Date());
+            screenData.setSubmitDate(Instant.now());
         }
         screenDataRepository.saveAll(screenDataList);
         final ResponseEntity responseEntity;
@@ -188,7 +188,7 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (TimeStamp timeStamp : timeStampList) {
-                timeStamp.setSubmitDate(new java.util.Date());
+                timeStamp.setSubmitDate(Instant.now());
             }
             timeStampRepository.saveAll(timeStampList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(timeStampList.get(0).getUserId(), "", true), HttpStatus.OK);
@@ -215,7 +215,7 @@ public class ExperimentService {
 //                    responseEntity = new ResponseEntity<>(new DataSubmissionResult(participant.getUserId(), "Unfortunately, you have already taken this HIT, and therefore cannot continue.", false), HttpStatus.NOT_ACCEPTABLE);
 //                    return responseEntity;
 //                } else {
-                participant.setSubmitDate(new java.util.Date());
+                participant.setSubmitDate(Instant.now());
                 final String remoteAddr = request.getRemoteAddr();
                 final int lastIndexOf = remoteAddr.lastIndexOf(".");
                 if (lastIndexOf > 0) {
@@ -246,7 +246,7 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (TagData experimentData : experimentDataList) {
-                experimentData.setSubmitDate(new java.util.Date());
+                experimentData.setSubmitDate(Instant.now());
             }
             tagRepository.saveAll(experimentDataList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
@@ -261,7 +261,7 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (TagPairData experimentData : experimentDataList) {
-                experimentData.setSubmitDate(new java.util.Date());
+                experimentData.setSubmitDate(Instant.now());
             }
             tagPairRepository.saveAll(experimentDataList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
@@ -276,7 +276,7 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (StimulusResponse experimentData : stimulusResponseList) {
-                experimentData.setSubmitDate(new java.util.Date());
+                experimentData.setSubmitDate(Instant.now());
             }
             stimulusResponseRepository.saveAll(stimulusResponseList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(stimulusResponseList.get(0).getUserId(), "", true), HttpStatus.OK);
@@ -291,7 +291,7 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (GroupData groupData : groupDataList) {
-                groupData.setSubmitDate(new java.util.Date());
+                groupData.setSubmitDate(Instant.now());
             }
             groupDataRepository.saveAll(groupDataList);
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(groupDataList.get(0).getMessageRespondentId(), "", true), HttpStatus.OK);

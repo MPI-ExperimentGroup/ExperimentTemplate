@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.Date;
 import java.util.List;
 import jakarta.persistence.QueryHint;
+import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -101,7 +101,7 @@ public interface TagPairRepository extends JpaRepository<TagPairData, Long> {
             @Param("tagValue2") String tagValue2);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    long countBySubmitDateBetween(Date from, Date to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @RestResource(exported = false)
     public <S extends TagPairData> S save(S entity);

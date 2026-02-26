@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import java.util.Date;
 import java.util.List;
 import jakarta.persistence.QueryHint;
+import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -77,7 +77,7 @@ public interface GroupDataRepository extends JpaRepository<GroupData, Long> {
             @Param("messageString") String messageString);
 
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    long countBySubmitDateBetween(Date from, Date to);
+    long countBySubmitDateBetween(Instant from, Instant to);
     
     @RestResource(exported = false)
     public <S extends GroupData> S save(S entity);
