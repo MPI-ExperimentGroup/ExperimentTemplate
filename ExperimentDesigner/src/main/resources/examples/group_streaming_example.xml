@@ -6,7 +6,7 @@
             stunServer="coturn.mpi.nl"    
         />  
         <!-- stagingServer="https://ems15.mpi.nl" -->
-    <administration securityGroup="TestGroup"/>
+    <administration />
     <scss>  
         .streamRegion {  
             width:30vw;
