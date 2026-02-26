@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import jakarta.servlet.ServletRequest;
 import jakarta.validation.constraints.NotNull;

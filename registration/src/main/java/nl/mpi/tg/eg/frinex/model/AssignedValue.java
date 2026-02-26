@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -27,10 +27,10 @@ import java.util.Objects;
 public class AssignedValue {
 
     private final long assignedCount;
-    private final Date lastChange;
+    private final Instant lastChange;
     private final String value;
 
-    public AssignedValue(long assignedCount, Date lastChange, String value) {
+    public AssignedValue(long assignedCount, Instant lastChange, String value) {
         this.assignedCount = assignedCount;
         this.lastChange = lastChange;
         this.value = value;
@@ -40,7 +40,7 @@ public class AssignedValue {
         return assignedCount;
     }
 
-    public Date getLastChange() {
+    public Instant getLastChange() {
         return lastChange;
     }
 

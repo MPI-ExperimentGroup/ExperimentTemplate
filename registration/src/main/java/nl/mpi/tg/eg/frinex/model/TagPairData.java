@@ -17,14 +17,12 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
-import java.util.Date;
 import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
 import java.time.Instant;
 
 /**

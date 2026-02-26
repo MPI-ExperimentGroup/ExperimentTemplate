@@ -55,7 +55,6 @@
                 import jakarta.persistence.GeneratedValue;
                 import jakarta.persistence.GenerationType;
                 import jakarta.persistence.Id;
-                import jakarta.persistence.Temporal;
 
                 @Entity                     
                 public class <!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant implements Serializable, Comparable&lt;<!--/xsl:text><xsl:value-of select="$outputPrefix" /><xsl:text-->Participant&gt; {

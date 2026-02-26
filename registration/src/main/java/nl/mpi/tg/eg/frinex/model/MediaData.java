@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.frinex.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.UUID;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
