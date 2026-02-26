@@ -37,43 +37,14 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @RepositoryRestResource(collectionResourceRel = "timestamps", path = "timestamps")
 public interface TimeStampRepository extends JpaRepository<TimeStamp, Long> {
 
-    @Query(value = """
-    SELECT *
-    FROM (
-        SELECT DISTINCT ON (user_id, event_tag, event_ms, tag_date) *
-        FROM time_stamp
-        ORDER BY user_id, event_tag, event_ms, tag_date, id
-    ) sub
-    ORDER BY sub.tag_date ASC, sub.event_ms ASC
-    """, nativeQuery = true)
+    @Query("select distinct new TimeStamp(id, userId, eventTag, eventMs, tagDate) from TimeStamp order by tagDate asc, eventMs asc")
     List<TimeStamp> findAllDistinctRecords();
 
-    @Query(value = """
-    SELECT *
-    FROM (
-        SELECT DISTINCT ON (user_id, event_tag, event_ms, tag_date) *
-        FROM time_stamp
-        WHERE user_id = :userId
-        ORDER BY user_id, event_tag, event_ms, tag_date, id
-    ) sub
-    ORDER BY sub.tag_date ASC, sub.event_ms ASC
-    """, nativeQuery = true)
+    @Query("select distinct new TimeStamp(id, userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId order by tagDate asc, eventMs asc")
     List<TimeStamp> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
-    @Query(value = """
-    SELECT *
-    FROM (
-        SELECT DISTINCT ON (user_id, event_tag, event_ms, tag_date) *
-        FROM time_stamp
-        WHERE user_id = :userId
-          AND event_tag = :eventTag
-        ORDER BY user_id, event_tag, event_ms, tag_date, id
-    ) sub
-    ORDER BY sub.tag_date ASC, sub.event_ms ASC
-    """, nativeQuery = true)
-    List<TimeStamp> findByUserIdAndEventTagOrderByTagDateAsc(
-        @Param("userId") String userId,
-        @Param("eventTag") String eventTag);
+    @Query("select distinct new TimeStamp(id, userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId and eventTag = :eventTag order by tagDate asc, eventMs asc")
+    List<TimeStamp> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 
     @Query("SELECT count(p) FROM TimeStamp p WHERE "
             + "(:userId IS NULL OR p.userId like :userId) AND "
@@ -82,30 +53,10 @@ public interface TimeStampRepository extends JpaRepository<TimeStamp, Long> {
             @Param("userId") String userId,
             @Param("eventTag") String eventTag);
 
-    @Query(value = """
-        SELECT *
-        FROM (
-            SELECT DISTINCT ON (user_id, event_tag, event_ms, tag_date) *
-            FROM time_stamp
-            WHERE (:userId IS NULL OR user_id LIKE :userId)
-              AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
-            ORDER BY user_id, event_tag, event_ms, tag_date, id
-        ) sub
-        ORDER BY ?#{#pageable}
-        """,
-    countQuery = """
-        SELECT COUNT(*)
-        FROM (
-            SELECT DISTINCT ON (user_id, event_tag, event_ms, tag_date) 1
-            FROM time_stamp
-            WHERE (:userId IS NULL OR user_id LIKE :userId)
-              AND (:eventTag IS NULL OR event_tag LIKE :eventTag)
-        ) sub
-        """,
-    nativeQuery = true
-    )
-    Page<TimeStamp> findByLike(
-        Pageable pageable,
+    @Query("SELECT distinct new TimeStamp(p.id, p.userId, p.eventTag, p.eventMs, p.tagDate) FROM TimeStamp p WHERE "
+        + "(:userId IS NULL OR p.userId like :userId) AND "
+        + "(:eventTag IS NULL OR p.eventTag like :eventTag)")
+    Page<TimeStamp> findByLike(Pageable pageable, 
         @Param("userId") String userId,
         @Param("eventTag") String eventTag);
 

@@ -54,7 +54,8 @@ public class TimeStamp {
     public TimeStamp() {
     }
 
-    public TimeStamp(String userId, String eventTag, int eventMs, Instant tagDate) {
+    public TimeStamp(Long id, String userId, String eventTag, int eventMs, Instant tagDate) {
+        this.id = id;
         this.tagDate = tagDate;
         this.eventTag = eventTag;
         this.userId = userId;

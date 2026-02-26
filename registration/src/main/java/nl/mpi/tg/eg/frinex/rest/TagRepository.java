@@ -39,25 +39,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
 public interface TagRepository extends JpaRepository<TagData, Long> {
 
-    @Query(value = """
-    SELECT DISTINCT ON (
-        user_id,
-        screen_name,
-        event_tag,
-        tag_value,
-        event_ms,
-        tag_date
-    ) *
-    FROM tag_data
-    ORDER BY
-        user_id,
-        screen_name,
-        event_tag,
-        tag_value,
-        event_ms,
-        tag_date,
-        id
-    """, nativeQuery = true)
+    @Query("select distinct new TagData(id, userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
     List<TagData> findAllDistinctRecords();
 
     @QueryHints({
@@ -74,19 +56,8 @@ public interface TagRepository extends JpaRepository<TagData, Long> {
     @Query("select count(distinct tagDate) from TagData where userId = :userId and eventTag = :eventTag")
     long countDistinctUserIdAndDateByEventTag(@Param("userId") String userId, String eventTag);
 
-    @Query(value = """
-    SELECT *
-    FROM (
-        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
-        FROM tag_data
-        WHERE user_id = :userId
-        ORDER BY user_id, screen_name, event_tag DESC, tag_value, event_ms, tag_date, id
-    ) sub
-    ORDER BY sub.tag_date ASC
-    """, nativeQuery = true)
-    List<TagData> findDistinctUserIdEventTagTagValueEventMsTagDateByUserIdOrderByTagDateAsc(
-            @Param("userId") String userId
-    );
+    @Query("select distinct new TagData(id, userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
+    List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
 //    @Query("select distinct new TagData(userId, screenName, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc")
 //    List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
