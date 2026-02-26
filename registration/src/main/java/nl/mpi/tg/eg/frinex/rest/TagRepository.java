@@ -40,10 +40,24 @@ import org.springframework.data.rest.core.annotation.RestResource;
 public interface TagRepository extends JpaRepository<TagData, Long> {
 
     @Query(value = """
-        SELECT DISTINCT ON (user_id, screen_name, event_tag, tag_value, event_ms, tag_date) *
-        FROM tag_data
-        ORDER BY user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date DESC
-        """, nativeQuery = true)
+    SELECT DISTINCT ON (
+        user_id,
+        screen_name,
+        event_tag,
+        tag_value,
+        event_ms,
+        tag_date
+    ) *
+    FROM tag_data
+    ORDER BY
+        user_id,
+        screen_name,
+        event_tag,
+        tag_value,
+        event_ms,
+        tag_date,
+        id
+    """, nativeQuery = true)
     List<TagData> findAllDistinctRecords();
 
     @QueryHints({

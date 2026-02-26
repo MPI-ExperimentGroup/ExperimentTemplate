@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
-import java.util.Date;
 import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +25,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
+import java.time.Instant;
 
 /**
  * @since Jun 30, 2015 12:13:58 PM (creation date)
@@ -37,7 +37,7 @@ import jakarta.persistence.Temporal;
     indexes = {
         @Index(
             name = "idx_tagdata_distinct",
-            columnList = "user_id, screen_name, event_tag, tag_value, event_ms, tag_date, submit_date"
+            columnList = "user_id, screen_name, event_tag, tag_value, event_ms, tag_date, id"
         )
     }
 )
@@ -46,10 +46,8 @@ public class TagData implements Comparable<TagData> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date tagDate;
-    @Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
-    private Date submitDate;
+    private Instant tagDate;
+    private Instant submitDate;
     private String experimentName;
     private String screenName;
     private String eventTag;
@@ -60,7 +58,7 @@ public class TagData implements Comparable<TagData> {
     public TagData() {
     }
 
-    public TagData(String userId, String screenName, String eventTag, String tagValue, int eventMs, Date tagDate) {
+    public TagData(String userId, String screenName, String eventTag, String tagValue, int eventMs, Instant tagDate) {
         this.tagDate = tagDate;
         this.screenName = screenName;
         this.eventTag = eventTag;
@@ -73,11 +71,11 @@ public class TagData implements Comparable<TagData> {
         return id;
     }
 
-    public Date getTagDate() {
+    public Instant getTagDate() {
         return tagDate;
     }
 
-    public Date getSubmitDate() {
+    public Instant getSubmitDate() {
         return submitDate;
     }
 
@@ -105,7 +103,7 @@ public class TagData implements Comparable<TagData> {
         return eventMs;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(Instant submitDate) {
         this.submitDate = submitDate;
     }
 
