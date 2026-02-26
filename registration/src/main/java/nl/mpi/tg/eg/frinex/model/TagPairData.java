@@ -56,7 +56,8 @@ public class TagPairData {
     public TagPairData() {
     }
 
-    public TagPairData(String userId, String screenName, Integer dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs, Instant tagDate) {
+    public TagPairData(Long id, String userId, String screenName, Integer dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs, Instant tagDate) {
+        this.id = id;
         this.tagDate = tagDate;
         this.screenName = screenName;
         this.eventTag = eventTag;

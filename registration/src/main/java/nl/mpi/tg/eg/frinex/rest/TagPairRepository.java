@@ -39,7 +39,7 @@ public interface TagPairRepository extends JpaRepository<TagPairData, Long> {
 
 //    List<TagPairData> findByUserId(@Param("userId") String userId);
 //    List<TagPairData> findByEventTag(@Param("eventTag") String eventTag);
-    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
+    @Query("select distinct new TagPairData(id, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
     List<TagPairData> findAllDistinctRecords();
 
 //    // TODO: This is for testing how many copies might exist and this method can be removed later
@@ -50,24 +50,24 @@ public interface TagPairRepository extends JpaRepository<TagPairData, Long> {
 //    @Query("select count(id) from TagPairData")
 //    List<TagPairData> countAllRecords();
     
-    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId order by tagDate asc, eventTag desc")
+    @Query("select distinct new TagPairData(id, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId order by tagDate asc, eventTag desc")
     List<TagPairData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
-    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag order by tagDate asc")
+    @Query("select distinct new TagPairData(id, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagPairData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 
-    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag and tagValue1 = :tagValue1 order by tagDate asc")
+    @Query("select distinct new TagPairData(id, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag and tagValue1 = :tagValue1 order by tagDate asc")
     List<TagPairData> findByUserIdAndEventTagAndTagValue1OrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag, @Param("tagValue1") String tagValue1);
 
-    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where eventTag = :eventTag order by tagDate asc")
+    @Query("select distinct new TagPairData(id, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where eventTag = :eventTag order by tagDate asc")
     List<TagPairData> findByEventTagOrderByTagDateAsc(@Param("eventTag") String eventTag);
 
-    @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where tagValue1 = :tagValue1 order by tagDate asc")
+    @Query("select distinct new TagPairData(id, userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where tagValue1 = :tagValue1 order by tagDate asc")
     List<TagPairData> findByTagValue1OrderByTagDateAsc(@Param("tagValue1") String tagValue1);
 
     Page<TagPairData> findBydataChannel(Pageable pageable, Integer dataChannel);
 
-    @Query("SELECT distinct new TagPairData(p.userId, p.screenName, p.dataChannel, p.eventTag, p.tagValue1, p.tagValue2, p.eventMs, p.tagDate) FROM TagPairData p WHERE "
+    @Query("SELECT distinct new TagPairData(p.id, p.userId, p.screenName, p.dataChannel, p.eventTag, p.tagValue1, p.tagValue2, p.eventMs, p.tagDate) FROM TagPairData p WHERE "
         + "(:userId IS NULL OR p.userId like :userId) AND "
         + "(:screenName IS NULL OR p.screenName like :screenName) AND "
         + "(:dataChannel IS NULL OR p.dataChannel = :dataChannel) AND "
