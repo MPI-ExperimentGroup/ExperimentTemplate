@@ -27,6 +27,8 @@ import jakarta.persistence.Id;
 import java.time.Instant;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * @since Jul 2, 2015 2:29:24 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -39,7 +41,9 @@ public class ScreenData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant viewDate;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant submitDate;
     private String experimentName;
     private String screenName;

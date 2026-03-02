@@ -18,6 +18,9 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,7 +38,9 @@ public class GroupData implements Comparable<GroupData> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant eventDate;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant submitDate;
     private String experimentName;
     private String groupUUID;

@@ -25,6 +25,8 @@ import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import java.time.Instant;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * @since Jul 8, 2015 5:36:54 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -44,7 +46,9 @@ public class TimeStamp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant tagDate;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant submitDate;
     private String experimentName;
     private String eventTag;

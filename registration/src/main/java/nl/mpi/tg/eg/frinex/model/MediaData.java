@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.UUID;
@@ -41,6 +42,7 @@ import java.time.Instant;
 public class MediaData implements Serializable {
 
     private Long id;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Instant submitDate;
     private String experimentName;
     private String screenName;
