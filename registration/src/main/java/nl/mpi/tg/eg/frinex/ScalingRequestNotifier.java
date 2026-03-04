@@ -121,31 +121,21 @@ public class ScalingRequestNotifier {
                 + "&jvmMemoryUsed=" + Math.round(jvmMemoryUsed)
                 + "&jvmMemoryMax=" + Math.round(jvmMemoryMax)
                 + "&cpuUsage=" + Math.round(cpuUsage * 100)
-                + "&threadsBusy=" + threadsBusy
-                + "&dbActive=" + dbActive
-                + "&dbIdle=" + dbIdle
-                + "&dbPending=" + dbPending
-                + "&dbMax=" + dbMax;
+                + "&threadsBusy=" + Math.round(threadsBusy)
+                + "&dbActive=" + Math.round(dbActive)
+                + "&dbIdle=" + Math.round(dbIdle)
+                + "&dbPending=" + Math.round(dbPending)
+                + "&dbMax=" + Math.round(dbMax);
 
-        HttpURLConnection conn = null;
-        try {
-            URL url = new URL(urlStr);
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(2000);
-            conn.setReadTimeout(5000);
-
-            try (BufferedInputStream inStream = new BufferedInputStream(conn.getInputStream())) {
-                byte[] dataBuffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
-                    System.out.write(dataBuffer, 0, bytesRead);
-                }
+        try (BufferedInputStream inStream =  new BufferedInputStream(new URL(urlStr).openStream())) {
+            byte[] dataBuffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inStream.read(dataBuffer)) > 0) {
+                System.out.write(dataBuffer, 0, bytesRead);
             }
         } catch (IOException e) {
             System.err.println("requestScaling failed: " + urlStr);
             System.err.println(e.getMessage());
-        } finally {
-            if (conn != null) conn.disconnect();
         }
     }
 }
