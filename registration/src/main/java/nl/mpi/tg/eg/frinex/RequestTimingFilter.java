@@ -42,7 +42,14 @@ public class RequestTimingFilter implements Filter {
     protected String serviceName;
 
     private static final ExecutorService EXECUTOR =
-            Executors.newFixedThreadPool(2);
+            new ThreadPoolExecutor(
+                    2,
+                    2,
+                    0L,
+                    TimeUnit.MILLISECONDS,
+                    new ArrayBlockingQueue<>(1000), // bounded queue
+                    new ThreadPoolExecutor.DiscardPolicy() // drop when full
+            );
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -54,16 +61,23 @@ public class RequestTimingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        long start = System.currentTimeMillis();
-        chain.doFilter(request, response);
-        long duration = System.currentTimeMillis() - start;
+        long start = System.nanoTime();
 
-        CompletableFuture.runAsync(() ->
-                ScalingRequestNotifier.recordRequestTime(
-                        duration, requestScalingUrl, serviceName
-                ),
-                EXECUTOR
-        );
+        try {
+            chain.doFilter(request, response);
+        } finally {
+            long durationMs = TimeUnit.NANOSECONDS
+                    .toMillis(System.nanoTime() - start);
+
+            CompletableFuture.runAsync(() ->
+                    ScalingRequestNotifier.recordRequestTime(
+                            durationMs,
+                            requestScalingUrl,
+                            serviceName
+                    ),
+                    EXECUTOR
+            );
+        }
     }
 
     @Override
