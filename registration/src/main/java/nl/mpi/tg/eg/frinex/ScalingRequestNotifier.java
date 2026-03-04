@@ -116,11 +116,11 @@ public class ScalingRequestNotifier {
                 + "?service=" + serviceName
                 + "&container=" + containerId
                 + "&status=" + status
-                + "&avgMs=" + avgMs
+                + "&avgMs=" + Math.round(avgMs)
                 + "&total=" + totalRequests.get()
-                + "&jvmMemoryUsed=" + jvmMemoryUsed
-                + "&jvmMemoryMax=" + jvmMemoryMax
-                + "&cpuUsage=" + cpuUsage
+                + "&jvmMemoryUsed=" + Math.round(jvmMemoryUsed)
+                + "&jvmMemoryMax=" + Math.round(jvmMemoryMax)
+                + "&cpuUsage=" + Math.round(cpuUsage * 100)
                 + "&threadsBusy=" + threadsBusy
                 + "&dbActive=" + dbActive
                 + "&dbIdle=" + dbIdle
