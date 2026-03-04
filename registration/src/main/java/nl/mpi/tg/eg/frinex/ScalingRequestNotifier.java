@@ -68,6 +68,10 @@ public class ScalingRequestNotifier {
                     if (threadsBusy == 0.0) {
                         threadsBusy = safeGauge(registry, "jvm.threads.live");
                     }
+                    double dbActive  = safeGauge(registry, "hikaricp.connections.active");
+                    double dbIdle    = safeGauge(registry, "hikaricp.connections.idle");
+                    double dbPending = safeGauge(registry, "hikaricp.connections.pending");
+                    double dbMax     = safeGauge(registry, "hikaricp.connections.max");
 
                     String status;
                     if (avg > 800) {
@@ -80,6 +84,7 @@ public class ScalingRequestNotifier {
 
                     sendScalingRequest(status, avg,
                             jvmMemoryUsed, jvmMemoryMax, cpuUsage, threadsBusy,
+                            dbActive, dbIdle, dbPending, dbMax,
                             requestScalingUrl, serviceName);
                 }
             }
@@ -101,6 +106,10 @@ public class ScalingRequestNotifier {
                                            double jvmMemoryMax,
                                            double cpuUsage,
                                            double threadsBusy,
+                                           double dbActive,
+                                           double dbIdle,
+                                           double dbPending,
+                                           double dbMax,
                                            final String requestScalingUrl,
                                            final String serviceName) {
 
@@ -112,7 +121,11 @@ public class ScalingRequestNotifier {
                 + "&jvmMemoryUsed=" + jvmMemoryUsed
                 + "&jvmMemoryMax=" + jvmMemoryMax
                 + "&cpuUsage=" + cpuUsage
-                + "&threadsBusy=" + threadsBusy;
+                + "&threadsBusy=" + threadsBusy
+                + "&dbActive=" + dbActive
+                + "&dbIdle=" + dbIdle
+                + "&dbPending=" + dbPending
+                + "&dbMax=" + dbMax;
 
         HttpURLConnection conn = null;
         try {
