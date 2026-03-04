@@ -31,7 +31,7 @@ public class ScalingRequestNotifier {
 
     private static final AtomicReference<Double> avgLatency = new AtomicReference<>(0.0);
     private static final AtomicLong totalRequests = new AtomicLong(0);
-    private static volatile long lastScaleTime = 0;
+    private static final AtomicLong lastScaleTime = new AtomicLong(0);
 
     public static void showSettings(final String requestScalingUrl, final String serviceName) {
         System.out.print("requestScaling requestScalingUrl: ");
@@ -40,39 +40,57 @@ public class ScalingRequestNotifier {
         System.out.println(serviceName);
     }
 
-    public static void recordRequestTime(long durationMs, final String requestScalingUrl, final String serviceName) {
+    public static void recordRequestTime(long durationMs,
+                                         final String requestScalingUrl,
+                                         final String serviceName) {
+
         if (requestScalingUrl != null) {
             final double alpha = 0.2;
             totalRequests.incrementAndGet();
-            avgLatency.updateAndGet(avg -> (1 - alpha) * avg + alpha * durationMs);
+            avgLatency.updateAndGet(avg ->
+                    (1 - alpha) * avg + alpha * durationMs);
             double avg = avgLatency.get();
             final long cooldownMs = 60000;
-            if (System.currentTimeMillis() - lastScaleTime > cooldownMs) {
-                if (avg > 800) {
-                    requestScaling("up", avg, requestScalingUrl, serviceName);
-//                } else if (avg < 300) {
-//                    requestScaling("down", avg, requestScalingUrl, serviceName);
-                } else if (System.currentTimeMillis() - lastScaleTime > cooldownMs * 20) {
-                    requestScaling("ping", avg, requestScalingUrl, serviceName);
+            long now = System.currentTimeMillis();
+            long last = lastScaleTime.get();
+
+            if (now - last > cooldownMs) {
+                if (lastScaleTime.compareAndSet(last, now)) {
+                    if (avg > 800) {
+                        requestScaling("up", avg, requestScalingUrl, serviceName);
+//                  } else if (avg < 300) {
+//                      requestScaling("down", avg, requestScalingUrl, serviceName);
+                    } else if (now - last > cooldownMs * 20) {
+                        requestScaling("ping", avg, requestScalingUrl, serviceName);
+                    }
                 }
             }
         }
     }
 
-    private static void requestScaling(String status, double avgMs, final String requestScalingUrl, final String serviceName) {
-        String url = requestScalingUrl + "?service=" + serviceName + "&status=" + status + "&avgMs=" + avgMs + "&total=" + totalRequests.get();
-        try (BufferedInputStream inStream = new BufferedInputStream(new URL(url).openStream())) {
+    private static void requestScaling(String status,
+                                       double avgMs,
+                                       final String requestScalingUrl,
+                                       final String serviceName) {
+
+        String url = requestScalingUrl
+                + "?service=" + serviceName
+                + "&status=" + status
+                + "&avgMs=" + avgMs
+                + "&total=" + totalRequests.get();
+
+        try (BufferedInputStream inStream =
+                     new BufferedInputStream(new URL(url).openStream())) {
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
+
             while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
                 System.out.write(dataBuffer, 0, bytesRead);
             }
-//            System.out.println("requestScaling done");
         } catch (IOException e) {
             System.err.println("requestScaling failed: ");
             System.err.println(url);
             System.err.println(e.getMessage());
         }
-        lastScaleTime = System.currentTimeMillis();
     }
 }
