@@ -73,24 +73,35 @@ public class ScalingRequestNotifier {
                                        final String requestScalingUrl,
                                        final String serviceName) {
 
-        String url = requestScalingUrl
+        String urlStr = requestScalingUrl
                 + "?service=" + serviceName
                 + "&status=" + status
                 + "&avgMs=" + avgMs
                 + "&total=" + totalRequests.get();
 
-        try (BufferedInputStream inStream =
-                     new BufferedInputStream(new URL(url).openStream())) {
-            byte dataBuffer[] = new byte[1024];
-            int bytesRead;
+        HttpURLConnection conn = null;
+        try {
+            URL url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(2000);
+            conn.setReadTimeout(5000);
 
-            while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
-                System.out.write(dataBuffer, 0, bytesRead);
+            try (BufferedInputStream inStream =
+                new BufferedInputStream(conn.getInputStream())) {
+                byte[] dataBuffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
+                    System.out.write(dataBuffer, 0, bytesRead);
+                }
             }
         } catch (IOException e) {
             System.err.println("requestScaling failed: ");
-            System.err.println(url);
+            System.err.println(urlStr);
             System.err.println(e.getMessage());
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
         }
     }
 }
