@@ -47,8 +47,8 @@ public class RequestTimingFilter implements Filter {
                     2,
                     0L,
                     TimeUnit.MILLISECONDS,
-                    new ArrayBlockingQueue<>(1000), // bounded queue
-                    new ThreadPoolExecutor.DiscardPolicy() // drop when full
+                    new ArrayBlockingQueue<>(1000),
+                    new ThreadPoolExecutor.DiscardPolicy()
             );
 
     @Override
@@ -69,13 +69,12 @@ public class RequestTimingFilter implements Filter {
             long durationMs = TimeUnit.NANOSECONDS
                     .toMillis(System.nanoTime() - start);
 
-            CompletableFuture.runAsync(() ->
+            EXECUTOR.execute(() ->
                     ScalingRequestNotifier.recordRequestTime(
                             durationMs,
                             requestScalingUrl,
                             serviceName
-                    ),
-                    EXECUTOR
+                    )
             );
         }
     }
