@@ -35,30 +35,40 @@ import org.springframework.stereotype.Component;
 @Component
 public class RequestTimingFilter implements Filter {
 
-   @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
-   protected String requestScalingUrl;
-   @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
-   protected String serviceName;
+    @Value("${nl.mpi.tg.eg.frinex.requestScalingUrl:#{null}}")
+    protected String requestScalingUrl;
 
-   @Override
-   public void init(FilterConfig filterConfig) throws ServletException {
-       System.out.println("requestScalingFilter initialized");
-       ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName);
-   }
+    @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
+    protected String serviceName;
 
-   @Override
-   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-           throws IOException, ServletException {
-       long start = System.currentTimeMillis();
-       chain.doFilter(request, response);
-       long duration = System.currentTimeMillis() - start;
-       CompletableFuture.runAsync(() -> {
-           ScalingRequestNotifier.recordRequestTime(duration, requestScalingUrl, serviceName);
-       });
-   }
+    private static final ExecutorService EXECUTOR =
+            Executors.newFixedThreadPool(2);
 
-   @Override
-   public void destroy() {
-       System.out.println("requestScalingFilter destroyed");
-   }
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        System.out.println("requestScalingFilter initialized");
+        ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName);
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+
+        long start = System.currentTimeMillis();
+        chain.doFilter(request, response);
+        long duration = System.currentTimeMillis() - start;
+
+        CompletableFuture.runAsync(() ->
+                ScalingRequestNotifier.recordRequestTime(
+                        duration, requestScalingUrl, serviceName
+                ),
+                EXECUTOR
+        );
+    }
+
+    @Override
+    public void destroy() {
+        EXECUTOR.shutdown();
+        System.out.println("requestScalingFilter destroyed");
+    }
 }
