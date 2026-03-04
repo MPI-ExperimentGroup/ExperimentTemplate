@@ -19,9 +19,10 @@ package nl.mpi.tg.eg.frinex;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @since 27 Oct 2025 10:32 AM (creation date)
