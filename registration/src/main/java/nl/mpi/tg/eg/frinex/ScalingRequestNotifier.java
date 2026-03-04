@@ -37,16 +37,16 @@ public class ScalingRequestNotifier {
     private static final AtomicLong totalRequests = new AtomicLong(0);
     private static final AtomicLong lastScaleTime = new AtomicLong(0);
 
-    public static void showSettings(final String requestScalingUrl, final String serviceName) {
-        System.out.print("requestScaling requestScalingUrl: ");
-        System.out.println(requestScalingUrl);
-        System.out.print("requestScaling serviceName: ");
-        System.out.println(serviceName);
+    public static void showSettings(final String requestScalingUrl, final String serviceName, final String containerId) {
+        System.out.println("requestScalingUrl: " + requestScalingUrl);
+        System.out.println("serviceName: " + serviceName);
+        System.out.println("containerId: " + containerId);
     }
 
     public static void recordRequestTime(long durationMs,
                                          final String requestScalingUrl,
                                          final String serviceName,
+                                         final String containerId,
                                          MeterRegistry registry) {
 
         if (requestScalingUrl != null) {
@@ -62,12 +62,10 @@ public class ScalingRequestNotifier {
             if (now - last > cooldownMs) {
                 if (lastScaleTime.compareAndSet(last, now)) {
                     double jvmMemoryUsed = safeGauge(registry, "jvm.memory.used");
-                    double jvmMemoryMax = safeGauge(registry, "jvm.memory.max");
-                    double cpuUsage = safeGauge(registry, "system.cpu.usage");
-                    double threadsBusy = safeGauge(registry, "jetty.threads.busy");
-                    if (threadsBusy == 0.0) {
-                        threadsBusy = safeGauge(registry, "jvm.threads.live");
-                    }
+                    double jvmMemoryMax  = safeGauge(registry, "jvm.memory.max");
+                    double cpuUsage      = safeGauge(registry, "system.cpu.usage");
+                    double threadsBusy   = safeGauge(registry, "jetty.threads.busy");
+                    if (threadsBusy == 0.0) threadsBusy = safeGauge(registry, "jvm.threads.live");
                     double dbActive  = safeGauge(registry, "hikaricp.connections.active");
                     double dbIdle    = safeGauge(registry, "hikaricp.connections.idle");
                     double dbPending = safeGauge(registry, "hikaricp.connections.pending");
@@ -85,7 +83,7 @@ public class ScalingRequestNotifier {
                     sendScalingRequest(status, avg,
                             jvmMemoryUsed, jvmMemoryMax, cpuUsage, threadsBusy,
                             dbActive, dbIdle, dbPending, dbMax,
-                            requestScalingUrl, serviceName);
+                            requestScalingUrl, serviceName, containerId);
                 }
             }
         }
@@ -111,10 +109,12 @@ public class ScalingRequestNotifier {
                                            double dbPending,
                                            double dbMax,
                                            final String requestScalingUrl,
-                                           final String serviceName) {
+                                           final String serviceName,
+                                           final String containerId) {
 
         String urlStr = requestScalingUrl
                 + "?service=" + serviceName
+                + "&container=" + containerId
                 + "&status=" + status
                 + "&avgMs=" + avgMs
                 + "&total=" + totalRequests.get()
@@ -134,8 +134,7 @@ public class ScalingRequestNotifier {
             conn.setConnectTimeout(2000);
             conn.setReadTimeout(5000);
 
-            try (BufferedInputStream inStream =
-                new BufferedInputStream(conn.getInputStream())) {
+            try (BufferedInputStream inStream = new BufferedInputStream(conn.getInputStream())) {
                 byte[] dataBuffer = new byte[1024];
                 int bytesRead;
                 while ((bytesRead = inStream.read(dataBuffer, 0, 1024)) > 0) {
@@ -143,13 +142,10 @@ public class ScalingRequestNotifier {
                 }
             }
         } catch (IOException e) {
-            System.err.println("requestScaling failed: ");
-            System.err.println(urlStr);
+            System.err.println("requestScaling failed: " + urlStr);
             System.err.println(e.getMessage());
         } finally {
-            if (conn != null) {
-                conn.disconnect();
-            }
+            if (conn != null) conn.disconnect();
         }
     }
 }

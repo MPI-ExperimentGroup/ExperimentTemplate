@@ -32,6 +32,8 @@ import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Timer;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -49,6 +51,8 @@ public class RequestTimingFilter implements Filter {
 
     @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
     protected String serviceName;
+
+    private String containerId;
 
     private final Counter requestCounter;
     private final Timer requestTimer;
@@ -79,15 +83,19 @@ public class RequestTimingFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("requestScalingFilter initialized");
-        ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName);
+        try {
+            containerId = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            containerId = "unknown";
+            System.err.println("Failed to get container hostname: " + e.getMessage());
+        }
+        ScalingRequestNotifier.showSettings(requestScalingUrl, serviceName, containerId);
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         long start = System.nanoTime();
-
         try {
             chain.doFilter(request, response);
         } finally {
@@ -101,6 +109,7 @@ public class RequestTimingFilter implements Filter {
                             durationMs,
                             requestScalingUrl,
                             serviceName,
+                            containerId,
                             meterRegistry
                     )
             );
