@@ -23,8 +23,13 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Timer;
 
 import java.io.IOException;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -45,6 +50,10 @@ public class RequestTimingFilter implements Filter {
     @Value("${nl.mpi.tg.eg.frinex.serviceName:#{null}}")
     protected String serviceName;
 
+    private final Counter requestCounter;
+    private final Timer requestTimer;
+    private final MeterRegistry meterRegistry;
+
     private static final ExecutorService EXECUTOR =
             new ThreadPoolExecutor(
                     2,
@@ -54,6 +63,18 @@ public class RequestTimingFilter implements Filter {
                     new ArrayBlockingQueue<>(1000),
                     new ThreadPoolExecutor.DiscardPolicy()
             );
+
+    @Autowired
+    public RequestTimingFilter(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+        this.requestCounter = Counter.builder("requests.total")
+                .description("Total requests processed")
+                .register(meterRegistry);
+
+        this.requestTimer = Timer.builder("requests.latency")
+                .description("Request latency in ms")
+                .register(meterRegistry);
+    }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -73,11 +94,14 @@ public class RequestTimingFilter implements Filter {
             long durationMs = TimeUnit.NANOSECONDS
                     .toMillis(System.nanoTime() - start);
 
+            requestCounter.increment();
+            requestTimer.record(durationMs, TimeUnit.MILLISECONDS);
             EXECUTOR.execute(() ->
                     ScalingRequestNotifier.recordRequestTime(
                             durationMs,
                             requestScalingUrl,
-                            serviceName
+                            serviceName,
+                            meterRegistry
                     )
             );
         }

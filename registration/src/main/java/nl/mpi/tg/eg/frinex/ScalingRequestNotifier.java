@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Gauge;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -43,7 +46,8 @@ public class ScalingRequestNotifier {
 
     public static void recordRequestTime(long durationMs,
                                          final String requestScalingUrl,
-                                         final String serviceName) {
+                                         final String serviceName,
+                                         MeterRegistry registry) {
 
         if (requestScalingUrl != null) {
             final double alpha = 0.2;
@@ -57,28 +61,58 @@ public class ScalingRequestNotifier {
 
             if (now - last > cooldownMs) {
                 if (lastScaleTime.compareAndSet(last, now)) {
-                    if (avg > 800) {
-                        requestScaling("up", avg, requestScalingUrl, serviceName);
-//                  } else if (avg < 300) {
-//                      requestScaling("down", avg, requestScalingUrl, serviceName);
-                    } else if (now - last > cooldownMs * 20) {
-                        requestScaling("ping", avg, requestScalingUrl, serviceName);
+                    double jvmMemoryUsed = safeGauge(registry, "jvm.memory.used");
+                    double jvmMemoryMax = safeGauge(registry, "jvm.memory.max");
+                    double cpuUsage = safeGauge(registry, "system.cpu.usage");
+                    double threadsBusy = safeGauge(registry, "jetty.threads.busy");
+                    if (threadsBusy == 0.0) {
+                        threadsBusy = safeGauge(registry, "jvm.threads.live");
                     }
+
+                    String status;
+                    if (avg > 800) {
+                        status = "up";
+                    } else if (now - last > cooldownMs * 20) {
+                        status = "ping";
+                    } else {
+                        status = "ok";
+                    }
+
+                    sendScalingRequest(status, avg,
+                            jvmMemoryUsed, jvmMemoryMax, cpuUsage, threadsBusy,
+                            requestScalingUrl, serviceName);
                 }
             }
         }
     }
 
-    private static void requestScaling(String status,
-                                       double avgMs,
-                                       final String requestScalingUrl,
-                                       final String serviceName) {
+    private static double safeGauge(MeterRegistry registry, String name) {
+        try {
+            Gauge g = registry.find(name).gauge();
+            return g != null ? g.value() : 0.0;
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
+    private static void sendScalingRequest(String status,
+                                           double avgMs,
+                                           double jvmMemoryUsed,
+                                           double jvmMemoryMax,
+                                           double cpuUsage,
+                                           double threadsBusy,
+                                           final String requestScalingUrl,
+                                           final String serviceName) {
 
         String urlStr = requestScalingUrl
                 + "?service=" + serviceName
                 + "&status=" + status
                 + "&avgMs=" + avgMs
-                + "&total=" + totalRequests.get();
+                + "&total=" + totalRequests.get()
+                + "&jvmMemoryUsed=" + jvmMemoryUsed
+                + "&jvmMemoryMax=" + jvmMemoryMax
+                + "&cpuUsage=" + cpuUsage
+                + "&threadsBusy=" + threadsBusy;
 
         HttpURLConnection conn = null;
         try {
