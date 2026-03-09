@@ -65,10 +65,12 @@ public class ScalingRequestNotifier {
                     double jvmMemoryMax  = safeGauge(registry, "jvm.memory.max");
                     double cpuUsage      = safeGauge(registry, "system.cpu.usage");
                     double threadsBusy   = safeGauge(registry, "jetty.threads.busy");
+                    double jettyMax  = safeGauge(registry, "jetty.threads.config.max");
+                    double jettyJobs = safeGauge(registry, "jetty.threads.jobs");
+                    double gcOverhead = safeGauge(registry, "jvm.gc.overhead");
                     if (threadsBusy == 0.0) threadsBusy = safeGauge(registry, "jvm.threads.live");
                     double dbActive  = safeGauge(registry, "jdbc.connections.active");
                     double dbIdle    = safeGauge(registry, "jdbc.connections.idle");
-                    double dbBusy = safeGauge(registry, "jdbc.connections.busy");
                     double dbMax     = safeGauge(registry, "jdbc.connections.max");
                     // double dbMin     = safeGauge(registry, "jdbc.connections.min");
 
@@ -83,7 +85,7 @@ public class ScalingRequestNotifier {
 
                     sendScalingRequest(status, avg,
                             jvmMemoryUsed, jvmMemoryMax, cpuUsage, threadsBusy,
-                            dbActive, dbIdle, dbBusy, dbMax,
+                            dbActive, dbIdle, jettyMax, jettyJobs, gcOverhead, dbMax,
                             requestScalingUrl, serviceName, containerId);
                 }
             }
@@ -107,7 +109,9 @@ public class ScalingRequestNotifier {
                                            double threadsBusy,
                                            double dbActive,
                                            double dbIdle,
-                                           double dbBusy,
+                                           double jettyMax, 
+                                           double jettyJobs, 
+                                           double gcOverhead,
                                            double dbMax,
                                            final String requestScalingUrl,
                                            final String serviceName,
@@ -125,7 +129,9 @@ public class ScalingRequestNotifier {
                 + "&threadsBusy=" + Math.round(threadsBusy)
                 + "&dbActive=" + Math.round(dbActive)
                 + "&dbIdle=" + Math.round(dbIdle)
-                + "&dbBusy=" + Math.round(dbBusy)
+                + "&jettyMax=" + Math.round(jettyMax)
+                + "&jettyJobs=" + Math.round(jettyJobs)
+                + "&gcOverhead=" + Math.round(gcOverhead)
                 + "&dbMax=" + Math.round(dbMax);
 
         try (BufferedInputStream inStream =  new BufferedInputStream(new URL(urlStr).openStream())) {
