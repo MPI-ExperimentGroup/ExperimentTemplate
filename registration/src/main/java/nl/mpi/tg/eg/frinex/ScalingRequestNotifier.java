@@ -66,10 +66,11 @@ public class ScalingRequestNotifier {
                     double cpuUsage      = safeGauge(registry, "system.cpu.usage");
                     double threadsBusy   = safeGauge(registry, "jetty.threads.busy");
                     if (threadsBusy == 0.0) threadsBusy = safeGauge(registry, "jvm.threads.live");
-                    double dbActive  = safeGauge(registry, "hikaricp.connections.active");
-                    double dbIdle    = safeGauge(registry, "hikaricp.connections.idle");
-                    double dbPending = safeGauge(registry, "hikaricp.connections.pending");
-                    double dbMax     = safeGauge(registry, "hikaricp.connections.max");
+                    double dbActive  = safeGauge(registry, "jdbc.connections.active");
+                    double dbIdle    = safeGauge(registry, "jdbc.connections.idle");
+                    double dbBusy = safeGauge(registry, "jdbc.connections.busy");
+                    double dbMax     = safeGauge(registry, "jdbc.connections.max");
+                    // double dbMin     = safeGauge(registry, "jdbc.connections.min");
 
                     String status;
                     if (avg > 800) {
@@ -82,7 +83,7 @@ public class ScalingRequestNotifier {
 
                     sendScalingRequest(status, avg,
                             jvmMemoryUsed, jvmMemoryMax, cpuUsage, threadsBusy,
-                            dbActive, dbIdle, dbPending, dbMax,
+                            dbActive, dbIdle, dbBusy, dbMax,
                             requestScalingUrl, serviceName, containerId);
                 }
             }
@@ -106,7 +107,7 @@ public class ScalingRequestNotifier {
                                            double threadsBusy,
                                            double dbActive,
                                            double dbIdle,
-                                           double dbPending,
+                                           double dbBusy,
                                            double dbMax,
                                            final String requestScalingUrl,
                                            final String serviceName,
@@ -124,7 +125,7 @@ public class ScalingRequestNotifier {
                 + "&threadsBusy=" + Math.round(threadsBusy)
                 + "&dbActive=" + Math.round(dbActive)
                 + "&dbIdle=" + Math.round(dbIdle)
-                + "&dbPending=" + Math.round(dbPending)
+                + "&dbBusy=" + Math.round(dbBusy)
                 + "&dbMax=" + Math.round(dbMax);
 
         try (BufferedInputStream inStream =  new BufferedInputStream(new URL(urlStr).openStream())) {
