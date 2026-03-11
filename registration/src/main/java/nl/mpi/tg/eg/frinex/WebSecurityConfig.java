@@ -127,6 +127,7 @@ public class WebSecurityConfig {
                 ).permitAll()
                 .requestMatchers(HttpMethod.GET,
                         "/actuator/health",
+                        "/actuator/info",
                         "/actuator/metrics/*",
                         "/public_usage_stats",
                         "/public_quick_stats",
