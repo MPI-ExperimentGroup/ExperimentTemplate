@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
+import java.util.UUID;
 import jakarta.persistence.QueryHint;
 import java.time.Instant;
 import nl.mpi.tg.eg.frinex.model.MediaData;
