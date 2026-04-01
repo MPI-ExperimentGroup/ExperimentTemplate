@@ -129,7 +129,9 @@ public class ExperimentService {
         final List<MediaData> mediaDataRecords = this.mediaDataRepository.findByMediaUuidTokenAndUserId(shortLivedToken, userId);
         if (mediaDataRecords.size() == 1) {
             MediaData mediaData = mediaDataRecords.get(0);
-            if (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
+            // if (mediaData.getSubmitDate().getTime() + (mediaData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
+            Instant expiryTime = mediaData.getSubmitDate().plusMillis(mediaData.getDownloadPermittedWindowMs());
+            if (expiryTime.isAfter(Instant.now())) {
                 String extension = mediaData.getRecordingFormat().name().toLowerCase();
                 String mediaType = mediaData.isVideo() ? "video" : "audio";
                 response.setContentType(mediaType + "/" + extension);
