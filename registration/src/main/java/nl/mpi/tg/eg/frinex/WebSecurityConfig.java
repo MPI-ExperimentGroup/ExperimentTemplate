@@ -132,8 +132,8 @@ public class WebSecurityConfig {
                         "/public_usage_stats",
                         "/public_quick_stats",
                         "/public_count_stats",
-                        "/public_count_csv"
-                // "/replayMedia/*/*",
+                        "/public_count_csv",
+                        "/replayMedia/*/*"
                 ).permitAll()
                 .requestMatchers("/adminpages.css").permitAll()
                 .anyRequest().hasAuthority(StringUtils.hasText(securityGroup) ? securityGroup : "ROLE_ADMIN"))
