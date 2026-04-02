@@ -117,6 +117,7 @@ public class WebSecurityConfig {
                         "/validate",
                         "/mock_validate",
                         "/mediaBlob",
+                        "/audioBlob",
                         "/screenChange",
                         "/timeStamp",
                         "/metadata",
