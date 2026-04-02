@@ -17,8 +17,8 @@
         <addPadding />
         <targetButton featureText="Recorder Any Device" target="Recorder_Any_Device" />
     </presenter>
-    <presenter back="Menu" menuLabel="Recorder Check Playback"" next="Menu" type="stimulus"
-        self="Recorder_Check_Playback" title="Recorder Check Playback"">
+    <presenter back="Menu" menuLabel="Recorder Check Playback" next="Menu" type="stimulus"
+        self="Recorder_Check_Playback" title="Recorder Check Playback">
         <loadStimulus eventTag="Recorder_Check_Playback" randomise="true" repeatRandomWindow="0"
             maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -110,6 +110,30 @@
                         <addPadding />
                         <targetButton featureText="Retry Any Device" target="Recorder_Any_Device" />
                     </onError>
+                    <mediaLoaded>
+                        <addPadding />
+                        <htmlText
+                            featureText="In this example the recorded media can be replayed, if started within 10 seconds of the data submission" />
+                        <addPadding />
+                        <actionButton featureText="Play">
+                            <playMedia mediaId="audioRecorder" />
+                        </actionButton>
+                        <addPadding />
+                        <actionButton featureText="Rewind">
+                            <rewindMedia mediaId="audioRecorder" />
+                        </actionButton>
+                        <addPadding />
+                        <actionButton featureText="Pause">
+                            <pauseMedia mediaId="audioRecorder" />
+                        </actionButton>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="AudioRecordingLoadFailed" />
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted />
+                    <mediaPlaybackComplete>
+                        <plainText featureText="AudioRecordingPlaybackComplete" />
+                    </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -161,6 +185,30 @@
                         <addPadding />
                         <targetButton featureText="Retry Any Device" target="Recorder_Any_Device" />
                     </onError>
+                    <mediaLoaded>
+                        <addPadding />
+                        <htmlText
+                            featureText="In this example the recorded media can be replayed, if started within 10 seconds of the data submission" />
+                        <addPadding />
+                        <actionButton featureText="Play">
+                            <playMedia mediaId="audioRecorder" />
+                        </actionButton>
+                        <addPadding />
+                        <actionButton featureText="Rewind">
+                            <rewindMedia mediaId="audioRecorder" />
+                        </actionButton>
+                        <addPadding />
+                        <actionButton featureText="Pause">
+                            <pauseMedia mediaId="audioRecorder" />
+                        </actionButton>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="AudioRecordingLoadFailed" />
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted />
+                    <mediaPlaybackComplete>
+                        <plainText featureText="AudioRecordingPlaybackComplete" />
+                    </mediaPlaybackComplete>
                 </startAudioRecorderWeb>
             </hasMoreStimulus>
             <endOfStimulus>
