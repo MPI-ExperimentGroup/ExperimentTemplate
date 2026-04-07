@@ -108,10 +108,19 @@ public class ExperimentService {
 //        }
 //        return new ResponseEntity<>(screenDataRepository.findAll(), HttpStatus.OK);
 //    }
+    @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)                                          
+    @ResponseBody                                                                                                                                               
+    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("audioType") MediaDataType audioType, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException, SQLException {
+        MediaData audioData = new MediaData(Instant.now(), null, screenName, userId, stimulusId, audioType, null, UUID.randomUUID(), downloadPermittedWindowMs, 0);                                                                                                                                                                                                     
+        mediaDataService.saveMediaData(audioData, dataBlob);                                                                                                                                                                                                                                                                                                                
+        // return the short lived token for the user to replay their recorded audio                                                                                                                                                                                                                                                                                         
+        return new ResponseEntity<>(audioData.getMediaUUID().toString(), HttpStatus.OK);                                                                                                                                                                                                                                                                              
+    }     
+
     // TODO: change the use of audio to media in URLs and class names eg in href='audio/
     @RequestMapping(value = {"/mediaBlob", "/audioBlob"}, method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam(value = "mediaType", defaultValue = "wav") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("partNumber") Integer partNumber, @RequestParam(value = "mediaUUID", required = false) UUID mediaUUID) throws IOException, SQLException {
+    public ResponseEntity<String> registerMediaData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("mediaType") MediaDataType mediaType, @RequestParam("screenName") String screenName, @RequestParam("partNumber") Integer partNumber, @RequestParam(value = "mediaUUID", required = false) UUID mediaUUID) throws IOException, SQLException {
         if (mediaUUID == null && partNumber != 0) {
             return new ResponseEntity<>("mediaUUID must be supplied for the subsequent parts", HttpStatus.NOT_ACCEPTABLE);
         } else if (mediaUUID != null && partNumber == 0) {
