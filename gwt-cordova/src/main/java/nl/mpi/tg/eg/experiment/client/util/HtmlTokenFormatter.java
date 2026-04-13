@@ -75,11 +75,11 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
-    public static boolean isMobileDevice() {
+    public boolean isMobileDevice() {
         return isMobileUserAgent() || isSmallScreen() || isTouchDevice();
     }
 
-    private static boolean isMobileUserAgent() {
+    public boolean isMobileUserAgent() {
         String ua = com.google.gwt.user.client.Window.Navigator.getUserAgent().toLowerCase();
 
         return ua.contains("android")
@@ -87,11 +87,11 @@ public class HtmlTokenFormatter {
                 || ua.contains("mobile");
     }
 
-    private static boolean isSmallScreen() {
+    public boolean isSmallScreen() {
         return com.google.gwt.user.client.Window.getClientWidth() <= 768;
     }
 
-    public static native boolean isTouchDevice() /*-{
+    public native boolean isTouchDevice() /*-{
         return ('ontouchstart' in $wnd) || 
                ($wnd.navigator.maxTouchPoints > 0);
     }-*/;

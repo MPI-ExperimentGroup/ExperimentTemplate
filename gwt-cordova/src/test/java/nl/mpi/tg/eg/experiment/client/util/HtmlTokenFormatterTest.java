@@ -324,6 +324,25 @@ public class HtmlTokenFormatterTest {
                 return new SimpleDateFormat(formatString).format(new Date(2023 - 1900, 12 - 1, 25, 8, 30));
             }
 
+            @Override
+            public boolean isMobileDevice() {
+                return true;
+            }
+
+            @Override
+            public boolean isSmallScreen() {
+                return false;
+            }
+
+            @Override
+            public boolean isMobileUserAgent() {
+                return false;
+            }
+
+            @Override
+            public boolean isTouchDevice() {
+                return true;
+            }
         };
         return instance;
     }

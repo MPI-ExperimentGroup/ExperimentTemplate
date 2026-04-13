@@ -28,10 +28,10 @@ public enum TokenMethod {
     random("Generates a random number less than the parameter given.", "random(5)", "Will produce one of 0, 1, 2, 3, 4"),
     getRandomItem("Returns one item from a comma separated list.", "getRandomItem('a,b,c,d,e,f')", "Will produce one of a, b, c, d, e, f"),
     replaceAll("Replace all characters that match the regular expression with the second parameter given.", "metadataField_dateOfBirth: replaceAll('::metadataField_dateOfBirth::', '/', ':')\ncurrentDateDDMMYYYY: replaceAll('::currentDateDDMMYYYY::', '/', ':')", "metadataField_dateOfBirth: 25:01:2020\ncurrentDateDDMMYYYY: 12:03:2020"),
-    isMobileDevice("Combines multiple detection strategies (isMobileUserAgent(), isSmallScreen(), isTouchDevice()) to determine if the user is likely on a mobile device.", "isMobileDevice()", "false"),
+    isMobileDevice("Combines multiple detection strategies (isMobileUserAgent(), isSmallScreen(), isTouchDevice()) to determine if the user is likely on a mobile device.", "isMobileDevice()", "true"),
     isMobileUserAgent("Checks the browser's user agent string for mobile-specific keywords (e.g., Android, iPhone) to identify mobile devices.", "isMobileUserAgent()", "false"),
     isSmallScreen("Determines if the device has a small viewport width, typically associated with mobile screens.", "isSmallScreen()", "false"),
-    isTouchDevice("Detects whether the device supports touch input, which is common on mobile and tablet devices.", "isTouchDevice()", "false");
+    isTouchDevice("Detects whether the device supports touch input, which is common on mobile and tablet devices.", "isTouchDevice()", "true");
 
     public final String usageDescription;
     public final String exampleUsage;
