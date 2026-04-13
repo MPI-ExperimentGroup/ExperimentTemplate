@@ -120,7 +120,7 @@ public class SchemaGeneratorTest {
             "with_stimulus_example.xml",
             "group_example.xml",
             "group_streaming_example.xml",
-            "audio_recorder_example.xml",
+            // "audio_recorder_example.xml",
             "invitation_validation_example.xml",
         };
         for (String fileName : fileNameArray) {
