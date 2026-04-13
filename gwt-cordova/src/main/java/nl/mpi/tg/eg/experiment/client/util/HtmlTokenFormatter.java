@@ -75,6 +75,27 @@ public class HtmlTokenFormatter {
         return resultString;
     }
 
+    public static boolean isMobileDevice() {
+        return isMobileUserAgent() || isSmallScreen() || isTouchDevice();
+    }
+
+    private static boolean isMobileUserAgent() {
+        String ua = com.google.gwt.user.client.Window.Navigator.getUserAgent().toLowerCase();
+
+        return ua.contains("android")
+                || ua.contains("iphone")
+                || ua.contains("mobile");
+    }
+
+    private static boolean isSmallScreen() {
+        return com.google.gwt.user.client.Window.getClientWidth() <= 768;
+    }
+
+    public static native boolean isTouchDevice() /*-{
+        return ('ontouchstart' in $wnd) || 
+               ($wnd.navigator.maxTouchPoints > 0);
+    }-*/;
+
     //@SuppressWarnings("deprecation")
     public String formatDDMMYYYCurrentDate(int addDays, int addMonths, int addYears) {
         // we cannot use com.google.gwt.i18n.client.DateTimeFormat.parseStrict(getValue()); and we are using a predefined date format      
@@ -141,7 +162,7 @@ public class HtmlTokenFormatter {
 
     private String evaluateResolve(String inputString) throws EvaluateTokensException {
         System.out.println(inputString);
-        RegExp regExpGroupM = RegExp.compile("(addTime|getRandomItem|daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
+        RegExp regExpGroupM = RegExp.compile("(isMobileDevice|isMobileUserAgent|isSmallScreen|isTouchDevice|addTime|getRandomItem|daysBetween|length|random|replaceAll)(\\([^\\)\\(]*\\))");
         MatchResult matcherGroupM = regExpGroupM.exec(inputString);
         while (matcherGroupM != null) {
             if (matcherGroupM.getGroupCount() == 3) {
@@ -149,6 +170,18 @@ public class HtmlTokenFormatter {
                 final String parameterMatch = matcherGroupM.getGroup(2);
                 String resultValue = "";
                 switch (methodMatch) {
+                    case "isMobileDevice":
+                        resultValue = (isMobileDevice()) ? "true" : "false";
+                        break;
+                    case "isMobileUserAgent":
+                        resultValue = (isMobileUserAgent()) ? "true" : "false";
+                        break;
+                    case "isSmallScreen":
+                        resultValue = (isSmallScreen()) ? "true" : "false";
+                        break;
+                    case "isTouchDevice":
+                        resultValue = (isTouchDevice()) ? "true" : "false";
+                        break;
                     case "length":
                         resultValue = Integer.toString(parameterMatch.length() - 4);
                         break;
