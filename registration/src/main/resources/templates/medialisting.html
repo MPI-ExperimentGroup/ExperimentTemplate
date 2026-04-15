@@ -33,7 +33,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script src="js/ExperimentCharts.js"></script>
         <script src="js/TableHeader.js"></script>
     </head>
-    <body>
+    <body>        
+        <th:block th:if="${allowDelete} and ${!simpleMode}">
+            <h3>Advanced</h3>
+            <input type="checkbox" value="enableAdvanced" name="enableAdvanced" id="enableAdvanced" onclick="$('#deleteSubmit').attr('hidden', !$('#enableAdvanced').is(':checked'));"/><label for="enableAdvanced">Enable Advanced</label><br/>
+            <form action="mediadatadelete">
+                <input type="hidden" th:value="${simpleMode}" name="simple"/>
+                <input type="submit" value="View Delete Options" id ="deleteSubmit" hidden="hidden" />
+            </form>
+        </th:block>
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <span class="table-container" id="mediatable">
             <script th:inline="javascript">

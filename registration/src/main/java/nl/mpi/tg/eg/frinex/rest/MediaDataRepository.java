@@ -74,6 +74,9 @@ public interface MediaDataRepository extends JpaRepository<MediaData, Long>, Med
     @RestResource(exported = false)
     public void deleteAllById(Iterable<? extends Long> ids);
     
+    @RestResource(exported = false)
+    long deleteBySubmitDateBefore(Instant date);
+    
     @Query("SELECT new MediaData(a.id, a.submitDate, a.experimentName, a.screenName, a.userId, a.stimulusId, a.recordingFormat, a.mediaUUID, a.downloadPermittedWindowMs, a.partNumber) FROM MediaData a WHERE "
         + "(:userId IS NULL OR a.userId like :userId) AND "
         + "(:screenName IS NULL OR a.screenName like :screenName) AND "
