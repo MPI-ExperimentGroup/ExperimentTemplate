@@ -84,6 +84,8 @@ public class HtmlTokenFormatter {
 
         return ua.contains("android")
                 || ua.contains("iphone")
+                || ua.contains("ipad")
+                || ua.contains("tablet")
                 || ua.contains("mobile");
     }
 
