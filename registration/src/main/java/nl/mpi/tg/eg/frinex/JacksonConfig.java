@@ -38,6 +38,7 @@ public class JacksonConfig {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Instant.class, new FlexibleInstantDeserializer());
 
+        mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
         mapper.registerModule(module);
 
         return mapper;
