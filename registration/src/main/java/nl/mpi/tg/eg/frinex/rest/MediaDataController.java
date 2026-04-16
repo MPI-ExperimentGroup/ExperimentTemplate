@@ -116,7 +116,6 @@ public class MediaDataController {
         model.addAttribute("deleteAudio", deleteAudio);
         model.addAttribute("deleteAll", deleteAll);
         model.addAttribute("simpleMode", simpleMode);
-        model.addAttribute("paramId", paramId);
         model.addAttribute("allowDelete", allowDelete);
 
         final DataDeletionLog pendingDeleteInfo = new DataDeletionLog();
