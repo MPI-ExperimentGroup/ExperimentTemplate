@@ -22,8 +22,12 @@ import java.io.IOException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import nl.mpi.tg.eg.frinex.model.DataDeletionLog;
 import nl.mpi.tg.eg.frinex.model.MediaData;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -109,7 +113,8 @@ public class MediaDataController {
             LocalDate localDate = LocalDate.parse(deleteBeforeDate);
             cutoffDate = localDate.atStartOfDay(ZoneOffset.UTC).toInstant();
         }
-        final String requiredCheckbox1 = "Delete media recordings before " + deleteBeforeDate + " " + id;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        final String requiredCheckbox1 = "Delete media recordings before " + cutoffLocalDate.format(formatter);
         final String requiredCheckbox2 = "I understand that this is permanent and cannot be reverted.";
         model.addAttribute("requiredCheckbox1", requiredCheckbox1);
         model.addAttribute("requiredCheckbox2", requiredCheckbox2);
