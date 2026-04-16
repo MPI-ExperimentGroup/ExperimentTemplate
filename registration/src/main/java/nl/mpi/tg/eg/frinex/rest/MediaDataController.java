@@ -114,7 +114,7 @@ public class MediaDataController {
             cutoffDate = localDate.atStartOfDay(ZoneOffset.UTC).toInstant();
         }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        final String requiredCheckbox1 = "Delete media recordings before " + cutoffLocalDate.format(formatter);
+        final String requiredCheckbox1 = "Delete media recordings before " + cutoffDate.format(formatter);
         final String requiredCheckbox2 = "I understand that this is permanent and cannot be reverted.";
         model.addAttribute("requiredCheckbox1", requiredCheckbox1);
         model.addAttribute("requiredCheckbox2", requiredCheckbox2);
