@@ -37,8 +37,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <th:block th:if="${allowDelete} and ${!simpleMode}">
             <h3>Advanced</h3>
             <input type="checkbox" value="enableAdvanced" name="enableAdvanced" id="enableAdvanced" onclick="$('#deleteSubmit').attr('hidden', !$('#enableAdvanced').is(':checked'));"/><label for="enableAdvanced">Enable Advanced</label><br/>
-            <form action="mediadatadelete">
+            <form action="mediadatadelete" method="post">
                 <input type="hidden" th:value="${simpleMode}" name="simple"/>
+                <label for="deleteBeforeDate">Delete media before:</label>
+                <input type="date" id="deleteBeforeDate" name="deleteBeforeDate"/>
                 <input type="submit" value="View Delete Options" id ="deleteSubmit" hidden="hidden" />
             </form>
         </th:block>

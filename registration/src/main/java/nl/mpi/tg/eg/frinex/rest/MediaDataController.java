@@ -90,16 +90,26 @@ public class MediaDataController {
     }
     
     @Transactional
-    @RequestMapping("mediadatadelete")
+    @PostMapping("mediadatadelete")
     /*
         This method will have no effect if the application.properties does not specify allowDelete true.
      */
-    public String mediaDataDelete(ServletRequest request, @RequestParam(value = "id", required = true) String id, @RequestParam(value = "providedCheckbox1", required = false) String providedCheckbox1, @RequestParam(value = "providedCheckbox2", required = false) String providedCheckbox2, @RequestParam(value = "deleteOption", defaultValue = "false", required = false) String deleteOption, Model model,
-            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
-            @RequestParam(value = "id", required = false) String paramId) {
+    public String mediaDataDelete(
+            ServletRequest request,
+            @RequestParam(value = "providedCheckbox1", required = false) String providedCheckbox1,
+            @RequestParam(value = "providedCheckbox2", required = false) String providedCheckbox2,
+            @RequestParam(value = "deleteOption", defaultValue = "false", required = false) String deleteOption,
+            @RequestParam(value = "deleteBeforeDate", required = false) String deleteBeforeDate,
+            Model model,
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode) {
         final boolean deleteAudio = "deleteAudio".equals(deleteOption);
         final boolean deleteAll = "deleteAll".equals(deleteOption);
-        final String requiredCheckbox1 = "Delete media recordings from date DD/MM/YYYY " + id;
+        Instant cutoffDate = null;
+        if (deleteBeforeDate != null && !deleteBeforeDate.isEmpty()) {
+            LocalDate localDate = LocalDate.parse(deleteBeforeDate);
+            cutoffDate = localDate.atStartOfDay(ZoneOffset.UTC).toInstant();
+        }
+        final String requiredCheckbox1 = "Delete media recordings before " + deleteBeforeDate + " " + id;
         final String requiredCheckbox2 = "I understand that this is permanent and cannot be reverted.";
         model.addAttribute("requiredCheckbox1", requiredCheckbox1);
         model.addAttribute("requiredCheckbox2", requiredCheckbox2);
@@ -110,19 +120,15 @@ public class MediaDataController {
         model.addAttribute("allowDelete", allowDelete);
 
         final DataDeletionLog pendingDeleteInfo = new DataDeletionLog();
-        pendingDeleteInfo.totalMediaResponses = mediaDataRepository.countByUserId(id);
         model.addAttribute("pendingDeleteInfo", pendingDeleteInfo);
 
         if (allowDelete) {
             if (requiredCheckbox1.equals(providedCheckbox1) && requiredCheckbox2.equals(providedCheckbox2)) {
-//                final String screenName = "administration system";
-//                final String eventTag = (deleteAudio) ? "delete participant audio" : "delete participant data";
-//                final int eventMs = 0;
                 final Instant deletionDate = Instant.now();
                 final String remoteAddr = request.getRemoteAddr();
                 final int lastIndexOf = remoteAddr.lastIndexOf(".");
                 final String deletionAddr = (lastIndexOf > 0) ? remoteAddr.substring(0, lastIndexOf) + ".0" : "";
-                // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
+                 // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
                 // log the ip address that requested this action
 //                final TagData deletionLogEntry = new TagData("participantdelete", screenName, eventTag, deletionAddr, eventMs, tagDate);
 //                this.tagRepository.save(deletionLogEntry);
@@ -130,11 +136,9 @@ public class MediaDataController {
                 dataDeletionLog.setDeletionDate(deletionDate);
                 dataDeletionLog.setDeletionAddr(deletionAddr);
 
-                // TODO: set up the date in the web form and provide it here
-                // TODO: add the deleted media count to the dataDeletionLog
-                
-                // delete the audio
-                this.mediaDataRepository.deleteBySubmitDateBefore(TODO: provide date);
+                if (cutoffDate != null) {
+                    pendingDeleteInfo.totalMediaResponses = this.mediaDataRepository.deleteBySubmitDateBefore(cutoffDate);
+                }
                 dataDeletionLog.totalMediaResponses = pendingDeleteInfo.totalMediaResponses;
                 if (deleteAudio) {
                     model.addAttribute("deletionSuccess", true);
@@ -158,7 +162,7 @@ public class MediaDataController {
                 model.addAttribute("deletionSuccess", false);
             }
         }
-        model.addAttribute("countOfAudio", mediaDataRepository.countByUserId(id));
+        model.addAttribute("countOfAudio", mediaDataRepository.count());
         return "mediadatadelete";
     }
 }
