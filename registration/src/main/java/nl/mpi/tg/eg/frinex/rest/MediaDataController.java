@@ -84,12 +84,11 @@ public class MediaDataController {
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "size", defaultValue = "100", required = false) Integer size,
-            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode,
-            @RequestParam(value = "id", required = false) String paramId) {
+            @RequestParam(value = "simple", required = false, defaultValue = "true") boolean simpleMode) {
         model.addAttribute("sortColumn", sortColumn);
         model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("simpleMode", simpleMode);
-        model.addAttribute("paramId", paramId);
+        model.addAttribute("allowDelete", allowDelete);
         return "medialisting";
     }
     
