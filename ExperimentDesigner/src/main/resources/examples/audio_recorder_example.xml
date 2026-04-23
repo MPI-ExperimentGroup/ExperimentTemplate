@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/stable.xsd"  
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"  
     appNameDisplay="audio_recorder_example">  
     <deployment state="debug" />  
     <administration />
@@ -24,7 +24,7 @@
             <hasMoreStimulus>
                 <clearPage />
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder"
-                    featureText="00:00:00" downloadPermittedWindowMs="30000">
+                    featureText="00:00:00">
                     <onSuccess>
                         <actionButton featureText="Volgende [tab + enter]">
                             <stopAudioRecorder />
@@ -83,7 +83,7 @@
                 <clearPage />
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder"
                     deviceRegex="(046d:0a45)"
-                    featureText="00:00:00" downloadPermittedWindowMs="30000">
+                    featureText="00:00:00">
                     <onSuccess>
                         <stimulusLabel styleName="stimuliLabel" />
                         <addPadding />
@@ -158,7 +158,7 @@
             <hasMoreStimulus>
                 <clearPage />
                 <startAudioRecorderWeb recordingFormat="ogg" mediaId="audioRecorder"
-                    deviceRegex="" featureText="00:00:00" downloadPermittedWindowMs="30000">
+                    deviceRegex="" featureText="00:00:00">
                     <onSuccess>
                         <stimulusLabel styleName="stimuliLabel" />
                         <addPadding />
