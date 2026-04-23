@@ -2093,7 +2093,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                         // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayMediaUrl)
 //                         // TODO: this callback loadedStimulusListener might be able to traverse the nextStimulus and then trigger another nextStimulus in mskonopka
 //                         timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
-                    String replayMediaUrl = URL.createObjectURL(dataBlob);
+                    String replayMediaUrl = URL.createObjectURL(dataArray);
                     replayMediaUrlUrls.add(replayMediaUrl);                   
                     timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
 //                     } else {
