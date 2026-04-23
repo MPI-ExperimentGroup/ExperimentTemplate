@@ -2615,7 +2615,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionComplete(String message) {
+            public void submissionComplete(String message, final String replayMediaUrl) {
             }
         };
         groupStreamHandler.streamRecordStart(submissionService, matchingRegex, mediaSubmissionListener);
