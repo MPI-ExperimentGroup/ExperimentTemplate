@@ -48,7 +48,7 @@ public abstract class MediaSubmissionListener {
 
     public abstract void submissionFailed(final String message, final Uint8Array dataArray, final Double partNumber);
 
-    public abstract void submissionComplete(String message, final Uint8Array dataArray);
+    public abstract void submissionComplete(String message, final String replayMediaUrl);
 
     public String getMediaUUID() {
         return mediaUUID;
