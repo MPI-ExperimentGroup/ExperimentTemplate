@@ -2115,7 +2115,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         mediaRecorder.stopRecorder(this);
         // clean up previous recordings in replayMediaUrls
         for (String url : replayMediaUrlUrls) {
-            URL.revokeObjectURL(url);
+            submissionService.revokeObjectURL(url);
         }
         replayMediaUrlUrls.clear();
     }

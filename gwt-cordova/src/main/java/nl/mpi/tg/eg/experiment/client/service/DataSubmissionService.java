@@ -142,6 +142,10 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "mediaBlob";
     }
 
+    public native void revokeObjectURL(String replayMediaUrl) /*-{
+        URL.revokeObjectURL(replayMediaUrl);
+    }-*/;
+
     public native void submitMediaData(final Uint8Array dataBlob, final MediaSubmissionListener mediaSubmissionListener, final Double partNumber) /*-{
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
