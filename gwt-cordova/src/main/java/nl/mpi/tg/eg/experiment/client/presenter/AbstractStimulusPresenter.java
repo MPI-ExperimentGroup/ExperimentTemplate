@@ -116,6 +116,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     final private ArrayList<PresenterEventListener> nextButtonEventListenerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     private final HashMap<String, TriggerListener> triggerListeners = new HashMap<>();
+    private final List<String> replayMediaUrlUrls = new ArrayList<>();
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
@@ -2084,7 +2085,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
-            public void submissionComplete(String message) {
+            public void submissionComplete(String message, final Uint8Array dataArray) {
                 if (!recordingAborted) {
 //                     if (downloadPermittedWindowMs > 0) {
 //                         String replayMediaUrl = serviceLocations.dataSubmitUrl() + "replayMedia/" + mediaUUID.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
@@ -2092,6 +2093,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                         // playback can be done from RAM or from the server which is why do we do: (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayMediaUrl)
 //                         // TODO: this callback loadedStimulusListener might be able to traverse the nextStimulus and then trigger another nextStimulus in mskonopka
 //                         timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                    String replayMediaUrl = URL.createObjectURL(dataBlob);
+                    replayMediaUrlUrls.add(replayMediaUrl);                   
+                    timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
 //                     } else {
                     loadedStimulusListener.postLoadTimerFired();
                     // }
@@ -2110,6 +2114,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
     protected void stopAudioRecorder() {
         mediaRecorder.stopRecorder(this);
+        // clean up previous recordings in replayMediaUrls
+        for (String url : replayMediaUrlUrls) {
+            URL.revokeObjectURL(url);
+        }
+        replayMediaUrlUrls.clear();
     }
 
 //    requestFieldKitPermissions
