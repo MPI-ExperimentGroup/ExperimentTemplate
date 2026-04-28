@@ -2096,7 +2096,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     replayMediaUrlUrls.add(replayMediaUrl);                   
                     timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromTrustedString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
 //                     } else {
-                    loadedStimulusListener.postLoadTimerFired();
+                    // the loadedStimulusListener is also triggered by the addTimedAudio so we skip it here
+                    // loadedStimulusListener.postLoadTimerFired();
                     // }
                 }
             }
