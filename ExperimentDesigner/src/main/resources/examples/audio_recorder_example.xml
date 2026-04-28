@@ -110,23 +110,7 @@
                         <addPadding />
                         <targetButton featureText="Retry Any Device" target="Recorder_Any_Device" />
                     </onError>
-                    <mediaLoaded>
-                        <addPadding />
-                        <htmlText
-                            featureText="In this example the recorded media can be replayed, if started within 10 seconds of the data submission" />
-                        <addPadding />
-                        <actionButton featureText="Play">
-                            <playMedia mediaId="audioRecorder" />
-                        </actionButton>
-                        <addPadding />
-                        <actionButton featureText="Rewind">
-                            <rewindMedia mediaId="audioRecorder" />
-                        </actionButton>
-                        <addPadding />
-                        <actionButton featureText="Pause">
-                            <pauseMedia mediaId="audioRecorder" />
-                        </actionButton>
-                    </mediaLoaded>
+                    <mediaLoaded/>
                     <mediaLoadFailed>
                         <plainText featureText="AudioRecordingLoadFailed" />
                     </mediaLoadFailed>
@@ -185,23 +169,7 @@
                         <addPadding />
                         <targetButton featureText="Retry Any Device" target="Recorder_Any_Device" />
                     </onError>
-                    <mediaLoaded>
-                        <addPadding />
-                        <htmlText
-                            featureText="In this example the recorded media can be replayed, if started within 10 seconds of the data submission" />
-                        <addPadding />
-                        <actionButton featureText="Play">
-                            <playMedia mediaId="audioRecorder" />
-                        </actionButton>
-                        <addPadding />
-                        <actionButton featureText="Rewind">
-                            <rewindMedia mediaId="audioRecorder" />
-                        </actionButton>
-                        <addPadding />
-                        <actionButton featureText="Pause">
-                            <pauseMedia mediaId="audioRecorder" />
-                        </actionButton>
-                    </mediaLoaded>
+                    <mediaLoaded/>
                     <mediaLoadFailed>
                         <plainText featureText="AudioRecordingLoadFailed" />
                     </mediaLoadFailed>
