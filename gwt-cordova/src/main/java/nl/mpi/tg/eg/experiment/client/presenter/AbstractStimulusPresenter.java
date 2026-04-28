@@ -2094,7 +2094,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                         // TODO: this callback loadedStimulusListener might be able to traverse the nextStimulus and then trigger another nextStimulus in mskonopka
 //                         timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
                     replayMediaUrlUrls.add(replayMediaUrl);                   
-                    timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(replayMediaUrl), null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                    timedStimulusView.addTimedAudio(timedEventMonitor, replayMediaUrl, null, null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
 //                     } else {
                     loadedStimulusListener.postLoadTimerFired();
                     // }
