@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
+    appNameDisplay="Stopwatch Example">
+    <deployment state="staging" />
+    <metadata />
+    <!--
+        Stopwatch Example
+        =================
+        Demonstrates zeroStimulusStopwatch and stopStimulusStopwatch to record
+        timing data against each stimulus response.
+
+        Two stopwatches run simultaneously per trial:
+          - reaction_time  : zeroed at stimulus onset, stopped on the first response button press.
+          - confirm_time   : zeroed at stimulus onset, stopped when the participant confirms.
+
+        Both values are stored in the stimulus response events table, keyed by eventId,
+        alongside the stimulus identifier. They can be exported with the rest of the
+        response data.
+
+        Key rules:
+          - A zeroStimulusStopwatch with no matching stop is silently ignored.
+          - A stopStimulusStopwatch with no prior zero is silently ignored.
+          - eventId must start with a letter followed by at least two letters, digits or underscores.
+          - Stopwatches are per-stimulus: they reset automatically with each loadStimulus cycle.
+
+        Compare with stimulus_timer_example.xml which uses startFrameRateTimer /
+        addFrameTimeTrigger for accurate stimulus onset timing.
+    -->
+    <presenter self="stopwatchExample" type="stimulus" title="Stopwatch Example">
+        <loadStimulus eventTag="stopwatchExample" randomise="true" repeatRandomWindow="0"
+            maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage />
+                <htmlText featureText="Is this word an animal?" />
+                <stimulusLabel />
+                <addPadding />
+                <!-- Zero both stopwatches at the moment the stimulus content is shown.
+                     From this point both clocks are running. -->
+                <zeroStimulusStopwatch eventId="reaction_time" />
+                <zeroStimulusStopwatch eventId="confirm_time" />
+                <!-- responseArea is replaced by a confirm button after the first choice. -->
+                <regionReplace regionId="responseArea">
+                    <actionButton featureText="Yes, animal">
+                        <!-- reaction_time is stopped at the moment of the initial button press. -->
+                        <stopStimulusStopwatch eventId="reaction_time" />
+                        <setStimulusCodeResponse codeFormat="animal" applyScore="false" />
+                        <!-- Replace the response buttons with a single confirm button.
+                             confirm_time is still running until Confirm is pressed. -->
+                        <regionReplace regionId="responseArea">
+                            <actionButton featureText="Confirm: Yes">
+                                <!-- confirm_time records total time from onset to final commitment. -->
+                                <stopStimulusStopwatch eventId="confirm_time" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionButton>
+                        </regionReplace>
+                    </actionButton>
+                    <actionButton featureText="No, not an animal">
+                        <stopStimulusStopwatch eventId="reaction_time" />
+                        <setStimulusCodeResponse codeFormat="not_animal" applyScore="false" />
+                        <regionReplace regionId="responseArea">
+                            <actionButton featureText="Confirm: No">
+                                <stopStimulusStopwatch eventId="confirm_time" />
+                                <nextStimulus repeatIncorrect="false" />
+                            </actionButton>
+                        </regionReplace>
+                    </actionButton>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage />
+                <htmlText featureText="End of experiment." />
+                <actionButton featureText="Restart">
+                    <resetStimulus target="stopwatchExample" />
+                    <gotoPresenter target="stopwatchExample" />
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping />
+            <stimuli>
+                <tag>all_stimuli</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="cat"   label="cat"   tags="all_stimuli" />
+        <stimulus identifier="dog"   label="dog"   tags="all_stimuli" />
+        <stimulus identifier="lion"  label="lion"  tags="all_stimuli" />
+        <stimulus identifier="chair" label="chair" tags="all_stimuli" />
+        <stimulus identifier="apple" label="apple" tags="all_stimuli" />
+        <stimulus identifier="table" label="table" tags="all_stimuli" />
+    </stimuli>
+</experiment>
