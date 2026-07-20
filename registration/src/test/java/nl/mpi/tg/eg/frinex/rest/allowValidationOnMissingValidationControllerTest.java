@@ -1034,7 +1034,12 @@ public class allowValidationOnMissingValidationControllerTest {
             public long countByLike(String userId, String screenName, Integer dataChannel, Boolean isCorrect, String scoreGroup, String responseGroup, String stimulusId, String response) {
                 throw new UnsupportedOperationException("Not required for this test class.");
             }
-            
+
+            @Override
+            public Double avgEventTimeByLike(String eventId, String userId, String screenName, Integer dataChannel, Boolean isCorrect, String scoreGroup, String responseGroup, String stimulusId, String response) {
+                throw new UnsupportedOperationException("Not required for this test class.");
+            }
+
             @Override
             public long countByScreenNameLikeAndScoreGroupLikeAndResponseGroupLikeAndStimulusIdLikeAndResponseLikeAndIsCorrect(String screenName, String scoreGroup, String responseGroup, String stimulusId, String response, Boolean isCorrect) {
                 throw new UnsupportedOperationException("Not required for this test class.");
