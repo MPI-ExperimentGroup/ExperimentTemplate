@@ -3,6 +3,38 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Stopwatch Example">
     <deployment state="staging" />
+    <administration>
+        <!--
+            Charts count records.
+            The dataTable below exposes the raw eventTimes JSON so timing can be exported
+            and analysed offline.
+        -->
+        <chart label="Response Distribution" type="pie">
+            <dataset source="stimulusResponse" label="animal"     matching="response=animal"     colour="#2255aa" />
+            <dataset source="stimulusResponse" label="not animal" matching="response=not_animal" colour="#aa5522" />
+        </chart>
+        <chart label="Responses per Stimulus" type="bar">
+            <dataset source="stimulusResponse" label="cat"   matching="stimulusId=cat"   colour="#4477cc" />
+            <dataset source="stimulusResponse" label="dog"   matching="stimulusId=dog"   colour="#44aa77" />
+            <dataset source="stimulusResponse" label="lion"  matching="stimulusId=lion"  colour="#cc7744" />
+            <dataset source="stimulusResponse" label="chair" matching="stimulusId=chair" colour="#aa44cc" />
+            <dataset source="stimulusResponse" label="apple" matching="stimulusId=apple" colour="#77cc44" />
+            <dataset source="stimulusResponse" label="table" matching="stimulusId=table" colour="#cc4444" />
+        </chart>
+        <!-- eventTimes contains [{"event":"reaction_time","ms":N},{"event":"confirm_time","ms":N}]
+             for each row — copy to a spreadsheet to calculate means and distributions. -->
+        <dataTable label="Stopwatch Data"
+            source="stimulusResponse"
+            columnNames="userId,screenName,stimulusId,response,eventTimes,tagDate" />
+        <dataTable label="Animal Responses"
+            source="stimulusResponse"
+            matching="response=animal"
+            columnNames="userId,screenName,stimulusId,response,eventTimes,tagDate" />
+        <dataTable label="Non-Animal Responses"
+            source="stimulusResponse"
+            matching="response=not_animal"
+            columnNames="userId,screenName,stimulusId,response,eventTimes,tagDate" />
+    </administration>
     <metadata />
     <!--
         Stopwatch Example
