@@ -15822,6 +15822,11 @@ function getFeatureBlocks() {
       },
       {
         "kind": "button",
+        "text": "stopwatch_example",
+        "callbackKey": "loadExampleCallback"
+      },
+      {
+        "kind": "button",
         "text": "timer_averaging_example",
         "callbackKey": "loadExampleCallback"
       },

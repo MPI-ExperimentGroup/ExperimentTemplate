@@ -542,8 +542,12 @@ The type of chart to be displayed.</span><br/>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#datasetType"><span style="color:purple">&lt;</span><span style="color:blue">dataset</span></a></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+<a href="#datasetType"><span style="color:purple">&lt;</span><span style="color:blue">dataset</span></a></td><td><span style="color:green">aggregation</span><span style="color:grey">=&quot;[count, avg] (optional)&quot;</span><span>
+When avg is specified the chart shows the average value of the named eventId stopwatch in milliseconds, rather than a count of matching records.</span><br/>
+<span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
+<span style="color:green">eventId</span><span style="color:grey">=&quot;Post Name String (optional)&quot;</span><span>
+The stopwatch eventId to average. Required when aggregation is avg.</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
@@ -571,8 +575,12 @@ dataset
 Adds dataset to the graph.
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">dataset</span></td><td><span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
+<span style="color:purple">&lt;</span><span style="color:blue">dataset</span></td><td><span style="color:green">aggregation</span><span style="color:grey">=&quot;[count, avg] (optional)&quot;</span><span>
+When avg is specified the chart shows the average value of the named eventId stopwatch in milliseconds, rather than a count of matching records.</span><br/>
+<span style="color:green">colour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><span>
 RGB Hex Value</span><br/>
+<span style="color:green">eventId</span><span style="color:grey">=&quot;Post Name String (optional)&quot;</span><span>
+The stopwatch eventId to average. Required when aggregation is avg.</span><br/>
 <span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><span>
 String</span><br/>
 <span style="color:green">matching</span><span style="color:grey">=&quot;String&quot;</span><span>
