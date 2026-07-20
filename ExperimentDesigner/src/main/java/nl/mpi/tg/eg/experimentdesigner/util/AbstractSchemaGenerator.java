@@ -460,6 +460,8 @@ public class AbstractSchemaGenerator {
                                                 .restrictedAttribute("source", null, "The data source for chart.", false, "stimulusResponse", "tagpair", "tagdata", "metadata", "timestamp", "mediaResponse")
                                                 .documentedAttribute("matching", AttributeType.xsString, "Only records matching this query will be counted for this dataset. The query consists of a column name or fieldName followed by = and the search string. Multiple colums or fieldNames can be queried when separated by ;. The percent sign will match zero, one, or multiple characters. The underscore will match any single character.", false)
                                                 .colourRGBAttribute("colour", false)
+                                                .restrictedAttribute("aggregation", null, "When avg is specified the chart shows the average value of the named eventId stopwatch in milliseconds, rather than a count of matching records.", true, "count", "avg")
+                                                .documentedAttribute("eventId", AttributeType.postName, "The stopwatch eventId to average. Required when aggregation is avg.", true)
 //                                        new DocumentationElement("metadata", "Adds matching metadata as a dataset to the graph.", 0, 0, new DocumentationElement[0])
 //                                                .stringAttribute("label", false)
 //                                                .stringAttribute("fieldName", false)

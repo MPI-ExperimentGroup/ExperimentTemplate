@@ -21,8 +21,22 @@
             <dataset source="stimulusResponse" label="apple" matching="stimulusId=apple" colour="#77cc44" />
             <dataset source="stimulusResponse" label="table" matching="stimulusId=table" colour="#cc4444" />
         </chart>
-        <!-- eventTimes contains [{"event":"reaction_time","ms":N},{"event":"confirm_time","ms":N}]
-             for each row — copy to a spreadsheet to calculate means and distributions. -->
+        <chart label="Avg Reaction Time per Stimulus (ms)" type="bar">
+            <dataset aggregation="avg" eventId="reaction_time" source="stimulusResponse" label="cat"   matching="stimulusId=cat"   colour="#4477cc" />
+            <dataset aggregation="avg" eventId="reaction_time" source="stimulusResponse" label="dog"   matching="stimulusId=dog"   colour="#44aa77" />
+            <dataset aggregation="avg" eventId="reaction_time" source="stimulusResponse" label="lion"  matching="stimulusId=lion"  colour="#cc7744" />
+            <dataset aggregation="avg" eventId="reaction_time" source="stimulusResponse" label="chair" matching="stimulusId=chair" colour="#aa44cc" />
+            <dataset aggregation="avg" eventId="reaction_time" source="stimulusResponse" label="apple" matching="stimulusId=apple" colour="#77cc44" />
+            <dataset aggregation="avg" eventId="reaction_time" source="stimulusResponse" label="table" matching="stimulusId=table" colour="#cc4444" />
+        </chart>
+        <chart label="Avg Confirm Time per Stimulus (ms)" type="bar">
+            <dataset aggregation="avg" eventId="confirm_time" source="stimulusResponse" label="cat"   matching="stimulusId=cat"   colour="#4477cc" />
+            <dataset aggregation="avg" eventId="confirm_time" source="stimulusResponse" label="dog"   matching="stimulusId=dog"   colour="#44aa77" />
+            <dataset aggregation="avg" eventId="confirm_time" source="stimulusResponse" label="lion"  matching="stimulusId=lion"  colour="#cc7744" />
+            <dataset aggregation="avg" eventId="confirm_time" source="stimulusResponse" label="chair" matching="stimulusId=chair" colour="#aa44cc" />
+            <dataset aggregation="avg" eventId="confirm_time" source="stimulusResponse" label="apple" matching="stimulusId=apple" colour="#77cc44" />
+            <dataset aggregation="avg" eventId="confirm_time" source="stimulusResponse" label="table" matching="stimulusId=table" colour="#cc4444" />
+        </chart>
         <dataTable label="Stopwatch Data"
             source="stimulusResponse"
             columnNames="userId,screenName,stimulusId,response,eventTimes,tagDate" />

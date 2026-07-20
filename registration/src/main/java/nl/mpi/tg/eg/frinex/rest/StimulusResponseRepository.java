@@ -73,6 +73,27 @@ public interface StimulusResponseRepository extends JpaRepository<StimulusRespon
             @Param("stimulusId") String stimulusId,
             @Param("response") String response);
 
+    @Query("SELECT AVG(et.ms) FROM StimulusResponse sr JOIN sr.eventTimes et WHERE "
+        + "et.event = :eventId AND "
+        + "(:userId IS NULL OR sr.userId LIKE :userId) AND "
+        + "(:screenName IS NULL OR sr.screenName LIKE :screenName) AND "
+        + "(:dataChannel IS NULL OR sr.dataChannel = :dataChannel) AND "
+        + "(:scoreGroup IS NULL OR sr.scoreGroup LIKE :scoreGroup) AND "
+        + "(:responseGroup IS NULL OR sr.responseGroup LIKE :responseGroup) AND "
+        + "(:stimulusId IS NULL OR sr.stimulusId LIKE :stimulusId) AND "
+        + "(:response IS NULL OR sr.response LIKE :response) AND "
+        + "(:isCorrect IS NULL OR sr.isCorrect = :isCorrect)")
+    Double avgEventTimeByLike(
+            @Param("eventId") String eventId,
+            @Param("userId") String userId,
+            @Param("screenName") String screenName,
+            @Param("dataChannel") Integer dataChannel,
+            @Param("isCorrect") Boolean isCorrect,
+            @Param("scoreGroup") String scoreGroup,
+            @Param("responseGroup") String responseGroup,
+            @Param("stimulusId") String stimulusId,
+            @Param("response") String response);
+
         @Query(value = "SELECT COUNT(*) "
         + "FROM (SELECT DISTINCT user_id, screen_name, tag_date, event_ms, data_channel, is_correct, score_group, response_group, stimulus_id, response FROM stimulus_response WHERE "
         + "(:userId IS NULL OR user_id LIKE :userId) AND "

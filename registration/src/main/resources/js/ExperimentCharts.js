@@ -63,13 +63,22 @@ function generateChart(chartData) {
             borderWidth: 1
         });
         const promises = [];
+        const isAvgChart = chartData.datasets.some(d => d.aggregation === 'avg');
+        if (isAvgChart) {
+            options.scales.y.title = { display: true, text: 'milliseconds' };
+        }
         chartData.datasets.forEach((dataset, index) => {
             data.labels.push(dataset.label);
             data.datasets[0].backgroundColor.push(dataset.colour + '20');
             data.datasets[0].borderColor.push(dataset.colour + 'ff');
             data.datasets[0].data.push(0);
-            const queryTable = dataset.source === 'metadata' ? 'participants' : dataset.source === 'tagdata' ? 'tagevents' : dataset.source === 'stimulusResponse' ? 'stimulusresponses' : dataset.source;
-            const queryURL = `${queryTable}/search/countByLike?${dataset.matching.replace(/;/g, '&')}`;
+            let queryURL;
+            if (dataset.aggregation === 'avg') {
+                queryURL = `stimulusresponses/search/avgEventTimeByLike?eventId=${dataset.eventId}&${dataset.matching.replace(/;/g, '&')}`;
+            } else {
+                const queryTable = dataset.source === 'metadata' ? 'participants' : dataset.source === 'tagdata' ? 'tagevents' : dataset.source === 'stimulusResponse' ? 'stimulusresponses' : dataset.source;
+                queryURL = `${queryTable}/search/countByLike?${dataset.matching.replace(/;/g, '&')}`;
+            }
             const requestPromis = $.getJSON(queryURL).then(responseData => {
                 data.datasets[0].data[index] = responseData;
             });
@@ -216,7 +225,7 @@ function loadMore(tableId) {
                     dataRow += "<td>";
                     for (const eventTime of recordData[columnId]) {
                         if (eventTime.event) {
-                            "<div>" + eventTime.event + ": " + eventTime.ms + "ms </div>";
+                            dataRow += "<div>" + eventTime.event + ": " + eventTime.ms + "ms</div>";
                         }
                     }
                     dataRow += "</td>";
