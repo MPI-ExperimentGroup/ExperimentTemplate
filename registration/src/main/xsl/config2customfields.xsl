@@ -710,6 +710,12 @@
                             <xsl:value-of select="@matching" />
                             <xsl:text>", colour: "</xsl:text>
                             <xsl:value-of select="@colour" />
+                            <xsl:if test="@aggregation">
+                                <xsl:text>", aggregation: "</xsl:text>
+                                <xsl:value-of select="@aggregation" />
+                                <xsl:text>", eventId: "</xsl:text>
+                                <xsl:value-of select="@eventId" />
+                            </xsl:if>
                             <xsl:text>"}</xsl:text>
                             <xsl:if test="position() != last()">
                                 <xsl:text>, </xsl:text>
