@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/alpha.xsd"
     appNameDisplay="Stopwatch Example">
     <deployment state="staging" />
-    <administration>
+    <administration allowDataDeletion="true">
         <!--
             Charts count records.
             The dataTable below exposes the raw eventTimes JSON so timing can be exported
