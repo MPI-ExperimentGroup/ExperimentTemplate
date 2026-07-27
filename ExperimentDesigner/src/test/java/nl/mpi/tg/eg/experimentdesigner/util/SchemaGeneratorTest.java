@@ -122,6 +122,7 @@ public class SchemaGeneratorTest {
             "group_streaming_example.xml",
             // "audio_recorder_example.xml",
             "invitation_validation_example.xml",
+            "stopwatch_example.xml",
         };
         for (String fileName : fileNameArray) {
             System.out.println(fileName);
