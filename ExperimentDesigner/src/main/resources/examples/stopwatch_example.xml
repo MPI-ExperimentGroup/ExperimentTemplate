@@ -64,6 +64,12 @@
         alongside the stimulus identifier. They can be exported with the rest of the
         response data.
 
+        A stopwatch is included in the submitted response only if it has been stopped
+        (via stopStimulusStopwatch) before setStimulusCodeResponse fires. If it has not
+        been stopped yet the framework records null for that stopwatch. Here setStimulusCodeResponse
+        is placed on the confirm button so that both reaction_time (already stopped at first press)
+        and confirm_time (stopped just above) are captured together.
+
         Key rules:
           - A zeroStimulusStopwatch with no matching stop is silently ignored.
           - A stopStimulusStopwatch with no prior zero is silently ignored.
@@ -90,23 +96,26 @@
                     <actionButton featureText="Yes, animal">
                         <!-- reaction_time is stopped at the moment of the initial button press. -->
                         <stopStimulusStopwatch eventId="reaction_time" />
-                        <setStimulusCodeResponse codeFormat="animal" applyScore="false" />
                         <!-- Replace the response buttons with a single confirm button.
                              confirm_time is still running until Confirm is pressed. -->
                         <regionReplace regionId="responseArea">
                             <actionButton featureText="Confirm: Yes">
-                                <!-- confirm_time records total time from onset to final commitment. -->
+                                <!-- confirm_time records total time from onset to final commitment.
+                                     setStimulusCodeResponse is called here so that both
+                                     reaction_time (already stopped) and confirm_time (just
+                                     stopped above) are included in the submitted response. -->
                                 <stopStimulusStopwatch eventId="confirm_time" />
+                                <setStimulusCodeResponse codeFormat="animal" applyScore="false" />
                                 <nextStimulus repeatIncorrect="false" />
                             </actionButton>
                         </regionReplace>
                     </actionButton>
                     <actionButton featureText="No, not an animal">
                         <stopStimulusStopwatch eventId="reaction_time" />
-                        <setStimulusCodeResponse codeFormat="not_animal" applyScore="false" />
                         <regionReplace regionId="responseArea">
                             <actionButton featureText="Confirm: No">
                                 <stopStimulusStopwatch eventId="confirm_time" />
+                                <setStimulusCodeResponse codeFormat="not_animal" applyScore="false" />
                                 <nextStimulus repeatIncorrect="false" />
                             </actionButton>
                         </regionReplace>
