@@ -839,6 +839,31 @@
 <xs:documentation>RGB Hex Value</xs:documentation>
 </xs:annotation>
 </xs:attribute>
+<xs:attribute name="aggregation">
+<xs:annotation>
+<xs:documentation>When avg is specified the chart shows the average value of the named eventId stopwatch in milliseconds, rather than a count of matching records.</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction>
+<xs:simpleType>
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:token">
+<xs:enumeration value="count"/>
+<xs:enumeration value="avg"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="eventId" type="postName">
+<xs:annotation>
+<xs:documentation>The stopwatch eventId to average. Required when aggregation is avg.</xs:documentation>
+</xs:annotation>
+</xs:attribute>
 </xs:complexType>
 </xs:element>
 </xs:sequence>
