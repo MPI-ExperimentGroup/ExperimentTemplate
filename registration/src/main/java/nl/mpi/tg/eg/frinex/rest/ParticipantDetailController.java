@@ -59,8 +59,7 @@ public class ParticipantDetailController {
     @Autowired
     private DataDeletionLogRepository dataDeletionLogRepository;
 
-    @NotNull
-    @Value("${nl.mpi.tg.eg.frinex.admin.allowDelete}")
+    @Value("${nl.mpi.tg.eg.frinex.admin.allowDelete:false}")
     protected boolean allowDelete;
 
     @RequestMapping("participantdetail")
