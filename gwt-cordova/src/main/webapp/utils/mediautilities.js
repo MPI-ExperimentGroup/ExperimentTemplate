@@ -31,13 +31,62 @@ function startRecorder(successHandler, errorHandler) {
     });
 }
 
+// Safari 16.4+ blocks HTMLMediaElement.play() called asynchronously after page load,
+// even when the user clicked through earlier screens. This unlocks the audio context
+// on first gesture so subsequent autoplay calls are permitted.
+var frinexAudioUnlocked = false;
+function frinexUnlockAudio() {
+    if (frinexAudioUnlocked) return;
+    frinexAudioUnlocked = true;
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    if (Ctx) {
+        var ctx = new Ctx();
+        var buf = ctx.createBuffer(1, 1, 22050);
+        var src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        src.start(0);
+        ctx.close();
+    }
+}
+['click', 'touchstart', 'touchend', 'keydown'].forEach(function (evt) {
+    document.addEventListener(evt, frinexUnlockAudio, { once: true, capture: true });
+});
+
 function playMedia(mediaElement, successHandler, errorHandler) {
     var promise = mediaElement.play();
     if (promise !== undefined) {
         promise.then(_ => {
             successHandler();
         }).catch(e => {
-            errorHandler();
+            if (e.name === 'NotAllowedError') {
+                // Safari autoplay was blocked. Register a one-shot gesture listener and
+                // retry, so the experiment can continue once the participant interacts
+                // rather than falling through to the "Failed to load audio" error state.
+                console.log('playMedia: autoplay blocked by browser policy, awaiting user gesture to retry');
+                var retryOnGesture = function () {
+                    ['click', 'touchstart', 'keydown'].forEach(function (evt) {
+                        document.removeEventListener(evt, retryOnGesture, true);
+                    });
+                    frinexUnlockAudio();
+                    var retryPromise = mediaElement.play();
+                    if (retryPromise !== undefined) {
+                        retryPromise.then(function () {
+                            successHandler();
+                        }).catch(function (retryError) {
+                            console.log('playMedia retry failed: ' + retryError.message);
+                            errorHandler();
+                        });
+                    } else {
+                        successHandler();
+                    }
+                };
+                ['click', 'touchstart', 'keydown'].forEach(function (evt) {
+                    document.addEventListener(evt, retryOnGesture, { once: true, capture: true });
+                });
+            } else {
+                errorHandler();
+            }
         });
     }
 }
