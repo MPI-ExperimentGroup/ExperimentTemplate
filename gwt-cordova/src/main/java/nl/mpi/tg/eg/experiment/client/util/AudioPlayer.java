@@ -118,6 +118,13 @@ public class AudioPlayer {
         audioElement.addEventListener("canplaythrough", function(){
             audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onLoadedAction()();
         }, false);
+        // Safari 17+ suppresses canplaythrough when autoplay is not permitted.
+        // loadeddata fires on data availability alone (no playback policy check),
+        // so it serves as a fallback. onLoadedAction() is guarded by hasTriggeredOnLoaded
+        // so firing both events is harmless.
+        audioElement.addEventListener("loadeddata", function(){
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onLoadedAction()();
+        }, false);
         audioElement.addEventListener("error", function(){
             // todo: check to second instance of onerror
             audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onAudioFailed(Ljava/lang/String;)("audioElement EventListener");
