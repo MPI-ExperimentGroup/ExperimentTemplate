@@ -84,6 +84,9 @@ public class AudioPlayer {
             throw new AudioException("audio not supportered");
         }
         final AudioElement audioElement = audioPlayer.getAudioElement();
+        // Safari will not buffer audio data (and so never fires loadeddata/canplaythrough)
+        // when autoplay is blocked unless preload="auto" is set explicitly.
+        audioElement.setAttribute("preload", "auto");
         onEndedSetup(audioElement);
     }
 
@@ -119,10 +122,16 @@ public class AudioPlayer {
             audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onLoadedAction()();
         }, false);
         // Safari 17+ suppresses canplaythrough when autoplay is not permitted.
-        // loadeddata fires on data availability alone (no playback policy check),
-        // so it serves as a fallback. onLoadedAction() is guarded by hasTriggeredOnLoaded
-        // so firing both events is harmless.
+        // loadeddata fires on data availability (no playback policy check).
+        // loadedmetadata fires even earlier — duration/dimensions only — and is
+        // completely unaffected by autoplay restrictions; it is the last-resort
+        // fallback so the experiment can proceed and attempt play() on user gesture.
+        // onLoadedAction() is guarded by hasTriggeredOnLoaded so all three events
+        // racing is harmless.
         audioElement.addEventListener("loadeddata", function(){
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onLoadedAction()();
+        }, false);
+        audioElement.addEventListener("loadedmetadata", function(){
             audioPlayer.@nl.mpi.tg.eg.experiment.client.util.AudioPlayer::onLoadedAction()();
         }, false);
         audioElement.addEventListener("error", function(){
