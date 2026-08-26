@@ -60,30 +60,52 @@ function playMedia(mediaElement, successHandler, errorHandler) {
             successHandler();
         }).catch(e => {
             if (e.name === 'NotAllowedError') {
-                // Safari autoplay was blocked. Register a one-shot gesture listener and
-                // retry, so the experiment can continue once the participant interacts
-                // rather than falling through to the "Failed to load audio" error state.
-                console.log('playMedia: autoplay blocked by browser policy, awaiting user gesture to retry');
-                var retryOnGesture = function () {
-                    ['click', 'touchstart', 'keydown'].forEach(function (evt) {
-                        document.removeEventListener(evt, retryOnGesture, true);
-                    });
-                    frinexUnlockAudio();
-                    var retryPromise = mediaElement.play();
-                    if (retryPromise !== undefined) {
-                        retryPromise.then(function () {
-                            successHandler();
-                        }).catch(function (retryError) {
-                            console.log('playMedia retry failed: ' + retryError.message);
-                            errorHandler();
-                        });
-                    } else {
+                // Safari blocks autoplay when the call is not in a direct user-gesture
+                // stack.  The gesture-retry approach (registering a listener and calling
+                // play() on the next button press) races with the experiment's clearPage/
+                // stopAll(), which pauses the same element in the bubble phase of that
+                // same event — the user never hears sound.
+                //
+                // Safari does permit autoplay of MUTED elements without a gesture.
+                // Strategy: set muted=true, call play() (succeeds), then synchronously
+                // set muted=false BEFORE the Promise resolves.  The audio pipeline reads
+                // the muted flag when it begins output (after the sync stack unwinds), so
+                // it sees muted=false and delivers sound normally.
+                console.log('playMedia: autoplay blocked, attempting muted play');
+                mediaElement.muted = true;
+                var mutedPromise = mediaElement.play();
+                mediaElement.muted = false; // synchronous unmute — audio pipeline reads this at output time
+                if (mutedPromise !== undefined) {
+                    mutedPromise.then(function () {
                         successHandler();
-                    }
-                };
-                ['click', 'touchstart', 'keydown'].forEach(function (evt) {
-                    document.addEventListener(evt, retryOnGesture, { once: true, capture: true });
-                });
+                    }).catch(function (mutedError) {
+                        // Muted play also failed (e.g. data not yet buffered).
+                        // Fall back to a one-shot gesture listener as last resort.
+                        console.log('playMedia: muted play failed (' + mutedError.message + '), awaiting gesture');
+                        var retryOnGesture = function () {
+                            ['click', 'touchstart', 'keydown'].forEach(function (evt) {
+                                document.removeEventListener(evt, retryOnGesture, true);
+                            });
+                            frinexUnlockAudio();
+                            var retryPromise = mediaElement.play();
+                            if (retryPromise !== undefined) {
+                                retryPromise.then(function () {
+                                    successHandler();
+                                }).catch(function (retryError) {
+                                    console.log('playMedia gesture retry failed: ' + retryError.message);
+                                    errorHandler();
+                                });
+                            } else {
+                                successHandler();
+                            }
+                        };
+                        ['click', 'touchstart', 'keydown'].forEach(function (evt) {
+                            document.addEventListener(evt, retryOnGesture, { once: true, capture: true });
+                        });
+                    });
+                } else {
+                    successHandler();
+                }
             } else {
                 errorHandler();
             }
