@@ -96,7 +96,10 @@ public class AudioPlayer {
 
     private void registerSourceLoadingError() {
         sourceLoadingCounter--;
-        if (sourceLoadingCounter <= 0) {
+        // Ignore late source errors that arrive after audio already loaded (e.g. Safari
+        // cancels buffering when the tab is hidden; the error fires on return but the
+        // audio played successfully).
+        if (sourceLoadingCounter <= 0 && !hasTriggeredOnLoaded) {
             onAudioFailed("audioSourceLoadingError");
         }
     }

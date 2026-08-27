@@ -67,18 +67,21 @@ function playMedia(mediaElement, successHandler, errorHandler) {
                 // same event — the user never hears sound.
                 //
                 // Safari does permit autoplay of MUTED elements without a gesture.
-                // Strategy: set muted=true, call play() (succeeds), then synchronously
-                // set muted=false BEFORE the Promise resolves.  The audio pipeline reads
-                // the muted flag when it begins output (after the sync stack unwinds), so
-                // it sees muted=false and delivers sound normally.
+                // Strategy: set muted=true, call play() (succeeds), then unmute inside
+                // the .then() callback once playback has actually started.  Safari reads
+                // the muted flag from the running pipeline at that point and delivers
+                // audible output for the remainder of the clip.
                 console.log('playMedia: autoplay blocked, attempting muted play');
                 mediaElement.muted = true;
                 var mutedPromise = mediaElement.play();
-                mediaElement.muted = false; // synchronous unmute — audio pipeline reads this at output time
                 if (mutedPromise !== undefined) {
                     mutedPromise.then(function () {
+                        // Unmute after play() has actually started — Safari reads the muted
+                        // flag from the running pipeline, so this produces audible output.
+                        mediaElement.muted = false;
                         successHandler();
                     }).catch(function (mutedError) {
+                        mediaElement.muted = false;
                         // Muted play also failed (e.g. data not yet buffered).
                         // Fall back to a one-shot gesture listener as last resort.
                         console.log('playMedia: muted play failed (' + mutedError.message + '), awaiting gesture');
@@ -104,6 +107,7 @@ function playMedia(mediaElement, successHandler, errorHandler) {
                         });
                     });
                 } else {
+                    mediaElement.muted = false;
                     successHandler();
                 }
             } else {
