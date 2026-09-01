@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/1.8.3856-stable.xsd"  
+    xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/1.8.3857-stable.xsd"  
     appNameDisplay="audio_recorder_example">  
     <deployment state="debug" />  
     <administration />
