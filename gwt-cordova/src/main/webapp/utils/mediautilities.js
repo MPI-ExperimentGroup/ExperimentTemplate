@@ -110,6 +110,20 @@ function playMedia(mediaElement, successHandler, errorHandler) {
                     mediaElement.muted = false;
                     successHandler();
                 }
+            } else if (e.name === 'AbortError') {
+                // play() was interrupted by a pause() call before it could start.
+                // This is not an audio load failure — retry once now that the abort is over.
+                console.log('playMedia: play aborted by pause, retrying');
+                var abortRetryPromise = mediaElement.play();
+                if (abortRetryPromise !== undefined) {
+                    abortRetryPromise.then(function () { successHandler(); })
+                                     .catch(function (abortRetryError) {
+                                         console.log('playMedia abort retry failed: ' + abortRetryError.message);
+                                         errorHandler();
+                                     });
+                } else {
+                    successHandler();
+                }
             } else {
                 errorHandler();
             }

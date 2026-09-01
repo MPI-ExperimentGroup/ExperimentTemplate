@@ -48,12 +48,14 @@ public class AudioPlayer {
         this.mediaId = mediaId;
         try {
             createPlayer();
-            if (ogg != null) {
-                final SourceElement sourceElement = audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
-                onNoFoundSetup(sourceElement);
-            }
+            // MP3 is listed before OGG so that browsers which stop trying sources after
+            // a 404 (macOS Safari) load the MP3 successfully when OGG files are absent.
             if (mp3 != null) {
                 final SourceElement sourceElement = audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+                onNoFoundSetup(sourceElement);
+            }
+            if (ogg != null) {
+                final SourceElement sourceElement = audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
                 onNoFoundSetup(sourceElement);
             }
             if (wav != null) {
@@ -186,9 +188,10 @@ public class AudioPlayer {
             audioEventListener.audioLoaded(audioPlayer.getDuration());
             if (autoPlay) {
                 play(audioPlayer.getAudioElement());
-            } else {
-                audioPlayer.pause();
             }
+            // When autoPlay=false the element is already paused (paused in the constructor
+            // after load()). Calling pause() here again would abort a play() that the
+            // audioLoaded callback may have started (causing AbortError on macOS Safari).
         }
     }
 
